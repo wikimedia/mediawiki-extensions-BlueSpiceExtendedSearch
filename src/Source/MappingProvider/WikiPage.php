@@ -9,6 +9,9 @@ class WikiPage extends DecoratorBase {
 			'prefixed_title' => [
 				'type' => 'string'
 			],
+			'sections' => [
+				'type' => 'string'
+			],
 			'source_content' => [
 				'type' => 'string'
 			],
@@ -19,7 +22,7 @@ class WikiPage extends DecoratorBase {
 				'type' => 'integer',
 				'include_in_all' => false
 			],
-			'namespace_prefix' => [
+			'namespace_text' => [
 				'type' => 'string'
 			],
 		];

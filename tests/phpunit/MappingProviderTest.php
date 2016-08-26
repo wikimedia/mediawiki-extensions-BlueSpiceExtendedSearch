@@ -15,7 +15,7 @@ class MappingProviderTest extends \MediaWikiTestCase {
 		$oMP = new \BS\ExtendedSearch\Source\MappingProvider\Base();
 		$aPC = $oMP->getPropertyConfig();
 
-		$this->assetBaseMappinProviderKeysArePresent( $aPC );
+		$this->assetBaseMappingProviderKeysArePresent( $aPC );
 	}
 
 	public function testMappingProviderDecorators() {
@@ -26,11 +26,11 @@ class MappingProviderTest extends \MediaWikiTestCase {
 				new \BS\ExtendedSearch\Source\MappingProvider\Base()
 			);
 			$aPC = $oDecMP->getPropertyConfig();
-			$this->assetBaseMappinProviderKeysArePresent( $aPC );
+			$this->assetBaseMappingProviderKeysArePresent( $aPC );
 		}
 	}
 
-	public function assetBaseMappinProviderKeysArePresent($aPC) {
+	public function assetBaseMappingProviderKeysArePresent( $aPC ) {
 		$this->assertArrayHasKey( 'uri', $aPC );
 		$this->assertArrayHasKey( 'basename', $aPC );
 		$this->assertArrayHasKey( 'extension', $aPC );
