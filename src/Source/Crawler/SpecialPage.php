@@ -8,7 +8,8 @@ class SpecialPage extends Base {
 		foreach( $aCononicalNames as $sCanonicalName ) {
 			\JobQueueGroup::singleton()->push(
 				new \BS\ExtendedSearch\Source\Job\UpdateSpecialPage(
-					\SpecialPage::getTitleFor( $sCanonicalName )
+					\SpecialPage::getTitleFor( $sCanonicalName ),
+					[]
 				)
 			);
 		}

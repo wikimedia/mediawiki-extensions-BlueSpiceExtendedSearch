@@ -20,12 +20,11 @@ class rebuildIndex extends Maintenance {
 		$aIndizes = $config->get("Indizes");
 
 		$aSources = [];
-		foreach(\BS\ExtendedSearch\Indices::factoryAll() as $oIndex ) {
+		foreach( \BS\ExtendedSearch\Indices::factoryAll() as $oIndex ) {
 			$oIndex->create();
 
 			$aSources = $oIndex->getSources();
 			foreach( $aSources as $oSource ) {
-				($oSource instanceof \BS\ExtendedSearch\Source\Base);
 				$oSource->getCrawler()->crawl();
 			}
 		}

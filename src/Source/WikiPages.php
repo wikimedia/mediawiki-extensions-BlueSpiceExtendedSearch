@@ -11,6 +11,12 @@ class WikiPages extends DecoratorBase {
 		return new Crawler\WikiPage();
 	}
 
+	public function getDocumentProvider() {
+		return new DocumentProvider\WikiPage(
+			$this->oDecoratedSource->getDocumentProvider()
+		);
+	}
+
 	public function makeMappingPropertyConfig() {
 		$aMapping = $this->oDecoratedSource->makeMappingPropertyConfig();
 		$aMapping += [

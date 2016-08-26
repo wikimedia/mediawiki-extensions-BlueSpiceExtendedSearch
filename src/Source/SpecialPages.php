@@ -7,4 +7,7 @@ class SpecialPages extends DecoratorBase {
 		return 'specialpage';
 	}
 
+	public function getCrawler() {
+		return new Crawler\SpecialPage();
+	}
 }

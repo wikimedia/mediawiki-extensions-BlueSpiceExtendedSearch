@@ -16,3 +16,15 @@ from the Elasticsearch directory.
 Start the service using
 
  bin\elasticsearch
+
+
+== Run Unit Tests on terminal ==
+ php tests/phpunit/phpunit.php extensions/BlueSpiceExtendedSearch/tests/phpunit/
+
+==Create/Update index==
+ php extensions/BlueSpiceExtendedSearch/maintenance/rebuildIndex.php
+ php maintenance/runJobs.php
+
+==Usefull ES URLS==
+* http://localhost:9200/_mappings?pretty
+* http://localhost:9200/_cat/indices?v

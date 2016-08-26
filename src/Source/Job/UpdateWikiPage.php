@@ -2,7 +2,10 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
-class UpdateWikiPage extends \Job {
+class UpdateWikiPage extends UpdateBase {
+
+	protected $sSourceKey = 'wikipage';
+
 	/**
 	 *
 	 * @param Title $title
@@ -13,6 +16,20 @@ class UpdateWikiPage extends \Job {
 	}
 
 	public function run() {
-		
+		$oDP = $this->getSource()->getDocumentProvider();
+
+		if( !$this->getTitle()->exists() ) {
+			$this->getIndex()->deleteDocuments(
+				[ $oDP->getDocumentId( $this->getTitle()->getCanonicalURL() ) ],
+				$this->getSource()->getTypeKey()
+			);
+		}
+		else {
+			$aDC = $oDP->getDataConfig(
+				$this->getTitle()->getCanonicalURL(),
+				\WikiPage::factory( $this->getTitle() )
+			);
+			$this->getIndex()->addDocuments( [ $aDC ], $this->getSource()->getTypeKey() );
+		}
 	}
 }

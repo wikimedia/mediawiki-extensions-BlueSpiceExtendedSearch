@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
-class UpdateSpecialPage extends \Job {
+class UpdateSpecialPage extends UpdateBase {
 	/**
 	 *
 	 * @param Title $title

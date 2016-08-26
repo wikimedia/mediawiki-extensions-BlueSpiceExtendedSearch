@@ -6,7 +6,7 @@ class Index {
 
 	/**
 	 *
-	 * @var ElasticaClient
+	 * @var \Elastica\Client
 	 */
 	protected $oClient = null;
 
@@ -39,6 +39,30 @@ class Index {
 	 */
 	public function getSources() {
 		return $this->aSources;
+	}
+
+	/**
+	 *
+	 * @param string $sSourceKey
+	 * @return Source\Base
+	 */
+	public function getSource( $sSourceKey ) {
+		return $this->aSources[ $sSourceKey ]; //TODO: Throw exception or return NullSource if key not set?
+	}
+
+	public function addDocuments( $aDocumentConfigs, $sTypeKey ) {
+		$oElasticaIndex = $this->oClient->getIndex( $this->sName );
+		$oType = $oElasticaIndex->getType( $sTypeKey );
+		foreach( $aDocumentConfigs as $aDC ) {
+			$oType->addDocument(
+				new \Elastica\Document( $aDC['id'], $aDC )
+			);
+			$oElasticaIndex->refresh();
+		}
+	}
+
+	public function deleteDocuments( $aDocumentConfigs, $sTypeKey ) {
+		//TODO: implement
 	}
 
 	protected function makeClient( $aConfig ) {

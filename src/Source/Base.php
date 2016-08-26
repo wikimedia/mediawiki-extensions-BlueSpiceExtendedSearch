@@ -61,6 +61,10 @@ class Base {
 		return isset( $this->aConfig['crawler'] ) ? $this->aConfig['crawler'] : [];
 	}
 
+	public function getDocumentProvider() {
+		return new DocumentProvider\Base();
+	}
+
 	/**
 	 *
 	 * @return \BS\ExtendedSearch\Source\Updater\Base
