@@ -1,0 +1,11 @@
+{
+	"require": {
+		"ruflin/elastica": "dev-master"
+	},
+	"autoload" : {
+		"psr-4": {
+			"BS\\ExtendedSearch\\Tests\\" : "tests/phpunit",
+			"BS\\ExtendedSearch\\" : "src"
+		}
+	}
+}

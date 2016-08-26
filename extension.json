@@ -1,0 +1,59 @@
+{
+	"name": "BlueSpiceExtendedSearch",
+	"version": "2.27.0",
+	"author": [
+		"Robert Vogel"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:BlueSpiceExtendedSearch",
+	"descriptionmsg": "bs-extendedsearch-desc",
+	"license-name": "GPL-2.0",
+	"type": "other",
+	"MessagesDirs": {
+		"BlueSpiceExtendedSearch": [
+			"i18n"
+		]
+	},
+	"ConfigRegistry": {
+		"bsgES": "BS\\ExtendedSearch\\Setup::makeConfig"
+	},
+	"ExtensionFunctions": [
+		"BS\\ExtendedSearch\\Setup::init"
+	],
+	"config": {
+		"_prefix": "bsgES",
+		"Indizes": {
+			"local": {
+				"class": "BS\\ExtendedSearch\\Index",
+				"connection": {
+					"host": "127.0.0.1",
+					"port": "9200"
+				},
+				"sources": {
+					"wikipage": {
+						"class": "BS\\ExtendedSearch\\Source\\WikiPages"
+					},
+					"specialpage": {
+						"class": "BS\\ExtendedSearch\\Source\\SpecialPages"
+					},
+					"repofile": {
+						"class": "BS\\ExtendedSearch\\Source\\RepoFiles"
+					},
+					"externalfile": {
+						"class": "BS\\ExtendedSearch\\Source\\ExternalFiles"
+					},
+					"linkedfile": {
+						"class": "BS\\ExtendedSearch\\Source\\LinkedFiles"
+					}
+				}
+			}
+		}
+	},
+	"load_composer_autoloader" : true,
+	"JobClasses": {
+		"updateWikiPageIndex": "BS\\ExtendedSearch\\Source\\Job\\UpdateWikiPage",
+		"updateSpecialPageIndex": "BS\\ExtendedSearch\\Source\\Job\\UpdateSpecialPage",
+		"updateRepoFileIndex": "BS\\ExtendedSearch\\Source\\Job\\UpdateRepoFile",
+		"updateExternalFileIndex": "BS\\ExtendedSearch\\Source\\Job\\UpdateExternalFile",
+		"updateLinkedFileIndex": "BS\\ExtendedSearch\\Source\\Job\\UpdateLinkedFile"
+	}
+}

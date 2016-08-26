@@ -1,0 +1,7 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"extensionname-bsextendedsearch": "BlueSpice ExtendedSearch",
+	"bs-extendedsearch-desc": "Elasticsearch search backend"
+}

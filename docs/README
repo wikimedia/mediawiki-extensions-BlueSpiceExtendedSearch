@@ -1,0 +1,18 @@
+== Setup and installation ==
+
+Execute
+
+ composer install
+
+within the installation directory of BSExtendedSearch to resolve dependencies.
+
+Download Elasticsearch 2.x from https://www.elastic.co/downloads/elasticsearch
+and install the plugin "mapper-attachments" by executing
+
+ bin/plugin install mapper-attachments
+
+from the Elasticsearch directory.
+
+Start the service using
+
+ bin\elasticsearch
