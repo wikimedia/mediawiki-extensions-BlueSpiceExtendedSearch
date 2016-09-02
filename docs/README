@@ -17,6 +17,24 @@ Start the service using
 
  bin\elasticsearch
 
+== Configuration ==
+=== External File Source ===
+
+$bsgESBackends['local']['sources']['externalfile']['args'] = array(
+	'paths' => array(
+		'\\\\some\\network\\share' => 'file:///S:\\network\\share',
+		'/mnt/some/network/share' => 'file:///network/share'
+	)
+);
+
+== Linked File Source ===
+
+$bsgESBackends['local']['sources']['linkedfile']['args'] = array(
+	'paths' => array(
+		'\\\\some\\network\\share' => 'file:///S:\\network\\share',
+		'/mnt/some/network/share' => 'file:///network/share'
+	)
+);
 
 == Run Unit Tests on terminal ==
  php tests/phpunit/phpunit.php extensions/BlueSpiceExtendedSearch/tests/phpunit/
@@ -28,3 +46,7 @@ Start the service using
 ==Usefull ES URLS==
 * http://localhost:9200/_mappings?pretty
 * http://localhost:9200/_cat/indices?v
+
+==TODO==
+* Almost everything
+* Integrate with $wgSearchType

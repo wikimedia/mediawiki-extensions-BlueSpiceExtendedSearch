@@ -15,7 +15,7 @@ class WikiPage extends DecoratorBase {
 		$aDC += [
 			'basename' => $oWikiPage->getTitle()->getBaseText(),
 			'extension' => 'wiki',
-			'mime_type' => 'application/x-wiki',
+			'mime_type' => 'text/x-wiki',
 			'mtime' => wfTimestamp(
 				TS_ISO_8601,
 				$oWikiPage->getRevision()->getTimestamp()

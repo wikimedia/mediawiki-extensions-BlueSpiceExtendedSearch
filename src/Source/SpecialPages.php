@@ -8,6 +8,12 @@ class SpecialPages extends DecoratorBase {
 	}
 
 	public function getCrawler() {
-		return new Crawler\SpecialPage();
+		return new Crawler\SpecialPage( $this->getConfig() );
+	}
+
+	public function getDocumentProvider() {
+		return new DocumentProvider\SpecialPage(
+			$this->oDecoratedSource->getDocumentProvider()
+		);
 	}
 }

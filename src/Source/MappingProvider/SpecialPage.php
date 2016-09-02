@@ -16,7 +16,7 @@ class SpecialPage extends DecoratorBase {
 				'type' => 'integer',
 				'include_in_all' => false
 			],
-			'namespace_prefix' => [
+			'namespace_text' => [
 				'type' => 'string'
 			],
 		];

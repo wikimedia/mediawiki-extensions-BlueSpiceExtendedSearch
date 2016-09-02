@@ -6,61 +6,54 @@ class Base {
 
 	/**
 	 *
-	 * @var \Elastica\Index
+	 * @var \Config
 	 */
-	protected $oIndex = null;
-
-	protected $aConfig = array();
+	protected $oConfig = null;
 
 	/**
 	 *
 	 * @param \Elastica\Index
 	 * @param array $aConfig
 	 */
-	public function __construct( $oIndex, $aConfig ) {
-		$this->oIndex = $oIndex;
-		$this->aConfig = $aConfig;
-		$oConfig = new \HashConfig( $aConfig );
+	public function __construct( $aConfig ) {
+		$this->oConfig = new \HashConfig( $aConfig );
 	}
 
+	/**
+	 *
+	 * @return \Config
+	 */
+	public function getConfig() {
+		return $this->oConfig;
+	}
+
+	/**
+	 *
+	 * @return string
+	 */
 	public function getTypeKey() {
 		return '';
 	}
-	public function makeMappingPropertyConfig() {
-		return array(
-			'uri' => array(
-				'type' => 'string',
-				'include_in_all' => false
-			),
-			'title' => array(
-				'type' => 'string'
-			),
-			'content' => array(
-				'type' => 'string'
-			),
-			'tags' => array(
-				'type' => 'string'
-			),
-			'cdate' => array(
-				'type' => 'date'
-			),
-			'size' => array(
-				'type' => 'double'
-			)
-		);
+
+	/**
+	 *
+	 * @return \BS\ExtendedSearch\Source\MappingProvider\Base
+	 */
+	public function getMappingProvider() {
+		return new MappingProvider\Base();
 	}
 
 	/**
 	 * @return BS\ExtendedSearch\Crawler\Base
 	 */
 	public function getCrawler() {
-		return new Crawler\Base( $this->oIndex, $this->getCrawlerConfig() );
+		return new Crawler\Base( $this->oConfig );
 	}
 
-	protected function getCrawlerConfig() {
-		return isset( $this->aConfig['crawler'] ) ? $this->aConfig['crawler'] : [];
-	}
-
+	/**
+	 *
+	 * @return \BS\ExtendedSearch\Source\DocumentProvider\Base
+	 */
 	public function getDocumentProvider() {
 		return new DocumentProvider\Base();
 	}
@@ -73,10 +66,12 @@ class Base {
 		return new Updater\Base( $this );
 	}
 
-	public function makeDocumentConfig( $sURI, $mSourceEntity ) {
-		return [
-			'_id' => md5( $sURI ), //Full qualified URI to document
-		];
+	/**
+	 *
+	 * @return array
+	 */
+	public function getIndexSettings() {
+		return [];
 	}
 
 	#abstract public function getFormatter();

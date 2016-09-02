@@ -4,18 +4,18 @@ namespace BS\ExtendedSearch\Source\Job;
 
 abstract class UpdateBase extends \Job {
 
-	protected $sIndexKey = 'local';
+	protected $sBackendKey = 'local';
 	protected $sSourceKey = '';
 
 	/**
 	 *
-	 * @return \BS\ExtendedSearch\Index
+	 * @return \BS\ExtendedSearch\Backend
 	 */
-	protected function getIndex() {
-		return \BS\ExtendedSearch\Indices::factory( $this->sIndexKey );
+	protected function getBackend() {
+		return \BS\ExtendedSearch\Backend::factory( $this->sBackendKey );
 	}
 
 	protected function getSource() {
-		return $this->getIndex()->getSource( $this->sSourceKey );
+		return $this->getBackend()->getSource( $this->sSourceKey );
 	}
 }

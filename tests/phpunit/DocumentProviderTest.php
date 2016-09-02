@@ -27,7 +27,7 @@ class DocumentProviderTest extends \MediaWikiTestCase {
 		$this->assertNotEmpty( $aDC['id'] );
 		$this->assertEquals( $sTestUriMD5, $aDC['id'] );
 		$this->assertEquals( $oWikiPage->getTitle()->getBaseText(), $aDC['basename'] );
-		$this->assertEquals( 'application/x-wiki', $aDC['mime_type'] );
+		$this->assertEquals( 'text/x-wiki', $aDC['mime_type'] );
 		$this->assertEquals( 'wiki', $aDC['extension'] );
 		$this->assertEquals( $oWikiPage->getTitle()->getNamespace(), $aDC['namespace'] );
 		$this->assertEquals( $oWikiPage->getTitle()->getNsText(), $aDC['namespace_text'] );

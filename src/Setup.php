@@ -16,7 +16,7 @@ class Setup {
 	 * ExtensionFunction callback to wire up all updaters
 	 */
 	public static function init() {
-		$aSources = \BS\ExtendedSearch\Indices::factory('local')->getSources();
+		$aSources = \BS\ExtendedSearch\Backend::instance( 'local' )->getSources();
 		foreach( $aSources as $oSource ) {
 			$oSource->getUpdater()->init( $GLOBALS['wgHooks'] );
 		}

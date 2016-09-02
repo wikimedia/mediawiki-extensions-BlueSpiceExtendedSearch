@@ -13,6 +13,9 @@
 			"i18n"
 		]
 	},
+	"ExtensionMessagesFiles": {
+		"BlueSpiceExtendedSearch": "languages/BSSearchCenter.alias.php"
+	},
 	"ConfigRegistry": {
 		"bsgES": "BS\\ExtendedSearch\\Setup::makeConfig"
 	},
@@ -22,32 +25,43 @@
 	"Hooks": {
 		"UnitTestsList": "BS\\ExtendedSearch\\Setup::onUnitTestsList"
 	},
+	"SpecialPages": {
+		"BSSearchCenter": "BS\\ExtendedSearch\\MediaWiki\\Specials\\SearchCenter"
+	},
+	"APIModules": {
+		"bs-extendedsearch-query": "BS\\ExtendedSearch\\MediaWiki\\Api\\Query"
+	},
 	"config": {
 		"_prefix": "bsgES",
-		"Indizes": {
+		"Backends": {
 			"local": {
-				"class": "BS\\ExtendedSearch\\Index",
-				"connection": {
-					"host": "127.0.0.1",
-					"port": "9200"
-				},
-				"sources": {
-					"wikipage": {
-						"class": "BS\\ExtendedSearch\\Source\\WikiPages"
-					},
-					"specialpage": {
-						"class": "BS\\ExtendedSearch\\Source\\SpecialPages"
-					},
-					"repofile": {
-						"class": "BS\\ExtendedSearch\\Source\\RepoFiles"
-					},
-					"externalfile": {
-						"class": "BS\\ExtendedSearch\\Source\\ExternalFiles"
-					},
-					"linkedfile": {
-						"class": "BS\\ExtendedSearch\\Source\\LinkedFiles"
+				"class": "BS\\ExtendedSearch\\Backend",
+				"args": [
+					{
+						"connection": {
+							"host": "127.0.0.1",
+							"port": "9200"
+						},
+						"sources": {
+							"wikipage": {
+								"class": "BS\\ExtendedSearch\\Source\\WikiPages",
+								"args": [
+									{
+										"skip_namespaces": [
+											8, 9, 10, 11, 14, 15
+										]
+									}
+								]
+							},
+							"specialpage": {
+								"class": "BS\\ExtendedSearch\\Source\\SpecialPages"
+							},
+							"repofile": {
+								"class": "BS\\ExtendedSearch\\Source\\RepoFiles"
+							}
+						}
 					}
-				}
+				]
 			}
 		}
 	},

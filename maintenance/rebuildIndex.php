@@ -14,18 +14,16 @@ class rebuildIndex extends Maintenance {
 	}
 
 	public function execute() {
-		#wfCountDown( 5 );
+		$this->output( 'This will create update jobs for all indices! Starting in ... ' );
+		wfCountDown( 5 );
 
-		$config = ConfigFactory::getDefaultInstance()->makeConfig( 'bsgES' );
-		$aIndizes = $config->get("Indizes");
-
-		$aSources = [];
-		foreach( \BS\ExtendedSearch\Indices::factoryAll() as $oIndex ) {
-			$oIndex->create();
-
-			$aSources = $oIndex->getSources();
+		foreach( \BS\ExtendedSearch\Backend::factoryAll() as $oBackend ) {
+			$aSources = $oBackend->getSources();
 			foreach( $aSources as $oSource ) {
-				$oSource->getCrawler()->crawl();
+				$this->output( "\nCrawling '{$oSource->getTypeKey()}'" );
+				$oCrawler = $oSource->getCrawler();
+				$oCrawler->crawl();
+				$this->output( "done: ". $oCrawler->getNumberOfPendingJobs() );
 			}
 		}
 	}

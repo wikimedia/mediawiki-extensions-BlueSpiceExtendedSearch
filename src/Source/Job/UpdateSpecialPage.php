@@ -2,7 +2,10 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
-class UpdateSpecialPage extends UpdateBase {
+class UpdateSpecialPage extends UpdateWikiPage {
+
+	protected $sSourceKey = 'specialpage';
+
 	/**
 	 *
 	 * @param Title $title
@@ -12,7 +15,7 @@ class UpdateSpecialPage extends UpdateBase {
 		parent::__construct( 'updateSpecialPageIndex', $title, $params );
 	}
 
-	public function run() {
-		#$oType = \BS\ExtendedSearch\Indices::factory('local')->
+	protected function getDocumentProviderSource() {
+		return \SpecialPageFactory::getPage( $this->getTitle()->getText() );
 	}
 }

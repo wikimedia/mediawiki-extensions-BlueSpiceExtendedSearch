@@ -27,9 +27,14 @@ class UpdateWikiPage extends UpdateBase {
 		else {
 			$aDC = $oDP->getDataConfig(
 				$this->getTitle()->getCanonicalURL(),
-				\WikiPage::factory( $this->getTitle() )
+				$this->getDocumentProviderSource()
 			);
 			$this->getIndex()->addDocuments( [ $aDC ], $this->getSource()->getTypeKey() );
 		}
 	}
+
+	protected function getDocumentProviderSource() {
+		return \WikiPage::factory( $this->getTitle() );
+	}
+
 }
