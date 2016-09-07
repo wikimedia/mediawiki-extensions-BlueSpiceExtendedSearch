@@ -1,7 +1,13 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Robert Vogel <vogel@hallowelt.com>"
+		]
 	},
 	"extensionname-bsextendedsearch": "BlueSpice ExtendedSearch",
-	"bs-extendedsearch-desc": "Elasticsearch search backend"
+	"bs-extendedsearch-desc": "Elasticsearch search backend",
+	"bssearchcenter": "Search center",
+	"apihelp-bs-extendedsearch-query-description": "Search the index",
+	"apihelp-bs-extendedsearch-query-param-q": "The query term",
+	"bs-extendedsearch-search-input-placeholder": "Find ..."
 }

@@ -31,6 +31,20 @@
 	"APIModules": {
 		"bs-extendedsearch-query": "BS\\ExtendedSearch\\MediaWiki\\Api\\Query"
 	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceExtendedSearch/resources"
+	},
+	"ResourceModules": {
+		"ext.blueSpiceExtendedSearch.SearchCenter": {
+			"scripts": [
+				"ext.blueSpiceExtendedSearch.SearchCenter.js"
+			],
+			"dependencies" : [
+				"oojs-ui-core"
+			]
+		}
+	},
 	"config": {
 		"_prefix": "bsgES",
 		"Backends": {

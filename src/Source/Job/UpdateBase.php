@@ -12,7 +12,7 @@ abstract class UpdateBase extends \Job {
 	 * @return \BS\ExtendedSearch\Backend
 	 */
 	protected function getBackend() {
-		return \BS\ExtendedSearch\Backend::factory( $this->sBackendKey );
+		return \BS\ExtendedSearch\Backend::instance( $this->sBackendKey );
 	}
 
 	protected function getSource() {

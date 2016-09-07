@@ -75,6 +75,10 @@ class Backend {
 		return $this->aSources;
 	}
 
+	/**
+	 *
+	 * @return \Elastica\Client
+	 */
 	public function getClient() {
 		if( $this->oClient === null ) {
 			$this->oClient = new \Elastica\Client(
@@ -83,6 +87,37 @@ class Backend {
 		}
 
 		return $this->oClient;
+	}
+
+	/**
+	 *
+	 * @param string $sTerm
+	 * @param \User $oUser
+	 * @param array $aParams
+	 * @return \Elastica\ResultSet
+	 */
+	public function search( $sTerm, $oUser, $aParams = [] ) {
+		$oSearch = new \Elastica\Search( $this->getClient() );
+		$oQueryBuilder = new \Elastica\QueryBuilder();
+		$oQuery = new \Elastica\Query();
+		$oQuery->setQuery(
+			$oQueryBuilder->query()->query_string( $sTerm )
+		);
+
+		$oSearch->setQuery( $oQuery );
+		//TODO: Apply all QueryProcessors/Modifiers
+
+		return $oSearch->search();
+	}
+
+	/**
+	 *
+	 * @param \Elastica\Result[] $aResults
+	 * @return stdClass[]
+	 */
+	public function formatResults( $aResults ) {
+		
+		return [];
 	}
 
 	/**
