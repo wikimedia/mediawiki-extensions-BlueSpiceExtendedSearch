@@ -3,6 +3,11 @@
 namespace BS\ExtendedSearch\Source\MappingProvider;
 
 class SpecialPage extends DecoratorBase {
+
+	/**
+	 *
+	 * @return array
+	 */
 	public function getPropertyConfig() {
 		$aPC = $this->oDecoratedMP->getPropertyConfig();
 		$aPC += [

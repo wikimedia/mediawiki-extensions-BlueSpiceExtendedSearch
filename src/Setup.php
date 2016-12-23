@@ -9,6 +9,13 @@ class Setup {
 	 * @return \GlobalVarConfig
 	 */
 	public static function makeConfig() {
+
+		/**
+		 * Unfortunately changing complex settings from 'extension.json'
+		 * in 'LocalSettings.php' is problematic. Therefore we provide a hook
+		 * point to change settings
+		 */
+		\Hooks::run( 'BSExtendedSearchMakeConfig', [ &$GLOBALS['bsgESBackends'] ] );
 		return new \GlobalVarConfig( 'bsgES' );
 	}
 
@@ -23,7 +30,7 @@ class Setup {
 	}
 
 	/**
-	 * Register PHP Unit Tests with MediaWiki frameweork
+	 * Register PHP Unit Tests with MediaWiki framework
 	 * @param array $paths
 	 * @return boolean
 	 */

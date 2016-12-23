@@ -3,13 +3,6 @@
 namespace BS\ExtendedSearch\Source;
 
 class WikiPages extends DecoratorBase {
-	/**
-	 *
-	 * @return string
-	 */
-	public function getTypeKey() {
-		return 'wikipage';
-	}
 
 	/**
 	 *

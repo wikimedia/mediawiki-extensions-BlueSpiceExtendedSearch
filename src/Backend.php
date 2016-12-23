@@ -23,6 +23,10 @@ class Backend {
 	protected $oClient = null;
 
 	public function __construct( $aConfig ) {
+		if( !isset( $aConfig['index'] ) ) {
+			$aConfig['index'] = wfWikiID();
+		}
+
 		$this->oConfig = new \HashConfig( $aConfig );
 	}
 
@@ -30,7 +34,7 @@ class Backend {
 	 *
 	 * @param string $sSourceKey
 	 * @return Source\Base
-	 * @throws Exception
+	 * @throws \Exception
 	 */
 	public function getSource( $sSourceKey ) {
 		if( isset( $this->aSources[$sSourceKey] ) ) {
@@ -39,14 +43,22 @@ class Backend {
 
 		$aSourceConfigs = $this->oConfig->get( 'sources' );
 		if( !isset( $aSourceConfigs[$sSourceKey] ) ) {
-			throw new Exception( "SOURCE: Key '$sSourceKey' not set in config!" );
+			throw new \Exception( "SOURCE: Key '$sSourceKey' not set in config!" );
 		}
 
 		//Decorator!
-		$oBaseSourceArgs = [[]]; //Yes, array-in-a-array
+		$oBaseSourceArgs = [[]]; //Yes, array-in-an-array
 		if( isset( $aSourceConfigs[$sSourceKey]['args'] ) ) {
 			$oBaseSourceArgs = $aSourceConfigs[$sSourceKey]['args'];
 		}
+
+		if( !isset( $oBaseSourceArgs[0]['sourcekey'] ) ) {
+			$oBaseSourceArgs[0]['sourcekey'] = $sSourceKey;
+		}
+
+		//Dependency injection of Backend into Source
+		array_unshift ($oBaseSourceArgs, $this );
+
 		$oBaseSource = \ObjectFactory::getObjectFromSpec( [
 			'class' => 'BS\ExtendedSearch\Source\Base',
 			'args' => $oBaseSourceArgs
@@ -116,21 +128,8 @@ class Backend {
 	 * @return stdClass[]
 	 */
 	public function formatResults( $aResults ) {
-		
-		return [];
-	}
 
-	/**
-	 * @return
-	 */
-	public function getIndexManagers() {
-		$sIndexName = wfWikiID();
-		if( $this->oConfig->has( 'index_name' ) ) {
-			$sIndexName = $this->oConfig->get( 'index_name' );
-		}
-		return [
-			$sIndexName => new IndexManager( $sIndexName, $this->getClient(), $this->getSources() )
-		];
+		return [];
 	}
 
 	/**
@@ -164,6 +163,10 @@ class Backend {
 		return \ObjectFactory::getObjectFromSpec( $aConfig );
 	}
 
+	/**
+	 *
+	 * @return Backend[]
+	 */
 	public static function factoryAll() {
 		$oConfig = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsgES' );
 		$aBackendConfigs = $oConfig->get( 'Backends' );
@@ -190,5 +193,56 @@ class Backend {
 		}
 
 		return $aBackendConfigs[$sBackendKey];
+	}
+
+
+	/**
+	 * @throws Elastica\Exception\ResponseException
+	 */
+	public function deleteIndex() {
+		$oIndex = $this->getClient()->getIndex( $this->oConfig->get( 'index' ) );
+		if( $oIndex->exists() ){
+			$oIndex->delete();
+		}
+	}
+
+	/**
+	 * @throws Elastica\Exception\ResponseException
+	 */
+	public function createIndex() {
+		$aIndexSettings = [];
+		foreach( $this->aSources as $oSource ) {
+			$aIndexSettings = array_merge_recursive(
+				$aIndexSettings,
+				$oSource->getIndexSettings()
+			);
+		}
+
+		$oIndex = $this->getIndex();
+		$oResponse = $oIndex->create( $aIndexSettings );
+
+		foreach( $this->aSources as $oSource ) {
+			$oType = $oIndex->getType( $oSource->getTypeKey() );
+			
+			$oMapping = new \Elastica\Type\Mapping();
+			$oMapping->setType( $oType );
+			$oMappingProvider = $oSource->getMappingProvider();
+			$oMapping->setProperties( $oMappingProvider->getPropertyConfig() );
+
+			$aSourceConfig = $oMappingProvider->getSourceConfig();
+			if( !empty( $aSourceConfig ) ) {
+				$oMapping->setSource( $aSourceConfig );
+			}
+
+			$oResponse2 = $oMapping->send();
+		}
+	}
+
+	/**
+	 *
+	 * @return \Elastica\Index
+	 */
+	public function getIndex() {
+		return $this->getClient()->getIndex( $this->oConfig->get( 'index' ) );
 	}
 }

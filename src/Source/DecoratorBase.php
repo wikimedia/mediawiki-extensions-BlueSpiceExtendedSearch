@@ -20,6 +20,14 @@ class DecoratorBase extends Base {
 
 	/**
 	 *
+	 * @return \BS\ExtendedSearch\Backend
+	 */
+	public function getBackend() {
+		return $this->oDecoratedSource->getBackend();
+	}
+
+	/**
+	 *
 	 * @return Config
 	 */
 	public function getConfig() {

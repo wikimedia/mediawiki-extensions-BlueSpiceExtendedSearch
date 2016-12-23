@@ -19,7 +19,7 @@ class WikiPage extends Base {
 		}
 	}
 
-	public function makeQueryConditions() {
+	protected function makeQueryConditions() {
 		$aConds = [];
 
 		if( $this->oConfig->has( 'skip_namespaces' ) ) {

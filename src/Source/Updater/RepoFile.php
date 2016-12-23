@@ -12,12 +12,15 @@ class RepoFile extends Base {
 
 	/**
 	 * Update index on file upload
-	 * @param File $oFile MediaWiki file object of uploaded file
+	 * @param \File $oFile MediaWiki file object of uploaded file
 	 * @param bool $bReupload indicates if file was uploaded before
 	 * @param bool $bHasDescription indicates if a description page existed before
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onFileUpload( $oFile, $bReupload = false, $bHasDescription = false ) {
+		\JobQueueGroup::singleton()->push(
+			new \BS\ExtendedSearch\Source\Job\UpdateRepoFile( $oFile->getTitle() )
+		);
 		return true;
 	}
 

@@ -7,29 +7,25 @@ require_once( "$IP/maintenance/Maintenance.php" );
 class initBackends extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->requireExtension( 'BlueSpiceExtendedSearch' );
+		//$this->requireExtension( 'BlueSpiceExtendedSearch' ); //Enable for REL1_28+
+
+		$this->addOption( 'quick', 'Skip count down' );
 	}
 
 	public function execute() {
-		$this->output( 'This will delete and recreate all registered indices! Starting in ... ' );
-		wfCountDown( 5 );
+		if( !$this->hasOption( 'quick' ) ) {
+			$this->output( 'This will delete and recreate all registered indices! Starting in ... ' );
+			wfCountDown( 5 );
+		}
 
 		$aBackends = BS\ExtendedSearch\Backend::factoryAll();
 		foreach( $aBackends as $sBackendKey => $oBackend ) {
-			$aIndexManagers = $oBackend->getIndexManagers();
-			foreach( $aIndexManagers as $sIndexName => $oIndexManager ) {
-				$oIndexManager->delete();
-				$oIndexManager->create();
-				$this->output( "\n$sBackendKey: Index '$sIndexName' created" );
-			}
-
+			$oBackend->deleteIndex();
+			$oBackend->createIndex();
+			$this->output( "\n$sBackendKey: Index created" );
 		}
 	}
 }
 
 $maintClass = 'initBackends';
-if (defined('RUN_MAINTENANCE_IF_MAIN')) {
-	require_once( RUN_MAINTENANCE_IF_MAIN );
-} else {
-	require_once( DO_MAINTENANCE ); # Make this work on versions before 1.17
-}
+require_once( RUN_MAINTENANCE_IF_MAIN );

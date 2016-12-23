@@ -6,16 +6,23 @@ class Base {
 
 	/**
 	 *
+	 * @var \BS\ExtendedSearch\Backend
+	 */
+	protected $oBackend = null;
+
+	/**
+	 *
 	 * @var \Config
 	 */
 	protected $oConfig = null;
 
 	/**
 	 *
-	 * @param \Elastica\Index
+	 * @param \BS\ExtendedSearch\Backend
 	 * @param array $aConfig
 	 */
-	public function __construct( $aConfig ) {
+	public function __construct( $oBackend, $aConfig ) {
+		$this->oBackend = $oBackend;
 		$this->oConfig = new \HashConfig( $aConfig );
 	}
 
@@ -29,10 +36,18 @@ class Base {
 
 	/**
 	 *
+	 * @return \BS\ExtendedSearch\Backend
+	 */
+	public function getBackend() {
+		return $this->oBackend;
+	}
+
+	/**
+	 *
 	 * @return string
 	 */
 	public function getTypeKey() {
-		return '';
+		return $this->getConfig()->get( 'sourcekey' );
 	}
 
 	/**
@@ -72,6 +87,39 @@ class Base {
 	 */
 	public function getIndexSettings() {
 		return [];
+	}
+
+	/**
+	 *
+	 * @param array $aDocumentConfigs
+	 * @return \Elastica\Bulk\ResponseSet
+	 */
+	public function addDocumentsToIndex( $aDocumentConfigs ) {
+		$oElasticaIndex = $this->getBackend()->getIndex();
+		$oType = $oElasticaIndex->getType( $this->getTypeKey() );
+		$aDocs = [];
+		foreach( $aDocumentConfigs as $aDC ) {
+			$aDocs[] = new \Elastica\Document( $aDC['id'], $aDC );
+		}
+
+		$oResult = $oType->addDocuments( $aDocs );
+		$oElasticaIndex->refresh();
+
+		return $oResult;
+	}
+
+	/**
+	 *
+	 * @param array $aDocumentIds
+	 * @return \Elastica\Bulk\ResponseSet
+	 */
+	public function deleteDocumentsFromIndex( $aDocumentIds ) {
+		$oElasticIndex = $this->getBackend()->getIndex();
+		$aDocs = [];
+		foreach ( $aDocumentIds as $sDocumentId ) {
+			$aDocs[] = new \Elastica\Document( $sDocumentId );
+		}
+		return $oElasticIndex->deleteDocuments( $aDocs );
 	}
 
 	#abstract public function getFormatter();

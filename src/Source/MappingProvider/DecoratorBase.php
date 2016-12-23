@@ -17,7 +17,19 @@ class DecoratorBase extends Base {
 		$this->oDecoratedMP = $oDecoratedMP;
 	}
 
+	/**
+	 *
+	 * @return array
+	 */
 	public function getPropertyConfig() {
 		return $this->oDecoratedMP->getPropertyConfig();
+	}
+
+	/**
+	 *
+	 * @return array
+	 */
+	public function getSourceConfig() {
+		return $this->oDecoratedMP->getSourceConfig();
 	}
 }

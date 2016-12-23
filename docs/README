@@ -6,16 +6,31 @@ Execute
 
 within the installation directory of BSExtendedSearch to resolve dependencies.
 
-Download Elasticsearch 2.x from https://www.elastic.co/downloads/elasticsearch
-and install the plugin "mapper-attachments" by executing
+Download Elasticsearch 5.x from https://www.elastic.co/downloads/elasticsearch
+and install the plugin "ingest-attachment" by executing
 
- bin/plugin install mapper-attachments
+ bin/elasticsearch-plugin install ingest-attachment
 
 from the Elasticsearch directory.
 
 Start the service using
 
  bin\elasticsearch
+
+Set up the "attachment" pipeline on the cluster by executing
+
+curl -XPUT 'localhost:9200/_ingest/pipeline/attachment?pretty' -d'
+{
+  "description" : "Extract attachment information",
+  "processors" : [
+    {
+      "attachment" : {
+        "field" : "the_file"
+      }
+    }
+  ]
+}
+'
 
 == Configuration ==
 === External File Source ===
@@ -48,5 +63,4 @@ $bsgESBackends['local']['sources']['linkedfile']['args'] = array(
 * http://localhost:9200/_cat/indices?v
 
 ==TODO==
-* Almost everything
 * Integrate with $wgSearchType

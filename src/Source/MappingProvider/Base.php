@@ -3,6 +3,11 @@
 namespace BS\ExtendedSearch\Source\MappingProvider;
 
 class Base {
+
+	/**
+	 *
+	 * @return array
+	 */
 	public function getPropertyConfig() {
 		return [
 			'uri' => [
@@ -30,6 +35,16 @@ class Base {
 			'tags' => [
 				'type' => 'string'
 			],
+		];
+	}
+
+	/**
+	 *
+	 * @return array
+	 */
+	public function getSourceConfig() {
+		return [
+			'excludes' => [ 'id' ]
 		];
 	}
 }
