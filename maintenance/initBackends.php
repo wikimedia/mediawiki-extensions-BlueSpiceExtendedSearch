@@ -7,7 +7,7 @@ require_once( "$IP/maintenance/Maintenance.php" );
 class initBackends extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		//$this->requireExtension( 'BlueSpiceExtendedSearch' ); //Enable for REL1_28+
+		$this->requireExtension( "BlueSpiceExtendedSearch" );
 
 		$this->addOption( 'quick', 'Skip count down' );
 	}

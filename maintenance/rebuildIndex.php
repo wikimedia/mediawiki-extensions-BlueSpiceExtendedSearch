@@ -10,8 +10,7 @@ class rebuildIndex extends Maintenance {
 
 	public function __construct() {
 		parent::__construct();
-		//$this->requireExtension( 'BlueSpiceExtendedSearch' ); //Enable for REL1_28+
-
+		$this->requireExtension( "BlueSpiceExtendedSearch" );
 		$this->addOption( 'quick', 'Skip count down' );
 		$this->addOption( 'sources', "Only these sources will be re-indexed. Need to be specified in form of '<index>/<source>'", false, true );
 	}
