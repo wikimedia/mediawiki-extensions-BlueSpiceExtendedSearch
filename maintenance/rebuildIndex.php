@@ -11,6 +11,7 @@ class rebuildIndex extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->addOption( 'sources', "Only these sources will be re-indexed. Need to be specified in form of '<index>/<source>'", false, true );
+		$this->requireExtension( 'BlueSpiceExtendedSearch' );
 	}
 
 	public function execute() {
