@@ -4,10 +4,10 @@
 			"Robert Vogel <vogel@hallowelt.com>"
 		]
 	},
-	"extensionname-bsextendedsearch": "Used in [{{canonicalurl:Special:Version}} Special:Version], description of extended search extension.",
-	"bs-extendedsearch-desc": "Used in [{{canonicalurl:Special:Version}} Special:Version], description of extended search extension.",
+	"extensionname-bsextendedsearch": "{{name}}",
+	"bs-extendedsearch-desc": "{{desc|name=BlueSpiceExtendedSearch}}",
 	"bssearchcenter": "Special page name for extended search",
-	"apihelp-bs-extendedsearch-query-description": "Describes the API endpoint that querys the search index",
-	"apihelp-bs-extendedsearch-query-param-q": "Describes parameter that holds the query term",
+	"apihelp-bs-extendedsearch-query-description": "{{doc-apihelp-description|bs-extendedsearch-query}}",
+	"apihelp-bs-extendedsearch-query-param-q": "{{doc-apihelp-param|bs-extendedsearch-query|q}}",
 	"bs-extendedsearch-search-input-placeholder": "Placeholder text within the search input field"
 }
