@@ -14,7 +14,7 @@
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"BlueSpiceExtendedSearch": "languages/BSSearchCenter.alias.php"
+		"BlueSpiceExtendedSearchAlias": "languages/BSSearchCenter.alias.php"
 	},
 	"ConfigRegistry": {
 		"bsgES": "BS\\ExtendedSearch\\Setup::makeConfig"
