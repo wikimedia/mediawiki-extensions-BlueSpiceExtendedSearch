@@ -12,23 +12,26 @@ class WikiPage extends DecoratorBase {
 		$aPC = $this->oDecoratedMP->getPropertyConfig();
 		$aPC += [
 			'prefixed_title' => [
-				'type' => 'string'
+				'type' => 'text'
 			],
 			'sections' => [
-				'type' => 'string'
+				'type' => 'text',
+				'boost' => 2
 			],
 			'source_content' => [
-				'type' => 'string'
+				'type' => 'text',
+				'boost' => 2
 			],
 			'rendered_content' => [
-				'type' => 'string'
+				'type' => 'text',
+				'boost' => 2
 			],
 			'namespace' => [
 				'type' => 'integer',
 				'include_in_all' => false
 			],
 			'namespace_text' => [
-				'type' => 'string'
+				'type' => 'keyword'
 			],
 		];
 		return $aPC;

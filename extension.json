@@ -14,7 +14,8 @@
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"BlueSpiceExtendedSearchAlias": "languages/BSSearchCenter.alias.php"
+		"BlueSpiceExtendedSearchAdminAlias": "languages/BSSearchAdmin.alias.php",
+		"BlueSpiceExtendedSearchCenterAlias": "languages/BSSearchCenter.alias.php"
 	},
 	"ConfigRegistry": {
 		"bsgES": "BS\\ExtendedSearch\\Setup::makeConfig"
@@ -23,13 +24,17 @@
 		"BS\\ExtendedSearch\\Setup::init"
 	],
 	"Hooks": {
-		"UnitTestsList": "BS\\ExtendedSearch\\Setup::onUnitTestsList"
+		"UnitTestsList": "BS\\ExtendedSearch\\Setup::onUnitTestsList",
+		"BSWikiAdminMenuItems": "BS\\ExtendedSearch\\Setup::onBSWikiAdminMenuItems"
 	},
 	"SpecialPages": {
-		"BSSearchCenter": "BS\\ExtendedSearch\\MediaWiki\\Specials\\SearchCenter"
+		"BSSearchCenter": "BS\\ExtendedSearch\\MediaWiki\\Specials\\SearchCenter",
+		"BSSearchAdmin": "BS\\ExtendedSearch\\MediaWiki\\Specials\\SearchAdmin"
 	},
 	"APIModules": {
-		"bs-extendedsearch-query": "BS\\ExtendedSearch\\MediaWiki\\Api\\Query"
+		"bs-extendedsearch-query": "BS\\ExtendedSearch\\MediaWiki\\Api\\Query",
+		"bs-extendedsearch-stats": "BS\\ExtendedSearch\\MediaWiki\\Api\\Stats",
+		"bs-extendedsearch-triggerupdate": "BS\\ExtendedSearch\\MediaWiki\\Api\\TriggerUpdate"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
@@ -38,10 +43,19 @@
 	"ResourceModules": {
 		"ext.blueSpiceExtendedSearch.SearchCenter": {
 			"scripts": [
+				"ext.blueSpiceExtendedSearch.js",
+				"BS.ExtendedSearch/panel/Results.js",
 				"ext.blueSpiceExtendedSearch.SearchCenter.js"
 			],
 			"dependencies" : [
+				"ext.bluespice",
+				"mediawiki.api",
 				"oojs-ui-core"
+			]
+		},
+		"ext.blueSpiceExtendedSearch.SearchAdmin.styles": {
+			"styles": [
+				"ext.blueSpiceExtendedSearch.SearchAdmin.less"
 			]
 		}
 	},

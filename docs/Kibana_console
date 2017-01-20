@@ -1,5 +1,5 @@
 
-GET _all/_settings?pretty
+GET _all/_settings
 
 GET master/_mappings
 
@@ -26,3 +26,29 @@ PUT /_ingest/pipeline/attachment
 }
 
 GET _ingest/pipeline/attachment
+
+GET master/_search
+{
+    "_source": {
+        "excludes": [ "the_file", "rendered_content", "source_content" ]
+    },
+    "query" : {
+      "match": {
+        "_all" : "Steve"
+      }
+    },
+    "aggs": {
+      "all_types": {
+        "terms": {
+          "field": "_type"
+        },
+        "aggs": {
+          "all_extensions" : {
+            "terms": {
+              "field": "extension"
+            }
+          }
+        }
+      }
+    }
+}

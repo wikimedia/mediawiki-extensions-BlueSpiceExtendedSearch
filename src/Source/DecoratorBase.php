@@ -60,6 +60,15 @@ class DecoratorBase extends Base {
 
 	/**
 	 *
+	 * @param \IContextSource $oContext
+	 * @return BS\ExtendedSearch\Source\QueryProcessor\Base[]
+	 */
+	public function getQueryProcessors( $oContext)  {
+		return $this->oDecoratedSource->getQueryProcessors( $oContext );
+	}
+
+	/**
+	 *
 	 * @return string
 	 */
 	public function getTypeKey() {

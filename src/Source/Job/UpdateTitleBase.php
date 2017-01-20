@@ -21,7 +21,7 @@ class UpdateTitleBase extends UpdateBase {
 	}
 
 	protected function getDocumentProviderUri() {
-		return $this->getTitle()->getCanonicalURL();
+		return $this->getTitle()->getFullURL();
 	}
 
 }

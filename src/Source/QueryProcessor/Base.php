@@ -3,7 +3,27 @@
 namespace BS\ExtendedSearch\Source\QueryProcessor;
 
 class Base {
-	public function process( $query, $oUser ) {
+	
+	/**
+	 *
+	 * @var \IContextSource
+	 */
+	protected $oContext = null;
+	
+	/**
+	 * 
+	 * @param \IContextSource $oContext
+	 */
+	public function __construct( $oContext ) {
+		$this->oContext = $oContext;
+	}
 
+	/**
+	 *
+	 * @param \Elastica\Query $oQuery
+	 * @param \Elastica\QueryBuilder $oQueryBuilder
+	 */
+	public function process( &$oQuery, $oQueryBuilder ) {
+		//Stub
 	}
 }

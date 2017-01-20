@@ -83,6 +83,15 @@ class Base {
 
 	/**
 	 *
+	 * @param \IContextSource $oContext
+	 * @return BS\ExtendedSearch\Source\QueryProcessor\Base[]
+	 */
+	public function getQueryProcessors( $oContext ) {
+		return [];
+	}
+
+	/**
+	 *
 	 * @return array
 	 */
 	public function getIndexSettings() {
@@ -103,6 +112,12 @@ class Base {
 		}
 
 		$oResult = $oType->addDocuments( $aDocs );
+		if( !$oResult->isOk() ) {
+			wfDebugLog(
+				'BSExtendedSearch',
+				"Adding documents failed: {$oResult->getError()}"
+			);
+		}
 		$oElasticaIndex->refresh();
 
 		return $oResult;
@@ -114,12 +129,23 @@ class Base {
 	 * @return \Elastica\Bulk\ResponseSet
 	 */
 	public function deleteDocumentsFromIndex( $aDocumentIds ) {
-		$oElasticIndex = $this->getBackend()->getIndex();
+		$oElasticaIndex = $this->getBackend()->getIndex();
 		$aDocs = [];
 		foreach ( $aDocumentIds as $sDocumentId ) {
 			$aDocs[] = new \Elastica\Document( $sDocumentId );
 		}
-		return $oElasticIndex->deleteDocuments( $aDocs );
+
+		$oResult = $oElasticaIndex->deleteDocuments( $aDocs );
+		if( !$oResult->isOk() ) {
+			wfDebugLog(
+				'BSExtendedSearch',
+				"Adding documents failed: {$oResult->getError()}"
+			);
+		}
+
+		$oElasticaIndex->refresh();
+
+		return $oResult;
 	}
 
 	#abstract public function getFormatter();

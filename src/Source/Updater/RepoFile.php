@@ -8,6 +8,8 @@ class RepoFile extends Base {
 		$aHooks['FileDeleteComplete'][] = array( $this, 'onFileDeleteComplete' );
 		$aHooks['FileUndeleteComplete'][] = array( $this, 'onFileUndeleteComplete' );
 		$aHooks['TitleMoveComplete'][] = array( $this, 'onTitleMoveComplete' );
+
+		parent::init( $aHooks );
 	}
 
 	/**
@@ -34,6 +36,7 @@ class RepoFile extends Base {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onFileDeleteComplete( $oFile, $oOldimage, $oArticle, $oUser, $sReason ) {
+		throw new Exception( 'Not implemented yet!' );
 		return true;
 	}
 
@@ -46,6 +49,7 @@ class RepoFile extends Base {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onFileUndeleteComplete( $oTitle, $aFileVersions, $oUser, $sReason ) {
+		throw new Exception( 'Not implemented yet!' );
 		return true;
 	}
 
@@ -59,6 +63,7 @@ class RepoFile extends Base {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onTitleMoveComplete( &$oTitle, &$oNewtitle, &$oUser, $iOldID, $iNewID ) {
+		throw new Exception( 'Not implemented yet!' );
 		return true;
 	}
 }

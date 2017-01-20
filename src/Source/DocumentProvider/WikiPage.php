@@ -18,11 +18,11 @@ class WikiPage extends DecoratorBase {
 			'mime_type' => 'text/x-wiki',
 			'mtime' => wfTimestamp(
 				TS_ISO_8601,
-				$oWikiPage->getRevision()->getTimestamp()
+				$oWikiPage->getLatest()
 			),
 			'ctime' => wfTimestamp(
 				TS_ISO_8601,
-				$oWikiPage->getTitle()->getFirstRevision()->getTimestamp()
+				$oWikiPage->getRevision()->getTimestamp()
 			),
 			'size' => $oWikiPage->getTitle()->getLength(),
 			'tags' => $this->getTagsFromCategories( $oWikiPage ),
@@ -65,7 +65,7 @@ class WikiPage extends DecoratorBase {
 			//maybe ContentHandler::getContentText is better?
 			$sText = $oContent->getTextForSearchIndex();
 		}
-		return $sText;
+		return $this->stripTags( $sText );
 	}
 
 	/**
@@ -77,7 +77,7 @@ class WikiPage extends DecoratorBase {
 		$sHtml = '';
 		$oParserOutput = $oWikiPage->getContent()->getParserOutput( $oWikiPage->getTitle() );
 		$sHtml = $oParserOutput->getText();
-		return $sHtml;
+		return $this->stripTags( $sHtml );
 	}
 
 	/**
@@ -95,4 +95,9 @@ class WikiPage extends DecoratorBase {
 		return $aSections;
 	}
 
+	protected function stripTags( $sText ) {
+		$sText = strip_tags( $sText );
+		$sText = preg_replace( '/<!--(.|\s)*?-->/', '', $sText );
+		return $sText;
+	}
 }

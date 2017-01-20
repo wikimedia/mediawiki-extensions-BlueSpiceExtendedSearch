@@ -103,37 +103,6 @@ class Backend {
 
 	/**
 	 *
-	 * @param string $sTerm
-	 * @param \User $oUser
-	 * @param array $aParams
-	 * @return \Elastica\ResultSet
-	 */
-	public function search( $sTerm, $oUser, $aParams = [] ) {
-		$oSearch = new \Elastica\Search( $this->getClient() );
-		$oQueryBuilder = new \Elastica\QueryBuilder();
-		$oQuery = new \Elastica\Query();
-		$oQuery->setQuery(
-			$oQueryBuilder->query()->query_string( $sTerm )
-		);
-
-		$oSearch->setQuery( $oQuery );
-		//TODO: Apply all QueryProcessors/Modifiers
-
-		return $oSearch->search();
-	}
-
-	/**
-	 *
-	 * @param \Elastica\Result[] $aResults
-	 * @return stdClass[]
-	 */
-	public function formatResults( $aResults ) {
-
-		return [];
-	}
-
-	/**
-	 *
 	 * @var Backend[]
 	 */
 	protected static $aBackends = [];
@@ -234,7 +203,10 @@ class Backend {
 				$oMapping->setSource( $aSourceConfig );
 			}
 
-			$oResponse2 = $oMapping->send();
+			$oResponse2 = $oMapping->send( [
+				//Neccessary if more than one type has a 'attachment' field from 'mapper-attachments'
+				'update_all_types' => ''
+			] );
 		}
 	}
 

@@ -14,4 +14,24 @@ class File extends DecoratorBase {
 		$aSC['excludes'][] = 'the_file';
 		return $aSC;
 	}
+
+	public function getPropertyConfig() {
+		$aPC = $this->oDecoratedMP->getPropertyConfig();
+		$aPC += [
+			'the_file' => [
+				'type' => 'attachment',
+				/*'fields' => [
+					'content' => ['index' => true],
+					'title' => ['index' => true],
+					'date' => ['store' => true],
+					'author' => ['index' => true],
+					'keywords' => ['index' => true],
+					'content_type' => ['store' => true],
+					'content_length' => ['store' => true],
+					'language' => ['store' => true]
+				]*/
+			]
+		];
+		return $aPC;
+	}
 }

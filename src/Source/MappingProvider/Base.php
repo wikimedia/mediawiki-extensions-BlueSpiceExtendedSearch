@@ -11,29 +11,35 @@ class Base {
 	public function getPropertyConfig() {
 		return [
 			'uri' => [
-				'type' => 'string',
+				'type' => 'text',
 				'include_in_all' => false
 			],
 			'basename' => [
-				'type' => 'string'
+				'type' => 'text',
+				'boost' => 3
 			],
 			'extension' => [
-				'type' => 'string'
+				'type' => 'keyword'
 			],
 			'mime_type' => [
-				'type' => 'string'
+				'type' => 'text',
+				'include_in_all' => false
 			],
 			'mtime' => [
-				'type' => 'date'
+				'type' => 'date',
+				'include_in_all' => false
 			],
 			'ctime' => [
-				'type' => 'date'
+				'type' => 'date',
+				'include_in_all' => false
 			],
 			'size' => [
-				'type' => 'integer'
+				'type' => 'integer',
+				'include_in_all' => false
 			],
 			'tags' => [
-				'type' => 'string'
+				'type' => 'keyword',
+				'boost' => 2
 			],
 		];
 	}

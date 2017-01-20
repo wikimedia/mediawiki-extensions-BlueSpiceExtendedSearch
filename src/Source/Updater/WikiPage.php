@@ -8,6 +8,8 @@ class WikiPage extends Base {
 		$aHooks['ArticleDeleteComplete'][] = array( $this, 'onArticleDeleteComplete' );
 		$aHooks['ArticleUndelete'][] = array( $this, 'onArticleUndelete' );
 		$aHooks['TitleMoveComplete'][] = array( $this, 'onTitleMoveComplete' );
+
+		parent::init( $aHooks );
 	}
 
 	/**

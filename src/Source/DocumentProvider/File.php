@@ -19,6 +19,7 @@ class File extends DecoratorBase {
 			'mtime' => $oFile->getMTime(),
 			'ctime' => $oFile->getCTime(),
 			'size' => $oFile->getSize(),
+			'source_file_path' => $oFile->getPathname(),
 			'the_file' => base64_encode(
 				file_get_contents(
 					$oFile->getPathname()

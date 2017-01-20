@@ -10,7 +10,8 @@ class Base {
 	public function getDataConfig( $sUri, $mDataItem ) {
 		return [
 			'id' => $this->getDocumentId( $sUri ),
-			'uri' => $sUri
+			'uri' => $sUri,
+			'basename' => wfBaseName( $sUri )
 		];
 	}
 }

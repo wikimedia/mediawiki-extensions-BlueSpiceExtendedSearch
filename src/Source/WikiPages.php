@@ -39,4 +39,16 @@ class WikiPages extends DecoratorBase {
 	public function getUpdater() {
 		return new Updater\WikiPage( $this->oDecoratedSource );
 	}
+
+	/**
+	 *
+	 * @param \IContextSource $oContext
+	 */
+	public function getQueryProcessors( $oContext ) {
+		return [
+			'namespacetextaggregation' => new QueryProcessor\WikiPageNamespaceTextAggregation( $oContext ),
+			'userpreferences' => new QueryProcessor\WikiPageUserPreferences( $oContext ),
+			'securitytrimming' => new QueryProcessor\WikiPageSecurityTrimming( $oContext ),
+		];
+	}
 }

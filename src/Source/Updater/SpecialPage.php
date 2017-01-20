@@ -4,6 +4,8 @@ namespace BS\ExtendedSearch\Source\Updater;
 class SpecialPage extends Base {
 	public function init( &$aHooks ) {
 		$aHooks['LoadExtensionSchemaUpdates'][] = array( $this, 'onLoadExtensionSchemaUpdates' );
+
+		parent::init( $aHooks );
 	}
 
 	/**
