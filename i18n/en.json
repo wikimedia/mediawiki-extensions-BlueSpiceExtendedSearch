@@ -5,9 +5,26 @@
 		]
 	},
 	"extensionname-bsextendedsearch": "BlueSpice ExtendedSearch",
-	"bs-extendedsearch-desc": "Elasticsearch search backend",
+	"bs-extsearch-desc": "Elasticsearch search backend",
+	"bssearchadmin": "Search admin",
+	"bssearchadmin-desc": "Provides a management interface of the search",
 	"bssearchcenter": "Search center",
 	"apihelp-bs-extendedsearch-query-description": "Search the index",
 	"apihelp-bs-extendedsearch-query-param-q": "The query term",
-	"bs-extendedsearch-search-input-placeholder": "Find ..."
+	"apihelp-bs-extendedsearch-query-param-params": "Additional parameters for the query",
+	"apihelp-bs-extendedsearch-stats-description": "Returns statistical data about the registered backends and their configured sources",
+	"apihelp-bs-extendedsearch-stats-param-stats": "A list of statistics that should be returned",
+	"apihelp-bs-extendedsearch-generic-param-backend": "Key of the configured backend that should be queried",
+	"apihelp-bs-extendedsearch-generic-param-sources" : "One or more sources within the specified backend separated by pipe. If empty, all available sources will be queried.",
+	"bs-extendedsearch-search-input-placeholder": "Find ...",
+	"bs-extendedsearch-source-label-wikipage": "Wiki page",
+	"bs-extendedsearch-source-label-specialpage": "Special page",
+	"bs-extendedsearch-source-label-repofile": "Upload file",
+	"bs-extendedsearch-source-label-user": "User",
+	"bs-extendedsearch-admin-heading-backend": "Backend \"$1\"",
+	"bs-extendedsearch-admin-label-error": "Error",
+	"bs-extendedsearch-admin-label-all-documents-count": "Total number of documents in index",
+	"bs-extendedsearch-admin-heading-sources": "Sources",
+	"bs-extendedsearch-admin-heading-sources-documentscount": "Documents",
+	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Pending update jobs"
 }
