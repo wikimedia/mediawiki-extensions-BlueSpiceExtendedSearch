@@ -49,8 +49,6 @@ class Base {
 	 * @return array
 	 */
 	public function getSourceConfig() {
-		return [
-			'excludes' => [ 'id' ]
-		];
+		return [];
 	}
 }

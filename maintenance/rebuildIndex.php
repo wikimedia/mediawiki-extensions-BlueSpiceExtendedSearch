@@ -22,10 +22,17 @@ class rebuildIndex extends Maintenance {
 			wfCountDown( 5 );
 		}
 
-		foreach( \BS\ExtendedSearch\Backend::factoryAll() as $oBackend ) {
+		$aOnlySources = explode( '|', $this->getOption( 'sources', '' ) );
+
+		foreach( \BS\ExtendedSearch\Backend::factoryAll() as $sBackendKey => $oBackend ) {
 			$aSources = $oBackend->getSources();
 			foreach( $aSources as $oSource ) {
-				$this->output( "\nCrawling '{$oSource->getTypeKey()}'" );
+				$sSourceKey = $oSource->getTypeKey();
+				if( !empty( $aOnlySources ) && !in_array( "$sBackendKey/$sSourceKey", $aOnlySources ) ) {
+					continue;
+				}
+
+				$this->output( "\nCrawling '$sSourceKey'" );
 				$oCrawler = $oSource->getCrawler();
 				$oCrawler->clearPendingJobs();
 				$oCrawler->crawl();

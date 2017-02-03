@@ -98,6 +98,6 @@ class WikiPage extends DecoratorBase {
 	protected function stripTags( $sText ) {
 		$sText = strip_tags( $sText );
 		$sText = preg_replace( '/<!--(.|\s)*?-->/', '', $sText );
-		return $sText;
+		return trim( $sText );
 	}
 }
