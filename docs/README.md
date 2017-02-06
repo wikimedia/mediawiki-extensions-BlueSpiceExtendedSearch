@@ -9,7 +9,7 @@ within the installation directory of `BlueSpiceExtendedSearch` to resolve depend
 Download Elasticsearch 5.x from https://www.elastic.co/downloads/elasticsearch
 and install the plugin "mapper-attachments" by executing
 
-    bin/plugin install mapper-attachments
+    bin/elasticsearch-plugin install mapper-attachments
 
 from the Elasticsearch directory.
 
