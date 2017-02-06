@@ -21,14 +21,11 @@ class rebuildIndex extends Maintenance {
 			$this->output( 'This will create update jobs for all indices! Starting in ... ' );
 			wfCountDown( 5 );
 		}
-
-		$aOnlySources = explode( '|', $this->getOption( 'sources', '' ) );
-
 		foreach( \BS\ExtendedSearch\Backend::factoryAll() as $sBackendKey => $oBackend ) {
 			$aSources = $oBackend->getSources();
 			foreach( $aSources as $oSource ) {
 				$sSourceKey = $oSource->getTypeKey();
-				if( !empty( $aOnlySources ) && !in_array( "$sBackendKey/$sSourceKey", $aOnlySources ) ) {
+				if( !$this->sourceOnList( "$sBackendKey/$sSourceKey" ) ) {
 					continue;
 				}
 
@@ -43,6 +40,18 @@ class rebuildIndex extends Maintenance {
 		global $IP;
 		$this->output( "\n\nYou should now run 'php $IP/maintenance/runJobs.php'" );
 	}
+
+	protected function sourceOnList( $sSource ) {
+		if( empty( $this->getOption( 'sources', '' ) ) ) {
+			return true;
+		}
+		$aOnlySources = explode( '|', $this->getOption( 'sources', '' ) );
+		if( in_array( $sSource, $aOnlySources ) ) {
+			return true;
+		}
+		return false;
+	}
+
 }
 
 $maintClass = 'rebuildIndex';
