@@ -25,6 +25,7 @@
 	],
 	"Hooks": {
 		"UnitTestsList": "BS\\ExtendedSearch\\Setup::onUnitTestsList",
+		"ResourceLoaderTestModules": "BS\\ExtendedSearch\\Setup::onResourceLoaderTestModules",
 		"BSWikiAdminMenuItems": "BS\\ExtendedSearch\\Setup::onBSWikiAdminMenuItems"
 	},
 	"SpecialPages": {
@@ -41,15 +42,25 @@
 		"remoteExtPath": "BlueSpiceExtendedSearch/resources"
 	},
 	"ResourceModules": {
-		"ext.blueSpiceExtendedSearch.SearchCenter": {
+		"ext.blueSpiceExtendedSearch": {
 			"scripts": [
 				"ext.blueSpiceExtendedSearch.js",
-				"BS.ExtendedSearch/panel/Results.js",
-				"ext.blueSpiceExtendedSearch.SearchCenter.js"
+				"ext.blueSpiceExtendedSearch.utils.js",
+				"bs.extendedSearch/LookUp.js"
 			],
 			"dependencies" : [
 				"ext.bluespice",
 				"mediawiki.api",
+				"oojs"
+			]
+		},
+		"ext.blueSpiceExtendedSearch.SearchCenter": {
+			"scripts": [
+				"bs.extendedSearch/panel/Results.js",
+				"ext.blueSpiceExtendedSearch.SearchCenter.js"
+			],
+			"dependencies" : [
+				"ext.blueSpiceExtendedSearch",
 				"oojs-ui-core"
 			]
 		},

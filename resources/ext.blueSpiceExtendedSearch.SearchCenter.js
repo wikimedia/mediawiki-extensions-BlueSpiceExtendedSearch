@@ -1,6 +1,6 @@
 (function( mw, $, bs, d, undefined ){
 	var searchField = OO.ui.infuse( 'bs-es-tf-search' );
-	var curQueryData = bs.extendedSearch.getHash();
+	var curQueryData = bs.extendedSearch.utils.getFragment();
 	searchField.setValue( curQueryData.q || '' );
 	searchField.on( 'change', function ( value ) {
 		updateQueryHash( value );
@@ -12,12 +12,16 @@
 	});
 
 	function updateQueryHash( term ) {
-		var queryData = bs.extendedSearch.getHash();
+		if( term.length <= 3 ) {
+			return;
+		}
+
+		var queryData = bs.extendedSearch.utils.getFragment();
 		var newQuery = {
 			'q' : term
 		};
 
-		bs.extendedSearch.setHash(
+		bs.extendedSearch.utils.setFragment(
 			$.extend( queryData, newQuery )
 		);
 	}
@@ -27,7 +31,7 @@
 		searchField.popPending();
 		searchField.pushPending();
 
-		var queryData = bs.extendedSearch.getHash();
+		var queryData = bs.extendedSearch.utils.getFragment();
 
 		api.abort();
 		api.get( $.extend(

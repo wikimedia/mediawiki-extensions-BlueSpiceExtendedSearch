@@ -69,4 +69,26 @@ class Setup {
 		$paths[] =  __DIR__ . '/tests/phpunit/';
 		return true;
 	}
+
+	/**
+	 * Register QUnit Tests with MediaWiki framework
+	 * @param array $testModules
+	 * @param \ResourceLoader $resourceLoader
+	 * @return boolean
+	 */
+	public static function onResourceLoaderTestModules( array &$testModules, \ResourceLoader &$resourceLoader ) {
+		$testModules['qunit']['ext.blueSpiceExtendedSearch.tests'] = [
+			'scripts' => [
+				'tests/qunit/ext.blueSpiceExtendedSearch.utils.test.js',
+				'tests/qunit/bs.extendedSearch.LookUp.test.js'
+			],
+			'dependencies' => [
+				'ext.blueSpiceExtendedSearch'
+			],
+			'localBasePath' => dirname( __DIR__ ),
+			'remoteExtPath' => 'BlueSpiceExtendedSearch',
+		];
+
+		return true;
+	}
 }
