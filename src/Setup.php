@@ -66,7 +66,7 @@ class Setup {
 	 * @return boolean
 	 */
 	public static function onUnitTestsList( &$paths ) {
-		$paths[] =  __DIR__ . '/tests/phpunit/';
+		$paths[] =  dirname( __DIR__ ) . '/tests/phpunit/';
 		return true;
 	}
 
