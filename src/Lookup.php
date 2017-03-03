@@ -2,7 +2,10 @@
 
 namespace BS\ExtendedSearch;
 
-class LookUp extends \ArrayObject {
+/**
+ * Represents a query that gets send to Elastic Search
+ */
+class Lookup extends \ArrayObject {
 
 	const SORT_ASC = 'asc';
 	const SORT_DESC = 'desc';
@@ -44,13 +47,13 @@ class LookUp extends \ArrayObject {
 	}
 
 	/**
-	 *
-	 * @param string $sType
+	 * Sets a type filter
+	 * @param array $aTypes
 	 * @return Lookup
 	 */
-	public function setType( $sType ) {
-		$this->ensurePropertyPath( 'query.type.value', '' );
-		$this['query']['type']['value'] = $sType;
+	public function setTypes( $aTypes ) {
+		$this->clearTypes();
+		$this->addFilter( '_type', $aTypes );
 		return $this;
 	}
 
@@ -58,45 +61,96 @@ class LookUp extends \ArrayObject {
 	 *
 	 * @return Lookup
 	 */
-	public function clearType() {
-		$this->ensurePropertyPath( 'query.type.value', '' );
-		unset( $this['query']['type'] );
+	public function clearTypes() {
+		$this->ensurePropertyPath( 'query.bool.filter', [] );
+		foreach( $this['query']['bool']['filter'] as $iIndex => $aFilter ) {
+			if( isset( $aFilter['terms']['_type'] ) ) {
+				unset( $this['query']['bool']['filter'][$iIndex]  );
+			}
+		}
+
+		$this['query']['bool']['filter'] = array_values( $this['query']['bool']['filter'] );
+
 		return $this;
 	}
 
 	/**
+	 *
+	 * @return array
+	 */
+	public function getTypes() {
+		$this->ensurePropertyPath( 'query.bool.filter', [] );
+		foreach( $this['query']['bool']['filter'] as $aFilter ) {
+			if( isset( $aFilter['terms']['_type'] ) ) {
+				return $aFilter['terms']['_type'];
+			}
+		}
+		return [];
+	}
+
+	/**
+	 * "query" : {
+     *   "bool": {
+     *     "must": [{
+     *       "simple_query_string": {
+     *         "query" : "Steve"
+     *       }
+     *     }],
+     *     "filter": [{
+     *       "terms": { "_type": ["wikipage", "repofile"] }
+     *     }]
+     *   }
+     * }
 	 * @see https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-simple-query-string-query.html
 	 * @param string|array $mValue
-	 * @return LookUp
+	 * @return Lookup
 	 */
 	public function setSimpleQueryString( $mValue ) {
-		$this->ensurePropertyPath( 'query.simple_query_string', [] );
-			if( is_array( $mValue ) ) {
-				$this['query']['simple_query_string'] = $mValue;
+		$this->ensurePropertyPath( 'query.bool.must', [] );
+
+		//There must not be more than on "simple_query_string" in "must"
+		foreach( $this['query']['bool']['must'] as $iIndex => $aMust ) {
+			if( isset( $aMust['simple_query_string'] ) ) {
+				unset( $this['query']['bool']['must'][$iIndex] );
 			}
-			if( is_string( $mValue ) ) {
-				$this['query']['simple_query_string'] = [
+		}
+		
+		if( is_array( $mValue ) ) {
+			$this['query']['bool']['must'][] = [
+				'simple_query_string' => $mValue
+			];
+		}
+		if( is_string( $mValue ) ) {
+			$this['query']['bool']['must'][] = [
+				'simple_query_string' => [
 					'query' => $mValue,
 					'default_operator' => 'and'
-				];
-			}
-			return $this;
+				]
+			];
+		}
+
+		$this['query']['bool']['must'] = array_values( $this['query']['bool']['must'] );
+
+		return $this;
 	}
 
 	/**
 	 *
-	 * @return LookUp
+	 * @return string|null
 	 */
 	public function getSimpleQueryString() {
-		if( !isset( $this['query'] ) || !isset( $this['query']['simple_query_string'] ) ) {
-			return null;
+		$this->ensurePropertyPath( 'query.bool.must', [] );
+		foreach( $this['query']['bool']['must'] as $iIndex => $aMust ) {
+			if( isset( $aMust['simple_query_string'] ) ) {
+				return $aMust['simple_query_string'];
+			}
 		}
-		return $this['query']['simple_query_string'];
+		return null;
 	}
 
 	/**
 	 *
-	 * @return LookUp
+	 * @return Lookup
 	 */
 	public function clearSimpleQueryString() {
 		$this->ensurePropertyPath( 'query.simple_query_string', [] );
@@ -119,7 +173,7 @@ class LookUp extends \ArrayObject {
 	 * @see https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-bool-query.html
 	 * @param string $sFieldName
 	 * @param string|array $mValue
-	 * @return LookUp
+	 * @return Lookup
 	 */
 	public function addFilter( $sFieldName, $mValue ) {
 		$this->ensurePropertyPath( 'query.bool.filter', [] );
@@ -159,7 +213,7 @@ class LookUp extends \ArrayObject {
 	 *
 	 * @param string $sFieldName
 	 * @param string|array $mValue
-	 * @return LookUp
+	 * @return Lookup
 	 */
 	public function removeFilter( $sFieldName, $mValue ) {
 		$this->ensurePropertyPath( 'query.bool.filter', [] );
@@ -203,7 +257,7 @@ class LookUp extends \ArrayObject {
 	 * @see https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-request-sort.html
 	 * @param string $sFieldName
 	 * @param string|array $mOrder
-	 * @return LookUp
+	 * @return Lookup
 	 */
 	public function addSort( $sFieldName, $mOrder = null ) {
 		$this->ensurePropertyPath( 'sort', [] );
@@ -238,7 +292,7 @@ class LookUp extends \ArrayObject {
 	/**
 	 *
 	 * @param string $sFieldName
-	 * @return LookUp
+	 * @return Lookup
 	 */
 	public function removeSort( $sFieldName ) {
 		$this->ensurePropertyPath( 'sort', [] );
@@ -256,6 +310,82 @@ class LookUp extends \ArrayObject {
 
 		if( empty( $this['sort'] ) ) {
 			unset( $this['sort'] );
+		}
+
+		return $this;
+	}
+
+	/**
+	 * "aggs": {
+     *  "field__type": {
+     *    "terms": {
+     *      "field": "_type"
+     *    },
+     *    "aggs": {
+     *     "field_extension" : {
+     *       "terms": {
+     *         "field": "extension"
+     *       }
+     *     }
+     *   }
+     *  },
+     *  "field_extension" : {
+     *       "terms": {
+     *         "field": "extension"
+     *       }
+     *     }
+     * }
+	 * @see https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html
+	 *
+	 * @param string $sFieldName e.g. "extension" or even "_type/extension" to build recursive
+	 * @return Lookup
+	 */
+	public function setBucketTermsAggregation( $sFieldName ) {
+		$aFieldNames = explode( '/', $sFieldName );
+		$aBase = &$this;
+		foreach( $aFieldNames as $sFieldNamePart ) {
+			if( !isset( $aBase['aggs'] ) ) {
+				$aBase['aggs'] = [];
+			}
+
+			$aBase['aggs']['field_'.$sFieldNamePart] = [
+				'terms' => [
+					'field' => $sFieldNamePart
+				]
+			];
+
+			$aBase = &$aBase['aggs']['field_'.$sFieldNamePart];
+		}
+
+		return $this;
+	}
+
+	/**
+	 *
+	 * @param string $sFieldName e.g. "extension" or even "_type/extension"
+	 * @return Lookup
+	 */
+	public function removeBucketTermsAggregation( $sFieldName ) {
+		$aFieldNames = explode( '/', $sFieldName );
+
+		$aBase = &$this;
+		$aNode = [];
+		$sLeafFieldName = '';
+		foreach( $aFieldNames as $sFieldNamePart ) {
+			if( !isset( $aBase['aggs'] ) ) {
+				continue;
+			}
+			$aNode = &$aBase;
+			$sLeafFieldName = $sFieldNamePart;
+			$aBase = &$aBase['aggs']['field_'.$sFieldNamePart];
+		}
+
+		if( isset( $aNode['aggs']['field_'.$sLeafFieldName] ) ) {
+			unset( $aNode['aggs']['field_'.$sLeafFieldName] );
+		}
+
+		if( empty( $aNode['aggs'] ) ) {
+			unset( $aNode['aggs'] );
 		}
 
 		return $this;

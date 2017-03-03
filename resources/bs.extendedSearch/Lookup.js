@@ -1,4 +1,4 @@
-bs.extendedSearch.LookUp = function( config ) {
+bs.extendedSearch.Lookup = function( config ) {
 	for( var field in config ) {
 		if( $.isFunction( config[field] ) ) {
 			continue;
@@ -11,10 +11,10 @@ bs.extendedSearch.LookUp = function( config ) {
 		this[field] = config[field];
 	}
 };
-OO.initClass( bs.extendedSearch.LookUp );
+OO.initClass( bs.extendedSearch.Lookup );
 
-bs.extendedSearch.LookUp.SORT_ASC = 'asc';
-bs.extendedSearch.LookUp.SORT_DESC = 'desc';
+bs.extendedSearch.Lookup.SORT_ASC = 'asc';
+bs.extendedSearch.Lookup.SORT_DESC = 'desc';
 
 /**
  *
@@ -24,7 +24,7 @@ bs.extendedSearch.LookUp.SORT_DESC = 'desc';
  * @param object initialValue
  * @returns void
  */
-bs.extendedSearch.LookUp.prototype.ensurePropertyPath = function ( path, initialValue, base ) {
+bs.extendedSearch.Lookup.prototype.ensurePropertyPath = function ( path, initialValue, base ) {
 	base = base || this;
 	var pathParts = path.split( '.' );
 	if( !( !base[pathParts[0]] && pathParts.length === 1 ) ) {
@@ -42,61 +42,108 @@ bs.extendedSearch.LookUp.prototype.ensurePropertyPath = function ( path, initial
 
 /**
  *
- * @param string type
- * @returns bs.extendedSearch.LookUp
+ * @param [] type
+ * @returns bs.extendedSearch.Lookup
  */
-bs.extendedSearch.LookUp.prototype.setType = function ( type ) {
-	this.ensurePropertyPath( 'query.type.value', '' );
-	this.query.type.value = type;
+bs.extendedSearch.Lookup.prototype.setTypes = function ( types ) {
+	this.clearTypes();
+	this.addFilter( '_type', types );
 	return this;
 };
 
 /**
  *
- * @returns bs.extendedSearch.LookUp
+ * @returns bs.extendedSearch.Lookup
  */
-bs.extendedSearch.LookUp.prototype.clearType = function () {
-	this.ensurePropertyPath( 'query.type.value', '' );
-	delete( this.query.type );
+bs.extendedSearch.Lookup.prototype.clearTypes = function () {
+	this.ensurePropertyPath( 'query.bool.filter', [] );
+
+	var newFilter = [];
+	for( var i = 0; i < this.query.bool.filter.length; i++ ) {
+		if( '_type' in this.query.bool.filter[i].terms ) {
+			continue;
+		}
+		newFilter.push( this.query.bool.filter[i] );
+	}
+
+	delete( this.query.bool.filter );
+	if( newFilter.length > 0 ) {
+		this.query.bool.filter = newFilter;
+	}
+
 	return this;
+};
+
+/**
+ *
+ * @returns []
+ */
+bs.extendedSearch.Lookup.prototype.getTypes = function () {
+	this.ensurePropertyPath( 'query.bool.filter', [] );
+	for( var i = 0; i < this.query.bool.filter.length; i++ ) {
+		if( '_type' in this.query.bool.filter[i].terms ) {
+			return this.query.bool.filter[i].terms['_type'];
+		}
+	}
+	return [];
 };
 
 /**
  * @see https://www.elastic.co/guide/en/elasticsearch/reference/5.x/query-dsl-simple-query-string-query.html
  * @param string|object q
- * @returns bs.extendedSearch.LookUp
+ * @returns bs.extendedSearch.Lookup
  */
-bs.extendedSearch.LookUp.prototype.setSimpleQueryString = function ( q ) {
-	this.ensurePropertyPath( 'query.simple_query_string', {} );
+bs.extendedSearch.Lookup.prototype.setSimpleQueryString = function ( q ) {
+	this.ensurePropertyPath( 'query.bool.must', [] );
+	var newMusts = [];
+
+	//There must not be more than on "simple_query_string" in "must"
+	for( var i = 0; i < this.query.bool.must.length; i++ ) {
+		if( 'simple_query_string' in this.query.bool.must[i] ) {
+			continue;
+		}
+		newMusts.push( this.query.bool.must[i] );
+	}
+
+	this.query.bool.must = newMusts;
+
 	if( typeof q === 'object' ) {
-		this.query.simple_query_string = q;
+		this.query.bool.must.push( {
+			simple_query_string: q
+		});
 	}
 	if( typeof q === 'string' ) {
-		this.query.simple_query_string = {
-			query: q,
-			default_operator: 'and'
-		};
+		this.query.bool.must.push( {
+			simple_query_string: {
+				query: q,
+				default_operator: 'and'
+			}
+		} );
 	}
 	return this;
 };
 
 /**
  *
- * @param string|object q
- * @returns string|object|null
+ * @returns object|null
  */
-bs.extendedSearch.LookUp.prototype.getSimpleQueryString = function () {
-	if( !this.query || !this.query.simple_query_string ) {
-		return null;
+bs.extendedSearch.Lookup.prototype.getSimpleQueryString = function () {
+	this.ensurePropertyPath( 'query.bool.must', [] );
+
+	for( var i = 0; i < this.query.bool.must.length; i++ ) {
+		if( 'simple_query_string' in this.query.bool.must[i] ) {
+			return this.query.bool.must[i].simple_query_string;
+		}
 	}
-	return this.query.simple_query_string;
+
+	return null;
 };
 
 /**
  *
- * @returns bs.extendedSearch.LookUp
+ * @returns bs.extendedSearch.Lookup
  */
-bs.extendedSearch.LookUp.prototype.clearSimpleQueryString = function () {
+bs.extendedSearch.Lookup.prototype.clearSimpleQueryString = function () {
 	this.ensurePropertyPath( 'query.simple_query_string', {} );
 	delete( this.query.simple_query_string );
 	return this;
@@ -116,9 +163,9 @@ bs.extendedSearch.LookUp.prototype.clearSimpleQueryString = function () {
  *   }
  * @param string fieldName
  * @param string|array value
- * @returns bs.extendedSearch.LookUp
+ * @returns bs.extendedSearch.Lookup
  */
-bs.extendedSearch.LookUp.prototype.addFilter = function( fieldName, value ) {
+bs.extendedSearch.Lookup.prototype.addFilter = function( fieldName, value ) {
 	this.ensurePropertyPath( 'query.bool.filter', [] );
 
 	if( !$.isArray( value ) ) {
@@ -159,9 +206,9 @@ bs.extendedSearch.LookUp.prototype.addFilter = function( fieldName, value ) {
  *
  * @param string fieldName
  * @param string|array value
- * @returns bs.extendedSearch.LookUp
+ * @returns bs.extendedSearch.Lookup
  */
-bs.extendedSearch.LookUp.prototype.removeFilter = function( fieldName, value ) {
+bs.extendedSearch.Lookup.prototype.removeFilter = function( fieldName, value ) {
 	this.ensurePropertyPath( 'query.bool.filter', [] );
 
 	if( !$.isArray( value ) ) {
@@ -211,11 +258,11 @@ bs.extendedSearch.LookUp.prototype.removeFilter = function( fieldName, value ) {
  *
  * @param string fieldName
  * @param string|object order
- * @returns bs.extendedSearch.LookUp
+ * @returns bs.extendedSearch.Lookup
  */
-bs.extendedSearch.LookUp.prototype.addSort = function( fieldName, order ) {
+bs.extendedSearch.Lookup.prototype.addSort = function( fieldName, order ) {
 	this.ensurePropertyPath( 'sort', [] );
-	order = order || bs.extendedSearch.LookUp.SORT_ASC;
+	order = order || bs.extendedSearch.Lookup.SORT_ASC;
 
 	if( typeof order === 'string' ) {
 		order = {
@@ -243,9 +290,9 @@ bs.extendedSearch.LookUp.prototype.addSort = function( fieldName, order ) {
 
 /*
  * @param string fieldName
- * @returns bs.extendedSearch.LookUp
+ * @returns bs.extendedSearch.Lookup
  */
-bs.extendedSearch.LookUp.prototype.removeSort = function( fieldName ) {
+bs.extendedSearch.Lookup.prototype.removeSort = function( fieldName ) {
 	this.ensurePropertyPath( 'sort', [] );
 
 	var newSort = [];
@@ -271,6 +318,6 @@ bs.extendedSearch.LookUp.prototype.removeSort = function( fieldName ) {
  * object that can be fed directly into the search backend
  * @returns object
  */
-bs.extendedSearch.LookUp.prototype.getQueryDSL = function() {
+bs.extendedSearch.Lookup.prototype.getQueryDSL = function() {
 	return JSON.parse( JSON.stringify( this ) );
 };

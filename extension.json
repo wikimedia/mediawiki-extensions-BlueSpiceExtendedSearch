@@ -46,7 +46,7 @@
 			"scripts": [
 				"ext.blueSpiceExtendedSearch.js",
 				"ext.blueSpiceExtendedSearch.utils.js",
-				"bs.extendedSearch/LookUp.js"
+				"bs.extendedSearch/Lookup.js"
 			],
 			"dependencies" : [
 				"ext.bluespice",

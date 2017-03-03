@@ -83,10 +83,11 @@ class Base {
 
 	/**
 	 *
+	 * @param \BS\ExtendedSearch\Lookup
 	 * @param \IContextSource $oContext
-	 * @return BS\ExtendedSearch\Source\QueryProcessor\Base[]
+	 * @return BS\ExtendedSearch\Source\LookupModifier\Base[]
 	 */
-	public function getQueryProcessors( $oContext ) {
+	public function getLookupModifiers( $oLookup, $oContext ) {
 		return [];
 	}
 

@@ -80,11 +80,12 @@ class Setup {
 		$testModules['qunit']['ext.blueSpiceExtendedSearch.tests'] = [
 			'scripts' => [
 				'tests/qunit/ext.blueSpiceExtendedSearch.utils.test.js',
-				'tests/qunit/bs.extendedSearch.LookUp.test.js'
+				'tests/qunit/bs.extendedSearch.Lookup.test.js'
 			],
 			'dependencies' => [
 				'ext.blueSpiceExtendedSearch'
 			],
+			'position' => 'top',
 			'localBasePath' => dirname( __DIR__ ),
 			'remoteExtPath' => 'BlueSpiceExtendedSearch',
 		];

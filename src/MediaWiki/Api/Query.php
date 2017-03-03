@@ -4,20 +4,9 @@ namespace BS\ExtendedSearch\MediaWiki\Api;
 
 class Query extends \ApiBase {
 	public function execute() {
-		$oResult = $this->getResult();
-		$sQuery = $this->getParameter( 'q' );
-		$aParams = $this->getParameter( 'params' );
-		$sBackend = $this->getParameter( 'backend' );
-
-		$oBackend = \BS\ExtendedSearch\Backend::instance( $sBackend );
-		$oLookup = new \BS\ExtendedSearch\Lookup( $oBackend, $this->getContext() );
-		$oResultSet = $oLookup->run( $sQuery, $aParams );
-
-		$oResult->addValue( null , 'results', $oResultSet->getResults() );
-		$oResult->addValue( null , 'total', $oResultSet->getTotalHits() );
-		$oResult->addValue( null , 'aggregations', $oResultSet->getAggregations() );
-		//Future:
-		//$oResult->addValue( null , 'suggests', $oResultSet->getSuggests() );
+		$this->readInParameters();
+		$this->lookUpResults();
+		$this->returnResults();
 	}
 
 	protected function getAllowedParams() {
@@ -44,12 +33,71 @@ class Query extends \ApiBase {
 
 	protected function getParameterFromSettings( $paramName, $paramSettings, $parseLimit ) {
 		$value = parent::getParameterFromSettings( $paramName, $paramSettings, $parseLimit );
-		if ( $paramName === 'params' ) {
-			$value = \FormatJson::decode( $value, true );
-			if( empty( $value ) ) {
-				return [];
+		if ( $paramName === 'q' ) {
+			$decodedValue = \FormatJson::decode( $value, true );
+			$oLookup = new \BS\ExtendedSearch\Lookup();
+			if( is_array( $decodedValue ) ) {
+				$oLookup = new \BS\ExtendedSearch\Lookup( $decodedValue );
 			}
+			else {
+				$oLookup->setSimpleQueryString( $value );
+			}
+
+			return $oLookup;
 		}
 		return $value;
+	}
+
+	/**
+	 *
+	 * @var \BS\ExtendedSearch\Lookup
+	 */
+	protected $oLookup = null;
+	protected $aParams = [];
+	protected $sBackend = '';
+
+	protected function readInParameters() {
+		$this->oLookup = $this->getParameter( 'q' );
+		$this->aParams = $this->getParameter( 'params' );
+		$this->sBackend = $this->getParameter( 'backend' );
+	}
+
+	/**
+	 *
+	 * @var \Elastica\ResultSet
+	 */
+	protected $oResults = null;
+	protected function lookUpResults() {
+		$oBackend = \BS\ExtendedSearch\Backend::instance( $this->sBackend );
+		$this->oResultSet = $oBackend->runLookup( $this->oLookup );
+	}
+
+	protected function returnResults() {
+		$oResult = $this->getResult();
+
+		$oResult->addValue( null , 'results', $this->formatResults() );
+		$oResult->addValue( null , 'total', $this->formatTotal() );
+		$oResult->addValue( null , 'aggregations', $this->formatAggregations() );
+		$oResult->addValue( null , 'suggests', $this->formatSuggests() );
+	}
+
+	protected function formatResults() {
+		return [];
+		return $this->oResultSet->getResults();
+	}
+
+	protected function formatTotal() {
+		return 0;
+		return $this->oResultSet->getTotalHits();
+	}
+
+	protected function formatAggregations() {
+		return [];
+		return $this->oResultSet->getAggregations();
+	}
+
+	protected function formatSuggests() {
+		return [];
+		return $this->oResultSet->getSuggests();
 	}
 }

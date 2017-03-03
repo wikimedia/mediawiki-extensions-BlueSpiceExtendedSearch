@@ -217,4 +217,35 @@ class Backend {
 	public function getIndex() {
 		return $this->getClient()->getIndex( $this->oConfig->get( 'index' ) );
 	}
+
+	/**
+	 *
+	 * @param Lookup $oLookup
+	 */
+	public function runLookup( $oLookup ) {
+		$oContext = \RequestContext::getMain();
+		$aLookupModifiers = [];
+		$aTypes = $oLookup->getTypes();
+		foreach( $this->aSources as $sSourceKey => $oSource ) {
+			if( !empty( $aTypes ) && !in_array( $sSourceKey, $aTypes ) ) {
+				continue;
+			}
+			$aLookupModifiers += $oSource->getLookupModifiers( $oLookup, $oContext );
+		}
+
+		foreach( $aLookupModifiers as $sLMKey => $oLookupModifier ) {
+			$oLookupModifier->apply();
+		}
+
+		wfDebugLog(
+			'BSExtendedSearch',
+			'Query by '.$oContext->getUser()->getName().': '
+				.\FormatJson::encode( $oLookup, true )
+		);
+
+		$oSearch = new \Elastica\Search( $this->getClient() );
+		$oResults = $oSearch->search( $oLookup->getQueryDSL() );
+
+		//TODO: Implement
+	}
 }

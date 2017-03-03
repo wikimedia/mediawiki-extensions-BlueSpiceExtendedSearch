@@ -1,45 +1,56 @@
 ( function ( mw, $ ) {
-	QUnit.test( 'bs.extendedSearch.LookUp.testSetType', function ( assert ) {
-		var lookup = new bs.extendedSearch.LookUp();
-		lookup.setType( 'someType' );
+	QUnit.module( 'bs.extendedSearch.Lookup', QUnit.newMwEnvironment() );
+
+	QUnit.test( 'bs.extendedSearch.Lookup.test*etTypes', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup();
+		lookup.setTypes( 'someType' );
 
 		var obj = {
 			"query": {
-				"type": {
-					"value": "someType"
+				"bool": {
+					"filter": [{
+						"terms": { "_type": [ "someType" ] }
+					}]
 				}
 			}
 		};
 
-		assert.deepEqual( lookup.getQueryDSL(), obj, 'Setting type value works' );
+		assert.deepEqual( lookup.getQueryDSL(), obj, 'Setting type values works #1'  );
+
+		var newTypes = lookup.getTypes();
+		newTypes.push( 'someOtherType' );
+
+		assert.deepEqual( lookup.getTypes(), [ "someType", "someOtherType" ], 'Setting type values works #2' );
 	} );
 
-	QUnit.test( 'bs.extendedSearch.LookUp.testClearType', function ( assert ) {
-		var lookup = new bs.extendedSearch.LookUp({
+	QUnit.test( 'bs.extendedSearch.Lookup.testClearTypes', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup({
 			"query": {
-				"type": {
-					"value": "someType"
+				"bool": {
+					"filter": [{
+						"terms": { "_type": [ "someType" ] }
+					}]
 				}
 			}
 		});
-		lookup.clearType();
+		lookup.clearTypes();
 
-		var obj = {
-			"query": {}
-		};
-
-		assert.deepEqual( lookup.getQueryDSL(), obj, 'Clearing type value works' );
+		assert.deepEqual( lookup.getTypes(), [], 'Clearing type values works' );
 	} );
 
-	QUnit.test( 'bs.extendedSearch.LookUp.test*etSimpleQueryString', function ( assert ) {
-		var lookup = new bs.extendedSearch.LookUp();
+	QUnit.test( 'bs.extendedSearch.Lookup.test*etSimpleQueryString', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup();
 		lookup.setSimpleQueryString( '"fried eggs" +(eggplant | potato) -frittata' );
 
 		var obj = {
 			"query": {
-				"simple_query_string": {
-					"query": '"fried eggs" +(eggplant | potato) -frittata',
-					"default_operator": 'and'
+				"bool": {
+					"must": [{
+						"simple_query_string": {
+							"query": '"fried eggs" +(eggplant | potato) -frittata',
+							"default_operator": 'and'
+						}
+					}]
 				}
 			}
 		};
@@ -52,11 +63,12 @@
 			default_operator: "or"
 		};
 		lookup.setSimpleQueryString( q );
-		assert.deepEqual( lookup.getQueryDSL().query.simple_query_string, q, 'Setting SimpleQueryString value by object works' );
+
+		assert.deepEqual( lookup.getQueryDSL().query.bool.must[0].simple_query_string, q, 'Setting SimpleQueryString value by object works' );
 	} );
 
-	QUnit.test( 'bs.extendedSearch.LookUp.testClearSimpleQueryString', function ( assert ) {
-		var lookup = new bs.extendedSearch.LookUp({
+	QUnit.test( 'bs.extendedSearch.Lookup.testClearSimpleQueryString', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup({
 			"query": {
 				"simple_query_string": {
 					"query": "Lorem ipsum dolor sit amet"
@@ -72,8 +84,8 @@
 		assert.deepEqual( lookup.getQueryDSL(), obj, 'Clearing SimpleQueryString value works' );
 	} );
 
-	QUnit.test( 'bs.extendedSearch.LookUp.testAddSingleFilterValue', function ( assert ) {
-		var lookup = new bs.extendedSearch.LookUp();
+	QUnit.test( 'bs.extendedSearch.Lookup.testAddSingleFilterValue', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup();
 		lookup.addFilter( 'someField', 'someValue' );
 		var obj = {
 			"query": {
@@ -88,8 +100,8 @@
 		assert.deepEqual( lookup.getQueryDSL(), obj, 'Adding single filter value works' );
 	} );
 
-	QUnit.test( 'bs.extendedSearch.LookUp.testAddMultipleFilterValues', function ( assert ) {
-		var lookup = new bs.extendedSearch.LookUp();
+	QUnit.test( 'bs.extendedSearch.Lookup.testAddMultipleFilterValues', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup();
 		lookup.addFilter( 'someField', [ 'someValue1', 'someValue2' ] );
 		var obj = {
 			"query": {
@@ -104,10 +116,10 @@
 		assert.deepEqual( lookup.getQueryDSL(), obj, 'Adding multiple filter values works' );
 	} );
 
-	QUnit.test( 'bs.extendedSearch.LookUp.testMergeMultipleFilterValues', function ( assert ) {
+	QUnit.test( 'bs.extendedSearch.Lookup.testMergeMultipleFilterValues', function ( assert ) {
 		QUnit.dump.maxDepth = 10;
 
-		var lookup = new bs.extendedSearch.LookUp({
+		var lookup = new bs.extendedSearch.Lookup({
 			"query": {
 				"bool": {
 					"filter": [{
@@ -131,8 +143,8 @@
 		assert.deepEqual( lookup.getQueryDSL(), obj, 'Merging multiple filter values works' );
 	} );
 
-	QUnit.test( 'bs.extendedSearch.LookUp.testRemoveSingleFilterValue', function ( assert ) {
-		var lookup = new bs.extendedSearch.LookUp({
+	QUnit.test( 'bs.extendedSearch.Lookup.testRemoveSingleFilterValue', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup({
 			"query": {
 				"bool": {
 					"filter": [{
@@ -156,10 +168,10 @@
 		assert.deepEqual( lookup.getQueryDSL(), obj, 'Removing single filter value works' );
 	} );
 
-	QUnit.test( 'bs.extendedSearch.LookUp.testRemoveMultiFilterValues', function ( assert ) {
+	QUnit.test( 'bs.extendedSearch.Lookup.testRemoveMultiFilterValues', function ( assert ) {
 		QUnit.dump.maxDepth = 10;
 
-		var lookup = new bs.extendedSearch.LookUp({
+		var lookup = new bs.extendedSearch.Lookup({
 			"query": {
 				"bool": {
 					"filter": [{
@@ -183,10 +195,10 @@
 		assert.deepEqual( lookup.getQueryDSL(), obj, 'Removing multiple filter values works' );
 	} );
 
-	QUnit.test( 'bs.extendedSearch.LookUp.testClearFilter', function ( assert ) {
+	QUnit.test( 'bs.extendedSearch.Lookup.testClearFilter', function ( assert ) {
 		QUnit.dump.maxDepth = 10;
 
-		var lookup = new bs.extendedSearch.LookUp({
+		var lookup = new bs.extendedSearch.Lookup({
 			"query": {
 				"bool": {
 					"filter": [{
@@ -212,10 +224,10 @@
 		assert.deepEqual( lookup.getQueryDSL(), obj, 'Clearing a whole filter works' );
 	} );
 
-	QUnit.test( 'bs.extendedSearch.LookUp.testAddSort', function ( assert ) {
-		var lookup = new bs.extendedSearch.LookUp();
+	QUnit.test( 'bs.extendedSearch.Lookup.testAddSort', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup();
 
-		lookup.addSort( 'someField', bs.extendedSearch.LookUp.SORT_DESC );
+		lookup.addSort( 'someField', bs.extendedSearch.Lookup.SORT_DESC );
 		var obj = {
 			"sort": [
 				{ "someField": { "order": "desc" } }
@@ -225,8 +237,8 @@
 		assert.deepEqual( lookup.getQueryDSL(), obj, 'Adding a sort works' );
 	} );
 
-	QUnit.test( 'bs.extendedSearch.LookUp.testRemoveSort', function ( assert ) {
-		var lookup = new bs.extendedSearch.LookUp({
+	QUnit.test( 'bs.extendedSearch.Lookup.testRemoveSort', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup({
 			"sort": [
 				{ "someField": { "order": "desc" } },
 				{ "someField2": { "order": "asc" } }
@@ -243,8 +255,8 @@
 		assert.deepEqual( lookup.getQueryDSL(), obj, 'Removing a sort works' );
 	} );
 
-	QUnit.test( 'bs.extendedSearch.LookUp.testClearSort', function ( assert ) {
-		var lookup = new bs.extendedSearch.LookUp({
+	QUnit.test( 'bs.extendedSearch.Lookup.testClearSort', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup({
 			"sort": [
 				{ "someField": { "order": "desc" } }
 			]

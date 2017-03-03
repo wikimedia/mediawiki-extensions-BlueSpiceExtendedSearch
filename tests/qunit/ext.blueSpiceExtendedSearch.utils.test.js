@@ -1,4 +1,6 @@
 ( function ( mw, $ ) {
+	QUnit.module( 'ext.blueSpiceExtendedSearch.utils', QUnit.newMwEnvironment() );
+
 	QUnit.test( 'ext.blueSpiceExtendedSearch.utils.fragmentFunctions', function ( assert ) {
 		//QUnit.expect( 1 );
 		var obj = {

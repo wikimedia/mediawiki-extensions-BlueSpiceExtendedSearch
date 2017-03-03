@@ -2,6 +2,11 @@
 
 namespace BS\ExtendedSearch\Source;
 
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageNamespaceTextAggregation;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageUserPreferences;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageNamespacePrefixResolver;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageSecurityTrimming;
+
 class WikiPages extends DecoratorBase {
 
 	/**
@@ -42,13 +47,16 @@ class WikiPages extends DecoratorBase {
 
 	/**
 	 *
+	 * @param \BS\ExtendedSearch\Lookup
 	 * @param \IContextSource $oContext
+	 * @return BS\ExtendedSearch\Source\LookupModifier\Base[]
 	 */
-	public function getQueryProcessors( $oContext ) {
+	public function getLookupModifiers( $oLookup, $oContext ) {
 		return [
-			'namespacetextaggregation' => new QueryProcessor\WikiPageNamespaceTextAggregation( $oContext ),
-			'userpreferences' => new QueryProcessor\WikiPageUserPreferences( $oContext ),
-			'securitytrimming' => new QueryProcessor\WikiPageSecurityTrimming( $oContext ),
+			'wikipage-namespacetextaggregation' => new WikiPageNamespaceTextAggregation( $oLookup, $oContext ),
+			'wikipage-userpreferences' => new WikiPageUserPreferences( $oLookup, $oContext ),
+			'wikipage-namespaceprefixresolver' => new WikiPageNamespacePrefixResolver( $oLookup, $oContext ),
+			'wikipage-securitytrimming' => new WikiPageSecurityTrimming( $oLookup, $oContext )
 		];
 	}
 }
