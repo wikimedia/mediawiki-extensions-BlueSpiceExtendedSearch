@@ -224,7 +224,7 @@ bs.extendedSearch.LookUp.prototype.addSort = function( fieldName, order ) {
 	}
 
 	var replacedExistingSort = false;
-	for( var i = 0; i < this.sort.length; i ++ ) {
+	for( var i = 0; i < this.sort.length; i++ ) {
 		var sorter = this.sort[i];
 		if( fieldName in sorter ) {
 			sorter[fieldName] = order;
@@ -249,7 +249,7 @@ bs.extendedSearch.LookUp.prototype.removeSort = function( fieldName ) {
 	this.ensurePropertyPath( 'sort', [] );
 
 	var newSort = [];
-	for( var i = 0; i < this.sort.length; i ++ ) {
+	for( var i = 0; i < this.sort.length; i++ ) {
 		var sorter = this.sort[i];
 		if( fieldName in sorter ) {
 			continue;

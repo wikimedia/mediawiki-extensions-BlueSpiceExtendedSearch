@@ -243,7 +243,7 @@
 		assert.deepEqual( lookup.getQueryDSL(), obj, 'Removing a sort works' );
 	} );
 
-	QUnit.test( 'bs.extendedSearch.LookUp.testCleasSort', function ( assert ) {
+	QUnit.test( 'bs.extendedSearch.LookUp.testClearSort', function ( assert ) {
 		var lookup = new bs.extendedSearch.LookUp({
 			"sort": [
 				{ "someField": { "order": "desc" } }
