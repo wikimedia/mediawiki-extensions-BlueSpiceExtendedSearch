@@ -44,7 +44,7 @@ class WikiPage extends Base {
 	 * @param \LogEntry $logEntry
 	 * @return boolean
 	 */
-	public function onArticleDeleteComplete( &$article, User &$user, $reason, $id, \Content $content = null, \LogEntry $logEntry ) {
+	public function onArticleDeleteComplete( &$article, \User &$user, $reason, $id, \Content $content = null, \LogEntry $logEntry ) {
 		\JobQueueGroup::singleton()->push(
 			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage( $article->getTitle() )
 		);
