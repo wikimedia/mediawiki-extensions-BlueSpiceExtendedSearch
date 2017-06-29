@@ -94,9 +94,6 @@
 							},
 							"specialpage": {
 								"class": "BS\\ExtendedSearch\\Source\\SpecialPages"
-							},
-							"repofile": {
-								"class": "BS\\ExtendedSearch\\Source\\RepoFiles"
 							}
 						}
 					}
