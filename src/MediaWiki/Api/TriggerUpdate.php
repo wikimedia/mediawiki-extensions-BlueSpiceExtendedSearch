@@ -19,12 +19,12 @@ class TriggerUpdate extends \ApiBase {
 				\ApiBase::PARAM_TYPE => 'string',
 				\ApiBase::PARAM_REQUIRED => false,
 				\ApiBase::PARAM_DFLT => 'local',
-				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-triggerupdate-param-backend',
+				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-generic-param-backend',
 			],
 			'source' => [
 				\ApiBase::PARAM_TYPE => 'string',
 				\ApiBase::PARAM_REQUIRED => true,
-				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-triggerupdate-param-source',
+				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-generic-param-sources',
 			],
 			'title' => [
 				\ApiBase::PARAM_TYPE => 'string',
