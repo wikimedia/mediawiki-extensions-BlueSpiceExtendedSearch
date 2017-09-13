@@ -42,9 +42,13 @@ class Setup {
 	/**
 	 * Adds link to admin panel
 	 * @param array $aOutSortable
+	 * @param \User The user in which context the menu is rendered
 	 * @return boolean always true to keep hook running
 	 */
-	public static function onBSWikiAdminMenuItems( &$aOutSortable ) {
+	public static function onBSWikiAdminMenuItems( &$aOutSortable, $oUser ) {
+		if( !$oUser->isAllowed( 'extendedsearchadmin-viewspecialpage' ) ) {
+			return true;
+		}
 		$oSpecialPage = \SpecialPage::getTitleFor( 'BSSearchAdmin' );
 		$sLink = \Html::element(
 				'a',
