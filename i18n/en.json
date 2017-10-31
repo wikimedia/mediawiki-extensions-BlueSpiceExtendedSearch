@@ -4,7 +4,7 @@
 			"Robert Vogel <vogel@hallowelt.com>"
 		]
 	},
-	"extensionname-bsextendedsearch": "BlueSpice ExtendedSearch",
+	"bs-extsearch-extensionname": "BlueSpice ExtendedSearch",
 	"bs-extsearch-desc": "Elasticsearch search backend",
 	"bssearchadmin": "Search admin",
 	"bssearchadmin-desc": "Provides a management interface of the search",

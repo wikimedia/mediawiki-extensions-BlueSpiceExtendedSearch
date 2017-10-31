@@ -4,7 +4,7 @@
 			"Robert Vogel <vogel@hallowelt.com>"
 		]
 	},
-	"extensionname-bsextendedsearch": "{{name}}",
+	"bs-extsearch-extensionname": "{{name}}",
 	"bs-extsearch-desc": "{{desc|name=BlueSpiceExtendedSearch}}",
 	"bssearchadmin": "Special page name for Special:BSSearchAdmin",
 	"bssearchadmin-desc": "Description text for title attribute in menu link",
