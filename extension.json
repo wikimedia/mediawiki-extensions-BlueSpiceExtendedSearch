@@ -1,13 +1,13 @@
 {
 	"name": "BlueSpiceExtendedSearch",
-	"version": "2.27.0",
+	"license-name": "GPL-3.0",
+	"version": "3.0.0-alpha",
 	"author": [
 		"Robert Vogel"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:BlueSpiceExtendedSearch",
 	"descriptionmsg": "bs-extsearch-desc",
 	"namemsg": "bs-extsearch-extensionname",
-	"license-name": "GPL-2.0",
 	"type": "other",
 	"MessagesDirs": {
 		"BlueSpiceExtendedSearch": [
