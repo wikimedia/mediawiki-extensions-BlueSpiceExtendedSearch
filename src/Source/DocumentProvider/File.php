@@ -12,10 +12,11 @@ class File extends DecoratorBase {
 	 */
 	public function getDataConfig( $sUri, $oFile ) {
 		$aDC = $this->oDecoratedDP->getDataConfig( $sUri, $oFile );
+		$magic = \MediaWiki\MediaWikiServices::getInstance()->getMimeAnalyzer();
 		$aDC += [
 			'basename' => $oFile->getBasename(),
 			'extension' => $oFile->getExtension(),
-			'mime_type' => \MimeMagic::singleton()->guessMimeType( $oFile->getPathname() ),
+			'mime_type' => $magic->guessMimeType( $oFile->getPathname() ),
 			'mtime' => $oFile->getMTime(),
 			'ctime' => $oFile->getCTime(),
 			'size' => $oFile->getSize(),
