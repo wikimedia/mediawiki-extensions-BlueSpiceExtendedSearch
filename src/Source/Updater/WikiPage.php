@@ -14,7 +14,8 @@ class WikiPage extends Base {
 
 	/**
 	 * Update index on article change.
-	 * @param \WikiPage $article
+	 *
+	 * @param \WikiPage $wikiPage
 	 * @param \User $user
 	 * @param \Content $content
 	 * @param string $summary
@@ -25,11 +26,12 @@ class WikiPage extends Base {
 	 * @param \Revision $revision
 	 * @param \Status $status
 	 * @param int $baseRevId
+	 *
 	 * @return boolean
 	 */
-	public function onPageContentSaveComplete( $article, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision, $status, $baseRevId ) {
+	public function onPageContentSaveComplete( \WikiPage $wikiPage, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision, $status, $baseRevId ) {
 		\JobQueueGroup::singleton()->push(
-			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage( $article->getTitle() )
+			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage( $wikiPage->getTitle() )
 		);
 		return true;
 	}
