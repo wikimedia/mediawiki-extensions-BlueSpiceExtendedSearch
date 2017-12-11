@@ -342,7 +342,7 @@ class Lookup extends \ArrayObject {
 	 */
 	public function setBucketTermsAggregation( $sFieldName ) {
 		$aFieldNames = explode( '/', $sFieldName );
-		$aBase = &$this;
+		$aBase = $this;
 		foreach( $aFieldNames as $sFieldNamePart ) {
 			if( !isset( $aBase['aggs'] ) ) {
 				$aBase['aggs'] = [];
@@ -368,7 +368,7 @@ class Lookup extends \ArrayObject {
 	public function removeBucketTermsAggregation( $sFieldName ) {
 		$aFieldNames = explode( '/', $sFieldName );
 
-		$aBase = &$this;
+		$aBase = $this;
 		$aNode = [];
 		$sLeafFieldName = '';
 		foreach( $aFieldNames as $sFieldNamePart ) {
