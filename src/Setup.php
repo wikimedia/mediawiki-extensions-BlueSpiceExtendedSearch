@@ -27,41 +27,6 @@ class Setup {
 		foreach( $aSources as $oSource ) {
 			$oSource->getUpdater()->init( $GLOBALS['wgHooks'] );
 		}
-
-		//WikiAdmin can not register a normal special page yet.
-		/*
-		\WikiAdmin::registerModuleClass( 'BS\ExtendedSearch\MediaWiki\Specials\SearchAdmin', array(
-			'image' => '/extensions/BlueSpiceExtendedSearch/resources/images/bs-btn_searchadmin.png',
-			'level' => 'wikiadmin',
-			'message' => 'bssearchadmin',
-			'iconCls' => 'bs-icon-magnifying-glass'
-		) );
-		*/
-	}
-
-	/**
-	 * Adds link to admin panel
-	 * @param array $aOutSortable
-	 * @param \User The user in which context the menu is rendered
-	 * @return boolean always true to keep hook running
-	 */
-	public static function onBSWikiAdminMenuItems( &$aOutSortable, $oUser ) {
-		if( !$oUser->isAllowed( 'extendedsearchadmin-viewspecialpage' ) ) {
-			return true;
-		}
-		$oSpecialPage = \SpecialPage::getTitleFor( 'BSSearchAdmin' );
-		$sLink = \Html::element(
-				'a',
-				array (
-					'id' => 'bs-admin-extenedsearch',
-					'href' => $oSpecialPage->getLocalURL(),
-					'title' => wfMessage( 'bssearchadmin-desc' )->plain(),
-					'class' => 'bs-admin-link bs-icon-magnifying-glass'
-				),
-				wfMessage( 'bssearchadmin' )->plain()
-		);
-		$aOutSortable[wfMessage( 'bssearchadmin' )->escaped()] = '<li>' . $sLink . '</li>';
-		return true;
 	}
 
 	/**

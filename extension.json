@@ -18,6 +18,9 @@
 		"BlueSpiceExtendedSearchAdminAlias": "languages/BSSearchAdmin.alias.php",
 		"BlueSpiceExtendedSearchCenterAlias": "languages/BSSearchCenter.alias.php"
 	},
+	"BlueSpiceFoundationAdminToolRegistry": {
+		"bs-extended-search": "BS\\ExtendedSearch\\AdminTool"
+	},
 	"ConfigRegistry": {
 		"bsgES": "BS\\ExtendedSearch\\Setup::makeConfig"
 	},
@@ -26,8 +29,7 @@
 	],
 	"Hooks": {
 		"UnitTestsList": "BS\\ExtendedSearch\\Setup::onUnitTestsList",
-		"ResourceLoaderTestModules": "BS\\ExtendedSearch\\Setup::onResourceLoaderTestModules",
-		"BSWikiAdminMenuItems": "BS\\ExtendedSearch\\Setup::onBSWikiAdminMenuItems"
+		"ResourceLoaderTestModules": "BS\\ExtendedSearch\\Setup::onResourceLoaderTestModules"
 	},
 	"SpecialPages": {
 		"BSSearchCenter": "BS\\ExtendedSearch\\MediaWiki\\Specials\\SearchCenter",
