@@ -24,7 +24,7 @@ class AdminTool implements IAdminTool {
 			'bs-icon-magnifying-glass'
 		);
 
-		return implode( ' ', $classes );
+		return $classes;
 	}
 
 	public function getDataAttributes() {
