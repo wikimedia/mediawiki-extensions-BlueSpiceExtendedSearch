@@ -54,7 +54,6 @@ class Setup {
 			'dependencies' => [
 				'ext.blueSpiceExtendedSearch'
 			],
-			'position' => 'top',
 			'localBasePath' => dirname( __DIR__ ),
 			'remoteExtPath' => 'BlueSpiceExtendedSearch',
 		];
