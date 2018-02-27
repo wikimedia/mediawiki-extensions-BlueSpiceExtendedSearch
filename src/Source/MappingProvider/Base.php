@@ -10,36 +10,37 @@ class Base {
 	 */
 	public function getPropertyConfig() {
 		return [
+			'congregated' => [
+				'type' => 'text'
+			],
 			'uri' => [
-				'type' => 'text',
-				'include_in_all' => false
+				'type' => 'text'
 			],
 			'basename' => [
 				'type' => 'text',
-				'boost' => 3
+				'boost' => 3,
+				'copy_to' => 'congregated'
 			],
 			'extension' => [
-				'type' => 'keyword'
+				'type' => 'keyword',
+				'copy_to' => 'congregated'
 			],
 			'mime_type' => [
-				'type' => 'text',
-				'include_in_all' => false
+				'type' => 'text'
 			],
 			'mtime' => [
-				'type' => 'date',
-				'include_in_all' => false
+				'type' => 'date'
 			],
 			'ctime' => [
-				'type' => 'date',
-				'include_in_all' => false
+				'type' => 'date'
 			],
 			'size' => [
-				'type' => 'integer',
-				'include_in_all' => false
+				'type' => 'integer'
 			],
 			'tags' => [
 				'type' => 'keyword',
-				'boost' => 2
+				'boost' => 2,
+				'copy_to' => 'congregated'
 			],
 		];
 	}

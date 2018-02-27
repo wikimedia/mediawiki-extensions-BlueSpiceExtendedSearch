@@ -12,18 +12,20 @@ class SpecialPage extends DecoratorBase {
 		$aPC = $this->oDecoratedMP->getPropertyConfig();
 		$aPC += [
 			'prefixed_title' => [
-				'type' => 'text'
+				'type' => 'text',
+				'copy_to' => 'congregated'
 			],
 			'description' => [
 				'type' => 'text',
-				'boost' => 2
+				'boost' => 2,
+				'copy_to' => 'congregated'
 			],
 			'namespace' => [
-				'type' => 'integer',
-				'include_in_all' => false
+				'type' => 'integer'
 			],
 			'namespace_text' => [
-				'type' => 'keyword'
+				'type' => 'keyword',
+				'copy_to' => 'congregated'
 			],
 		];
 		return $aPC;

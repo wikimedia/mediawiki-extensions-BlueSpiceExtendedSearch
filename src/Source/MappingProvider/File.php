@@ -20,6 +20,7 @@ class File extends DecoratorBase {
 		$aPC += [
 			'the_file' => [
 				'type' => 'attachment',
+				'copy_to' => 'congregated'
 				/*'fields' => [
 					'content' => ['index' => true],
 					'title' => ['index' => true],

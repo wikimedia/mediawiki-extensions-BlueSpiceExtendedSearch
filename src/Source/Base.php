@@ -105,7 +105,7 @@ class Base {
 	 * @return \Elastica\Bulk\ResponseSet
 	 */
 	public function addDocumentsToIndex( $aDocumentConfigs ) {
-		$oElasticaIndex = $this->getBackend()->getIndex();
+		$oElasticaIndex = $this->getBackend()->getIndexByType( $this->getTypeKey() );
 		$oType = $oElasticaIndex->getType( $this->getTypeKey() );
 		$aDocs = [];
 		foreach( $aDocumentConfigs as $aDC ) {

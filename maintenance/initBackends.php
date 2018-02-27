@@ -20,9 +20,9 @@ class initBackends extends Maintenance {
 
 		$aBackends = BS\ExtendedSearch\Backend::factoryAll();
 		foreach( $aBackends as $sBackendKey => $oBackend ) {
-			$oBackend->deleteIndex();
-			$oBackend->createIndex();
-			$this->output( "\n$sBackendKey: Index created" );
+			$oBackend->deleteIndexes();
+			$oBackend->createIndexes();
+			$this->output( "\n$sBackendKey: Indexes created" );
 		}
 	}
 }

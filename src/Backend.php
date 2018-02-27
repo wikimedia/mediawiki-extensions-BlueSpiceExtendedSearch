@@ -8,52 +8,52 @@ class Backend {
 	 *
 	 * @var Config
 	 */
-	protected $oConfig = null;
+	protected $config = null;
 
 	/**
 	 *
 	 * @var Source\Base[]
 	 */
-	protected $aSources = [];
+	protected $sources = [];
 
 	/**
 	 *
 	 * @var \Elastica\Client
 	 */
-	protected $oClient = null;
+	protected $client = null;
 
 	public function __construct( $aConfig ) {
 		if( !isset( $aConfig['index'] ) ) {
 			$aConfig['index'] = wfWikiID();
 		}
 
-		$this->oConfig = new \HashConfig( $aConfig );
+		$this->config = new \HashConfig( $aConfig );
 	}
 
 	/**
 	 *
-	 * @param string $sSourceKey
+	 * @param string $sourceKey
 	 * @return Source\Base
 	 * @throws \Exception
 	 */
-	public function getSource( $sSourceKey ) {
-		if( isset( $this->aSources[$sSourceKey] ) ) {
-			return $this->aSources[$sSourceKey];
+	public function getSource( $sourceKey ) {
+		if( isset( $this->sources[$sourceKey] ) ) {
+			return $this->sources[$sourceKey];
 		}
 
-		$aSourceConfigs = $this->oConfig->get( 'sources' );
-		if( !isset( $aSourceConfigs[$sSourceKey] ) ) {
-			throw new \Exception( "SOURCE: Key '$sSourceKey' not set in config!" );
+		$sourceConfigs = $this->config->get( 'sources' );
+		if( !isset( $sourceConfigs[$sourceKey] ) ) {
+			throw new \Exception( "SOURCE: Key '$sourceKey' not set in config!" );
 		}
 
 		//Decorator!
 		$oBaseSourceArgs = [[]]; //Yes, array-in-an-array
-		if( isset( $aSourceConfigs[$sSourceKey]['args'] ) ) {
-			$oBaseSourceArgs = $aSourceConfigs[$sSourceKey]['args'];
+		if( isset( $sourceConfigs[$sourceKey]['args'] ) ) {
+			$oBaseSourceArgs = $sourceConfigs[$sourceKey]['args'];
 		}
 
 		if( !isset( $oBaseSourceArgs[0]['sourcekey'] ) ) {
-			$oBaseSourceArgs[0]['sourcekey'] = $sSourceKey;
+			$oBaseSourceArgs[0]['sourcekey'] = $sourceKey;
 		}
 
 		//Dependency injection of Backend into Source
@@ -65,15 +65,15 @@ class Backend {
 		] );
 
 		$oDecoratedSource = \ObjectFactory::getObjectFromSpec( [
-			'class' => $aSourceConfigs[$sSourceKey]['class'],
+			'class' => $sourceConfigs[$sourceKey]['class'],
 			'args' => [ $oBaseSource ]
 		] );
 
-		\Hooks::run( 'BSExtendedSearchMakeSource', [ $this, $sSourceKey, &$oDecoratedSource ] );
+		\Hooks::run( 'BSExtendedSearchMakeSource', [ $this, $sourceKey, &$oDecoratedSource ] );
 
-		$this->aSources[$sSourceKey] = $oDecoratedSource;
+		$this->sources[$sourceKey] = $oDecoratedSource;
 
-		return $this->aSources[$sSourceKey];
+		return $this->sources[$sourceKey];
 	}
 
 	/**
@@ -81,10 +81,10 @@ class Backend {
 	 * @return Source\Base[]
 	 */
 	public function getSources() {
-		foreach( $this->oConfig->get('sources') as $sSourceKey => $sSourceConfig ) {
-			$this->getSource( $sSourceKey );
+		foreach( $this->config->get('sources') as $sourceKey => $sSourceConfig ) {
+			$this->getSource( $sourceKey );
 		}
-		return $this->aSources;
+		return $this->sources;
 	}
 
 	/**
@@ -92,36 +92,36 @@ class Backend {
 	 * @return \Elastica\Client
 	 */
 	public function getClient() {
-		if( $this->oClient === null ) {
-			$this->oClient = new \Elastica\Client(
-				$this->oConfig->get( 'connection' )
+		if( $this->client === null ) {
+			$this->client = new \Elastica\Client(
+				$this->config->get( 'connection' )
 			);
 		}
 
-		return $this->oClient;
+		return $this->client;
 	}
 
 	/**
 	 *
 	 * @var Backend[]
 	 */
-	protected static $aBackends = [];
+	protected static $backends = [];
 
 	/**
 	 *
-	 * @param string $sBackendKey
+	 * @param string $backendKey
 	 * @return Backend
 	 */
-	public static function instance( $sBackendKey ) {
-		if( isset( self::$aBackends[$sBackendKey] ) ) {
-			return self::$aBackends[$sBackendKey];
+	public static function instance( $backendKey ) {
+		if( isset( self::$backends[$backendKey] ) ) {
+			return self::$backends[$backendKey];
 		}
 
-		self::$aBackends[$sBackendKey] = self::newFromConfig(
-			self::getConfigFromKey( $sBackendKey )
+		self::$backends[$backendKey] = self::newFromConfig(
+			self::getConfigFromKey( $backendKey )
 		);
 
-		return self::$aBackends[$sBackendKey];
+		return self::$backends[$backendKey];
 	}
 
 	/**
@@ -137,73 +137,76 @@ class Backend {
 	 * @return Backend[]
 	 */
 	public static function factoryAll() {
-		$oConfig = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsgES' );
-		$aBackendConfigs = $oConfig->get( 'Backends' );
+		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsgES' );
+		$backendConfigs = $config->get( 'Backends' );
 
-		foreach( $aBackendConfigs as $sBackendKey => $aBackendConfig ) {
-			self::instance( $sBackendKey );
+		foreach( $backendConfigs as $backendKey => $aBackendConfig ) {
+			self::instance( $backendKey );
 		}
 
-		return self::$aBackends;
+		return self::$backends;
 	}
 
 	/**
 	 *
-	 * @param sting $sBackendKey
+	 * @param sting $backendKey
 	 * @return array
 	 * @throws Exception
 	 */
-	protected static function getConfigFromKey( $sBackendKey ) {
-		$oConfig = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsgES' );
-		$aBackendConfigs = $oConfig->get( 'Backends' );
+	protected static function getConfigFromKey( $backendKey ) {
+		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsgES' );
+		$backendConfigs = $config->get( 'Backends' );
 
-		if( !isset( $aBackendConfigs[$sBackendKey] ) ) {
-			throw new Exception( "BACKEND: Key '$sBackendKey' not set in config!" );
+		if( !isset( $backendConfigs[$backendKey] ) ) {
+			throw new Exception( "BACKEND: Key '$backendKey' not set in config!" );
 		}
 
-		return $aBackendConfigs[$sBackendKey];
+		return $backendConfigs[$backendKey];
 	}
 
 
 	/**
 	 * @throws Elastica\Exception\ResponseException
 	 */
-	public function deleteIndex() {
-		$oIndex = $this->getClient()->getIndex( $this->oConfig->get( 'index' ) );
-		if( $oIndex->exists() ){
-			$oIndex->delete();
+	public function deleteIndexes() {
+		foreach( $this->sources as $source ) {
+			$sourceType = $source->getTypeKey();
+			$index = $this->getIndexByType( $sourceType );
+			if( $index->exists() ){
+				$index->delete();
+			}
 		}
 	}
 
 	/**
 	 * @throws Elastica\Exception\ResponseException
 	 */
-	public function createIndex() {
-		$aIndexSettings = [];
-		foreach( $this->aSources as $oSource ) {
-			$aIndexSettings = array_merge_recursive(
-				$aIndexSettings,
-				$oSource->getIndexSettings()
+	public function createIndexes() {
+		$indexSettings = [];
+		foreach( $this->sources as $source ) {
+			$indexSettings = array_merge_recursive(
+				$indexSettings,
+				$source->getIndexSettings()
 			);
 		}
 
-		$oIndex = $this->getIndex();
-		$oResponse = $oIndex->create( $aIndexSettings );
+		foreach( $this->sources as $source ) {
+			$index = $this->getIndexByType( $source->getTypeKey() );
+			$response = $index->create( $indexSettings );
 
-		foreach( $this->aSources as $oSource ) {
-			$oType = $oIndex->getType( $oSource->getTypeKey() );
-			
-			$oMapping = new \Elastica\Type\Mapping();
-			$oMapping->setType( $oType );
-			$oMappingProvider = $oSource->getMappingProvider();
-			$oMapping->setProperties( $oMappingProvider->getPropertyConfig() );
+			$type = $index->getType( $source->getTypeKey() );
 
-			$aSourceConfig = $oMappingProvider->getSourceConfig();
-			if( !empty( $aSourceConfig ) ) {
-				$oMapping->setSource( $aSourceConfig );
+			$mapping = new \Elastica\Type\Mapping();
+			$mapping->setType( $type );
+			$mappingProvider = $source->getMappingProvider();
+			$mapping->setProperties( $mappingProvider->getPropertyConfig() );
+
+			$sourceConfig = $mappingProvider->getSourceConfig();
+			if( !empty( $sourceConfig ) ) {
+				$mapping->setSource( $sourceConfig );
 			}
 
-			$oResponse2 = $oMapping->send( [
+			$response2 = $mapping->send( [
 				//Neccessary if more than one type has a 'attachment' field from 'mapper-attachments'
 				'update_all_types' => ''
 			] );
@@ -214,37 +217,40 @@ class Backend {
 	 *
 	 * @return \Elastica\Index
 	 */
-	public function getIndex() {
-		return $this->getClient()->getIndex( $this->oConfig->get( 'index' ) );
+	public function getIndexByType( $type ) {
+		return $this->getClient()->getIndex( $this->config->get( 'index' ) . '_' . $type );
 	}
 
 	/**
 	 *
-	 * @param Lookup $oLookup
+	 * @param Lookup $lookup
 	 */
-	public function runLookup( $oLookup ) {
-		$oContext = \RequestContext::getMain();
-		$aLookupModifiers = [];
-		$aTypes = $oLookup->getTypes();
-		foreach( $this->aSources as $sSourceKey => $oSource ) {
-			if( !empty( $aTypes ) && !in_array( $sSourceKey, $aTypes ) ) {
+	public function runLookup( $lookup ) {
+		$context = \RequestContext::getMain();
+		$lookupModifiers = [];
+		$types = $lookup->getTypes();
+		foreach( $this->sources as $sourceKey => $source ) {
+			if( !empty( $types ) && !in_array( $sourceKey, $types ) ) {
 				continue;
 			}
-			$aLookupModifiers += $oSource->getLookupModifiers( $oLookup, $oContext );
+			$lookupModifiers += $source->getLookupModifiers( $lookup, $context );
 		}
 
-		foreach( $aLookupModifiers as $sLMKey => $oLookupModifier ) {
-			$oLookupModifier->apply();
+		foreach( $lookupModifiers as $sLMKey => $lookupModifier ) {
+			$lookupModifier->apply();
 		}
 
 		wfDebugLog(
 			'BSExtendedSearch',
-			'Query by '.$oContext->getUser()->getName().': '
-				.\FormatJson::encode( $oLookup, true )
+			'Query by '.$context->getUser()->getName().': '
+				.\FormatJson::encode( $lookup, true )
 		);
 
-		$oSearch = new \Elastica\Search( $this->getClient() );
-		$oResults = $oSearch->search( $oLookup->getQueryDSL() );
+		$search = new \Elastica\Search( $this->getClient() );
+
+		$results = $search->search( $lookup->getQueryDSL() );
+
+		return $results;
 
 		//TODO: Implement
 	}
