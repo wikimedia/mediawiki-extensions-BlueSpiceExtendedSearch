@@ -28,7 +28,8 @@ class WikiPage extends DecoratorBase {
 			'rendered_content' => [
 				'type' => 'text',
 				'boost' => 2,
-				'copy_to' => 'congregated'
+				'copy_to' => 'congregated',
+				'store' => true //required to be able to retrive highlights
 			],
 			'namespace' => [
 				'type' => 'integer'
@@ -37,6 +38,10 @@ class WikiPage extends DecoratorBase {
 				'type' => 'keyword',
 				'copy_to' => 'congregated'
 			],
+			'categories' => [
+				'type' => 'keyword',
+				'copy_to' => 'congregated'
+			]
 		];
 		return $aPC;
 	}

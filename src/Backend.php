@@ -140,7 +140,7 @@ class Backend {
 		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsgES' );
 		$backendConfigs = $config->get( 'Backends' );
 
-		foreach( $backendConfigs as $backendKey => $aBackendConfig ) {
+		foreach( $backendConfigs as $backendKey => $backendConfig ) {
 			self::instance( $backendKey );
 		}
 
@@ -158,12 +158,22 @@ class Backend {
 		$backendConfigs = $config->get( 'Backends' );
 
 		if( !isset( $backendConfigs[$backendKey] ) ) {
-			throw new Exception( "BACKEND: Key '$backendKey' not set in config!" );
+			throw new \Exception( "BACKEND: Key '$backendKey' not set in config!" );
 		}
 
 		return $backendConfigs[$backendKey];
 	}
 
+	/**
+	 * Deletes all indexes of all types existing
+	 * for this index prefix
+	 *
+	 * DELETE /wiki_id_*
+	 */
+	public function deleteAllIndexes() {
+		$indexes = $this->getIndexByType( '*' );
+		$indexes->delete();
+	}
 
 	/**
 	 * @throws Elastica\Exception\ResponseException
@@ -221,19 +231,18 @@ class Backend {
 		return $this->getClient()->getIndex( $this->config->get( 'index' ) . '_' . $type );
 	}
 
+	public function getContext() {
+		return \RequestContext::getMain();
+	}
 	/**
+	 * Runs query against ElasticSearch and formats returned values
 	 *
 	 * @param Lookup $lookup
 	 */
 	public function runLookup( $lookup ) {
-		$context = \RequestContext::getMain();
 		$lookupModifiers = [];
-		$types = $lookup->getTypes();
 		foreach( $this->sources as $sourceKey => $source ) {
-			if( !empty( $types ) && !in_array( $sourceKey, $types ) ) {
-				continue;
-			}
-			$lookupModifiers += $source->getLookupModifiers( $lookup, $context );
+			$lookupModifiers += $source->getLookupModifiers( $lookup, $this->getContext() );
 		}
 
 		foreach( $lookupModifiers as $sLMKey => $lookupModifier ) {
@@ -242,16 +251,77 @@ class Backend {
 
 		wfDebugLog(
 			'BSExtendedSearch',
-			'Query by '.$context->getUser()->getName().': '
-				.\FormatJson::encode( $lookup, true )
+			'Query by ' . $this->getContext()->getUser()->getName() . ': '
+				. \FormatJson::encode( $lookup, true )
 		);
 
 		$search = new \Elastica\Search( $this->getClient() );
+		$search->addIndex( $this->config->get( 'index' ) . '_*' );
 
 		$results = $search->search( $lookup->getQueryDSL() );
 
-		return $results;
+		$formattedResultSet = new \stdClass();
+		$formattedResultSet->results = $this->formatResults( $results );
+		$formattedResultSet->total = $this->getTotal( $results );
+		$formattedResultSet->aggregations = $this->getAggregations( $results );
+		$formattedResultSet->suggestions = $this->getSuggestions( $results );
 
-		//TODO: Implement
+		return $formattedResultSet;
+	}
+
+	/**
+	 * Runs each result in result set through
+	 * each source's formatter
+	 *
+	 * @param \Elastica\ResultSet $results
+	 */
+	protected function formatResults( $results ) {
+		$formattedResults = [];
+
+		foreach( $results->getResults() as $resultObject ) {
+			$result = $resultObject->getData();
+			foreach( $this->getSources() as $sourceKey => $source ) {
+				$source->getFormatter()->format( $result, $resultObject );
+			}
+			$formattedResults[] = $result;
+		}
+
+		return $formattedResults;
+	}
+
+	/**
+	 *
+	 * @param \Elastica\ResultSet $results
+	 */
+	protected function getTotal( $results ) {
+		return $results->getTotalHits();
+	}
+
+	/**
+	 *
+	 * @param \Elastica\ResultSet $results
+	 */
+	protected function getAggregations( $results ) {
+		return $results->getAggregations();
+	}
+
+	/**
+	 *
+	 * @param \Elastica\ResultSet $results
+	 */
+	protected function getSuggestions( $results ) {
+		return $results->getSuggests();
+	}
+
+	/**
+	 * Gets predifined result structure from attribute
+	 *
+	 * @return array
+	 */
+	public function getResultStructure() {
+		$defaultStructure = \ExtensionRegistry::getInstance()
+			->getAttribute( 'BlueSpiceExtendedSearchResultStructure' );
+
+		return $defaultStructure;
 	}
 }

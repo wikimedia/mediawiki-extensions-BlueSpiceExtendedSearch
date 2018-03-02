@@ -316,6 +316,15 @@ class Lookup extends \ArrayObject {
 	}
 
 	/**
+	 *
+	 * @return array
+	 */
+	public function getSort() {
+		$this->ensurePropertyPath( 'sort', [] );
+		return $this['sort'];
+	}
+
+	/**
 	 * "aggs": {
      *  "field__type": {
      *    "terms": {
@@ -389,5 +398,80 @@ class Lookup extends \ArrayObject {
 		}
 
 		return $this;
+	}
+
+	/**
+	 *
+	 * @param string $sFieldName e.g. "extension" or even "_type/extension"
+	 * @return Lookup
+	 */
+	public function addHighlighter( $sFieldName ) {
+		$aFieldNames = explode( '/', $sFieldName );
+
+		$aBase = $this;
+		foreach( $aFieldNames as $sFieldNamePart ) {
+			if( !isset( $aBase['highlight'] ) ) {
+				$aBase['highlight'] = [];
+			}
+			if( !isset( $aBase['highlight']['fields'] ) ) {
+				$aBase['highlight']['fields'] = [];
+			}
+
+			$aBase['highlight']['fields'][$sFieldNamePart] = [
+				'matched_fields' => [
+					$sFieldNamePart
+				]
+			];
+
+			$aBase = &$aBase['highlight']['fields'][$sFieldNamePart];
+		}
+
+		return $this;
+	}
+
+	/**
+	 * Sets the default page size
+	 *
+	 * @param int $size
+	 * @return \BS\ExtendedSearch\Lookup
+	 */
+	public function setSize( $size ) {
+		$aBase = $this;
+		$aBase['size'] = $size;
+		return $this;
+	}
+
+	/**
+	 *
+	 * @return boolean|\BS\ExtendedSearch\Lookup
+	 */
+	public function getSize() {
+		if( isset( $this['size'] ) ) {
+			return $this['size'];
+		}
+		return false;
+	}
+
+	/**
+	 * Sets offset from which to retrieve results
+	 *
+	 * @param int $from
+	 * @return \BS\ExtendedSearch\Lookup
+	 */
+	public function setFrom( $from ) {
+		$aBase = $this;
+		$aBase['from'] = $from;
+		return $this;
+	}
+
+	/**
+	 *
+	 * @return boolean|\BS\ExtendedSearch\Lookup
+	 */
+	public function getFrom() {
+		if( isset( $this['from'] ) ) {
+			return $this['from'];
+		}
+		return false;
 	}
 }

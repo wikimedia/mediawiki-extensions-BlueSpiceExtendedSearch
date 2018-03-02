@@ -19,7 +19,8 @@ class Base {
 			'basename' => [
 				'type' => 'text',
 				'boost' => 3,
-				'copy_to' => 'congregated'
+				'copy_to' => 'congregated',
+				'fielddata' => true //required in order to be sortable
 			],
 			'extension' => [
 				'type' => 'keyword',

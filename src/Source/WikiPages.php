@@ -3,9 +3,11 @@
 namespace BS\ExtendedSearch\Source;
 
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageNamespaceTextAggregation;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageCategoriesAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageUserPreferences;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageNamespacePrefixResolver;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageSecurityTrimming;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageRenderedContentHighlight;
 
 class WikiPages extends DecoratorBase {
 
@@ -56,7 +58,13 @@ class WikiPages extends DecoratorBase {
 			'wikipage-namespacetextaggregation' => new WikiPageNamespaceTextAggregation( $oLookup, $oContext ),
 			'wikipage-userpreferences' => new WikiPageUserPreferences( $oLookup, $oContext ),
 			'wikipage-namespaceprefixresolver' => new WikiPageNamespacePrefixResolver( $oLookup, $oContext ),
-			'wikipage-securitytrimming' => new WikiPageSecurityTrimming( $oLookup, $oContext )
+			'wikipage-securitytrimming' => new WikiPageSecurityTrimming( $oLookup, $oContext ),
+			'wikipage-categoriesaggregation' => new WikiPageCategoriesAggregation( $oLookup, $oContext ),
+			'wikipage-renderedcontenthighlight' => new WikiPageRenderedContentHighlight( $oLookup, $oContext )
 		];
+	}
+
+	public function getFormatter() {
+		return new Formatter\WikiPageFormatter( $this );
 	}
 }

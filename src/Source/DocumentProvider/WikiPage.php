@@ -25,13 +25,13 @@ class WikiPage extends DecoratorBase {
 				$oWikiPage->getRevision()->getTimestamp()
 			),
 			'size' => $oWikiPage->getTitle()->getLength(),
-			'tags' => $this->getTagsFromCategories( $oWikiPage ),
+			'categories' => $this->getCategories( $oWikiPage ),
 			'prefixed_title' => $oWikiPage->getTitle()->getPrefixedText(),
 			'sections' => $this->getSections( $oWikiPage ),
 			'source_content' => $this->getTextContent( $oWikiPage ),
 			'rendered_content' => $this->getHTMLContent( $oWikiPage ),
 			'namespace' => $oWikiPage->getTitle()->getNamespace(),
-			'namespace_text' => $oWikiPage->getTitle()->getNsText()
+			'namespace_text' => $this->getNamespaceText( $oWikiPage )
 		];
 		return $aDC;
 	}
@@ -40,17 +40,28 @@ class WikiPage extends DecoratorBase {
 	 *
 	 * @param \WikiPage $oWikiPage
 	 */
-	protected function getTagsFromCategories( $oWikiPage ) {
+	protected function getNamespaceText( $oWikiPage ) {
+		if( $oWikiPage->getTitle()->getNamespace() === NS_MAIN ) {
+			return wfMessage( 'bs-ns_main' )->plain();
+		}
+		return $oWikiPage->getTitle()->getNsText();
+	}
+
+	/**
+	 *
+	 * @param \WikiPage $oWikiPage
+	 */
+	protected function getCategories( $oWikiPage ) {
 		$oCatTitles = $oWikiPage->getCategories();
 
-		$aTags = [];
+		$aCategories = [];
 		foreach( $oCatTitles as $oCatTitle ) {
 			if( $oCatTitle instanceof \Title ) {
-				$aTags[] = $oCatTitle->getText();
+				$aCategories[] = $oCatTitle->getText();
 			}
 		}
 
-		return $aTags;
+		return $aCategories;
 	}
 
 	/**
