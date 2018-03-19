@@ -71,7 +71,7 @@ class Query extends \ApiBase {
 		$oResult->addValue( null , 'results', $this->resultSet->results );
 		$oResult->addValue( null , 'total', $this->resultSet->total );
 		$oResult->addValue( null , 'aggregations', $this->resultSet->aggregations );
-		$oResult->addValue( null , 'suggests', $this->resultSet->suggests );
+		$oResult->addValue( null , 'suggestions', $this->resultSet->suggestions );
 	}
 
 	//Make some other class for this result decoration
