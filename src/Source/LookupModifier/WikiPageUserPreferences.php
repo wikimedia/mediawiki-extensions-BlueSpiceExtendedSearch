@@ -21,7 +21,9 @@ class WikiPageUserPreferences extends Base {
 				$aNamespacesToBeSearchedDefault[] = $iNSid;
 			}
 		}
-
-		$this->oLookup->addFilter( 'namespace', $aNamespacesToBeSearchedDefault );
+		//For testing - prototype - disabled - it should somehow be transfered 
+		//to UI so that filter is created automatically based on this value
+		//also - where is this set?
+		//$this->oLookup->addFilter( 'namespace', $aNamespacesToBeSearchedDefault );
 	}
 }

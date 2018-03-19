@@ -2,6 +2,9 @@
 
 namespace BS\ExtendedSearch\Source;
 
+use BS\ExtendedSearch\Source\LookupModifier\BaseExtensionAggregation;
+use BS\ExtendedSearch\Source\LookupModifier\BaseTagsAggregation;
+
 class Base {
 
 	/**
@@ -88,7 +91,10 @@ class Base {
 	 * @return BS\ExtendedSearch\Source\LookupModifier\Base[]
 	 */
 	public function getLookupModifiers( $oLookup, $oContext ) {
-		return [];
+		return [
+			'base-extensionaggregation' => new BaseExtensionAggregation( $oLookup, $oContext ),
+			'base-tagsaggregation' => new BaseTagsAggregation( $oLookup, $oContext )
+		];
 	}
 
 	/**
@@ -149,5 +155,7 @@ class Base {
 		return $oResult;
 	}
 
-	#abstract public function getFormatter();
+	public function getFormatter() {
+		return new Formatter\Base( $this );
+	}
 }

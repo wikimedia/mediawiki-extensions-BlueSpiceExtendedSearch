@@ -100,4 +100,9 @@ class DecoratorBase extends Base {
 	public function getLookupModifiers( $oLookup, $oContext ) {
 		return $this->oDecoratedSource->getLookupModifiers( $oLookup, $oContext );
 	}
+
+	public function getFormatter () {
+		return $this->oDecoratedSource->getFormatter();
+	}
+
 }

@@ -141,6 +141,23 @@ bs.extendedSearch.Lookup.prototype.getSimpleQueryString = function () {
 
 /**
  *
+ * @returns array
+ */
+bs.extendedSearch.Lookup.prototype.getFilters = function () {
+	this.ensurePropertyPath( 'query.bool.filter', [] );
+
+	var filters = [];
+	for( var i = 0; i < this.query.bool.filter.length; i++ ) {
+		if( 'terms' in this.query.bool.filter[i] ) {
+			filters.push( this.query.bool.filter[i].terms );
+		}
+	}
+
+	return filters;
+};
+
+/**
+ *
  * @returns bs.extendedSearch.Lookup
  */
 bs.extendedSearch.Lookup.prototype.clearSimpleQueryString = function () {
@@ -313,6 +330,16 @@ bs.extendedSearch.Lookup.prototype.removeSort = function( fieldName ) {
 	return this;
 };
 
+/*
+ * @param string fieldName
+ * @returns bs.extendedSearch.Lookup
+ */
+bs.extendedSearch.Lookup.prototype.getSort = function() {
+	this.ensurePropertyPath( 'sort', [] );
+
+	return this.sort;
+};
+
 /**
  * Removes all methods and stuff from current object to provide an easy-to-use
  * object that can be fed directly into the search backend
@@ -321,3 +348,38 @@ bs.extendedSearch.Lookup.prototype.removeSort = function( fieldName ) {
 bs.extendedSearch.Lookup.prototype.getQueryDSL = function() {
 	return JSON.parse( JSON.stringify( this ) );
 };
+
+bs.extendedSearch.Lookup.prototype.addHighlighter = function( field ) {
+	this.ensurePropertyPath( 'highlight.field', [] );
+
+	this.highlight.field[field] = {
+		matched_fields: field
+	}
+
+	return this;
+}
+
+bs.extendedSearch.Lookup.prototype.setSize = function( size ) {
+	this.ensurePropertyPath( 'size', 0 );
+	this.size = size;
+
+	return this;
+}
+
+
+bs.extendedSearch.Lookup.prototype.getSize = function() {
+	this.ensurePropertyPath( 'size', 0 );
+	return this.size;
+}
+
+bs.extendedSearch.Lookup.prototype.setFrom = function( from ) {
+	this.ensurePropertyPath( 'from', 0 );
+	this.from = from;
+
+	return this;
+}
+
+bs.extendedSearch.Lookup.prototype.getFrom = function() {
+	this.ensurePropertyPath( 'from', 0 );
+	return this.from;
+}

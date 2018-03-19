@@ -3,12 +3,37 @@
 	"license-name": "GPL-3.0-only",
 	"version": "3.0.0-alpha",
 	"author": [
-		"Robert Vogel"
+		"Robert Vogel",
+		"Dejan Savuljesku"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:BlueSpiceExtendedSearch",
 	"descriptionmsg": "bs-extsearch-desc",
 	"namemsg": "bs-extsearch-extensionname",
 	"type": "other",
+	"attributes": {
+		"BlueSpiceExtendedSearch": {
+			"ResultStructure": {
+				"headerText": "basename",
+				"headerUri": "uri",
+				"secondaryInfos": {
+					"top": {
+						"items": []
+					},
+					"bottom": {
+						"items": [
+							{
+								"name": "ctime"
+							},
+							{
+								"name": "mtime"
+							}
+						]
+					}
+				},
+				"featured": []
+			}
+		}
+	},
 	"MessagesDirs": {
 		"BlueSpiceExtendedSearch": [
 			"i18n"
@@ -54,17 +79,61 @@
 			"dependencies" : [
 				"ext.bluespice",
 				"mediawiki.api",
-				"oojs"
+				"oojs",
+				"oojs-ui"
 			]
 		},
 		"ext.blueSpiceExtendedSearch.SearchCenter": {
 			"scripts": [
+				"bs.extendedSearch/mixin/Result.js",
+				"bs.extendedSearch/mixin/Filter.js",
+				"bs.extendedSearch/widget/Result.js",
+				"bs.extendedSearch/widget/HitCount.js",
+				"bs.extendedSearch/widget/Filter.js",
+				"bs.extendedSearch/widget/Paginator.js",
+				"bs.extendedSearch/dialog/AddFilter.js",
+				"bs.extendedSearch/dialog/OptionsDialog.js",
 				"bs.extendedSearch/panel/Results.js",
+				"bs.extendedSearch/panel/Tools.js",
 				"ext.blueSpiceExtendedSearch.SearchCenter.js"
 			],
+			"styles": [
+				"ext.blueSpiceExtendedSearch.Defines.less",
+				"ext.blueSpiceExtendedSearch.SearchCenter.less"
+			],
+			"messages": [
+				"bs-extendedsearch-search-center-hitcount-widget",
+				"bs-extendedsearch-search-center-addfilter-dialog-title",
+				"bs-extendedsearch-search-center-filter-field_extension-label",
+				"bs-extendedsearch-search-center-filter-field_tags-label",
+				"bs-extendedsearch-search-center-filter-field_namespace_text-label",
+				"bs-extendedsearch-search-center-filter-field_categories-label",
+				"bs-extendedsearch-search-center-filter-type-label",
+				"bs-extendedsearch-search-center-filter-field_extension-with-values-label",
+				"bs-extendedsearch-search-center-filter-field_tags-with-values-label",
+				"bs-extendedsearch-search-center-filter-field_namespace_text-with-values-label",
+				"bs-extendedsearch-search-center-filter-field_categories-with-values-label",
+				"bs-extendedsearch-search-center-filter-type-with-values-label",
+				"bs-extendedsearch-search-center-filter-no-options-label",
+				"bs-extendedsearch-search-center-result-categories-label",
+				"bs-extendedsearch-search-center-result-namespace_text-label",
+				"bs-extendedsearch-search-center-result-sections-label",
+				"bs-extendedsearch-search-center-result-ctime-label",
+				"bs-extendedsearch-search-center-result-mtime-label",
+				"bs-extendedsearch-search-center-result-no-results",
+				"bs-extendedsearch-search-center-pagesize-dialog-title",
+				"bs-extendedsearch-search-center-sort-order-asc",
+				"bs-extendedsearch-search-center-sort-order-desc",
+				"bs-extendedsearch-search-center-options-dialog-title",
+				"bs-extendedsearch-search-center-dialog-button-cancel-label",
+				"bs-extendedsearch-search-center-options-dialog-button-apply-label",
+				"bs-extendedseaerch-search-center-options-page-size",
+				"bs-extendedseaerch-search-center-options-sort-by",
+				"bs-extendedseaerch-search-center-options-sort-order"
+			],
 			"dependencies" : [
-				"ext.blueSpiceExtendedSearch",
-				"oojs-ui-core"
+				"oojs-ui-core",
+				"ext.blueSpiceExtendedSearch"
 			]
 		},
 		"ext.blueSpiceExtendedSearch.SearchAdmin.styles": {
@@ -73,34 +142,36 @@
 			]
 		}
 	},
+	"config_prefix": "bsgES",
 	"config": {
-		"_prefix": "bsgES",
 		"Backends": {
-			"local": {
-				"class": "BS\\ExtendedSearch\\Backend",
-				"args": [
-					{
-						"connection": {
-							"host": "127.0.0.1",
-							"port": "9200"
-						},
-						"sources": {
-							"wikipage": {
-								"class": "BS\\ExtendedSearch\\Source\\WikiPages",
-								"args": [
-									{
-										"skip_namespaces": [
-											8, 9, 10, 11, 14, 15
-										]
-									}
-								]
+			"value": {
+				"local": {
+					"class": "BS\\ExtendedSearch\\Backend",
+					"args": [
+						{
+							"connection": {
+								"host": "127.0.0.1",
+								"port": "9200"
 							},
-							"specialpage": {
-								"class": "BS\\ExtendedSearch\\Source\\SpecialPages"
+							"sources": {
+								"wikipage": {
+									"class": "BS\\ExtendedSearch\\Source\\WikiPages",
+									"args": [
+										{
+											"skip_namespaces": [
+												8, 9, 10, 11, 14, 15
+											]
+										}
+									]
+								},
+								"specialpage": {
+									"class": "BS\\ExtendedSearch\\Source\\SpecialPages"
+								}
 							}
 						}
-					}
-				]
+					]
+				}
 			}
 		}
 	},
@@ -112,5 +183,5 @@
 		"updateLinkedFileIndex": "BS\\ExtendedSearch\\Source\\Job\\UpdateLinkedFile"
 	},
 	"load_composer_autoloader" : true,
-	"manifest_version": 1
+	"manifest_version": 2
 }

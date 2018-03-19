@@ -30,4 +30,8 @@ class SpecialPages extends DecoratorBase {
 			$this->oDecoratedSource->getMappingProvider()
 		);
 	}
+
+	public function getFormatter() {
+		return new Formatter\SpecialPageFormatter( $this );
+	}
 }

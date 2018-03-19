@@ -3,13 +3,11 @@
 namespace BS\ExtendedSearch;
 
 class Setup {
-
 	/**
 	 * Factory for Config object
 	 * @return \GlobalVarConfig
 	 */
 	public static function makeConfig() {
-
 		/**
 		 * Unfortunately changing complex settings from 'extension.json'
 		 * in 'LocalSettings.php' is problematic. Therefore we provide a hook
