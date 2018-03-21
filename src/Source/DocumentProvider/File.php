@@ -13,7 +13,7 @@ class File extends DecoratorBase {
 	public function getDataConfig( $sUri, $oFile ) {
 		$aDC = $this->oDecoratedDP->getDataConfig( $sUri, $oFile );
 		$magic = \MediaWiki\MediaWikiServices::getInstance()->getMimeAnalyzer();
-		$aDC += [
+		$aDC = array_merge( $aDC, [
 			'basename' => $oFile->getBasename(),
 			'extension' => $oFile->getExtension(),
 			'mime_type' => $magic->guessMimeType( $oFile->getPathname() ),
@@ -26,7 +26,7 @@ class File extends DecoratorBase {
 					$oFile->getPathname()
 				)
 			)
-		];
+		] );
 		return $aDC;
 	}
 }

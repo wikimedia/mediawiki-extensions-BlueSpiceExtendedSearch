@@ -31,6 +31,19 @@
 					}
 				},
 				"featured": []
+			},
+			"Autocomplete": {
+				"SuggestField": "ac_suggest",
+				"DisplayLimits": {
+					"primary": 8,
+					"top": 2,
+					"secondary": 3
+				}
+			},
+			"SourceIcons": {
+				"wikipage": "extensions/BlueSpiceExtendedSearch/resources/images/wikipage-icon.png",
+				"specialpage": "extensions/BlueSpiceExtendedSearch/resources/images/specialpage-icon.png",
+				"default": "extensions/BlueSpiceExtendedSearch/resources/images/default-icon.png"
 			}
 		}
 	},
@@ -54,7 +67,9 @@
 	],
 	"Hooks": {
 		"UnitTestsList": "BS\\ExtendedSearch\\Setup::onUnitTestsList",
-		"ResourceLoaderTestModules": "BS\\ExtendedSearch\\Setup::onResourceLoaderTestModules"
+		"ResourceLoaderTestModules": "BS\\ExtendedSearch\\Setup::onResourceLoaderTestModules",
+		"SkinTemplateOutputPageBeforeExec": "BS\\ExtendedSearch\\Setup::onSkinTemplateOutputPageBeforeExec",
+		"BeforePageDisplay": "BS\\ExtendedSearch\\Setup::onBeforePageDisplay"
 	},
 	"SpecialPages": {
 		"BSSearchCenter": "BS\\ExtendedSearch\\MediaWiki\\Specials\\SearchCenter",
@@ -63,7 +78,8 @@
 	"APIModules": {
 		"bs-extendedsearch-query": "BS\\ExtendedSearch\\MediaWiki\\Api\\Query",
 		"bs-extendedsearch-stats": "BS\\ExtendedSearch\\MediaWiki\\Api\\Stats",
-		"bs-extendedsearch-triggerupdate": "BS\\ExtendedSearch\\MediaWiki\\Api\\TriggerUpdate"
+		"bs-extendedsearch-triggerupdate": "BS\\ExtendedSearch\\MediaWiki\\Api\\TriggerUpdate",
+		"bs-extendedsearch-autocomplete": "BS\\ExtendedSearch\\MediaWiki\\Api\\Autocomplete"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
@@ -81,6 +97,31 @@
 				"mediawiki.api",
 				"oojs",
 				"oojs-ui"
+			]
+		},
+		"ext.blueSpiceExtendedSearch.Autocomplete": {
+			"scripts": [
+				"bs.extendedSearch/mixin/Autocomplete.js",
+				"bs.extendedSearch/widget/autocomplete/Popup.js",
+				"bs.extendedSearch/widget/autocomplete/PrimaryResult.js",
+				"bs.extendedSearch/widget/autocomplete/SecondaryResult.js",
+				"bs.extendedSearch/widget/autocomplete/TopMatch.js",
+				"ext.blueSpiceExtendedSearch.Autocomplete.js"
+			],
+			"styles": [
+				"ext.blueSpiceExtendedSearch.Autocomplete.less"
+			],
+			"messages": [
+				"bs-extendedsearch-autocomplete-result-primary-no-results-label",
+				"bs-extendedsearch-autocomplete-result-type",
+				"bs-extendedsearch-autocomplete-result-edit-label",
+				"bs-extendedsearch-autocomplete-result-top-match-label",
+				"bs-extendedsearch-autocomplete-result-secondary-results-label",
+				"bs-extendedsearch-autocomplete-result-visit-label"
+			],
+			"dependencies": [
+				"oojs-ui-core",
+				"ext.blueSpiceExtendedSearch"
 			]
 		},
 		"ext.blueSpiceExtendedSearch.SearchCenter": {
@@ -127,9 +168,9 @@
 				"bs-extendedsearch-search-center-options-dialog-title",
 				"bs-extendedsearch-search-center-dialog-button-cancel-label",
 				"bs-extendedsearch-search-center-options-dialog-button-apply-label",
-				"bs-extendedseaerch-search-center-options-page-size",
-				"bs-extendedseaerch-search-center-options-sort-by",
-				"bs-extendedseaerch-search-center-options-sort-order"
+				"bs-extendedsearch-search-center-options-page-size",
+				"bs-extendedsearch-search-center-options-sort-by",
+				"bs-extendedsearch-search-center-options-sort-order"
 			],
 			"dependencies" : [
 				"oojs-ui-core",

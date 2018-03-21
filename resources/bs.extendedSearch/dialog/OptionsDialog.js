@@ -87,7 +87,7 @@
 	OO.inheritClass( bs.extendedSearch.PageSizeLayout, OO.ui.PageLayout );
 
 	bs.extendedSearch.PageSizeLayout.prototype.setupOutlineItem = function() {
-		this.outlineItem.setLabel( mw.message( 'bs-extendedseaerch-search-center-options-page-size').plain() );
+		this.outlineItem.setLabel( mw.message( 'bs-extendedsearch-search-center-options-page-size').plain() );
 	}
 
 	bs.extendedSearch.PageSizeLayout.prototype.getValue = function() {
@@ -108,7 +108,7 @@
 	OO.inheritClass( bs.extendedSearch.SortByLayout, OO.ui.PageLayout );
 
 	bs.extendedSearch.SortByLayout.prototype.setupOutlineItem = function() {
-		this.outlineItem.setLabel( mw.message( 'bs-extendedseaerch-search-center-options-sort-by').plain() );
+		this.outlineItem.setLabel( mw.message( 'bs-extendedsearch-search-center-options-sort-by').plain() );
 	}
 
 	bs.extendedSearch.SortByLayout.prototype.getValue = function() {
@@ -129,7 +129,7 @@
 	OO.inheritClass( bs.extendedSearch.SortOrderLayout, OO.ui.PageLayout );
 
 	bs.extendedSearch.SortOrderLayout.prototype.setupOutlineItem = function() {
-		this.outlineItem.setLabel( mw.message( 'bs-extendedseaerch-search-center-options-sort-order').plain() );
+		this.outlineItem.setLabel( mw.message( 'bs-extendedsearch-search-center-options-sort-order').plain() );
 	}
 
 	bs.extendedSearch.SortOrderLayout.prototype.getValue = function() {

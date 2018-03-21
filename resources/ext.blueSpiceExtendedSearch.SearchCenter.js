@@ -5,11 +5,22 @@
 	var searchField = OO.ui.infuse( 'bs-es-tf-search' );
 	var curQueryData = bs.extendedSearch.utils.getFragment();
 
+	//When coming from search bar there will be query string param "q" in the URL.
+	//Not removing it because it would cause reload of the page
+	//We could also create correct URL in the search bar, but that will not work
+	//if user doesnt wait for JS to load
+	var queryStringParam = bs.extendedSearch.utils.getQueryStringParam( 'q' );
+
 	//parse 'q' param and make config object from it
 	if( "q" in curQueryData ) {
 		var config = JSON.parse( curQueryData.q );
 		makeLookup( config );
 		searchField.setValue( getLookup().getSimpleQueryString().query || '' );
+	} else if( queryStringParam ) {
+		makeLookup();
+		this.lookup.setSimpleQueryString( queryStringParam );
+		searchField.setValue( queryStringParam );
+		updateQueryHash();
 	}
 
 	searchField.on( 'change', function ( value ) {

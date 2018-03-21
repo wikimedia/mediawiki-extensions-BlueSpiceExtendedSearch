@@ -12,7 +12,7 @@ class WikiPage extends DecoratorBase {
 	 */
 	public function getDataConfig( $sUri, $oWikiPage ) {
 		$aDC = $this->oDecoratedDP->getDataConfig( $sUri, $oWikiPage );
-		$aDC += [
+		$aDC = array_merge( $aDC, [
 			'basename' => $oWikiPage->getTitle()->getBaseText(),
 			'extension' => 'wiki',
 			'mime_type' => 'text/x-wiki',
@@ -32,7 +32,7 @@ class WikiPage extends DecoratorBase {
 			'rendered_content' => $this->getHTMLContent( $oWikiPage ),
 			'namespace' => $oWikiPage->getTitle()->getNamespace(),
 			'namespace_text' => $this->getNamespaceText( $oWikiPage )
-		];
+		] );
 		return $aDC;
 	}
 

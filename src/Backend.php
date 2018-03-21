@@ -234,6 +234,65 @@ class Backend {
 	public function getContext() {
 		return \RequestContext::getMain();
 	}
+
+	/**
+	 * Runs quick suggest query agains ElasticSearch
+	 *
+	 * @param \BS\ExtendedSearch\Lookup $lookup
+	 * @return array
+	 */
+	public function runAutocompleteLookup( Lookup $lookup, $searchData ) {
+		if( empty( $lookup->getAutocompleteSuggest() ) ) {
+			return [];
+		}
+
+		$search = new \Elastica\Search( $this->getClient() );
+		$search->addIndex( $this->config->get( 'index' ) . '_*' );
+
+		$results = $search->search( $lookup->getAutocompleteSuggestQuery() );
+
+		$results = $this->formatSuggestions( $results, $searchData );
+
+		return $results;
+
+	}
+
+	protected function formatSuggestions( $results, $searchData ) {
+		$lcSearchTerm = strtolower( $searchData['value'] );
+
+		$res = [];
+		foreach( $results->getSuggests() as $suggestionField => $suggestion ) {
+			foreach( $suggestion[0]['options'] as $option ) {
+				$item = [
+					"type" => $option['_type'],
+					"score" => $option['_score'],
+					"is_scored" => false
+				];
+
+				$item = array_merge( $item, $option['_source'] );
+
+				$res[$option['_id']] = $item;
+			}
+		}
+
+		$res = array_values( $res );
+
+		foreach( $this->getSources() as $sourceKey => $source ) {
+			$source->getFormatter()->scoreAutocompleteResults( $res, $searchData );
+			//when results are scored based on original data, it can be modified
+			$source->getFormatter()->formatAutocompleteResults( $res, $searchData );
+		}
+
+		usort( $res, function( $e1, $e2 ) {
+			if( $e1['score'] == $e2['score'] ) {
+				return 0;
+			}
+			return ( $e1['score'] < $e2['score'] ) ? 1 : -1;
+		} );
+
+		return $res;
+	}
+
 	/**
 	 * Runs query against ElasticSearch and formats returned values
 	 *
@@ -264,7 +323,6 @@ class Backend {
 		$formattedResultSet->results = $this->formatResults( $results );
 		$formattedResultSet->total = $this->getTotal( $results );
 		$formattedResultSet->aggregations = $this->getAggregations( $results );
-		$formattedResultSet->suggestions = $this->getSuggestions( $results );
 
 		return $formattedResultSet;
 	}
@@ -303,14 +361,6 @@ class Backend {
 	 */
 	protected function getAggregations( $results ) {
 		return $results->getAggregations();
-	}
-
-	/**
-	 *
-	 * @param \Elastica\ResultSet $results
-	 */
-	protected function getSuggestions( $results ) {
-		return $results->getSuggests();
 	}
 
 	/**

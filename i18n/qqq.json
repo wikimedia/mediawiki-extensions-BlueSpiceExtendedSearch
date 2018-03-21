@@ -58,7 +58,13 @@
 	"bs-extendedsearch-search-center-options-dialog-title": "Title for search options dialog",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Label for dialog button with action cancel",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Label for confirmation button in search options dialog with apply changes action",
-	"bs-extendedseaerch-search-center-options-page-size": "Label for the page size option in search options dialog. This options sets how many results will be displayed per page",
-	"bs-extendedseaerch-search-center-options-sort-by": "Label for the sort by option in search options dialog. This options sets the field results are sorted by",
-	"bs-extendedseaerch-search-center-options-sort-order": "Label for the sort order option in search options dialog. This options sets the order of sorting - asc or desc"
+	"bs-extendedsearch-search-center-options-page-size": "Label for the page size option in search options dialog. This options sets how many results will be displayed per page",
+	"bs-extendedsearch-search-center-options-sort-by": "Label for the sort by option in search options dialog. This options sets the field results are sorted by",
+	"bs-extendedsearch-search-center-options-sort-order": "Label for the sort order option in search options dialog. This options sets the order of sorting - asc or desc",
+	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Message displaying in autocomplete popup when search yielded no direct results. Fuzzy matches still may exist",
+	"bs-extendedsearch-autocomplete-result-type": "Label showing the type of the results. $1 - type of result",
+	"bs-extendedsearch-autocomplete-result-edit-label": "Label for edit button in autocomplete popup",
+	"bs-extendedsearch-autocomplete-result-visit-label": "Label for button that leads to the page in the result.",
+	"bs-extendedsearch-autocomplete-result-top-match-label": "Label for top matches group in autocomplete results. These results are exact or very close matches to the search term",
+	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Label for fuzzy matches in autocomplete results. These results do not contain search term or are not in correct namespace, but still may be relevant (did you mean?)"
 }

@@ -474,4 +474,226 @@ class Lookup extends \ArrayObject {
 		}
 		return false;
 	}
+
+	/**
+	 *
+	 * @param string $field
+	 * @param string $value
+	 * @return \BS\ExtendedSearch\Lookup
+	 */
+	public function addAutocompleteSuggest( $field, $value ) {
+		$base = $this;
+		$base->ensurePropertyPath( 'suggest', [] );
+
+		$base['suggest'][$field] = [
+			'prefix' => $value,
+			'completion' => [
+				'field' => $field
+			]
+		];
+
+		return $this;
+	}
+
+	/**
+	 *
+	 * @param string $field
+	 * @return \BS\ExtendedSearch\Lookup
+	 */
+	public function removeAutocompleteSuggest( $field ) {
+		$base = $this;
+
+		if( !isset( $base['suggest'] ) ) {
+			return;
+		}
+
+		if( !isset( $base['suggest'][$field] ) ) {
+			return;
+		}
+
+		unset( $base['suggest'][$field] );
+
+		if( empty( $base['suggest'] ) ) {
+			unset( $base['suggest'] );
+		}
+
+		return $this;
+	}
+
+	/**
+	 *
+	 * @return array
+	 */
+	public function getAutocompleteSuggest() {
+		$this->ensurePropertyPath( 'suggest', [] );
+		return $this['suggest'];
+	}
+
+	/**
+	 * Adds context field to autocomplete suggester
+	 * Context serves as a filter
+	 *
+	 * @param string $acField
+	 * @param sting $contextField
+	 * @param array|string $value
+	 * @return \BS\ExtendedSearch\Lookup
+	 */
+	public function addAutocompleteSuggestContext( $acField, $contextField, $value ) {
+		$this->ensurePropertyPath( 'suggest', [] );
+
+		$base = $this;
+
+		if( !is_array( $value ) ) {
+			$value = [ $value ];
+		}
+
+		if( !( in_array( $acField, $base['suggest'] ) ) ) {
+			return;
+		}
+
+		$this->ensurePropertyPath( "suggest.$acField.completion.contexts", [] );
+
+		$base['suggest'][$acField]['completion']['contexts'][$contextField] = $value;
+
+		return $this;
+	}
+
+	/**
+	 *
+	 * @param string $acField
+	 * @param string $contextField
+	 * @return \BS\ExtendedSearch\Lookup
+	 */
+	public function removeAutocompleteSuggestContext( $acField, $contextField ) {
+		$this->ensurePropertyPath( 'suggest', [] );
+
+		$base = $this;
+
+		if( !( in_array( $acField, $base['suggest'] ) ) ) {
+			return;
+		}
+
+		$this->ensurePropertyPath( "suggest.$acField.completion.contexts.$contextField", [] );
+
+		unset( $base['suggest'][$acField]['completion']['contexts'][$contextField] );
+
+		return $this;
+	}
+
+	/**
+	 * Removes single field from context fields array
+	 *
+	 * @param string $acField
+	 * @param string $contextField
+	 * @param string $value
+	 * @return \BS\ExtendedSearch\Lookup
+	 */
+	public function removeAutocompleteSuggestContextValue( $acField, $contextField, $value ) {
+		$this->ensurePropertyPath( 'suggest', [] );
+
+		$base = $this;
+
+		if( !( in_array( $acField, $base['suggest'] ) ) ) {
+			return;
+		}
+
+		$this->ensurePropertyPath( "suggest.$acField.completion.contexts.$contextField", [] );
+
+		$newContextFields = [];
+		foreach( $base['suggest'][$acField]['completion']['contexts'][$contextField] as $field ) {
+			if( $field === $value ) {
+				continue;
+			}
+			$newContextFields[] = $field;
+		}
+
+		$base['suggest'][$acField]['completion']['contexts'][$contextField] = $newContextFields;
+
+		return $this;
+	}
+
+	/**
+	 * Adds level of fuzziness to the autocomplete suggester
+	 *
+	 * @param string $acField
+	 * @param int $fuzzinessLevel
+	 * @return \BS\ExtendedSearch\Lookup
+	 */
+	public function addAutocompleteSuggestFuzziness( $acField, $fuzzinessLevel ) {
+		$this->ensurePropertyPath( 'suggest', [] );
+
+		$base = $this;
+
+		if( !( in_array( $acField, $base['suggest'] ) ) ) {
+			return;
+		}
+
+		$this->ensurePropertyPath( "suggest.$acField.completion.fuzzy", [] );
+
+
+		$base['suggest'][$acField]['completion']['fuzzy'] = [
+			'fuzziness' => $fuzzinessLevel
+		];
+
+		return $this;
+	}
+
+	/**
+	 *
+	 * @param string $acField
+	 * @return \BS\ExtendedSearch\Lookup
+	 */
+	public function removeAutocompleteSuggestFuzziness( $acField ) {
+		$this->ensurePropertyPath( 'suggest', [] );
+
+		$base = $this;
+
+		if( !( in_array( $acField, $base['suggest'] ) ) ) {
+			return;
+		}
+
+		$this->ensurePropertyPath( "suggest.$acField.completion.fuzzy", [] );
+
+
+		unset( $base['suggest'][$acField]['completion']['fuzzy'] );
+
+		return $this;
+	}
+
+	/**
+	 * Sets number of suggestions retrieved for particular field
+	 *
+	 * @param string $acField
+	 * @param int $size
+	 * @return \BS\ExtendedSearch\Lookup
+	 */
+	public function setAutocompleteSuggestSize( $acField, $size ) {
+		$this->ensurePropertyPath( 'suggest', [] );
+
+		$base = $this;
+
+		if( !( in_array( $acField, $base['suggest'] ) ) ) {
+			return;
+		}
+
+		$this->ensurePropertyPath( "suggest.$acField.completion", [] );
+
+
+		$base['suggest'][$acField]['completion']['size'] = $size;
+
+		return $this;
+	}
+
+	/**
+	 * Returns completion query ready to be sent to search
+	 *
+	 * @return array
+	 */
+	public function getAutocompleteSuggestQuery() {
+		return [
+			"suggest" => [
+				"suggest" => $this->getAutocompleteSuggest()
+			]
+		];
+	}
 }

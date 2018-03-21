@@ -58,7 +58,13 @@
 	"bs-extendedsearch-search-center-options-dialog-title": "Search options",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Cancel",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Apply",
-	"bs-extendedseaerch-search-center-options-page-size": "Page size",
-	"bs-extendedseaerch-search-center-options-sort-by": "Sort by",
-	"bs-extendedseaerch-search-center-options-sort-order": "Sort order"
+	"bs-extendedsearch-search-center-options-page-size": "Page size",
+	"bs-extendedsearch-search-center-options-sort-by": "Sort by",
+	"bs-extendedsearch-search-center-options-sort-order": "Sort order",
+	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "No valid matches for your query",
+	"bs-extendedsearch-autocomplete-result-type": "Type: $1",
+	"bs-extendedsearch-autocomplete-result-edit-label": "Edit",
+	"bs-extendedsearch-autocomplete-result-visit-label": "Visit",
+	"bs-extendedsearch-autocomplete-result-top-match-label": "Top matches",
+	"bs-extendedsearch-autocomplete-result-secondary-results-label": "You might be also looking for..."
 }

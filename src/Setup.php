@@ -58,4 +58,36 @@ class Setup {
 
 		return true;
 	}
+
+	public static function onSkinTemplateOutputPageBeforeExec( &$skin, &$template ) {
+		$template->set( 'bs_search_id', 'bs-extendedsearch-box' );
+		$template->set(
+			'bs_search_input',
+			array(
+				'id' => 'bs-extendedsearch-input',
+				'type' => 'text',
+				'name' => 'q'
+			)
+		);
+
+		$template->set(
+			'bs_search_target',
+			array(
+				'page_name' => \SpecialPage::getTitleFor( 'SearchCenter' )->getFullText()
+			)
+		);
+		return true;
+	}
+
+	public static function onBeforePageDisplay( \OutputPage &$out, \Skin &$skin ) {
+		$out->addModules( "ext.blueSpiceExtendedSearch.Autocomplete" );
+
+		$autocompleteConfig = \ExtensionRegistry::getInstance()
+			->getAttribute( 'BlueSpiceExtendedSearchAutocomplete' );
+		$sourceIcons = \ExtensionRegistry::getInstance()
+			->getAttribute( 'BlueSpiceExtendedSearchSourceIcons' );
+
+		$out->addJsConfigVars( 'bsgESAutocompleteConfig', $autocompleteConfig );
+		$out->addJsConfigVars( 'bsgESSourceIcons', $sourceIcons );
+	}
 }

@@ -14,6 +14,7 @@ class Base {
 	 * can be displayed
 	 */
 	const MORE_VALUES_TEXT = '...';
+
 	/**
 	 *
 	 * @var \BS\ExtendedSearch\Source\Base
@@ -44,7 +45,6 @@ class Base {
 	 * @param array $resultStructure
 	 */
 	public function modifyResultStructure( &$resultStructure ) {
-
 	}
 
 	/**
@@ -60,5 +60,40 @@ class Base {
 		$originalValues = $resultObject->getData();
 		$result['ctime'] = $this->getContext()->getLanguage()->date( $originalValues['ctime'] );
 		$result['mtime'] = $this->getContext()->getLanguage()->date( $originalValues['mtime'] );
+	}
+
+	/**
+	 * Allows sources to modify results of autocomplete query
+	 *
+	 * @param array $results
+	 * @param array $searchData
+	 */
+	public function formatAutocompleteResults( &$results, $searchData ) {
+	}
+
+	/**
+	 * Allows sources to change scoring of the autocomplete query results
+	 *
+	 * @param type $results
+	 * @param type $searchData
+	 */
+	public function scoreAutocompleteResults( &$results, $searchData ) {
+		foreach( $results as &$result ) {
+			if( $result['is_scored'] ) {
+				continue;
+			}
+
+			if( strtolower( $result['basename'] ) == strtolower( $searchData['value'] ) ) {
+				$result['score'] = 8;
+			} else if( strpos( strtolower( $result['basename'] ), strtolower( $searchData['value'] ) ) !== false ) {
+				if( strpos( strtolower( $result['basename'] ), strtolower( $searchData['value'] ) ) === 0 ) {
+					$result['score'] = 7;
+				} else {
+					$result['score'] = 6;
+				}
+			} else {
+				$result['score'] = 2;
+			}
+		}
 	}
 }

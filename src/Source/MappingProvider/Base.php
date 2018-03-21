@@ -13,13 +13,17 @@ class Base {
 			'congregated' => [
 				'type' => 'text'
 			],
+			'ac_suggest' => [
+				'type' => 'completion',
+				'preserve_position_increments' => false
+			],
 			'uri' => [
 				'type' => 'text'
 			],
 			'basename' => [
 				'type' => 'text',
 				'boost' => 3,
-				'copy_to' => 'congregated',
+				'copy_to' => [ 'congregated', 'ac_suggest' ],
 				'fielddata' => true //required in order to be sortable
 			],
 			'extension' => [

@@ -12,7 +12,7 @@ class SpecialPage extends DecoratorBase {
 	 */
 	public function getDataConfig( $sUri, $oSpecialPage ) {
 		$aDC = $this->oDecoratedDP->getDataConfig( $sUri, $oSpecialPage );
-		$aDC += [
+		$aDC = array_merge( $aDC, [
 			'basename' => $oSpecialPage->getPageTitle()->getBaseText(),
 			'extension' => 'special',
 			'mime_type' => 'text/html',
@@ -20,7 +20,8 @@ class SpecialPage extends DecoratorBase {
 			'description' => $oSpecialPage->getDescription(),
 			'namespace' => $oSpecialPage->getPageTitle()->getNamespace(),
 			'namespace_text' => $oSpecialPage->getPageTitle()->getNsText()
-		];
+		] );
+
 		return $aDC;
 	}
 }

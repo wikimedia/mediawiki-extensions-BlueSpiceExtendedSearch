@@ -1,0 +1,182 @@
+@import "ext.blueSpiceExtendedSearch.Defines.less";
+
+.bs-extendedsearch-autocomplete-input {
+	float: left;
+	margin-top: 30px;
+}
+
+div#bs-extendedsearch-box form div.form-group {
+	position: relative;
+}
+
+.bs-extendedsearch-autocomplete-popup {
+	background-color: white;
+	border: 1px solid @autocomplete-border-color;
+	position: absolute;
+	border-radius: 3px;
+	padding-bottom: 10px;
+}
+
+.bs-extendedsearch-autocomplete-popup-primary {
+	display: inline-block;
+	width: 50%;
+	/*border-right: 3px solid #dbd7d7;*/
+	font-size: 1.2em;
+	vertical-align: top;
+}
+
+.bs-extendedsearch-autocomplete-popup-primary-item {
+	padding: 10px;
+	position: relative;
+	min-height: 60px;
+}
+
+.bs-extendedsearch-autocomplete-popup-primary-item.bs-autocomplete-result-selected {
+	background-color: @autocomplete-selected-background-color;
+}
+
+.bs-extendedsearch-autocomplete-popup-primary-item:hover,
+.bs-extendedsearch-autocomplete-popup-secondary-item:hover {
+	background-color: @autocomplete-selected-background-color;
+}
+
+.bs-extendedsearch-autocomplete-pill {
+	padding-left: 8px;
+	padding-right: 8px;
+	background-color: @autocomplete-pill-background-color;
+	font-weight: bold;
+	color: white;
+	display: table-cell;
+	width:1%;
+    white-space:nowrap;
+}
+
+/*Edit button in autocomplete results*/
+.bs-extendedsearch-autocomplete-popup-primary-edit,
+.bs-extendedsearch-autocomplete-popup-secondary-edit {
+	padding: 7px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	background-color: @autocomplete-action-button-background-color;
+	cursor: pointer;
+	text-decoration: none !important;
+	border-radius: 5px;
+	display: none;
+}
+
+.bs-extendedsearch-autocomplete-popup-secondary-edit {
+	padding: 5px;
+	top: 2px;
+}
+
+.bs-extendedsearch-autocomplete-popup-primary-edit:hover,
+.bs-extendedsearch-autocomplete-popup-secondary-edit:hover {
+	background-color: @autocomplete-action-button-hover-background-color;
+}
+
+.bs-extendedsearch-autocomplete-popup-primary-featured {
+	/*To be implemented*/
+}
+
+.bs-extendedsearch-autocomplete-popup-primary-no-results {
+	padding: 15px;
+}
+
+.bs-extendedsearch-autocomplete-popup-primary-item-type,
+.bs-extendedsearch-autocomplete-popup-secondary-item-type {
+	display: block;
+	color: #c6c6c6;
+	line-height: 0.8em;
+	font-size: 0.8em;
+}
+
+.bs-extendedsearch-autocomplete-popup-primary-item-header {
+
+}
+
+.bs-extendedsearch-autocomplete-popup-secondary-item {
+	position: relative;
+	padding-left: 20px;
+	padding-bottom: 5px;
+}
+
+.bs-extendedsearch-autocomplete-popup-special-cnt {
+	display: inline-block;
+	width: 50%;
+	vertical-align: top;
+	border-left: 3px solid @autocomplete-border-color;
+}
+
+.bs-extendedsearch-autocomplete-popup-special-item-label {
+	padding: 10px;
+	display: block;
+	font-weight: bold;
+}
+
+.bs-extendedsearch-autocomplete-popup-top-match-item {
+	padding: 5px;
+	margin-left: 20px;
+	margin-bottom: 5px;
+	width: 160px;
+	display: inline-block;
+	position:relative;
+	vertical-align: top;
+	text-align: center;
+}
+
+.bs-extendedsearch-autocomplete-popup-top-match-item-image{
+	width: 150px;
+	height: 150px;
+	background-position: top;
+	background-size: cover;
+}
+
+.bs-extendedsearch-autocomplete-popup-top-match-item-image.dimmed {
+	opacity: .5;
+}
+
+.bs-extendedsearch-autocomplete-popup-top-match-edit,
+.bs-extendedsearch-autocomplete-popup-top-match-visit {
+	position: absolute;
+	top: 30px;
+	left: 0;
+	right: 0;
+	margin-left: 10px;
+	width: 140px;
+	text-align: center;
+	background-color: @autocomplete-action-button-background-color;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-decoration: none;
+	font-weight: bold;
+	display: none;
+	border-radius: 10px;
+}
+
+.bs-extendedsearch-autocomplete-popup-top-match-edit {
+	top: 90px;
+}
+
+.bs-extendedsearch-autocomplete-popup-top-match-edit:hover,
+.bs-extendedsearch-autocomplete-popup-top-match-visit:hover {
+	text-decoration:none !important;
+	background-color: @autocomplete-action-button-hover-background-color;
+}
+
+.bs-extendedsearch-autocomplete-popup-top-match-item-header {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.bs-extendedsearch-autocomplete-popup-primary-item-image {
+	width: 20px;
+	height: 20px;
+	background-size: contain;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.bs-extendedsearch-autocomplete-wrapper {
+	display: table;
+}

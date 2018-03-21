@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
-class Query extends \ApiBase {
+class Autocomplete extends \ApiBase {
 	public function execute() {
 		$this->readInParameters();
 		$this->lookUpResults();
@@ -21,6 +21,11 @@ class Query extends \ApiBase {
 				\ApiBase::PARAM_REQUIRED => false,
 				\ApiBase::PARAM_DFLT => 'local',
 				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-generic-param-backend',
+			],
+			'searchData' => [
+				\ApiBase::PARAM_TYPE => 'string',
+				\ApiBase::PARAM_REQUIRED => true,
+				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-query-param-search_data',
 			]
 		];
 	}
@@ -29,15 +34,12 @@ class Query extends \ApiBase {
 		$value = parent::getParameterFromSettings( $paramName, $paramSettings, $parseLimit );
 		if ( $paramName === 'q' ) {
 			$decodedValue = \FormatJson::decode( $value, true );
-			$oLookup = new \BS\ExtendedSearch\Lookup();
 			if( is_array( $decodedValue ) ) {
-				$oLookup = new \BS\ExtendedSearch\Lookup( $decodedValue );
+				return new \BS\ExtendedSearch\Lookup( $decodedValue );
 			}
-			else {
-				$oLookup->setSimpleQueryString( $value );
-			}
-
-			return $oLookup;
+		}
+		if( $paramName === 'searchData' ) {
+			return \FormatJson::decode( $value, true );
 		}
 		return $value;
 	}
@@ -52,24 +54,23 @@ class Query extends \ApiBase {
 	protected function readInParameters() {
 		$this->oLookup = $this->getParameter( 'q' );
 		$this->sBackend = $this->getParameter( 'backend' );
+		$this->searchData = $this->getParameter( 'searchData' );
 	}
 
 	/**
 	 *
-	 * @var stdClass $resultSet
+	 * @var array $suggestions
 	 */
-	protected $resultSet;
+	protected $suggestions;
 	protected function lookUpResults() {
 		$oBackend = \BS\ExtendedSearch\Backend::instance( $this->sBackend );
-		$this->resultSet = $oBackend->runLookup( $this->oLookup );
+		$this->suggestions = $oBackend->runAutocompleteLookup( $this->oLookup, $this->searchData );
 	}
 
 	protected $oResult;
 	protected function returnResults() {
 		$oResult = $this->getResult();
 
-		$oResult->addValue( null , 'results', $this->resultSet->results );
-		$oResult->addValue( null , 'total', $this->resultSet->total );
-		$oResult->addValue( null , 'aggregations', $this->resultSet->aggregations );
+		$oResult->addValue( null , 'suggestions', $this->suggestions );
 	}
 }

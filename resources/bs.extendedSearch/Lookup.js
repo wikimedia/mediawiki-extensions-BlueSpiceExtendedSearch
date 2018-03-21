@@ -383,3 +383,147 @@ bs.extendedSearch.Lookup.prototype.getFrom = function() {
 	this.ensurePropertyPath( 'from', 0 );
 	return this.from;
 }
+
+bs.extendedSearch.Lookup.prototype.addAutocompleteSuggest = function( field, value, suggestName ) {
+	this.ensurePropertyPath( 'suggest', {} );
+
+	suggestName = suggestName || field;
+
+	this.suggest[suggestName] = {
+		prefix: value,
+		completion: {
+			field: field
+		}
+	};
+
+	return this;
+}
+
+bs.extendedSearch.Lookup.prototype.removeAutocompleteSuggest = function( suggestName ) {
+	this.ensurePropertyPath( 'suggest', {} );
+
+	var newSuggest = {};
+	for( field in this.suggest ) {
+		if( fieldName === suggestName ) {
+			continue;
+		}
+
+		newSuggest[fieldName] = this.suggest[fieldName];
+	}
+
+	this.suggest = newSuggest;
+
+	if( this.suggest.length === 0 ) {
+		delete( this.suggest );
+	}
+
+	return this;
+}
+
+bs.extendedSearch.Lookup.prototype.getAutocompleteSuggest = function() {
+	this.ensurePropertyPath( 'suggest', {} );
+
+	return this.suggest;
+}
+
+bs.extendedSearch.Lookup.prototype.addAutocompleteSuggestContext = function( acField, contextField, value ) {
+	this.ensurePropertyPath( 'suggest', {} );
+
+	if( $.isArray( value ) == false ) {
+		value = [ value ];
+	}
+
+	if( !( acField in this.suggest ) ) {
+		return;
+	}
+
+	this.ensurePropertyPath( 'suggest.' + acField + '.completion.contexts', {} );
+
+	this.suggest[acField].completion.contexts[contextField] = value;
+
+	return this;
+}
+
+bs.extendedSearch.Lookup.prototype.removeAutocompleteSuggestContext = function( acField, contextField ) {
+	value = value || false;
+
+	this.ensurePropertyPath( 'suggest', {} );
+
+	if( !( acField in this.suggest ) ) {
+		return;
+	}
+
+	this.ensurePropertyPath( 'suggest.' + acField + '.completion.contexts.' + contextField, [] );
+
+	delete( this.suggest[acField]['completion']['contexts'][contextField] );
+
+	return this;
+}
+
+bs.extendedSearch.Lookup.prototype.removeAutocompleteSuggestContextValue = function( acField, contextField, value ) {
+	value = value || false;
+
+	this.ensurePropertyPath( 'suggest', {} );
+
+	if( !( acField in this.suggest ) ) {
+		return;
+	}
+
+	this.ensurePropertyPath( 'suggest.' + acField + '.completion.contexts.' + contextField, [] );
+
+	var newValues = [];
+	for( idx in this.suggest[acField]['completion']['contexts'][contextField] ) {
+		var contextValue = this.suggest[acField]['completion']['contexts'][contextField][idx];
+		if( contextValue != value ) {
+			newValues.push( contextValue );
+		}
+	}
+
+	this.suggest[acField]['completion']['contexts'][contextField] = newValues();
+
+	return this;
+}
+
+bs.extendedSearch.Lookup.prototype.addAutocompleteSuggestFuzziness = function( acField, fuzzinessLevel ) {
+	this.ensurePropertyPath( 'suggest', {} );
+
+	if( !( acField in this.suggest ) ) {
+		return;
+	}
+
+	this.ensurePropertyPath( 'suggest.' + acField + '.completion.fuzzy', {} );
+
+	this.suggest[acField].completion.fuzzy = { fuzziness: fuzzinessLevel };
+
+	return this;
+}
+
+bs.extendedSearch.Lookup.prototype.removeAutocompleteSuggestFuzziness = function( acField ) {
+	value = value || false;
+
+	this.ensurePropertyPath( 'suggest', {} );
+
+	if( !( acField in this.suggest ) ) {
+		return;
+	}
+
+	this.ensurePropertyPath( 'suggest.' + acField + '.completion.fuzzy', [] );
+
+	delete( this.suggest[acField].completion.fuzzy );
+
+	return this;
+}
+
+bs.extendedSearch.Lookup.prototype.setAutocompleteSuggestSize = function( acField, size ) {
+	this.ensurePropertyPath( 'suggest', {} );
+
+	if( !( acField in this.suggest ) ) {
+		return;
+	}
+
+	this.ensurePropertyPath( 'suggest.' + acField + '.completion', {} );
+
+	this.suggest[acField].completion.size = size;
+
+	return this;
+}
