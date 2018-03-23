@@ -48,7 +48,6 @@
 	"bs-extendedsearch-search-center-result-namespace_text-label": "Label for the namespace field in the result",
 	"bs-extendedsearch-search-center-result-categories-label": "Label for the category field in the result",
 	"bs-extendedsearch-search-center-result-author-label": "Label for the author field in the result",
-	"bs-extendedsearch-search-center-result-categories-label": "Label for the categories field in the result",
 	"bs-extendedsearch-search-center-result-sections-label": "Label for the sections field in the result",
 	"bs-extendedsearch-search-center-result-ctime-label": "Label for the created time field in the result",
 	"bs-extendedsearch-search-center-result-mtime-label": "Label for the modified time field in the result",
