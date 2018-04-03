@@ -1,67 +1,78 @@
 ( function( mw, $, bs, d, undefined ){
-	var $searchContainer = $( '#bs-extendedsearch-box' );
-	var $searchForm = $searchContainer.find( 'form' );
-	var $searchBox = $( '#bs-extendedsearch-input' );
-	var $searchButton = $searchForm.find( 'button' );
+	function _init( cfg ) {
+		cfg = cfg || {};
+		this.mobile = cfg.mobile || false;
 
-	var $searchBoxWrapper = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-wrapper' );
-	$searchBoxWrapper.attr( 'style', 'width: ' + $searchBox.outerWidth() + 'px;' );
-	$searchBox.attr( 'style' , 'display: table-cell; width: 100%;' );
-	$searchBox.wrap( $searchBoxWrapper );
+		this.$searchContainer = $( '#' + cfg.cntId );
+		this.$searchForm = this.$searchContainer.find( 'form' );
+		this.$searchBox = $( '#' + cfg.inputId );
+		this.$searchButton = this.$searchForm.find( 'button' );
+
+		this.$searchBoxWrapper = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-wrapper' );
+
+		//Wrap search box input in another div to make it sizable when pill is added
+		this.$searchBoxWrapper.attr( 'style', 'width: ' + this.$searchBox.outerWidth() + 'px;' );
+		this.$searchBox.attr( 'style' , 'display: table-cell; width: 100%;' );
+		this.$searchBox.wrap( this.$searchBoxWrapper );
+
+		//Wire the events
+		this.$searchForm.one( 'submit', this.onSubmit );
+		this.$searchBox.on( 'keydown', this.onKeyDown.bind( this ) );
+		this.$searchBox.on( 'keyup', this.onKeyUp.bind( this ) );
+	}
 
 	//If user has navigated using arrows to a result,
 	//we don't want form to be submited, user should be navigate to that page
-	$searchForm.one( 'submit', function( e ) {
+	function _onSubmit( e ) {
 		e.preventDefault();
 		var overrideSubmitting = bs.extendedSearch.Autocomplete.navigateToResultPage();
 		//If no result is selected, or URI cannot be retieved, proceed with normal submit
 		if( !overrideSubmitting ) {
 			$( this ).submit();
 		}
-	} );
+	}
 
-	var valueBefore = '';
-	$searchBox.on( 'keydown', function( e ) {
-		valueBefore = e.target.value;
-	} );
-
-	$searchBox.on( 'keyup', function( e ) {
+	function _onKeyUp( e ) {
 		var value = e.target.value;
 
 		//Escape - close popup
 		if( e.which == 27 ) {
-			bs.extendedSearch.Autocomplete.removePopup();
+			this.removePopup();
 			return;
 		}
 
 		//Down key
 		if( e.which == 40 ) {
-			bs.extendedSearch.Autocomplete.navigateThroughResults( 'down' );
+			this.navigateThroughResults( 'down' );
 			return;
 		}
 
 		//Up key
 		if( e.which == 38 ) {
-			bs.extendedSearch.Autocomplete.navigateThroughResults( 'up' );
+			this.navigateThroughResults( 'up' );
 			return;
 		}
 
-		if( valueBefore == '' && value == '' && e.which == 8 ) {
+		if( this.valueBefore == '' && value == '' && e.which == 8 ) {
 			//Backspacing on empty field
-			bs.extendedSearch.Autocomplete.removeNamespacePill( true );
+			this.removeNamespacePill( true );
 		}
 
-		if( valueBefore == value ) {
+		if( this.valueBefore == value ) {
 			return;
 		}
 
-		bs.extendedSearch.Autocomplete.removePopup();
-		bs.extendedSearch.Autocomplete.showPopup( value );
-	} );
+		this.removePopup();
+		this.showPopup( value );
+	}
 
-	function getPopupWidth() {
-		var searchBoxWidth = parseInt( $searchBoxWrapper.outerWidth() );
-		var searchButtonWidth = parseInt( $searchButton.outerWidth() );
+	function _onKeyDown( e ) {
+		this.valueBefore = e.target.value;
+	}
+
+	function _getPopupWidth() {
+		var searchBoxWidth = parseInt( this.$searchBoxWrapper.outerWidth() );
+		var searchButtonWidth = parseInt( this.$searchButton.outerWidth() );
 
 		return searchBoxWidth + searchButtonWidth;
 	}
@@ -85,12 +96,13 @@
 			data: suggestions,
 			searchTerm: this.value,
 			namespaceId: this.namespace.id || 0,
-			displayLimits: autocompleteConfig["DisplayLimits"]
+			displayLimits: autocompleteConfig["DisplayLimits"],
+			mobile: this.mobile
 		} );
 
 		this.popup.$element.attr( 'style',
-			'top:' + $searchBox.outerHeight() + 'px;' +
-			'width:' + getPopupWidth() + 'px;'
+			'top:' + this.$searchBox.outerHeight() + 'px;' +
+			'width:' + this.getPopupWidth() + 'px;'
 		);
 
 		this.popup.$element.insertAfter( $( '.bs-extendedsearch-autocomplete-wrapper' ) );
@@ -101,7 +113,7 @@
 			return;
 		}
 
-		$searchContainer.find( this.popup.$element ).remove();
+		this.$searchContainer.find( this.popup.$element ).remove();
 		this.popup = null;
 	}
 
@@ -197,8 +209,8 @@
 		this.removeNamespacePill();
 
 		this.$pill = $( '<span>' ).addClass( 'bs-extendedsearch-autocomplete-pill' ).html( this.namespace.text );
-		$searchBox.before( this.$pill );
-		$searchBox.val( this.value );
+		this.$searchBox.before( this.$pill );
+		this.$searchBox.val( this.value );
 	}
 
 	function _removeNamespacePill( clearNamespace ) {
@@ -208,7 +220,7 @@
 			this.namespace = '';
 		}
 
-		$searchContainer.find( '.bs-extendedsearch-autocomplete-pill' ).remove();
+		this.$searchContainer.find( '.bs-extendedsearch-autocomplete-pill' ).remove();
 	}
 
 	function _getIconPath( type ) {
@@ -242,6 +254,7 @@
 	}
 
 	bs.extendedSearch.Autocomplete = {
+		init: _init,
 		showPopup: _showPopup,
 		makePopup: _makePopup,
 		removePopup: _removePopup,
@@ -251,7 +264,36 @@
 		removeNamespacePill: _removeNamespacePill,
 		getIconPath: _getIconPath,
 		navigateThroughResults: _navigateThroughResults,
-		navigateToResultPage: _navigateToResultPage
+		navigateToResultPage: _navigateToResultPage,
+		getPopupWidth: _getPopupWidth,
+		onSubmit: _onSubmit,
+		onKeyDown: _onKeyDown,
+		onKeyUp: _onKeyUp
+	}
+
+	//Since ResourceModule loading for mobile and desktop
+	//is not working as expected, decide if its mobile or desktop
+	//based on which searchBox is present
+	//TODO: Try again with RL
+	var $desktopSearchBox = $( '#bs-extendedsearch-box' );
+	var $mobileSearchBox = $( '#bs-extendedsearch-mobile-box' );
+
+	if( $desktopSearchBox.is( ':visible' ) ) {
+		initMe( {
+			cntId: 'bs-extendedsearch-box',
+			inputId: 'bs-extendedsearch-input',
+			mobile: false
+		} );
+	} else if ( $mobileSearchBox.is( ':visible' ) ) {
+		initMe( {
+			cntId: 'bs-extendedsearch-mobile-box',
+			inputId: 'bs-extendedsearch-mobile-input',
+			mobile: true
+		} );
+	}
+
+	function initMe( cfg ) {
+		bs.extendedSearch.Autocomplete.init( cfg );
 	}
 
 } )( mediaWiki, jQuery, blueSpice, document );

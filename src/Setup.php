@@ -37,6 +37,8 @@ class Setup {
 		return true;
 	}
 
+	//TODO: Move hooks to proper classes
+
 	/**
 	 * Register QUnit Tests with MediaWiki framework
 	 * @param array $testModules
@@ -70,6 +72,16 @@ class Setup {
 			)
 		);
 
+		$template->set( 'bs_search_mobile_id', 'bs-extendedsearch-mobile-box' );
+		$template->set(
+			'bs_search_mobile_input',
+			array(
+				'id' => 'bs-extendedsearch-mobile-input',
+				'type' => 'text',
+				'name' => 'q'
+			)
+		);
+
 		$template->set(
 			'bs_search_target',
 			array(
@@ -81,6 +93,8 @@ class Setup {
 
 	public static function onBeforePageDisplay( \OutputPage &$out, \Skin &$skin ) {
 		$out->addModules( "ext.blueSpiceExtendedSearch.Autocomplete" );
+		//$out->addModules( "ext.blueSpiceExtendedSearch.Autocomplete.desktop" );
+		//$out->addModules( "ext.blueSpiceExtendedSearch.Autocomplete.mobile" );
 
 		$autocompleteConfig = \ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchAutocomplete' );

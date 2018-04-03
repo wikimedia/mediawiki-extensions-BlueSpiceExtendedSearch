@@ -8,6 +8,7 @@
 		this.searchTerm = cfg.searchTerm || '';
 		this.namespaceId = cfg.namespaceId || 0;
 		this.displayLimits = cfg.displayLimits || {};
+		this.mobile = cfg.mobile || false;
 
 		this.current = -1;
 
@@ -18,7 +19,11 @@
 		bs.extendedSearch.mixin.AutocompleteResults.call( this, cfg );
 
 		this.$element.addClass( 'bs-extendedsearch-autocomplete-popup' );
-		this.$element.append( this.$primaryResults, this.$specialResults );
+		this.$element.append( this.$primaryResults );
+
+		if( !this.mobile ) {
+			this.$element.append( this.$specialResults );
+		}
 	}
 
 	OO.inheritClass( bs.extendedSearch.AutocompletePopup, OO.ui.Widget );
