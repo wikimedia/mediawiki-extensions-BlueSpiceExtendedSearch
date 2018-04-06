@@ -34,7 +34,7 @@
 			}
 
 			//Fuzzy results when no NS is selected and hits in other NSs when it is
-			if( ( cfg.namespaceId !== 0 && suggestion.score < 5 ) || suggestion.score <= 2 ) {
+			if( ( cfg.namespaceId !== 0 && suggestion.score <= 5 ) || suggestion.score <= 2 ) {
 				if( limits.secondary <= this.displayedResults.secondary.length ) {
 					continue;
 				}
@@ -49,7 +49,7 @@
 
 			//If no namespace is specified, let all namespaces into primaries,
 			//otherwise only results in specified namespace
-			if( cfg.namespaceId !== 0 && suggestion.score < 5 ) {
+			if( cfg.namespaceId !== 0 && suggestion.score <= 5 ) {
 				continue;
 			}
 
