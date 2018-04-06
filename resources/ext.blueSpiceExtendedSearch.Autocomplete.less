@@ -30,12 +30,13 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 	border: 1px solid @autocomplete-border-color;
 	position: absolute;
 	border-radius: 3px;
-	padding-bottom: 10px;
+	display: table;
 	.bs-extendedsearch-autocomplete-popup-primary {
-		display: inline-block;
+		display: table-cell;
 		width: 50%;
 		font-size: 1.2em;
 		vertical-align: top;
+		padding-bottom: 10px;
 		.bs-extendedsearch-autocomplete-popup-primary-item {
 			padding: 10px;
 			position: relative;
@@ -75,10 +76,11 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 		}
 	}
 	.bs-extendedsearch-autocomplete-popup-special-cnt {
-		display: inline-block;
+		display: table-cell;
 		width: 50%;
 		vertical-align: top;
 		border-left: 3px solid @autocomplete-border-color;
+		padding-bottom: 10px;
 		.bs-extendedsearch-autocomplete-popup-special-item-label {
 			padding: 10px;
 			display: block;
