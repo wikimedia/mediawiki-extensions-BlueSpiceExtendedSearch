@@ -27,6 +27,8 @@ class Base {
 	 */
 	public function __construct( $source ) {
 		$this->source = $source;
+		//Just for convinience, as many of the formatters would use it
+		$this->linkRenderer = $this->source->getBackend()->getService( 'LinkRenderer' );
 	}
 
 	/**

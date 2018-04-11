@@ -5,7 +5,6 @@ namespace BS\ExtendedSearch\Source\Formatter;
 use BS\ExtendedSearch\Source\Formatter\Base;
 use BlueSpice\DynamicFileDispatcher\Params;
 use BlueSpice\DynamicFileDispatcher\ArticlePreviewImage;
-use MediaWiki\MediaWikiServices;
 
 class WikiPageFormatter extends Base {
 	public function modifyResultStructure ( &$resultStructure ) {
@@ -53,7 +52,7 @@ class WikiPageFormatter extends Base {
 				break;
 			}
 			$categoryTitle = \Title::makeTitle( NS_CATEGORY, $category );
-			$formattedCategories[] = \Linker::link( $categoryTitle, $category );
+			$formattedCategories[] = $this->linkRenderer->makeLink( $categoryTitle, $category );
 		}
 		return implode( Base::VALUE_SEPARATOR, $formattedCategories ) . ( $moreCategories ? Base::MORE_VALUES_TEXT : '' );
 	}
@@ -61,10 +60,16 @@ class WikiPageFormatter extends Base {
 	protected function formatSection( $result ) {
 		$title = \Title::newFromText( $result['prefixed_title'] );
 		$sections = [];
-		foreach( $result['sections'] as $section ) {
-			$sections[] = \Linker::link( $title, $section ); //How to add fragment?
+		$moreSections = false;
+		foreach( $result['sections'] as $idx => $section ) {
+			if( $idx > 2 ) {
+				$moreSections = true;
+				break;
+			}
+			$linkTarget = $title->createFragmentTarget( $section );
+			$sections[] = $this->linkRenderer->makeLink( $linkTarget, $section );
 		}
-		return implode( Base::VALUE_SEPARATOR, $sections );
+		return implode( Base::VALUE_SEPARATOR, $sections ) . ( $moreSections ? Base::MORE_VALUES_TEXT : '' );;
 	}
 
 	protected function getHighlight( $resultObject ) {
@@ -105,9 +110,13 @@ class WikiPageFormatter extends Base {
 			ArticlePreviewImage::WIDTH => $width,
 			ArticlePreviewImage::TITLETEXT => $title->getFullText(),
 		];
-		$dfdUrlBuilder = MediaWikiServices::getInstance()->getService(
+		$dfdUrlBuilder = $this->source->getBackend()->getService(
 			'BSDynamicFileDispatcherUrlBuilder'
 		);
+		if( null == $dfdUrlBuilder ) {
+			return '';
+		}
+
 		$url = $dfdUrlBuilder->build(
 			new Params( $params )
 		);
@@ -121,6 +130,10 @@ class WikiPageFormatter extends Base {
 				continue;
 			}
 
+			//No point in transfering this data
+			unset( $result['source_content'] );
+			unset( $result['rendered_content'] );
+
 			//Dont show namespace part if user is already searching in particular NS
 			if( $result['namespace'] != $searchData['namespace'] || $searchData['namespace'] === 0 ) {
 				$result['basename'] = $result['prefixed_title'];
@@ -128,7 +141,7 @@ class WikiPageFormatter extends Base {
 
 			$title = \Title::newFromText( $result['prefixed_title'] );
 			if( $title instanceof \Title ) {
-				$result['edit_uri'] = $title->getLocalURL( [ 'action' => 'edit' ] );
+				$result['pageAnchor'] = $this->linkRenderer->makeLink( $title, $result['basename'] );
 				$result['image_uri'] = $this->getImageUri( $result['prefixed_title'], 150 );
 			}
 		}

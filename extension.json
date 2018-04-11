@@ -124,24 +124,6 @@
 				"ext.blueSpiceExtendedSearch"
 			]
 		},
-		"ext.blueSpiceExtendedSearch.Autocomplete.desktop": {
-			"scripts": [
-				"ext.blueSpiceExtendedSearch.Autocomplete.desktop.js"
-			],
-			"dependencies": [
-				"ext.blueSpiceExtendedSearch.Autocomplete"
-			],
-			"targets": "desktop"
-		},
-		"ext.blueSpiceExtendedSearch.Autocomplete.mobile": {
-			"scripts": [
-				"ext.blueSpiceExtendedSearch.Autocomplete.mobile.js"
-			],
-			"dependencies": [
-				"ext.blueSpiceExtendedSearch.Autocomplete"
-			],
-			"targets": "mobile"
-		},
 		"ext.blueSpiceExtendedSearch.SearchCenter": {
 			"scripts": [
 				"bs.extendedSearch/mixin/Result.js",
@@ -157,7 +139,6 @@
 				"ext.blueSpiceExtendedSearch.SearchCenter.js"
 			],
 			"styles": [
-				"ext.blueSpiceExtendedSearch.Defines.less",
 				"ext.blueSpiceExtendedSearch.SearchCenter.less"
 			],
 			"messages": [

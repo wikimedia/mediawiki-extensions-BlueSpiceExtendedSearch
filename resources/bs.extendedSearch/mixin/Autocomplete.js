@@ -98,4 +98,34 @@
 	}
 
 	OO.initClass( bs.extendedSearch.mixin.AutocompleteResults );
+
+	bs.extendedSearch.mixin.AutocompleteHeader = function( cfg ) {
+		this.uri = cfg.uri;
+		this.basename = cfg.basename;
+		this.pageAnchor = cfg.pageAnchor || null;
+
+		//If backend provided an anchor use it, otherwise create it
+		if( this.pageAnchor ) {
+			this.$header = $( this.pageAnchor );
+		} else {
+			this.$header = $( '<a>' )
+				.attr( 'href', this.uri )
+				.html( this.basename );
+		}
+		this.$header.addClass( 'bs-extendedsearch-autocomplete-popup-primary-item-header' );
+	}
+
+	OO.initClass( bs.extendedSearch.mixin.AutocompleteHeader );
+
+	bs.extendedSearch.mixin.AutocompleteHitType = function( cfg ) {
+		this.hitType = cfg.hitType;
+		this.rankType = cfg.rankType;
+
+		this.$type = $( '<span>' )
+			.addClass( 'bs-extendedsearch-autocomplete-popup-' + this.rankType + '-item-type' )
+			.html( mw.message( 'bs-extendedsearch-autocomplete-result-type', this.hitType ).plain() );
+	}
+
+	OO.initClass( bs.extendedSearch.mixin.AutocompleteHitType );
+
 } )( mediaWiki, jQuery, blueSpice, document );

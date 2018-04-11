@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch;
 
+use MediaWiki\MediaWikiServices;
+
 class Backend {
 
 	/**
@@ -373,5 +375,19 @@ class Backend {
 			->getAttribute( 'BlueSpiceExtendedSearchResultStructure' );
 
 		return $defaultStructure;
+	}
+
+	/**
+	 * Returns service object for the given name
+	 * or null if service does not exist or is disabled
+	 *
+	 * @param string $name
+	 * @return Object|null
+	 */
+	public function getService( $name ) {
+		if( MediaWikiServices::getInstance()->hasService( $name ) ) {
+			return MediaWikiServices::getInstance()->getService( $name );
+		}
+		return null;
 	}
 }

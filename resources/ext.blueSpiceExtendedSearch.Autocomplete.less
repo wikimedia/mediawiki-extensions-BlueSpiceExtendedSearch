@@ -1,4 +1,4 @@
-@import "ext.blueSpiceExtendedSearch.Defines.less";
+@import "ext.blueSpiceExtendedSearch.variables.less";
 
 /*Search form*/
 div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
@@ -18,6 +18,28 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 					white-space:nowrap;
 				}
 				&.ac-mobile {
+				}
+				.bs-extendedsearch-autocomplete-clear {
+					display: table-cell !important;
+					background-color: white !important;
+					width: 1%;
+					white-space: nowrap;
+					padding-left: 5px;
+					padding-right: 10px;
+					border: 1px solid #cccccc;
+					border-radius: 0px 5px 5px 0px;
+					border-left: none;
+				}
+				input#bs-extendedsearch-input,
+				input#bs-extendedsearch-mobile-input {
+					&:focus {
+						/*Remove "outline" when focused - just keep the same border color*/
+						border-color: rgb(204, 204, 204);
+					}
+					&.clear-present {
+						border-right: none !important;
+						border-radius: 0 !important;
+					}
 				}
 			}
 		}
@@ -49,20 +71,6 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 			}
 			&:hover {
 				background-color: @autocomplete-selected-background-color;
-			}
-			.bs-extendedsearch-autocomplete-popup-primary-edit {
-				padding: 7px;
-				position: absolute;
-				right: 10px;
-				top: 10px;
-				background-color: @autocomplete-action-button-background-color;
-				cursor: pointer;
-				text-decoration: none !important;
-				border-radius: 5px;
-				display: none;
-				&:hover {
-					background-color: @autocomplete-action-button-hover-background-color;
-				}
 			}
 			.bs-extendedsearch-autocomplete-popup-primary-item-type {
 				display: block;
@@ -100,20 +108,6 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 					line-height: 0.8em;
 					font-size: 0.8em;
 				}
-				.bs-extendedsearch-autocomplete-popup-secondary-edit {
-					padding: 5px;
-					position: absolute;
-					right: 10px;
-					top: 2px;
-					background-color: @autocomplete-action-button-background-color;
-					cursor: pointer;
-					text-decoration: none !important;
-					border-radius: 5px;
-					display: none;
-					&:hover {
-						background-color: @autocomplete-action-button-hover-background-color;
-					}
-				}
 			}
 		}
 		.bs-extendedsearch-autocomplete-popup-top-match {
@@ -126,6 +120,9 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 				position:relative;
 				vertical-align: top;
 				text-align: center;
+				&:hover {
+					background-color: @autocomplete-selected-background-color;
+				}
 				.bs-extendedsearch-autocomplete-popup-top-match-item-image{
 					width: 150px;
 					height: 150px;
@@ -134,34 +131,6 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 					&.dimmed {
 						opacity: .5;
 					}
-				}
-				.bs-extendedsearch-autocomplete-popup-top-match-edit,
-				.bs-extendedsearch-autocomplete-popup-top-match-visit {
-					position: absolute;
-					top: 30px;
-					left: 0;
-					right: 0;
-					margin-left: 10px;
-					width: 140px;
-					text-align: center;
-					background-color: @autocomplete-action-button-background-color;
-					padding-top: 10px;
-					padding-bottom: 10px;
-					text-decoration: none;
-					font-weight: bold;
-					display: none;
-					border-radius: 10px;
-					&:hover {
-						text-decoration:none !important;
-						background-color: @autocomplete-action-button-hover-background-color;
-					}
-				}
-				.bs-extendedsearch-autocomplete-popup-top-match-edit {
-					top: 90px;
-				}
-				.bs-extendedsearch-autocomplete-popup-top-match-item-header {
-					font-size: 1.1em;
-					font-weight: bold;
 				}
 			}
 		}

@@ -93,8 +93,6 @@ class Setup {
 
 	public static function onBeforePageDisplay( \OutputPage &$out, \Skin &$skin ) {
 		$out->addModules( "ext.blueSpiceExtendedSearch.Autocomplete" );
-		//$out->addModules( "ext.blueSpiceExtendedSearch.Autocomplete.desktop" );
-		//$out->addModules( "ext.blueSpiceExtendedSearch.Autocomplete.mobile" );
 
 		$autocompleteConfig = \ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchAutocomplete' );

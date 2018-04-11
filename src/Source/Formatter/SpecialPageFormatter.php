@@ -19,8 +19,15 @@ class SpecialPageFormatter extends Base {
 				continue;
 			}
 
+			$origBasename = $result['basename'];
+
 			if( -1 != $searchData['namespace'] ) {
 				$result['basename'] = $result['prefixed_title'];
+			}
+
+			$title = \Title::makeTitle( NS_SPECIAL, $origBasename );
+			if( $title instanceof \Title ) {
+				$result['pageAnchor'] = $this->linkRenderer->makeLink( $title, $result['basename'] );
 			}
 		}
 	}

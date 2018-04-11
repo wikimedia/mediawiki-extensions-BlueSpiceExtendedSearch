@@ -1,29 +1,7 @@
 ( function( mw, $, bs, d, undefined ){
-	function _init( cfg ) {
-		cfg = cfg || {};
-		this.mobile = cfg.mobile || false;
-
-		this.$searchContainer = $( '#' + cfg.cntId );
-		this.$searchForm = this.$searchContainer.find( 'form' );
-		this.$searchBox = $( '#' + cfg.inputId );
-		this.$searchButton = this.$searchForm.find( 'button' );
-
-		this.$searchBoxWrapper = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-wrapper' );
-
-		//Wrap search box input in another div to make it sizable when pill is added
-		this.$searchBoxWrapper.attr( 'style', 'width: ' + this.$searchBox.outerWidth() + 'px;' );
-		this.$searchBox.attr( 'style' , 'display: table-cell; width: 100%;' );
-		this.$searchBox.wrap( this.$searchBoxWrapper );
-
-		//Wire the events
-		this.$searchForm.one( 'submit', this.onSubmit );
-		this.$searchBox.on( 'keydown', this.onKeyDown.bind( this ) );
-		this.$searchBox.on( 'keyup', this.onKeyUp.bind( this ) );
-	}
-
 	//If user has navigated using arrows to a result,
 	//we don't want form to be submited, user should be navigate to that page
-	function _onSubmit( e ) {
+	function onSubmit( e ) {
 		e.preventDefault();
 		var overrideSubmitting = bs.extendedSearch.Autocomplete.navigateToResultPage();
 		//If no result is selected, or URI cannot be retieved, proceed with normal submit
@@ -32,7 +10,7 @@
 		}
 	}
 
-	function _onKeyUp( e ) {
+	function onKeyUp( e ) {
 		var value = e.target.value;
 
 		//Escape - close popup
@@ -56,18 +34,60 @@
 		if( this.valueBefore == '' && value == '' && e.which == 8 ) {
 			//Backspacing on empty field
 			this.removeNamespacePill( true );
+			this.toggleClearButton( value );
 		}
 
 		if( this.valueBefore == value ) {
 			return;
 		}
 
+		this.toggleClearButton( value );
+
 		this.removePopup();
 		this.showPopup( value );
 	}
 
-	function _onKeyDown( e ) {
+	function onKeyDown( e ) {
 		this.valueBefore = e.target.value;
+	}
+
+	//Close popup on click outside of it
+	function onWindowClick( e ) {
+		if( $.contains( this.$searchContainer[0], e.target ) ) {
+			return;
+		}
+		this.removePopup();
+	}
+
+	//Clear all search params
+	function onClearSearch( e ) {
+		this.$searchBox.val( '' );
+		this.removeNamespacePill( true );
+		this.removePopup();
+		this.toggleClearButton( '' );
+	}
+
+	function _init( cfg ) {
+		cfg = cfg || {};
+		this.mobile = cfg.mobile || false;
+
+		this.$searchContainer = $( '#' + cfg.cntId );
+		this.$searchForm = this.$searchContainer.find( 'form' );
+		this.$searchBox = $( '#' + cfg.inputId );
+		this.$searchButton = this.$searchForm.find( 'button' );
+
+		this.$searchBoxWrapper = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-wrapper' );
+
+		//Wrap search box input in another div to make it sizable when pill is added
+		this.$searchBoxWrapper.attr( 'style', 'width: ' + this.$searchBox.outerWidth() + 'px;' );
+		this.$searchBox.attr( 'style' , 'display: table-cell; width: 100%;' );
+		this.$searchBox.wrap( this.$searchBoxWrapper );
+
+		//Wire the events
+		this.$searchForm.one( 'submit', onSubmit );
+		this.$searchBox.on( 'keydown', onKeyDown.bind( this ) );
+		this.$searchBox.on( 'keyup', onKeyUp.bind( this ) );
+		$( window ).on( 'click', onWindowClick.bind( this ) );
 	}
 
 	function _getPopupWidth() {
@@ -253,6 +273,39 @@
 		return true;
 	}
 
+	//Clear button handling
+	function _addClearButton() {
+		if( this.$searchContainer.find( '.bs-extendedsearch-autocomplete-clear' ).length > 0 ) {
+			return;
+		}
+
+		var clearButton = new OO.ui.ButtonWidget( {
+			indicator: 'clear',
+			framed: false
+		} );
+
+		clearButton.$element.addClass( 'bs-extendedsearch-autocomplete-clear' );
+		clearButton.$element.on( 'click', onClearSearch.bind( this ) );
+		clearButton.$element.insertAfter( this.$searchBox );
+		this.$searchBox.addClass( 'clear-present' );
+	}
+
+	function _removeClearButton() {
+		this.$searchContainer.find( '.bs-extendedsearch-autocomplete-clear' ).remove();
+		this.$searchBox.removeClass( 'clear-present' );
+	}
+
+	function _toggleClearButton( value ) {
+		var pillPresent =
+			this.$searchContainer.find( '.bs-extendedsearch-autocomplete-pill' ).length != 0;
+
+		if( value || pillPresent ) {
+			this.addClearButton();
+		} else {
+			this.removeClearButton();
+		}
+	}
+
 	bs.extendedSearch.Autocomplete = {
 		init: _init,
 		showPopup: _showPopup,
@@ -266,34 +319,27 @@
 		navigateThroughResults: _navigateThroughResults,
 		navigateToResultPage: _navigateToResultPage,
 		getPopupWidth: _getPopupWidth,
-		onSubmit: _onSubmit,
-		onKeyDown: _onKeyDown,
-		onKeyUp: _onKeyUp
+		addClearButton: _addClearButton,
+		removeClearButton: _removeClearButton,
+		toggleClearButton: _toggleClearButton
 	}
 
-	//Since ResourceModule loading for mobile and desktop
-	//is not working as expected, decide if its mobile or desktop
-	//based on which searchBox is present
-	//TODO: Try again with RL
+	//MobileFrontend is required to make this decision
+	//on load-time, it is not used, so we init correct type here
 	var $desktopSearchBox = $( '#bs-extendedsearch-box' );
 	var $mobileSearchBox = $( '#bs-extendedsearch-mobile-box' );
 
 	if( $desktopSearchBox.is( ':visible' ) ) {
-		initMe( {
+		bs.extendedSearch.Autocomplete.init( {
 			cntId: 'bs-extendedsearch-box',
 			inputId: 'bs-extendedsearch-input',
 			mobile: false
 		} );
 	} else if ( $mobileSearchBox.is( ':visible' ) ) {
-		initMe( {
+		bs.extendedSearch.Autocomplete.init( {
 			cntId: 'bs-extendedsearch-mobile-box',
 			inputId: 'bs-extendedsearch-mobile-input',
 			mobile: true
 		} );
 	}
-
-	function initMe( cfg ) {
-		bs.extendedSearch.Autocomplete.init( cfg );
-	}
-
 } )( mediaWiki, jQuery, blueSpice, document );
