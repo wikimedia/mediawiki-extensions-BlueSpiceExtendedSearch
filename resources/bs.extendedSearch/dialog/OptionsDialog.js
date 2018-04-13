@@ -1,8 +1,9 @@
 ( function( mw, $, bs, d, undefined ){
-	bs.extendedSearch.OptionsDialog = function( cfg ) {
+	bs.extendedSearch.OptionsDialog = function( cfg, toolsPanel ) {
 		cfg = cfg || {};
 
 		this.options = cfg.options;
+		this.toolsPanel = toolsPanel;
 
 		bs.extendedSearch.OptionsDialog.super.call( this, cfg );
 	}
@@ -62,8 +63,7 @@
 					var value = page.getValue();
 					results[pageName] = value;
 				}
-				//nice
-				bs.extendedSearch.ToolsPanel.applyValuesFromOptionsDialog( results );
+				me.toolsPanel.applyValuesFromOptionsDialog( results );
 
 				return me.close( { action: action } );
 			} );

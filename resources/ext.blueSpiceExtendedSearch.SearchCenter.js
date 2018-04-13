@@ -1,62 +1,4 @@
 ( function( mw, $, bs, d, undefined ){
-
-	this.lookup = null;
-
-	var searchField = OO.ui.infuse( 'bs-es-tf-search' );
-	var curQueryData = bs.extendedSearch.utils.getFragment();
-
-	//When coming from search bar there will be query string param "q" in the URL.
-	//Not removing it because it would cause reload of the page
-	//We could also create correct URL in the search bar, but that will not work
-	//if user doesnt wait for JS to load
-	var queryStringParam = bs.extendedSearch.utils.getQueryStringParam( 'q' );
-
-	//parse 'q' param and make config object from it
-	if( "q" in curQueryData ) {
-		var config = JSON.parse( curQueryData.q );
-		makeLookup( config );
-		searchField.setValue( getLookup().getSimpleQueryString().query || '' );
-	} else if( queryStringParam ) {
-		makeLookup();
-		this.lookup.setSimpleQueryString( queryStringParam );
-		searchField.setValue( queryStringParam );
-		updateQueryHash();
-	}
-
-	searchField.on( 'change', function ( value ) {
-		if( value.length < 3 ) {
-			return;
-		}
-		getLookup().setFrom( 0 );
-		getLookup().setSimpleQueryString( value );
-		updateQueryHash();
-	} );
-
-	function getLookup() {
-		if( this.lookup === null ) {
-			makeLookup({});
-		}
-		return this.lookup;
-	}
-
-	function makeLookup( config ) {
-		config = config || {};
-		this.lookup = new bs.extendedSearch.Lookup( config );
-		if( this.lookup.getSize() == 0 ) {
-			//set default value for page size - prevent zero size pages
-			this.lookup.setSize( mw.config.get( 'bsgESResultsPerPage' ) );
-		}
-		if( this.lookup.getSort().length == 0 ) {
-			this.lookup.addSort( 'basename' );
-		}
-	}
-
-	function updateQueryHash() {
-		bs.extendedSearch.utils.setFragment( {
-			q: JSON.stringify( getLookup() )
-		} );
-	}
-
 	/**
 	 * Makes config object for special Type filter
 	 * This filter contains different results types (one for each source)
@@ -64,7 +6,7 @@
 	 *
 	 * @returns {Array}
 	 */
-	function getTypeFilter() {
+	function _getTypeFilter() {
 		var availableTypes = mw.config.get( 'bsgESAvailbleTypes' );
 
 		if( availableTypes.length === 0 ) {
@@ -99,7 +41,7 @@
 	 * @param {Array} aggs
 	 * @returns {Array}
 	 */
-	function getFiltersFromAggs( aggs ) {
+	function _getFiltersFromAggs( aggs ) {
 		var filters = [];
 		for( aggKey in aggs ) {
 			var agg = aggs[aggKey];
@@ -135,7 +77,7 @@
 	 * @param {Array} results
 	 * @returns {Array}
 	 */
-	function applyResultsToStructure( results ) {
+	function _applyResultsToStructure( results ) {
 		var resultStructure = mw.config.get( 'bsgESResultStructure' );
 		var structuredResults = [];
 		$.each( results, function( idx, result ) {
@@ -148,13 +90,13 @@
 				if( cfgKey == 'secondaryInfos' ) {
 					cfg[cfgKey] = {
 						top: {
-							items: formatSecondaryInfoItems(
+							items: search.formatSecondaryInfoItems(
 								resultStructure[cfgKey]['top']['items'],
 								result
 							)
 						},
 						bottom: {
-							items: formatSecondaryInfoItems(
+							items: search.formatSecondaryInfoItems(
 								resultStructure[cfgKey]['bottom']['items'],
 								result
 							)
@@ -192,7 +134,7 @@
 	 * @param {Array} result
 	 * @returns {Array}
 	 */
-	function formatSecondaryInfoItems( items, result ) {
+	function _formatSecondaryInfoItems( items, result ) {
 		var formattedItems = [];
 		for( idx in items ) {
 			var item = items[idx];
@@ -217,15 +159,17 @@
 
 	var api = new mw.Api();
 	function _execSearch() {
-		bs.extendedSearch.ResultsPanel.clearAll();
-		searchField.popPending();
+		var resultsPanel = new bs.extendedSearch.ResultsPanel({});
+
+		resultsPanel.clearAll();
+		resultsPanel.showLoading();
 
 		var queryData = bs.extendedSearch.utils.getFragment();
 		if( $.isEmptyObject( queryData ) ) {
+			resultsPanel.removeLoading();
+			resultsPanel.showHelp();
 			return;
 		}
-
-		searchField.pushPending();
 
 		api.abort();
 		api.get( $.extend(
@@ -235,31 +179,32 @@
 			}
 		) )
 		.done( function( response ) {
-			bs.extendedSearch.ToolsPanel.setFilterData(
-				$.merge(
-					getTypeFilter(),
-					getFiltersFromAggs( response.aggregations )
+			var toolsPanel = new bs.extendedSearch.ToolsPanel( {
+				lookup: search.getLookupObject(),
+				filterData: $.merge(
+					search.getTypeFilter(),
+					search.getFiltersFromAggs( response.aggregations )
 				)
-			);
-			bs.extendedSearch.ToolsPanel.init();
-
+			} );
+			toolsPanel.init();
 			if( response.total === 0 ) {
-				bs.extendedSearch.ResultsPanel.showNoResults();
-				searchField.popPending();
-				return;
+				return resultsPanel.init( {
+					results: [],
+					total: 0
+				} );
 			}
 
-			bs.extendedSearch.ResultsPanel.showResults(
-				applyResultsToStructure( response.results ),
-				response.total
-			);
-			searchField.popPending();
+			return resultsPanel.init( {
+				results: search.applyResultsToStructure( response.results ),
+				total: response.total,
+				caller: search
+			} );
 		} );
 	}
 
 	function _getPageSizeConfig() {
 		return {
-			value: getLookup().getSize(),
+			value: this.getLookupObject().getSize(),
 			options: [
 				{ data: 25 },
 				{ data: 50 },
@@ -270,20 +215,102 @@
 	}
 
 	function _getLookupObject() {
-		return getLookup();
+		if( !this.lookup ) {
+			this.makeLookup({});
+		}
+		return this.lookup;
+	}
+
+	function _makeLookup( config ) {
+		config = config || {};
+		this.lookup = new bs.extendedSearch.Lookup( config );
+		if( this.lookup.getSize() == 0 ) {
+			//set default value for page size - prevent zero size pages
+			this.lookup.setSize( mw.config.get( 'bsgESResultsPerPage' ) );
+		}
+		if( this.lookup.getSort().length == 0 ) {
+			this.lookup.addSort( 'basename' );
+		}
+	}
+
+	function _clearLookupObject() {
+		this.lookup = null;
 	}
 
 	function _resetPagination() {
-		getLookup().setFrom( 0 );
+		this.getLookupObject().setFrom( 0 );
 	}
 
 	bs.extendedSearch.SearchCenter = {
 		execSearch: _execSearch,
 		getLookupObject: _getLookupObject,
+		clearLookupObject: _clearLookupObject,
+		makeLookup: _makeLookup,
 		resetPagination: _resetPagination,
 		updateQueryHash: updateQueryHash,
-		getPageSizeConfig: _getPageSizeConfig
+		getPageSizeConfig: _getPageSizeConfig,
+		getTypeFilter: _getTypeFilter,
+		getFiltersFromAggs: _getFiltersFromAggs,
+		applyResultsToStructure: _applyResultsToStructure,
+		formatSecondaryInfoItems: _formatSecondaryInfoItems
 	};
+
+	var search = bs.extendedSearch.SearchCenter;
+
+	//Init searchBar and wire it up
+	var searchBar = new bs.extendedSearch.SearchBar( {
+		useNamespacePills: false
+	} );
+
+	searchBar.onValueChanged = function() {
+		bs.extendedSearch.SearchCenter.resetPagination();
+		search.getLookupObject().setSimpleQueryString( this.value );
+		updateQueryHash();
+	};
+
+	searchBar.onClearSearch = function() {
+		bs.extendedSearch.SearchBar.prototype.onClearSearch.call( this );
+
+		search.clearLookupObject();
+		search.getLookupObject().setSimpleQueryString( '' );
+		updateQueryHash();
+	};
+
+	//Init lookup object
+	var curQueryData = bs.extendedSearch.utils.getFragment();
+
+	//When coming from search bar there will be at least query string param "q" in the URL.
+	//Not removing it because it would cause reload of the page
+	//We could also create correct URL in the search bar, but that will not work
+	//if user doesnt wait for JS to load
+	var queryStringQ = bs.extendedSearch.utils.getQueryStringParam( 'q' );
+	var queryStringNs = bs.extendedSearch.utils.getQueryStringParam( 'ns' );
+
+	//if "q" is present in hash, make Lookup from it
+	if( "q" in curQueryData ) {
+		var config = JSON.parse( curQueryData.q );
+		search.makeLookup( config );
+		//Update searchBar if page is loaded with query present
+		searchBar.setValue( search.getLookupObject().getSimpleQueryString().query );
+	} else if( queryStringQ ) {
+		//No hash set, but there are query string params
+		search.getLookupObject().setSimpleQueryString( queryStringQ );
+		if( queryStringNs ) {
+			//If namespace pill was set on page user is coming from
+			//set default namespace filter - HARDCODED FILTER ID
+			search.getLookupObject().addFilter( 'namespace_text', queryStringNs );
+		}
+		//Update searchBar if page is loaded with query present
+		searchBar.setValue( search.getLookupObject().getSimpleQueryString().query );
+		updateQueryHash();
+	}
+
+	function updateQueryHash() {
+		bs.extendedSearch.utils.setFragment( {
+			q: JSON.stringify( search.getLookupObject() )
+		} );
+	}
+
 } )( mediaWiki, jQuery, blueSpice, document );
 
 jQuery(window).on( 'hashchange', function() {

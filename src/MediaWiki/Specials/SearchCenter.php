@@ -2,12 +2,11 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Specials;
 
-use \BS\ExtendedSearch\MediaWiki\OOUI\CenterLayout as OOUICenterLayout;
-
 class SearchCenter extends \SpecialPage {
 
 	public function __construct( $name = '', $restriction = '', $listed = true, $function = false, $file = '', $includable = false ) {
-		parent::__construct( 'BSSearchCenter' );
+		//SearchCenter should only be reached via searchBar
+		parent::__construct( 'BSSearchCenter', $restriction, false );
 	}
 
 	public function execute( $subPage ) {
@@ -15,18 +14,6 @@ class SearchCenter extends \SpecialPage {
 
 		$out = $this->getOutput();
 		$out->addModules( "ext.blueSpiceExtendedSearch.SearchCenter" );
-
-		$searchField = new \OOUI\TextInputWidget([
-			'placeholder' => wfMessage( 'bs-extendedsearch-search-input-placeholder' )->plain(),
-			'id' => 'bs-es-tf-search',
-			'infusable' => true
-		]);
-
-		$fieldLayout = new OOUICenterLayout( [
-			'items' => [
-				$searchField
-			]
-		] );
 
 		$localBackend = \BS\ExtendedSearch\Backend::instance( 'local' );
 		$resultStructure = $localBackend->getResultStructure();
@@ -65,7 +52,6 @@ class SearchCenter extends \SpecialPage {
 		}
 
 		$out->enableOOUI();
-		$out->addHTML( $fieldLayout );
 		$out->addHTML( \Html::element( 'div', [ 'id' => 'bs-es-hitcount' ] ) );
 		$out->addHTML( \Html::element( 'div', [ 'id' => 'bs-es-tools' ] ) );
 		$out->addHTML( \Html::element( 'div', [ 'id' => 'bs-es-results' ] ) );

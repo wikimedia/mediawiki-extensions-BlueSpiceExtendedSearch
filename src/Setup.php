@@ -92,7 +92,10 @@ class Setup {
 	}
 
 	public static function onBeforePageDisplay( \OutputPage &$out, \Skin &$skin ) {
-		$out->addModules( "ext.blueSpiceExtendedSearch.Autocomplete" );
+		$title = $out->getTitle();
+		if( $title != \SpecialPage::getTitleFor( 'BSSearchCenter' ) ) {
+			$out->addModules( "ext.blueSpiceExtendedSearch.Autocomplete" );
+		}
 
 		$autocompleteConfig = \ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchAutocomplete' );

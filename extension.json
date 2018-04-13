@@ -99,6 +99,26 @@
 				"oojs-ui"
 			]
 		},
+		"ext.blueSpiceExtendedSearch.SearchBar": {
+			"scripts": [
+				"ext.blueSpiceExtendedSearch.SearchBar.js"
+			],
+			"styles": [
+				"ext.blueSpiceExtendedSearch.SearchBar.less"
+			],
+			"messages": [
+				"bs-extendedsearch-autocomplete-result-primary-no-results-label",
+				"bs-extendedsearch-autocomplete-result-type",
+				"bs-extendedsearch-autocomplete-result-edit-label",
+				"bs-extendedsearch-autocomplete-result-top-match-label",
+				"bs-extendedsearch-autocomplete-result-secondary-results-label",
+				"bs-extendedsearch-autocomplete-result-visit-label"
+			],
+			"dependencies": [
+				"oojs-ui-core",
+				"ext.blueSpiceExtendedSearch"
+			]
+		},
 		"ext.blueSpiceExtendedSearch.Autocomplete": {
 			"scripts": [
 				"bs.extendedSearch/mixin/Autocomplete.js",
@@ -114,14 +134,11 @@
 			"messages": [
 				"bs-extendedsearch-autocomplete-result-primary-no-results-label",
 				"bs-extendedsearch-autocomplete-result-type",
-				"bs-extendedsearch-autocomplete-result-edit-label",
 				"bs-extendedsearch-autocomplete-result-top-match-label",
-				"bs-extendedsearch-autocomplete-result-secondary-results-label",
-				"bs-extendedsearch-autocomplete-result-visit-label"
+				"bs-extendedsearch-autocomplete-result-secondary-results-label"
 			],
 			"dependencies": [
-				"oojs-ui-core",
-				"ext.blueSpiceExtendedSearch"
+				"ext.blueSpiceExtendedSearch.SearchBar"
 			]
 		},
 		"ext.blueSpiceExtendedSearch.SearchCenter": {
@@ -169,11 +186,11 @@
 				"bs-extendedsearch-search-center-options-dialog-button-apply-label",
 				"bs-extendedsearch-search-center-options-page-size",
 				"bs-extendedsearch-search-center-options-sort-by",
-				"bs-extendedsearch-search-center-options-sort-order"
+				"bs-extendedsearch-search-center-options-sort-order",
+				"bs-extendedsearch-search-center-result-help"
 			],
 			"dependencies" : [
-				"oojs-ui-core",
-				"ext.blueSpiceExtendedSearch"
+				"ext.blueSpiceExtendedSearch.SearchBar"
 			]
 		},
 		"ext.blueSpiceExtendedSearch.SearchAdmin.styles": {

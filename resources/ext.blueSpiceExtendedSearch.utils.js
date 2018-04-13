@@ -10,9 +10,9 @@
 			if( !key || key.length === 0 ) {
 				continue;
 			}
-			var rawValue = decodeURIComponent( kvpair.join( '=' ) );
-			var parsedValue = true;
 
+			var rawValue = decodeURIComponent( kvpair.join( '=' ) );
+			var parsedValue = false;
 			if ( rawValue.length > 0 ) {
 				try {
 					parsedValue = JSON.parse( rawValue );
@@ -79,15 +79,27 @@
 		return mw.config.get( 'wgNamespaceIds' );
 	}
 
-	function _getNamespaceNames( id ) {
+	function _getNamespaceNames( namespaces, id ) {
 		var names = [];
-		for( namespaceName in this.namespaces ) {
-			var nsId = this.namespaces[namespaceName];
+		for( namespaceName in namespaces ) {
+			var nsId = namespaces[namespaceName];
 			if( nsId == id ) {
 				names.push( namespaceName.charAt(0).toUpperCase() + namespaceName.slice(1) );
 			}
 		}
 		return names;
+	}
+
+	function _isMobile() {
+		//MobileFrontend is required to make this decision
+		//on load-time, it is not used, so we init correct type here
+		var $mobileSearchBox = $( '#bs-extendedsearch-mobile-box' );
+
+		if ( $mobileSearchBox.is( ':visible' ) ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	bs.extendedSearch.utils = {
@@ -96,5 +108,6 @@
 		getQueryStringParam: _getQueryStringParam,
 		getNamespacesList: _getNamespacesList,
 		getNamespaceNames: _getNamespaceNames,
+		isMobile: _isMobile
 	};
 })( mediaWiki, jQuery, blueSpice, document );
