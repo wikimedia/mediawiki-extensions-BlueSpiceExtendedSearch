@@ -180,18 +180,18 @@
 		this.lookup = bs.extendedSearch.SearchCenter.getLookupObject();
 
 		if( params.filterId == 'type' ) {
-			this.lookup.clearTypes();
-			this.lookup.setTypes( params.values );
-		} else {
-			for( idx in params.options ) {
-				var value = params.options[idx];
-				this.lookup.removeFilter( params.filterId, value.data );
-			}
+			params.filterId = bs.extendedSearch.Lookup.TYPE_FIELD_NAME;
+		}
 
-			for( idx in params.values ) {
-				var value = params.values[idx];
-				this.lookup.addFilter( params.filterId, value );
-			}
+		for( idx in params.options ) {
+			var value = params.options[idx];
+			this.lookup.removeFilter( params.filterId, value.data );
+		}
+
+		if( params.filterType == 'and' ) {
+			this.lookup.addTermFilter( params.filterId, params.values );
+		} else {
+			this.lookup.addTermsFilter( params.filterId, params.values );
 		}
 
 		this.lookup.setFrom( 0 );
@@ -206,8 +206,7 @@
 
 		for( idx in params.options ) {
 			if( params.filterId == 'type' ) {
-				this.lookup.clearTypes();
-				continue;
+				params.filterId = bs.extendedSearch.Lookup.TYPE_FIELD_NAME;
 			}
 			var value = params.options[idx];
 			this.lookup.removeFilter( params.filterId, value.data );
@@ -230,20 +229,40 @@
 	 *
 	 */
 	bs.extendedSearch.ToolsPanel.prototype.addFiltersFromLookup = function() {
-		var queryFilters = this.lookup.getFilters();
-		for( idx in queryFilters ) {
-			var queryFilter = queryFilters[idx];
+		var queryFiltersWithTypes = this.lookup.getFilters();
+		for( filterType in queryFiltersWithTypes ) {
+			var queryFilter = queryFiltersWithTypes[filterType];
 			for( filterId in queryFilter ) {
+				var filterValues = queryFilter[filterId];
+				if( filterId == bs.extendedSearch.Lookup.TYPE_FIELD_NAME ) {
+					filterId = 'type';
+				}
 				for( availableFilterIdx in this.filterData ) {
 					var filter = this.filterData[availableFilterIdx].filter;
 					if( filter.id !== filterId ) {
 						continue;
 					}
-					filter.selectedOptions = queryFilter[filterId];
+
+					if( filterType == 'terms' ) {
+						filter.filterType = 'or';
+					} else if ( filterType == 'term' ) {
+						filter.filterType = 'and';
+					}
+
+					var selectedOptions = filterValues;
+					filter.selectedOptions = selectedOptions;
+
 					//in case selected options are not in offered options we must add them
-					for( optionIdx in filter.selectedOptions ) {
-						var selectedOption = filter.selectedOptions[optionIdx];
-						if( filter.options.indexOf( selectedOption ) == -1 ) {
+					for( idx in filter.selectedOptions ) {
+						var selectedOption = filter.selectedOptions[idx];
+						var hasOption = false;
+						for( optionIdx in filter.options ) {
+							if( filter.options[optionIdx].data == selectedOption ) {
+								hasOption = true;
+								break;
+							}
+						}
+						if( !hasOption ) {
 							filter.options.push( {
 								label: selectedOption,
 								data: selectedOption
@@ -251,17 +270,6 @@
 						}
 					}
 
-					this.addFilterWidget( filter );
-				}
-			}
-		}
-
-		//Adds special filter "type" (based on source types)
-		if( this.lookup.getTypes().length > 0 ) {
-			for( idx in this.filterData ){
-				var filter = this.filterData[idx].filter;
-				if( filter.id === 'type' ) {
-					filter.selectedOptions = this.lookup.getTypes();
 					this.addFilterWidget( filter );
 				}
 			}

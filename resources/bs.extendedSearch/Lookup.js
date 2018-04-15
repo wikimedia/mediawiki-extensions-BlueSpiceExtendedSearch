@@ -15,6 +15,7 @@ OO.initClass( bs.extendedSearch.Lookup );
 
 bs.extendedSearch.Lookup.SORT_ASC = 'asc';
 bs.extendedSearch.Lookup.SORT_DESC = 'desc';
+bs.extendedSearch.Lookup.TYPE_FIELD_NAME = '_type';
 
 /**
  *
@@ -41,51 +42,31 @@ bs.extendedSearch.Lookup.prototype.ensurePropertyPath = function ( path, initial
 };
 
 /**
- *
- * @param [] type
- * @returns bs.extendedSearch.Lookup
- */
-bs.extendedSearch.Lookup.prototype.setTypes = function ( types ) {
-	this.clearTypes();
-	this.addFilter( '_type', types );
-	return this;
-};
-
-/**
+ * Removes filter completely regardless of value
  *
  * @returns bs.extendedSearch.Lookup
  */
-bs.extendedSearch.Lookup.prototype.clearTypes = function () {
+bs.extendedSearch.Lookup.prototype.clearFilter = function ( field ) {
 	this.ensurePropertyPath( 'query.bool.filter', [] );
 
-	var newFilter = [];
+	var newFilters = [];
 	for( var i = 0; i < this.query.bool.filter.length; i++ ) {
-		if( '_type' in this.query.bool.filter[i].terms ) {
+		var filter = this.query.bool.filter[i]
+		if( filter.terms && field in this.query.bool.filter[i].terms ) {
 			continue;
 		}
-		newFilter.push( this.query.bool.filter[i] );
+		if( filter.term && field in filter.term ) {
+			continue;
+		}
+		newFilters.push( this.query.bool.filter[i] );
 	}
 
 	delete( this.query.bool.filter );
-	if( newFilter.length > 0 ) {
-		this.query.bool.filter = newFilter;
+	if( newFilters.length > 0 ) {
+		this.query.bool.filter = newFilters;
 	}
 
 	return this;
-};
-
-/**
- *
- * @returns []
- */
-bs.extendedSearch.Lookup.prototype.getTypes = function () {
-	this.ensurePropertyPath( 'query.bool.filter', [] );
-	for( var i = 0; i < this.query.bool.filter.length; i++ ) {
-		if( '_type' in this.query.bool.filter[i].terms ) {
-			return this.query.bool.filter[i].terms['_type'];
-		}
-	}
-	return [];
 };
 
 /**
@@ -140,16 +121,41 @@ bs.extendedSearch.Lookup.prototype.getSimpleQueryString = function () {
 };
 
 /**
- *
- * @returns array
+ * Gets all filters in lookup in form:
+ * {
+ *		terms: {
+ *			field1: [values],
+ *			field2: [values]
+ *		},
+ *		term: {
+ *			field1: [values],
+ *			field2: [values]
+ *		}
+ * }
+ * @returns Object
  */
 bs.extendedSearch.Lookup.prototype.getFilters = function () {
 	this.ensurePropertyPath( 'query.bool.filter', [] );
 
-	var filters = [];
+	var filters = {};
 	for( var i = 0; i < this.query.bool.filter.length; i++ ) {
-		if( 'terms' in this.query.bool.filter[i] ) {
-			filters.push( this.query.bool.filter[i].terms );
+		var filter = this.query.bool.filter[i];
+
+		for( typeName in filter ) {
+			if( !filters[typeName] ) {
+				filters[typeName] = {};
+			}
+			for( fieldName in filter[typeName] ) {
+				if( !filters[typeName][fieldName] ) {
+					filters[typeName][fieldName] = [];
+				}
+				var filterValue = filter[typeName][fieldName];
+				if( $.isArray( filterValue ) ) {
+					$.merge( filters[typeName][fieldName], filterValue );
+				} else {
+					filters[typeName][fieldName].push( filterValue );
+				}
+			}
 		}
 	}
 
@@ -182,7 +188,7 @@ bs.extendedSearch.Lookup.prototype.clearSimpleQueryString = function () {
  * @param string|array value
  * @returns bs.extendedSearch.Lookup
  */
-bs.extendedSearch.Lookup.prototype.addFilter = function( fieldName, value ) {
+bs.extendedSearch.Lookup.prototype.addTermsFilter = function( fieldName, value ) {
 	this.ensurePropertyPath( 'query.bool.filter', [] );
 
 	if( !$.isArray( value ) ) {
@@ -220,12 +226,61 @@ bs.extendedSearch.Lookup.prototype.addFilter = function( fieldName, value ) {
 };
 
 /**
+ * Add term filter(s) for given field and value(s), another filter
+ * for each value
  *
+ * @param string field
+ * @param string value
+ * @returns bs.extendedSearch.Lookup
+ */
+bs.extendedSearch.Lookup.prototype.addTermFilter = function( field, value ) {
+	this.ensurePropertyPath( 'query.bool.filter', [] );
+
+	if( !$.isArray( value ) ) {
+		value = [ value ];
+	}
+
+	for( valueIdx in value ) {
+		var exists = false;
+		for( idx in this.query.bool.filter ) {
+			var filter = this.query.bool.filter[idx];
+			if( filter.term && filter.term[field] && filter.term[field] == value[valueIdx] ) {
+				exists = true;
+				break;
+			}
+		}
+		if( exists ) {
+			continue;
+		}
+
+		var newFilter = { term: {} };
+		newFilter.term[field] = value[valueIdx];
+		this.query.bool.filter.push( newFilter );
+	}
+
+	return this;
+}
+
+/**
+ * Convinience function removing all filters for given field
+ *
+ * @param string field
+ * @param string|array value
+ * @returns bs.extendedSearch.Lookup
+ */
+bs.extendedSearch.Lookup.prototype.removeFilter = function( field, value ) {
+	this.removeTermsFilter( field, value );
+	this.removeTermFilter( field, value );
+	return this;
+}
+
+/**
+  *
  * @param string fieldName
  * @param string|array value
  * @returns bs.extendedSearch.Lookup
  */
-bs.extendedSearch.Lookup.prototype.removeFilter = function( fieldName, value ) {
+bs.extendedSearch.Lookup.prototype.removeTermsFilter = function( fieldName, value ) {
 	this.ensurePropertyPath( 'query.bool.filter', [] );
 
 	if( !$.isArray( value ) ) {
@@ -237,7 +292,13 @@ bs.extendedSearch.Lookup.prototype.removeFilter = function( fieldName, value ) {
 		var filter = this.query.bool.filter[i];
 		var diffValues = [];
 
-		if( filter.terms && fieldName in filter.terms ) {
+		//Not a terms filter - dont touch
+		if( !filter.terms ) {
+			newFilters.push( filter );
+			continue;
+		}
+
+		if( fieldName in filter.terms ) {
 			var oldValues = filter.terms[fieldName];
 			$.grep( oldValues, function( el ) {
 				if ( $.inArray( el, value ) === -1 ) {
@@ -259,6 +320,25 @@ bs.extendedSearch.Lookup.prototype.removeFilter = function( fieldName, value ) {
 
 	return this;
 };
+
+bs.extendedSearch.Lookup.prototype.removeTermFilter = function( field, value ) {
+	this.ensurePropertyPath( 'query.bool.filter', [] );
+
+	if( !$.isArray( value ) ) {
+		value = [ value ];
+	}
+
+	for( valueIdx in value ) {
+		for( idx in this.query.bool.filter ) {
+			var filter = this.query.bool.filter[idx];
+			if( filter.term && filter.term[field] && filter.term[field] == value[valueIdx] ) {
+				this.query.bool.filter.splice( idx, 1 );
+			}
+		}
+	}
+
+	return this;
+}
 
 /**
  * Example for complex sort

@@ -21,7 +21,7 @@ class Base {
 	}
 
 	public function crawl() {
-		//Needs to be implemented by sublasses; but not abstract as this may server as a stub
+		//Needs to be implemented by sublasses; but not abstract as this may serve as a stub
 	}
 
 	/**

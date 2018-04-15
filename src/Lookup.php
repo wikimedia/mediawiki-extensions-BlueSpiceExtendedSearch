@@ -9,6 +9,7 @@ class Lookup extends \ArrayObject {
 
 	const SORT_ASC = 'asc';
 	const SORT_DESC = 'desc';
+	const TYPE_FIELD_NAME = '_type';
 
 	/**
 	 *
@@ -47,45 +48,22 @@ class Lookup extends \ArrayObject {
 	}
 
 	/**
-	 * Sets a type filter
-	 * @param array $aTypes
-	 * @return Lookup
-	 */
-	public function setTypes( $aTypes ) {
-		$this->clearTypes();
-		$this->addFilter( '_type', $aTypes );
-		return $this;
-	}
-
-	/**
+	 * Removes all values for a filter field regardless of the value
 	 *
 	 * @return Lookup
 	 */
-	public function clearTypes() {
+	public function clearFilter( $field ) {
 		$this->ensurePropertyPath( 'query.bool.filter', [] );
-		foreach( $this['query']['bool']['filter'] as $iIndex => $aFilter ) {
-			if( isset( $aFilter['terms']['_type'] ) ) {
-				unset( $this['query']['bool']['filter'][$iIndex]  );
+		foreach( $this['query']['bool']['filter'] as $idx => $filter ) {
+			if( isset( $filter['terms'] ) && isset( $filter['terms'][$field] ) ) {
+				unset( $filter['terms'][$field] );
+			}
+			if( isset( $filter['term'] ) && isset( $filter['term'][$field] ) ) {
+				unset( $filter['term'][$field] );
 			}
 		}
-
-		$this['query']['bool']['filter'] = array_values( $this['query']['bool']['filter'] );
 
 		return $this;
-	}
-
-	/**
-	 *
-	 * @return array
-	 */
-	public function getTypes() {
-		$this->ensurePropertyPath( 'query.bool.filter', [] );
-		foreach( $this['query']['bool']['filter'] as $aFilter ) {
-			if( isset( $aFilter['terms']['_type'] ) ) {
-				return $aFilter['terms']['_type'];
-			}
-		}
-		return [];
 	}
 
 	/**
@@ -175,7 +153,7 @@ class Lookup extends \ArrayObject {
 	 * @param string|array $mValue
 	 * @return Lookup
 	 */
-	public function addFilter( $sFieldName, $mValue ) {
+	public function addTermsFilter( $sFieldName, $mValue ) {
 		$this->ensurePropertyPath( 'query.bool.filter', [] );
 
 		if( !is_array( $mValue ) ) {
@@ -210,12 +188,38 @@ class Lookup extends \ArrayObject {
 	}
 
 	/**
+	 * Term filter can only hold one value, so we need to make
+	 * new filter for each field and value
+	 *
+	 * @param string $field
+	 * @param mixed $value
+	 */
+	public function addTermFilter( $field, $value ) {
+		$this->ensurePropertyPath( 'query.bool.filter', [] );
+
+		foreach( $this['query']['bool']['filter'] as $filter ) {
+			if( isset( $filter['term'] ) && isset( $filter['term'][$field] ) && $filter['term'][$field] == $value ) {
+				//Filter already set - nothing to do
+				return $this;
+			}
+		}
+
+		$this['query']['bool']['filter'][] = [
+			'term' => [
+				$field => $value
+			]
+		];
+
+		return $this;
+	}
+
+	/**
 	 *
 	 * @param string $sFieldName
 	 * @param string|array $mValue
 	 * @return Lookup
 	 */
-	public function removeFilter( $sFieldName, $mValue ) {
+	public function removeTermsFilter( $field, $value ) {
 		$this->ensurePropertyPath( 'query.bool.filter', [] );
 
 		if( !is_array( $mValue ) ) {
@@ -240,7 +244,66 @@ class Lookup extends \ArrayObject {
 		$this['query']['bool']['filter'] = array_values( $this['query']['bool']['filter'] );
 
 		return $this;
+	}
 
+	/**
+	 *
+	 * @param string $field
+	 * @param string $value
+	 * @return Lookup
+	 */
+	public function removeTermFilter( $field, $value ) {
+		$this->ensurePropertyPath( 'query.bool.filter', [] );
+
+		foreach( $this['query']['bool']['filter'] as $key => $filter ) {
+			if( isset( $filter['term'] ) && isset( $filter['term'][$field] ) && $filter['term'][$field] == $value ) {
+				unset( $this['query']['bool']['filter'][$key] );
+			}
+		}
+
+		return $this;
+	}
+
+	/**
+	 * Returns formatted list of all filters by type, in form:
+	 * [
+	 *		"type1" => [
+	 *			"field1" => [1,2],
+	 *			"field2" => ["Value"]
+	 *		],
+	 *		"type2" => [
+	 *			"field3" => [0,1]
+	 *		]
+	 * ]
+	 *
+	 * Types ATM are terms (for OR filters) and term (for AND filters)
+	 * @return array
+	 */
+	public function getFilters() {
+		$this->ensurePropertyPath( 'query.bool.filter', [] );
+
+		$filters = [];
+		foreach( $this['query']['bool']['filters'] as $idx => $filter ) {
+			foreach( $filter as $typeName => $typeField ) {
+				if( !isset( $filters[$typeName] ) ) {
+					$filters[$typeName] = [];
+				}
+				foreach( $typeField as $fieldName => $fieldValue ) {
+					if( !isset( $filters[$typeName][$fieldName] ) ) {
+						$filters[$typeName][$fieldName] = [];
+					}
+					if( !is_array( $fieldValue ) ) {
+						$filters[$typeName][$fieldName] = array_merge(
+							$filters[$typeName][$fieldName],
+							$fieldValue
+						);
+					} else {
+						$filters[$typeName][$fieldName][] = $fieldValue;
+					}
+				}
+			}
+		}
+		return $filters;
 	}
 
 	/**

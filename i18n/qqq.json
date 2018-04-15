@@ -65,5 +65,7 @@
 	"bs-extendedsearch-autocomplete-result-type": "Label showing the type of the results. $1 - type of result",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "Label for top matches group in autocomplete results. These results are exact or very close matches to the search term",
 	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Label for fuzzy matches in autocomplete results. These results do not contain search term or are not in correct namespace, but still may be relevant (did you mean?)",
-	"bs-extendedsearch-search-center-result-help": "Text showing when user has arrived to Special:BSSearchCenter directly, not via search bar. Text indicates that something must be typed in the search bar"
+	"bs-extendedsearch-search-center-result-help": "Text showing when user has arrived to Special:BSSearchCenter directly, not via search bar. Text indicates that something must be typed in the search bar",
+	"bs-extendedsearch-searchcenter-filter-or-label": "Label for OR value in the switch indicating whether and OR or AND filter query should be executed",
+	"bs-extendedsearch-searchcenter-filter-and-label": "Label for AND value in the switch indicating whether and OR or AND filter query should be executed"
 }

@@ -7,6 +7,7 @@
 		this.id = cfg.id;
 		this.options = cfg.options || [];
 		this.selectedOptions = cfg.selectedOptions || [];
+		this.filterType = cfg.filterType || "or";
 
 		this.dirty = false;
 		this.isOpen = false;
@@ -77,6 +78,7 @@
 	bs.extendedSearch.FilterWidget.prototype.applyFilter = function() {
 		this.$element.trigger( 'filterOptionsChanged', {
 			filterId: this.id,
+			filterType: this.filterType,
 			values: this.selectedOptions,
 			options: this.options
 		} );
@@ -106,7 +108,22 @@
 			this.onApplyFilterButton();
 		}.bind( this ) );
 
-		this.actions = new OO.ui.ActionFieldLayout( this.filterBox, this.applyFilterButton, { align: 'inline' } );
+		this.andOrSwitch = new bs.extendedSearch.FilterAndOrSwitch({
+			orLabel: mw.message( 'bs-extendedsearch-searchcenter-filter-or-label' ).plain(),
+			andLabel: mw.message( 'bs-extendedsearch-searchcenter-filter-and-label' ).plain(),
+			selected: this.filterType
+		});
+		this.andOrSwitch.on( 'choose', function(e) {
+			this.filterType = e.data;
+		}.bind( this ) );
+
+		this.actions = new OO.ui.ActionFieldLayout( this.filterBox,
+			new OO.ui.HorizontalLayout( {
+				items: [
+					this.andOrSwitch,
+					this.applyFilterButton
+				]
+			}), { align: 'inline' } );
 
 		this.$optionsContainer.append( this.actions.$element );
 
@@ -248,4 +265,31 @@
 
 		return this;
 	}
+
+	bs.extendedSearch.FilterAndOrSwitch = function( cfg ) {
+		cfg = cfg || {};
+
+		this.orButton = new OO.ui.ButtonOptionWidget( {
+			data: 'or',
+			label: cfg.orLabel
+		} );
+
+		this.andButton = new OO.ui.ButtonOptionWidget( {
+			data: 'and',
+			label: cfg.andLabel
+		} );
+
+		cfg.items = [
+			this.orButton,
+			this.andButton
+		];
+
+		bs.extendedSearch.FilterAndOrSwitch.parent.call( this, cfg );
+
+		this.selectItemByData( cfg.selected );
+
+		this.$element.addClass( 'bs-extendedsearch-filter-and-or-switch' );
+	}
+
+	OO.inheritClass( bs.extendedSearch.FilterAndOrSwitch, OO.ui.ButtonSelectWidget );
 } )( mediaWiki, jQuery, blueSpice, document );

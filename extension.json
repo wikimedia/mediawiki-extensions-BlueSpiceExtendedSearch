@@ -187,7 +187,9 @@
 				"bs-extendedsearch-search-center-options-page-size",
 				"bs-extendedsearch-search-center-options-sort-by",
 				"bs-extendedsearch-search-center-options-sort-order",
-				"bs-extendedsearch-search-center-result-help"
+				"bs-extendedsearch-search-center-result-help",
+				"bs-extendedsearch-searchcenter-filter-or-label",
+				"bs-extendedsearch-searchcenter-filter-and-label"
 			],
 			"dependencies" : [
 				"ext.blueSpiceExtendedSearch.SearchBar"
