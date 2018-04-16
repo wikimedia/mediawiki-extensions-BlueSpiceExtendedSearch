@@ -392,6 +392,11 @@ bs.extendedSearch.Lookup.prototype.addSort = function( fieldName, order ) {
 bs.extendedSearch.Lookup.prototype.removeSort = function( fieldName ) {
 	this.ensurePropertyPath( 'sort', [] );
 
+	if( !fieldName ) {
+		this.sort = [];
+		return this;
+	}
+
 	var newSort = [];
 	for( var i = 0; i < this.sort.length; i++ ) {
 		var sorter = this.sort[i];
@@ -419,6 +424,94 @@ bs.extendedSearch.Lookup.prototype.getSort = function() {
 
 	return this.sort;
 };
+
+/**
+ *
+ * @param Arry sort
+ * @returns Lookup
+ */
+bs.extendedSearch.Lookup.prototype.setSort = function( sort ) {
+	this.sort = sort;
+	return this;
+}
+
+/**
+ *
+ * @param string field
+ * @param string|Array value
+ * @returns Lookup
+ */
+bs.extendedSearch.Lookup.prototype.addShould = function( field, value ) {
+	this.ensurePropertyPath( 'query.bool.should', [] );
+
+	if( !$.isArray( value ) ) {
+		value = [value];
+	}
+
+	var appended = false;
+	for( shouldIdx in this.query.bool.should ) {
+		var should = this.query.bool.should[shouldIdx];
+		if( !( field in should.terms ) ) {
+			continue;
+		}
+		this.query.bool.should[shouldIdx].terms[field] = $.merge(
+			should.terms[field],
+			value
+		);
+		appended = true;
+	}
+
+	if( !appended ) {
+		this.query.bool.should.terms[field] = value;
+	}
+
+	return this;
+}
+
+/**
+ *
+ * @param string field
+ * @param string|Array value
+ * @returns Lookup
+ */
+bs.extendedSearch.Lookup.prototype.removeShould = function( field, value ) {
+	this.ensurePropertyPath( 'query.bool.should', [] );
+
+	if( !$.isArray( value ) ) {
+		value = [value];
+	}
+
+	for( shouldIdx in this.query.bool.should ) {
+		var should = this.query.bool.should[shouldIdx];
+		if( !( field in should.terms ) ) {
+			continue;
+		}
+		var oldValues = should.terms[field];
+		var newValues = [];
+		$.grep( oldValues, function( el ) {
+			if ( $.inArray( el, value ) === -1 ) {
+				newValues.push( el );
+			}
+		} );
+
+		if( newValues.length === 0 || value.length === 0 ) {
+			this.query.bool.should.splice( shouldIdx, 1 );
+			continue;
+		}
+		this.query.bool.should[shouldIdx].terms[field] = newValues;
+	}
+
+	return this;
+}
+
+/**
+ *
+ * @returns Array
+ */
+bs.extendedSearch.Lookup.prototype.getShould = function() {
+	this.ensurePropertyPath( 'query.bool.should', [] );
+	return this.query.bool.should;
+}
 
 /**
  * Removes all methods and stuff from current object to provide an easy-to-use
