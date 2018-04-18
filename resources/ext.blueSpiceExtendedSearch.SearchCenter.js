@@ -179,6 +179,9 @@
 			}
 		) )
 		.done( function( response ) {
+			//Lookup object might have changed due to LookupModifiers
+			search.makeLookup( JSON.parse( response.lookup ) );
+
 			var toolsPanel = new bs.extendedSearch.ToolsPanel( {
 				lookup: search.getLookupObject(),
 				filterData: $.merge(

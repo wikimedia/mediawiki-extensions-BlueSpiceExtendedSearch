@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\Source;
 
 use BS\ExtendedSearch\Source\LookupModifier\BaseExtensionAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\BaseTagsAggregation;
+use BS\ExtendedSearch\Source\LookupModifier\BaseScoreSortWhenShould;
 
 class Base {
 
@@ -93,7 +94,8 @@ class Base {
 	public function getLookupModifiers( $oLookup, $oContext ) {
 		return [
 			'base-extensionaggregation' => new BaseExtensionAggregation( $oLookup, $oContext ),
-			'base-tagsaggregation' => new BaseTagsAggregation( $oLookup, $oContext )
+			'base-tagsaggregation' => new BaseTagsAggregation( $oLookup, $oContext ),
+			'base-scoresortwhenshould' => new BaseScoreSortWhenShould( $oLookup, $oContext )
 		];
 	}
 

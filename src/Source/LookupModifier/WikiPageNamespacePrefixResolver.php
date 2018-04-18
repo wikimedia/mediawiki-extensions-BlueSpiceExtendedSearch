@@ -45,19 +45,21 @@ class WikiPageNamespacePrefixResolver extends Base {
 	}
 
 	protected function notAnExplicitQueryOfNS_MAIN() {
-		$sStartsWithColor = strpos( $this->simpleQS, ':') === 0;
+		$sStartsWithColon = strpos( $this->simpleQS, ':') === 0;
 		$titleInMAIN = $this->title->getNamespace() === NS_MAIN;
 
-		return $titleInMAIN && !$sStartsWithColor;
+		return $titleInMAIN && !$sStartsWithColon;
 	}
 
 	protected function resetNamespaceFilter() {
 		//We reset all namespace filters
-		$this->oLookup->removeFilter( 'namespace', range( -2, 65536 ) ); //Ugly --> implement "setFilter"?
+		$this->oLookup->clearFilter( 'namespace_text' );
 	}
 
 	public function setNewNamespaceFilterAndQuery() {
 		$this->oLookup->setSimpleQueryString( $this->title->getText() );
-		$this->oLookup->addFilter( 'namespace', $this->title->getNamespace() );
+		//We use namespace name, because "namespace_name" is available filter on front-end
+		$nsText = \BsNamespaceHelper::getNamespaceName( $this->title->getNamespace() );
+		$this->oLookup->addTermsFilter( 'namespace_text', $nsText );
 	}
 }

@@ -334,31 +334,36 @@ class Lookup extends \ArrayObject {
 			];
 		}
 
-	$replacedExistingSort = false;
-	for( $i = 0; $i < count( $this['sort'] ); $i++ ) {
-		$sorter = &$this['sort'][$i];
-		if( isset( $sorter[$sFieldName] ) ) {
-			$sorter[$sFieldName] = $mOrder;
-			$replacedExistingSort = true;
+		$replacedExistingSort = false;
+		for( $i = 0; $i < count( $this['sort'] ); $i++ ) {
+			$sorter = &$this['sort'][$i];
+			if( isset( $sorter[$sFieldName] ) ) {
+				$sorter[$sFieldName] = $mOrder;
+				$replacedExistingSort = true;
+			}
 		}
-	}
 
-	if( !$replacedExistingSort ) {
-		$this['sort'][] = [
-			$sFieldName => $mOrder
-		];
-	}
+		if( !$replacedExistingSort ) {
+			$this['sort'][] = [
+				$sFieldName => $mOrder
+			];
+		}
 
-	return $this;
+		return $this;
 	}
 
 	/**
 	 *
-	 * @param string $sFieldName
+	 * @param string|null $sFieldName If null, all sorts will be removed
 	 * @return Lookup
 	 */
-	public function removeSort( $sFieldName ) {
+	public function removeSort( $sFieldName = false ) {
 		$this->ensurePropertyPath( 'sort', [] );
+
+		if( !$sFieldName ) {
+			$this['sort'] = [];
+			return $this;
+		}
 
 		$newSort = [];
 		for( $i = 0; $i < count( $this['sort'] ); $i++ ) {
@@ -385,6 +390,99 @@ class Lookup extends \ArrayObject {
 	public function getSort() {
 		$this->ensurePropertyPath( 'sort', [] );
 		return $this['sort'];
+	}
+
+	/**
+	 * Replaces entire sort array with the one supplied
+	 *
+	 * @param array $sort
+	 * @return Lookup
+	 */
+	public function setSort( $sort ) {
+		$this['sort'] = $sort;
+		return $this;
+	}
+
+	/**
+	 * Adds "should" clause to boolean query
+	 *
+	 * "query" => [
+	 *       "bool" => [
+	 *           "should" => [[
+	 *               "terms" => [ "entitydata.parentid" => [ 0 ] ]
+	 *           ],[
+	 *               "terms" => [ "entitydata.type" => [ "microblog", "profile" ] ]
+	 *           ]]
+	 *       ]
+	 *   ]
+	 *
+	 * Since "should" is inheritly optional we can put all values
+	 * under single "terms"
+	 *
+	 * @param string $field
+	 * @param string|array $value
+	 * @return Lookup
+	 */
+	public function addShould( $field, $value ) {
+		$this->ensurePropertyPath( 'query.bool.should', [] );
+
+		if( !is_array( $value ) ) {
+			$value = [$value];
+		}
+
+		$appended = false;
+		foreach( $this['query']['bool']['should'] as $idx => &$should ) {
+			if( !isset( $should['terms'][$field] ) ) {
+				continue;
+			}
+			$should['terms'][$field] = array_merge( $should['terms'][$field], $value );
+			$appended = true;
+		}
+
+		if( !$appended ) {
+			$this['query']['bool']['should']['terms'][$field] = $value;
+		}
+
+		return $this;
+	}
+
+	/**
+	 *
+	 * @param string $field
+	 * @param string|array|null $value If not supplied, entire field will be removed
+	 * @return Lookup
+	 */
+	public function removeShould( $field, $value = [] ) {
+		$this->ensurePropertyPath( 'query.bool.should', [] );
+
+		if( !is_array( $value ) ) {
+			$value = [$value];
+		}
+
+		foreach( $this['query']['bool']['should'] as $idx => $should ) {
+			if( !isset( $should['terms'][$field] ) ) {
+				continue;
+			}
+
+			$oldValues = $should['terms'][$field];
+			$newValues = array_diff( $oldvalues, $value );
+			if( empty( $newValues ) || empty( $value ) ) {
+				unset( $this['query']['bool']['should'][$idx] );
+				continue;
+			}
+			$should['terms'][$field] = $newValues;
+		}
+
+		return $this;
+	}
+
+	/**
+	 *
+	 * @return array
+	 */
+	public function getShould() {
+		$this->ensurePropertyPath( 'query.bool.should', [] );
+		return $this['query']['bool']['should'];
 	}
 
 	/**
