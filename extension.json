@@ -66,7 +66,6 @@
 		"BS\\ExtendedSearch\\Setup::init"
 	],
 	"Hooks": {
-		"UnitTestsList": "BS\\ExtendedSearch\\Setup::onUnitTestsList",
 		"ResourceLoaderTestModules": "BS\\ExtendedSearch\\Setup::onResourceLoaderTestModules",
 		"SkinTemplateOutputPageBeforeExec": "BS\\ExtendedSearch\\Setup::onSkinTemplateOutputPageBeforeExec",
 		"BeforePageDisplay": "BS\\ExtendedSearch\\Setup::onBeforePageDisplay"
