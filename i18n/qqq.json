@@ -9,12 +9,10 @@
 	"bssearchadmin": "Special page name for Special:BSSearchAdmin",
 	"bssearchadmin-desc": "Description text for title attribute in menu link",
 	"bssearchcenter": "Special page name for Special:BSSearchCenter",
-	"apihelp-bs-extendedsearch-autocomplete-summary": "{{doc-apihelp-summary|bs-extendedsearch-autocomplete}}",
 	"apihelp-bs-extendedsearch-query-description": "{{doc-apihelp-description|bs-extendedsearch-query}}",
 	"apihelp-bs-extendedsearch-query-summary": "{{doc-apihelp-summary|bs-extendedsearch-query}}",
 	"apihelp-bs-extendedsearch-query-param-q": "{{doc-apihelp-param|bs-extendedsearch-query|q}}",
 	"apihelp-bs-extendedsearch-query-param-params": "{{doc-apihelp-param|bs-extendedsearch-query|params}}",
-	"apihelp-bs-extendedsearch-query-param-search_data": "{{doc-apihelp-param|bs-extendedsearch-query|search_data}}",
 	"apihelp-bs-extendedsearch-stats-description": "{{doc-apihelp-description|bs-extendedsearch-stats}}",
 	"apihelp-bs-extendedsearch-stats-summary": "{{doc-apihelp-summary|bs-extendedsearch-stats}}",
 	"apihelp-bs-extendedsearch-stats-param-stats": "{{doc-apihelp-param|bs-extendedsearch-stats|stats}}",
@@ -69,5 +67,6 @@
 	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Label for fuzzy matches in autocomplete results. These results do not contain search term or are not in correct namespace, but still may be relevant (did you mean?)",
 	"bs-extendedsearch-search-center-result-help": "Text showing when user has arrived to Special:BSSearchCenter directly, not via search bar. Text indicates that something must be typed in the search bar",
 	"bs-extendedsearch-searchcenter-filter-or-label": "Label for OR value in the switch indicating whether and OR or AND filter query should be executed",
-	"bs-extendedsearch-searchcenter-filter-and-label": "Label for AND value in the switch indicating whether and OR or AND filter query should be executed"
+	"bs-extendedsearch-searchcenter-filter-and-label": "Label for AND value in the switch indicating whether and OR or AND filter query should be executed",
+	"bs-extendedsearch-searchcenter-sort-field-_score": "Label for sort by field _score."
 }

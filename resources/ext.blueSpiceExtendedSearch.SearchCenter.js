@@ -231,8 +231,9 @@
 			//set default value for page size - prevent zero size pages
 			this.lookup.setSize( mw.config.get( 'bsgESResultsPerPage' ) );
 		}
+		//Default sorter
 		if( this.lookup.getSort().length == 0 ) {
-			this.lookup.addSort( 'basename' );
+			this.lookup.addSort( '_score', bs.extendedSearch.Lookup.SORT_DESC );
 		}
 	}
 
