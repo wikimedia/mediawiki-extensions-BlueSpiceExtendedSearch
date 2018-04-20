@@ -94,8 +94,7 @@ class Base {
 	public function getLookupModifiers( $oLookup, $oContext ) {
 		return [
 			'base-extensionaggregation' => new BaseExtensionAggregation( $oLookup, $oContext ),
-			'base-tagsaggregation' => new BaseTagsAggregation( $oLookup, $oContext ),
-			'base-scoresortwhenshould' => new BaseScoreSortWhenShould( $oLookup, $oContext )
+			'base-tagsaggregation' => new BaseTagsAggregation( $oLookup, $oContext )
 		];
 	}
 

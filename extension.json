@@ -188,7 +188,8 @@
 				"bs-extendedsearch-search-center-options-sort-order",
 				"bs-extendedsearch-search-center-result-help",
 				"bs-extendedsearch-searchcenter-filter-or-label",
-				"bs-extendedsearch-searchcenter-filter-and-label"
+				"bs-extendedsearch-searchcenter-filter-and-label",
+				"bs-extendedsearch-searchcenter-sort-field-_score"
 			],
 			"dependencies" : [
 				"ext.blueSpiceExtendedSearch.SearchBar"

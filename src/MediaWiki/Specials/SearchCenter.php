@@ -18,7 +18,8 @@ class SearchCenter extends \SpecialPage {
 		$localBackend = \BS\ExtendedSearch\Backend::instance( 'local' );
 		$resultStructure = $localBackend->getResultStructure();
 
-		$sortableFields = [];
+		//Add _score manually, as its not a real field
+		$sortableFields = ['_score'];
 		$allowedSortableFieldTypes = ['date', 'time', 'integer'];
 
 		$availableTypes = [];

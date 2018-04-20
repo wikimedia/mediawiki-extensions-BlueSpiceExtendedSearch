@@ -82,10 +82,16 @@
 		this.sortableFields = [];
 		for( fieldIdx in fields ) {
 			var field = fields[fieldIdx];
+
+			var label = field.charAt(0).toUpperCase() + field.slice(1);
+			if( mw.message( 'bs-extendedsearch-searchcenter-sort-field-' + field ).exists() ) {
+				label = mw.message( 'bs-extendedsearch-searchcenter-sort-field-' + field ).plain();
+			}
+
 			this.sortableFields.push(
 				{
 					data: field,
-					label: field.charAt(0).toUpperCase() + field.slice(1)
+					label: label
 				}
 			);
 		}
@@ -123,7 +129,8 @@
 				options: this.sortableFields
 			},
 			sortOrder: {
-				value: this.currentSortOrder || bs.extendedSearch.Lookup.SORT_ASC,
+				//Because _score is default sort field, it needs to be sorted descending
+				value: this.currentSortOrder || bs.extendedSearch.Lookup.SORT_DESC,
 				options: [
 					{
 						data: bs.extendedSearch.Lookup.SORT_ASC,
