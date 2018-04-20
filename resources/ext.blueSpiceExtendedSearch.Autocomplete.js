@@ -24,6 +24,10 @@
 	}
 
 	function _beforeValueChanged( e ) {
+		if( e.type != 'keyup' ) {
+			return;
+		}
+
 		//Escape - close popup
 		if( e.which == 27 ) {
 			bs.extendedSearch.Autocomplete.removePopup();

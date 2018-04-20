@@ -321,10 +321,14 @@ class Backend {
 
 		$results = $search->search( $lookup->getQueryDSL() );
 
+		foreach( $lookupModifiers as $sLMKey => $lookupModifier ) {
+			$lookupModifier->undo();
+		}
+
 		$formattedResultSet = new \stdClass();
 		$formattedResultSet->results = $this->formatResults( $results );
 		$formattedResultSet->total = $this->getTotal( $results );
-		$formattedResultSet->aggregations = $this->getAggregations( $results );
+		$formattedResultSet->filters = $this->getFilterConfig( $results );
 
 		return $formattedResultSet;
 	}
@@ -361,8 +365,28 @@ class Backend {
 	 *
 	 * @param \Elastica\ResultSet $results
 	 */
-	protected function getAggregations( $results ) {
-		return $results->getAggregations();
+	protected function getFilterConfig( $results ) {
+		//Fields that have "AND/OR" option enabled. Would be better if this could
+		//be retrieved from mapping, but since ES assigns types dinamically, not possible.
+		//It could also be infered from results, but we need filter cfg even when no
+		//results are retrieved. Basically, this are all the fields of type array
+		$fieldsWithANDEnabled = \ExtensionRegistry::getInstance()
+			->getAttribute( 'BlueSpiceExtendedSearchFieldsWithANDFilterEnabled' );
+
+		$aggs = $results->getAggregations();
+		$filterCfg = [];
+		foreach( $aggs as $filterName => $agg ) {
+			$fieldName = substr( $filterName, 6 );
+			$filterCfg[$fieldName] = [
+				'buckets' => $agg['buckets'],
+				'isAndEnabled' => 0
+			];
+			if( in_array( $fieldName, $fieldsWithANDEnabled['fields'] ) ) {
+				$filterCfg[$fieldName]['isAndEnabled'] = 1;
+			}
+		}
+
+		return $filterCfg;
 	}
 
 	/**
@@ -370,9 +394,9 @@ class Backend {
 	 *
 	 * @return array
 	 */
-	public function getResultStructure() {
+	public function getDefaultResultStructure() {
 		$defaultStructure = \ExtensionRegistry::getInstance()
-			->getAttribute( 'BlueSpiceExtendedSearchResultStructure' );
+			->getAttribute( 'BlueSpiceExtendedSearchDefaultResultStructure' );
 
 		return $defaultStructure;
 	}

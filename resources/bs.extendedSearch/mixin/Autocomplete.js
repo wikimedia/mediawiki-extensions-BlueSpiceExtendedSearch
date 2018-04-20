@@ -104,9 +104,16 @@
 		this.basename = cfg.basename;
 		this.pageAnchor = cfg.pageAnchor || null;
 
+		if( this.pageAnchor ) {
+			this.$pageAnchor = $( this.pageAnchor );
+			this.basename = this.$pageAnchor.html();
+		}
+
+		this.boldSearchTerm();
+
 		//If backend provided an anchor use it, otherwise create it
 		if( this.pageAnchor ) {
-			this.$header = $( this.pageAnchor );
+			this.$header = this.$pageAnchor.html( this.basename );
 		} else {
 			this.$header = $( '<a>' )
 				.attr( 'href', this.uri )
@@ -116,6 +123,12 @@
 	}
 
 	OO.initClass( bs.extendedSearch.mixin.AutocompleteHeader );
+
+	//Bolds out search term in the result title
+	bs.extendedSearch.mixin.AutocompleteHeader.prototype.boldSearchTerm = function() {
+		var re = new RegExp( "(" + this.searchTerm + ")", "gi" );
+		this.basename = this.basename.replace( re, "<b>$1</b>" );
+	}
 
 	bs.extendedSearch.mixin.AutocompleteHitType = function( cfg ) {
 		this.hitType = cfg.hitType;

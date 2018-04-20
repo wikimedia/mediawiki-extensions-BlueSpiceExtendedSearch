@@ -7,6 +7,7 @@
 		this.id = cfg.id;
 		this.options = cfg.options || [];
 		this.selectedOptions = cfg.selectedOptions || [];
+		this.isANDEnabled = cfg.isANDEnabled == 1 ? true : false;
 		this.filterType = cfg.filterType || "or";
 
 		this.dirty = false;
@@ -14,6 +15,7 @@
 
 		this.emptyLabel = cfg.label;
 		this.valueLabel = cfg.valueLabel;
+		this.hasHiddenLabelKey = cfg.hasHiddenLabelKey;
 
 		cfg.popup = {
 			$content: this.getPopupContentWidgetElement(),
@@ -108,21 +110,25 @@
 			this.onApplyFilterButton();
 		}.bind( this ) );
 
-		this.andOrSwitch = new bs.extendedSearch.FilterAndOrSwitch({
-			orLabel: mw.message( 'bs-extendedsearch-searchcenter-filter-or-label' ).plain(),
-			andLabel: mw.message( 'bs-extendedsearch-searchcenter-filter-and-label' ).plain(),
-			selected: this.filterType
-		});
-		this.andOrSwitch.on( 'choose', function(e) {
-			this.filterType = e.data;
-		}.bind( this ) );
+		var layoutItems = [];
+		if( this.isANDEnabled ) {
+			this.andOrSwitch = new bs.extendedSearch.FilterAndOrSwitch({
+				orLabel: mw.message( 'bs-extendedsearch-searchcenter-filter-or-label' ).plain(),
+				andLabel: mw.message( 'bs-extendedsearch-searchcenter-filter-and-label' ).plain(),
+				selected: this.filterType
+			});
+			this.andOrSwitch.on( 'choose', function(e) {
+				this.filterType = e.data;
+			}.bind( this ) );
+			layoutItems.push( this.andOrSwitch );
+		}
+
+		layoutItems.push( this.applyFilterButton );
 
 		this.actions = new OO.ui.ActionFieldLayout( this.filterBox,
 			new OO.ui.HorizontalLayout( {
-				items: [
-					this.andOrSwitch,
-					this.applyFilterButton
-				]
+				items: layoutItems,
+				classes: [ 'bs-extendedsearch-filter-horizontal-layout' ]
 			}), { align: 'inline' } );
 
 		this.$optionsContainer.append( this.actions.$element );
@@ -174,7 +180,19 @@
 		if( this.selectedOptions.length == 0 ) {
 			this.setLabel( this.emptyLabel );
 		} else {
-			this.setLabel( this.valueLabel + this.selectedOptions.join( ', ' ) );
+			var values = this.selectedOptions;
+			var valuesCount = values.length;
+			var hiddenCount = 0;
+			if( valuesCount > 2 ) {
+				values = values.slice( 0, 2 );
+				hiddenCount = valuesCount - 2;
+			}
+
+			var label = this.valueLabel + values.join( ', ' );
+			if( hiddenCount > 0 ) {
+				label += mw.message( this.hasHiddenLabelKey, hiddenCount ).plain();
+			}
+			this.setLabel( label );
 		}
 	}
 

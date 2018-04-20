@@ -7,7 +7,7 @@ use BlueSpice\DynamicFileDispatcher\Params;
 use BlueSpice\DynamicFileDispatcher\ArticlePreviewImage;
 
 class WikiPageFormatter extends Base {
-	public function modifyResultStructure ( &$resultStructure ) {
+	public function getResultStructure ( $defaultResultStructure = [] ) {
 		$resultStructure['headerText'] = 'prefixed_title';
 		$resultStructure['highlight'] = 'highlight';
 		$resultStructure['secondaryInfos']['top']['items'][] = [
@@ -23,6 +23,8 @@ class WikiPageFormatter extends Base {
 		//All fields under "featured" key will only appear is result is featured
 		$resultStructure['featured']['highlight'] = "rendered_content_snippet";
 		$resultStructure['featured']['imageUri'] = "image_uri";
+
+		return $resultStructure;
 	}
 
 	public function format( &$result, $resultObject ) {

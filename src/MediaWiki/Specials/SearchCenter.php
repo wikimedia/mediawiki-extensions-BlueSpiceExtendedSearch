@@ -16,13 +16,14 @@ class SearchCenter extends \SpecialPage {
 		$out->addModules( "ext.blueSpiceExtendedSearch.SearchCenter" );
 
 		$localBackend = \BS\ExtendedSearch\Backend::instance( 'local' );
-		$resultStructure = $localBackend->getResultStructure();
+		$defaultResultStructure = $localBackend->getDefaultResultStructure();
 
 		//Add _score manually, as its not a real field
 		$sortableFields = ['_score'];
 		$allowedSortableFieldTypes = ['date', 'time', 'integer'];
 
 		$availableTypes = [];
+		$resultStructures = [];
 
 		$sourceConfig = [];
 		foreach( $localBackend->getSources() as $sourceKey => $source ) {
@@ -43,7 +44,8 @@ class SearchCenter extends \SpecialPage {
 				}
 			}
 
-			$source->getFormatter()->modifyResultStructure( $resultStructure );
+			$resultStructure = $source->getFormatter()->getResultStructure( $defaultResultStructure );
+			$resultStructures[$source->getTypeKey()] = $resultStructure;
 
 			$availableTypes[] = $source->getTypeKey();
 
@@ -59,7 +61,7 @@ class SearchCenter extends \SpecialPage {
 
 		$out->addJsConfigVars( 'bsgESSources', $sourceConfig );
 		//Structure of the result displayed in UI, decorated by each source
-		$out->addJsConfigVars( 'bsgESResultStructure', $resultStructure );
+		$out->addJsConfigVars( 'bsgESResultStructures', $resultStructures );
 		//Array of fields available for sorting
 		$out->addJsConfigVars( 'bsgESSortableFields', $sortableFields );
 		//Array of each source's types.

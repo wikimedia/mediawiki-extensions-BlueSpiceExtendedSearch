@@ -38,27 +38,31 @@
 	 * Makes config objects for each of filterable fields
 	 * from aggregations returned by the search
 	 *
-	 * @param {Array} aggs
-	 * @returns {Array}
+	 * @param Array aggs
+	 * @returns Array
 	 */
-	function _getFiltersFromAggs( aggs ) {
+	function _getFilters( rawFilters ) {
 		var filters = [];
-		for( aggKey in aggs ) {
-			var agg = aggs[aggKey];
-			var filterId = aggKey.slice( 6 );
-			var label = mw.message( 'bs-extendedsearch-search-center-filter-' + aggKey + '-label' ).plain();
-			var valueLabel = mw.message( 'bs-extendedsearch-search-center-filter-' + aggKey + '-with-values-label' ).plain();
+		for( filterId in rawFilters ) {
+			var rawFilter = rawFilters[filterId];
+			//TODO: Change this with some mechanism to get label keys
+			var labelFilterId = filterId.replace( '.', '-' );
+			var label = mw.message( 'bs-extendedsearch-search-center-filter-' + labelFilterId + '-label' ).plain();
+			var valueLabel = mw.message( 'bs-extendedsearch-search-center-filter-' + labelFilterId + '-with-values-label' ).plain();
 			var filter = {
 				label: label,
 				filter: {
 					label: label,
 					valueLabel: valueLabel,
+					hasHiddenLabelKey: 'bs-extendedsearch-search-center-filter-has-hidden',
 					id: filterId,
+					isANDEnabled: rawFilter.isANDEnabled,
 					options: []
 				}
 			};
-			for( bucketIdx in agg.buckets ) {
-				var bucket = agg.buckets[bucketIdx];
+
+			for( bucketIdx in rawFilter.buckets ) {
+				var bucket = rawFilter.buckets[bucketIdx];
 				filter.filter.options.push( {
 					label: bucket.key,
 					data: bucket.key,
@@ -78,9 +82,10 @@
 	 * @returns {Array}
 	 */
 	function _applyResultsToStructure( results ) {
-		var resultStructure = mw.config.get( 'bsgESResultStructure' );
+		var resultStructures = mw.config.get( 'bsgESResultStructures' );
 		var structuredResults = [];
 		$.each( results, function( idx, result ) {
+			var resultStructure = resultStructures[result["type"]];
 			var cfg = {};
 			//dummy criteria for featured - prototype only
 			if( idx < 1 ) {
@@ -106,8 +111,9 @@
 				}
 
 				var resultKey = resultStructure[ cfgKey ];
-				if( ( resultKey in result ) && result[resultKey] != '' ) {
-					cfg[cfgKey] = result[resultKey];
+				var keyValue = search.getResultValueByKey( result, resultKey );
+				if( keyValue !== false ) {
+					cfg[cfgKey] = keyValue;
 				}
 			}
 
@@ -115,10 +121,11 @@
 			if( cfg.featured == true ) {
 				for( featuredField in resultStructure['featured'] ) {
 					var resultKey = resultStructure['featured'][featuredField];
-					if( !( resultKey in result ) ) {
+					var keyValue = search.getResultValueByKey( result, resultKey );
+					if( !( keyValue ) ) {
 						continue;
 					}
-					cfg[featuredField] = result[resultKey];
+					cfg[featuredField] = keyValue;
 				}
 			}
 
@@ -142,8 +149,8 @@
 				continue;
 			}
 
-			if( !result[item.name] ||
-				( $.isArray( result[item.name] ) &&  result[item.name].length == 0 ) ) {
+			var keyValue = search.getResultValueByKey( result, item.name );
+			if( !keyValue || ( $.isArray( keyValue ) &&  keyValue.length == 0 ) ) {
 				continue;
 			}
 
@@ -151,10 +158,39 @@
 				nolabel: item.nolabel || false,
 				labelKey: item.labelKey || 'bs-extendedsearch-search-center-result-' + item.name + '-label',
 				name: item.name,
-				value: result[item.name]
+				value: keyValue
 			} )
 		}
 		return formattedItems;
+	}
+
+	/**
+	 * Gets the value for the given key from result
+	 * Key can be a path ( level.sublevel.name )
+	 *
+	 * @param Array result
+	 * @param string key
+	 * @returns string|false if not present
+	 */
+	function _getResultValueByKey( result, key ) {
+		var value = false;
+		if( typeof( key ) !== 'string' ) {
+			return value;
+		}
+
+		var keyBits = key.split( '.' );
+		for( bitIdx in keyBits ) {
+			var keyBit = keyBits[bitIdx];
+			if( result[keyBit] ) {
+				result = result[keyBit];
+				value = result;
+			}
+		}
+		if( value == '' ) {
+			value = false;
+		}
+
+		return value;
 	}
 
 	var api = new mw.Api();
@@ -186,7 +222,7 @@
 				lookup: search.getLookupObject(),
 				filterData: $.merge(
 					search.getTypeFilter(),
-					search.getFiltersFromAggs( response.aggregations )
+					search.getFilters( response.filters )
 				)
 			} );
 			toolsPanel.init();
@@ -254,9 +290,10 @@
 		updateQueryHash: updateQueryHash,
 		getPageSizeConfig: _getPageSizeConfig,
 		getTypeFilter: _getTypeFilter,
-		getFiltersFromAggs: _getFiltersFromAggs,
+		getFilters: _getFilters,
 		applyResultsToStructure: _applyResultsToStructure,
-		formatSecondaryInfoItems: _formatSecondaryInfoItems
+		formatSecondaryInfoItems: _formatSecondaryInfoItems,
+		getResultValueByKey: _getResultValueByKey
 	};
 
 	var search = bs.extendedSearch.SearchCenter;

@@ -24,4 +24,7 @@ class WikiPageUserPreferences extends Base {
 
 		$this->oLookup->addShould( 'namespace', $prioritizedFields );
 	}
+
+	public function undo() {
+	}
 }

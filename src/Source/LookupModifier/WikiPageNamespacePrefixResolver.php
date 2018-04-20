@@ -62,4 +62,7 @@ class WikiPageNamespacePrefixResolver extends Base {
 		$nsText = \BsNamespaceHelper::getNamespaceName( $this->title->getNamespace() );
 		$this->oLookup->addTermsFilter( 'namespace_text', $nsText );
 	}
+
+	public function undo() {
+	}
 }

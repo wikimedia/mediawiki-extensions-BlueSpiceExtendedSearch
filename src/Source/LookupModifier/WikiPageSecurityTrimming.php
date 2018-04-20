@@ -43,7 +43,7 @@ class WikiPageSecurityTrimming extends Base {
 	 */
 	protected function addMustNotClause() {
 		$this->ensureMustNot();
-		$this->oLookup['bool']['must_not'][] = [
+		$this->oLookup['query']['bool']['must_not'][] = [
 			'terms' => [
 				'namespace' => $this->namespaceIdBlacklist
 			]
@@ -51,9 +51,11 @@ class WikiPageSecurityTrimming extends Base {
 	}
 
 	protected function ensureMustNot() {
-		if( !isset( $this->oLookup['bool']['must_not'] ) ) {
-			$this->oLookup['bool']['must_not'] = [];
+		if( !isset( $this->oLookup['query']['bool']['must_not'] ) ) {
+			$this->oLookup['query']['bool']['must_not'] = [];
 		}
 	}
 
+	public function undo() {
+	}
 }

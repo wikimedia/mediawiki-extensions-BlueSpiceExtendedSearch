@@ -42,34 +42,6 @@ bs.extendedSearch.Lookup.prototype.ensurePropertyPath = function ( path, initial
 };
 
 /**
- * Removes filter completely regardless of value
- *
- * @returns bs.extendedSearch.Lookup
- */
-bs.extendedSearch.Lookup.prototype.clearFilter = function ( field ) {
-	this.ensurePropertyPath( 'query.bool.filter', [] );
-
-	var newFilters = [];
-	for( var i = 0; i < this.query.bool.filter.length; i++ ) {
-		var filter = this.query.bool.filter[i]
-		if( filter.terms && field in this.query.bool.filter[i].terms ) {
-			continue;
-		}
-		if( filter.term && field in filter.term ) {
-			continue;
-		}
-		newFilters.push( this.query.bool.filter[i] );
-	}
-
-	delete( this.query.bool.filter );
-	if( newFilters.length > 0 ) {
-		this.query.bool.filter = newFilters;
-	}
-
-	return this;
-};
-
-/**
  * @see https://www.elastic.co/guide/en/elasticsearch/reference/5.x/query-dsl-simple-query-string-query.html
  * @param string|object q
  * @returns bs.extendedSearch.Lookup
@@ -121,6 +93,44 @@ bs.extendedSearch.Lookup.prototype.getSimpleQueryString = function () {
 };
 
 /**
+ *
+ * @returns bs.extendedSearch.Lookup
+ */
+bs.extendedSearch.Lookup.prototype.clearSimpleQueryString = function () {
+	this.ensurePropertyPath( 'query.simple_query_string', {} );
+	delete( this.query.simple_query_string );
+	return this;
+};
+
+/**
+ * Removes filter completely regardless of value
+ *
+ * @returns bs.extendedSearch.Lookup
+ */
+bs.extendedSearch.Lookup.prototype.clearFilter = function ( field ) {
+	this.ensurePropertyPath( 'query.bool.filter', [] );
+
+	var newFilters = [];
+	for( var i = 0; i < this.query.bool.filter.length; i++ ) {
+		var filter = this.query.bool.filter[i]
+		if( filter.terms && field in this.query.bool.filter[i].terms ) {
+			continue;
+		}
+		if( filter.term && field in filter.term ) {
+			continue;
+		}
+		newFilters.push( this.query.bool.filter[i] );
+	}
+
+	delete( this.query.bool.filter );
+	if( newFilters.length > 0 ) {
+		this.query.bool.filter = newFilters;
+	}
+
+	return this;
+};
+
+/**
  * Gets all filters in lookup in form:
  * {
  *		terms: {
@@ -160,16 +170,6 @@ bs.extendedSearch.Lookup.prototype.getFilters = function () {
 	}
 
 	return filters;
-};
-
-/**
- *
- * @returns bs.extendedSearch.Lookup
- */
-bs.extendedSearch.Lookup.prototype.clearSimpleQueryString = function () {
-	this.ensurePropertyPath( 'query.simple_query_string', {} );
-	delete( this.query.simple_query_string );
-	return this;
 };
 
 /**
@@ -462,7 +462,9 @@ bs.extendedSearch.Lookup.prototype.addShould = function( field, value ) {
 	}
 
 	if( !appended ) {
-		this.query.bool.should.terms[field] = value;
+		var terms = { terms: {} };
+		terms.terms[field] = value;
+		this.query.bool.should.push( terms );
 	}
 
 	return this;
@@ -523,10 +525,24 @@ bs.extendedSearch.Lookup.prototype.getQueryDSL = function() {
 };
 
 bs.extendedSearch.Lookup.prototype.addHighlighter = function( field ) {
-	this.ensurePropertyPath( 'highlight.field', [] );
+	this.ensurePropertyPath( 'highlight.fields', {} );
 
-	this.highlight.field[field] = {
+	this.highlight.fields[field] = {
 		matched_fields: field
+	}
+
+	return this;
+}
+
+bs.extendedSearch.Lookup.prototype.removeHighlighter = function ( field ) {
+	this.ensurePropertyPath( 'highlight.fields', {} );
+
+	if( field in this.highlight.fields ) {
+		delete( this.highlight.fields[field] );
+	}
+
+	if( $.isEmptyObject( this.highlight.fields ) ) {
+		delete( this.highlight );
 	}
 
 	return this;
@@ -577,11 +593,11 @@ bs.extendedSearch.Lookup.prototype.removeAutocompleteSuggest = function( suggest
 
 	var newSuggest = {};
 	for( field in this.suggest ) {
-		if( fieldName === suggestName ) {
+		if( field === suggestName ) {
 			continue;
 		}
 
-		newSuggest[fieldName] = this.suggest[fieldName];
+		newSuggest[field] = this.suggest[field];
 	}
 
 	this.suggest = newSuggest;
@@ -618,8 +634,6 @@ bs.extendedSearch.Lookup.prototype.addAutocompleteSuggestContext = function( acF
 }
 
 bs.extendedSearch.Lookup.prototype.removeAutocompleteSuggestContext = function( acField, contextField ) {
-	value = value || false;
-
 	this.ensurePropertyPath( 'suggest', {} );
 
 	if( !( acField in this.suggest ) ) {
@@ -629,6 +643,10 @@ bs.extendedSearch.Lookup.prototype.removeAutocompleteSuggestContext = function( 
 	this.ensurePropertyPath( 'suggest.' + acField + '.completion.contexts.' + contextField, [] );
 
 	delete( this.suggest[acField]['completion']['contexts'][contextField] );
+
+	if( $.isEmptyObject( this.suggest[acField]['completion']['contexts'] ) ) {
+		delete( this.suggest[acField]['completion']['contexts'] );
+	}
 
 	return this;
 }
@@ -652,7 +670,15 @@ bs.extendedSearch.Lookup.prototype.removeAutocompleteSuggestContextValue = funct
 		}
 	}
 
-	this.suggest[acField]['completion']['contexts'][contextField] = newValues();
+	if( newValues.length === 0 ) {
+		delete( this.suggest[acField]['completion']['contexts'][contextField] );
+		if( $.isEmptyObject( this.suggest[acField]['completion']['contexts'] ) ) {
+			delete( this.suggest[acField]['completion']['contexts'] );
+		}
+		return;
+	}
+
+	this.suggest[acField]['completion']['contexts'][contextField] = newValues;
 
 	return this;
 }
@@ -672,8 +698,6 @@ bs.extendedSearch.Lookup.prototype.addAutocompleteSuggestFuzziness = function( a
 }
 
 bs.extendedSearch.Lookup.prototype.removeAutocompleteSuggestFuzziness = function( acField ) {
-	value = value || false;
-
 	this.ensurePropertyPath( 'suggest', {} );
 
 	if( !( acField in this.suggest ) ) {

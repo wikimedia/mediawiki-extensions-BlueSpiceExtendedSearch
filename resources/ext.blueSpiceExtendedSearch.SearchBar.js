@@ -42,6 +42,7 @@
 		//Wire the events
 		this.$searchBox.on( 'keydown', this.onKeyDown.bind( this ) );
 		this.$searchBox.on( 'keyup', this.onKeyUp.bind( this ) );
+		this.$searchBox.on( 'paste', this.onPaste.bind( this ) );
 	}
 
 	bs.extendedSearch.SearchBar.prototype.detectNamespace = function( value ) {
@@ -132,10 +133,28 @@
 		}
 	}
 
+	bs.extendedSearch.SearchBar.prototype.onPaste = function( e ) {
+		var beforeValue = e.target.value;
+		var value = e.originalEvent.clipboardData.getData( 'Text' );
+		var isChanged = beforeValue !== value;
+
+		if( this.beforeValueChanged( e ) == false ) {
+			return;
+		}
+		if( !isChanged ) {
+			return;
+		}
+
+		//paste event is fired before value is actually changed
+		//in the input - give it some time to change
+		setTimeout( function() {
+			this.changeValue( value );
+		}.bind( this ), 200 );
+	}
+
 	bs.extendedSearch.SearchBar.prototype.onKeyUp = function( e ) {
 		var value = e.target.value;
-		var isChanged = this.valueBefore != value;
-
+		var isChanged = this.valueBefore !== value;
 		if( this.beforeValueChanged( e ) == false ) {
 			return;
 		}
@@ -150,18 +169,7 @@
 			return;
 		}
 
-		if( this.useNamespacePills && value ) {
-			this.detectNamespace( value );
-			if( this.namespace.text ) {
-				this.$namespaceInput.val( this.namespace.text );
-			}
-		} else {
-			this.value = value;
-		}
-
-		this.toggleClearButton( value );
-		//"Fire" this only when value is actually changed
-		this.onValueChanged();
+		this.changeValue( value );
 	}
 
 	bs.extendedSearch.SearchBar.prototype.onKeyDown = function( e ) {
@@ -189,5 +197,20 @@
 	bs.extendedSearch.SearchBar.prototype.beforeValueChanged = function( e ) {
 		//Others can override this to see if the value checking should be conducted
 		return true;
+	}
+
+	bs.extendedSearch.SearchBar.prototype.changeValue = function( value ) {
+		if( this.useNamespacePills && value ) {
+			this.detectNamespace( value );
+			if( this.namespace.text ) {
+				this.$namespaceInput.val( this.namespace.text );
+			}
+		} else {
+			this.value = value;
+		}
+
+		this.toggleClearButton( value );
+		//"Fire" this only when value is actually changed
+		this.onValueChanged();
 	}
 } )( mediaWiki, jQuery, blueSpice, document );

@@ -11,8 +11,6 @@
 
 		this.searchTerm = cfg.term || '';
 
-		this.boldSearchTerm();
-
 		this.$element = $( '<div>' );
 
 		bs.extendedSearch.AutocompletePrimaryResult.parent.call( this, cfg );
@@ -39,11 +37,5 @@
 	OO.inheritClass( bs.extendedSearch.AutocompletePrimaryResult, OO.ui.Widget );
 	OO.mixinClass( bs.extendedSearch.AutocompletePrimaryResult, bs.extendedSearch.mixin.AutocompleteHeader );
 	OO.mixinClass( bs.extendedSearch.AutocompletePrimaryResult, bs.extendedSearch.mixin.AutocompleteHitType );
-
-	//Bolds out search term in the result title
-	bs.extendedSearch.AutocompletePrimaryResult.prototype.boldSearchTerm = function() {
-		var re = new RegExp( "(" + this.searchTerm + ")", "gi" );
-		this.basename = this.basename.replace( re, "<b>$1</b>" );
-	}
 
 } )( mediaWiki, jQuery, blueSpice, document );

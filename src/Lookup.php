@@ -48,25 +48,6 @@ class Lookup extends \ArrayObject {
 	}
 
 	/**
-	 * Removes all values for a filter field regardless of the value
-	 *
-	 * @return Lookup
-	 */
-	public function clearFilter( $field ) {
-		$this->ensurePropertyPath( 'query.bool.filter', [] );
-		foreach( $this['query']['bool']['filter'] as $idx => $filter ) {
-			if( isset( $filter['terms'] ) && isset( $filter['terms'][$field] ) ) {
-				unset( $filter['terms'][$field] );
-			}
-			if( isset( $filter['term'] ) && isset( $filter['term'][$field] ) ) {
-				unset( $filter['term'][$field] );
-			}
-		}
-
-		return $this;
-	}
-
-	/**
 	 * "query" : {
      *   "bool": {
      *     "must": [{
@@ -133,6 +114,35 @@ class Lookup extends \ArrayObject {
 	public function clearSimpleQueryString() {
 		$this->ensurePropertyPath( 'query.simple_query_string', [] );
 		unset( $this['query']['simple_query_string'] );
+		return $this;
+	}
+
+	/**
+	 * Removes all values for a filter field regardless of the value
+	 *
+	 * @return Lookup
+	 */
+	public function clearFilter( $field ) {
+		$this->ensurePropertyPath( 'query.bool.filter', [] );
+		foreach( $this['query']['bool']['filter'] as $idx => $filter ) {
+			if( isset( $filter['terms'] ) && isset( $filter['terms'][$field] ) ) {
+				unset( $this['query']['bool']['filter'][$idx]['terms'][$field] );
+				if( empty(  $this['query']['bool']['filter'][$idx]['terms'] ) ) {
+					unset( $this['query']['bool']['filter'][$idx] );
+				}
+			}
+			if( isset( $filter['term'] ) && isset( $filter['term'][$field] ) ) {
+				unset( $this['query']['bool']['filter'][$idx] );
+			}
+		}
+
+		if( empty( $this['query']['bool']['filter'] ) ) {
+			unset( $this['query']['bool']['filter'] );
+		} else {
+			//reindex the array
+			$this['query']['bool']['filter'] = array_values( $this['query']['bool']['filter'] );
+		}
+
 		return $this;
 	}
 
@@ -215,27 +225,27 @@ class Lookup extends \ArrayObject {
 
 	/**
 	 *
-	 * @param string $sFieldName
-	 * @param string|array $mValue
+	 * @param string $field
+	 * @param string|array $value
 	 * @return Lookup
 	 */
 	public function removeTermsFilter( $field, $value ) {
 		$this->ensurePropertyPath( 'query.bool.filter', [] );
 
-		if( !is_array( $mValue ) ) {
-			$mValue = [ $mValue ];
+		if( !is_array( $value ) ) {
+			$value = [ $value ];
 		}
 
 		for( $i = 0; $i < count( $this['query']['bool']['filter'] ); $i++ ) {
 			$aFilter = &$this['query']['bool']['filter'][$i];
-			if( !isset( $aFilter['terms'][$sFieldName] ) ) {
+			if( !isset( $aFilter['terms'][$field] ) ) {
 				continue;
 			}
 
-			$aFilter['terms'][$sFieldName] = array_diff( $aFilter['terms'][$sFieldName], $mValue );
-			$aFilter['terms'][$sFieldName] = array_values( $aFilter['terms'][$sFieldName] );
+			$aFilter['terms'][$field] = array_diff( $aFilter['terms'][$field], $value );
+			$aFilter['terms'][$field] = array_values( $aFilter['terms'][$field] );
 
-			if( empty( $aFilter['terms'][$sFieldName] ) ) {
+			if( empty( $aFilter['terms'][$field] ) ) {
 				unset( $this['query']['bool']['filter'][$i] );
 			}
 
@@ -261,6 +271,12 @@ class Lookup extends \ArrayObject {
 			}
 		}
 
+		if( empty( $this['query']['bool']['filter'] ) ) {
+			unset( $this['query']['bool']['filter'] );
+		} else {
+			$this['query']['bool']['filter'] = array_values( $this['query']['bool']['filter'] );
+		}
+
 		return $this;
 	}
 
@@ -283,7 +299,7 @@ class Lookup extends \ArrayObject {
 		$this->ensurePropertyPath( 'query.bool.filter', [] );
 
 		$filters = [];
-		foreach( $this['query']['bool']['filters'] as $idx => $filter ) {
+		foreach( $this['query']['bool']['filter'] as $idx => $filter ) {
 			foreach( $filter as $typeName => $typeField ) {
 				if( !isset( $filters[$typeName] ) ) {
 					$filters[$typeName] = [];
@@ -292,7 +308,7 @@ class Lookup extends \ArrayObject {
 					if( !isset( $filters[$typeName][$fieldName] ) ) {
 						$filters[$typeName][$fieldName] = [];
 					}
-					if( !is_array( $fieldValue ) ) {
+					if( is_array( $fieldValue ) ) {
 						$filters[$typeName][$fieldName] = array_merge(
 							$filters[$typeName][$fieldName],
 							$fieldValue
@@ -440,7 +456,11 @@ class Lookup extends \ArrayObject {
 		}
 
 		if( !$appended ) {
-			$this['query']['bool']['should']['terms'][$field] = $value;
+			$this['query']['bool']['should'][] = [
+				"terms" => [
+					$field => $value
+				]
+			];
 		}
 
 		return $this;
@@ -459,19 +479,21 @@ class Lookup extends \ArrayObject {
 			$value = [$value];
 		}
 
-		foreach( $this['query']['bool']['should'] as $idx => $should ) {
+		foreach( $this['query']['bool']['should'] as $idx => &$should ) {
 			if( !isset( $should['terms'][$field] ) ) {
 				continue;
 			}
 
 			$oldValues = $should['terms'][$field];
-			$newValues = array_diff( $oldvalues, $value );
+			$newValues = array_values( array_diff( $oldValues, $value ) );
 			if( empty( $newValues ) || empty( $value ) ) {
 				unset( $this['query']['bool']['should'][$idx] );
 				continue;
 			}
 			$should['terms'][$field] = $newValues;
 		}
+
+		$this['query']['bool']['should'] = array_values( $this['query']['bool']['should'] );
 
 		return $this;
 	}
@@ -583,8 +605,23 @@ class Lookup extends \ArrayObject {
 					$sFieldNamePart
 				]
 			];
+		}
 
-			$aBase = &$aBase['highlight']['fields'][$sFieldNamePart];
+		return $this;
+	}
+
+	/**
+	 * Removes single field from the highligh array
+	 *
+	 * @param string $field
+	 * @return Lookup
+	 */
+	public function removeHighlighter( $field ) {
+		if( isset( $this['highlight']['fields'][$field] ) ) {
+			unset( $this['highlight']['fields'][$field] );
+		}
+		if( empty( $this['highlight']['fields'] ) ) {
+			unset( $this['highlight'] );
 		}
 
 		return $this;
@@ -708,7 +745,7 @@ class Lookup extends \ArrayObject {
 			$value = [ $value ];
 		}
 
-		if( !( in_array( $acField, $base['suggest'] ) ) ) {
+		if( !isset( $base['suggest'][$acField] ) ) {
 			return;
 		}
 
@@ -730,13 +767,16 @@ class Lookup extends \ArrayObject {
 
 		$base = $this;
 
-		if( !( in_array( $acField, $base['suggest'] ) ) ) {
+		if( !isset( $base['suggest'][$acField] ) ) {
 			return;
 		}
 
 		$this->ensurePropertyPath( "suggest.$acField.completion.contexts.$contextField", [] );
 
 		unset( $base['suggest'][$acField]['completion']['contexts'][$contextField] );
+		if( empty( $base['suggest'][$acField]['completion']['contexts'] ) ) {
+			unset( $base['suggest'][$acField]['completion']['contexts'] );
+		}
 
 		return $this;
 	}
@@ -754,7 +794,7 @@ class Lookup extends \ArrayObject {
 
 		$base = $this;
 
-		if( !( in_array( $acField, $base['suggest'] ) ) ) {
+		if( !isset( $base['suggest'][$acField] ) ) {
 			return;
 		}
 
@@ -785,7 +825,7 @@ class Lookup extends \ArrayObject {
 
 		$base = $this;
 
-		if( !( in_array( $acField, $base['suggest'] ) ) ) {
+		if( !isset( $base['suggest'][$acField] ) ) {
 			return;
 		}
 
@@ -809,7 +849,7 @@ class Lookup extends \ArrayObject {
 
 		$base = $this;
 
-		if( !( in_array( $acField, $base['suggest'] ) ) ) {
+		if( !isset( $base['suggest'][$acField] ) ) {
 			return;
 		}
 
@@ -833,7 +873,7 @@ class Lookup extends \ArrayObject {
 
 		$base = $this;
 
-		if( !( in_array( $acField, $base['suggest'] ) ) ) {
+		if( !isset( $base['suggest'][$acField] ) ) {
 			return;
 		}
 

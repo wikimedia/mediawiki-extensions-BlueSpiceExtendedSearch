@@ -12,17 +12,18 @@ class WikiPage extends DecoratorBase {
 	 */
 	public function getDataConfig( $sUri, $oWikiPage ) {
 		$aDC = $this->oDecoratedDP->getDataConfig( $sUri, $oWikiPage );
+
 		$aDC = array_merge( $aDC, [
 			'basename' => $oWikiPage->getTitle()->getBaseText(),
 			'extension' => 'wiki',
 			'mime_type' => 'text/x-wiki',
 			'mtime' => wfTimestamp(
 				TS_ISO_8601,
-				$oWikiPage->getLatest()
+				$oWikiPage->getRevision()->getTimestamp()
 			),
 			'ctime' => wfTimestamp(
 				TS_ISO_8601,
-				$oWikiPage->getRevision()->getTimestamp()
+				$oWikiPage->getOldestRevision()->getTimestamp()
 			),
 			'size' => $oWikiPage->getTitle()->getLength(),
 			'categories' => $this->getCategories( $oWikiPage ),
@@ -33,6 +34,7 @@ class WikiPage extends DecoratorBase {
 			'namespace' => $oWikiPage->getTitle()->getNamespace(),
 			'namespace_text' => $this->getNamespaceText( $oWikiPage )
 		] );
+
 		return $aDC;
 	}
 

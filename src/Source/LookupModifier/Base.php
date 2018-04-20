@@ -27,4 +27,10 @@ abstract class Base {
 	}
 
 	abstract public function apply();
+
+	/**
+	 * Remove any sensitive Lookup parts previously added
+	 * by this modifier, in case they should not be sent to client
+	 */
+	abstract public function undo();
 }

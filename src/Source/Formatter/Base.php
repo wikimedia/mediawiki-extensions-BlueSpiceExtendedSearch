@@ -41,12 +41,14 @@ class Base {
 	}
 
 	/**
-	 * Allows each source to modify structure
-	 * of the result that will appear in the UI
+	 * Returns structure of the result for each source
+	 * It allows sources to modify default result structure
 	 *
-	 * @param array $resultStructure
+	 * @param array $defaultResultStructure
+	 * @returns array
 	 */
-	public function modifyResultStructure( &$resultStructure ) {
+	public function getResultStructure( $defaultResultStructure = [] ) {
+		return $defaultResultStructure;
 	}
 
 	/**
@@ -60,6 +62,7 @@ class Base {
 		//Base class format must work with original values
 		//because it might be called multiple times
 		$originalValues = $resultObject->getData();
+		$result['type'] = $resultObject->getType();
 		$result['ctime'] = $this->getContext()->getLanguage()->date( $originalValues['ctime'] );
 		$result['mtime'] = $this->getContext()->getLanguage()->date( $originalValues['mtime'] );
 	}
