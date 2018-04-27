@@ -379,10 +379,10 @@ class Backend {
 			$fieldName = substr( $filterName, 6 );
 			$filterCfg[$fieldName] = [
 				'buckets' => $agg['buckets'],
-				'isAndEnabled' => 0
+				'isANDEnabled' => 0
 			];
 			if( in_array( $fieldName, $fieldsWithANDEnabled['fields'] ) ) {
-				$filterCfg[$fieldName]['isAndEnabled'] = 1;
+				$filterCfg[$fieldName]['isANDEnabled'] = 1;
 			}
 		}
 
