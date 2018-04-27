@@ -8,8 +8,24 @@ use BS\ExtendedSearch\Source\LookupModifier\WikiPageUserPreferences;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageNamespacePrefixResolver;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageSecurityTrimming;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageRenderedContentHighlight;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageAutocompleteSourceFields;
+use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 
 class WikiPages extends DecoratorBase {
+	protected $lookupModifiers = [
+		LookupModifier::TYPE_SEARCH => [
+			'wikipage-namespacetextaggregation' => WikiPageNamespaceTextAggregation::class,
+			'wikipage-userpreferences' => WikiPageUserPreferences::class,
+			'wikipage-namespaceprefixresolver' => WikiPageNamespacePrefixResolver::class,
+			'wikipage-securitytrimming' => WikiPageSecurityTrimming::class,
+			'wikipage-categoriesaggregation' => WikiPageCategoriesAggregation::class,
+			'wikipage-renderedcontenthighlight' => WikiPageRenderedContentHighlight::class
+		],
+		LookupModifier::TYPE_AUTOCOMPLETE => [
+			'wikipage-securitytrimming' => WikiPageSecurityTrimming::class,
+			'wikipage-acsourcefields' => WikiPageAutocompleteSourceFields::class
+		]
+	];
 
 	/**
 	 *
@@ -45,23 +61,6 @@ class WikiPages extends DecoratorBase {
 	 */
 	public function getUpdater() {
 		return new Updater\WikiPage( $this->oDecoratedSource );
-	}
-
-	/**
-	 *
-	 * @param \BS\ExtendedSearch\Lookup
-	 * @param \IContextSource $oContext
-	 * @return BS\ExtendedSearch\Source\LookupModifier\Base[]
-	 */
-	public function getLookupModifiers( $oLookup, $oContext ) {
-		return [
-			'wikipage-namespacetextaggregation' => new WikiPageNamespaceTextAggregation( $oLookup, $oContext ),
-			'wikipage-userpreferences' => new WikiPageUserPreferences( $oLookup, $oContext ),
-			'wikipage-namespaceprefixresolver' => new WikiPageNamespacePrefixResolver( $oLookup, $oContext ),
-			'wikipage-securitytrimming' => new WikiPageSecurityTrimming( $oLookup, $oContext ),
-			'wikipage-categoriesaggregation' => new WikiPageCategoriesAggregation( $oLookup, $oContext ),
-			'wikipage-renderedcontenthighlight' => new WikiPageRenderedContentHighlight( $oLookup, $oContext )
-		];
 	}
 
 	public function getFormatter() {

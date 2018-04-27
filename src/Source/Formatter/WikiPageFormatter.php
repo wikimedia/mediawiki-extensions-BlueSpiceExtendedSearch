@@ -132,10 +132,6 @@ class WikiPageFormatter extends Base {
 				continue;
 			}
 
-			//No point in transfering this data
-			unset( $result['source_content'] );
-			unset( $result['rendered_content'] );
-
 			//Dont show namespace part if user is already searching in particular NS
 			if( $result['namespace'] != $searchData['namespace'] || $searchData['namespace'] === 0 ) {
 				$result['basename'] = $result['prefixed_title'];

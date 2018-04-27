@@ -91,16 +91,6 @@ class DecoratorBase extends Base {
 		return $this->oDecoratedSource->getUpdater();
 	}
 
-	/**
-	 *
-	 * @param \BS\ExtendedSearch\Lookup $oLookup
-	 * @param \IContextSource $oContext
-	 * @return BS\ExtendedSearch\Source\LookupModifier\Base[]
-	 */
-	public function getLookupModifiers( $oLookup, $oContext ) {
-		return $this->oDecoratedSource->getLookupModifiers( $oLookup, $oContext );
-	}
-
 	public function getFormatter () {
 		return $this->oDecoratedSource->getFormatter();
 	}

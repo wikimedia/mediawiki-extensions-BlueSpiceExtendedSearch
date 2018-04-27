@@ -407,6 +407,36 @@
 		assert.deepEqual( lookup.getQueryDSL(), obj, 'Removing a highlighter works' );
 	} );
 
+	QUnit.test( 'bs.extendedSearch.Lookup.testAddSourceField', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup();
+
+		lookup.addSourceField( [ 'someField', 'anotherField' ] );
+
+		var obj = {
+			_source: [ 'someField', 'anotherField' ]
+		};
+
+		assert.deepEqual( lookup.getQueryDSL(), obj, 'Adding a source field works' );
+	} );
+
+	QUnit.test( 'bs.extendedSearch.Lookup.testRemoveSourceField', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup({
+			_source: [ 'someField', 'anotherField' ]
+		});
+
+		lookup.removeSourceField( 'anotherField' );
+
+		var obj = {
+			_source: [ 'someField' ]
+		};
+
+		assert.deepEqual( lookup.getQueryDSL(), obj, 'Removing a source field works' );
+
+		//lookup.removeSourceField( 'someField' );
+
+		//assert.deepEqual( lookup.getQueryDSL(), [], 'Removing whole _source key when all fields are removed works' );
+	} );
+
 	QUnit.test( 'bs.extendedSearch.Lookup.testAddAutocompleteSuggest', function ( assert ) {
 		var lookup = new bs.extendedSearch.Lookup();
 

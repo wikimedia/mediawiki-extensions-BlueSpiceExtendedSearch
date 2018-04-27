@@ -120,25 +120,33 @@
 
 		var lookup = new bs.extendedSearch.Lookup();
 		this.suggestField = this.autocompleteConfig['SuggestField'];
+		var searchStrategy = this.autocompleteConfig['SuggestStrategy'];
 
-		lookup.addAutocompleteSuggest( this.suggestField, this.searchBar.value );
-		lookup.setAutocompleteSuggestSize(
-			this.suggestField,
-			this.autocompleteConfig['DisplayLimits']['primary']
-		);
-
-		//Adding another field that retrieves fuzzy results
-		//It must be separete not to mess with main suggestions. It retrieves
-		//"see also" suggestions.
-		//We limit it size of secondary results, but i am not sure if fuzzy (non-matches)
-		//will always be retrieved first. In my tests yes, but i couldnt find any documentation
-		//confirming or disproving it
-		lookup.addAutocompleteSuggest( this.suggestField, this.searchBar.value, this.suggestField + '_fuzzy' );
-		lookup.addAutocompleteSuggestFuzziness( this.suggestField + '_fuzzy', 2 );
-		lookup.setAutocompleteSuggestSize(
-			this.suggestField + '_fuzzy',
-			this.autocompleteConfig['DisplayLimits']['secondary']
-		);
+		if( searchStrategy === bs.extendedSearch.Lookup.AC_STRATEGY_QUERY ) {
+			lookup.setMatchQueryString( this.suggestField, this.searchBar.value );
+			if( this.searchBar.namespace.id ) {
+				lookup.addTermFilter( 'namespace', this.searchBar.namespace.id );
+			}
+			lookup.setSize( this.autocompleteConfig['DisplayLimits']['primary'] );
+		} else {
+			lookup.addAutocompleteSuggest( this.suggestField, this.searchBar.value );
+			lookup.setAutocompleteSuggestSize(
+				this.suggestField,
+				this.autocompleteConfig['DisplayLimits']['primary']
+			);
+			//Adding another field that retrieves fuzzy results
+			//It must be separete not to mess with main suggestions. It retrieves
+			//"see also" suggestions.
+			//We limit it size of secondary results, but i am not sure if fuzzy (non-matches)
+			//will always be retrieved first. In my tests yes, but i couldnt find any documentation
+			//confirming or disproving it
+			lookup.addAutocompleteSuggest( this.suggestField, this.searchBar.value, this.suggestField + '_fuzzy' );
+			lookup.addAutocompleteSuggestFuzziness( this.suggestField + '_fuzzy', 2 );
+			lookup.setAutocompleteSuggestSize(
+				this.suggestField + '_fuzzy',
+				this.autocompleteConfig['DisplayLimits']['secondary']
+			);
+		}
 
 		queryData = {
 			q: JSON.stringify( lookup ),

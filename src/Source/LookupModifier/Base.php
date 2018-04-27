@@ -3,6 +3,8 @@
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
 abstract class Base {
+	const TYPE_SEARCH = 'search';
+	const TYPE_AUTOCOMPLETE = 'autocomplete';
 
 	/**
 	 *

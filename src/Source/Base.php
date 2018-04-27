@@ -5,8 +5,20 @@ namespace BS\ExtendedSearch\Source;
 use BS\ExtendedSearch\Source\LookupModifier\BaseExtensionAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\BaseTagsAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\BaseScoreSortWhenShould;
+use BS\ExtendedSearch\Source\LookupModifier\BaseAutocompleteSourceFields;
+use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 
 class Base {
+
+	protected $lookupModifiers = [
+		LookupModifier::TYPE_SEARCH => [
+			'base-extensionaggregation' => BaseExtensionAggregation::class,
+			'base-tagsaggregation' => BaseTagsAggregation::class
+		],
+		LookupModifier::TYPE_AUTOCOMPLETE => [
+			'base-acsourcefields' => BaseAutocompleteSourceFields::class
+		]
+	];
 
 	/**
 	 *
@@ -89,13 +101,20 @@ class Base {
 	 *
 	 * @param \BS\ExtendedSearch\Lookup
 	 * @param \IContextSource $oContext
+	 * @param string
 	 * @return BS\ExtendedSearch\Source\LookupModifier\Base[]
 	 */
-	public function getLookupModifiers( $oLookup, $oContext ) {
-		return [
-			'base-extensionaggregation' => new BaseExtensionAggregation( $oLookup, $oContext ),
-			'base-tagsaggregation' => new BaseTagsAggregation( $oLookup, $oContext )
-		];
+	public function getLookupModifiers( $oLookup, $oContext, $sType = LookupModifier::TYPE_SEARCH ) {
+		if( !isset( $this->lookupModifiers[$sType] ) ) {
+			return [];
+		}
+
+		$lookupModifiers = [];
+		foreach( $this->lookupModifiers[$sType] as $key => $class ) {
+			$lookupModifiers[$key] = new $class( $oLookup, $oContext );
+		}
+
+		return $lookupModifiers;
 	}
 
 	/**
@@ -103,7 +122,32 @@ class Base {
 	 * @return array
 	 */
 	public function getIndexSettings() {
-		return [];
+		//This kind of tokenizing breaks words in 3-char parts,
+		//which makes it possible to match single words in compound words
+		return [
+			"settings" => [
+				"number_of_shards" => 1, //Only for testing purposes on small sample, remove or increase for production
+				"analysis" => [
+					"filter" => [
+						"autocomplete_filter" => [
+							"type" => "ngram",
+							"min_gram" => 3,
+							"max_gram" => 15
+						]
+					],
+					"analyzer" => [
+						"autocomplete" => [
+							"type" => "custom",
+							"tokenizer" => "standard", //Change
+							"filter" => [
+								"lowercase",
+								"autocomplete_filter"
+							]
+						]
+					]
+				]
+			]
+		];
 	}
 
 	/**

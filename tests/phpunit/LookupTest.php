@@ -435,6 +435,40 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/*SOURCE FIELD*/
+	public function testAddSourceField() {
+		$oLookup = new \BS\ExtendedSearch\Lookup();
+
+		$oLookup->addSourceField( [ 'test', 'anotherTest' ] );
+		$aExpected= [
+			"_source" => [
+				"test", "anotherTest"
+			]
+		];
+
+		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
+	}
+
+	public function testRemoveSourceField() {
+		$oLookup = new \BS\ExtendedSearch\Lookup([
+			"_source" => [
+				"test", "anotherTest"
+			]
+		]);
+
+		$oLookup->removeSourceField( "test" );
+
+		$aExpected = [
+			"_source" => [
+				"anotherTest"
+			]
+		];
+
+		$oLookup->removeSourceField( "anotherTest" );
+
+		$this->assertArrayEquals( [], $oLookup->getQueryDSL() );
+	}
+
 	/*AUTOCOMPLETE*/
 	public function testAddAutocompleteSuggest() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();

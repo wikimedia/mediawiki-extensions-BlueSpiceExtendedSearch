@@ -39,7 +39,7 @@ class WikiPage extends DecoratorBase {
 			'rendered_content' => [
 				'type' => 'text',
 				'boost' => 2,
-				'copy_to' => [ 'congregated', 'ac_suggest' ],
+				'copy_to' => 'congregated',
 				'store' => true //required to be able to retrive highlights
 			],
 			'namespace' => [
@@ -54,6 +54,9 @@ class WikiPage extends DecoratorBase {
 				'copy_to' => 'congregated'
 			]
 		] );
+
+		//Wikipages are most relevant in a wiki
+		$aPC['basename']['boost'] = 4;
 		return $aPC;
 	}
 }

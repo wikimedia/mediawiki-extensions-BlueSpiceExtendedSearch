@@ -16,6 +16,8 @@ OO.initClass( bs.extendedSearch.Lookup );
 bs.extendedSearch.Lookup.SORT_ASC = 'asc';
 bs.extendedSearch.Lookup.SORT_DESC = 'desc';
 bs.extendedSearch.Lookup.TYPE_FIELD_NAME = '_type';
+bs.extendedSearch.Lookup.AC_STRATEGY_QUERY = 'query';
+bs.extendedSearch.Lookup.AC_STRATEGY_COMPLETION = 'completion';
 
 /**
  *
@@ -40,6 +42,21 @@ bs.extendedSearch.Lookup.prototype.ensurePropertyPath = function ( path, initial
 		base[pathParts[0]] = initialValue;
 	}
 };
+
+/**
+ * Sets match query string
+ *
+ * @param string field
+ * @param string q
+ * @returns bs.extendedSearch.Lookup
+ */
+bs.extendedSearch.Lookup.prototype.setMatchQueryString = function( field, q ) {
+	this.ensurePropertyPath( 'query.bool', {} );
+	this.query.bool = { must: { match: {} } };
+	this.query.bool.must.match[field] = q;
+
+	return this;
+}
 
 /**
  * @see https://www.elastic.co/guide/en/elasticsearch/reference/5.x/query-dsl-simple-query-string-query.html
@@ -559,6 +576,69 @@ bs.extendedSearch.Lookup.prototype.setSize = function( size ) {
 bs.extendedSearch.Lookup.prototype.getSize = function() {
 	this.ensurePropertyPath( 'size', 0 );
 	return this.size;
+}
+
+/**
+ * Adds a field or fields to the set of fields which
+ * will be returned in the _source key in result
+ *
+ * @param string|array field
+ * @returns Lookup
+ */
+bs.extendedSearch.Lookup.prototype.addSourceField = function( field ) {
+	this.ensurePropertyPath( '_source', [] );
+
+	if( !$.isArray( field ) ) {
+		field = [field];
+	}
+	this._source = $.merge( this._source, field );
+
+	return this;
+}
+
+/**
+ * Removes field/fields from _source param
+ *
+ * @param string|array field
+ * @returns Lookup
+ */
+bs.extendedSearch.Lookup.prototype.removeSourceField = function( field ) {
+	this.ensurePropertyPath( '_source', [] );
+
+	if( !$.isArray( field ) ) {
+		field = [field];
+	}
+
+	var newSource = [];
+	for( fieldIdx in this._source ) {
+		var sourceField = this._source[fieldIdx];
+		if( $.inArray( sourceField, field ) != -1 ) {
+			continue;
+		}
+		newSource.push( sourceField );
+	}
+
+	if( newSource.length == 0 ) {
+		delete( this._source );
+	} else {
+		this._source = newSource;
+	}
+
+	return this;
+}
+
+/**
+ * Completely removed _source key, meaning all available fields
+ * will be returned
+ *
+ * @returns Lookup
+ */
+bs.extendedSearch.Lookup.prototype.clearSourceField = function() {
+	this.ensurePropertyPath( '_source', [] );
+
+	delete( this._source );
+
+	return this;
 }
 
 bs.extendedSearch.Lookup.prototype.setFrom = function( from ) {

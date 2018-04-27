@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch;
 
 use MediaWiki\MediaWikiServices;
+use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 
 class Backend {
 
@@ -194,15 +195,9 @@ class Backend {
 	 * @throws Elastica\Exception\ResponseException
 	 */
 	public function createIndexes() {
-		$indexSettings = [];
 		foreach( $this->sources as $source ) {
-			$indexSettings = array_merge_recursive(
-				$indexSettings,
-				$source->getIndexSettings()
-			);
-		}
+			$indexSettings = $source->getIndexSettings();
 
-		foreach( $this->sources as $source ) {
 			$index = $this->getIndexByType( $source->getTypeKey() );
 			$response = $index->create( $indexSettings );
 
@@ -238,30 +233,90 @@ class Backend {
 	}
 
 	/**
-	 * Runs quick suggest query agains ElasticSearch
+	 * Runs quick query agains ElasticSearch
 	 *
 	 * @param \BS\ExtendedSearch\Lookup $lookup
 	 * @return array
 	 */
 	public function runAutocompleteLookup( Lookup $lookup, $searchData ) {
-		if( empty( $lookup->getAutocompleteSuggest() ) ) {
-			return [];
-		}
+		$acConfig = $this->getAutocompleteConfig();
+		$strategy = $acConfig['SuggestStrategy'];
 
 		$search = new \Elastica\Search( $this->getClient() );
 		$search->addIndex( $this->config->get( 'index' ) . '_*' );
 
-		$results = $search->search( $lookup->getAutocompleteSuggestQuery() );
+		$results = [];
+		if( $strategy == Lookup::AC_STRATEGY_QUERY ) {
+			$lookupModifiers = [];
+			foreach( $this->sources as $sourceKey => $source ) {
+				$lookupModifiers += $source->getLookupModifiers( $lookup, $this->getContext(), LookupModifier::TYPE_AUTOCOMPLETE );
+			}
 
-		$results = $this->formatSuggestions( $results, $searchData );
+			foreach( $lookupModifiers as $sLMKey => $lookupModifier ) {
+				$lookupModifier->apply();
+			}
+
+			$results = $search->search( $lookup->getQueryDSL() );
+			$results = $this->formatQuerySuggestions( $results, $searchData );
+		} else {
+			if( empty( $lookup->getAutocompleteSuggest() ) ) {
+				return [];
+			}
+			$results = $search->search( $lookup->getAutocompleteSuggestQuery() );
+			$results = $this->formatCompletionSuggestions( $results, $searchData );
+		}
 
 		return $results;
 
 	}
 
+	protected function formatQuerySuggestions( $results, $searchData ) {
+		$results = array_values( $this->getQuerySuggestionList( $results ) );
+		return $this->formatSuggestions( $results, $searchData );
+	}
+
+	protected function formatCompletionSuggestions( $results, $searchData ) {
+		$results = array_values( $this->getCompletionSuggestionList( $results ) );
+		return $this->formatSuggestions( $results, $searchData );
+	}
+
 	protected function formatSuggestions( $results, $searchData ) {
 		$lcSearchTerm = strtolower( $searchData['value'] );
 
+		foreach( $this->getSources() as $sourceKey => $source ) {
+			$source->getFormatter()->scoreAutocompleteResults( $results, $searchData );
+			//when results are scored based on original data, it can be modified
+			$source->getFormatter()->formatAutocompleteResults( $results, $searchData );
+		}
+
+		usort( $results, function( $e1, $e2 ) {
+			if( $e1['score'] == $e2['score'] ) {
+				return 0;
+			}
+			return ( $e1['score'] < $e2['score'] ) ? 1 : -1;
+		} );
+
+		return $results;
+	}
+
+	protected function getQuerySuggestionList( $results ) {
+		$res = [];
+		foreach( $results->getResults() as $suggestion ) {
+			$item = [
+				"type" => $suggestion->getType(),
+				"score" => $suggestion->getScore(),
+				"is_scored" => false
+			];
+
+			$item = array_merge( $item, $suggestion->getSource() );
+
+			$res[$suggestion->getId()] = $item;
+		}
+
+		return $res;
+	}
+
+	protected function getCompletionSuggestionList( $results ) {
 		$res = [];
 		foreach( $results->getSuggests() as $suggestionField => $suggestion ) {
 			foreach( $suggestion[0]['options'] as $option ) {
@@ -277,21 +332,6 @@ class Backend {
 			}
 		}
 
-		$res = array_values( $res );
-
-		foreach( $this->getSources() as $sourceKey => $source ) {
-			$source->getFormatter()->scoreAutocompleteResults( $res, $searchData );
-			//when results are scored based on original data, it can be modified
-			$source->getFormatter()->formatAutocompleteResults( $res, $searchData );
-		}
-
-		usort( $res, function( $e1, $e2 ) {
-			if( $e1['score'] == $e2['score'] ) {
-				return 0;
-			}
-			return ( $e1['score'] < $e2['score'] ) ? 1 : -1;
-		} );
-
 		return $res;
 	}
 
@@ -303,7 +343,7 @@ class Backend {
 	public function runLookup( $lookup ) {
 		$lookupModifiers = [];
 		foreach( $this->sources as $sourceKey => $source ) {
-			$lookupModifiers += $source->getLookupModifiers( $lookup, $this->getContext() );
+			$lookupModifiers += $source->getLookupModifiers( $lookup, $this->getContext(), LookupModifier::TYPE_SEARCH );
 		}
 
 		foreach( $lookupModifiers as $sLMKey => $lookupModifier ) {
@@ -392,13 +432,25 @@ class Backend {
 	/**
 	 * Gets predifined result structure from attribute
 	 *
-	 * @return array
+	 * @returns array
 	 */
 	public function getDefaultResultStructure() {
 		$defaultStructure = \ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchDefaultResultStructure' );
 
 		return $defaultStructure;
+	}
+
+	/**
+	 * Gets settings for autocomplete
+	 *
+	 * @returns array
+	 */
+	public function getAutocompleteConfig() {
+		$autocompleteConfig = \ExtensionRegistry::getInstance()
+			->getAttribute( 'BlueSpiceExtendedSearchAutocomplete' );
+
+		return $autocompleteConfig;
 	}
 
 	/**

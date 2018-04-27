@@ -33,7 +33,8 @@
 				"featured": []
 			},
 			"Autocomplete": {
-				"SuggestField": "ac_suggest",
+				"SuggestField": "ac_ngram",
+				"SuggestStrategy": "query",
 				"DisplayLimits": {
 					"primary": 8,
 					"top": 2,

@@ -11,6 +11,9 @@ class Lookup extends \ArrayObject {
 	const SORT_DESC = 'desc';
 	const TYPE_FIELD_NAME = '_type';
 
+	const AC_STRATEGY_QUERY = 'query';
+	const AC_STRATEGY_COMPLETION = 'completion';
+
 	/**
 	 *
 	 * @param array $aConfig
@@ -114,6 +117,26 @@ class Lookup extends \ArrayObject {
 	public function clearSimpleQueryString() {
 		$this->ensurePropertyPath( 'query.simple_query_string', [] );
 		unset( $this['query']['simple_query_string'] );
+		return $this;
+	}
+
+	/**
+	 * Sets match query string
+	 *
+	 * @param string $field
+	 * @param string $value
+	 * @return Lookup
+	 */
+	public function setMatchQueryString( $field, $value ) {
+		$this->ensurePropertyPath( 'query.bool', [] );
+		$this['query']['bool'] = [
+			"must" => [
+				"match" => [
+					$field => $value
+				]
+			]
+		];
+
 		return $this;
 	}
 
@@ -648,6 +671,68 @@ class Lookup extends \ArrayObject {
 			return $this['size'];
 		}
 		return false;
+	}
+
+	/**
+	 * Adds a field or fields to the set of fields which
+	 * will be returned in the _source key in result
+	 *
+	 * @param string|array $field
+	 * @return Lookup
+	 */
+	public function addSourceField( $field ) {
+		$this->ensurePropertyPath( '_source', [] );
+
+		if( !is_array( $field ) ) {
+			$field = [$field];
+		}
+
+		$this['_source'] = array_merge( $this['_source'], $field );
+
+		return $this;
+	}
+
+	/**
+	 * Removes field/fields from _source param
+	 *
+	 * @param string|array $field
+	 * @return Lookup
+	 */
+	public function removeSourceField( $field ) {
+		$this->ensurePropertyPath( '_source', [] );
+
+		if( !is_array( $field ) ) {
+			$field = [$field];
+		}
+
+		$newSource = [];
+		foreach( $this['_source'] as $sourceField ) {
+			if( in_array( $sourceField, $field ) ) {
+				continue;
+			}
+			$newSource[] = $sourceField;
+		}
+
+		if( empty( $newSource ) ) {
+			unset( $this['_source'] );
+		} else {
+			$this['_source'] = $newSource;
+		}
+
+		return $this;
+	}
+
+	/**
+	 * Completely removed _source key, meaning all available fields
+	 * will be returned
+	 *
+	 * @return Lookup
+	 */
+	public function clearSourceField() {
+		$this->ensurePropertyPath( '_source', [] );
+		unset( $this['_source'] );
+
+		return $this;
 	}
 
 	/**

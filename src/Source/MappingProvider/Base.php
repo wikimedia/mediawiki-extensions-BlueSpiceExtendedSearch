@@ -17,13 +17,18 @@ class Base {
 				'type' => 'completion',
 				'preserve_position_increments' => false
 			],
+			'ac_ngram' => [
+				'type' => 'text',
+				'analyzer' => 'autocomplete',
+				'search_analyzer' => 'standard'
+			],
 			'uri' => [
 				'type' => 'text'
 			],
 			'basename' => [
 				'type' => 'text',
 				'boost' => 3,
-				'copy_to' => [ 'congregated', 'ac_suggest' ],
+				'copy_to' => [ 'congregated', 'ac_suggest', 'ac_ngram' ],
 				'fielddata' => true //required in order to be sortable
 			],
 			'extension' => [
