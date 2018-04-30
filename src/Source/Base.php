@@ -6,6 +6,7 @@ use BS\ExtendedSearch\Source\LookupModifier\BaseExtensionAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\BaseTagsAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\BaseScoreSortWhenShould;
 use BS\ExtendedSearch\Source\LookupModifier\BaseAutocompleteSourceFields;
+use BS\ExtendedSearch\Source\LookupModifier\BaseSimpleQSFields;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 
 class Base {
@@ -13,7 +14,8 @@ class Base {
 	protected $lookupModifiers = [
 		LookupModifier::TYPE_SEARCH => [
 			'base-extensionaggregation' => BaseExtensionAggregation::class,
-			'base-tagsaggregation' => BaseTagsAggregation::class
+			'base-tagsaggregation' => BaseTagsAggregation::class,
+			'base-simpleqsfields' => BaseSimpleQSFields::class
 		],
 		LookupModifier::TYPE_AUTOCOMPLETE => [
 			'base-acsourcefields' => BaseAutocompleteSourceFields::class

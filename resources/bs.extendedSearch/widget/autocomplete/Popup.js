@@ -84,4 +84,23 @@
 		return item.uri;
 	}
 
+	//This overrides normal behaviour for secondary results, filling them after
+	//the popup was created and displayed, as they are retrieved in async request
+	bs.extendedSearch.AutocompletePopup.prototype.addSecondary = function( data ) {
+		if( this.mobile ) {
+			//Not supported in mobile view
+			return;
+		}
+
+		this.fillSecondaryResults( data );
+
+		this.$secondaryResultsLabel = $( '<span>' )
+			.addClass( 'bs-extendedsearch-autocomplete-popup-special-item-label' )
+			.html( mw.message( 'bs-extendedsearch-autocomplete-result-secondary-results-label' ).plain() );
+
+		if( this.$secondaryResults.children().length > 0 ) {
+			this.$specialResults.append( this.$secondaryResultsLabel, this.$secondaryResults );
+		}
+	}
+
 } )( mediaWiki, jQuery, blueSpice, document );

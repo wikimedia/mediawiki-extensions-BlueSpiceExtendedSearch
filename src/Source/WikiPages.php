@@ -9,6 +9,8 @@ use BS\ExtendedSearch\Source\LookupModifier\WikiPageNamespacePrefixResolver;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageSecurityTrimming;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageRenderedContentHighlight;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageAutocompleteSourceFields;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageAutocompleteBoosters;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageSimpleQSFields;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 
 class WikiPages extends DecoratorBase {
@@ -19,11 +21,13 @@ class WikiPages extends DecoratorBase {
 			'wikipage-namespaceprefixresolver' => WikiPageNamespacePrefixResolver::class,
 			'wikipage-securitytrimming' => WikiPageSecurityTrimming::class,
 			'wikipage-categoriesaggregation' => WikiPageCategoriesAggregation::class,
-			'wikipage-renderedcontenthighlight' => WikiPageRenderedContentHighlight::class
+			'wikipage-renderedcontenthighlight' => WikiPageRenderedContentHighlight::class,
+			'wikipage-simpleqsfields' => WikiPageSimpleQSFields::class
 		],
 		LookupModifier::TYPE_AUTOCOMPLETE => [
 			'wikipage-securitytrimming' => WikiPageSecurityTrimming::class,
-			'wikipage-acsourcefields' => WikiPageAutocompleteSourceFields::class
+			'wikipage-acsourcefields' => WikiPageAutocompleteSourceFields::class,
+			'wikipage-acboosters' => WikiPageAutocompleteBoosters::class
 		]
 	];
 

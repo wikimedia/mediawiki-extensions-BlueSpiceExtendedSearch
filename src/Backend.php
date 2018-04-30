@@ -303,6 +303,7 @@ class Backend {
 		$res = [];
 		foreach( $results->getResults() as $suggestion ) {
 			$item = [
+				"match_id" => $suggestion->getId(),
 				"type" => $suggestion->getType(),
 				"score" => $suggestion->getScore(),
 				"is_scored" => false
@@ -321,6 +322,7 @@ class Backend {
 		foreach( $results->getSuggests() as $suggestionField => $suggestion ) {
 			foreach( $suggestion[0]['options'] as $option ) {
 				$item = [
+					"match_id" => $option['_id'],
 					"type" => $option['_type'],
 					"score" => $option['_score'],
 					"is_scored" => false

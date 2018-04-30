@@ -27,7 +27,6 @@ class Base {
 			],
 			'basename' => [
 				'type' => 'text',
-				'boost' => 3,
 				'copy_to' => [ 'congregated', 'ac_suggest', 'ac_ngram' ],
 				'fielddata' => true //required in order to be sortable
 			],
@@ -49,7 +48,6 @@ class Base {
 			],
 			'tags' => [
 				'type' => 'keyword',
-				'boost' => 2,
 				'copy_to' => 'congregated'
 			],
 		];

@@ -10,6 +10,8 @@
 		this.searchBar.onValueChanged = this.onValueChanged;
 		this.searchBar.onClearSearch = this.onClearSearch;
 		$( window ).on( 'click', onWindowClick.bind( this ) );
+
+		this.api = new mw.Api();
 	}
 
 	//If user has navigated using arrows to a result,
@@ -80,10 +82,6 @@
 	}
 
 	function _makePopup( suggestions ) {
-		if( suggestions.length === 0 ) {
-			return;
-		}
-
 		if( this.popup ) {
 			this.removePopup();
 		}
@@ -123,7 +121,7 @@
 		var searchStrategy = this.autocompleteConfig['SuggestStrategy'];
 
 		if( searchStrategy === bs.extendedSearch.Lookup.AC_STRATEGY_QUERY ) {
-			lookup.setMatchQueryString( this.suggestField, this.searchBar.value );
+			lookup.setBoolMatchQueryString( this.suggestField, this.searchBar.value );
 			if( this.searchBar.namespace.id ) {
 				lookup.addTermFilter( 'namespace', this.searchBar.namespace.id );
 			}
@@ -148,6 +146,47 @@
 			);
 		}
 
+		var me = this;
+		this.runLookup( lookup ).done( function( response ) {
+			me.makePopup( response.suggestions );
+			if( searchStrategy === bs.extendedSearch.Lookup.AC_STRATEGY_QUERY ) {
+				//No need for async secondary results in suggest mode
+				me.getSecondaryResults().done( function( response ) {
+					me.addSecondaryToPopup( response.suggestions );
+				} );
+			}
+		} );
+	}
+
+	/**
+	 * After main query has ran and popup is shown,
+	 * get the secondary results
+	 *
+	 * @returns {Deferred}
+	 */
+	function _getSecondaryResults() {
+		var lookup = new bs.extendedSearch.Lookup();
+		var suggestField = this.autocompleteConfig['SuggestField'];
+
+		lookup.setBoolMatchQueryString( this.suggestField, this.searchBar.value );
+		if( this.searchBar.namespace.id ) {
+			//Search for matches in other namespaces
+			lookup.addBoolMustNotTerms( 'namespace', this.searchBar.namespace.id );
+			lookup.setSize( this.autocompleteConfig['DisplayLimits']['secondary'] );
+		} else {
+			lookup.setBoolMatchQueryFuzziness( this.suggestField, 2, { prefix_length: 1 } );
+			//Do not find non-fuzzy matches
+			lookup.addBoolMustNotTerms( this.suggestField, this.searchBar.value );
+			//We increase size of this query since fuzzy might return non-fuzzy results as well,
+			//so we hope 1/3 will be fuzzy
+			lookup.setSize( this.autocompleteConfig['DisplayLimits']['secondary'] );
+		}
+
+		return this.runLookup( lookup );
+	}
+
+	function _runLookup( lookup ) {
+		var dfd = $.Deferred();
 		queryData = {
 			q: JSON.stringify( lookup ),
 			searchData: JSON.stringify( {
@@ -156,17 +195,22 @@
 			} )
 		}
 
-		var api = new mw.Api();
-		api.abort();
-		api.get( $.extend(
+		this.api.abort();
+
+		this.api.get( $.extend(
 			queryData,
 			{
 				'action': 'bs-extendedsearch-autocomplete'
 			}
 		) )
 		.done( function( response ) {
-			bs.extendedSearch.Autocomplete.makePopup( response.suggestions );
-		} );
+			dfd.resolve( response );
+		} )
+		.fail( function( ) {
+			dfd.reject();
+		});
+
+		return dfd;
 	}
 
 	function _getIconPath( type ) {
@@ -199,12 +243,23 @@
 		return true;
 	}
 
+	function _addSecondaryToPopup( suggestions ) {
+		if( suggestions.length == 0 ) {
+			return;
+		}
+
+		this.popup.addSecondary( suggestions );
+	}
+
 	bs.extendedSearch.Autocomplete = {
 		init: _init,
 		showPopup: _showPopup,
 		makePopup: _makePopup,
 		removePopup: _removePopup,
 		getSuggestions: _getSuggestions,
+		getSecondaryResults: _getSecondaryResults,
+		runLookup: _runLookup,
+		addSecondaryToPopup: _addSecondaryToPopup,
 		getIconPath: _getIconPath,
 		navigateThroughResults: _navigateThroughResults,
 		navigateToResultPage: _navigateToResultPage,

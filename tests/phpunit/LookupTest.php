@@ -263,10 +263,10 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	/*SHOULD*/
-	public function testAddShould() {
+	public function testAddShouldTerms() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
-		$oLookup->addShould( 'someField', [ "value1" ] );
+		$oLookup->addShouldTerms( 'someField', [ "value1" ] );
 		$aExpected= [
 			"query" => [
 				"bool" => [
@@ -284,7 +284,31 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
-	public function testRemoveShould() {
+	public function testAddShouldMatch() {
+		$oLookup = new \BS\ExtendedSearch\Lookup();
+
+		$oLookup->addShouldMatch( 'someField', "someValue", 4 );
+		$aExpected= [
+			"query" => [
+				"bool" => [
+					"should" => [
+						[
+							"match" => [
+								"someField" => [
+									"query" => "someValue",
+									"boost" => 4
+								]
+							]
+						]
+					]
+				]
+			]
+		];
+
+		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
+	}
+
+	public function testRemoveShouldTerms() {
 		$oLookup = new \BS\ExtendedSearch\Lookup([
 			"query" => [
 				"bool" => [
@@ -304,8 +328,8 @@ class LookupTest extends \MediaWikiTestCase {
 			]
 		]);
 
-		$oLookup->removeShould( 'someField', "value1" );
-		$oLookup->removeShould( 'anotherField' );
+		$oLookup->removeShouldTerms( 'someField', "value1" );
+		$oLookup->removeShouldTerms( 'anotherField' );
 		$aExpected = [
 			"query" => [
 				"bool" => [
@@ -313,6 +337,53 @@ class LookupTest extends \MediaWikiTestCase {
 						[
 							"terms" => [
 								"someField" => [ "value2" ]
+							]
+						]
+					]
+				]
+			]
+		];
+
+		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
+	}
+
+	public function testRemoveShouldMatch() {
+		$oLookup = new \BS\ExtendedSearch\Lookup([
+			"query" => [
+				"bool" => [
+					"should" => [
+						[
+							"match" => [
+								"someField" => [
+									"query" => "someValue",
+									"boost" => 4
+								]
+							]
+						],
+						[
+							"match" => [
+								"anotherField" => [
+									"query" => "someValue",
+									"boost" => 4
+								]
+							]
+						]
+					]
+				]
+			]
+		]);
+
+		$oLookup->removeShouldMatch( 'someField' );
+		$aExpected = [
+			"query" => [
+				"bool" => [
+					"should" => [
+						[
+							"match" => [
+								"anotherField" => [
+									"query" => "someValue",
+									"boost" => 4
+								]
 							]
 						]
 					]
@@ -467,6 +538,83 @@ class LookupTest extends \MediaWikiTestCase {
 		$oLookup->removeSourceField( "anotherTest" );
 
 		$this->assertArrayEquals( [], $oLookup->getQueryDSL() );
+	}
+
+	public function testAddBoolMustNotTerms() {
+		$oLookup = new \BS\ExtendedSearch\Lookup();
+
+		//Add single term
+		$oLookup->addBoolMustNotTerms( 'testField', 'testValue' );
+
+		$aExpected = [
+			"query" => [
+				"bool" => [
+					"must_not" => [
+						[ "terms" => [ "testField" => [ "testValue" ] ] ]
+					]
+				]
+			]
+		];
+
+		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
+
+		//Add another term
+		$oLookup->addBoolMustNotTerms( 'testField', 'anotherValue' );
+
+		$aExpected = [
+			"query" => [
+				"bool" => [
+					"must_not" => [
+						[ "terms" => [ "testField" => [ "testValue", "anotherValue" ] ] ]
+					]
+				]
+			]
+		];
+
+		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
+
+		//Add different field
+		$oLookup->addBoolMustNotTerms( 'anotherField', [ "testValue", "anotherValue" ] );
+
+		$aExpected = [
+			"query" => [
+				"bool" => [
+					"must_not" => [
+						[ "terms" => [ "testField" => [ "testValue", "anotherValue" ] ] ],
+						[ "terms" => [ "anotherField" => [ "testValue", "anotherValue" ] ] ]
+					]
+				]
+			]
+		];
+
+		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
+	}
+
+	public function testRemoveBoolMustNotTerms() {
+		$oLookup = new \BS\ExtendedSearch\Lookup([
+			"query" => [
+				"bool" => [
+					"must_not" => [
+						[ "terms" => [ "testField" => [ "testValue", "anotherValue" ] ] ],
+						[ "terms" => [ "anotherField" => [ "testValue", "anotherValue" ] ] ]
+					]
+				]
+			]
+		]);
+
+		$oLookup->removeBoolMustNot( 'testField' );
+
+		$aExpected = [
+			"query" => [
+				"bool" => [
+					"must_not" => [
+						[ "terms" => [ "anotherField" => [ "testValue", "anotherValue" ] ] ]
+					]
+				]
+			]
+		];
+
+		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
 	/*AUTOCOMPLETE*/
@@ -740,7 +888,7 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	/*SIMPLE QUERY STRING*/
-		public function testXSimpleQueryString() {
+	public function testXSimpleQueryString() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 		$oLookup->setSimpleQueryString( '"fried eggs" +(eggplant | potato) -frittata' );
 
@@ -775,15 +923,68 @@ class LookupTest extends \MediaWikiTestCase {
 	public function testClearSimpleQueryString() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
-				"simple_query_string" => [
-					"query" => "Lorem ipsum dolor sit amet"
+				"bool" => [
+					"must" => [
+						[
+							"simple_query_string" => [
+								"query" => "Lorem ipsum dolor sit amet"
+							]
+						]
+					]
 				]
 			]
 		]);
 		$oLookup->clearSimpleQueryString();
 
 		$aExpected = [
-			"query" => []
+			"query" => [
+				"bool" => [
+					"must" => []
+				]
+			]
+		];
+
+		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
+	}
+
+	public function testSetMatchQueryString() {
+		$oLookup = new \BS\ExtendedSearch\Lookup();
+
+		$oLookup->setMatchQueryString( 'someField', 'someValue' );
+
+		$aExpected = [
+			"query" => [
+				"match" => [
+					"someField" => [
+						"query" => 'someValue'
+					]
+				]
+			]
+		];
+
+		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
+	}
+
+	public function testSetBoolMatchQueryFuzziness() {
+		$oLookup = new \BS\ExtendedSearch\Lookup();
+
+		$oLookup->setBoolMatchQueryString( 'someField', 'someValue' );
+		$oLookup->setBoolMatchQueryFuzziness( 'someField', 2, ["option" => 1] );
+
+		$aExpected = [
+			"query" => [
+				"bool" => [
+					"must" => [
+						"match" => [
+							"someField" => [
+								"query" => 'someValue',
+								"fuzziness" => 2,
+								"option" => 1
+							]
+						]
+					]
+				]
+			]
 		];
 
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );

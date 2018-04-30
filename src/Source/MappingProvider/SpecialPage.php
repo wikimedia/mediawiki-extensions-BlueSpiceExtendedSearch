@@ -28,7 +28,6 @@ class SpecialPage extends DecoratorBase {
 			],
 			'description' => [
 				'type' => 'text',
-				'boost' => 2,
 				'copy_to' => 'congregated',
 			],
 			'namespace' => [

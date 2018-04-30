@@ -2,13 +2,16 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
+/**
+ * TODO: Revisit this implementaion, it will mess with wildcarding
+ */
 class WikiPageNamespacePrefixResolver extends Base {
 
 	/**
 	 *
 	 * @var string
 	 */
-	protected $simpleQS = '';
+	protected $simpleQS = [];
 
 	/**
 	 *
@@ -17,7 +20,9 @@ class WikiPageNamespacePrefixResolver extends Base {
 	protected $title = null;
 
 	public function apply() {
-		$this->setSimpleQS();
+		if( !$this->setSimpleQS() ) {
+			return;
+		}
 		$this->setTitle();
 		if( $this->doesNotApply() ) {
 			return;
@@ -28,11 +33,14 @@ class WikiPageNamespacePrefixResolver extends Base {
 
 	protected function setSimpleQS() {
 		$aQueryString = $this->oLookup->getSimpleQueryString();
-		$this->simpleQS = $aQueryString['query'];
+		if( !$aQueryString ) {
+			return null;
+		}
+		$this->simpleQS = $aQueryString;
 	}
 
 	protected function setTitle() {
-		$this->title = \Title::newFromText( $this->simpleQS );
+		$this->title = \Title::newFromText( $this->simpleQS['query'] );
 	}
 
 	protected function doesNotApply() {
@@ -45,7 +53,7 @@ class WikiPageNamespacePrefixResolver extends Base {
 	}
 
 	protected function notAnExplicitQueryOfNS_MAIN() {
-		$sStartsWithColon = strpos( $this->simpleQS, ':') === 0;
+		$sStartsWithColon = strpos( $this->simpleQS['query'], ':') === 0;
 		$titleInMAIN = $this->title->getNamespace() === NS_MAIN;
 
 		return $titleInMAIN && !$sStartsWithColon;
@@ -57,7 +65,8 @@ class WikiPageNamespacePrefixResolver extends Base {
 	}
 
 	public function setNewNamespaceFilterAndQuery() {
-		$this->oLookup->setSimpleQueryString( $this->title->getText() );
+		$this->simpleQS['query'] = $this->title->getText();
+		$this->oLookup->setSimpleQueryString( $this->simpleQS );
 		//We use namespace name, because "namespace_name" is available filter on front-end
 		$nsText = \BsNamespaceHelper::getNamespaceName( $this->title->getNamespace() );
 		$this->oLookup->addTermsFilter( 'namespace_text', $nsText );

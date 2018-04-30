@@ -44,16 +44,58 @@ bs.extendedSearch.Lookup.prototype.ensurePropertyPath = function ( path, initial
 };
 
 /**
+ *
+ * @param string field
+ * @param string q
+ * @returns Lookup
+ */
+bs.extendedSearch.Lookup.prototype.setMatchQueryString = function( field, q ) {
+	this.ensurePropertyPath( 'query.match', {} );
+	this.query.match[field] = { query: q };
+
+	return this;
+}
+
+/**
+ *
+ * @returns Lookup
+ */
+bs.extendedSearch.Lookup.prototype.removeMatchQuery = function() {
+	this.ensurePropertyPath( 'query.match', {} );
+	delete( this.query.match );
+
+	return this;
+}
+
+/**
+ *
+ * @param string field
+ * @param int fuzziness
+ * @param array|null options
+ * @returns Lookup
+ */
+bs.extendedSearch.Lookup.prototype.setBoolMatchQueryFuzziness = function( field, fuzziness, options ) {
+	options = options || {};
+
+	options.fuzziness = fuzziness;
+
+	this.ensurePropertyPath( 'query.bool.must.match.' + field, {} );
+	this.query.bool.must.match[field] = $.extend( this.query.bool.must.match[field], options );
+
+	return this;
+}
+
+/**
  * Sets match query string
  *
  * @param string field
  * @param string q
  * @returns bs.extendedSearch.Lookup
  */
-bs.extendedSearch.Lookup.prototype.setMatchQueryString = function( field, q ) {
+bs.extendedSearch.Lookup.prototype.setBoolMatchQueryString = function( field, q ) {
 	this.ensurePropertyPath( 'query.bool', {} );
 	this.query.bool = { must: { match: {} } };
-	this.query.bool.must.match[field] = q;
+	this.query.bool.must.match[field] = { query: q }
 
 	return this;
 }
@@ -114,10 +156,70 @@ bs.extendedSearch.Lookup.prototype.getSimpleQueryString = function () {
  * @returns bs.extendedSearch.Lookup
  */
 bs.extendedSearch.Lookup.prototype.clearSimpleQueryString = function () {
-	this.ensurePropertyPath( 'query.simple_query_string', {} );
-	delete( this.query.simple_query_string );
+	this.ensurePropertyPath( 'query.bool.must', {} );
+
+	for( mustIdx in this.query.bool.must ) {
+		var must = this.query.bool.must[mustIdx];
+
+		if( 'simple_query_string' in must ) {
+			this.query.bool.must.splice( mustIdx, 1 );
+		}
+	}
 	return this;
 };
+
+bs.extendedSearch.Lookup.prototype.addBoolMustNotTerms = function( field, value ) {
+	this.ensurePropertyPath( 'query.bool.must_not', [] );
+
+	if( !$.isArray( value ) ) {
+		value = [value];
+	}
+
+	for( idx in this.query.bool.must_not ) {
+		var terms = this.query.bool.must_not[idx];
+		if( terms.terms[field] ) {
+			this.query.bool.must_not[idx].terms[field] = $.merge(
+				terms.terms[field],
+				value
+			);
+			return this;
+		}
+	}
+
+	var newMustNot = { terms: {} };
+	newMustNot.terms[field] = value;
+	this.query.bool.must_not.push( newMustNot );
+
+	return this;
+}
+
+/**
+ * Removes field from must_not clause
+ *
+ * @returns Lookup
+ */
+bs.extendedSearch.Lookup.prototype.removeBoolMustNot = function( field ) {
+	this.ensurePropertyPath( 'query.bool.must_not', [] );
+
+	var newMustNots = [];
+	for( idx in this.query.bool.must_not ) {
+		var terms = this.query.bool.must_not[idx];
+		for( fieldName in terms.terms ) {
+			if( fieldName == field ) {
+				continue;
+			}
+			newMustNots.push( terms );
+		}
+	}
+
+	if( newMustNots.length == 0 ) {
+		delete( this.query.bool.must_not );
+	} else {
+		this.query.bool.must_not = newMustNots;
+	}
+
+	return this;
+}
 
 /**
  * Removes filter completely regardless of value
@@ -292,7 +394,7 @@ bs.extendedSearch.Lookup.prototype.removeFilter = function( field, value ) {
 }
 
 /**
-  *
+ *
  * @param string fieldName
  * @param string|array value
  * @returns bs.extendedSearch.Lookup
@@ -459,6 +561,16 @@ bs.extendedSearch.Lookup.prototype.setSort = function( sort ) {
  * @returns Lookup
  */
 bs.extendedSearch.Lookup.prototype.addShould = function( field, value ) {
+	return this.addShouldTerms( field, value );
+}
+
+/**
+ *
+ * @param string field
+ * @param string|Array value
+ * @returns Lookup
+ */
+bs.extendedSearch.Lookup.prototype.addShouldTerms = function( field, value ) {
 	this.ensurePropertyPath( 'query.bool.should', [] );
 
 	if( !$.isArray( value ) ) {
@@ -488,12 +600,49 @@ bs.extendedSearch.Lookup.prototype.addShould = function( field, value ) {
 }
 
 /**
+ * Adds should match clause.
+ *
+ * @param string field
+ * @param string value
+ * @param int boost
+ * @returns Lookup
+ */
+bs.extendedSearch.Lookup.prototype.addShouldMatch = function( field, value, boost ) {
+	this.ensurePropertyPath( 'query.bool.should', [] );
+	boost = boost || 1;
+
+	for( shouldIdx in this.query.bool.should ) {
+		var should = this.query.bool.should[shouldIdx];
+		if( !should.match || !should.match[field] ) {
+			continue;
+		}
+		this.query.bool.should[shouldIdx].match[field] = {
+			query: value,
+			boost: boost
+		};
+		return this;
+	}
+
+	var match = { match: {} };
+	match.match[field] = {
+		query: value,
+		boost: boost
+	}
+	this.query.bool.should.push( match );
+
+	return this;
+}
+
+bs.extendedSearch.Lookup.prototype.removeShould = function( field, value ) {
+	return this.removeShouldTerms( field, value );
+}
+/**
  *
  * @param string field
  * @param string|Array value
  * @returns Lookup
  */
-bs.extendedSearch.Lookup.prototype.removeShould = function( field, value ) {
+bs.extendedSearch.Lookup.prototype.removeShouldTerms = function( field, value ) {
 	this.ensurePropertyPath( 'query.bool.should', [] );
 
 	if( !$.isArray( value ) ) {
@@ -502,7 +651,7 @@ bs.extendedSearch.Lookup.prototype.removeShould = function( field, value ) {
 
 	for( shouldIdx in this.query.bool.should ) {
 		var should = this.query.bool.should[shouldIdx];
-		if( !( field in should.terms ) ) {
+		if( !should.terms || !should.terms[field] ) {
 			continue;
 		}
 		var oldValues = should.terms[field];
@@ -519,6 +668,27 @@ bs.extendedSearch.Lookup.prototype.removeShould = function( field, value ) {
 		}
 		this.query.bool.should[shouldIdx].terms[field] = newValues;
 	}
+
+	return this;
+}
+
+/**
+ *
+ * @param string field
+ * @returns Lookup
+ */
+bs.extendedSearch.Lookup.prototype.removeShouldMatch = function( field ) {
+	this.ensurePropertyPath( 'query.bool.should', [] );
+
+	var newShoulds = [];
+	for( shouldIdx in this.query.bool.should ) {
+		var should = this.query.bool.should[shouldIdx];
+		if( !should.match || !should.match[field] ) {
+			newShoulds.push( should );
+		}
+	}
+
+	this.query.bool.should = newShoulds;
 
 	return this;
 }

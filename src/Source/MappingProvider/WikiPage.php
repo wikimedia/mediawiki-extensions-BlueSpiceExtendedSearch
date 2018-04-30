@@ -28,17 +28,14 @@ class WikiPage extends DecoratorBase {
 			],
 			'sections' => [
 				'type' => 'text',
-				'boost' => 2,
 				'copy_to' => 'congregated'
 			],
 			'source_content' => [
 				'type' => 'text',
-				'boost' => 2,
 				'copy_to' => 'congregated'
 			],
 			'rendered_content' => [
 				'type' => 'text',
-				'boost' => 2,
 				'copy_to' => 'congregated',
 				'store' => true //required to be able to retrive highlights
 			],
@@ -55,8 +52,6 @@ class WikiPage extends DecoratorBase {
 			]
 		] );
 
-		//Wikipages are most relevant in a wiki
-		$aPC['basename']['boost'] = 4;
 		return $aPC;
 	}
 }

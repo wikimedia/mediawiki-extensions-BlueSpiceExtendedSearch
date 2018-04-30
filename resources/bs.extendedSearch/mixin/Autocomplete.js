@@ -33,23 +33,11 @@
 				}
 			}
 
-			//Fuzzy results when no NS is selected and hits in other NSs when it is
-			if( ( cfg.namespaceId !== 0 && suggestion.score <= 5 ) || suggestion.score <= 2 ) {
-				if( limits.secondary <= this.displayedResults.secondary.length ) {
-					continue;
-				}
-				this.$secondaryResults.append(
-					new bs.extendedSearch.AutocompleteSecondaryResult( {
-						suggestion: suggestion
-					} ).$element
-				);
-				this.displayedResults.secondary.push( suggestion );
-				continue;
-			}
+			this.fillSecondaryResults( cfg.data );
 
 			//If no namespace is specified, let all namespaces into primaries,
 			//otherwise only results in specified namespace
-			if( cfg.namespaceId !== 0 && suggestion.score <= 5 ) {
+			if( ( cfg.namespaceId !== 0 && suggestion.score <= 5 ) || suggestion.score <= 2 ) {
 				continue;
 			}
 
@@ -94,6 +82,25 @@
 
 		if( this.$secondaryResults.children().length > 0 ) {
 			this.$specialResults.append( this.$secondaryResultsLabel, this.$secondaryResults );
+		}
+	}
+
+	bs.extendedSearch.mixin.AutocompleteResults.prototype.fillSecondaryResults = function( suggestions ) {
+		//Fuzzy results when no NS is selected and hits in other NSs when it is
+		for( idx in suggestions ) {
+			var suggestion = suggestions[idx];
+			if( ( this.namespaceId !== 0 && suggestion.namespace != this.namespaceId ) || suggestion.score <= 2 ) {
+				if( this.displayLimits.secondary <= this.displayedResults.secondary.length ) {
+					continue;
+				}
+				this.$secondaryResults.append(
+					new bs.extendedSearch.AutocompleteSecondaryResult( {
+						suggestion: suggestion
+					} ).$element
+				);
+				this.displayedResults.secondary.push( suggestion );
+				continue;
+			}
 		}
 	}
 

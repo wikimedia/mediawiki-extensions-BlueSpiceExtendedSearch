@@ -34,15 +34,24 @@
 	QUnit.test( 'bs.extendedSearch.Lookup.testClearSimpleQueryString', function ( assert ) {
 		var lookup = new bs.extendedSearch.Lookup({
 			"query": {
-				"simple_query_string": {
-					"query": "Lorem ipsum dolor sit amet"
+				"bool": {
+					"must": [{
+						"simple_query_string": {
+							"query": '"fried eggs" +(eggplant | potato) -frittata',
+							"default_operator": 'and'
+						}
+					}]
 				}
 			}
 		});
 		lookup.clearSimpleQueryString();
 
 		var obj = {
-			"query": {}
+			"query": {
+				"bool": {
+					"must": []
+				}
+			}
 		};
 
 		assert.deepEqual( lookup.getQueryDSL(), obj, 'Clearing SimpleQueryString value works' );
@@ -310,10 +319,10 @@
 		assert.deepEqual( lookup.getQueryDSL(), obj, 'Clearing all sort works' );
 	} );
 
-	QUnit.test( 'bs.extendedSearch.Lookup.testAddShould', function ( assert ) {
+	QUnit.test( 'bs.extendedSearch.Lookup.testAddShouldTerms', function ( assert ) {
 		var lookup = new bs.extendedSearch.Lookup();
 
-		lookup.addShould( 'someField', ['value1'] );
+		lookup.addShouldTerms( 'someField', ['value1'] );
 
 		var obj = {
 			query: {
@@ -327,10 +336,33 @@
 			}
 		};
 
-		assert.deepEqual( lookup.getQueryDSL(), obj, 'Adding "should" clause works' );
+		assert.deepEqual( lookup.getQueryDSL(), obj, 'Adding "should temrs" clause works' );
 	} );
 
-	QUnit.test( 'bs.extendedSearch.Lookup.testRemoveShould', function ( assert ) {
+	QUnit.test( 'bs.extendedSearch.Lookup.testAddShouldMatch', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup();
+
+		lookup.addShouldMatch( 'someField', "value1", 4 );
+
+		var obj = {
+			query: {
+				bool: {
+					should: [ {
+						match: {
+							someField: {
+								query: 'value1',
+								boost: 4
+							}
+						}
+					} ]
+				}
+			}
+		};
+
+		assert.deepEqual( lookup.getQueryDSL(), obj, 'Adding "should match" clause works' );
+	} );
+
+	QUnit.test( 'bs.extendedSearch.Lookup.testRemoveShouldTerms', function ( assert ) {
 		var lookup = new bs.extendedSearch.Lookup({
 			query: {
 				bool: {
@@ -343,7 +375,7 @@
 			}
 		});
 
-		lookup.removeShould( 'someField', 'value1' );
+		lookup.removeShouldTerms( 'someField', 'value1' );
 
 		var obj = {
 			query: {
@@ -357,7 +389,36 @@
 			}
 		};
 
-		assert.deepEqual( lookup.getQueryDSL(), obj, 'Removing "should" clauseworks' );
+		assert.deepEqual( lookup.getQueryDSL(), obj, 'Removing "should terms" clause works' );
+	} );
+
+	QUnit.test( 'bs.extendedSearch.Lookup.testRemoveShouldMatch', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup({
+			query: {
+				bool: {
+					should: [ {
+						match: {
+							someField: {
+								query: 'value1',
+								boost: 4
+							}
+						}
+					} ]
+				}
+			}
+		});
+
+		lookup.removeShouldMatch( 'someField', 'value1' );
+
+		var obj = {
+			query: {
+				bool: {
+					should: []
+				}
+			}
+		};
+
+		assert.deepEqual( lookup.getQueryDSL(), obj, 'Removing "should match" clause works' );
 	} );
 
 	QUnit.test( 'bs.extendedSearch.Lookup.testAddHighlighter', function ( assert ) {
@@ -432,9 +493,83 @@
 
 		assert.deepEqual( lookup.getQueryDSL(), obj, 'Removing a source field works' );
 
-		//lookup.removeSourceField( 'someField' );
+		lookup.removeSourceField( 'someField' );
 
-		//assert.deepEqual( lookup.getQueryDSL(), [], 'Removing whole _source key when all fields are removed works' );
+		assert.deepEqual( lookup.getQueryDSL(), {}, 'Removing whole _source key when all fields are removed works' );
+	} );
+
+	QUnit.test( 'bs.extendedSearch.Lookup.testAddBoolMustNotTerms', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup();
+
+		lookup.addBoolMustNotTerms( 'someField', 'someValue' );
+
+		var obj = {
+			query: {
+				bool: {
+					must_not: [
+						{ terms: { someField: [ 'someValue' ] } }
+					]
+				}
+			}
+		};
+
+		assert.deepEqual( lookup.getQueryDSL(), obj, 'Adding a bool query must not terms works' );
+
+		lookup.addBoolMustNotTerms( 'someField', 'someOtherValue' );
+
+		var obj = {
+			query: {
+				bool: {
+					must_not: [
+						{ terms: { someField: [ 'someValue', 'someOtherValue' ] } }
+					]
+				}
+			}
+		};
+
+		assert.deepEqual( lookup.getQueryDSL(), obj, 'Adding a value to bool query must not terms works' );
+
+		lookup.addBoolMustNotTerms( 'someOtherField', [ 'someValue', 'someOtherValue' ] );
+
+		var obj = {
+			query: {
+				bool: {
+					must_not: [
+						{ terms: { someField: [ 'someValue', 'someOtherValue' ] } },
+						{ terms: { someOtherField: [ 'someValue', 'someOtherValue' ] } }
+					]
+				}
+			}
+		};
+
+		assert.deepEqual( lookup.getQueryDSL(), obj, 'Adding another field in bool query must not terms works' );
+	} );
+
+	QUnit.test( 'bs.extendedSearch.Lookup.testRemoveBoolMustNotTerm', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup({
+			query: {
+				bool: {
+					must_not: [
+						{ terms: { someField: [ 'someValue', 'someOtherValue' ] } },
+						{ terms: { someOtherField: [ 'someValue', 'someOtherValue' ] } }
+					]
+				}
+			}
+		});
+
+		lookup.removeBoolMustNot( 'someField' );
+
+		var obj = {
+			query: {
+				bool: {
+					must_not: [
+						{ terms: { someOtherField: [ 'someValue', 'someOtherValue' ] } }
+					]
+				}
+			}
+		};
+
+		assert.deepEqual( lookup.getQueryDSL(), obj, 'Removing a bool query must not term works' );
 	} );
 
 	QUnit.test( 'bs.extendedSearch.Lookup.testAddAutocompleteSuggest', function ( assert ) {
@@ -717,6 +852,49 @@
 		};
 
 		assert.deepEqual( lookup.getQueryDSL(), obj, 'Setting autocomplete suggester size works' );
+	} );
+
+	QUnit.test( 'bs.extendedSearch.Lookup.testSetMatchQueryString', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup({});
+
+		lookup.setMatchQueryString( 'someField', 'someValue' );
+
+		var obj = {
+			query: {
+				match: {
+					someField: {
+						query: 'someValue'
+					}
+				}
+			}
+		};
+
+		assert.deepEqual( lookup.getQueryDSL(), obj, 'Adding Match Query query string works' );
+	} );
+
+	QUnit.test( 'bs.extendedSearch.Lookup.testSetBoolMatchQueryFuzziness', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup();
+
+		lookup.setBoolMatchQueryString( 'someField', 'someValue' );
+		lookup.setBoolMatchQueryFuzziness( 'someField', 2, { option: 1 } );
+
+		var obj = {
+			query: {
+				bool: {
+					must: {
+						match: {
+							someField: {
+								query: 'someValue',
+								fuzziness: 2,
+								option: 1
+							}
+						}
+					}
+				}
+			}
+		};
+
+		assert.deepEqual( lookup.getQueryDSL(), obj, 'Adding bool match query fuzziness works' );
 	} );
 
 }( mediaWiki, jQuery ) );

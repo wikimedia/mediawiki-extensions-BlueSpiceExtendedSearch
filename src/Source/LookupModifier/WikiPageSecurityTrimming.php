@@ -6,26 +6,6 @@ class WikiPageSecurityTrimming extends Base {
 
 	protected $namespaceIdBlacklist = [];
 
-	public function apply() {
-		$aNamespaceIds = $this->oContext->getLanguage()->getNamespaceIds();
-		$this->namespaceIdBlacklist = [];
-
-		foreach( $aNamespaceIds as $sNsText => $iNsId ) {
-			if( $this->userCanNotRead( $iNsId ) ) {
-				$this->namespaceIdBlacklist[] = $iNsId;
-			}
-		}
-
-		if( !empty( $this->namespaceIdBlacklist ) ) {
-			$this->addMustNotClause();
-		}
-	}
-
-	protected function userCanNotRead( $iNsId ) {
-		$oTitle = \Title::makeTitle( $iNsId, 'Dummy');
-		return !$oTitle->userCan( 'read' );
-	}
-
 	/**
 	 * We can not use a namespace whitelist here and just add a filter,
 	 * because all documents that to not have the 'namespace' field (like
@@ -41,19 +21,24 @@ class WikiPageSecurityTrimming extends Base {
 	 *
 	 * See, https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html
 	 */
-	protected function addMustNotClause() {
-		$this->ensureMustNot();
-		$this->oLookup['query']['bool']['must_not'][] = [
-			'terms' => [
-				'namespace' => $this->namespaceIdBlacklist
-			]
-		];
+	public function apply() {
+		$aNamespaceIds = $this->oContext->getLanguage()->getNamespaceIds();
+		$this->namespaceIdBlacklist = [];
+
+		foreach( $aNamespaceIds as $sNsText => $iNsId ) {
+			if( $this->userCanNotRead( $iNsId ) ) {
+				$this->namespaceIdBlacklist[] = $iNsId;
+			}
+		}
+
+		if( !empty( $this->namespaceIdBlacklist ) ) {
+			$this->oLookup->addBoolMustNotTerms( 'namespace', $this->namespaceIdBlacklist );
+		}
 	}
 
-	protected function ensureMustNot() {
-		if( !isset( $this->oLookup['query']['bool']['must_not'] ) ) {
-			$this->oLookup['query']['bool']['must_not'] = [];
-		}
+	protected function userCanNotRead( $iNsId ) {
+		$oTitle = \Title::makeTitle( $iNsId, 'Dummy');
+		return !$oTitle->userCan( 'read' );
 	}
 
 	public function undo() {

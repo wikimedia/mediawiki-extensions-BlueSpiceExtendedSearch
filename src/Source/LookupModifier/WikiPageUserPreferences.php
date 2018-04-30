@@ -6,7 +6,7 @@ class WikiPageUserPreferences extends Base {
 
 	public function apply() {
 		$aOptions = $this->oContext->getUser()->getOptions();
-		$prioritizedFields = [];
+
 		foreach( $aOptions as $sOptionName => $mOptionValue ) {
 			if( strpos( $sOptionName, 'searchNs' ) !== 0 ) {
 				continue;
@@ -18,11 +18,10 @@ class WikiPageUserPreferences extends Base {
 			$iNSid = (int)substr( $sOptionName, strlen( 'searchNs' ) );
 			$oTitle = \Title::makeTitle( $iNSid, 'Dummy' );
 			if( $oTitle->userCan( 'read' ) ) {
-				$prioritizedFields[] = $iNSid;
+				//Boost results in "default" namespaces
+				$this->oLookup->addShouldMatch( 'namespace', $iNSid, 4 );
 			}
 		}
-
-		$this->oLookup->addShould( 'namespace', $prioritizedFields );
 	}
 
 	public function undo() {

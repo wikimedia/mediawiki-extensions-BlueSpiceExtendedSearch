@@ -53,11 +53,11 @@ class Lookup extends \ArrayObject {
 	/**
 	 * "query" : {
      *   "bool": {
-     *     "must": [{
+     *     "must": {
      *       "simple_query_string": {
      *         "query" : "Steve"
      *       }
-     *     }],
+     *     },
      *     "filter": [{
      *       "terms": { "_type": ["wikipage", "repofile"] }
      *     }]
@@ -115,27 +115,123 @@ class Lookup extends \ArrayObject {
 	 * @return Lookup
 	 */
 	public function clearSimpleQueryString() {
-		$this->ensurePropertyPath( 'query.simple_query_string', [] );
-		unset( $this['query']['simple_query_string'] );
+		$this->ensurePropertyPath( 'query.bool.must', [] );
+		foreach( $this['query']['bool']['must'] as $iIndex => $aMust ) {
+			if( isset( $aMust['simple_query_string'] ) ) {
+				unset( $this['query']['bool']['must'][$iIndex] );
+			}
+		}
 		return $this;
 	}
 
 	/**
-	 * Sets match query string
 	 *
 	 * @param string $field
 	 * @param string $value
 	 * @return Lookup
 	 */
 	public function setMatchQueryString( $field, $value ) {
+		$this->ensurePropertyPath( 'query.match', [] );
+		$this['query']['match'] = [
+			$field => [
+				"query" => $value
+			]
+		];
+
+		return $this;
+	}
+
+	/**
+	 *
+	 * @return Lookup
+	 */
+	public function removeMatchQuery() {
+		$this->ensurePropertyPath( 'query.match', [] );
+		unset( $this['query']['match'] );
+
+		return $this;
+	}
+
+	/**
+	 *
+	 * @param string $field
+	 * @param integer $fuzziness
+	 * @param array|null $options
+	 * @return Lookup
+	 */
+	public function setBoolMatchQueryFuzziness( $field, $fuzziness, $options = [] ) {
+		$this->ensurePropertyPath( 'query.bool.must.match.' . $field, [] );
+		$options['fuzziness'] = $fuzziness;
+
+		$this['query']['bool']['must']['match'][$field] = array_merge(
+			$this['query']['bool']['must']['match'][$field],
+			$options
+		);
+
+		return $this;
+	}
+
+	/**
+	 * Sets match query string in Bool query
+	 *
+	 * @param string $field
+	 * @param string $value
+	 * @return Lookup
+	 */
+	public function setBoolMatchQueryString( $field, $value ) {
 		$this->ensurePropertyPath( 'query.bool', [] );
 		$this['query']['bool'] = [
 			"must" => [
 				"match" => [
-					$field => $value
+					$field => [
+						"query" => $value
+					]
 				]
 			]
 		];
+
+		return $this;
+	}
+
+	/**
+	 *
+	 * @param string $field
+	 * @param string|array $value
+	 * @return Lookup
+	 */
+	public function addBoolMustNotTerms( $field, $value ) {
+		$this->ensurePropertyPath( 'query.bool.must_not', [] );
+
+		if( !is_array( $value ) ) {
+			$value = [$value];
+		}
+
+		foreach( $this['query']['bool']['must_not'] as &$terms ) {
+			if( isset( $terms['terms'][$field] ) ) {
+				$terms['terms'][$field] = array_merge(
+					$terms['terms'][$field],
+					$value
+				);
+				return $this;
+			}
+		}
+
+		$this['query']['bool']['must_not'][]['terms'] = [
+			$field => $value
+		];
+
+		return $this;
+	}
+
+	public function removeBoolMustNot( $field ) {
+		$this->ensurePropertyPath( 'query.bool.must_not', [] );
+		foreach( $this['query']['bool']['must_not'] as $idx => $terms ) {
+			if( isset( $terms['terms'][$field] ) ) {
+				unset( $this['query']['bool']['must_not'][$idx] );
+			}
+		}
+
+		$this['query']['bool']['must_not'] = array_values( $this['query']['bool']['must_not'] );
 
 		return $this;
 	}
@@ -463,6 +559,10 @@ class Lookup extends \ArrayObject {
 	 * @return Lookup
 	 */
 	public function addShould( $field, $value ) {
+		return $this->addShouldTerms( $field, $value );
+	}
+
+	public function addShouldTerms( $field, $value ) {
 		$this->ensurePropertyPath( 'query.bool.should', [] );
 
 		if( !is_array( $value ) ) {
@@ -474,6 +574,12 @@ class Lookup extends \ArrayObject {
 			if( !isset( $should['terms'][$field] ) ) {
 				continue;
 			}
+			$value = array_diff( $value, $should['terms'][$field] );
+			if( empty( $value ) ) {
+				//Nothing new to add
+				return $this;
+			}
+
 			$should['terms'][$field] = array_merge( $should['terms'][$field], $value );
 			$appended = true;
 		}
@@ -489,13 +595,43 @@ class Lookup extends \ArrayObject {
 		return $this;
 	}
 
+	public function addShouldMatch( $field, $value, $boost = 1 ) {
+		$this->ensurePropertyPath( 'query.bool.should', [] );
+
+		foreach( $this['query']['bool']['should'] as $idx => &$should ) {
+			if( !isset( $should['match'] ) || !isset( $should['match'][$field] ) ) {
+				continue;
+			}
+			$should['match'][$field] = [
+				"query" => $value,
+				"boost" => $boost
+			];
+			return $this;
+		}
+
+		$this['query']['bool']['should'][] = [
+			"match" => [
+				$field => [
+					"query" => $value,
+					"boost" => $boost
+				]
+			]
+		];
+
+		return $this;
+	}
+
+	public function removeShould( $field, $value = [] ) {
+		return $this->removeShouldTerms( $field, $value );
+	}
+
 	/**
 	 *
 	 * @param string $field
 	 * @param string|array|null $value If not supplied, entire field will be removed
 	 * @return Lookup
 	 */
-	public function removeShould( $field, $value = [] ) {
+	public function removeShouldTerms( $field, $value = [] ) {
 		$this->ensurePropertyPath( 'query.bool.should', [] );
 
 		if( !is_array( $value ) ) {
@@ -517,6 +653,21 @@ class Lookup extends \ArrayObject {
 		}
 
 		$this['query']['bool']['should'] = array_values( $this['query']['bool']['should'] );
+
+		return $this;
+	}
+
+	public function removeShouldMatch( $field ) {
+		$this->ensurePropertyPath( 'query.bool.should', [] );
+
+		$newShoulds = [];
+		foreach( $this['query']['bool']['should'] as $idx => &$should ) {
+			if( !isset( $should['match'] ) || !isset( $should['match'][$field] ) ) {
+				$newShoulds[] = $should;
+			}
+		}
+
+		$this['query']['bool']['should'] = $newShoulds;
 
 		return $this;
 	}
