@@ -8,26 +8,26 @@ class BaseSimpleQSFields extends Base {
 	 * Adds fields that will be searched including query-time boosting
 	 */
 	public function apply() {
-		$simpleQS = $this->oLookup->getSimpleQueryString();
+		$simpleQS = $this->oLookup->getQueryString();
 		//Search in basename field and boost it by 3
-		$fields = ['basename^3'];
+		$fields = ['basename^3', 'congregated'];
 		if( isset( $simpleQS['fields'] ) && is_array( $simpleQS['fields'] ) ) {
 			$simpleQS['fields'] = array_merge( $simpleQS['fields'], $fields );
 		} else {
 			$simpleQS['fields'] = $fields;
 		}
 
-		$this->oLookup->setSimpleQueryString( $simpleQS );
+		$this->oLookup->setQueryString( $simpleQS );
 	}
 
 	public function undo() {
-		$simpleQS = $this->oLookup->getSimpleQueryString();
+		$simpleQS = $this->oLookup->getQueryString();
 
 		if( isset( $simpleQS['fields'] ) && is_array( $simpleQS['fields'] ) ) {
-			$simpleQS['fields'] = array_diff( $simpleQS['fields'], ['basename^3'] );
+			$simpleQS['fields'] = array_diff( $simpleQS['fields'], ['basename^3', 'congregated'] );
 		}
 
-		$this->oLookup->setSimpleQueryString( $simpleQS );
+		$this->oLookup->setQueryString( $simpleQS );
 	}
 
 }

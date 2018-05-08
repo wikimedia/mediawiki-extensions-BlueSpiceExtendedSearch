@@ -38,7 +38,7 @@ class SearchCenter extends \SpecialPage {
 				}
 
 				if( $fieldConfig['type'] == 'text' ) {
-					if( in_array( 'fielddata', $fieldConfig ) &&  $fieldConfig['fielddata'] == true ) {
+					if( isset( $fieldConfig['fielddate'] ) &&  $fieldConfig['fielddata'] == true ) {
 						$sortableFields[] = $fieldName;
 					}
 				}

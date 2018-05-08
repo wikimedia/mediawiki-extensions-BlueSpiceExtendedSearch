@@ -7,6 +7,7 @@
 
 		this.results = cfg.results;
 		this.total = cfg.total;
+		this.spellcheck = cfg.spellcheck;
 
 		if( this.total == 0 ) {
 			return this.showNoResults();
@@ -21,12 +22,15 @@
 	bs.extendedSearch.ResultsPanel.prototype.showResults = function() {
 		var me = this;
 
-		var term = me.lookup.getSimpleQueryString().query || '';
+		var term = me.lookup.getQueryString().query || '';
 
 		var hitCountWidget = new bs.extendedSearch.HitCountWidget({
 			term: term,
-			count: me.total
+			count: me.total,
+			spellcheck: me.spellcheck
 		});
+
+		hitCountWidget.$element.on( 'forceSearchTerm', this.caller.forceSearchTerm.bind( this.caller ) );
 
 		$('#bs-es-hitcount' ).append( hitCountWidget.$element );
 		$.each( this.results, function( idx, cfg ) {
@@ -105,11 +109,21 @@
 		//if user arrives on it directly, show usage help
 		this.removeLoading();
 
+		this.showMessage( mw.message( 'bs-extendedsearch-search-center-result-help' ).plain() );
+	}
+
+	bs.extendedSearch.ResultsPanel.prototype.showError = function() {
+		this.removeLoading();
+
+		this.showMessage( mw.message( 'bs-extendedsearch-search-center-result-exception' ).plain() );
+	}
+
+	bs.extendedSearch.ResultsPanel.prototype.showMessage = function( message ) {
 		$( '#bs-es-results' ).html(
 			$( '<div>' )
 				.addClass( 'bs-extendedsearch-help' )
 				.html(
-					$( '<span>' ).html( mw.message( 'bs-extendedsearch-search-center-result-help' ).plain() )
+					$( '<span>' ).html( message )
 				)
 		);
 	}

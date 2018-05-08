@@ -2,41 +2,41 @@
 	QUnit.module( 'bs.extendedSearch.Lookup', QUnit.newMwEnvironment() );
 	QUnit.dump.maxDepth = 10;
 
-	QUnit.test( 'bs.extendedSearch.Lookup.test*etSimpleQueryString', function ( assert ) {
+	QUnit.test( 'bs.extendedSearch.Lookup.test*etQueryString', function ( assert ) {
 		var lookup = new bs.extendedSearch.Lookup();
-		lookup.setSimpleQueryString( '"fried eggs" +(eggplant | potato) -frittata' );
+		lookup.setQueryString( '"fried eggs" +(eggplant | potato) -frittata' );
 
 		var obj = {
 			"query": {
 				"bool": {
 					"must": [{
-						"simple_query_string": {
+						"query_string": {
 							"query": '"fried eggs" +(eggplant | potato) -frittata',
-							"default_operator": 'and'
+							"default_operator": 'AND'
 						}
 					}]
 				}
 			}
 		};
 
-		assert.deepEqual( lookup.getQueryDSL(), obj, 'Setting SimpleQueryString value by string works' );
-		assert.equal( lookup.getSimpleQueryString().query, '"fried eggs" +(eggplant | potato) -frittata', 'Getting SimpleQueryString works' );
+		assert.deepEqual( lookup.getQueryDSL(), obj, 'Setting QueryString value by string works' );
+		assert.equal( lookup.getQueryString().query, '"fried eggs" +(eggplant | potato) -frittata', 'Getting QueryString works' );
 
 		var q = {
 			query: "Copy Paste",
 			default_operator: "or"
 		};
-		lookup.setSimpleQueryString( q );
+		lookup.setQueryString( q );
 
-		assert.deepEqual( lookup.getQueryDSL().query.bool.must[0].simple_query_string, q, 'Setting SimpleQueryString value by object works' );
+		assert.deepEqual( lookup.getQueryDSL().query.bool.must[0].query_string, q, 'Setting QueryString value by object works' );
 	} );
 
-	QUnit.test( 'bs.extendedSearch.Lookup.testClearSimpleQueryString', function ( assert ) {
+	QUnit.test( 'bs.extendedSearch.Lookup.testClearQueryString', function ( assert ) {
 		var lookup = new bs.extendedSearch.Lookup({
 			"query": {
 				"bool": {
 					"must": [{
-						"simple_query_string": {
+						"query_string": {
 							"query": '"fried eggs" +(eggplant | potato) -frittata',
 							"default_operator": 'and'
 						}
@@ -44,7 +44,7 @@
 				}
 			}
 		});
-		lookup.clearSimpleQueryString();
+		lookup.clearQueryString();
 
 		var obj = {
 			"query": {
@@ -54,7 +54,7 @@
 			}
 		};
 
-		assert.deepEqual( lookup.getQueryDSL(), obj, 'Clearing SimpleQueryString value works' );
+		assert.deepEqual( lookup.getQueryDSL(), obj, 'Clearing QueryString value works' );
 	} );
 
 	QUnit.test( 'bs.extendedSearch.Lookup.testAddSingleTermsFilterValue', function ( assert ) {

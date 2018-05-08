@@ -240,31 +240,22 @@ class Backend {
 	 */
 	public function runAutocompleteLookup( Lookup $lookup, $searchData ) {
 		$acConfig = $this->getAutocompleteConfig();
-		$strategy = $acConfig['SuggestStrategy'];
 
 		$search = new \Elastica\Search( $this->getClient() );
 		$search->addIndex( $this->config->get( 'index' ) . '_*' );
 
 		$results = [];
-		if( $strategy == Lookup::AC_STRATEGY_QUERY ) {
-			$lookupModifiers = [];
-			foreach( $this->sources as $sourceKey => $source ) {
-				$lookupModifiers += $source->getLookupModifiers( $lookup, $this->getContext(), LookupModifier::TYPE_AUTOCOMPLETE );
-			}
-
-			foreach( $lookupModifiers as $sLMKey => $lookupModifier ) {
-				$lookupModifier->apply();
-			}
-
-			$results = $search->search( $lookup->getQueryDSL() );
-			$results = $this->formatQuerySuggestions( $results, $searchData );
-		} else {
-			if( empty( $lookup->getAutocompleteSuggest() ) ) {
-				return [];
-			}
-			$results = $search->search( $lookup->getAutocompleteSuggestQuery() );
-			$results = $this->formatCompletionSuggestions( $results, $searchData );
+		$lookupModifiers = [];
+		foreach( $this->sources as $sourceKey => $source ) {
+			$lookupModifiers += $source->getLookupModifiers( $lookup, $this->getContext(), LookupModifier::TYPE_AUTOCOMPLETE );
 		}
+
+		foreach( $lookupModifiers as $sLMKey => $lookupModifier ) {
+			$lookupModifier->apply();
+		}
+
+		$results = $search->search( $lookup->getQueryDSL() );
+		$results = $this->formatQuerySuggestions( $results, $searchData );
 
 		return $results;
 
@@ -275,17 +266,13 @@ class Backend {
 		return $this->formatSuggestions( $results, $searchData );
 	}
 
-	protected function formatCompletionSuggestions( $results, $searchData ) {
-		$results = array_values( $this->getCompletionSuggestionList( $results ) );
-		return $this->formatSuggestions( $results, $searchData );
-	}
-
 	protected function formatSuggestions( $results, $searchData ) {
 		$lcSearchTerm = strtolower( $searchData['value'] );
 
 		foreach( $this->getSources() as $sourceKey => $source ) {
 			$source->getFormatter()->scoreAutocompleteResults( $results, $searchData );
-			//when results are scored based on original data, it can be modified
+			$source->getFormatter()->rankAutocompleteResults( $results, $searchData );
+			//when results are ranked based on original data, it can be modified
 			$source->getFormatter()->formatAutocompleteResults( $results, $searchData );
 		}
 
@@ -303,35 +290,15 @@ class Backend {
 		$res = [];
 		foreach( $results->getResults() as $suggestion ) {
 			$item = [
-				"match_id" => $suggestion->getId(),
 				"type" => $suggestion->getType(),
 				"score" => $suggestion->getScore(),
-				"is_scored" => false
+				"rank" => false,
+				"is_ranked" => false
 			];
 
 			$item = array_merge( $item, $suggestion->getSource() );
 
 			$res[$suggestion->getId()] = $item;
-		}
-
-		return $res;
-	}
-
-	protected function getCompletionSuggestionList( $results ) {
-		$res = [];
-		foreach( $results->getSuggests() as $suggestionField => $suggestion ) {
-			foreach( $suggestion[0]['options'] as $option ) {
-				$item = [
-					"match_id" => $option['_id'],
-					"type" => $option['_type'],
-					"score" => $option['_score'],
-					"is_scored" => false
-				];
-
-				$item = array_merge( $item, $option['_source'] );
-
-				$res[$option['_id']] = $item;
-			}
 		}
 
 		return $res;
@@ -343,6 +310,11 @@ class Backend {
 	 * @param Lookup $lookup
 	 */
 	public function runLookup( $lookup ) {
+		$search = new \Elastica\Search( $this->getClient() );
+		$search->addIndex( $this->config->get( 'index' ) . '_*' );
+
+		$spellcheck = $this->spellCheck( $lookup, $search );
+
 		$lookupModifiers = [];
 		foreach( $this->sources as $sourceKey => $source ) {
 			$lookupModifiers += $source->getLookupModifiers( $lookup, $this->getContext(), LookupModifier::TYPE_SEARCH );
@@ -358,10 +330,17 @@ class Backend {
 				. \FormatJson::encode( $lookup, true )
 		);
 
-		$search = new \Elastica\Search( $this->getClient() );
-		$search->addIndex( $this->config->get( 'index' ) . '_*' );
-
-		$results = $search->search( $lookup->getQueryDSL() );
+		try {
+			$results = $search->search( $lookup->getQueryDSL() );
+		} catch( \RuntimeException $ex ) {
+			$ret = new \stdClass();
+			//we cannot return anything else other than just exception type,
+			//because any exception message may contain
+			//full query, and therefore, sensitive data
+			$ret->exception = true;
+			$ret->exceptionType = get_class( $ex );
+			return $ret;
+		}
 
 		foreach( $lookupModifiers as $sLMKey => $lookupModifier ) {
 			$lookupModifier->undo();
@@ -371,10 +350,108 @@ class Backend {
 		$formattedResultSet->results = $this->formatResults( $results );
 		$formattedResultSet->total = $this->getTotal( $results );
 		$formattedResultSet->filters = $this->getFilterConfig( $results );
+		$formattedResultSet->spellcheck = $spellcheck;
 
 		return $formattedResultSet;
 	}
 
+	/**
+	 * Checks if there are alternatives to what user is searching for
+	 * and replaces the term if it detects a typo
+	 *
+	 * Note: Revisit for final version, this is prototype-y
+	 * TODO: Implement multi-field suggestions
+	 *
+	 * @param Lookup $lookup
+	 * @param \Elastica\Search $search
+	 * @return array
+	 */
+	public function spellCheck( &$lookup, $search ) {
+		$spellcheckResult = [
+			"action" => "ignore"
+		];
+
+		if( $lookup->getForceTerm() ) {
+			$lookup->removeForceTerm();
+			return $spellcheckResult;
+		}
+		$spellCheckConfig = $this->getSpellCheckConfig();
+		//How many hits would we have with search term as-is
+		$origQS = $lookup->getQueryString();
+		$origTerm = $origQS['query'];
+
+		$origTermLookup = new Lookup();
+		$origTermLookup->setQueryString( $origTerm );
+		$origHitCount = $search->count( $origTermLookup->getQueryDSL() );
+
+		//What is our best alternative
+		$suggestLookup = new Lookup();
+		$suggestLookup->addSuggest( $spellCheckConfig['suggestField'], $origTerm );
+		$suggestResults = $search->search( ['suggest' => $suggestLookup->getQueryDSL() ] );
+
+		$suggestedTerm = [];
+		$suggestions = $suggestResults->getSuggests()[$spellCheckConfig['suggestField']];
+		foreach( $suggestions as $suggestion ) {
+			if( count( $suggestion['options'] ) == 0 ) {
+				//Word is already best it can be
+				$suggestedTerm[] = $suggestion['text'];
+			} else {
+				//Get first ( highest scored ) alternative
+				$suggestedTerm[] = $suggestion['options'][0]['text'];
+			}
+		}
+
+		$suggestedTerm = implode( ' ', $suggestedTerm );
+
+		if( $suggestedTerm == $origTerm ) {
+			return $spellcheckResult;
+		}
+
+		//How many results would our best alternative yield
+		$suggestLookup = new Lookup();
+		$suggestLookup->setQueryString( $suggestedTerm );
+		$suggestedHitCount = $search->count( $suggestLookup->getQueryDSL() );
+
+		//Decide if we will replace original term with suggested one
+		if( $suggestedHitCount <= $origHitCount ) {
+			return $spellcheckResult;
+		}
+
+		$spellcheckResult['original'] = [
+			"term" => $origTerm,
+			"count" => $origHitCount
+		];
+
+		$spellcheckResult['alternative'] = [
+			"term" => $suggestedTerm,
+			"count" => $suggestedHitCount
+		];
+
+		$replace = false;
+		if( $origHitCount == 0 ) {
+			$replace = true;
+		} else {
+			//How much more results we get using suggested term
+			$percent = $origHitCount / $suggestedHitCount;
+			if( $percent < $spellCheckConfig['replaceThreshold'] ) {
+				//Replace term if there is much more hits for alternative
+				$replace = true;
+			} else if ( $percent < $spellCheckConfig['suggestThreshold'] ) {
+				//If alternative has siginificatly more results, but not so much
+				//that we can definitely decide its a typo, just suggest the alternative
+				$spellcheckResult['action'] = 'suggest';
+			}
+		}
+
+		if( $replace ) {
+			$origQS['query'] = $suggestedTerm;
+			$lookup->setQueryString( $origQS );
+
+			$spellcheckResult['action'] = 'replaced';
+		}
+
+		return $spellcheckResult;
+	}
 	/**
 	 * Runs each result in result set through
 	 * each source's formatter
@@ -453,6 +530,13 @@ class Backend {
 			->getAttribute( 'BlueSpiceExtendedSearchAutocomplete' );
 
 		return $autocompleteConfig;
+	}
+
+	public function getSpellCheckConfig() {
+		$spellCheckConfig = \ExtensionRegistry::getInstance()
+			->getAttribute( 'BlueSpiceExtendedSearchSpellCheck' );
+
+		return $spellCheckConfig;
 	}
 
 	/**

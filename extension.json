@@ -34,7 +34,6 @@
 			},
 			"Autocomplete": {
 				"SuggestField": "ac_ngram",
-				"SuggestStrategy": "query",
 				"DisplayLimits": {
 					"primary": 8,
 					"top": 2,
@@ -48,6 +47,11 @@
 			},
 			"FieldsWithANDFilterEnabled": {
 				"fields": ["categories"]
+			},
+			"SpellCheck": {
+				"suggestField": "basename",
+				"replaceThreshold": 0.01,
+				"suggestThreshold": 0.3
 			}
 		}
 	},
@@ -138,7 +142,8 @@
 				"bs-extendedsearch-autocomplete-result-primary-no-results-label",
 				"bs-extendedsearch-autocomplete-result-type",
 				"bs-extendedsearch-autocomplete-result-top-match-label",
-				"bs-extendedsearch-autocomplete-result-secondary-results-label"
+				"bs-extendedsearch-autocomplete-result-secondary-results-label",
+				"bs-extendedsearch-autocomplete-create-page-link"
 			],
 			"dependencies": [
 				"ext.blueSpiceExtendedSearch.SearchBar"
@@ -199,9 +204,13 @@
 				"bs-extendedsearch-searchcenter-sort-field-ctime",
 				"bs-extendedsearch-searchcenter-sort-field-size",
 				"bs-extendedsearch-searchcenter-sort-field-namespace",
-				"bs-extendedsearch-search-center-filter-has-hidden"
+				"bs-extendedsearch-search-center-filter-has-hidden",
+				"bs-extendedsearch-search-center-result-exception",
+				"bs-extendedsearch-search-center-hitcount-replaced",
+				"bs-extendedsearch-search-center-hitcount-suggest"
 			],
 			"dependencies" : [
+				"ext.bluespice.extjs",
 				"ext.blueSpiceExtendedSearch.SearchBar"
 			]
 		},

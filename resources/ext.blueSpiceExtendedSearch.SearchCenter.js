@@ -18,6 +18,7 @@
 			filter: {
 				label: mw.message( 'bs-extendedsearch-search-center-filter-type-label' ).plain(),
 				valueLabel: mw.message( 'bs-extendedsearch-search-center-filter-type-with-values-label' ).plain(),
+				hasHiddenLabelKey: 'bs-extendedsearch-search-center-filter-has-hidden',
 				id: 'type',
 				options: []
 			}
@@ -215,6 +216,9 @@
 			}
 		) )
 		.done( function( response ) {
+			if( response.exception ) {
+				return resultsPanel.showError();
+			}
 			//Lookup object might have changed due to LookupModifiers
 			search.makeLookup( JSON.parse( response.lookup ) );
 
@@ -223,8 +227,10 @@
 				filterData: $.merge(
 					search.getTypeFilter(),
 					search.getFilters( response.filters )
-				)
+				),
+				caller: search
 			} );
+
 			toolsPanel.init();
 			if( response.total === 0 ) {
 				return resultsPanel.init( {
@@ -236,9 +242,10 @@
 			return resultsPanel.init( {
 				results: search.applyResultsToStructure( response.results ),
 				total: response.total,
+				spellcheck: response.spellcheck,
 				caller: search
 			} );
-		} );
+		} )
 	}
 
 	function _getPageSizeConfig() {
@@ -281,6 +288,22 @@
 		this.getLookupObject().setFrom( 0 );
 	}
 
+	/**
+	 * Handles term forcing from spellcheck - 
+	 * if user decides to override auto spellcheck
+	 */
+	function _forceSearchTerm( e, params ) {
+		//Start fresh search
+		this.clearLookupObject();
+		this.getLookupObject().setQueryString( params.term );
+		if( params.force ) {
+			this.getLookupObject().setForceTerm();
+		}
+		searchBar.setValue( params.term );
+
+		updateQueryHash();
+	}
+
 	bs.extendedSearch.SearchCenter = {
 		execSearch: _execSearch,
 		getLookupObject: _getLookupObject,
@@ -293,7 +316,8 @@
 		getFilters: _getFilters,
 		applyResultsToStructure: _applyResultsToStructure,
 		formatSecondaryInfoItems: _formatSecondaryInfoItems,
-		getResultValueByKey: _getResultValueByKey
+		getResultValueByKey: _getResultValueByKey,
+		forceSearchTerm: _forceSearchTerm
 	};
 
 	var search = bs.extendedSearch.SearchCenter;
@@ -305,7 +329,8 @@
 
 	searchBar.onValueChanged = function() {
 		bs.extendedSearch.SearchCenter.resetPagination();
-		search.getLookupObject().setSimpleQueryString( this.value );
+		search.getLookupObject().removeForceTerm();
+		search.getLookupObject().setQueryString( this.value );
 		updateQueryHash();
 	};
 
@@ -313,7 +338,7 @@
 		bs.extendedSearch.SearchBar.prototype.onClearSearch.call( this );
 
 		search.clearLookupObject();
-		search.getLookupObject().setSimpleQueryString( '' );
+		search.getLookupObject().setQueryString( '' );
 		updateQueryHash();
 	};
 
@@ -332,17 +357,20 @@
 		var config = JSON.parse( curQueryData.q );
 		search.makeLookup( config );
 		//Update searchBar if page is loaded with query present
-		searchBar.setValue( search.getLookupObject().getSimpleQueryString().query );
+		queryString = search.getLookupObject().getQueryString();
+		if( queryString ) {
+			searchBar.setValue( queryString.query );
+		}
 	} else if( queryStringQ ) {
 		//No hash set, but there are query string params
-		search.getLookupObject().setSimpleQueryString( queryStringQ );
+		search.getLookupObject().setQueryString( queryStringQ );
 		if( queryStringNs ) {
 			//If namespace pill was set on page user is coming from
 			//set default namespace filter - HARDCODED FILTER ID
 			search.getLookupObject().addFilter( 'namespace_text', queryStringNs );
 		}
 		//Update searchBar if page is loaded with query present
-		searchBar.setValue( search.getLookupObject().getSimpleQueryString().query );
+		searchBar.setValue( search.getLookupObject().getQueryString().query );
 		updateQueryHash();
 	}
 

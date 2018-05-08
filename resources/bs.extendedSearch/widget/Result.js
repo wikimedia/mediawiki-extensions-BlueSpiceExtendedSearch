@@ -11,6 +11,7 @@
 
 		this.headerText = cfg.headerText;
 		this.headerUri = cfg.headerUri;
+		this.headerAnchor = cfg.page_anchor || null;
 		this.secondaryInfos = cfg.secondaryInfos || [];
 		this.highlight = cfg.highlight || '';
 		this.featured = cfg.featured || false;
@@ -21,10 +22,15 @@
 		this.$headerContainer = $( '<div>' )
 			.addClass( 'bs-extendedsearch-result-header-container' );
 
-		this.$header = $( '<a>' )
-			.addClass( 'bs-extendedsearch-result-header' )
-			.attr( 'href', this.headerUri )
-			.html( this.headerText );
+		if( this.headerAnchor ) {
+			this.$header = $( this.headerAnchor );
+		} else {
+			this.$header = $( '<a>' )
+				.attr( 'href', this.headerUri )
+				.html( this.headerText );
+		}
+
+		this.$header.addClass( 'bs-extendedsearch-result-header' );
 
 		this.$headerContainer.append( this.$header );
 

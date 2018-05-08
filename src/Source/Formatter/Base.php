@@ -15,6 +15,10 @@ class Base {
 	 */
 	const MORE_VALUES_TEXT = '...';
 
+	const AC_RANK_PRIMARY = 'primary';
+	const AC_RANK_SECONDARY = 'secondary';
+	const AC_RANK_TOP = 'top';
+
 	/**
 	 *
 	 * @var \BS\ExtendedSearch\Source\Base
@@ -63,6 +67,14 @@ class Base {
 		//because it might be called multiple times
 		$originalValues = $resultObject->getData();
 		$result['type'] = $resultObject->getType();
+
+		$name = $result['basename'];
+		$ns = $result['namespace'];
+
+		if( !isset( $originalValues['ctime'] ) || !isset( $originalValues['mtime'] ) ) {
+			//If those are not set for the given type
+			return;
+		}
 		$result['ctime'] = $this->getContext()->getLanguage()->date( $originalValues['ctime'] );
 		$result['mtime'] = $this->getContext()->getLanguage()->date( $originalValues['mtime'] );
 	}
@@ -77,28 +89,51 @@ class Base {
 	}
 
 	/**
-	 * Allows sources to change scoring of the autocomplete query results
+	 * Allows sources to change ranking of the autocomplete query results
+	 * Exact matches are TOP, matches containing search term are PRIMARY,
+	 * and matches not containing search term (fuzzy) are SECONDARY
+	 *
+	 * Ranking controls where result will be shown( which part of AC popup )
 	 *
 	 * @param type $results
 	 * @param type $searchData
 	 */
-	public function scoreAutocompleteResults( &$results, $searchData ) {
+	public function rankAutocompleteResults( &$results, $searchData ) {
 		foreach( $results as &$result ) {
-			if( $result['is_scored'] ) {
-				continue;
+			if( $result['is_ranked'] == true ) {
+				return;
 			}
 
 			if( strtolower( $result['basename'] ) == strtolower( $searchData['value'] ) ) {
-				$result['score'] = 8;
+				$result['rank'] = self::AC_RANK_TOP;
 			} else if( strpos( strtolower( $result['basename'] ), strtolower( $searchData['value'] ) ) !== false ) {
-				if( strpos( strtolower( $result['basename'] ), strtolower( $searchData['value'] ) ) === 0 ) {
-					$result['score'] = 7;
-				} else {
-					$result['score'] = 6;
-				}
+				$result['rank'] = self::AC_RANK_PRIMARY;
 			} else {
-				$result['score'] = 2;
+				$result['rank'] = self::AC_RANK_SECONDARY;
 			}
+
+			$result['is_ranked'] = true;
 		}
+	}
+
+	/**
+	 * Allows modifying scoring of the AC results, after query has ran.
+	 *
+	 * @param array $results
+	 * @param array $searchData
+	 */
+	public function scoreAutocompleteResults( &$results, $searchData ) {
+		foreach( $results as &$result ) {
+			$result['score'] += $this->getMatchPercentage( $result['basename'], $searchData['value'] );
+		}
+	}
+	protected function getMatchPercentage( $result, $term ) {
+		$matches = [];
+		//How many times search term is repeated
+		preg_match_all( '/' . $term . '/', $result, $matches );
+
+		$termLength = strlen( $term ) * count( $matches );
+
+		return ( $termLength * 100 ) / strlen( $result );
 	}
 }

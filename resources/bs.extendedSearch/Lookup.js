@@ -16,8 +16,6 @@ OO.initClass( bs.extendedSearch.Lookup );
 bs.extendedSearch.Lookup.SORT_ASC = 'asc';
 bs.extendedSearch.Lookup.SORT_DESC = 'desc';
 bs.extendedSearch.Lookup.TYPE_FIELD_NAME = '_type';
-bs.extendedSearch.Lookup.AC_STRATEGY_QUERY = 'query';
-bs.extendedSearch.Lookup.AC_STRATEGY_COMPLETION = 'completion';
 
 /**
  *
@@ -101,17 +99,17 @@ bs.extendedSearch.Lookup.prototype.setBoolMatchQueryString = function( field, q 
 }
 
 /**
- * @see https://www.elastic.co/guide/en/elasticsearch/reference/5.x/query-dsl-simple-query-string-query.html
+ * @see https://www.elastic.co/guide/en/elasticsearch/reference/5.x/query-dsl-query-string-query.html
  * @param string|object q
  * @returns bs.extendedSearch.Lookup
  */
-bs.extendedSearch.Lookup.prototype.setSimpleQueryString = function ( q ) {
+bs.extendedSearch.Lookup.prototype.setQueryString = function ( q ) {
 	this.ensurePropertyPath( 'query.bool.must', [] );
 	var newMusts = [];
 
-	//There must not be more than on "simple_query_string" in "must"
+	//There must not be more than on "query_string" in "must"
 	for( var i = 0; i < this.query.bool.must.length; i++ ) {
-		if( 'simple_query_string' in this.query.bool.must[i] ) {
+		if( 'query_string' in this.query.bool.must[i] ) {
 			continue;
 		}
 		newMusts.push( this.query.bool.must[i] );
@@ -121,14 +119,14 @@ bs.extendedSearch.Lookup.prototype.setSimpleQueryString = function ( q ) {
 
 	if( typeof q === 'object' ) {
 		this.query.bool.must.push( {
-			simple_query_string: q
+			query_string: q
 		});
 	}
 	if( typeof q === 'string' ) {
 		this.query.bool.must.push( {
-			simple_query_string: {
+			query_string: {
 				query: q,
-				default_operator: 'and'
+				default_operator: 'AND'
 			}
 		} );
 	}
@@ -139,12 +137,12 @@ bs.extendedSearch.Lookup.prototype.setSimpleQueryString = function ( q ) {
  *
  * @returns object|null
  */
-bs.extendedSearch.Lookup.prototype.getSimpleQueryString = function () {
+bs.extendedSearch.Lookup.prototype.getQueryString = function () {
 	this.ensurePropertyPath( 'query.bool.must', [] );
 
 	for( var i = 0; i < this.query.bool.must.length; i++ ) {
-		if( 'simple_query_string' in this.query.bool.must[i] ) {
-			return this.query.bool.must[i].simple_query_string;
+		if( 'query_string' in this.query.bool.must[i] ) {
+			return this.query.bool.must[i].query_string;
 		}
 	}
 
@@ -152,16 +150,19 @@ bs.extendedSearch.Lookup.prototype.getSimpleQueryString = function () {
 };
 
 /**
+ * Warning: Use carefully! Removing "must" containing
+ * query_string will not stop the query from being executed
+ * with other parts of bool query, may lead to unexpected results
  *
  * @returns bs.extendedSearch.Lookup
  */
-bs.extendedSearch.Lookup.prototype.clearSimpleQueryString = function () {
+bs.extendedSearch.Lookup.prototype.clearQueryString = function () {
 	this.ensurePropertyPath( 'query.bool.must', {} );
 
 	for( mustIdx in this.query.bool.must ) {
 		var must = this.query.bool.must[mustIdx];
 
-		if( 'simple_query_string' in must ) {
+		if( 'query_string' in must ) {
 			this.query.bool.must.splice( mustIdx, 1 );
 		}
 	}
@@ -973,4 +974,22 @@ bs.extendedSearch.Lookup.prototype.setAutocompleteSuggestSize = function( acFiel
 	this.suggest[acField].completion.size = size;
 
 	return this;
+}
+
+bs.extendedSearch.Lookup.prototype.setForceTerm = function() {
+	this.forceTerm = true;
+	return this;
+}
+
+bs.extendedSearch.Lookup.prototype.removeForceTerm = function() {
+	delete( this.forceTerm );
+	return this;
+}
+
+bs.extendedSearch.Lookup.prototype.getForceTerm = function() {
+	if( 'forceTerm' in this ) {
+		return true;
+	}
+
+	return false;
 }

@@ -74,5 +74,9 @@
 	"bs-extendedsearch-searchcenter-sort-field-ctime": "Label for sort by field created time",
 	"bs-extendedsearch-searchcenter-sort-field-size": "Label for sort by field size",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Label for sort by field namespace",
-	"bs-extendedsearch-search-center-filter-has-hidden": "Label for filter when there are more values than can be shown. This label indicates how many more values are hidden. $1 - number of hidden values"
+	"bs-extendedsearch-search-center-filter-has-hidden": "Label for filter when there are more values than can be shown. This label indicates how many more values are hidden. $1 - number of hidden values",
+	"bs-extendedsearch-search-center-result-exception": "Generic message text when query execution produced an error",
+	"bs-extendedsearch-autocomplete-create-page-link": "Text for the link offering to create non-existing page. $1 - prefixed name of the page",
+	"bs-extendedsearch-search-center-hitcount-replaced": "Message showing when search term has been replaced due to typo detected. $1 - new term, $2 - original term, $3 - number of hits for original term",
+	"bs-extendedsearch-search-center-hitcount-suggest": "Message showing when a typo in the search term is suspected, offering alternative term to search for. $1 - alternative term, $2 - number of hits for alternative term"
 }

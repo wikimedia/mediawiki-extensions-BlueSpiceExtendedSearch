@@ -17,6 +17,7 @@
 		bs.extendedSearch.AutocompletePopup.parent.call( this, cfg );
 
 		bs.extendedSearch.mixin.AutocompleteResults.call( this, cfg );
+		bs.extendedSearch.mixin.AutocompleteCreatePageLink.call( this, cfg.pageCreateInfo );
 
 		this.$element.addClass( 'bs-extendedsearch-autocomplete-popup' );
 		this.$element.append( this.$primaryResults );
@@ -28,6 +29,7 @@
 
 	OO.inheritClass( bs.extendedSearch.AutocompletePopup, OO.ui.Widget );
 	OO.mixinClass( bs.extendedSearch.AutocompletePopup, bs.extendedSearch.mixin.AutocompleteResults );
+	OO.mixinClass( bs.extendedSearch.AutocompletePopup, bs.extendedSearch.mixin.AutocompleteCreatePageLink );
 
 	/**
 	 * Changes currently selected item.Used in navigation with up/down arrows
@@ -84,8 +86,8 @@
 		return item.uri;
 	}
 
-	//This overrides normal behaviour for secondary results, filling them after
-	//the popup was created and displayed, as they are retrieved in async request
+	//Fills secondary results after the popup was created and displayed,
+	//as they are retrieved in async request
 	bs.extendedSearch.AutocompletePopup.prototype.addSecondary = function( data ) {
 		if( this.mobile ) {
 			//Not supported in mobile view
@@ -93,10 +95,6 @@
 		}
 
 		this.fillSecondaryResults( data );
-
-		this.$secondaryResultsLabel = $( '<span>' )
-			.addClass( 'bs-extendedsearch-autocomplete-popup-special-item-label' )
-			.html( mw.message( 'bs-extendedsearch-autocomplete-result-secondary-results-label' ).plain() );
 
 		if( this.$secondaryResults.children().length > 0 ) {
 			this.$specialResults.append( this.$secondaryResultsLabel, this.$secondaryResults );

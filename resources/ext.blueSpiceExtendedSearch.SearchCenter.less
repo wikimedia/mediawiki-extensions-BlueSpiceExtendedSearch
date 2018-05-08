@@ -13,7 +13,15 @@ div.bs-extendedsearch-center-layout {
 /*Hit counter*/
 div#bs-es-hitcount {
 	margin-top: 5px;
-	font-size: 1.4em
+	font-size: 1.4em;
+	.bs-extendedsearch-search-center-hitcount-replaced,
+	.bs-extendedsearch-search-center-hitcount-suggest {
+		font-size: 0.8em;
+		margin-bottom: 10px;
+		a {
+			cursor: pointer;
+		}
+	}
 }
 
 /*Tools and filters*/
@@ -24,8 +32,9 @@ div#bs-es-tools {
 	div#bs-es-tools-tools {
 		margin-left: 20px;
 		display: inline-block;
-		min-width: 30px;
+		min-width: 100px;
 		position: absolute;
+		right: 30px;
 	}
 
 	div#bs-es-tools-filters {

@@ -21,8 +21,7 @@ class WikiPages extends DecoratorBase {
 			'wikipage-namespaceprefixresolver' => WikiPageNamespacePrefixResolver::class,
 			'wikipage-securitytrimming' => WikiPageSecurityTrimming::class,
 			'wikipage-categoriesaggregation' => WikiPageCategoriesAggregation::class,
-			'wikipage-renderedcontenthighlight' => WikiPageRenderedContentHighlight::class,
-			'wikipage-simpleqsfields' => WikiPageSimpleQSFields::class
+			'wikipage-renderedcontenthighlight' => WikiPageRenderedContentHighlight::class
 		],
 		LookupModifier::TYPE_AUTOCOMPLETE => [
 			'wikipage-securitytrimming' => WikiPageSecurityTrimming::class,

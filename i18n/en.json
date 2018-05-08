@@ -74,5 +74,9 @@
 	"bs-extendedsearch-searchcenter-sort-field-ctime": "Created time",
 	"bs-extendedsearch-searchcenter-sort-field-size": "Size",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Namespace",
-	"bs-extendedsearch-search-center-filter-has-hidden": "...{{PLURAL:$1|and $1 more|and $1 more}}"
+	"bs-extendedsearch-search-center-filter-has-hidden": "...{{PLURAL:$1|and $1 more|and $1 more}}",
+	"bs-extendedsearch-search-center-result-exception": "Query cannot be executed, please change the search term.",
+	"bs-extendedsearch-autocomplete-create-page-link": "Create page \"$1\"",
+	"bs-extendedsearch-search-center-hitcount-replaced": "Showing results for $1, search for $2 instead ({{PLURAL:$3|$3 hit|$3 hits}})",
+	"bs-extendedsearch-search-center-hitcount-suggest": "Did you mean $1 ({{PLURAL:$2|$2 hit|$2 hits}})?"
 }

@@ -32,7 +32,7 @@ class WikiPageNamespacePrefixResolver extends Base {
 	}
 
 	protected function setSimpleQS() {
-		$aQueryString = $this->oLookup->getSimpleQueryString();
+		$aQueryString = $this->oLookup->getQueryString();
 		if( !$aQueryString ) {
 			return null;
 		}
@@ -66,7 +66,7 @@ class WikiPageNamespacePrefixResolver extends Base {
 
 	public function setNewNamespaceFilterAndQuery() {
 		$this->simpleQS['query'] = $this->title->getText();
-		$this->oLookup->setSimpleQueryString( $this->simpleQS );
+		$this->oLookup->setQueryString( $this->simpleQS );
 		//We use namespace name, because "namespace_name" is available filter on front-end
 		$nsText = \BsNamespaceHelper::getNamespaceName( $this->title->getNamespace() );
 		$this->oLookup->addTermsFilter( 'namespace_text', $nsText );

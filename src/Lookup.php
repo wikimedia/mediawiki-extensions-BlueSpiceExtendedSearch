@@ -11,9 +11,6 @@ class Lookup extends \ArrayObject {
 	const SORT_DESC = 'desc';
 	const TYPE_FIELD_NAME = '_type';
 
-	const AC_STRATEGY_QUERY = 'query';
-	const AC_STRATEGY_COMPLETION = 'completion';
-
 	/**
 	 *
 	 * @param array $aConfig
@@ -54,7 +51,7 @@ class Lookup extends \ArrayObject {
 	 * "query" : {
      *   "bool": {
      *     "must": {
-     *       "simple_query_string": {
+     *       "query_string": {
      *         "query" : "Steve"
      *       }
      *     },
@@ -63,30 +60,30 @@ class Lookup extends \ArrayObject {
      *     }]
      *   }
      * }
-	 * @see https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-simple-query-string-query.html
+	 * @see https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html
 	 * @param string|array $mValue
 	 * @return Lookup
 	 */
-	public function setSimpleQueryString( $mValue ) {
+	public function setQueryString( $mValue ) {
 		$this->ensurePropertyPath( 'query.bool.must', [] );
 
-		//There must not be more than on "simple_query_string" in "must"
+		//There must not be more than on "query_string" in "must"
 		foreach( $this['query']['bool']['must'] as $iIndex => $aMust ) {
-			if( isset( $aMust['simple_query_string'] ) ) {
+			if( isset( $aMust['query_string'] ) ) {
 				unset( $this['query']['bool']['must'][$iIndex] );
 			}
 		}
-		
+
 		if( is_array( $mValue ) ) {
 			$this['query']['bool']['must'][] = [
-				'simple_query_string' => $mValue
+				'query_string' => $mValue
 			];
 		}
 		if( is_string( $mValue ) ) {
 			$this['query']['bool']['must'][] = [
-				'simple_query_string' => [
+				'query_string' => [
 					'query' => $mValue,
-					'default_operator' => 'and'
+					'default_operator' => 'AND'
 				]
 			];
 		}
@@ -100,11 +97,11 @@ class Lookup extends \ArrayObject {
 	 *
 	 * @return string|null
 	 */
-	public function getSimpleQueryString() {
+	public function getQueryString() {
 		$this->ensurePropertyPath( 'query.bool.must', [] );
 		foreach( $this['query']['bool']['must'] as $iIndex => $aMust ) {
-			if( isset( $aMust['simple_query_string'] ) ) {
-				return $aMust['simple_query_string'];
+			if( isset( $aMust['query_string'] ) ) {
+				return $aMust['query_string'];
 			}
 		}
 		return null;
@@ -114,10 +111,10 @@ class Lookup extends \ArrayObject {
 	 *
 	 * @return Lookup
 	 */
-	public function clearSimpleQueryString() {
+	public function clearQueryString() {
 		$this->ensurePropertyPath( 'query.bool.must', [] );
 		foreach( $this['query']['bool']['must'] as $iIndex => $aMust ) {
-			if( isset( $aMust['simple_query_string'] ) ) {
+			if( isset( $aMust['query_string'] ) ) {
 				unset( $this['query']['bool']['must'][$iIndex] );
 			}
 		}
@@ -909,6 +906,31 @@ class Lookup extends \ArrayObject {
 		return false;
 	}
 
+	public function addSuggest( $field, $value ) {
+		$base = $this;
+		$base->ensurePropertyPath( 'suggest', [] );
+
+		$base['suggest'][$field] = [
+			'text' => $value,
+			'term' => [
+				'field' => $field
+			]
+		];
+
+		return $this;
+	}
+
+	public function removeSuggest( $field ) {
+		$base = $this;
+		$base->ensurePropertyPath( 'suggest', [] );
+
+		if( isset( $base['suggest'][$field] ) ) {
+			unset( $base['suggest'][$field] );
+		}
+
+		return $this;
+	}
+
 	/**
 	 *
 	 * @param string $field
@@ -1132,5 +1154,24 @@ class Lookup extends \ArrayObject {
 				"suggest" => $this->getAutocompleteSuggest()
 			]
 		];
+	}
+
+	public function setForceTerm() {
+		$this->ensurePropertyPath( 'forceTerm', true );
+		return $this;
+	}
+
+	public function removeForceTerm() {
+		$this->ensurePropertyPath( 'forceTerm', true );
+		unset( $this['forceTerm'] );
+
+		return $this;
+	}
+
+	public function getForceTerm() {
+		if( isset( $this['forceTerm'] ) ) {
+			return true;
+		}
+		return false;
 	}
 }

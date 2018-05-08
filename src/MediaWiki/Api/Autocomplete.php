@@ -6,6 +6,7 @@ class Autocomplete extends \ApiBase {
 	public function execute() {
 		$this->readInParameters();
 		$this->lookUpResults();
+		$this->setPageCreatable();
 		$this->returnResults();
 	}
 
@@ -57,6 +58,28 @@ class Autocomplete extends \ApiBase {
 		$this->searchData = $this->getParameter( 'searchData' );
 	}
 
+	//Should this be here?
+	protected $pageCreateInfo;
+	protected function setPageCreatable() {
+		$title = \Title::makeTitle(
+			$this->searchData['namespace'],
+			$this->searchData['value']
+		);
+
+		if( $title->exists() == false && $title->userCan( 'createpage' ) && $title->userCan( 'edit' ) ) {
+			$this->pageCreatable = true;
+			$this->pageCreateInfo = [
+				'display_text' => $title->getFullText(),
+				'full_url' => $title->getFullURL( ['action' => 'edit'] ),
+				'creatable' => 1
+			];
+		} else {
+			$this->pageCreateInfo = [
+				'creatable' => 0
+			];
+		}
+	}
+
 	/**
 	 *
 	 * @var array $suggestions
@@ -72,5 +95,6 @@ class Autocomplete extends \ApiBase {
 		$oResult = $this->getResult();
 
 		$oResult->addValue( null , 'suggestions', $this->suggestions );
+		$oResult->addValue( null, 'page_create_info', $this->pageCreateInfo );
 	}
 }

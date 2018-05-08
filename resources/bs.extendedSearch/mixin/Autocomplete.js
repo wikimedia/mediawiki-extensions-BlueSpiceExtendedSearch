@@ -9,6 +9,8 @@
 		this.$topMatches = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-top-match' );
 		this.$secondaryResults = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-secondary' );
 
+		this.namespaceId = cfg.namespaceId;
+
 		//Just for convinience
 		var limits = this.displayLimits;
 
@@ -22,8 +24,8 @@
 		for( idx in cfg.data ) {
 			var suggestion = cfg.data[idx];
 			//Top matches
-			if( suggestion.score >= 7 ) {
-				if( limits.top >  this.displayedResults.top.length ) {
+			if( suggestion.rank == bs.extendedSearch.Autocomplete.AC_RANK_TOP ) {
+				if( limits.top > this.displayedResults.top.length ) {
 					this.$topMatches.append(
 						new bs.extendedSearch.AutocompleteTopMatch( {
 							suggestion: suggestion
@@ -33,16 +35,12 @@
 				}
 			}
 
-			this.fillSecondaryResults( cfg.data );
-
-			//If no namespace is specified, let all namespaces into primaries,
-			//otherwise only results in specified namespace
-			if( ( cfg.namespaceId !== 0 && suggestion.score <= 5 ) || suggestion.score <= 2 ) {
+			if( suggestion.rank == bs.extendedSearch.Autocomplete.AC_RANK_SECONDARY ) {
 				continue;
 			}
 
 			if( limits.primary <= this.displayedResults.primary.length ) {
-				continue;
+				break;
 			}
 
 			var pageItem = new bs.extendedSearch.AutocompletePrimaryResult( {
@@ -79,17 +77,14 @@
 		if( this.$topMatches.children().length > 0 ) {
 			this.$specialResults.append( this.$topMatchLabel, this.$topMatches );
 		}
-
-		if( this.$secondaryResults.children().length > 0 ) {
-			this.$specialResults.append( this.$secondaryResultsLabel, this.$secondaryResults );
-		}
 	}
 
 	bs.extendedSearch.mixin.AutocompleteResults.prototype.fillSecondaryResults = function( suggestions ) {
 		//Fuzzy results when no NS is selected and hits in other NSs when it is
 		for( idx in suggestions ) {
 			var suggestion = suggestions[idx];
-			if( ( this.namespaceId !== 0 && suggestion.namespace != this.namespaceId ) || suggestion.score <= 2 ) {
+			if( suggestion.rank == bs.extendedSearch.Autocomplete.AC_RANK_SECONDARY
+					|| this.namespaceId != 0 ) {
 				if( this.displayLimits.secondary <= this.displayedResults.secondary.length ) {
 					continue;
 				}
@@ -99,7 +94,6 @@
 					} ).$element
 				);
 				this.displayedResults.secondary.push( suggestion );
-				continue;
 			}
 		}
 	}
@@ -109,7 +103,7 @@
 	bs.extendedSearch.mixin.AutocompleteHeader = function( cfg ) {
 		this.uri = cfg.uri;
 		this.basename = cfg.basename;
-		this.pageAnchor = cfg.pageAnchor || null;
+		this.pageAnchor = cfg.page_anchor || null;
 
 		if( this.pageAnchor ) {
 			this.$pageAnchor = $( this.pageAnchor );
@@ -148,4 +142,27 @@
 
 	OO.initClass( bs.extendedSearch.mixin.AutocompleteHitType );
 
+	bs.extendedSearch.mixin.AutocompleteCreatePageLink = function( cfg ) {
+		cfg = cfg || {};
+
+		if( cfg.creatable == 0 ) {
+			return;
+		}
+
+		var cnt = this.$specialResults;
+		if( this.mobile ) {
+			cnt = this.$primaryResults;
+		}
+
+		cnt.append(
+			$( '<div>' )
+				.addClass( 'bs-extendedsearch-autocomplete-popup-create-page-link' )
+				.append(
+					$( '<a>' ).attr( 'href', cfg.full_url )
+					.html( mw.message( 'bs-extendedsearch-autocomplete-create-page-link', cfg.display_text ).parse() )
+				)
+		);
+	}
+
+	OO.initClass( bs.extendedSearch.mixin.AutocompleteCreatePageLink );
 } )( mediaWiki, jQuery, blueSpice, document );

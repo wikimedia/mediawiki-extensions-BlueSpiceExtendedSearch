@@ -6,6 +6,7 @@
 	bs.extendedSearch.ToolsPanel.prototype.init = function() {
 		this.lookup = this.cfg.lookup;
 		this.filterData = this.cfg.filterData;
+		this.caller = this.cfg.caller;
 
 		//Replaces "add filter" button
 		$( '#bs-extendedSearch-filter-add-button' ).remove();
@@ -23,9 +24,16 @@
 
 		this.optionsButton.$element.on( 'click', { options: this.searchOptionsConfig }, this.openOptionsDialog.bind( this ) );
 
+		this.exportButton = new OO.ui.ButtonWidget( {
+			icon: 'download',
+			label: ''
+		} );
+
+		this.exportButton.$element.on( 'click', this.showExportSearchDialog.bind( this ) );
+
 		$( '#bs-es-tools' ).append(
 			$( '<div>' ).attr( 'id', 'bs-es-tools-filters' ).append( addFilterWidgetObject.$element ),
-			$( '<div>' ).attr( 'id', 'bs-es-tools-tools' ).append( this.optionsButton.$element )
+			$( '<div>' ).attr( 'id', 'bs-es-tools-tools' ).append( this.optionsButton.$element, this.exportButton.$element )
 		);
 
 		this.addFiltersFromLookup();
@@ -281,6 +289,24 @@
 				}
 			}
 		}
+	}
+
+	bs.extendedSearch.ToolsPanel.prototype.showExportSearchDialog = function() {
+		var headers = $( '.bs-extendedsearch-result-header' );
+		var pages = [];
+		$.each( headers, function( k, value ) {
+			var title = $( value ).data( 'bs-title' );
+			if( title ) {
+				pages.push( title );
+			}
+		} );
+
+		var term = this.caller.getLookupObject().getQueryString().query;
+		var dialog = Ext.create( 'BS.dialog.PageExport', {
+			pages: pages,
+			defaultName: term
+		});
+		dialog.show();
 	}
 
 } )( mediaWiki, jQuery, blueSpice, document );

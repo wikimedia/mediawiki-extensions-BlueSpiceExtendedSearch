@@ -31,40 +31,5 @@ class SpecialPageFormatter extends Base {
 			}
 		}
 	}
-
-	public function scoreAutocompleteResults( &$results, $searchData ) {
-		foreach( $results as &$result ) {
-			if( $result['type'] !== $this->source->getTypeKey() ) {
-				parent::scoreAutocompleteResults( $results, $searchData );
-				continue;
-			}
-
-			if( $result['namespace'] === $searchData['namespace'] ) {
-				if( strtolower( $result['basename'] ) == strtolower( $searchData['value'] ) ) {
-					$result['score'] = 8;
-				} else if( strpos( strtolower( $result['basename'] ), strtolower( $searchData['value'] ) ) !== false ) {
-					if( strpos( strtolower( $result['basename'] ), strtolower( $searchData['value'] ) ) === 0 ) {
-						$result['score'] = 7;
-					} else {
-						$result['score'] = 6;
-					}
-				} else {
-					$result['score'] = 2;
-				}
-			} else if( $result['namespace'] !== $searchData['namespace'] || $searchData['namespace'] === 0 ) {
-				if( strtolower( $result['basename'] ) == strtolower( $searchData['value'] ) ) {
-					$result['score'] = 5;
-				} else if( strpos( strtolower( $result['basename'] ), strtolower( $searchData['value'] ) ) !== false ) {
-					if( strpos( strtolower( $result['basename'] ), strtolower( $searchData['value'] ) ) === 0 ) {
-						$result['score'] = 4;
-					} else {
-						$result['score'] = 3;
-					}
-				}
-			}
-
-			$result['is_scored'] = true;
-		}
-	}
 }
 

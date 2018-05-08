@@ -81,18 +81,21 @@
 		this.getSuggestions( value );
 	}
 
-	function _makePopup( suggestions ) {
+	function _makePopup( suggestions, pageCreateInfo ) {
 		if( this.popup ) {
 			this.removePopup();
 		}
 
-		this.popup = new bs.extendedSearch.AutocompletePopup( {
+		var popupCfg = {
 			data: suggestions,
 			searchTerm: this.searchBar.value,
 			namespaceId: this.searchBar.namespace.id || 0,
 			displayLimits: this.autocompleteConfig["DisplayLimits"],
-			mobile: this.searchBar.mobile
-		} );
+			mobile: this.searchBar.mobile,
+			pageCreateInfo: pageCreateInfo
+		};
+
+		this.popup = new bs.extendedSearch.AutocompletePopup( popupCfg );
 
 		this.popup.$element.attr( 'style',
 			'top:' + this.searchBar.$searchBox.outerHeight() + 'px;' +
@@ -118,43 +121,20 @@
 
 		var lookup = new bs.extendedSearch.Lookup();
 		this.suggestField = this.autocompleteConfig['SuggestField'];
-		var searchStrategy = this.autocompleteConfig['SuggestStrategy'];
 
-		if( searchStrategy === bs.extendedSearch.Lookup.AC_STRATEGY_QUERY ) {
-			lookup.setBoolMatchQueryString( this.suggestField, this.searchBar.value );
-			if( this.searchBar.namespace.id ) {
-				lookup.addTermFilter( 'namespace', this.searchBar.namespace.id );
-			}
-			lookup.setSize( this.autocompleteConfig['DisplayLimits']['primary'] );
-		} else {
-			lookup.addAutocompleteSuggest( this.suggestField, this.searchBar.value );
-			lookup.setAutocompleteSuggestSize(
-				this.suggestField,
-				this.autocompleteConfig['DisplayLimits']['primary']
-			);
-			//Adding another field that retrieves fuzzy results
-			//It must be separete not to mess with main suggestions. It retrieves
-			//"see also" suggestions.
-			//We limit it size of secondary results, but i am not sure if fuzzy (non-matches)
-			//will always be retrieved first. In my tests yes, but i couldnt find any documentation
-			//confirming or disproving it
-			lookup.addAutocompleteSuggest( this.suggestField, this.searchBar.value, this.suggestField + '_fuzzy' );
-			lookup.addAutocompleteSuggestFuzziness( this.suggestField + '_fuzzy', 2 );
-			lookup.setAutocompleteSuggestSize(
-				this.suggestField + '_fuzzy',
-				this.autocompleteConfig['DisplayLimits']['secondary']
-			);
+		lookup.setBoolMatchQueryString( this.suggestField, this.searchBar.value );
+		if( this.searchBar.namespace.id ) {
+			lookup.addTermFilter( 'namespace', this.searchBar.namespace.id );
 		}
+		lookup.setSize( this.autocompleteConfig['DisplayLimits']['primary'] );
 
 		var me = this;
 		this.runLookup( lookup ).done( function( response ) {
-			me.makePopup( response.suggestions );
-			if( searchStrategy === bs.extendedSearch.Lookup.AC_STRATEGY_QUERY ) {
-				//No need for async secondary results in suggest mode
-				me.getSecondaryResults().done( function( response ) {
-					me.addSecondaryToPopup( response.suggestions );
-				} );
-			}
+			me.makePopup( response.suggestions, response.page_create_info );
+
+			me.getSecondaryResults().done( function( response ) {
+				me.addSecondaryToPopup( response.suggestions );
+			} );
 		} );
 	}
 
@@ -177,8 +157,6 @@
 			lookup.setBoolMatchQueryFuzziness( this.suggestField, 2, { prefix_length: 1 } );
 			//Do not find non-fuzzy matches
 			lookup.addBoolMustNotTerms( this.suggestField, this.searchBar.value );
-			//We increase size of this query since fuzzy might return non-fuzzy results as well,
-			//so we hope 1/3 will be fuzzy
 			lookup.setSize( this.autocompleteConfig['DisplayLimits']['secondary'] );
 		}
 
@@ -248,6 +226,10 @@
 			return;
 		}
 
+		if( !this.popup ) {
+			return;
+		}
+
 		this.popup.addSecondary( suggestions );
 	}
 
@@ -267,7 +249,11 @@
 		onClearSearch: _onClearSearch,
 		onValueChanged: _onValueChanged,
 		onSubmit: _onSubmit,
-		beforeValueChanged: _beforeValueChanged
+		beforeValueChanged: _beforeValueChanged,
+
+		AC_RANK_TOP: 'top',
+		AC_RANK_PRIMARY: 'primary',
+		AC_RANK_SECONDARY: 'secondary'
 	}
 
 	bs.extendedSearch.Autocomplete.init();

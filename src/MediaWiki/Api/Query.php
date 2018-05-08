@@ -34,7 +34,7 @@ class Query extends \ApiBase {
 				$oLookup = new \BS\ExtendedSearch\Lookup( $decodedValue );
 			}
 			else {
-				$oLookup->setSimpleQueryString( $value );
+				$oLookup->setQueryString( $value );
 			}
 
 			return $oLookup;
@@ -68,9 +68,17 @@ class Query extends \ApiBase {
 	protected function returnResults() {
 		$oResult = $this->getResult();
 
+		if( isset( $this->resultSet->exception ) ) {
+			//Search query caused an exception - usually malformed query
+			$oResult->addValue( null, 'exception', 1 );
+			$oResult->addValue( null, 'exceptionType', $this->resultSet->exceptionType );
+			return;
+		}
+
 		$oResult->addValue( null , 'results', $this->resultSet->results );
 		$oResult->addValue( null , 'total', $this->resultSet->total );
 		$oResult->addValue( null , 'filters', $this->resultSet->filters );
+		$oResult->addValue( null , 'spellcheck', $this->resultSet->spellcheck );
 		$oResult->addValue( null , 'lookup', \FormatJson::encode( $this->oLookup ) );
 	}
 }

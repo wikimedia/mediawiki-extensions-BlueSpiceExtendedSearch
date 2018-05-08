@@ -7,6 +7,7 @@ use BS\ExtendedSearch\Source\LookupModifier\BaseTagsAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\BaseScoreSortWhenShould;
 use BS\ExtendedSearch\Source\LookupModifier\BaseAutocompleteSourceFields;
 use BS\ExtendedSearch\Source\LookupModifier\BaseSimpleQSFields;
+use BS\ExtendedSearch\Source\LookupModifier\BaseWildcarder;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 
 class Base {
@@ -15,7 +16,8 @@ class Base {
 		LookupModifier::TYPE_SEARCH => [
 			'base-extensionaggregation' => BaseExtensionAggregation::class,
 			'base-tagsaggregation' => BaseTagsAggregation::class,
-			'base-simpleqsfields' => BaseSimpleQSFields::class
+			'base-simpleqsfields' => BaseSimpleQSFields::class,
+			'base-wildcarder' => BaseWildcarder::class
 		],
 		LookupModifier::TYPE_AUTOCOMPLETE => [
 			'base-acsourcefields' => BaseAutocompleteSourceFields::class
@@ -128,7 +130,7 @@ class Base {
 		//which makes it possible to match single words in compound words
 		return [
 			"settings" => [
-				"number_of_shards" => 1, //Only for testing purposes on small sample, remove or increase for production
+				//"number_of_shards" => 1, //Only for testing purposes on small sample, remove or increase for production
 				"analysis" => [
 					"filter" => [
 						"autocomplete_filter" => [

@@ -888,18 +888,18 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	/*SIMPLE QUERY STRING*/
-	public function testXSimpleQueryString() {
+	public function testXQueryString() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
-		$oLookup->setSimpleQueryString( '"fried eggs" +(eggplant | potato) -frittata' );
+		$oLookup->setQueryString( '"fried eggs" +(eggplant | potato) -frittata' );
 
 		$aExpected = [
 			"query" => [
 				"bool" => [
 					"must" => [
 						[
-							"simple_query_string" => [
+							"query_string" => [
 								"query" => '"fried eggs" +(eggplant | potato) -frittata',
-								"default_operator" => 'and'
+								"default_operator" => 'AND'
 							]
 						]
 					]
@@ -908,25 +908,25 @@ class LookupTest extends \MediaWikiTestCase {
 		];
 
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
-		$aSQS = $oLookup->getSimpleQueryString();
-		$this->assertEquals( $aSQS['query'], '"fried eggs" +(eggplant | potato) -frittata' );
+		$aQS = $oLookup->getQueryString();
+		$this->assertEquals( $aQS['query'], '"fried eggs" +(eggplant | potato) -frittata' );
 
 		$aExpected = [
 			'query' => "Copy Paste",
-			'default_operator' => "or"
+			'default_operator' => "OR"
 		];
-		$oLookup->setSimpleQueryString( $aExpected );
+		$oLookup->setQueryString( $aExpected );
 		$aDSL = $oLookup->getQueryDSL();
-		$this->assertArrayEquals( $aExpected, $aDSL['query']['bool']['must'][0]['simple_query_string'] );
+		$this->assertArrayEquals( $aExpected, $aDSL['query']['bool']['must'][0]['query_string'] );
 	}
 
-	public function testClearSimpleQueryString() {
+	public function testClearQueryString() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
 				"bool" => [
 					"must" => [
 						[
-							"simple_query_string" => [
+							"query_string" => [
 								"query" => "Lorem ipsum dolor sit amet"
 							]
 						]
@@ -934,7 +934,7 @@ class LookupTest extends \MediaWikiTestCase {
 				]
 			]
 		]);
-		$oLookup->clearSimpleQueryString();
+		$oLookup->clearQueryString();
 
 		$aExpected = [
 			"query" => [

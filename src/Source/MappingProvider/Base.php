@@ -13,10 +13,6 @@ class Base {
 			'congregated' => [
 				'type' => 'text'
 			],
-			'ac_suggest' => [
-				'type' => 'completion',
-				'preserve_position_increments' => false
-			],
 			'ac_ngram' => [
 				'type' => 'text',
 				'analyzer' => 'autocomplete',
@@ -27,7 +23,7 @@ class Base {
 			],
 			'basename' => [
 				'type' => 'text',
-				'copy_to' => [ 'congregated', 'ac_suggest', 'ac_ngram' ],
+				'copy_to' => [ 'congregated', 'ac_ngram' ],
 				'fielddata' => true //required in order to be sortable
 			],
 			'extension' => [

@@ -190,7 +190,7 @@
 
 			var label = this.valueLabel + values.join( ', ' );
 			if( hiddenCount > 0 ) {
-				label += mw.message( this.hasHiddenLabelKey, hiddenCount ).plain();
+				label += mw.message( this.hasHiddenLabelKey, hiddenCount ).parse();
 			}
 			this.setLabel( label );
 		}

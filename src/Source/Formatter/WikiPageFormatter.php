@@ -8,7 +8,8 @@ use BlueSpice\DynamicFileDispatcher\ArticlePreviewImage;
 
 class WikiPageFormatter extends Base {
 	public function getResultStructure ( $defaultResultStructure = [] ) {
-		$resultStructure['headerText'] = 'prefixed_title';
+		$resultStructure = $defaultResultStructure;
+		$resultStructure['page_anchor'] = 'page_anchor';
 		$resultStructure['highlight'] = 'highlight';
 		$resultStructure['secondaryInfos']['top']['items'][] = [
 			"name" => "namespace_text"
@@ -38,7 +39,18 @@ class WikiPageFormatter extends Base {
 		$result['sections'] = $this->formatSection( $result );
 		$result['highlight'] = $this->getHighlight( $resultObject );
 		$result['rendered_content_snippet'] = $this->getRenderedContentSnippet( $result['rendered_content'] );
-		$result['image_uri'] = $this->getImageUri( $result['prefixed_title'] );
+
+		$this->addAnchorAndImageUri( $result );
+	}
+
+	protected function addAnchorAndImageUri( &$result ) {
+		$title = \Title::makeTitle( $result['namespace'], $result['basename'] );
+		if( $title instanceof \Title ) {
+			$result['page_anchor'] = $this->getPageAnchor( $title, $result['basename'] );
+			if( $title->exists() ) {
+				$result['image_uri'] = $this->getImageUri( $result['prefixed_title'], 150 );
+			}
+		}
 	}
 
 	protected function formatCategories( $categories ) {
@@ -126,6 +138,10 @@ class WikiPageFormatter extends Base {
 		return $url;
 	}
 
+	protected function getPageAnchor( $title, $text ) {
+		return $this->linkRenderer->makeLink( $title, $text );
+	}
+
 	public function formatAutocompleteResults( &$results, $searchData ) {
 		foreach( $results as &$result ) {
 			if( $result['type'] !== $this->source->getTypeKey() ) {
@@ -137,46 +153,7 @@ class WikiPageFormatter extends Base {
 				$result['basename'] = $result['prefixed_title'];
 			}
 
-			$title = \Title::newFromText( $result['prefixed_title'] );
-			if( $title instanceof \Title ) {
-				$result['pageAnchor'] = $this->linkRenderer->makeLink( $title, $result['basename'] );
-				$result['image_uri'] = $this->getImageUri( $result['prefixed_title'], 150 );
-			}
-		}
-	}
-
-	public function scoreAutocompleteResults( &$results, $searchData ) {
-		foreach( $results as &$result ) {
-			if( $result['type'] !== $this->source->getTypeKey() ) {
-				parent::scoreAutocompleteResults( $results, $searchData );
-				continue;
-			}
-
-			if( $result['namespace'] === $searchData['namespace'] ) {
-				if( strtolower( $result['basename'] ) == strtolower( $searchData['value'] ) ) {
-					$result['score'] = 8;
-				} else if( strpos( strtolower( $result['basename'] ), strtolower( $searchData['value'] ) ) !== false ) {
-					if( strpos( strtolower( $result['basename'] ), strtolower( $searchData['value'] ) ) === 0 ) {
-						$result['score'] = 7;
-					} else {
-						$result['score'] = 6;
-					}
-				} else {
-					$result['score'] = 2;
-				}
-			} else if( $result['namespace'] !== $searchData['namespace'] || $searchData['namespace'] === 0 ) {
-				if( strtolower( $result['basename'] ) == strtolower( $searchData['value'] ) ) {
-					$result['score'] = 5;
-				} else if( strpos( strtolower( $result['basename'] ), strtolower( $searchData['value'] ) ) !== false ) {
-					if( strpos( strtolower( $result['basename'] ), strtolower( $searchData['value'] ) ) === 0 ) {
-						$result['score'] = 4;
-					} else {
-						$result['score'] = 3;
-					}
-				}
-			}
-
-			$result['is_scored'] = true;
+			$this->addAnchorAndImageUri( $result );
 		}
 	}
 }
