@@ -185,7 +185,7 @@ class Base {
 	 * @return \Elastica\Bulk\ResponseSet
 	 */
 	public function deleteDocumentsFromIndex( $aDocumentIds ) {
-		$oElasticaIndex = $this->getBackend()->getIndex();
+		$oElasticaIndex = $this->getBackend()->getIndexByType( $this->getTypeKey() );
 		$aDocs = [];
 		foreach ( $aDocumentIds as $sDocumentId ) {
 			$aDocs[] = new \Elastica\Document( $sDocumentId );
