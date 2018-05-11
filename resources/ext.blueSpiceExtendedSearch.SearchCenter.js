@@ -24,7 +24,7 @@
 			}
 		};
 
-		for( idx in availableTypes ) {
+		for( var idx in availableTypes ) {
 			var type = availableTypes[idx];
 			typeFilter.filter.options.push( {
 				label: type,
@@ -39,12 +39,12 @@
 	 * Makes config objects for each of filterable fields
 	 * from aggregations returned by the search
 	 *
-	 * @param Array aggs
-	 * @returns Array
+	 * @param {Object} rawFilters
+	 * @returns {Array}
 	 */
 	function _getFilters( rawFilters ) {
 		var filters = [];
-		for( filterId in rawFilters ) {
+		for( var filterId in rawFilters ) {
 			var rawFilter = rawFilters[filterId];
 			//TODO: Change this with some mechanism to get label keys
 			var labelFilterId = filterId.replace( '.', '-' );
@@ -62,7 +62,7 @@
 				}
 			};
 
-			for( bucketIdx in rawFilter.buckets ) {
+			for( var bucketIdx in rawFilter.buckets ) {
 				var bucket = rawFilter.buckets[bucketIdx];
 				filter.filter.options.push( {
 					label: bucket.key,
@@ -92,8 +92,8 @@
 			if( idx < 1 ) {
 				cfg.featured = true;
 			}
-			for( cfgKey in resultStructure ) {
-				if( cfgKey == 'secondaryInfos' ) {
+			for( var cfgKey in resultStructure ) {
+				if( cfgKey === 'secondaryInfos' ) {
 					cfg[cfgKey] = {
 						top: {
 							items: search.formatSecondaryInfoItems(
@@ -119,8 +119,8 @@
 			}
 
 			//override values for featured results
-			if( cfg.featured == true ) {
-				for( featuredField in resultStructure['featured'] ) {
+			if( cfg.featured === true ) {
+				for( var featuredField in resultStructure['featured'] ) {
 					var resultKey = resultStructure['featured'][featuredField];
 					var keyValue = search.getResultValueByKey( result, resultKey );
 					if( !( keyValue ) ) {
@@ -144,14 +144,14 @@
 	 */
 	function _formatSecondaryInfoItems( items, result ) {
 		var formattedItems = [];
-		for( idx in items ) {
+		for( var idx in items ) {
 			var item = items[idx];
 			if( !( item.name in result ) ) {
 				continue;
 			}
 
 			var keyValue = search.getResultValueByKey( result, item.name );
-			if( !keyValue || ( $.isArray( keyValue ) &&  keyValue.length == 0 ) ) {
+			if( !keyValue || ( $.isArray( keyValue ) &&  keyValue.length === 0 ) ) {
 				continue;
 			}
 
@@ -160,7 +160,7 @@
 				labelKey: item.labelKey || 'bs-extendedsearch-search-center-result-' + item.name + '-label',
 				name: item.name,
 				value: keyValue
-			} )
+			} );
 		}
 		return formattedItems;
 	}
@@ -169,9 +169,9 @@
 	 * Gets the value for the given key from result
 	 * Key can be a path ( level.sublevel.name )
 	 *
-	 * @param Array result
-	 * @param string key
-	 * @returns string|false if not present
+	 * @param {Array} result
+	 * @param {string} key
+	 * @returns {string}|false if not present
 	 */
 	function _getResultValueByKey( result, key ) {
 		var value = false;
@@ -180,14 +180,14 @@
 		}
 
 		var keyBits = key.split( '.' );
-		for( bitIdx in keyBits ) {
+		for( var bitIdx in keyBits ) {
 			var keyBit = keyBits[bitIdx];
 			if( result[keyBit] ) {
 				result = result[keyBit];
 				value = result;
 			}
 		}
-		if( value == '' ) {
+		if( value === '' ) {
 			value = false;
 		}
 
@@ -245,7 +245,7 @@
 				spellcheck: response.spellcheck,
 				caller: search
 			} );
-		} )
+		} );
 	}
 
 	function _getPageSizeConfig() {
@@ -270,12 +270,12 @@
 	function _makeLookup( config ) {
 		config = config || {};
 		this.lookup = new bs.extendedSearch.Lookup( config );
-		if( this.lookup.getSize() == 0 ) {
+		if( this.lookup.getSize() === 0 ) {
 			//set default value for page size - prevent zero size pages
 			this.lookup.setSize( mw.config.get( 'bsgESResultsPerPage' ) );
 		}
 		//Default sorter
-		if( this.lookup.getSort().length == 0 ) {
+		if( this.lookup.getSort().length === 0 ) {
 			this.lookup.addSort( '_score', bs.extendedSearch.Lookup.SORT_DESC );
 		}
 	}
@@ -357,7 +357,7 @@
 		var config = JSON.parse( curQueryData.q );
 		search.makeLookup( config );
 		//Update searchBar if page is loaded with query present
-		queryString = search.getLookupObject().getQueryString();
+		var queryString = search.getLookupObject().getQueryString();
 		if( queryString ) {
 			searchBar.setValue( queryString.query );
 		}
