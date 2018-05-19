@@ -11,6 +11,11 @@
 	"namemsg": "bs-extsearch-extensionname",
 	"type": "other",
 	"attributes": {
+		"BlueSpiceFoundation": {
+			"AdminToolRegistry": {
+				"bs-extended-search": "BS\\ExtendedSearch\\AdminTool"
+			}
+		},
 		"BlueSpiceExtendedSearch": {
 			"DefaultResultStructure": {
 				"headerText": "basename",
@@ -63,9 +68,6 @@
 	"ExtensionMessagesFiles": {
 		"BlueSpiceExtendedSearchAdminAlias": "languages/BSSearchAdmin.alias.php",
 		"BlueSpiceExtendedSearchCenterAlias": "languages/BSSearchCenter.alias.php"
-	},
-	"BlueSpiceFoundationAdminToolRegistry": {
-		"bs-extended-search": "BS\\ExtendedSearch\\AdminTool"
 	},
 	"ConfigRegistry": {
 		"bsgES": "BS\\ExtendedSearch\\Setup::makeConfig"
