@@ -5,7 +5,7 @@
 		this.autocompleteConfig = mw.config.get( 'bsgESAutocompleteConfig' );
 
 		//Wire the events
-		this.searchBar.$searchForm.one( 'submit', this.onSubmit );
+		this.searchBar.$searchForm.on( 'submit', this.onSubmit );
 		this.searchBar.beforeValueChanged = this.beforeValueChanged;
 		this.searchBar.onValueChanged = this.onValueChanged;
 		this.searchBar.onClearSearch = this.onClearSearch;
@@ -21,6 +21,7 @@
 		var overrideSubmitting = bs.extendedSearch.Autocomplete.navigateToResultPage();
 		//If no result is selected, or URI cannot be retieved, proceed with normal submit
 		if( !overrideSubmitting ) {
+			$( this ).off( 'submit' );
 			$( this ).submit();
 		}
 	}
