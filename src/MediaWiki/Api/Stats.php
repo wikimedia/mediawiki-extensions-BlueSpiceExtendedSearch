@@ -59,7 +59,7 @@ class Stats extends \ApiBase {
 	 */
 	protected function makeBackendStats( $oBackend ) {
 		$aStats = [
-			'all_documents_count' => $oBackend->getIndex()->count(),
+			'all_documents_count' => $oBackend->getIndexByType( '*' )->count(),
 			'sources' => []
 		];
 		$aSources = $oBackend->getSources();
@@ -74,7 +74,7 @@ class Stats extends \ApiBase {
 				//bs-extendedsearch-source-label-repofile
 				'label' => wfMessage( 'bs-extendedsearch-source-label-' . $sTypeKey )->plain(),
 				'pending_update_jobs' => $oSource->getCrawler()->getNumberOfPendingJobs(),
-				'documents_count' => $oBackend->getIndex()->getType( $sTypeKey )->count()
+				'documents_count' => $oBackend->getIndexByType( $sTypeKey )->count()
 			];
 		}
 
