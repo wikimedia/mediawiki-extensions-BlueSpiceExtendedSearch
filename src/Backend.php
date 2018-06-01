@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch;
 
 use MediaWiki\MediaWikiServices;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
+use Wikimedia\ObjectFactory;
 
 class Backend {
 
@@ -62,12 +63,12 @@ class Backend {
 		//Dependency injection of Backend into Source
 		array_unshift ($oBaseSourceArgs, $this );
 
-		$oBaseSource = \ObjectFactory::getObjectFromSpec( [
+		$oBaseSource = ObjectFactory::getObjectFromSpec( [
 			'class' => 'BS\ExtendedSearch\Source\Base',
 			'args' => $oBaseSourceArgs
 		] );
 
-		$oDecoratedSource = \ObjectFactory::getObjectFromSpec( [
+		$oDecoratedSource = ObjectFactory::getObjectFromSpec( [
 			'class' => $sourceConfigs[$sourceKey]['class'],
 			'args' => [ $oBaseSource ]
 		] );
@@ -132,7 +133,7 @@ class Backend {
 	 * @param string $aConfig
 	 */
 	protected static function newFromConfig( $aConfig ) {
-		return \ObjectFactory::getObjectFromSpec( $aConfig );
+		return ObjectFactory::getObjectFromSpec( $aConfig );
 	}
 
 	/**
