@@ -12,6 +12,10 @@ class SearchCenter extends \SpecialPage {
 	public function execute( $subPage ) {
 		$this->setHeaders();
 
+		//Query string param that can contain search term or entire lookup object
+		$query = $this->getRequest()->getText( 'q' );
+		$lookup = $this->lookupFromQuery( $query );
+
 		$out = $this->getOutput();
 		$out->addModules( "ext.blueSpiceExtendedSearch.SearchCenter" );
 
@@ -59,6 +63,11 @@ class SearchCenter extends \SpecialPage {
 		$out->addHTML( \Html::element( 'div', [ 'id' => 'bs-es-tools' ] ) );
 		$out->addHTML( \Html::element( 'div', [ 'id' => 'bs-es-results' ] ) );
 
+		if( $lookup ) {
+			//How else can we pass info to client? I dont like adding HTML node either
+			$out->addJsConfigVars( 'bsgLookupConfig', \FormatJson::encode( $lookup ) );
+		}
+
 		$out->addJsConfigVars( 'bsgESSources', $sourceConfig );
 		//Structure of the result displayed in UI, decorated by each source
 		$out->addJsConfigVars( 'bsgESResultStructures', $resultStructures );
@@ -68,6 +77,32 @@ class SearchCenter extends \SpecialPage {
 		$out->addJsConfigVars( 'bsgESAvailbleTypes', $availableTypes );
 		//TODO: Get from settings once that structure is created
 		$out->addJsConfigVars( 'bsgESResultsPerPage', 25 );
+	}
+
+	/**
+	 * Makes lookup from given string, if possible,
+	 * otherwise returns empty Lookup
+	 *
+	 * @param string $query
+	 * @return \BS\ExtendedSearch\Lookup
+	 */
+	protected function lookupFromQuery( $query ) {
+		$lookup = new \BS\ExtendedSearch\Lookup();
+		if( !$query ) {
+			return $lookup;
+		}
+
+		$parseStatus = \FormatJson::parse( $query, \FormatJson::FORCE_ASSOC );
+		if( $parseStatus->isOK() ) {
+			return new \BS\ExtendedSearch\Lookup( $parseStatus->getValue() );
+		}
+
+		if( is_string( $query ) == false ) {
+			return $lookup;
+		}
+
+		$lookup->setQueryString( $query );
+		return $lookup;
 	}
 
 	protected function getGroupName() {

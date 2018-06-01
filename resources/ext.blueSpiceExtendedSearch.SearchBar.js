@@ -29,10 +29,9 @@
 		this.$searchBox = $( '#' + cfg.inputId );
 		this.$searchButton = this.$searchForm.find( 'button' );
 
-		this.$namespaceInput = $( '<input>' ).attr( 'type', 'hidden' ).attr( 'name', 'ns' );
-		this.$searchForm.append( this.$namespaceInput );
-
-		this.$searchBoxWrapper = $( '<div>' ).addClass( 'bs-extendedsearch-searchbar-wrapper' );
+		this.$searchBoxWrapper = $( '<div>' )
+			.addClass( 'bs-extendedsearch-searchbar-wrapper' )
+			.attr( 'id', cfg.cntId + '-wrapper' );
 
 		//Wrap search box input in another div to make it sizable when pill is added
 		this.$searchBoxWrapper.attr( 'style', 'width: ' + this.$searchBox.outerWidth() + 'px;' );
@@ -46,10 +45,6 @@
 	}
 
 	bs.extendedSearch.SearchBar.prototype.detectNamespace = function( value ) {
-		if( !this.namespaces ) {
-			this.namespaces = bs.extendedSearch.utils.getNamespacesList();
-		}
-
 		var parts = value.split( ':' );
 		if( parts.length == 1 ) {
 			this.namespace = this.namespace || {};
@@ -63,23 +58,36 @@
 		}
 
 		var newNamespace = parts.shift();
-		if( newNamespace.toLowerCase() in this.namespaces ) {
-			newNamespace = {
-				id: this.namespaces[newNamespace.toLowerCase()],
-				text: newNamespace,
-				values: bs.extendedSearch.utils.getNamespaceNames( this.namespaces, this.namespaces[newNamespace.toLowerCase()] )
-			}
-		} else {
+		if( !this.setNamespaceFromValue( newNamespace ) ) {
 			this.namespace = {};
 			this.value = value;
 			return;
-		}
-
-		if( newNamespace.id !== this.namespace.id ) {
-			this.namespace = newNamespace;
+		} else {
 			this.value = parts.shift();
 			this.generateNamespacePill();
 		}
+	}
+
+	bs.extendedSearch.SearchBar.prototype.setNamespaceFromValue = function( nsText ) {
+		if( !this.namespaces ) {
+			this.namespaces = bs.extendedSearch.utils.getNamespacesList();
+		}
+
+		if( nsText.toLowerCase() in this.namespaces ) {
+			newNamespace = {
+				id: this.namespaces[nsText.toLowerCase()],
+				text: nsText,
+				values: bs.extendedSearch.utils.getNamespaceNames( this.namespaces, this.namespaces[nsText.toLowerCase()] )
+			}
+
+			if( newNamespace.id !== this.namespace.id ) {
+				this.namespace = newNamespace;
+			}
+			return true;
+		}
+
+		//NS cannot be set
+		return false;
 	}
 
 	bs.extendedSearch.SearchBar.prototype.generateNamespacePill = function() {
@@ -94,8 +102,7 @@
 		clearNamespace = clearNamespace || false;
 
 		if( clearNamespace ) {
-			this.namespace = '';
-			this.$namespaceInput.val( '' );
+			this.namespace = {};
 		}
 
 		this.$searchContainer.find( '.bs-extendedsearch-searchbar-pill' ).remove();
@@ -125,6 +132,10 @@
 	bs.extendedSearch.SearchBar.prototype.toggleClearButton = function( value ) {
 		var pillPresent =
 			this.$searchContainer.find( '.bs-extendedsearch-searchbar-pill' ).length != 0;
+
+		if( !this.useNamespacePills ) {
+			pillPresent = false;
+		}
 
 		if( value || pillPresent ) {
 			this.addClearButton();
@@ -161,8 +172,10 @@
 
 		if( this.valueBefore == '' && value == '' && e.which == 8 ) {
 			//Backspacing on empty field
-			this.removeNamespacePill( true );
-			isChanged = true;
+			if( this.useNamespacePills ) {
+				this.removeNamespacePill( true );
+				isChanged = true;
+			}
 		}
 
 		if( !isChanged ) {
@@ -178,7 +191,9 @@
 
 	bs.extendedSearch.SearchBar.prototype.onClearSearch = function( e ) {
 		this.$searchBox.val( '' );
-		this.removeNamespacePill( true );
+		if( this.useNamespacePills ) {
+			this.removeNamespacePill( true );
+		}
 		this.toggleClearButton( '' );
 	}
 
@@ -202,9 +217,6 @@
 	bs.extendedSearch.SearchBar.prototype.changeValue = function( value ) {
 		if( this.useNamespacePills && value ) {
 			this.detectNamespace( value );
-			if( this.namespace.text ) {
-				this.$namespaceInput.val( this.namespace.text );
-			}
 		} else {
 			this.value = value;
 		}

@@ -36,15 +36,21 @@
 		}
 	}
 
-	/*function _removeQueryStringParam( param ) {
-		var location = window.location;
-		var search = location.search
+	function _removeQueryStringParam( param ) {
+		var search = location.search;
+		search = search
 			.replace( new RegExp('[?&]' + param + '=[^&#]*(#.*)?$' ), '$1' )
 			.replace( new RegExp('([?&])' + param + '=[^&]*&'), '$1' );
 
-		location.replace( location.href.replace( location.search, search ) );
-	}*/
+		var newUrl = window.location.href.replace( window.location.search, search );
+		this.pushHistory(
+			newUrl
+		);
+	}
 
+	function _pushHistory( url ) {
+		window.history.pushState({path:url},'',url);
+	}
 	/**
 	 *
 	 * @param Location loc
@@ -108,6 +114,8 @@
 		getQueryStringParam: _getQueryStringParam,
 		getNamespacesList: _getNamespacesList,
 		getNamespaceNames: _getNamespaceNames,
+		removeQueryStringParam: _removeQueryStringParam,
+		pushHistory: _pushHistory,
 		isMobile: _isMobile
 	};
 })( mediaWiki, jQuery, blueSpice, document );

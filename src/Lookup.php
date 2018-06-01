@@ -176,13 +176,11 @@ class Lookup extends \ArrayObject {
 	 * @return Lookup
 	 */
 	public function setBoolMatchQueryString( $field, $value ) {
-		$this->ensurePropertyPath( 'query.bool', [] );
-		$this['query']['bool'] = [
-			"must" => [
-				"match" => [
-					$field => [
-						"query" => $value
-					]
+		$this->ensurePropertyPath( 'query.bool.must', [] );
+		$this['query']['bool']['must'] = [
+			"match" => [
+				$field => [
+					"query" => $value
 				]
 			]
 		];
@@ -522,6 +520,37 @@ class Lookup extends \ArrayObject {
 	public function getSort() {
 		$this->ensurePropertyPath( 'sort', [] );
 		return $this['sort'];
+	}
+
+	/**
+	 *
+	 * @param array|string $value
+	 * @return Lookup
+	 */
+	public function setSearchAfter( $value ) {
+		$this->ensurePropertyPath( 'search_after', [] );
+
+		if( !is_array( $value ) ) {
+			$value = [$value];
+		}
+
+		unset( $this->from );
+
+		$this->search_after = $value;
+
+		return $this;
+	}
+
+	/**
+	 *
+	 * @return Lookup
+	 */
+	public function remoteSearchAfter() {
+		$this->ensurePropertyPath( 'search_after', [] );
+
+		unset( $this->search_after );
+
+		return $this;
 	}
 
 	/**

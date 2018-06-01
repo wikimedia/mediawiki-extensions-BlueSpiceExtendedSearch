@@ -128,6 +128,14 @@
 				"ext.blueSpiceExtendedSearch"
 			]
 		},
+		"ext.blueSpiceExtendedSearch.SearchFieldAutocomplete": {
+			"scripts": [
+				"ext.blueSpiceExtendedSearch.Autocomplete.js"
+			],
+			"dependencies": [
+				"ext.blueSpiceExtendedSearch.Autocomplete"
+			]
+		},
 		"ext.blueSpiceExtendedSearch.Autocomplete": {
 			"scripts": [
 				"bs.extendedSearch/mixin/Autocomplete.js",
@@ -135,7 +143,7 @@
 				"bs.extendedSearch/widget/autocomplete/PrimaryResult.js",
 				"bs.extendedSearch/widget/autocomplete/SecondaryResult.js",
 				"bs.extendedSearch/widget/autocomplete/TopMatch.js",
-				"ext.blueSpiceExtendedSearch.Autocomplete.js"
+				"bs.extendedSearch/Autocomplete.js"
 			],
 			"styles": [
 				"ext.blueSpiceExtendedSearch.Autocomplete.less"
@@ -158,7 +166,7 @@
 				"bs.extendedSearch/widget/Result.js",
 				"bs.extendedSearch/widget/HitCount.js",
 				"bs.extendedSearch/widget/Filter.js",
-				"bs.extendedSearch/widget/Paginator.js",
+				"bs.extendedSearch/widget/LoadMoreButton.js",
 				"bs.extendedSearch/dialog/AddFilter.js",
 				"bs.extendedSearch/dialog/OptionsDialog.js",
 				"bs.extendedSearch/panel/Results.js",
@@ -170,6 +178,7 @@
 			],
 			"messages": [
 				"bs-extendedsearch-search-center-hitcount-widget",
+				"bs-extendedsearch-search-center-hitcount-widget-approximately",
 				"bs-extendedsearch-search-center-addfilter-dialog-title",
 				"bs-extendedsearch-search-center-filter-extension-label",
 				"bs-extendedsearch-search-center-filter-tags-label",
@@ -209,7 +218,9 @@
 				"bs-extendedsearch-search-center-filter-has-hidden",
 				"bs-extendedsearch-search-center-result-exception",
 				"bs-extendedsearch-search-center-hitcount-replaced",
-				"bs-extendedsearch-search-center-hitcount-suggest"
+				"bs-extendedsearch-search-center-hitcount-suggest",
+				"bs-extendedsearch-loadmore-label",
+				"bs-extendedsearch-loadmore-error"
 			],
 			"dependencies" : [
 				"ext.bluespice.extjs",

@@ -1,43 +1,41 @@
 @import "ext.blueSpiceExtendedSearch.variables.less";
 
 /*Search form*/
-div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
+.p-search {
 	form {
-		.form-group {
-			position: relative;
-			.bs-extendedsearch-searchbar-wrapper {
-				display: table;
-				.bs-extendedsearch-searchbar-pill {
-					padding-left: 8px;
-					padding-right: 8px;
-					background-color: @autocomplete-pill-background-color;
-					font-weight: bold;
-					color: white;
-					display: table-cell;
-					width:1%;
-					white-space:nowrap;
+		position: relative;
+		.bs-extendedsearch-searchbar-wrapper {
+			display: table;
+			.bs-extendedsearch-searchbar-pill {
+				padding-left: 8px;
+				padding-right: 8px;
+				background-color: @autocomplete-pill-background-color;
+				font-weight: bold;
+				color: white;
+				display: table-cell;
+				width:1%;
+				white-space:nowrap;
+			}
+			.bs-extendedsearch-searchbar-clear {
+				display: table-cell !important;
+				background-color: white !important;
+				width: 1%;
+				white-space: nowrap;
+				padding-left: 5px;
+				padding-right: 10px;
+				border: 1px solid #cccccc;
+				border-radius: 0px 5px 5px 0px;
+				border-left: none;
+			}
+			input#bs-extendedsearch-input,
+			input#bs-extendedsearch-mobile-input {
+				&:focus {
+					/*Remove "outline" when focused - just keep the same border color*/
+					border-color: rgb(204, 204, 204);
 				}
-				.bs-extendedsearch-searchbar-clear {
-					display: table-cell !important;
-					background-color: white !important;
-					width: 1%;
-					white-space: nowrap;
-					padding-left: 5px;
-					padding-right: 10px;
-					border: 1px solid #cccccc;
-					border-radius: 0px 5px 5px 0px;
-					border-left: none;
-				}
-				input#bs-extendedsearch-input,
-				input#bs-extendedsearch-mobile-input {
-					&:focus {
-						/*Remove "outline" when focused - just keep the same border color*/
-						border-color: rgb(204, 204, 204);
-					}
-					&.clear-present {
-						border-right: none !important;
-						border-radius: 0 !important;
-					}
+				&.clear-present {
+					border-right: none !important;
+					border-radius: 0 !important;
 				}
 			}
 		}

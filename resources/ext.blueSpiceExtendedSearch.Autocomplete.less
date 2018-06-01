@@ -53,6 +53,7 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 	position: absolute;
 	border-radius: 3px;
 	display: table;
+	z-index: 99;
 	.bs-extendedsearch-autocomplete-popup-primary {
 		display: table-cell;
 		width: 50%;
@@ -81,6 +82,13 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 		}
 		.bs-extendedsearch-autocomplete-popup-primary-no-results {
 			padding: 15px;
+		}
+		.bs-extendedsearch-autocomplete-popup-create-page-link {
+			width: 100%;
+			padding: 10px;
+			font-size: 1em;
+			text-align: center;
+			background-color: @autocomplete-selected-background-color;
 		}
 	}
 	.bs-extendedsearch-autocomplete-popup-special-cnt {
@@ -140,6 +148,33 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 			font-size: 1.2em;
 			text-align: center;
 			background-color: @autocomplete-selected-background-color;
+		}
+	}
+	&.compact {
+		.bs-extendedsearch-autocomplete-popup-primary {
+			font-size: 1em;
+			width: 100%;
+			padding-bottom: 5px;
+			.bs-extendedsearch-autocomplete-popup-primary-item {
+				padding: 5px;
+				position: relative;
+				min-height: 30px;
+				&.bs-extendedsearch-autocomplete-popup-primary-featured {
+					/*TBD*/
+				}
+				&.bs-autocomplete-result-selected {
+					background-color: @autocomplete-selected-background-color;
+				}
+				&:hover {
+					background-color: @autocomplete-selected-background-color;
+				}
+				.bs-extendedsearch-autocomplete-popup-primary-item-type {
+					display: none;
+				}
+			}
+			.bs-extendedsearch-autocomplete-popup-primary-no-results {
+				padding: 15px;
+			}
 		}
 	}
 }

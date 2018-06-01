@@ -10,6 +10,8 @@
 		this.displayLimits = cfg.displayLimits || {};
 		this.mobile = cfg.mobile || false;
 
+		this.compact = cfg.compact || false;
+
 		this.current = -1;
 
 		this.$element = $( '<div>' );
@@ -20,9 +22,12 @@
 		bs.extendedSearch.mixin.AutocompleteCreatePageLink.call( this, cfg.pageCreateInfo );
 
 		this.$element.addClass( 'bs-extendedsearch-autocomplete-popup' );
+		if( this.compact ) {
+			this.$element.addClass( 'compact' );
+		}
 		this.$element.append( this.$primaryResults );
 
-		if( !this.mobile ) {
+		if( !this.mobile && !this.compact ) {
 			this.$element.append( this.$specialResults );
 		}
 	}

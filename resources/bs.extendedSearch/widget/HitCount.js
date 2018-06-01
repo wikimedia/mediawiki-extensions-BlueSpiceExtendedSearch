@@ -5,9 +5,14 @@
 		this.term = cfg.term || '';
 		this.count = cfg.count || 0;
 		this.spellcheck = cfg.spellcheck;
+		this.total_approximated = cfg.total_approximated;
 
+		var messageKey = 'bs-extendedsearch-search-center-hitcount-widget';
+		if( this.total_approximated ) {
+			messageKey = 'bs-extendedsearch-search-center-hitcount-widget-approximately';
+		}
 		this.$counter = $( '<p>' )
-			.html( mediaWiki.message( 'bs-extendedsearch-search-center-hitcount-widget', this.count, this.term ).parse() );
+			.html( mediaWiki.message( messageKey, this.count, this.term ).parse() );
 
 		this.$element = $( '<div>' ).addClass( 'bs-extendedsearch-search-center-hitcount' ).append( this.$counter );
 

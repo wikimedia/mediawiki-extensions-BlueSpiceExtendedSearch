@@ -89,9 +89,10 @@
 			var resultStructure = resultStructures[result["type"]];
 			var cfg = {};
 			//dummy criteria for featured - prototype only
-			if( idx < 1 ) {
+			if( result.featured == 1 ) {
 				cfg.featured = true;
 			}
+
 			for( var cfgKey in resultStructure ) {
 				if( cfgKey === 'secondaryInfos' ) {
 					cfg[cfgKey] = {
@@ -129,6 +130,9 @@
 					cfg[featuredField] = keyValue;
 				}
 			}
+
+			cfg._id = result.id;
+			cfg.raw_result = result;
 
 			structuredResults.push( cfg );
 		} );
@@ -208,14 +212,8 @@
 			return;
 		}
 
-		api.abort();
-		api.get( $.extend(
-			queryData,
-			{
-				'action': 'bs-extendedsearch-query'
-			}
-		) )
-		.done( function( response ) {
+		var searchPromisse = this.runApiCall( queryData );
+		searchPromisse.done( function( response ) {
 			if( response.exception ) {
 				return resultsPanel.showError();
 			}
@@ -243,9 +241,20 @@
 				results: search.applyResultsToStructure( response.results ),
 				total: response.total,
 				spellcheck: response.spellcheck,
-				caller: search
+				caller: search,
+				total_approximated: response.total_approximated
 			} );
 		} );
+	}
+
+	function _runApiCall( queryData ) {
+		api.abort();
+		return api.get( $.extend(
+			queryData,
+			{
+				'action': 'bs-extendedsearch-query'
+			}
+		) );
 	}
 
 	function _getPageSizeConfig() {
@@ -284,12 +293,8 @@
 		this.lookup = null;
 	}
 
-	function _resetPagination() {
-		this.getLookupObject().setFrom( 0 );
-	}
-
 	/**
-	 * Handles term forcing from spellcheck - 
+	 * Handles term forcing from spellcheck -
 	 * if user decides to override auto spellcheck
 	 */
 	function _forceSearchTerm( e, params ) {
@@ -309,7 +314,6 @@
 		getLookupObject: _getLookupObject,
 		clearLookupObject: _clearLookupObject,
 		makeLookup: _makeLookup,
-		resetPagination: _resetPagination,
 		updateQueryHash: updateQueryHash,
 		getPageSizeConfig: _getPageSizeConfig,
 		getTypeFilter: _getTypeFilter,
@@ -317,7 +321,8 @@
 		applyResultsToStructure: _applyResultsToStructure,
 		formatSecondaryInfoItems: _formatSecondaryInfoItems,
 		getResultValueByKey: _getResultValueByKey,
-		forceSearchTerm: _forceSearchTerm
+		forceSearchTerm: _forceSearchTerm,
+		runApiCall: _runApiCall
 	};
 
 	var search = bs.extendedSearch.SearchCenter;
@@ -328,7 +333,6 @@
 	} );
 
 	searchBar.onValueChanged = function() {
-		bs.extendedSearch.SearchCenter.resetPagination();
 		search.getLookupObject().removeForceTerm();
 		search.getLookupObject().setQueryString( this.value );
 		updateQueryHash();
@@ -342,42 +346,42 @@
 		updateQueryHash();
 	};
 
-	//Init lookup object
-	var curQueryData = bs.extendedSearch.utils.getFragment();
-
-	//When coming from search bar there will be at least query string param "q" in the URL.
-	//Not removing it because it would cause reload of the page
-	//We could also create correct URL in the search bar, but that will not work
-	//if user doesnt wait for JS to load
-	var queryStringQ = bs.extendedSearch.utils.getQueryStringParam( 'q' );
-	var queryStringNs = bs.extendedSearch.utils.getQueryStringParam( 'ns' );
-
-	//if "q" is present in hash, make Lookup from it
-	if( "q" in curQueryData ) {
-		var config = JSON.parse( curQueryData.q );
-		search.makeLookup( config );
-		//Update searchBar if page is loaded with query present
-		var queryString = search.getLookupObject().getQueryString();
-		if( queryString ) {
-			searchBar.setValue( queryString.query );
-		}
-	} else if( queryStringQ ) {
-		//No hash set, but there are query string params
-		search.getLookupObject().setQueryString( queryStringQ );
-		if( queryStringNs ) {
-			//If namespace pill was set on page user is coming from
-			//set default namespace filter - HARDCODED FILTER ID
-			search.getLookupObject().addFilter( 'namespace_text', queryStringNs );
-		}
-		//Update searchBar if page is loaded with query present
-		searchBar.setValue( search.getLookupObject().getQueryString().query );
-		updateQueryHash();
+	function updateQueryHash() {
+		bs.extendedSearch.utils.setFragment({
+			q: JSON.stringify(search.getLookupObject())
+		});
 	}
 
-	function updateQueryHash() {
-		bs.extendedSearch.utils.setFragment( {
-			q: JSON.stringify( search.getLookupObject() )
-		} );
+	//Init lookup object - get lookup config any way possible
+	var fragmentParams = bs.extendedSearch.utils.getFragment();
+	var updateHash = true;
+	var config;
+
+	if( "q" in fragmentParams ) {
+		//Try getting lookup from fragment - it has top prio
+		config = JSON.parse( fragmentParams.q );
+		updateHash = false;
+	} else if( mw.config.get( 'bsgLookupConfig' ) ) {
+		//Check if there is pre-set lookup config
+		config = JSON.parse( mw.config.get( 'bsgLookupConfig' ) );
+	}
+
+	if( config ) {
+		search.makeLookup( config );
+		//Update searchBar if page is loaded with query present
+		var query = search.getLookupObject().getQueryString();
+		if( query ) {
+			searchBar.setValue( query.query );
+		}
+		if( updateHash ) {
+			updateQueryHash();
+		}
+
+		//Remove query string param "q" in case its set
+		var queryStringParam = bs.extendedSearch.utils.getQueryStringParam( 'q' );
+		if( queryStringParam ) {
+			bs.extendedSearch.utils.removeQueryStringParam( 'q' );
+		}
 	}
 
 } )( mediaWiki, jQuery, blueSpice, document );

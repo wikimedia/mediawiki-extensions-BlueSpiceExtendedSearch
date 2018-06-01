@@ -67,6 +67,7 @@ class Base {
 		//because it might be called multiple times
 		$originalValues = $resultObject->getData();
 		$result['type'] = $resultObject->getType();
+		$result['score'] = $resultObject->getScore();
 
 		$name = $result['basename'];
 		$ns = $result['namespace'];
