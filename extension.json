@@ -9,7 +9,7 @@
 	"url": "https://www.mediawiki.org/wiki/Extension:BlueSpiceExtendedSearch",
 	"descriptionmsg": "bs-extsearch-desc",
 	"namemsg": "bs-extsearch-extensionname",
-	"type": "other",
+	"type": "bluespice",
 	"attributes": {
 		"BlueSpiceFoundation": {
 			"AdminToolRegistry": {
