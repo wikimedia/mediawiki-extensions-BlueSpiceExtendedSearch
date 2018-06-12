@@ -92,8 +92,11 @@ bs.extendedSearch.Lookup.prototype.setBoolMatchQueryFuzziness = function( field,
  */
 bs.extendedSearch.Lookup.prototype.setBoolMatchQueryString = function( field, q ) {
 	this.ensurePropertyPath( 'query.bool', {} );
-	this.query.bool = { must: { match: {} } };
-	this.query.bool.must.match[field] = { query: q }
+
+	var must = { match: {} };
+	must.match[field] = { query: q };
+
+	this.query.bool.must = must;
 
 	return this;
 }
@@ -146,7 +149,7 @@ bs.extendedSearch.Lookup.prototype.getQueryString = function () {
 		}
 	}
 
-	return null;
+	return '';
 };
 
 /**
@@ -815,6 +818,29 @@ bs.extendedSearch.Lookup.prototype.clearSourceField = function() {
 bs.extendedSearch.Lookup.prototype.setFrom = function( from ) {
 	this.ensurePropertyPath( 'from', 0 );
 	this.from = from;
+
+	return this;
+}
+
+bs.extendedSearch.Lookup.prototype.setSearchAfter = function( values ) {
+	this.ensurePropertyPath( 'search_after', [] );
+
+	if( $.isArray( values ) == false ) {
+		values = [values];
+	}
+
+	//From and search_after cannot coexist in the same query
+	delete( this.from );
+
+	this.search_after = values;
+
+	return this;
+}
+
+bs.extendedSearch.Lookup.prototype.removeSearchAfter = function() {
+	this.ensurePropertyPath( 'search_after', [] );
+
+	delete( this.search_after );
 
 	return this;
 }

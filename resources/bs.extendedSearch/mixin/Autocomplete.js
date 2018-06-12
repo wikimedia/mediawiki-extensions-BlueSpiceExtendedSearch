@@ -150,7 +150,7 @@
 		}
 
 		var cnt = this.$specialResults;
-		if( this.mobile ) {
+		if( this.mobile || this.compact ) {
 			cnt = this.$primaryResults;
 		}
 

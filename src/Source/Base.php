@@ -8,6 +8,8 @@ use BS\ExtendedSearch\Source\LookupModifier\BaseScoreSortWhenShould;
 use BS\ExtendedSearch\Source\LookupModifier\BaseAutocompleteSourceFields;
 use BS\ExtendedSearch\Source\LookupModifier\BaseSimpleQSFields;
 use BS\ExtendedSearch\Source\LookupModifier\BaseWildcarder;
+use BS\ExtendedSearch\Source\LookupModifier\BaseSortByID;
+use BS\ExtendedSearch\Source\LookupModifier\BaseTitleSecurityTrimmings;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 
 class Base {
@@ -17,10 +19,13 @@ class Base {
 			'base-extensionaggregation' => BaseExtensionAggregation::class,
 			'base-tagsaggregation' => BaseTagsAggregation::class,
 			'base-simpleqsfields' => BaseSimpleQSFields::class,
-			'base-wildcarder' => BaseWildcarder::class
+			'base-wildcarder' => BaseWildcarder::class,
+			'base-idsort' => BaseSortByID::class,
+			'base-titlesecuritytrimmings' => BaseTitleSecurityTrimmings::class
 		],
 		LookupModifier::TYPE_AUTOCOMPLETE => [
-			'base-acsourcefields' => BaseAutocompleteSourceFields::class
+			'base-acsourcefields' => BaseAutocompleteSourceFields::class,
+			'base-titlesecuritytrimmings' => BaseTitleSecurityTrimmings::class
 		]
 	];
 

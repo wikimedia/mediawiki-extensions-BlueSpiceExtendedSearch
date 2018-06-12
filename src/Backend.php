@@ -233,6 +233,10 @@ class Backend {
 		return \RequestContext::getMain();
 	}
 
+	public function getConfig() {
+		return $this->config;
+	}
+
 	/**
 	 * Runs quick query agains ElasticSearch
 	 *
@@ -256,6 +260,7 @@ class Backend {
 		}
 
 		$results = $search->search( $lookup->getQueryDSL() );
+
 		$results = $this->formatQuerySuggestions( $results, $searchData );
 
 		return $results;
@@ -352,6 +357,7 @@ class Backend {
 		$formattedResultSet->total = $this->getTotal( $results );
 		$formattedResultSet->filters = $this->getFilterConfig( $results );
 		$formattedResultSet->spellcheck = $spellcheck;
+		$formattedResultSet->total_approximated = $lookup->getSize() > $this->getTotal( $results ) ? 0 : 1;
 
 		return $formattedResultSet;
 	}
@@ -467,6 +473,7 @@ class Backend {
 			foreach( $this->getSources() as $sourceKey => $source ) {
 				$source->getFormatter()->format( $result, $resultObject );
 			}
+
 			$formattedResults[] = $result;
 		}
 

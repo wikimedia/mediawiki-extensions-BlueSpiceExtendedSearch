@@ -80,5 +80,6 @@ class Query extends \ApiBase {
 		$oResult->addValue( null , 'filters', $this->resultSet->filters );
 		$oResult->addValue( null , 'spellcheck', $this->resultSet->spellcheck );
 		$oResult->addValue( null , 'lookup', \FormatJson::encode( $this->oLookup ) );
+		$oResult->addValue( null , 'total_approximated', $this->resultSet->total_approximated );
 	}
 }

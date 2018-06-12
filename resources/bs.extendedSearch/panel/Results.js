@@ -8,6 +8,9 @@
 		this.results = cfg.results;
 		this.total = cfg.total;
 		this.spellcheck = cfg.spellcheck;
+		this.total_approximated = cfg.total_approximated;
+
+		this.displayedResults = {};
 
 		if( this.total == 0 ) {
 			return this.showNoResults();
@@ -27,32 +30,34 @@
 		var hitCountWidget = new bs.extendedSearch.HitCountWidget({
 			term: term,
 			count: me.total,
-			spellcheck: me.spellcheck
+			spellcheck: me.spellcheck,
+			total_approximated: me.total_approximated
 		});
 
 		hitCountWidget.$element.on( 'forceSearchTerm', this.caller.forceSearchTerm.bind( this.caller ) );
 
 		$('#bs-es-hitcount' ).append( hitCountWidget.$element );
-		$.each( this.results, function( idx, cfg ) {
-			var resultWidget = new bs.extendedSearch.ResultWidget( cfg );
-			me.appendResult( resultWidget.$element );
-		} );
+		this.addResultsInternally( this.results );
 
-		this.paginator = new bs.extendedSearch.PaginatorWidget( {
-			total: me.total,
-			size: me.lookup.getSize(),
-			from: me.lookup.getFrom()
-		} );
+		this.addLoadMoreButton();
+	}
 
-		this.paginator.$element.on( 'changePage', me.changePagination.bind( this ) );
-		me.appendResult( this.paginator.$element );
+	bs.extendedSearch.ResultsPanel.prototype.addLoadMoreButton = function() {
+		if( this.total <= Object.keys( this.displayedResults ).length ) {
+			return;
+		}
+		this.loadMoreButton = new bs.extendedSearch.LoadMoreButtonWidget();
+		this.loadMoreButton.$element.on( 'loadMore', this.loadMoreResults.bind( this ) );
+		$( '#bs-es-results' ).append( this.loadMoreButton.$element );
 	}
 
 	bs.extendedSearch.ResultsPanel.prototype.appendResult = function( resultWidget ) {
-		$( '#bs-es-results' ).append( resultWidget );
+		this.displayedResults[resultWidget.getId()] = resultWidget.getRawResult();
+		$( '#bs-es-results' ).append( resultWidget.$element );
 	}
 
 	bs.extendedSearch.ResultsPanel.prototype.clearResults = function() {
+		this.displayedResults = {};
 		$( '#bs-es-results' ).html('');
 	}
 
@@ -71,14 +76,6 @@
 				$( '<span>' ).html( mw.message( 'bs-extendedsearch-search-center-result-no-results' ).plain() )
 			)
 		);
-	}
-
-	bs.extendedSearch.ResultsPanel.prototype.changePagination = function( e, targetPage ) {
-		if( targetPage.current ) {
-			return;
-		}
-		this.lookup.setFrom( targetPage.from );
-		this.caller.updateQueryHash();
 	}
 
 	bs.extendedSearch.ResultsPanel.prototype.showLoading = function() {
@@ -118,6 +115,15 @@
 		this.showMessage( mw.message( 'bs-extendedsearch-search-center-result-exception' ).plain() );
 	}
 
+	bs.extendedSearch.ResultsPanel.prototype.addResultsInternally = function( results ) {
+		var me = this;
+
+		$.each( results, function( idx, cfg ) {
+			var resultWidget = new bs.extendedSearch.ResultWidget( cfg );
+			me.appendResult( resultWidget );
+		} );
+	}
+
 	bs.extendedSearch.ResultsPanel.prototype.showMessage = function( message ) {
 		$( '#bs-es-results' ).html(
 			$( '<div>' )
@@ -127,4 +133,61 @@
 				)
 		);
 	}
+
+	bs.extendedSearch.ResultsPanel.prototype.getLastShown = function() {
+		if( this.displayedResults == {} ) {
+			return null;
+		}
+
+		var lastKey = Object.keys( this.displayedResults )[Object.keys( this.displayedResults ).length - 1];
+		return this.displayedResults[lastKey];
+	}
+
+	bs.extendedSearch.ResultsPanel.prototype.loadMoreResults = function( e ) {
+		this.loadMoreButton.showLoading();
+
+		var lastShown = this.getLastShown();
+		if( !lastShown ) {
+			this.loadMoreButton.error();
+			return;
+		}
+
+		var searchAfter = [];
+
+		//We dont want to touch original lookup set in the URL hash
+		var loadMoreLookup = $.extend( true, {}, this.lookup );
+		var sortFields = loadMoreLookup.getSort();
+		for( var idx in sortFields ) {
+			for( field in sortFields[idx] ) {
+				if( field.charAt( 0 ) == '_' ) {
+					field = field.slice( 1 );
+				}
+
+				searchAfter.push( lastShown[field] );
+			}
+		}
+		searchAfter.push( lastShown.id );
+		loadMoreLookup.setSearchAfter( searchAfter );
+
+		var newResultsPromise = bs.extendedSearch.SearchCenter.runApiCall( {
+			q: JSON.stringify( loadMoreLookup )
+		} );
+
+		var me = this;
+		newResultsPromise.done( function( response ) {
+			if( response.exception ) {
+				return me.loadMoreButton.error();
+			}
+
+			var results = bs.extendedSearch.SearchCenter.applyResultsToStructure(
+				response.results
+			);
+
+			me.loadMoreButton.destroy();
+			me.addResultsInternally( results );
+
+			me.addLoadMoreButton();
+		} );
+	}
+
 } )( mediaWiki, jQuery, blueSpice, document );

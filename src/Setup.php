@@ -58,9 +58,11 @@ class Setup {
 			array(
 				'id' => 'bs-extendedsearch-input',
 				'type' => 'text',
-				'name' => 'q'
+				'name' => 'raw_term'
 			)
 		);
+
+		$template->set( 'bs_search_method', 'POST' );
 
 		$template->set( 'bs_search_mobile_id', 'bs-extendedsearch-mobile-box' );
 		$template->set(
@@ -68,15 +70,14 @@ class Setup {
 			array(
 				'id' => 'bs-extendedsearch-mobile-input',
 				'type' => 'text',
-				'name' => 'q'
+				'name' => 'raw_term'
 			)
 		);
 
+		$template->set( 'bs_search_action', \SpecialPage::getTitleFor( 'SearchCenter' )->getLocalURL() );
 		$template->set(
 			'bs_search_target',
-			array(
-				'page_name' => \SpecialPage::getTitleFor( 'SearchCenter' )->getFullText()
-			)
+			[]
 		);
 		return true;
 	}
@@ -84,7 +85,7 @@ class Setup {
 	public static function onBeforePageDisplay( \OutputPage &$out, \Skin &$skin ) {
 		$title = $out->getTitle();
 		if( $title != \SpecialPage::getTitleFor( 'BSSearchCenter' ) ) {
-			$out->addModules( "ext.blueSpiceExtendedSearch.Autocomplete" );
+			$out->addModules( "ext.blueSpiceExtendedSearch.SearchFieldAutocomplete" );
 		}
 
 		$autocompleteConfig = \ExtensionRegistry::getInstance()
