@@ -83,4 +83,5 @@
 			.addClass( 'bs-extendedsearch-secondaryinfo-item' )
 			.append( $label, $value );
 	}
+
 } )( mediaWiki, jQuery, blueSpice, document );

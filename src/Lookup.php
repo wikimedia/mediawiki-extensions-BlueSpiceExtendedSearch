@@ -588,7 +588,7 @@ class Lookup extends \ArrayObject {
 		return $this->addShouldTerms( $field, $value );
 	}
 
-	public function addShouldTerms( $field, $value ) {
+	public function addShouldTerms( $field, $value, $boost = 1, $append = true ) {
 		$this->ensurePropertyPath( 'query.bool.should', [] );
 
 		if( !is_array( $value ) ) {
@@ -596,24 +596,27 @@ class Lookup extends \ArrayObject {
 		}
 
 		$appended = false;
-		foreach( $this['query']['bool']['should'] as $idx => &$should ) {
-			if( !isset( $should['terms'][$field] ) ) {
-				continue;
-			}
-			$value = array_diff( $value, $should['terms'][$field] );
-			if( empty( $value ) ) {
-				//Nothing new to add
-				return $this;
-			}
+		if( $append ) {
+			foreach( $this['query']['bool']['should'] as $idx => &$should ) {
+				if( !isset( $should['terms'][$field] ) ) {
+					continue;
+				}
+				$value = array_diff( $value, $should['terms'][$field] );
+				if( empty( $value ) ) {
+					//Nothing new to add
+					return $this;
+				}
 
-			$should['terms'][$field] = array_merge( $should['terms'][$field], $value );
-			$appended = true;
+				$should['terms'][$field] = array_merge( $should['terms'][$field], $value );
+				$appended = true;
+			}
 		}
 
 		if( !$appended ) {
 			$this['query']['bool']['should'][] = [
 				"terms" => [
-					$field => $value
+					$field => $value,
+					"boost" => $boost
 				]
 			];
 		}
@@ -803,7 +806,9 @@ class Lookup extends \ArrayObject {
 			$aBase['highlight']['fields'][$sFieldNamePart] = [
 				'matched_fields' => [
 					$sFieldNamePart
-				]
+				],
+				'pre_tags' => [ "<b>" ],
+				'post_tags' => [ "</b>" ]
 			];
 		}
 

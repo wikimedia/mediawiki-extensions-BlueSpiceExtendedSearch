@@ -27,6 +27,9 @@
 					"bottom": {
 						"items": [
 							{
+								"name": "typetext"
+							},
+							{
 								"name": "ctime"
 							},
 							{
@@ -49,6 +52,13 @@
 				"wikipage": "extensions/BlueSpiceExtendedSearch/resources/images/wikipage-icon.png",
 				"specialpage": "extensions/BlueSpiceExtendedSearch/resources/images/specialpage-icon.png",
 				"default": "extensions/BlueSpiceExtendedSearch/resources/images/default-icon.png"
+			},
+			"FileIcons": {
+				"pdf": "extensions/BlueSpiceExtendedSearch/resources/images/file-icon/pdf.png",
+				"docx": "extensions/BlueSpiceExtendedSearch/resources/images/file-icon/doc.png",
+				"doc": "extensions/BlueSpiceExtendedSearch/resources/images/file-icon/doc.png",
+				"mp4": "extensions/BlueSpiceExtendedSearch/resources/images/file-icon/mp4.png",
+				"default": "extensions/BlueSpiceExtendedSearch/resources/images/file-icon/default.png"
 			},
 			"FieldsWithANDFilterEnabled": {
 				"fields": ["categories"]
@@ -220,7 +230,12 @@
 				"bs-extendedsearch-search-center-hitcount-replaced",
 				"bs-extendedsearch-search-center-hitcount-suggest",
 				"bs-extendedsearch-loadmore-label",
-				"bs-extendedsearch-loadmore-error"
+				"bs-extendedsearch-loadmore-error",
+				"bs-extendedsearch-filter-label-count-only",
+				"bs-extendedsearch-search-center-result-typetext-label",
+				"bs-extendedsearch-source-type-wikipage-label",
+				"bs-extendedsearch-source-type-specialpage-label",
+				"bs-extendedsearch-source-type-repofile-label"
 			],
 			"dependencies" : [
 				"ext.bluespice.extjs",
@@ -258,6 +273,9 @@
 								},
 								"specialpage": {
 									"class": "BS\\ExtendedSearch\\Source\\SpecialPages"
+								},
+								"repofile": {
+									"class": "BS\\ExtendedSearch\\Source\\RepoFiles"
 								}
 							}
 						}

@@ -26,8 +26,13 @@
 
 		for( var idx in availableTypes ) {
 			var type = availableTypes[idx];
+			var message = type;
+			if( mw.message( 'bs-extendedsearch-source-type-' + type + '-label' ).exists()  ) {
+				message = mw.message( 'bs-extendedsearch-source-type-' + type + '-label' ).plain();
+			}
+
 			typeFilter.filter.options.push( {
-				label: type,
+				label: message || type,
 				data: type
 			} );
 		}
@@ -85,6 +90,7 @@
 	function _applyResultsToStructure( results ) {
 		var resultStructures = mw.config.get( 'bsgESResultStructures' );
 		var structuredResults = [];
+
 		$.each( results, function( idx, result ) {
 			var resultStructure = resultStructures[result["type"]];
 			var cfg = {};
@@ -133,6 +139,7 @@
 
 			cfg._id = result.id;
 			cfg.raw_result = result;
+			cfg.user_relevance = result.user_relevance;
 
 			structuredResults.push( cfg );
 		} );
@@ -226,7 +233,8 @@
 					search.getTypeFilter(),
 					search.getFilters( response.filters )
 				),
-				caller: search
+				caller: search,
+				mobile: bs.extendedSearch.utils.isMobile()
 			} );
 
 			toolsPanel.init();
@@ -247,12 +255,14 @@
 		} );
 	}
 
-	function _runApiCall( queryData ) {
+	function _runApiCall( queryData, action ) {
+		action = action || 'bs-extendedsearch-query';
+
 		api.abort();
 		return api.get( $.extend(
 			queryData,
 			{
-				'action': 'bs-extendedsearch-query'
+				'action': action
 			}
 		) );
 	}
@@ -342,8 +352,7 @@
 		bs.extendedSearch.SearchBar.prototype.onClearSearch.call( this );
 
 		search.clearLookupObject();
-		search.getLookupObject().setQueryString( '' );
-		updateQueryHash();
+		bs.extendedSearch.utils.clearFragment();
 	};
 
 	function updateQueryHash() {
@@ -361,12 +370,12 @@
 		//Try getting lookup from fragment - it has top prio
 		config = JSON.parse( fragmentParams.q );
 		updateHash = false;
-	} else if( mw.config.get( 'bsgLookupConfig' ) ) {
-		//Check if there is pre-set lookup config
+	} else {
+		//Get lookup configuration from pre-set variable
 		config = JSON.parse( mw.config.get( 'bsgLookupConfig' ) );
 	}
 
-	if( config ) {
+	if( $.isEmptyObject( config ) == false ) {
 		search.makeLookup( config );
 		//Update searchBar if page is loaded with query present
 		var query = search.getLookupObject().getQueryString();

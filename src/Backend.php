@@ -353,7 +353,7 @@ class Backend {
 		}
 
 		$formattedResultSet = new \stdClass();
-		$formattedResultSet->results = $this->formatResults( $results );
+		$formattedResultSet->results = $this->formatResults( $results, $lookup );
 		$formattedResultSet->total = $this->getTotal( $results );
 		$formattedResultSet->filters = $this->getFilterConfig( $results );
 		$formattedResultSet->spellcheck = $spellcheck;
@@ -464,14 +464,17 @@ class Backend {
 	 * each source's formatter
 	 *
 	 * @param \Elastica\ResultSet $results
+	 * @param \BS\ExtendedSearch\Lookup $lookup
 	 */
-	protected function formatResults( $results ) {
+	protected function formatResults( $results, $lookup ) {
 		$formattedResults = [];
 
 		foreach( $results->getResults() as $resultObject ) {
 			$result = $resultObject->getData();
 			foreach( $this->getSources() as $sourceKey => $source ) {
-				$source->getFormatter()->format( $result, $resultObject );
+				$formatter = $source->getFormatter();
+				$formatter->setLookup( $lookup );
+				$formatter->format( $result, $resultObject );
 			}
 
 			$formattedResults[] = $result;

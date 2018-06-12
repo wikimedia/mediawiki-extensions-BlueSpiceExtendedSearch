@@ -16,7 +16,7 @@
 		bs.extendedSearch.AutocompletePrimaryResult.parent.call( this, cfg );
 		bs.extendedSearch.mixin.AutocompleteHeader.call( this, cfg.suggestion );
 		bs.extendedSearch.mixin.AutocompleteHitType.call( this, {
-			hitType: cfg.suggestion.type,
+			hitType: cfg.suggestion.typetext,
 			rankType: 'primary'
 		} );
 

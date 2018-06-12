@@ -42,7 +42,7 @@
 			var filter = this.availableFilters[ idx ];
 			filter.disabled = false;
 
-			if( $( '#bs-extendedSearch-filter-' + filter.filter.id ).length > 0 ) {
+			if( $( '#bs-extendedsearch-filter-' + filter.filter.id ).length > 0 ) {
 				filter.disabled = true;
 			}
 			var item = new bs.extendedSearch.FilterAddDialogItem( filter, this ).$element;

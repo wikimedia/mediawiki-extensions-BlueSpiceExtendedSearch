@@ -14,6 +14,8 @@ class SpecialPageFormatter extends Base {
 	}
 
 	public function formatAutocompleteResults( &$results, $searchData ) {
+		parent::formatAutocompleteResults( $results, $searchData );
+
 		foreach( $results as &$result ) {
 			if( $result['type'] !== $this->source->getTypeKey() ) {
 				continue;

@@ -273,7 +273,37 @@ class LookupTest extends \MediaWikiTestCase {
 					"should" => [
 						[
 							"terms" => [
-								"someField" => [ "value1" ]
+								"someField" => [ "value1" ],
+								"boost" => 1
+							]
+						]
+					]
+				]
+			]
+		];
+
+		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
+	}
+
+	public function testMultipleAddShouldTerms() {
+		$oLookup = new \BS\ExtendedSearch\Lookup();
+
+		$oLookup->addShouldTerms( 'someField', [ "value1", "value2" ], 2, false );
+		$oLookup->addShouldTerms( 'someField', [ "value3" ], 4, false );
+		$aExpected= [
+			"query" => [
+				"bool" => [
+					"should" => [
+						[
+							"terms" => [
+								"someField" => [ "value1", "value2" ],
+								"boost" => 2
+							]
+						],
+						[
+							"terms" => [
+								"someField" => [ "value3" ],
+								"boost" => 4
 							]
 						]
 					]
@@ -474,8 +504,16 @@ class LookupTest extends \MediaWikiTestCase {
 		$aExpected= [
 			"highlight" => [
 				"fields" => [
-					"someField" => [ "matched_fields" => [ "someField" ] ],
-					"anotherField" => [ "matched_fields" => [ "anotherField" ] ]
+					"someField" => [
+						"matched_fields" => ["someField"],
+						"pre_tags" => ['<b>'],
+						"post_tags" => ['</b>']
+						],
+					"anotherField" => [
+						"matched_fields" => [ "anotherField" ],
+						"pre_tags" => ['<b>'],
+						"post_tags" => ['</b>']
+					]
 				]
 			]
 		];

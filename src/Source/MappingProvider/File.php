@@ -19,20 +19,10 @@ class File extends DecoratorBase {
 		$aPC = $this->oDecoratedMP->getPropertyConfig();
 		$aPC += [
 			'the_file' => [
-				'type' => 'attachment',
-				'copy_to' => 'congregated'
-				/*'fields' => [
-					'content' => ['index' => true],
-					'title' => ['index' => true],
-					'date' => ['store' => true],
-					'author' => ['index' => true],
-					'keywords' => ['index' => true],
-					'content_type' => ['store' => true],
-					'content_length' => ['store' => true],
-					'language' => ['store' => true]
-				]*/
+				'type' => 'binary'
 			]
 		];
+
 		return $aPC;
 	}
 }

@@ -574,28 +574,33 @@ bs.extendedSearch.Lookup.prototype.addShould = function( field, value ) {
  * @param string|Array value
  * @returns Lookup
  */
-bs.extendedSearch.Lookup.prototype.addShouldTerms = function( field, value ) {
+bs.extendedSearch.Lookup.prototype.addShouldTerms = function( field, value, boost, append ) {
 	this.ensurePropertyPath( 'query.bool.should', [] );
+
+	boost = boost || 1;
+	append = append === false ? false : true;
 
 	if( !$.isArray( value ) ) {
 		value = [value];
 	}
 
 	var appended = false;
-	for( shouldIdx in this.query.bool.should ) {
-		var should = this.query.bool.should[shouldIdx];
-		if( !( field in should.terms ) ) {
-			continue;
+	if( append ) {
+		for( shouldIdx in this.query.bool.should ) {
+			var should = this.query.bool.should[shouldIdx];
+			if( !( field in should.terms ) ) {
+				continue;
+			}
+			this.query.bool.should[shouldIdx].terms[field] = $.merge(
+				should.terms[field],
+				value
+			);
+			appended = true;
 		}
-		this.query.bool.should[shouldIdx].terms[field] = $.merge(
-			should.terms[field],
-			value
-		);
-		appended = true;
 	}
 
 	if( !appended ) {
-		var terms = { terms: {} };
+		var terms = { terms: { boost: boost } };
 		terms.terms[field] = value;
 		this.query.bool.should.push( terms );
 	}
@@ -719,7 +724,9 @@ bs.extendedSearch.Lookup.prototype.addHighlighter = function( field ) {
 	this.ensurePropertyPath( 'highlight.fields', {} );
 
 	this.highlight.fields[field] = {
-		matched_fields: field
+		matched_fields: field,
+		pre_tags: [ "<b>" ],
+		post_tags: [ "</b>" ]
 	}
 
 	return this;

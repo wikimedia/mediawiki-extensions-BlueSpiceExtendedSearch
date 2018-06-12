@@ -9,6 +9,7 @@
 		this.selectedOptions = cfg.selectedOptions || [];
 		this.isANDEnabled = cfg.isANDEnabled == 1 ? true : false;
 		this.filterType = cfg.filterType || "or";
+		this.mobile = cfg.mobile || false;
 
 		this.dirty = false;
 		this.isOpen = false;
@@ -43,7 +44,7 @@
 			.toggleClass( 'oo-ui-popupButtonWidget-frameless-popup', !this.isFramed() );
 
 		this.$element
-			.attr( 'id', 'bs-extendedSearch-filter-' + cfg.id )
+			.attr( 'id', 'bs-extendedsearch-filter-' + cfg.id )
 			.attr( 'aria-haspopup', 'true' )
 			.addClass( 'oo-ui-popupButtonWidget bs-extendedsearch-filter-button-widget' )
 			.append( this.$button, this.$removeButton, this.popup.$element );
@@ -78,6 +79,10 @@
 		}
 	}
 	bs.extendedSearch.FilterWidget.prototype.applyFilter = function() {
+		if( this.selectedOptions.length == 0 ) {
+			return this.removeFilter();
+		}
+
 		this.$element.trigger( 'filterOptionsChanged', {
 			filterId: this.id,
 			filterType: this.filterType,
@@ -133,7 +138,7 @@
 
 		this.$optionsContainer.append( this.actions.$element );
 
-		this.optionsCheckboxWidgetID = 'bs-extendedSearch-filter-options-checkbox-widget';
+		this.optionsCheckboxWidgetID = 'bs-extendedsearch-filter-options-checkbox-widget';
 		this.addCheckboxWidget( this.options );
 
 		return this.$optionsContainer;
@@ -177,8 +182,12 @@
 	}
 
 	bs.extendedSearch.FilterWidget.prototype.setFilterLabel = function() {
+		var label = '';
 		if( this.selectedOptions.length == 0 ) {
-			this.setLabel( this.emptyLabel );
+			label = this.emptyLabel;
+		} else if( this.mobile ) {
+			var count = this.selectedOptions.length;
+			label = this.valueLabel + mw.message( 'bs-extendedsearch-filter-label-count-only', count ).parse();
 		} else {
 			var values = this.selectedOptions;
 			var valuesCount = values.length;
@@ -188,12 +197,23 @@
 				hiddenCount = valuesCount - 2;
 			}
 
-			var label = this.valueLabel + values.join( ', ' );
+			var messagizedValues = [];
+			for( var idx in values ) {
+				var value = values[idx];
+				var message = value;
+				if( mw.message( 'bs-extendedsearch-source-type-' + value + '-label' ).exists()  ) {
+					message = mw.message( 'bs-extendedsearch-source-type-' + value + '-label' ).plain();
+				}
+				messagizedValues.push( message );
+			}
+
+			label = this.valueLabel + messagizedValues.join( ', ' );
 			if( hiddenCount > 0 ) {
 				label += mw.message( this.hasHiddenLabelKey, hiddenCount ).parse();
 			}
-			this.setLabel( label );
 		}
+
+		this.setLabel( label );
 	}
 
 	bs.extendedSearch.FilterWidget.prototype.onOptionsChange = function( values )  {
@@ -216,7 +236,7 @@
 			.on( 'click', { cfg: cfg, parent: this }, this.openAddWidgetDialog );
 
 		this.$element
-			.attr( 'id', 'bs-extendedSearch-filter-add-button' )
+			.attr( 'id', 'bs-extendedsearch-filter-add-button' )
 			.addClass( 'bs-extendedsearch-filter-add-widget' )
 			.append( this.$button );
 	}

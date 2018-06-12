@@ -33,6 +33,7 @@
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Label for field that reports the number of documents within a specific source on Special:SearchAdmin",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Label for field that reports the number of pending update jobs for a specific source on Special:SearchAdmin",
 	"bs-extendedsearch-search-center-hitcount-widget": "Text showing how many hits search request has returned.\n $1 - number of hits, $2 - search term",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Text showing approximately how many hits search has returned. \n $1 - number of hits, $2 - search term",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Title for the add filter dialog",
 	"bs-extendedsearch-search-center-filter-extension-label": "Label for the extension field in the filter when its empty (nothing selected)",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Label for the namespace_text field in the filter when its empty (nothing selected)",
@@ -78,5 +79,12 @@
 	"bs-extendedsearch-search-center-result-exception": "Generic message text when query execution produced an error",
 	"bs-extendedsearch-autocomplete-create-page-link": "Text for the link offering to create non-existing page. $1 - prefixed name of the page",
 	"bs-extendedsearch-search-center-hitcount-replaced": "Message showing when search term has been replaced due to typo detected. $1 - new term, $2 - original term, $3 - number of hits for original term",
-	"bs-extendedsearch-search-center-hitcount-suggest": "Message showing when a typo in the search term is suspected, offering alternative term to search for. $1 - alternative term, $2 - number of hits for alternative term"
+	"bs-extendedsearch-search-center-hitcount-suggest": "Message showing when a typo in the search term is suspected, offering alternative term to search for. $1 - alternative term, $2 - number of hits for alternative term",
+	"bs-extendedsearch-loadmore-label": "Label for button that loads further results for search request",
+	"bs-extendedsearch-loadmore-error": "Text showing in the load more button when no more results can be loaded due to an error",
+	"bs-extendedsearch-filter-label-count-only": "Label message for mobile view - showing only number of selected filter options. $1 - number of selected filter options",
+	"bs-extendedsearch-search-center-result-typetext-label": "Label showing the type of the results.",
+	"bs-extendedsearch-source-type-wikipage-label": "Label for Wikipage source type",
+	"bs-extendedsearch-source-type-repofile-label": "Label for Local file source type",
+	"bs-extendedsearch-source-type-specialpage-label": "Label for Special page source type"
 }

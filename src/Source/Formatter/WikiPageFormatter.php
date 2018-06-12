@@ -40,13 +40,15 @@ class WikiPageFormatter extends Base {
 		$result['highlight'] = $this->getHighlight( $resultObject );
 		$result['rendered_content_snippet'] = $this->getRenderedContentSnippet( $result['rendered_content'] );
 
+		$result['display_text'] = $result['prefixed_title'];
+
 		$this->addAnchorAndImageUri( $result );
 	}
 
 	protected function addAnchorAndImageUri( &$result ) {
 		$title = \Title::makeTitle( $result['namespace'], $result['basename'] );
 		if( $title instanceof \Title ) {
-			$result['page_anchor'] = $this->getPageAnchor( $title, $result['basename'] );
+			$result['page_anchor'] = $this->getPageAnchor( $title, $result['display_text'] );
 			if( $title->exists() ) {
 				$result['image_uri'] = $this->getImageUri( $result['prefixed_title'], 150 );
 			}
@@ -143,6 +145,8 @@ class WikiPageFormatter extends Base {
 	}
 
 	public function formatAutocompleteResults( &$results, $searchData ) {
+		parent::formatAutocompleteResults( $results, $searchData );
+
 		foreach( $results as &$result ) {
 			if( $result['type'] !== $this->source->getTypeKey() ) {
 				continue;
@@ -150,7 +154,9 @@ class WikiPageFormatter extends Base {
 
 			//Dont show namespace part if user is already searching in particular NS
 			if( $result['namespace'] != $searchData['namespace'] || $searchData['namespace'] === 0 ) {
-				$result['basename'] = $result['prefixed_title'];
+				$result['display_text'] = $result['prefixed_title'];
+			} else {
+				$result['display_text'] = $result['basename'];
 			}
 
 			$this->addAnchorAndImageUri( $result );

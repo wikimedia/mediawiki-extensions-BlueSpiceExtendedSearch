@@ -81,6 +81,12 @@
 		location.hash = $.param( hashMap );
 	}
 
+	function _clearFragment( loc ) {
+		var location = loc || window.location;
+
+		location.hash = '';
+	}
+
 	function _getNamespacesList() {
 		return mw.config.get( 'wgNamespaceIds' );
 	}
@@ -111,6 +117,7 @@
 	bs.extendedSearch.utils = {
 		getFragment: _getFragment,
 		setFragment: _setFragment,
+		clearFragment: _clearFragment,
 		getQueryStringParam: _getQueryStringParam,
 		getNamespacesList: _getNamespacesList,
 		getNamespaceNames: _getNamespaceNames,

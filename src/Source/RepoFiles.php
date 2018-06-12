@@ -31,4 +31,8 @@ class RepoFiles extends DecoratorBase {
 			$this->oDecoratedSource->getMappingProvider()
 		);
 	}
+
+	public function getFormatter() {
+		return new Formatter\FileFormatter( $this );
+	}
 }

@@ -329,7 +329,35 @@
 				bool: {
 					should: [ {
 						terms: {
-							someField: ['value1']
+							someField: ['value1'],
+							boost: 1
+						}
+					} ]
+				}
+			}
+		};
+
+		assert.deepEqual( lookup.getQueryDSL(), obj, 'Adding "should temrs" clause works' );
+	} );
+
+	QUnit.test( 'bs.extendedSearch.Lookup.testAddMultipleShouldTerms', function ( assert ) {
+		var lookup = new bs.extendedSearch.Lookup();
+
+		lookup.addShouldTerms( 'someField', ['value1', 'value2'], 2, false );
+		lookup.addShouldTerms( 'someField', ['value3'], 4, false );
+
+		var obj = {
+			query: {
+				bool: {
+					should: [ {
+						terms: {
+							someField: ['value1', 'value2'],
+							boost: 2
+						}
+					}, {
+						terms: {
+							someField: ['value3'],
+							boost: 4
 						}
 					} ]
 				}
@@ -430,7 +458,9 @@
 			highlight: {
 				fields: {
 					someField: {
-						matched_fields: 'someField'
+						matched_fields: 'someField',
+						pre_tags: [ "<b>" ],
+						post_tags: [ "</b>" ]
 					}
 				}
 			}

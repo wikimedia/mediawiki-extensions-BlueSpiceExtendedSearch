@@ -27,12 +27,28 @@ class Base {
 
 	/**
 	 *
+	 * @var \BS\ExtendedSearch\Lookup
+	 */
+	protected $lookup;
+
+	/**
+	 *
 	 * @param \BS\ExtendedSearch\Source\Base $source
 	 */
 	public function __construct( $source ) {
 		$this->source = $source;
 		//Just for convinience, as many of the formatters would use it
 		$this->linkRenderer = $this->source->getBackend()->getService( 'LinkRenderer' );
+	}
+
+	/**
+	 * Sets current instance of Lookup object that the
+	 * result being formatted
+	 *
+	 * @param \BS\ExtendedSearch\Lookup $lookup
+	 */
+	public function setLookup( $lookup ) {
+		$this->lookup = $lookup;
 	}
 
 	/**
@@ -69,8 +85,12 @@ class Base {
 		$result['type'] = $resultObject->getType();
 		$result['score'] = $resultObject->getScore();
 
-		$name = $result['basename'];
-		$ns = $result['namespace'];
+		$type = $result['type'];
+		$result['typetext'] = $this->getTypeText( $type );
+
+		if( $this->isFeatured( $result ) ) {
+			$result['featured'] = 1;
+		}
 
 		if( !isset( $originalValues['ctime'] ) || !isset( $originalValues['mtime'] ) ) {
 			//If those are not set for the given type
@@ -87,6 +107,19 @@ class Base {
 	 * @param array $searchData
 	 */
 	public function formatAutocompleteResults( &$results, $searchData ) {
+		foreach( $results as &$result ) {
+			$type = $result['type'];
+			$result['typetext'] = $this->getTypeText( $type );
+		}
+	}
+
+	protected function getTypeText( $type ) {
+		$typeText = $type;
+		if(  wfMessage( "bs-extendedsearch-source-type-$type-label" )->exists() ) {
+			$typeText =  wfMessage( "bs-extendedsearch-source-type-$type-label" )->plain();
+		}
+
+		return $typeText;
 	}
 
 	/**
@@ -136,5 +169,28 @@ class Base {
 		$termLength = strlen( $term ) * count( $matches );
 
 		return ( $termLength * 100 ) / strlen( $result );
+	}
+
+	/**
+	 * Basic implementation. Checks if searhed term
+	 * matches result exactly
+	 *
+	 * @param array $result
+	 * @return boolean
+	 */
+	protected function isFeatured( $result ) {
+		if( $this->lookup == null ) {
+			return false;
+		}
+
+		$queryString = $this->lookup->getQueryString();
+		if( isset( $queryString['query'] ) == false ) {
+			return false;
+		}
+
+		$term = $queryString['query'];
+		if( strtolower( $term ) == strtolower( $result['basename'] ) ) {
+			return true;
+		}
 	}
 }

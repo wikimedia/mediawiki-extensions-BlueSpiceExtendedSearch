@@ -27,6 +27,7 @@ class File extends DecoratorBase {
 				)
 			)
 		] );
+
 		return $aDC;
 	}
 }

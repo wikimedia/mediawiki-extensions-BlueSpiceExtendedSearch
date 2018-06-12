@@ -64,7 +64,6 @@ class SearchCenter extends \SpecialPage {
 		$out->addHTML( \Html::element( 'div', [ 'id' => 'bs-es-results' ] ) );
 
 		if( $lookup ) {
-			//How else can we pass info to client? I dont like adding HTML node either
 			$out->addJsConfigVars( 'bsgLookupConfig', \FormatJson::encode( $lookup ) );
 		}
 

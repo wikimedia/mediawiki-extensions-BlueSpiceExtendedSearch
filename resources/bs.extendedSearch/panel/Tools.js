@@ -7,9 +7,10 @@
 		this.lookup = this.cfg.lookup;
 		this.filterData = this.cfg.filterData;
 		this.caller = this.cfg.caller;
+		this.mobile = this.cfg.mobile || false;
 
 		//Replaces "add filter" button
-		$( '#bs-extendedSearch-filter-add-button' ).remove();
+		$( '#bs-extendedsearch-filter-add-button' ).remove();
 
 		var addFilterWidgetObject = new bs.extendedSearch.FilterAddWidget( { filterData: this.filterData } );
 		addFilterWidgetObject.$element.on( 'widgetToAddSelected', this.onWidgetToAddSelected.bind( this ) );
@@ -36,6 +37,10 @@
 			$( '<div>' ).attr( 'id', 'bs-es-tools-tools' ).append( this.optionsButton.$element, this.exportButton.$element )
 		);
 
+		if( this.mobile ) {
+			$( '#bs-es-tools' ).addClass( 'mobile' );
+		}
+
 		this.addFiltersFromLookup();
 	}
 
@@ -46,8 +51,8 @@
 	 * @param {String} id
 	 */
 	bs.extendedSearch.ToolsPanel.prototype.appendFilter = function( filter, id ) {
-		var addFilterButton = $( '#bs-extendedSearch-filter-add-button' );
-		var existingFilter = $( '#bs-extendedSearch-filter-' + id );
+		var addFilterButton = $( '#bs-extendedsearch-filter-add-button' );
+		var existingFilter = $( '#bs-extendedsearch-filter-' + id );
 		if( existingFilter.length > 0 ) {
 			return;
 		}
@@ -175,6 +180,7 @@
 	 */
 	bs.extendedSearch.ToolsPanel.prototype.addFilterWidget = function( cfg ) {
 		cfg.showRemove = true;
+		cfg.mobile = this.mobile;
 
 		var filter = new bs.extendedSearch.FilterWidget( cfg );
 		filter.$element.on( 'removeWidgetClick', this.onRemoveFilterWidget.bind( this ) );
@@ -216,16 +222,13 @@
 	bs.extendedSearch.ToolsPanel.prototype.onRemoveFilterWidget = function ( e, params ) {
 		this.lookup = bs.extendedSearch.SearchCenter.getLookupObject();
 
-		var filterId = $( e.target ).attr( 'id' );
-		$( '#bs-es-tools-filters' ).children().remove( '#' + filterId );
+		$( e.target ).remove();
 
-		for( idx in params.options ) {
-			if( params.filterId == 'type' ) {
-				params.filterId = bs.extendedSearch.Lookup.TYPE_FIELD_NAME;
-			}
-			var value = params.options[idx];
-			this.lookup.removeFilter( params.filterId, value.data );
+		if( params.filterId == 'type' ) {
+			params.filterId = bs.extendedSearch.Lookup.TYPE_FIELD_NAME;
 		}
+
+		this.lookup.clearFilter( params.filterId );
 
 		this.lookup.setFrom( 0 );
 		bs.extendedSearch.SearchCenter.updateQueryHash();
