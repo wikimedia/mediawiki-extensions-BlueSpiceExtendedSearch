@@ -84,4 +84,41 @@
 			.append( $label, $value );
 	}
 
+	/**
+	 * Experimental
+	 */
+	bs.extendedSearch.mixin.ResultRelevanceControl = function( cfg ) {
+		cfg = cfg || {};
+
+		this.userRelevance = cfg.user_relevance || 0;
+		this.$relevanceControl = $( '<div>' ).addClass( 'bs-extendedsearch-result-relevance-cnt' );
+
+		//TODO: Dont like this
+		if( !mw.config.get( 'wgUserId' ) ) {
+			return;
+		}
+
+		var relevantIcon = this.userRelevance  == 1 ? 'unStar' : 'star';
+		//var notRelevantIcon = this.userRelevance == -1 ? 'unBlock': 'block';
+
+		this.relevantButton = new OO.ui.ButtonWidget( {
+			framed: false,
+			icon: relevantIcon,
+			title: mw.message( 'bs-extendedsearch-result-relevance-relevant' ).plain()
+		} );
+
+		this.relevantButton.$element.on( 'click', this.onRelevant.bind( this ) );
+
+		/*this.notRelevantButton = new OO.ui.ButtonWidget( {
+			framed: false,
+			icon: notRelevantIcon,
+			title: mw.message( 'bs-extendedsearch-result-relevance-not-relevant' ).plain()
+		} );
+
+		this.notRelevantButton.$element.on( 'click', this.onNotRelevant.bind( this ) );*/
+
+		this.$relevanceControl.append( this.relevantButton.$element, /*this.notRelevantButton.$element*/ );
+	}
+
+	OO.initClass( bs.extendedSearch.mixin.ResultRelevanceControl );
 } )( mediaWiki, jQuery, blueSpice, document );

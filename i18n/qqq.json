@@ -86,5 +86,7 @@
 	"bs-extendedsearch-search-center-result-typetext-label": "Label showing the type of the results.",
 	"bs-extendedsearch-source-type-wikipage-label": "Label for Wikipage source type",
 	"bs-extendedsearch-source-type-repofile-label": "Label for Local file source type",
-	"bs-extendedsearch-source-type-specialpage-label": "Label for Special page source type"
+	"bs-extendedsearch-source-type-specialpage-label": "Label for Special page source type",
+	"bs-extendedsearch-result-relevance-relevant": "Tooltip text for button enabling users to increase relevance (score) of a result for them",
+	"bs-extendedsearch-result-relevance-not-relevant": "Tooltip text for button enabling users to decrease relevance (score) of a result for them"
 }

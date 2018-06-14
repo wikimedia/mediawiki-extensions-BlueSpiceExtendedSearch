@@ -86,5 +86,7 @@
 	"bs-extendedsearch-search-center-result-typetext-label": "Type:",
 	"bs-extendedsearch-source-type-wikipage-label": "Wikipage",
 	"bs-extendedsearch-source-type-repofile-label": "Local file",
-	"bs-extendedsearch-source-type-specialpage-label": "Special page"
+	"bs-extendedsearch-source-type-specialpage-label": "Special page",
+	"bs-extendedsearch-result-relevance-relevant": "This result is important for me",
+	"bs-extendedsearch-result-relevance-not-relevant": "This result is not important for me"
 }

@@ -88,7 +88,8 @@
 	"Hooks": {
 		"ResourceLoaderTestModules": "BS\\ExtendedSearch\\Setup::onResourceLoaderTestModules",
 		"SkinTemplateOutputPageBeforeExec": "BS\\ExtendedSearch\\Setup::onSkinTemplateOutputPageBeforeExec",
-		"BeforePageDisplay": "BS\\ExtendedSearch\\Setup::onBeforePageDisplay"
+		"BeforePageDisplay": "BS\\ExtendedSearch\\Setup::onBeforePageDisplay",
+		"LoadExtensionSchemaUpdates": "BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddRelevanceTable::callback"
 	},
 	"SpecialPages": {
 		"BSSearchCenter": "BS\\ExtendedSearch\\MediaWiki\\Specials\\SearchCenter",
@@ -98,7 +99,8 @@
 		"bs-extendedsearch-query": "BS\\ExtendedSearch\\MediaWiki\\Api\\Query",
 		"bs-extendedsearch-stats": "BS\\ExtendedSearch\\MediaWiki\\Api\\Stats",
 		"bs-extendedsearch-triggerupdate": "BS\\ExtendedSearch\\MediaWiki\\Api\\TriggerUpdate",
-		"bs-extendedsearch-autocomplete": "BS\\ExtendedSearch\\MediaWiki\\Api\\Autocomplete"
+		"bs-extendedsearch-autocomplete": "BS\\ExtendedSearch\\MediaWiki\\Api\\Autocomplete",
+		"bs-extendedsearch-resultrelevance": "BS\\ExtendedSearch\\MediaWiki\\Api\\ResultRelevance"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
@@ -235,7 +237,9 @@
 				"bs-extendedsearch-search-center-result-typetext-label",
 				"bs-extendedsearch-source-type-wikipage-label",
 				"bs-extendedsearch-source-type-specialpage-label",
-				"bs-extendedsearch-source-type-repofile-label"
+				"bs-extendedsearch-source-type-repofile-label",
+				"bs-extendedsearch-result-relevance-relevant",
+				"bs-extendedsearch-result-relevance-not-relevant"
 			],
 			"dependencies" : [
 				"ext.bluespice.extjs",

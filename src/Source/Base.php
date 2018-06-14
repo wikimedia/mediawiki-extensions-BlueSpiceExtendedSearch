@@ -10,6 +10,7 @@ use BS\ExtendedSearch\Source\LookupModifier\BaseSimpleQSFields;
 use BS\ExtendedSearch\Source\LookupModifier\BaseWildcarder;
 use BS\ExtendedSearch\Source\LookupModifier\BaseSortByID;
 use BS\ExtendedSearch\Source\LookupModifier\BaseTitleSecurityTrimmings;
+use BS\ExtendedSearch\Source\LookupModifier\BaseUserRelevance;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 
 class Base {
@@ -21,7 +22,8 @@ class Base {
 			'base-simpleqsfields' => BaseSimpleQSFields::class,
 			'base-wildcarder' => BaseWildcarder::class,
 			'base-idsort' => BaseSortByID::class,
-			'base-titlesecuritytrimmings' => BaseTitleSecurityTrimmings::class
+			'base-titlesecuritytrimmings' => BaseTitleSecurityTrimmings::class,
+			'base-userrelevance' => BaseUserRelevance::class
 		],
 		LookupModifier::TYPE_AUTOCOMPLETE => [
 			'base-acsourcefields' => BaseAutocompleteSourceFields::class,

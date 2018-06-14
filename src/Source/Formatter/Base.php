@@ -85,6 +85,16 @@ class Base {
 		$result['type'] = $resultObject->getType();
 		$result['score'] = $resultObject->getScore();
 
+		//Experimental
+		$user = $this->getContext()->getUser();
+		if( $user->isLoggedIn() ) {
+			$resultRelevance = new \BS\ExtendedSearch\ResultRelevance( $user, $resultObject->getId() );
+			$result['user_relevance'] = $resultRelevance->getValue();
+		} else {
+			$result['user_relevance'] = 0;
+		}
+		//End Experimental
+
 		$type = $result['type'];
 		$result['typetext'] = $this->getTypeText( $type );
 
