@@ -15,14 +15,12 @@ class purgeIndexes extends Maintenance {
 	public function execute() {
 		if( !$this->hasOption( 'quick' ) ) {
 			$this->output( 'This will delete all indexes related to this wiki instance! Starting in ... ' );
-			wfCountDown( 5 );
+			$this->countDown( 5 );
 		}
 
-		$aBackends = BS\ExtendedSearch\Backend::factoryAll();
-		foreach( $aBackends as $sBackendKey => $oBackend ) {
-			$oBackend->deleteAllIndexes();
-			$this->output( "\n$sBackendKey: Indexes purged" );
-		}
+		$backend = \BS\ExtendedSearch\Backend::instance();
+		$backend->deleteAllIndexes();
+		$this->output( "\nIndexes purged" );
 	}
 }
 

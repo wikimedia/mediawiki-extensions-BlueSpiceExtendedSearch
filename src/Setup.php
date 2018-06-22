@@ -2,18 +2,14 @@
 
 namespace BS\ExtendedSearch;
 
+use BS\ExtendedSearch\Backend as SearchBackend;
+
 class Setup {
 	/**
 	 * Factory for Config object
 	 * @return \GlobalVarConfig
 	 */
 	public static function makeConfig() {
-		/**
-		 * Unfortunately changing complex settings from 'extension.json'
-		 * in 'LocalSettings.php' is problematic. Therefore we provide a hook
-		 * point to change settings
-		 */
-		\Hooks::run( 'BSExtendedSearchMakeConfig', [ &$GLOBALS['bsgESBackends'] ] );
 		return new \GlobalVarConfig( 'bsgES' );
 	}
 
@@ -21,9 +17,9 @@ class Setup {
 	 * ExtensionFunction callback to wire up all updaters
 	 */
 	public static function init() {
-		$aSources = \BS\ExtendedSearch\Backend::instance( 'local' )->getSources();
-		foreach( $aSources as $oSource ) {
-			$oSource->getUpdater()->init( $GLOBALS['wgHooks'] );
+		$sources = SearchBackend::instance()->getSources();
+		foreach( $sources as $source ) {
+			$source->getUpdater()->init( $GLOBALS['wgHooks'] );
 		}
 	}
 

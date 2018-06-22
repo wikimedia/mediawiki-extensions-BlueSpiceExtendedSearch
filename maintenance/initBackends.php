@@ -15,15 +15,13 @@ class initBackends extends Maintenance {
 	public function execute() {
 		if( !$this->hasOption( 'quick' ) ) {
 			$this->output( 'This will delete and recreate all registered indices! Starting in ... ' );
-			wfCountDown( 5 );
+			$this->countDown( 5 );
 		}
 
-		$aBackends = BS\ExtendedSearch\Backend::factoryAll();
-		foreach( $aBackends as $sBackendKey => $oBackend ) {
-			$oBackend->deleteIndexes();
-			$oBackend->createIndexes();
-			$this->output( "\n$sBackendKey: Indexes created" );
-		}
+		$backend = BS\ExtendedSearch\Backend::instance();
+		$backend->deleteIndexes();
+		$backend->createIndexes();
+		$this->output( "\nIndexes created" );
 	}
 }
 
