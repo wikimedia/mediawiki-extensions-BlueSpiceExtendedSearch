@@ -1,5 +1,5 @@
 {
-	"name": "mediawiki/blue-spice-extended-search",
+	"name": "bluespice/extendedsearch",
 	"type": "mediawiki-extension",
 	"description": "Elasticsearch search backend for BlueSpice MediaWiki",
 	"license": "GPL-3.0-only",
@@ -26,5 +26,8 @@
 		"fix": [
 			"minus-x fix ."
 		]
+	},
+	"extra": {
+		"installer-name": "BlueSpiceExtendedSearch"
 	}
 }
