@@ -10,6 +10,7 @@ class Base {
 	public function getDataConfig( $sUri, $mDataItem ) {
 		return [
 			'id' => $this->getDocumentId( $sUri ),
+			'sortable_id' => $this->getDocumentId( $sUri ),
 			'uri' => $sUri,
 			'basename' => wfBaseName( $sUri )
 		];

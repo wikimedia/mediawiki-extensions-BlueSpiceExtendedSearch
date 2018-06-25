@@ -6,11 +6,11 @@ use BS\ExtendedSearch\Lookup;
 class BaseSortByID extends Base {
 
 	public function apply() {
-		$this->oLookup->addSort( '_id', Lookup::SORT_DESC );
+		$this->oLookup->addSort( 'sortable_id', Lookup::SORT_DESC );
 	}
 
 	public function undo() {
-		$this->oLookup->removeSort( '_id' );
+		$this->oLookup->removeSort( 'sortable_id' );
 	}
 
 }

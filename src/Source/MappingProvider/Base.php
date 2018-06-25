@@ -10,6 +10,10 @@ class Base {
 	 */
 	public function getPropertyConfig() {
 		return [
+			'sortable_id' => [
+				'type' => 'keyword',
+				'doc_values' => true
+			],
 			'congregated' => [
 				'type' => 'text'
 			],
