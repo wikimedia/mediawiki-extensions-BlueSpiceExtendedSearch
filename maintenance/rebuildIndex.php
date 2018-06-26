@@ -12,40 +12,40 @@ class rebuildIndex extends Maintenance {
 		parent::__construct();
 		$this->requireExtension( "BlueSpiceExtendedSearch" );
 		$this->addOption( 'quick', 'Skip count down' );
-		$this->addOption( 'sources', "Only these sources will be re-indexed. Need to be specified in form of '<index>/<source>'", false, true );
+		$this->addOption( 'sources', "Only these sources will be re-indexed.", false, true );
 	}
 
 	public function execute() {
 		if( !$this->hasOption( 'quick' ) ) {
-			$this->output( 'This will create update jobs for all indices! Starting in ... ' );
-			wfCountDown( 5 );
+			$this->output('This will create update jobs for all indices! Starting in ... ');
+			$this->countDown(5 );
 		}
-		foreach( \BS\ExtendedSearch\Backend::factoryAll() as $sBackendKey => $oBackend ) {
-			$aSources = $oBackend->getSources();
-			foreach( $aSources as $oSource ) {
-				$sSourceKey = $oSource->getTypeKey();
-				if( !$this->sourceOnList( "$sBackendKey/$sSourceKey" ) ) {
-					continue;
-				}
 
-				$this->output( "\nCrawling '$sSourceKey'" );
-				$oCrawler = $oSource->getCrawler();
-				$oCrawler->clearPendingJobs();
-				$oCrawler->crawl();
-				$this->output( " done: ". $oCrawler->getNumberOfPendingJobs() );
+		$backend = \BS\ExtendedSearch\Backend::instance();
+		$sources = $backend->getSources();
+		foreach( $sources as $source ) {
+			$sourceKey = $source->getTypeKey();
+			if( !$this->sourceOnList( $sourceKey ) ) {
+				continue;
 			}
+
+			$this->output( "\nCrawling '$sourceKey'" );
+			$crawler = $source->getCrawler();
+			$crawler->clearPendingJobs();
+			$crawler->crawl();
+			$this->output( " done: ". $crawler->getNumberOfPendingJobs() );
 		}
 
 		global $IP;
 		$this->output( "\n\nYou should now run 'php $IP/maintenance/runJobs.php'" );
 	}
 
-	protected function sourceOnList( $sSource ) {
+	protected function sourceOnList( $sourceKey ) {
 		if( empty( $this->getOption( 'sources', '' ) ) ) {
 			return true;
 		}
-		$aOnlySources = explode( '|', $this->getOption( 'sources', '' ) );
-		if( in_array( $sSource, $aOnlySources ) ) {
+		$onlySources = explode( '|', $this->getOption( 'sources', '' ) );
+		if( in_array( $sourceKey, $onlySources ) ) {
 			return true;
 		}
 		return false;

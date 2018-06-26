@@ -17,6 +17,29 @@
 			}
 		},
 		"BlueSpiceExtendedSearch": {
+			"Sources": {
+				"wikipage": {
+					"class": "BS\\ExtendedSearch\\Source\\WikiPages",
+					"args": [
+						{
+							"skip_namespaces": [
+								8, 9, 10, 11, 14, 15
+							]
+						},
+						{
+							"another": [
+								"test"
+							]
+						}
+					]
+				},
+				"specialpage": {
+					"class": "BS\\ExtendedSearch\\Source\\SpecialPages"
+				},
+				"repofile": {
+					"class": "BS\\ExtendedSearch\\Source\\RepoFiles"
+				}
+			},
 			"DefaultResultStructure": {
 				"headerText": "basename",
 				"headerUri": "uri",
@@ -254,38 +277,14 @@
 	},
 	"config_prefix": "bsgES",
 	"config": {
-		"Backends": {
-			"value": {
-				"local": {
-					"class": "BS\\ExtendedSearch\\Backend",
-					"args": [
-						{
-							"connection": {
-								"host": "127.0.0.1",
-								"port": "9200"
-							},
-							"sources": {
-								"wikipage": {
-									"class": "BS\\ExtendedSearch\\Source\\WikiPages",
-									"args": [
-										{
-											"skip_namespaces": [
-												8, 9, 10, 11, 14, 15
-											]
-										}
-									]
-								},
-								"specialpage": {
-									"class": "BS\\ExtendedSearch\\Source\\SpecialPages"
-								},
-								"repofile": {
-									"class": "BS\\ExtendedSearch\\Source\\RepoFiles"
-								}
-							}
-						}
-					]
-				}
-			}
+		"BackendClass": {
+			"value": "\\BS\\ExtendedSearch\\Backend"
+		},
+		"BackendHost": {
+			"value": "127.0.0.1"
+		},
+		"BackendPort": {
+			"value": "9200"
 		}
 	},
 	"JobClasses": {

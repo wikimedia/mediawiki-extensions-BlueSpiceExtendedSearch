@@ -26,12 +26,12 @@ class Backend {
 	 */
 	protected $client = null;
 
-	public function __construct( $aConfig ) {
-		if( !isset( $aConfig['index'] ) ) {
-			$aConfig['index'] = wfWikiID();
+	public function __construct( $config ) {
+		if( !isset( $config['index'] ) ) {
+			$config['index'] = wfWikiID();
 		}
 
-		$this->config = new \HashConfig( $aConfig );
+		$this->config = new \HashConfig( $config );
 	}
 
 	/**
@@ -107,65 +107,39 @@ class Backend {
 
 	/**
 	 *
-	 * @var Backend[]
+	 * @var Backend
 	 */
-	protected static $backends = [];
+	protected static $backend;
 
 	/**
 	 *
-	 * @param string $backendKey
 	 * @return Backend
 	 */
-	public static function instance( $backendKey ) {
-		if( isset( self::$backends[$backendKey] ) ) {
-			return self::$backends[$backendKey];
+	public static function instance() {
+		if( isset( self::$backend ) ) {
+			return self::$backend;
 		}
 
-		self::$backends[$backendKey] = self::newFromConfig(
-			self::getConfigFromKey( $backendKey )
-		);
-
-		return self::$backends[$backendKey];
+		self::$backend = self::newInstance();
+		return self::$backend;
 	}
 
-	/**
-	 *
-	 * @param string $aConfig
-	 */
-	protected static function newFromConfig( $aConfig ) {
-		return ObjectFactory::getObjectFromSpec( $aConfig );
-	}
-
-	/**
-	 *
-	 * @return Backend[]
-	 */
-	public static function factoryAll() {
+	protected static function newInstance() {
 		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsgES' );
-		$backendConfigs = $config->get( 'Backends' );
 
-		foreach( $backendConfigs as $backendKey => $backendConfig ) {
-			self::instance( $backendKey );
-		}
+		$backendClass = $config->get( 'BackendClass' );
+		$backendHost = $config->get( 'BackendHost' );
+		$backendPort = $config->get( 'BackendPort' );
+		$sourceRegistry = new SourceRegistry();
+		$sources = $sourceRegistry->getAllSources();
 
-		return self::$backends;
-	}
-
-	/**
-	 *
-	 * @param sting $backendKey
-	 * @return array
-	 * @throws Exception
-	 */
-	protected static function getConfigFromKey( $backendKey ) {
-		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsgES' );
-		$backendConfigs = $config->get( 'Backends' );
-
-		if( !isset( $backendConfigs[$backendKey] ) ) {
-			throw new \Exception( "BACKEND: Key '$backendKey' not set in config!" );
-		}
-
-		return $backendConfigs[$backendKey];
+		return new $backendClass ( [
+			'connection' => [
+				'host' => $backendHost,
+				'port' => $backendPort
+			],
+			'sources' => $sources
+		] );
 	}
 
 	/**
