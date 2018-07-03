@@ -165,4 +165,26 @@
 	}
 
 	OO.initClass( bs.extendedSearch.mixin.AutocompleteCreatePageLink );
+
+	bs.extendedSearch.mixin.FullTextSearchButton = function( cfg ) {
+		cfg = cfg || {};
+
+		var cnt = this.$specialResults;
+		if( this.mobile || this.compact ) {
+			cnt = this.$primaryResults;
+		}
+
+		this.$fullTextButton = $( '<div>' )
+			.addClass( 'bs-extendedsearch-autocomplete-popup-fulltext-search-button' )
+			.append(
+				$( '<span>' )
+					.html( mw.message( 'bs-extendedsearch-autocomplete-fulltext-search-button' ).plain() )
+			);
+
+		cnt.append(
+			this.$fullTextButton
+		);
+	}
+
+	OO.initClass( bs.extendedSearch.mixin.FullTextSearchButton );
 } )( mediaWiki, jQuery, blueSpice, document );

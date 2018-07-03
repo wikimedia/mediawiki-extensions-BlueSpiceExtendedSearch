@@ -25,11 +25,6 @@
 							"skip_namespaces": [
 								8, 9, 10, 11, 14, 15
 							]
-						},
-						{
-							"another": [
-								"test"
-							]
 						}
 					]
 				},
@@ -188,7 +183,8 @@
 				"bs-extendedsearch-autocomplete-result-type",
 				"bs-extendedsearch-autocomplete-result-top-match-label",
 				"bs-extendedsearch-autocomplete-result-secondary-results-label",
-				"bs-extendedsearch-autocomplete-create-page-link"
+				"bs-extendedsearch-autocomplete-create-page-link",
+				"bs-extendedsearch-autocomplete-fulltext-search-button"
 			],
 			"dependencies": [
 				"ext.blueSpiceExtendedSearch.SearchBar"

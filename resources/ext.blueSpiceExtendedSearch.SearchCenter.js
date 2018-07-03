@@ -20,7 +20,8 @@
 				valueLabel: mw.message( 'bs-extendedsearch-search-center-filter-type-with-values-label' ).plain(),
 				hasHiddenLabelKey: 'bs-extendedsearch-search-center-filter-has-hidden',
 				id: 'type',
-				options: []
+				options: [],
+				group: 'root'
 			}
 		};
 
@@ -53,10 +54,11 @@
 			var rawFilter = rawFilters[filterId];
 			//TODO: Change this with some mechanism to get label keys
 			var labelFilterId = filterId.replace( '.', '-' );
-			var label = mw.message( 'bs-extendedsearch-search-center-filter-' + labelFilterId + '-label' ).plain();
-			var valueLabel = mw.message( 'bs-extendedsearch-search-center-filter-' + labelFilterId + '-with-values-label' ).plain();
+			var label = rawFilter.label || mw.message( 'bs-extendedsearch-search-center-filter-' + labelFilterId + '-label' ).plain();
+			var valueLabel = rawFilter.valueLabel || mw.message( 'bs-extendedsearch-search-center-filter-' + labelFilterId + '-with-values-label' ).plain();
 			var filter = {
 				label: label,
+				group: rawFilter.group || 'root',
 				filter: {
 					label: label,
 					valueLabel: valueLabel,

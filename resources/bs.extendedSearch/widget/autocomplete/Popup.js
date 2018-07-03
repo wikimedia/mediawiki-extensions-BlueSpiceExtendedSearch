@@ -9,6 +9,7 @@
 		this.namespaceId = cfg.namespaceId || 0;
 		this.displayLimits = cfg.displayLimits || {};
 		this.mobile = cfg.mobile || false;
+		this.searchForm = cfg.searchForm || {};
 
 		this.compact = cfg.compact || false;
 
@@ -20,6 +21,9 @@
 
 		bs.extendedSearch.mixin.AutocompleteResults.call( this, cfg );
 		bs.extendedSearch.mixin.AutocompleteCreatePageLink.call( this, cfg.pageCreateInfo );
+		bs.extendedSearch.mixin.FullTextSearchButton.call( this, {} );
+
+		this.$fullTextButton.on( 'click', this.onFullTextClick.bind( this ) );
 
 		this.$element.addClass( 'bs-extendedsearch-autocomplete-popup' );
 		if( this.compact ) {
@@ -35,6 +39,7 @@
 	OO.inheritClass( bs.extendedSearch.AutocompletePopup, OO.ui.Widget );
 	OO.mixinClass( bs.extendedSearch.AutocompletePopup, bs.extendedSearch.mixin.AutocompleteResults );
 	OO.mixinClass( bs.extendedSearch.AutocompletePopup, bs.extendedSearch.mixin.AutocompleteCreatePageLink );
+	OO.mixinClass( bs.extendedSearch.AutocompletePopup, bs.extendedSearch.mixin.FullTextSearchButton );
 
 	/**
 	 * Changes currently selected item.Used in navigation with up/down arrows
@@ -104,6 +109,10 @@
 		if( this.$secondaryResults.children().length > 0 ) {
 			this.$specialResults.append( this.$secondaryResultsLabel, this.$secondaryResults );
 		}
+	}
+
+	bs.extendedSearch.AutocompletePopup.prototype.onFullTextClick = function( e ) {
+		this.searchForm.submit();
 	}
 
 } )( mediaWiki, jQuery, blueSpice, document );

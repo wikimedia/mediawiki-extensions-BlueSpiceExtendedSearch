@@ -88,5 +88,6 @@
 	"bs-extendedsearch-source-type-repofile-label": "Local file",
 	"bs-extendedsearch-source-type-specialpage-label": "Special page",
 	"bs-extendedsearch-result-relevance-relevant": "This result is important for me",
-	"bs-extendedsearch-result-relevance-not-relevant": "This result is not important for me"
+	"bs-extendedsearch-result-relevance-not-relevant": "This result is not important for me",
+	"bs-extendedsearch-autocomplete-fulltext-search-button": "Full text search"
 }
