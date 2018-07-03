@@ -8,26 +8,24 @@ class Stats extends \ApiBase {
 	 *
 	 * @var \BS\ExtendedSearch\Backend
 	 */
-	protected $aBackends = [];
+	protected $backend = [];
 
 	public function execute() {
-		$oResult = $this->getResult();
-		$aStats = [];
+		$result = $this->getResult();
+		$stats = [];
 
-		$this->aBackends = \BS\ExtendedSearch\Backend::factoryAll();
-		
-		foreach( $this->aBackends as $sBackendKey => $oBackend ) {
-			try {
-				$aStats[ $sBackendKey ] = $this->makeBackendStats( $oBackend );
-			}
-			catch ( \Exception $ex ) {
-				$aStats[ $sBackendKey ] = [
-					'error' => $ex->getMessage()
-				];
-			}
-		}		
+		$this->backend = \BS\ExtendedSearch\Backend::instance();
 
-		$oResult->addValue( null , 'stats', $aStats );
+		try {
+			$stats = $this->makeBackendStats( $this->backend );
+		}
+		catch ( \Exception $ex ) {
+			$stats = [
+				'error' => $ex->getMessage()
+			];
+		}
+
+		$result->addValue( null , 'stats', $stats );
 	}
 
 	protected function getAllowedParams() {
@@ -54,30 +52,29 @@ class Stats extends \ApiBase {
 
 	/**
 	 *
-	 * @param \BS\ExtendedSearch\Backend $oBackend
 	 * @return array The stats
 	 */
-	protected function makeBackendStats( $oBackend ) {
-		$aStats = [
-			'all_documents_count' => $oBackend->getIndexByType( '*' )->count(),
+	protected function makeBackendStats( $bac ) {
+		$stats = [
+			'all_documents_count' => $this->backend->getIndexByType( '*' )->count(),
 			'sources' => []
 		];
-		$aSources = $oBackend->getSources();
+		$sources = $this->backend->getSources();
 
-		foreach( $aSources as $oSource ) {
-			$sTypeKey = $oSource->getTypeKey();
-			$aStats['sources'][$sTypeKey] = [
+		foreach( $sources as $source ) {
+			$typeKey = $source->getTypeKey();
+			$stats['sources'][$typeKey] = [
 				//give grep a chance to find:
 				//bs-extendedsearch-source-label-wikipage
 				//bs-extendedsearch-source-label-specialpage
 				//bs-extendedsearch-source-label-external
 				//bs-extendedsearch-source-label-repofile
-				'label' => wfMessage( 'bs-extendedsearch-source-label-' . $sTypeKey )->plain(),
-				'pending_update_jobs' => $oSource->getCrawler()->getNumberOfPendingJobs(),
-				'documents_count' => $oBackend->getIndexByType( $sTypeKey )->count()
+				'label' => wfMessage( 'bs-extendedsearch-source-label-' . $typeKey )->plain(),
+				'pending_update_jobs' => $source->getCrawler()->getNumberOfPendingJobs(),
+				'documents_count' => $this->backend->getIndexByType( $typeKey )->count()
 			];
 		}
 
-		return $aStats;
+		return $stats;
 	}
 }

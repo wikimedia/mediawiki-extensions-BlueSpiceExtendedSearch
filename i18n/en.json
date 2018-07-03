@@ -26,7 +26,7 @@
 	"bs-extendedsearch-source-label-specialpage": "Special page",
 	"bs-extendedsearch-source-label-repofile": "Upload file",
 	"bs-extendedsearch-source-label-user": "User",
-	"bs-extendedsearch-admin-heading-backend": "Backend \"$1\"",
+	"bs-extendedsearch-admin-heading-backend": "Local backend",
 	"bs-extendedsearch-admin-label-error": "Error",
 	"bs-extendedsearch-admin-label-all-documents-count": "Total number of documents in index",
 	"bs-extendedsearch-admin-heading-sources": "Sources",

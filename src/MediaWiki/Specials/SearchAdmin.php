@@ -11,36 +11,35 @@ class SearchAdmin extends \SpecialPage {
 	public function execute( $subPage ) {
 		$this->setHeaders();
 
-		$oDerivRequest = new \DerivativeRequest(
+		$derivRequest = new \DerivativeRequest(
 			$this->getRequest(),
 			[ 'action' => 'bs-extendedsearch-stats'	]
 		);
 
-		$api = new \ApiMain( $oDerivRequest );
+		$api = new \ApiMain( $derivRequest );
 		$api->execute();
-		$aData = $api->getResult()->getResultData();
+		$data = $api->getResult()->getResultData();
 
 		$this->getOutput()->addModuleStyles( 'ext.blueSpiceExtendedSearch.SearchAdmin.styles' );
-		$this->renderOverview( $aData );
+		$this->renderOverview( $data );
 	}
 
 	protected function getGroupName() {
 		return 'bluespice';
 	}
 
-	protected function renderOverview( $aData ) {
-		foreach( $aData['stats'] as $sBackendKey => $aBackedStats ) {
-			$this->getOutput()->addHTML( \Html::rawElement(
-				'h2',
-				[ 'class' => 'bs-es-admin-heading-backend' ],
-				$this->msg( 'bs-extendedsearch-admin-heading-backend', $sBackendKey )->plain()
-			) );
-			if( isset( $aBackedStats['error'] ) ) {
-				$this->renderError( $aBackedStats['error'] );
-			}
-			else {
-				$this->renderStats( $aBackedStats );
-			}
+	protected function renderOverview( $data ) {
+		$stats = $data['stats'];
+		$this->getOutput()->addHTML( \Html::rawElement(
+			'h2',
+			[ 'class' => 'bs-es-admin-heading-backend' ],
+			$this->msg( 'bs-extendedsearch-admin-heading-backend' )->plain()
+		) );
+		if( isset( $stats['error'] ) ) {
+			$this->renderError( $stats['error'] );
+		}
+		else {
+			$this->renderStats( $stats );
 		}
 	}
 
@@ -120,7 +119,7 @@ class SearchAdmin extends \SpecialPage {
 			'td',
 			[],
 			$aSourceStats['pending_update_jobs']
- 		) );		
+ 		) );
 
 		$this->getOutput()->addHTML( \Html::closeElement( 'tr' ) );
 	}
