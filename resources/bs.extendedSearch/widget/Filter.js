@@ -268,10 +268,11 @@
 
 	OO.inheritClass( bs.extendedSearch.FilterOptionsCheckboxWidget, OO.ui.CheckboxMultiselectInputWidget );
 
-	bs.extendedSearch.FilterOptionsCheckboxWidget.prototype.setOptions = function( options ) {
+	bs.extendedSearch.FilterOptionsCheckboxWidget.prototype.setOptionsData = function ( options ) {
 		var widget = this;
 
-		// Rebuild the checkboxMultiselectWidget menu
+		this.optionsDirty = true;
+
 		this.checkboxMultiselectWidget
 			.clearItems()
 			.addItems( options.map( function ( opt ) {
@@ -296,13 +297,7 @@
 					.addClass( 'bs-extendedsearch-filter-option' );
 				return item;
 			} ) );
-
-		// Re-set the value, checking the checkboxes as needed.
-		// This will also get rid of any stale options that we just removed.
-		this.setValue( this.getValue() );
-
-		return this;
-	}
+	};
 
 	bs.extendedSearch.FilterAndOrSwitch = function( cfg ) {
 		cfg = cfg || {};

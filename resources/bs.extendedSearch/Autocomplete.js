@@ -111,6 +111,7 @@
 		}
 
 		var popupCfg = {
+			searchForm: this.searchBar.$searchForm,
 			data: suggestions,
 			searchTerm: this.searchBar.value,
 			namespaceId: this.searchBar.namespace.id || 0,

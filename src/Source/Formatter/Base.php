@@ -203,4 +203,15 @@ class Base {
 			return true;
 		}
 	}
+
+	/**
+	 * Allows sources to modify filterCfg if needed
+	 *
+	 * @param array $aggs
+	 * @param array $filterCfg
+	 * @param bool $fieldsWithANDEnabled
+	 */
+	public function formatFilters( &$aggs, &$filterCfg, $fieldsWithANDEnabled = false ) {
+		return;
+	}
 }

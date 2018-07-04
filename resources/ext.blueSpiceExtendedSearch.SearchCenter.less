@@ -213,7 +213,34 @@ div#bs-es-results {
 }
 
 /*Add filter dialog - in OOUI Window manager*/
+.bs-extendedsearch-filter-add-dialog-group,
+.bs-extendedsearch-filter-add-dialog-group a,
 .bs-extendedsearch-filter-add-dialog-item,
 .bs-extendedsearch-filter-add-dialog-item a{
 	width: 100%;
 }
+
+
+.bs-extendedsearch-filter-add-dialog-group {
+	&.opened>a {
+		background-color: @results-featured-background-color !important;
+	}
+	.bs-extendedsearch-addfilter-group-items {
+		display: none;
+		a {
+			border: none !important;
+			border-bottom: 1px solid @results-featured-background-color !important;
+			&:last-of-type {
+				border:none !important;
+			}
+		}
+
+	}
+}
+
+.no-scroll {
+	overflow-y: hidden !important;
+}
+
+
+

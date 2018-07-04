@@ -478,7 +478,16 @@ class Backend {
 			->getAttribute( 'BlueSpiceExtendedSearchFieldsWithANDFilterEnabled' );
 
 		$aggs = $results->getAggregations();
+
 		$filterCfg = [];
+
+		//Let sources modify the filters if needed
+		foreach( $this->getSources() as $sourceKey => $source ) {
+			$formatter = $source->getFormatter();
+			$formatter->formatFilters( $aggs,$filterCfg, $fieldsWithANDEnabled );
+		}
+
+		//Ultimately, the Base formatter should handle this, but for now its here
 		foreach( $aggs as $filterName => $agg ) {
 			$fieldName = substr( $filterName, 6 );
 			$filterCfg[$fieldName] = [
@@ -494,7 +503,7 @@ class Backend {
 	}
 
 	/**
-	 * Gets predifined result structure from attribute
+	 * Gets predefined result structure from attribute
 	 *
 	 * @returns array
 	 */

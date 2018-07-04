@@ -27,6 +27,7 @@
 
 
 		this.$element.append( this.$header, /*this.$icon,*/ this.$type );
+		this.$element.on( 'click', this.onResultClick );
 
 		this.$element.addClass( 'bs-extendedsearch-autocomplete-popup-primary-item' );
 		if( this.score >= 7 ) {
@@ -37,5 +38,11 @@
 	OO.inheritClass( bs.extendedSearch.AutocompletePrimaryResult, OO.ui.Widget );
 	OO.mixinClass( bs.extendedSearch.AutocompletePrimaryResult, bs.extendedSearch.mixin.AutocompleteHeader );
 	OO.mixinClass( bs.extendedSearch.AutocompletePrimaryResult, bs.extendedSearch.mixin.AutocompleteHitType );
+
+	bs.extendedSearch.AutocompletePrimaryResult.prototype.onResultClick = function( e ) {
+		//Anchor may be custom one, coming from backend, so we cannot target more specifically
+		var anchor = $( e.target ).find( 'a' );
+		window.location = anchor.attr( 'href' );
+	}
 
 } )( mediaWiki, jQuery, blueSpice, document );

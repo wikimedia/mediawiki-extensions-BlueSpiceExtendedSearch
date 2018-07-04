@@ -88,5 +88,6 @@
 	"bs-extendedsearch-source-type-repofile-label": "Label for Local file source type",
 	"bs-extendedsearch-source-type-specialpage-label": "Label for Special page source type",
 	"bs-extendedsearch-result-relevance-relevant": "Tooltip text for button enabling users to increase relevance (score) of a result for them",
-	"bs-extendedsearch-result-relevance-not-relevant": "Tooltip text for button enabling users to decrease relevance (score) of a result for them"
+	"bs-extendedsearch-result-relevance-not-relevant": "Tooltip text for button enabling users to decrease relevance (score) of a result for them",
+	"bs-extendedsearch-autocomplete-fulltext-search-button": "Text for the button leading to SearchCenter special page - equivalent to user pressing enter key"
 }
