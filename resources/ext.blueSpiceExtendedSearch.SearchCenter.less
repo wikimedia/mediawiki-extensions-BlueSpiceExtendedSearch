@@ -26,29 +26,47 @@ div#bs-es-hitcount {
 
 /*Tools and filters*/
 div#bs-es-tools {
+	height: 32px;
+	background: #98a7c4;
+	clear: both;
+	padding-left:4px;
+	padding-right:4px;
 	&.bs-extendedsearch-tools-when-no-results {
 		margin-top: 15px;
 	}
 	div#bs-es-tools-tools {
-		margin-left: 20px;
+		padding: 5px;
 		display: inline-block;
 		min-width: 100px;
 		position: absolute;
 		right: 30px;
+		.bs-extendedsearch-filter-add-settings-button::before {
+			content: '\e994';
+			margin-left: 20px;
+			font-family: icomoon !important;
+			cursor: pointer;
+			font-size: 16px;
+			color: #ffffff;
+			position: relative;
+			display: inline-block;
+		}
+		.bs-extendedsearch-filter-add-download-button::before {
+			content: '\e95f';
+			margin-left: 20px;
+			font-family: icomoon !important;
+			cursor: pointer;
+			font-size: 16px;
+			color: #ffffff;
+			position: relative;
+			display: inline-block;
+		}
 	}
 
 	div#bs-es-tools-filters {
+		padding: 5px;
+		margin-left: 15px;
 		display: inline-block;
 		width: 90%;
-		.bs-extendedsearch-filter-add-widget-button {
-			/* @embed */
-			background: url(images/bs-btn-filter-add.png) 0 50% no-repeat;
-			background-position: 50% 50%;
-			background-size: contain;
-			background-repeat: no-repeat;
-			border:none !important; /*grr*/
-			background-color: transparent !important;
-		}
 		.bs-extendedsearch-filter-button-widget {
 			margin-right: 10px;
 			.bs-extendedsearch-filter-button-button {
@@ -93,6 +111,21 @@ div#bs-es-tools {
 				margin-top: 5px;
 			}
 		}
+		.bs-extendedsearch-filter-add-widget-button:before {
+			content: '\ea5b';
+			font-family: icomoon !important;
+			cursor: pointer;
+			font-size: 16px;
+			color: #ffffff;
+			position: relative;
+			display: inline-block;
+		}
+		.bs-extendedsearch-filter-add-widget-button {
+			margin-top: -2em; //can not override padding, so negative margin
+			border-style: none !important;
+			background-color: transparent !important;
+			font-weight: normal !important;
+		}
 	}
 	&.mobile {
 		div#bs-es-tools-filters {
@@ -103,7 +136,8 @@ div#bs-es-tools {
 
 /*Results*/
 div#bs-es-results {
-	margin-top: 5px;
+	padding-top: 5px;
+	background-color: @results-column-background-color;
 	.bs-extendedsearch-no-results,
 	.bs-extendedsearch-help {
 		text-align: center;
@@ -123,6 +157,8 @@ div#bs-es-results {
 		&.bs-extendedsearch-result-featured {
 			background-color: @results-featured-background-color;
 			min-height: @results-featured-content-height;
+			border: 1px solid #98a4c4;
+			border-radius: 3px;
 		}
 		.bs-extendedsearch-result-image {
 			width: 102px;
