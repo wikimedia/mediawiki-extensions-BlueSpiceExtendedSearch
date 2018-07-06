@@ -23,7 +23,7 @@
 		bs.extendedSearch.mixin.AutocompleteCreatePageLink.call( this, cfg.pageCreateInfo );
 		bs.extendedSearch.mixin.FullTextSearchButton.call( this, {} );
 
-		this.$fullTextButton.on( 'click', this.onFullTextClick.bind( this ) );
+		this.fullTextSearchButton.on( 'click', this.onFullTextClick.bind( this ) );
 
 		this.$element.addClass( 'bs-extendedsearch-autocomplete-popup' );
 		if( this.compact ) {

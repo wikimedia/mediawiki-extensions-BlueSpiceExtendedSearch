@@ -293,7 +293,8 @@ class Backend {
 		$search = new \Elastica\Search( $this->getClient() );
 		$search->addIndex( $this->config->get( 'index' ) . '_*' );
 
-		$spellcheck = $this->spellCheck( $lookup, $search );
+		$origQS = $lookup->getQueryString();
+		$origTerm = $origQS['query'];
 
 		$lookupModifiers = [];
 		foreach( $this->sources as $sourceKey => $source ) {
@@ -303,6 +304,8 @@ class Backend {
 		foreach( $lookupModifiers as $sLMKey => $lookupModifier ) {
 			$lookupModifier->apply();
 		}
+
+		$spellcheck = $this->spellCheck( $lookup, $search, $origTerm );
 
 		wfDebugLog(
 			'BSExtendedSearch',
@@ -345,9 +348,10 @@ class Backend {
 	 *
 	 * @param Lookup $lookup
 	 * @param \Elastica\Search $search
+	 * @param string $origTerm
 	 * @return array
 	 */
-	public function spellCheck( &$lookup, $search ) {
+	public function spellCheck( $lookup, $search, $origTerm ) {
 		$spellcheckResult = [
 			"action" => "ignore"
 		];
@@ -357,12 +361,8 @@ class Backend {
 			return $spellcheckResult;
 		}
 		$spellCheckConfig = $this->getSpellCheckConfig();
-		//How many hits would we have with search term as-is
-		$origQS = $lookup->getQueryString();
-		$origTerm = $origQS['query'];
 
-		$origTermLookup = new Lookup();
-		$origTermLookup->setQueryString( $origTerm );
+		$origTermLookup = $lookup;
 		$origHitCount = $search->count( $origTermLookup->getQueryDSL() );
 
 		//What is our best alternative
@@ -372,6 +372,7 @@ class Backend {
 
 		$suggestedTerm = [];
 		$suggestions = $suggestResults->getSuggests()[$spellCheckConfig['suggestField']];
+
 		foreach( $suggestions as $suggestion ) {
 			if( count( $suggestion['options'] ) == 0 ) {
 				//Word is already best it can be
@@ -383,14 +384,15 @@ class Backend {
 		}
 
 		$suggestedTerm = implode( ' ', $suggestedTerm );
-
 		if( $suggestedTerm == $origTerm ) {
 			return $spellcheckResult;
 		}
 
 		//How many results would our best alternative yield
-		$suggestLookup = new Lookup();
-		$suggestLookup->setQueryString( $suggestedTerm );
+		$suggestLookup = clone( $origTermLookup );
+		$suggestQueryString = $origTermLookup->getQueryString();
+		$suggestQueryString['query'] = preg_replace( '/' . $origTerm . '/', $suggestedTerm, $suggestQueryString['query'] );
+		$suggestLookup->setQueryString( $suggestQueryString );
 		$suggestedHitCount = $search->count( $suggestLookup->getQueryDSL() );
 
 		//Decide if we will replace original term with suggested one

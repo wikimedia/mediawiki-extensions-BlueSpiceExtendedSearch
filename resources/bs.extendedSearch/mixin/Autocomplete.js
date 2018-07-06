@@ -154,12 +154,15 @@
 			cnt = this.$primaryResults;
 		}
 
+		var termHtml = "<b class='bs-extendedsearch-autocomplete-create-page-link-term'>{term}</b>";
+		termHtml = termHtml.replace( '{term}', cfg.display_text );
+
 		cnt.append(
 			$( '<div>' )
 				.addClass( 'bs-extendedsearch-autocomplete-popup-create-page-link' )
 				.append(
 					$( '<a>' ).attr( 'href', cfg.full_url )
-					.html( mw.message( 'bs-extendedsearch-autocomplete-create-page-link', cfg.display_text ).parse() )
+					.html( mw.message( 'bs-extendedsearch-autocomplete-create-page-link', termHtml ).parse() )
 				)
 		);
 	}
@@ -174,15 +177,14 @@
 			cnt = this.$primaryResults;
 		}
 
-		this.$fullTextButton = $( '<div>' )
-			.addClass( 'bs-extendedsearch-autocomplete-popup-fulltext-search-button' )
-			.append(
-				$( '<span>' )
-					.html( mw.message( 'bs-extendedsearch-autocomplete-fulltext-search-button' ).plain() )
-			);
+		this.fullTextSearchButton = new OO.ui.ButtonWidget( {
+			label: mw.message( 'bs-extendedsearch-autocomplete-fulltext-search-button' ).plain(),
+			icon: 'search'
+		} );
+		this.fullTextSearchButton.$element.addClass( 'bs-extendedsearch-autocomplete-popup-fulltext-search-button' );
 
 		cnt.append(
-			this.$fullTextButton
+			this.fullTextSearchButton.$element
 		);
 	}
 
