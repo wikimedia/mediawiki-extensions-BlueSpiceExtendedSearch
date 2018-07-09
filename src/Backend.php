@@ -356,6 +356,11 @@ class Backend {
 			"action" => "ignore"
 		];
 
+		//Do not spellcheck regex
+		if( strpos( $origTerm, '/' ) === 0 && substr( $origTerm, -1 ) === '/' ) {
+			return $spellcheckResult;
+		}
+
 		if( $lookup->getForceTerm() ) {
 			$lookup->removeForceTerm();
 			return $spellcheckResult;
@@ -391,7 +396,8 @@ class Backend {
 		//How many results would our best alternative yield
 		$suggestLookup = clone( $origTermLookup );
 		$suggestQueryString = $origTermLookup->getQueryString();
-		$suggestQueryString['query'] = preg_replace( '/' . $origTerm . '/', $suggestedTerm, $suggestQueryString['query'] );
+		$escapedOrigTerm = str_replace( '/', '\/', $origTerm );
+		$suggestQueryString['query'] = preg_replace( '/' . $escapedOrigTerm . '/', $suggestedTerm, $suggestQueryString['query'] );
 		$suggestLookup->setQueryString( $suggestQueryString );
 		$suggestedHitCount = $search->count( $suggestLookup->getQueryDSL() );
 
