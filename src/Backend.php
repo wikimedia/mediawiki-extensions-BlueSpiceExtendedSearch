@@ -360,6 +360,9 @@ class Backend {
 		if( strpos( $origTerm, '/' ) === 0 && substr( $origTerm, -1 ) === '/' ) {
 			return $spellcheckResult;
 		}
+		if( strpos( $origTerm, '*' ) !== false ) {
+			return $spellcheckResult;
+		}
 
 		if( $lookup->getForceTerm() ) {
 			$lookup->removeForceTerm();
