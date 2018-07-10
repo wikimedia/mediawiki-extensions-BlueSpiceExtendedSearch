@@ -17,19 +17,19 @@
 
 		//Adds button that shows search options dialog
 		this.optionsButton = new OO.ui.ButtonWidget( {
-			icon: 'settings',
+			framed: false,
 			label: ''
 		} );
-
+		this.optionsButton.$element.addClass('bs-extendedsearch-filter-add-settings-button');
 		this.setSearchOptionsConfig();
 
 		this.optionsButton.$element.on( 'click', { options: this.searchOptionsConfig }, this.openOptionsDialog.bind( this ) );
 
 		this.exportButton = new OO.ui.ButtonWidget( {
-			icon: 'download',
+			framed: false,
 			label: ''
 		} );
-
+		this.exportButton.$element.addClass('bs-extendedsearch-filter-add-download-button');
 		this.exportButton.$element.on( 'click', this.showExportSearchDialog.bind( this ) );
 
 		$( '#bs-es-tools' ).append(
