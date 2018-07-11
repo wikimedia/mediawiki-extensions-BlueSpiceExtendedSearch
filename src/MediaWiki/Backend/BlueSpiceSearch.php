@@ -6,10 +6,17 @@ class BlueSpiceSearch extends \SearchEngine {
 	public function searchText( $term ) {
 		$oBackend = \BS\ExtendedSearch\Backend::instance();
 		$lookup = new \BS\ExtendedSearch\Lookup();
-		$lookup->setQueryString( $term );
+		$lookup->setQueryString([
+			'query' => $term,
+			'default_operator' => 'AND',
+			'fields' => ['source_content']
+		]);
+		$lookup->addTermsFilter( 'namespace', $this->namespaces );
 		$this->resultSet = $oBackend->runLookup( $lookup );
+
+		$searchResultSet = new SearchResultSet( $this->searchContainedSyntax( $term ) );
 		foreach ( $this->resultSet->results as $item ) {
-			$searchResultSet = new SearchResultSet( $this->searchContainedSyntax( $term ) );
+
 			if ( isset( $item['prefixed_title'] ) ) {
 				continue;
 			}
@@ -26,10 +33,17 @@ class BlueSpiceSearch extends \SearchEngine {
 	public function searchTitle( $term ) {
 		$oBackend = \BS\ExtendedSearch\Backend::instance();
 		$lookup = new \BS\ExtendedSearch\Lookup();
-		$lookup->setQueryString( $term );
+		$lookup->setQueryString([
+			'query' => $term,
+			'default_operator' => 'AND',
+			'fields' => ['basename']
+		]);
+		$lookup->addTermsFilter( 'namespace', $this->namespaces );
 		$this->resultSet = $oBackend->runLookup( $lookup );
+
+		$searchResultSet = new SearchResultSet( $this->searchContainedSyntax( $term ) );
 		foreach ( $this->resultSet->results as $item ) {
-			$searchResultSet = new SearchResultSet( $this->searchContainedSyntax( $term ) );
+
 			if ( empty( $item['prefixed_title'] ) ) {
 				continue;
 			}
