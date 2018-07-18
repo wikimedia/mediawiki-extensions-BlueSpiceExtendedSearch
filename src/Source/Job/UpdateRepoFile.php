@@ -37,12 +37,12 @@ class UpdateRepoFile extends UpdateTitleBase {
 	/**
 	 *
 	 * @return \File
-	 * @throws Exception
+	 * @throws \Exception
 	 */
 	protected function getFileRepoFile() {
 		$oFile = \RepoGroup::singleton()->findFile( $this->getTitle() );
 		if( $oFile === false ) {
-			throw new Exception( "File '{$this->getTitle()->getPrefixedDBkey()}' not found in any repo!" );
+			throw new \Exception( "File '{$this->getTitle()->getPrefixedDBkey()}' not found in any repo!" );
 		}
 		return $oFile;
 	}
