@@ -4,7 +4,6 @@ namespace BS\ExtendedSearch\Source;
 
 use BS\ExtendedSearch\Source\LookupModifier\BaseExtensionAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\BaseTagsAggregation;
-use BS\ExtendedSearch\Source\LookupModifier\BaseScoreSortWhenShould;
 use BS\ExtendedSearch\Source\LookupModifier\BaseAutocompleteSourceFields;
 use BS\ExtendedSearch\Source\LookupModifier\BaseSimpleQSFields;
 use BS\ExtendedSearch\Source\LookupModifier\BaseWildcarder;
@@ -86,7 +85,7 @@ class Base {
 	}
 
 	/**
-	 * @return BS\ExtendedSearch\Crawler\Base
+	 * @return \BS\ExtendedSearch\Source\Crawler\Base
 	 */
 	public function getCrawler() {
 		return new Crawler\Base( $this->oConfig );
@@ -113,7 +112,7 @@ class Base {
 	 * @param \BS\ExtendedSearch\Lookup
 	 * @param \IContextSource $oContext
 	 * @param string
-	 * @return BS\ExtendedSearch\Source\LookupModifier\Base[]
+	 * @return \BS\ExtendedSearch\Source\LookupModifier\Base[]
 	 */
 	public function getLookupModifiers( $oLookup, $oContext, $sType = LookupModifier::TYPE_SEARCH ) {
 		if( !isset( $this->lookupModifiers[$sType] ) ) {

@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
+use BS\ExtendedSearch\Source\Base;
+
 abstract class UpdateBase extends \Job {
 
 	protected $sBackendKey = 'local';
@@ -17,7 +19,7 @@ abstract class UpdateBase extends \Job {
 
 	/**
 	 *
-	 * @return \BS\ExtendedSearch\Source
+	 * @return Base
 	 * @throws \Exception
 	 */
 	protected function getSource() {
