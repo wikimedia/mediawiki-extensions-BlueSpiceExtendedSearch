@@ -197,17 +197,18 @@
 				hiddenCount = valuesCount - 2;
 			}
 
-			var messagizedValues = [];
+			var labeledValues = [];
 			for( var idx in values ) {
 				var value = values[idx];
-				var message = value;
-				if( mw.message( 'bs-extendedsearch-source-type-' + value + '-label' ).exists()  ) {
-					message = mw.message( 'bs-extendedsearch-source-type-' + value + '-label' ).plain();
+				for( var optionIdx in this.optionsCheckboxWidget.checkboxMultiselectWidget.items ) {
+					var option = this.optionsCheckboxWidget.checkboxMultiselectWidget.items[optionIdx];
+					if( option.data === value ) {
+						labeledValues.push( option.label );
+					}
 				}
-				messagizedValues.push( message );
 			}
 
-			label = this.valueLabel + messagizedValues.join( ', ' );
+			label = this.valueLabel + labeledValues.join( ', ' );
 			if( hiddenCount > 0 ) {
 				label += mw.message( this.hasHiddenLabelKey, hiddenCount ).parse();
 			}

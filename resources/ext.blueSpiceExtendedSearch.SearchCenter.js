@@ -72,7 +72,7 @@
 			for( var bucketIdx in rawFilter.buckets ) {
 				var bucket = rawFilter.buckets[bucketIdx];
 				filter.filter.options.push( {
-					label: bucket.key,
+					label: bucket.label || bucket.key,
 					data: bucket.key,
 					count: bucket.doc_count
 				} );
