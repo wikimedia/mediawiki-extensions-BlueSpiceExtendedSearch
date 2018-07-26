@@ -70,7 +70,10 @@ class Setup {
 			)
 		);
 
-		$template->set( 'bs_search_action', \SpecialPage::getTitleFor( 'SearchCenter' )->getLocalURL() );
+		$template->set(
+			'bs_search_action',
+			\SpecialPage::getTitleFor( 'BSSearchCenter' )->getLocalURL()
+		);
 		$template->set(
 			'bs_search_target',
 			[]
