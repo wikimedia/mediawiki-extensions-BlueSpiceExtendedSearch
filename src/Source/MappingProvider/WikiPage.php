@@ -38,6 +38,9 @@ class WikiPage extends DecoratorBase {
 			'categories' => [
 				'type' => 'keyword',
 				'copy_to' => 'congregated'
+			],
+			'tags' => [
+				'type' => 'keyword'
 			]
 		] );
 
