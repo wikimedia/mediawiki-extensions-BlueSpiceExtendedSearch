@@ -32,7 +32,8 @@ class WikiPage extends DecoratorBase {
 			'source_content' => $this->getTextContent( $oWikiPage ),
 			'rendered_content' => $this->getHTMLContent( $oWikiPage ),
 			'namespace' => $oWikiPage->getTitle()->getNamespace(),
-			'namespace_text' => $this->getNamespaceText( $oWikiPage )
+			'namespace_text' => $this->getNamespaceText( $oWikiPage ),
+			'tags' => $this->getTags( $oWikiPage )
 		] );
 
 		return $aDC;
@@ -112,5 +113,48 @@ class WikiPage extends DecoratorBase {
 		$sText = strip_tags( $sText );
 		$sText = preg_replace( '/<!--(.|\s)*?-->/', '', $sText );
 		return trim( $sText );
+	}
+
+	/**
+	 * Collects all tags that are present on page,
+	 * and are also registered with Parser
+	 *
+	 * @param type $oWikiPage
+	 * @return array
+	 */
+	protected function getTags( $oWikiPage ) {
+		$res = [];
+
+		$registeredTags = \MediaWiki\MediaWikiServices::getInstance()->getParser()->getTags();
+		$pageTags = $this->parseWikipageForTags( $oWikiPage );
+		foreach( $pageTags as $pageTag ) {
+			if( in_array( $pageTag, $registeredTags ) ) {
+				$res[] = $pageTag;
+			}
+		}
+		return $res;
+	}
+
+	/**
+	 *
+	 * @param type $oWikiPage
+	 * @return array
+	 */
+	protected function parseWikipageForTags( $oWikiPage ) {
+		$content = $oWikiPage->getContent();
+		if( $content instanceof \Content == false ) {
+			return [];
+		}
+		$text = $content->getNativeData();
+		$rawTags = [];
+		preg_match_all( '/<([^\/\s>]+)(\s|>|\/>)/', $text, $rawTags );
+		if( isset( $rawTags[1] ) ) {
+			if( is_array( $rawTags[1] ) == false ) {
+				return [ $rawTags[1] ];
+			}
+
+			return array_unique( $rawTags[1] );
+		}
+		return [];
 	}
 }
