@@ -49,13 +49,13 @@ class ResultRelevance {
 	public function getAllValuesForUser() {
 		$result = wfGetDB( DB_SLAVE )->select(
 			'bs_extendedsearch_relevance',
-			[ 'rel_result', 'rel_value' ],
+			[ 'esr_result', 'esr_value' ],
 			$this->queryConditions
 		);
 
 		$values = [];
 		foreach( $result as $row ) {
-			$values[$row->rel_result] = $row->rel_value;
+			$values[$row->esr_result] = $row->esr_value;
 		}
 
 		return $values;
@@ -75,7 +75,7 @@ class ResultRelevance {
 
 		$result = wfGetDB( DB_SLAVE )->selectRow(
 			'bs_extendedsearch_relevance',
-			[ 'rel_value' ],
+			[ 'esr_value' ],
 			$this->queryConditions
 		);
 
@@ -83,7 +83,7 @@ class ResultRelevance {
 			return 0;
 		}
 
-		return $result->rel_value;
+		return $result->esr_value;
 	}
 
 	/**
@@ -109,18 +109,18 @@ class ResultRelevance {
 				$result = $dbw->insert(
 					'bs_extendedsearch_relevance',
 					[
-						'rel_user' => $this->user->getId(),
-						'rel_result' => $this->resultId,
-						'rel_value' => $this->value,
-						'rel_timestamp' => wfTimestamp( TS_UNIX )
+						'esr_user' => $this->user->getId(),
+						'esr_result' => $this->resultId,
+						'esr_value' => $this->value,
+						'esr_timestamp' => wfTimestamp( TS_UNIX )
 					]
 				);
 			} else {
 				$result = $dbw->update(
 					'bs_extendedsearch_relevance',
 					[
-						'rel_value' => $this->value,
-						'rel_timestamp' => wfTimestamp( TS_UNIX )
+						'esr_value' => $this->value,
+						'esr_timestamp' => wfTimestamp( TS_UNIX )
 					],
 					$this->queryConditions
 				);
@@ -132,10 +132,10 @@ class ResultRelevance {
 
 	protected function setConditions() {
 		$this->queryConditions = [
-			'rel_user' => $this->user->getId()
+			'esr_user' => $this->user->getId()
 		];
 		if( $this->resultId ) {
-			$this->queryConditions['rel_result'] = $this->resultId;
+			$this->queryConditions['esr_result'] = $this->resultId;
 		}
 	}
 }

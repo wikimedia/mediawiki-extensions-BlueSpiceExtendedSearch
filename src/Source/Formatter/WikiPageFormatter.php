@@ -46,8 +46,8 @@ class WikiPageFormatter extends Base {
 	}
 
 	protected function addAnchorAndImageUri( &$result ) {
-		$title = \Title::makeTitle( $result['namespace'], $result['basename'] );
-		if( $title instanceof \Title ) {
+		$title = \Title::newFromText( $result['prefixed_title'] );
+		if( $title instanceof \Title && $title->getNamespace() == $result['namespace'] ) {
 			$result['page_anchor'] = $this->getPageAnchor( $title, $result['display_text'] );
 			if( $title->exists() ) {
 				$result['image_uri'] = $this->getImageUri( $result['prefixed_title'], 150 );

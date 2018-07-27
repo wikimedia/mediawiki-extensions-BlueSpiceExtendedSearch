@@ -5,22 +5,27 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 class WikiPageUserPreferences extends Base {
 
 	public function apply() {
-		$aOptions = $this->oContext->getUser()->getOptions();
+		$options = $this->oContext->getUser()->getOptions();
 
-		foreach( $aOptions as $sOptionName => $mOptionValue ) {
-			if( strpos( $sOptionName, 'searchNs' ) !== 0 ) {
+		$namespacesToBoost = [];
+		foreach( $options as $optionName => $optionValue ) {
+			if( strpos( $optionName, 'searchNs' ) !== 0 ) {
 				continue;
 			}
-			if( $mOptionValue === false ) {
+			if( $optionValue === false ) {
 				continue;
 			}
 
-			$iNSid = (int)substr( $sOptionName, strlen( 'searchNs' ) );
-			$oTitle = \Title::makeTitle( $iNSid, 'Dummy' );
+			$nsId = (int)substr( $optionName, strlen( 'searchNs' ) );
+			$oTitle = \Title::makeTitle( $nsId, 'Dummy' );
 			if( $oTitle->userCan( 'read' ) ) {
-				//Boost results in "default" namespaces
-				$this->oLookup->addShouldMatch( 'namespace', $iNSid, 4 );
+				$namespacesToBoost[] = $nsId;
 			}
+		}
+
+		if( !empty( $namespacesToBoost ) ) {
+			//TODO: Fine-tune boost number
+			$this->oLookup->addShouldTerms( 'namespace', $namespacesToBoost, 6, true );
 		}
 	}
 

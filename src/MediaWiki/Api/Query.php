@@ -29,6 +29,7 @@ class Query extends \ApiBase {
 		$value = parent::getParameterFromSettings( $paramName, $paramSettings, $parseLimit );
 		if ( $paramName === 'q' ) {
 			$decodedValue = \FormatJson::decode( $value, true );
+
 			$oLookup = new \BS\ExtendedSearch\Lookup();
 			if( is_array( $decodedValue ) ) {
 				$oLookup = new \BS\ExtendedSearch\Lookup( $decodedValue );

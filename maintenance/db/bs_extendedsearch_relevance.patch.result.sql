@@ -1,0 +1,1 @@
+ALTER TABLE /*$wgDBprefix*/bs_extendedsearch_relevance CHANGE COLUMN `rel_result` `esr_result` VARCHAR (100) NOT NULL;

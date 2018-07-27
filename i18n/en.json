@@ -89,5 +89,7 @@
 	"bs-extendedsearch-source-type-specialpage-label": "Special page",
 	"bs-extendedsearch-result-relevance-relevant": "This result is important for me",
 	"bs-extendedsearch-result-relevance-not-relevant": "This result is not important for me",
-	"bs-extendedsearch-autocomplete-fulltext-search-button": "Full text search"
+	"bs-extendedsearch-autocomplete-fulltext-search-button": "Full text search",
+	"prefs-extendedsearch": "Extended search",
+	"bs-extendedsearch-user-preferred-namespaces": "Preferred namespaces"
 }

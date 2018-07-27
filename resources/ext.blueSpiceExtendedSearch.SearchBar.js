@@ -24,6 +24,9 @@
 			cfg.inputId = cfg.inputId || 'bs-extendedsearch-input';
 		}
 
+		this.typingTimer = null;
+		this.typingDoneInterval = cfg.typingDoneInterval || 500;
+
 		this.$searchContainer = $( '#' + cfg.cntId );
 		this.$searchForm = this.$searchContainer.find( 'form' );
 		this.$searchBox = $( '#' + cfg.inputId );
@@ -182,7 +185,12 @@
 			return;
 		}
 
-		this.changeValue( value );
+		//Fire value change only after user has finished
+		//typing - to avoid sending requests mid-typing
+		clearTimeout( this.typingTimer );
+		this.typingTimer = setTimeout( function() {
+			this.changeValue( value );
+		}.bind( this ), this.typingDoneInterval );
 	}
 
 	bs.extendedSearch.SearchBar.prototype.onKeyDown = function( e ) {

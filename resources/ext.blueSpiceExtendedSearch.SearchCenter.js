@@ -215,7 +215,7 @@
 		resultsPanel.showLoading();
 
 		var queryData = bs.extendedSearch.utils.getFragment();
-		if( $.isEmptyObject( queryData ) ) {
+		if( $.isEmptyObject( queryData ) || searchBar.$searchBox.val() === '' ) {
 			resultsPanel.removeLoading();
 			resultsPanel.showHelp();
 			return;

@@ -107,7 +107,11 @@
 		"ResourceLoaderTestModules": "BS\\ExtendedSearch\\Setup::onResourceLoaderTestModules",
 		"SkinTemplateOutputPageBeforeExec": "BS\\ExtendedSearch\\Setup::onSkinTemplateOutputPageBeforeExec",
 		"BeforePageDisplay": "BS\\ExtendedSearch\\Setup::onBeforePageDisplay",
-		"LoadExtensionSchemaUpdates": "BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddRelevanceTable::callback"
+		"LoadExtensionSchemaUpdates":  [
+			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddRelevanceTable::callback",
+			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddHistoryTable::callback"
+		],
+		"GetPreferences": "BS\\ExtendedSearch\\Hook\\GetPreferences\\AddUserPreferredNamespaces::callback"
 	},
 	"SpecialPages": {
 		"BSSearchCenter": "BS\\ExtendedSearch\\MediaWiki\\Specials\\SearchCenter",
@@ -281,6 +285,9 @@
 		},
 		"BackendPort": {
 			"value": "9200"
+		},
+		"EnableSearchHistoryTracking": {
+			"value": true
 		}
 	},
 	"JobClasses": {

@@ -19,11 +19,26 @@ class WikiPageNamespacePrefixResolver extends Base {
 	 */
 	protected $title = null;
 
+	/**
+	 *
+	 * @var string
+	 */
+	protected $titleText = '';
+
+	/**
+	 *
+	 * @var boolean
+	 */
+	protected $explicitlyMain = false;
+
 	public function apply() {
 		if( !$this->setSimpleQS() ) {
 			return;
 		}
+
+		$this->setIsExlicitQueryOfNS_MAIN();
 		$this->setTitle();
+
 		if( $this->doesNotApply() ) {
 			return;
 		}
@@ -33,30 +48,33 @@ class WikiPageNamespacePrefixResolver extends Base {
 
 	protected function setSimpleQS() {
 		$aQueryString = $this->oLookup->getQueryString();
-		if( !$aQueryString ) {
+		if( !isset( $aQueryString['query'] ) ) {
 			return null;
 		}
 		$this->simpleQS = $aQueryString;
+		return true;
+	}
+
+	protected function setIsExlicitQueryOfNS_MAIN() {
+		$this->titleText = $this->simpleQS['query'];
+		if( strpos( $this->titleText, ':' ) === 0 ) {
+			$this->titleText = substr( $this->titleText, 1 );
+			$this->explicitlyMain = true;
+		}
 	}
 
 	protected function setTitle() {
-		$this->title = \Title::newFromText( $this->simpleQS['query'] );
+		$this->title = \Title::newFromText( $this->titleText );
 	}
 
 	protected function doesNotApply() {
 		if( $this->title instanceof \Title === false ) {
 			return true;
 		}
-		if( $this->notAnExplicitQueryOfNS_MAIN() ) {
+
+		if( $this->title->getNamespace() === NS_MAIN && !$this->explicitlyMain ) {
 			return true;
 		}
-	}
-
-	protected function notAnExplicitQueryOfNS_MAIN() {
-		$sStartsWithColon = strpos( $this->simpleQS['query'], ':') === 0;
-		$titleInMAIN = $this->title->getNamespace() === NS_MAIN;
-
-		return $titleInMAIN && !$sStartsWithColon;
 	}
 
 	protected function resetNamespaceFilter() {

@@ -7,6 +7,9 @@ use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 use Wikimedia\ObjectFactory;
 
 class Backend {
+	const SPELLCHECK_ACTION_IGNORE = 'ignore';
+	const SPELLCHECK_ACTION_SUGGEST = 'suggest';
+	const SPELLCHECK_ACTION_REPLACED = 'replaced';
 
 	/**
 	 *
@@ -305,8 +308,6 @@ class Backend {
 			$lookupModifier->apply();
 		}
 
-		$spellcheck = $this->spellCheck( $lookup, $search, $origTerm );
-
 		wfDebugLog(
 			'BSExtendedSearch',
 			'Query by ' . $this->getContext()->getUser()->getName() . ': '
@@ -314,6 +315,7 @@ class Backend {
 		);
 
 		try {
+			$spellcheck = $this->spellCheck( $lookup, $search, $origTerm );
 			$results = $search->search( $lookup->getQueryDSL() );
 		} catch( \RuntimeException $ex ) {
 			$ret = new \stdClass();
@@ -329,12 +331,33 @@ class Backend {
 			$lookupModifier->undo();
 		}
 
+		$totalApproximated = $lookup->getSize() > $this->getTotal( $results ) ? false : true;
+
 		$formattedResultSet = new \stdClass();
 		$formattedResultSet->results = $this->formatResults( $results, $lookup );
 		$formattedResultSet->total = $this->getTotal( $results );
 		$formattedResultSet->filters = $this->getFilterConfig( $results );
 		$formattedResultSet->spellcheck = $spellcheck;
-		$formattedResultSet->total_approximated = $lookup->getSize() > $this->getTotal( $results ) ? 0 : 1;
+		$formattedResultSet->total_approximated = $totalApproximated ? 1 : 0;
+
+		if( $this->isHistoryTrackingEnabled() ) {
+			$searchHistoryInfo = [
+				'user' => $this->getContext()->getUser()->getId(),
+				'term' => $origTerm,
+				'total' => $this->getTotal( $results ),
+				'total_approximated' => $totalApproximated,
+				'lookup' => $lookup,
+				'timestamp' => wfTimestamp( TS_MW ),
+				'autocorrected' => false
+			];
+
+			if( $spellcheck['action'] == static::SPELLCHECK_ACTION_REPLACED ) {
+				$searchHistoryInfo['term'] = $spellcheck['alternative']['term'];
+				$searchHistoryInfo['autocorrected'] = true;
+			}
+
+			$this->logSearchHistory( $searchHistoryInfo );
+		}
 
 		return $formattedResultSet;
 	}
@@ -353,7 +376,7 @@ class Backend {
 	 */
 	public function spellCheck( $lookup, $search, $origTerm ) {
 		$spellcheckResult = [
-			"action" => "ignore"
+			"action" => static::SPELLCHECK_ACTION_IGNORE
 		];
 
 		//Do not spellcheck regex
@@ -431,7 +454,7 @@ class Backend {
 			} else if ( $percent < $spellCheckConfig['suggestThreshold'] ) {
 				//If alternative has siginificatly more results, but not so much
 				//that we can definitely decide its a typo, just suggest the alternative
-				$spellcheckResult['action'] = 'suggest';
+				$spellcheckResult['action'] = static::SPELLCHECK_ACTION_SUGGEST;
 			}
 		}
 
@@ -439,7 +462,7 @@ class Backend {
 			$origQS['query'] = $suggestedTerm;
 			$lookup->setQueryString( $origQS );
 
-			$spellcheckResult['action'] = 'replaced';
+			$spellcheckResult['action'] = static::SPELLCHECK_ACTION_REPLACED;
 		}
 
 		return $spellcheckResult;
@@ -556,5 +579,28 @@ class Backend {
 			return MediaWikiServices::getInstance()->getService( $name );
 		}
 		return null;
+	}
+
+	protected function isHistoryTrackingEnabled() {
+		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsgES' );
+		return $config->get( 'EnableSearchHistoryTracking' );
+	}
+
+	protected function logSearchHistory( $data ) {
+		$loadBalancer = MediaWikiServices::getInstance()->getDBLoadBalancer();
+		$dbw = $loadBalancer->getConnection( DB_MASTER );
+
+		$dbw->insert(
+			'bs_extendedsearch_history',
+			[
+				'esh_user' => $data['user'],
+				'esh_term' => strtolower( $data['term'] ),
+				'esh_hits' => $data['total'],
+				'esh_hits_approximated' => $data['total_approximated'] ? 1 : 0,
+				'esh_timestamp' => $data['timestamp'],
+				'esh_autocorrected' => $data['autocorrected'] ? 1 : 0,
+				'esh_lookup' => serialize( $data['lookup'] )
+			]
+		);
 	}
 }
