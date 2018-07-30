@@ -117,7 +117,7 @@
 
 		this.notRelevantButton.$element.on( 'click', this.onNotRelevant.bind( this ) );*/
 
-		this.$relevanceControl.append( this.relevantButton.$element, /*this.notRelevantButton.$element*/ );
+		this.$relevanceControl.append( this.relevantButton.$element /*, this.notRelevantButton.$element*/ );
 	}
 
 	OO.initClass( bs.extendedSearch.mixin.ResultRelevanceControl );
