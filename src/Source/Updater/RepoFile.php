@@ -2,11 +2,14 @@
 
 namespace BS\ExtendedSearch\Source\Updater;
 
+use BS\ExtendedSearch\Source\Job\UpdateTitleBase;
+
 class RepoFile extends Base {
 	public function init( &$aHooks ) {
 		$aHooks['FileUpload'][] = array( $this, 'onFileUpload' );
 		$aHooks['FileDeleteComplete'][] = array( $this, 'onFileDeleteComplete' );
 		$aHooks['FileUndeleteComplete'][] = array( $this, 'onFileUndeleteComplete' );
+		$aHooks['TitleMove'][] = array( $this, 'onTitleMove' );
 		$aHooks['TitleMoveComplete'][] = array( $this, 'onTitleMoveComplete' );
 
 		parent::init( $aHooks );
@@ -36,7 +39,9 @@ class RepoFile extends Base {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onFileDeleteComplete( $oFile, $oOldimage, $oArticle, $oUser, $sReason ) {
-		throw new \Exception( 'Not implemented yet!' );
+		\JobQueueGroup::singleton()->push(
+			new \BS\ExtendedSearch\Source\Job\UpdateRepoFile( $oFile->getTitle(), [ 'file' => $oFile ] )
+		);
 		return true;
 	}
 
@@ -49,8 +54,26 @@ class RepoFile extends Base {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onFileUndeleteComplete( $oTitle, $aFileVersions, $oUser, $sReason ) {
-		throw new \Exception( 'Not implemented yet!' );
+		\JobQueueGroup::singleton()->push(
+			new \BS\ExtendedSearch\Source\Job\UpdateRepoFile( $oTitle )
+		);
 		return true;
+	}
+
+	/**
+	 * Holds instance of file before its moved
+	 *
+	 * @var \File
+	 */
+	protected $titleMoveOrigFile;
+
+	public function onTitleMove( $title, $newtitle, $user )  {
+		if( $title->getNamespace() !== NS_FILE ) {
+			return true;
+		}
+
+		$file = \RepoGroup::singleton()->findFile( $title );
+		$this->titleMoveOrigFile = $file;
 	}
 
 	/**
@@ -62,8 +85,25 @@ class RepoFile extends Base {
 	 * @param int $iNewID ID of the newly created redirect.
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
-	public function onTitleMoveComplete( &$oTitle, &$oNewtitle, &$oUser, $iOldID, $iNewID ) {
-		throw new \Exception( 'Not implemented yet!' );
+	public function onTitleMoveComplete( &$oTitle, &$oNewtitle, $oUser, $iOldID, $iNewID ) {
+		if( $oTitle->getNamespace() !== NS_FILE ) {
+			return true;
+		}
+
+		$oldFile = new \LocalFile( $oTitle, \RepoGroup::singleton()->getLocalRepo() );
+		\JobQueueGroup::singleton()->push(
+			new \BS\ExtendedSearch\Source\Job\UpdateRepoFile(
+				$oTitle,
+				[
+					'file' => $this->titleMoveOrigFile,
+					'action' => \BS\ExtendedSearch\Source\Job\UpdateRepoFile::ACTION_DELETE
+				]
+			)
+		);
+
+		\JobQueueGroup::singleton()->push(
+			new \BS\ExtendedSearch\Source\Job\UpdateRepoFile( $oNewtitle )
+		);
 		return true;
 	}
 }

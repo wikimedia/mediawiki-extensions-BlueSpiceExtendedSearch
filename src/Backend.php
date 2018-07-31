@@ -195,6 +195,8 @@ class Backend {
 				//Neccessary if more than one type has a 'attachment' field from 'mapper-attachments'
 				'update_all_types' => ''
 			] );
+
+			$source->runAdditionalSetupRequests( $this->getClient() );
 		}
 	}
 

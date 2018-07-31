@@ -14,6 +14,9 @@
 		"BlueSpiceFoundation": {
 			"AdminToolRegistry": {
 				"bs-extended-search": "BS\\ExtendedSearch\\AdminTool"
+			},
+			"RunJobsTriggerHandlerRegistry": {
+				"bs-extendedsearch-update-external-files": "BS\\ExtendedSearch\\Source\\Updater\\ExternalFile::factory"
 			}
 		},
 		"BlueSpiceExtendedSearch": {
@@ -33,6 +36,9 @@
 				},
 				"repofile": {
 					"class": "BS\\ExtendedSearch\\Source\\RepoFiles"
+				},
+				"externalfile": {
+					"class": "BS\\ExtendedSearch\\Source\\ExternalFiles"
 				}
 			},
 			"DefaultResultStructure": {
@@ -288,6 +294,9 @@
 		},
 		"EnableSearchHistoryTracking": {
 			"value": true
+		},
+		"ExternalFilePaths": {
+			"value": {}
 		}
 	},
 	"JobClasses": {

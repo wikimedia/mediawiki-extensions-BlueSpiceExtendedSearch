@@ -160,6 +160,10 @@ class Base {
 		];
 	}
 
+	public function runAdditionalSetupRequests( \Elastica\Client $client ) {
+		return;
+	}
+
 	/**
 	 *
 	 * @param array $aDocumentConfigs
@@ -197,7 +201,15 @@ class Base {
 			$aDocs[] = new \Elastica\Document( $sDocumentId );
 		}
 
-		$oResult = $oElasticaIndex->deleteDocuments( $aDocs );
+		// Calling \Elastica\Client::deleteDocuments() does not set the type,
+		// causing request to fail
+		$bulk = new \Elastica\Bulk( $oElasticaIndex->getClient() );
+		$bulk->setIndex( $oElasticaIndex->getName() );
+		$bulk->setType( $this->getTypeKey() );
+		$bulk->addDocuments( $aDocs, \Elastica\Bulk\Action::OP_TYPE_DELETE );
+
+		$oResult = $bulk->send();
+
 		if( !$oResult->isOk() ) {
 			wfDebugLog(
 				'BSExtendedSearch',

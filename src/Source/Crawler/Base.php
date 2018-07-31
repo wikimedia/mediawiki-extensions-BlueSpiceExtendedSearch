@@ -36,7 +36,6 @@ class Base {
 		}
 
 		$oJob = new $this->sJobClass( $oTitle, $aParams );
-
 		\JobQueueGroup::singleton()->push( $oJob );
 		return $oJob;
 	}

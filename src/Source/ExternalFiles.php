@@ -3,7 +3,6 @@
 namespace BS\ExtendedSearch\Source;
 
 class ExternalFiles extends DecoratorBase {
-
 	/**
 	 *
 	 * @return \BS\ExtendedSearch\Source\Crawler\ExternalFile
@@ -30,5 +29,40 @@ class ExternalFiles extends DecoratorBase {
 		return new MappingProvider\File(
 			$this->oDecoratedSource->getMappingProvider()
 		);
+	}
+
+	public function getFormatter() {
+		return new Formatter\ExternalFileFormatter( $this );
+	}
+
+	/**
+	 *
+	 * @param array $aDocumentConfigs
+	 * @return \Elastica\Bulk\ResponseSet
+	 */
+	public function addDocumentsToIndex( $aDocumentConfigs ) {
+		$oElasticaIndex = $this->getBackend()->getIndexByType( $this->getTypeKey() );
+		$oType = $oElasticaIndex->getType( $this->getTypeKey() );
+		$aDocs = [];
+		foreach( $aDocumentConfigs as $aDC ) {
+			$document = new \Elastica\Document( $aDC['id'], $aDC );
+			$aDocs[] = $document;
+		}
+
+		$bulk = new \Elastica\Bulk( $oElasticaIndex->getClient() );
+		$bulk->setType( $oType );
+		$bulk->setRequestParam( 'pipeline', 'file_data' );
+		$bulk->addDocuments( $aDocs );
+		$oResult = $bulk->send();
+
+		if( !$oResult->isOk() ) {
+			wfDebugLog(
+				'BSExtendedSearch',
+				"Adding documents failed: {$oResult->getError()}"
+			);
+		}
+		$oElasticaIndex->refresh();
+
+		return $oResult;
 	}
 }

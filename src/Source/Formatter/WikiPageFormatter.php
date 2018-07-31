@@ -152,7 +152,7 @@ class WikiPageFormatter extends Base {
 				continue;
 			}
 
-			//Dont show namespace part if user is already searching in particular NS
+			//Do not show namespace part if user is already searching in particular NS
 			if( $result['namespace'] != $searchData['namespace'] || $searchData['namespace'] === 0 ) {
 				$result['display_text'] = $result['prefixed_title'];
 			} else {
