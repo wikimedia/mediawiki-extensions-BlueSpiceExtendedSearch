@@ -82,7 +82,7 @@
 
 	//Close popup on click outside of it
 	function _onWindowClick( e ) {
-		if( $.contains( this.searchBar.$searchContainer[0], e.target ) ) {
+		if( this.searchBar.$searchContainer[0] && $.contains( this.searchBar.$searchContainer[0], e.target ) ) {
 			return;
 		}
 		this.removePopup();
