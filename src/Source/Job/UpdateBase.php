@@ -5,6 +5,10 @@ namespace BS\ExtendedSearch\Source\Job;
 use BS\ExtendedSearch\Source\Base;
 
 abstract class UpdateBase extends \Job {
+	const ACTION_DELETE = 'delete';
+	const ACTION_UPDATE = 'update';
+
+	protected $action = self::ACTION_UPDATE;
 
 	protected $sBackendKey = 'local';
 	protected $sSourceKey = '';

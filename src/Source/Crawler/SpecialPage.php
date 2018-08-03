@@ -6,8 +6,8 @@ class SpecialPage extends Base {
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateSpecialPage';
 
 	public function crawl() {
-		$aCononicalNames = \SpecialPageFactory::getNames();
-		foreach( $aCononicalNames as $sCanonicalName ) {
+		$aCanonicalNames = \SpecialPageFactory::getNames();
+		foreach( $aCanonicalNames as $sCanonicalName ) {
 			$this->addToJobQueue( \SpecialPage::getTitleFor( $sCanonicalName ) );
 		}
 	}

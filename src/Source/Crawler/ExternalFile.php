@@ -6,29 +6,31 @@ class ExternalFile extends Base {
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateExternalFile';
 
 	public function crawl() {
-		$oDummyTitle = \Title::makeTitle( NS_SPECIAL, 'Dummy title for external file' );
+		$dummyTitle = \Title::makeTitle( NS_SPECIAL, 'Dummy title for external file' );
 
-		$sPaths = $this->oConfig->get( 'paths' );
-		foreach( $sPaths as $sSourcePath => $sUriPrefix ) {
-			$oSourcePath = new \SplFileInfo( $sSourcePath );
+		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsgES' );
+		$paths = $config->get( 'ExternalFilePaths' );
 
-			$aFiles = new \RecursiveIteratorIterator(
-				new \RecursiveDirectoryIterator( $oSourcePath->getPathname(),
+		foreach( $paths as $sourcePath => $uriPrefix ) {
+			$sourceFileInfo = new \SplFileInfo( $sourcePath );
+
+			$files = new \RecursiveIteratorIterator(
+				new \RecursiveDirectoryIterator( $sourceFileInfo->getPathname(),
 					\RecursiveDirectoryIterator::SKIP_DOTS
 				),
 				\RecursiveIteratorIterator::SELF_FIRST
 			);
 
-			foreach( $aFiles as $oFile ) {
-				$oFile instanceof \SplFileInfo;
-				if( $oFile->isDir() ) {
+			foreach( $files as $file ) {
+				$file instanceof \SplFileInfo;
+				if( $file->isDir() ) {
 					continue;
 				}
 
-				$this->addToJobQueue( $oDummyTitle, [
+				$this->addToJobQueue( $dummyTitle, [
 					'source' => $this->oConfig->get( 'sourcekey' ),
-					'src' => $oFile->getPathname(),
-					'dest' => $this->makeDestFileName( $sUriPrefix, $oFile, $oSourcePath )
+					'src' => $file->getPathname(),
+					'dest' => $this->makeDestFileName( $uriPrefix, $file, $sourceFileInfo )
 				] );
 			}
 		}
@@ -41,7 +43,7 @@ class ExternalFile extends Base {
 	 * @param \SplFileInfo $oSourcePath
 	 */
 	protected function makeDestFileName( $sUriPrefix, $oFile, $oSourcePath ) {
-		$sRelativePath = preg_replace( "#^{$oSourcePath->getPathname()}#", '', $oFile->getPathname() );
+		$sRelativePath = str_replace( $oSourcePath->getPathname(), '', $oFile->getPathname() );
 		return "$sUriPrefix/$sRelativePath";
 	}
 }

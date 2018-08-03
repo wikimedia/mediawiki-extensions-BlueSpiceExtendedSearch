@@ -13,6 +13,7 @@ class FileFormatter extends Base {
 		parent::format( $result, $resultObject );
 
 		$result['image_uri'] = $this->getImage( $result );
+		$result['highlight'] = $this->getHighlight( $resultObject );
 	}
 
 	protected function getImage( $result ) {
@@ -23,9 +24,6 @@ class FileFormatter extends Base {
 		}
 
 		$extension = $result['extension'];
-
-		//Is there a centralized place to get file icons, so
-		//that those dont have to come with this extension?
 		$fileIcons = \ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchFileIcons' );
 
@@ -38,10 +36,19 @@ class FileFormatter extends Base {
 	public function getResultStructure ( $defaultResultStructure = [] ) {
 		$resultStructure = $defaultResultStructure;
 		$resultStructure['imageUri'] = "image_uri";
+		$resultStructure['highlight'] = "highlight";
 
 		//All fields under "featured" key will only appear is result is featured
 		$resultStructure['featured']['imageUri'] = "image_uri";
 
 		return $resultStructure;
+	}
+
+	protected function getHighlight( $resultObject ) {
+		$highlights = $resultObject->getHighlights();
+		if( isset( $highlights['attachment.content'] ) ) {
+			return implode( ' ', $highlights['attachment.content'] );
+		}
+		return '';
 	}
 }
