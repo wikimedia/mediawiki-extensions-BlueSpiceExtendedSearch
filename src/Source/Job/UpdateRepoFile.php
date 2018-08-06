@@ -25,7 +25,7 @@ class UpdateRepoFile extends UpdateTitleBase {
 
 	protected function getDocumentProviderUri() {
 		$this->setFileRepoFile();
-		return $this->file->getFullUrl();
+		return $this->file->getCanonicalUrl();
 	}
 
 	protected function getDocumentProviderSource() {
