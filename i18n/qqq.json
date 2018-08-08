@@ -91,5 +91,11 @@
 	"bs-extendedsearch-result-relevance-not-relevant": "Tooltip text for button enabling users to decrease relevance (score) of a result for them",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "Text for the button leading to SearchCenter special page - equivalent to user pressing enter key",
 	"prefs-extendedsearch": "Label for the ExtendedSearch tab in user preferences",
-	"bs-extendedsearch-user-preferred-namespaces": "Label for the field selecting which namespaces are preferred for the user, those are ranked higher in results"
+	"bs-extendedsearch-user-preferred-namespaces": "Label for the field selecting which namespaces are preferred for the user, those are ranked higher in results",
+	"bs-extendedsearch-pref-external-file-paths": "Label for the field selecting which external file paths should be indexed",
+	"bs-extendedsearch-pref-external-file-paths-path": "Label for field containing physical path to the folder",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Label for field containing URL path folder can be reached through",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Help message for physical path input field",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Help message for url prefix input field",
+	"bs-extendedsearch-external-file-paths-desc": "Description message for configuration variable $bsgESExternalFilePaths"
 }

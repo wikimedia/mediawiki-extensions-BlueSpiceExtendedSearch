@@ -85,8 +85,8 @@ class ExternalFile extends RunJobsTriggerHandler {
 	 * @return boolean
 	 */
 	protected function inPaths( $path ) {
-		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsgES' );
-		$paths = $config->get( 'ExternalFilePaths' );
+		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsg' );
+		$paths = $config->get( 'ESExternalFilePaths' );
 
 		foreach( $paths as $configuredPath ) {
 			$filePathInfo = new \SplFileInfo( $configuredPath );

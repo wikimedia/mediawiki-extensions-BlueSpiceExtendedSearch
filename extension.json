@@ -12,6 +12,14 @@
 	"type": "bluespice",
 	"attributes": {
 		"BlueSpiceFoundation": {
+			"Extensions": {
+				"BlueSpiceExtendedSearch": {
+					"className": "BS\\ExtendedSearch\\Setup",
+					"configDefinitions": {
+						"ESExternalFilePaths": "BS\\ExtendedSearch\\ConfigDefinition\\ExternalFilePaths::getInstance"
+					}
+				}
+			},
 			"AdminToolRegistry": {
 				"bs-extended-search": "BS\\ExtendedSearch\\AdminTool"
 			},
@@ -102,9 +110,6 @@
 	"ExtensionMessagesFiles": {
 		"BlueSpiceExtendedSearchAdminAlias": "languages/BSSearchAdmin.alias.php",
 		"BlueSpiceExtendedSearchCenterAlias": "languages/BSSearchCenter.alias.php"
-	},
-	"ConfigRegistry": {
-		"bsgES": "BS\\ExtendedSearch\\Setup::makeConfig"
 	},
 	"ExtensionFunctions": [
 		"BS\\ExtendedSearch\\Setup::init"
@@ -281,21 +286,23 @@
 			]
 		}
 	},
-	"config_prefix": "bsgES",
+	"config_prefix": "bsg",
 	"config": {
-		"BackendClass": {
+		"ESBackendClass": {
 			"value": "\\BS\\ExtendedSearch\\Backend"
 		},
-		"BackendHost": {
+		"ESBackendHost": {
 			"value": "127.0.0.1"
 		},
-		"BackendPort": {
+		"ESBackendPort": {
 			"value": "9200"
 		},
-		"EnableSearchHistoryTracking": {
+		"ESEnableSearchHistoryTracking": {
 			"value": true
 		},
-		"ExternalFilePaths": {
+		"ESExternalFilePaths": {
+			"descriptionmsg": "bs-extendedsearch-external-file-paths-desc",
+			"public": true,
 			"value": {}
 		}
 	},

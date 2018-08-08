@@ -91,5 +91,11 @@
 	"bs-extendedsearch-result-relevance-not-relevant": "This result is not important for me",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "Full text search",
 	"prefs-extendedsearch": "Extended search",
-	"bs-extendedsearch-user-preferred-namespaces": "Preferred namespaces"
+	"bs-extendedsearch-user-preferred-namespaces": "Preferred namespaces",
+	"bs-extendedsearch-pref-external-file-paths": "External file paths",
+	"bs-extendedsearch-pref-external-file-paths-path": "Physical path",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL prefix",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Location on disk or mounted drive",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Web location capable of serving files from this folder",
+	"bs-extendedsearch-external-file-paths-desc": "Array of external folders that should be indexed"
 }

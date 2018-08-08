@@ -8,8 +8,8 @@ class ExternalFile extends Base {
 	public function crawl() {
 		$dummyTitle = \Title::makeTitle( NS_SPECIAL, 'Dummy title for external file' );
 
-		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsgES' );
-		$paths = $config->get( 'ExternalFilePaths' );
+		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsg' );
+		$paths = $config->get( 'ESExternalFilePaths' );
 
 		foreach( $paths as $sourcePath => $uriPrefix ) {
 			$sourceFileInfo = new \SplFileInfo( $sourcePath );

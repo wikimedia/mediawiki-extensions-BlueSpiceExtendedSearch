@@ -6,14 +6,6 @@ use BS\ExtendedSearch\Backend as SearchBackend;
 
 class Setup {
 	/**
-	 * Factory for Config object
-	 * @return \GlobalVarConfig
-	 */
-	public static function makeConfig() {
-		return new \GlobalVarConfig( 'bsgES' );
-	}
-
-	/**
 	 * ExtensionFunction callback to wire up all updaters
 	 */
 	public static function init() {

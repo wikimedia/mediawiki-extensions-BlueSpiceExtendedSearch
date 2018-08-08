@@ -128,11 +128,11 @@ class Backend {
 	}
 
 	protected static function newInstance() {
-		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsgES' );
+		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsg' );
 
-		$backendClass = $config->get( 'BackendClass' );
-		$backendHost = $config->get( 'BackendHost' );
-		$backendPort = $config->get( 'BackendPort' );
+		$backendClass = $config->get( 'ESBackendClass' );
+		$backendHost = $config->get( 'ESBackendHost' );
+		$backendPort = $config->get( 'ESBackendPort' );
 		$sourceRegistry = new SourceRegistry();
 		$sources = $sourceRegistry->getAllSources();
 
@@ -584,8 +584,8 @@ class Backend {
 	}
 
 	protected function isHistoryTrackingEnabled() {
-		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsgES' );
-		return $config->get( 'EnableSearchHistoryTracking' );
+		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsg' );
+		return $config->get( 'ESEnableSearchHistoryTracking' );
 	}
 
 	protected function logSearchHistory( $data ) {
