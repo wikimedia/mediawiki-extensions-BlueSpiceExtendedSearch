@@ -75,9 +75,9 @@
 			"Autocomplete": {
 				"SuggestField": "ac_ngram",
 				"DisplayLimits": {
-					"primary": 8,
-					"top": 2,
-					"secondary": 3
+					"normal": 7,
+					"top": 1,
+					"secondary": 4
 				}
 			},
 			"SourceIcons": {
@@ -185,7 +185,7 @@
 			"scripts": [
 				"bs.extendedSearch/mixin/Autocomplete.js",
 				"bs.extendedSearch/widget/autocomplete/Popup.js",
-				"bs.extendedSearch/widget/autocomplete/PrimaryResult.js",
+				"bs.extendedSearch/widget/autocomplete/NormalResult.js",
 				"bs.extendedSearch/widget/autocomplete/SecondaryResult.js",
 				"bs.extendedSearch/widget/autocomplete/TopMatch.js",
 				"bs.extendedSearch/Autocomplete.js"
@@ -199,7 +199,8 @@
 				"bs-extendedsearch-autocomplete-result-top-match-label",
 				"bs-extendedsearch-autocomplete-result-secondary-results-label",
 				"bs-extendedsearch-autocomplete-create-page-link",
-				"bs-extendedsearch-autocomplete-fulltext-search-button"
+				"bs-extendedsearch-autocomplete-fulltext-search-button",
+				"bs-extendedsearch-autocomplete-modified-time-label"
 			],
 			"dependencies": [
 				"ext.blueSpiceExtendedSearch.SearchBar"

@@ -15,7 +15,7 @@ class Base {
 	 */
 	const MORE_VALUES_TEXT = '...';
 
-	const AC_RANK_PRIMARY = 'primary';
+	const AC_RANK_NORMAL = 'normal';
 	const AC_RANK_SECONDARY = 'secondary';
 	const AC_RANK_TOP = 'top';
 
@@ -103,7 +103,7 @@ class Base {
 		}
 
 		if( !isset( $originalValues['ctime'] ) || !isset( $originalValues['mtime'] ) ) {
-			//If those are not set for the given type
+			// Not all types have these
 			return;
 		}
 		$result['ctime'] = $this->getContext()->getLanguage()->date( $originalValues['ctime'] );
@@ -120,6 +120,12 @@ class Base {
 		foreach( $results as &$result ) {
 			$type = $result['type'];
 			$result['typetext'] = $this->getTypeText( $type );
+			if( !isset( $result['mtime'] ) || $result['rank'] !== 'top' ) {
+				continue;
+			}
+
+			$result['modified_time'] = $this->getContext()->getLanguage()->timeanddate( $result['mtime'] );
+			unset( $result['mtime'] );
 		}
 	}
 
@@ -134,7 +140,7 @@ class Base {
 
 	/**
 	 * Allows sources to change ranking of the autocomplete query results
-	 * Exact matches are TOP, matches containing search term are PRIMARY,
+	 * Exact matches are TOP, matches containing search term are NORMAL,
 	 * and matches not containing search term (fuzzy) are SECONDARY
 	 *
 	 * Ranking controls where result will be shown( which part of AC popup )
@@ -151,7 +157,7 @@ class Base {
 			if( strtolower( $result['basename'] ) == strtolower( $searchData['value'] ) ) {
 				$result['rank'] = self::AC_RANK_TOP;
 			} else if( strpos( strtolower( $result['basename'] ), strtolower( $searchData['value'] ) ) !== false ) {
-				$result['rank'] = self::AC_RANK_PRIMARY;
+				$result['rank'] = self::AC_RANK_NORMAL;
 			} else {
 				$result['rank'] = self::AC_RANK_SECONDARY;
 			}

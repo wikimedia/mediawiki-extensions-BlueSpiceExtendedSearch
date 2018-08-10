@@ -37,8 +37,8 @@
 			.attr( 'id', cfg.cntId + '-wrapper' );
 
 		//Wrap search box input in another div to make it sizable when pill is added
-		this.$searchBoxWrapper.attr( 'style', 'width: ' + this.$searchBox.outerWidth() + 'px;' );
-		this.$searchBox.attr( 'style' , 'display: table-cell; width: 100%;' );
+		this.$searchBoxWrapper.attr( 'style', 'width: ' + this.$searchBox.outerWidth() + 'px; !important' );
+		this.$searchBox.attr( 'style' , 'display: table-cell;' );
 		this.$searchBox.wrap( this.$searchBoxWrapper );
 
 		//Wire the events
@@ -98,6 +98,7 @@
 
 		this.$pill = $( '<span>' ).addClass( 'bs-extendedsearch-searchbar-pill' ).html( this.namespace.text );
 		this.$searchBox.before( this.$pill );
+		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() - this.$pill.outerWidth(), true );
 		this.$searchBox.val( this.value );
 	}
 
@@ -108,7 +109,12 @@
 			this.namespace = {};
 		}
 
-		this.$searchContainer.find( '.bs-extendedsearch-searchbar-pill' ).remove();
+		var pill = this.$searchContainer.find( '.bs-extendedsearch-searchbar-pill' );
+		if( pill.length === 0 ) {
+			return;
+		}
+		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() + pill.outerWidth(), true );
+		pill.remove();
 	}
 
 	bs.extendedSearch.SearchBar.prototype.addClearButton = function() {
@@ -124,12 +130,29 @@
 		clearButton.$element.addClass( 'bs-extendedsearch-searchbar-clear' );
 		clearButton.$element.on( 'click', this.onClearSearch.bind( this ) );
 		clearButton.$element.insertAfter( this.$searchBox );
+
+		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() - clearButton.$element.outerWidth(), true );
 		this.$searchBox.addClass( 'clear-present' );
 	}
 
 	bs.extendedSearch.SearchBar.prototype.removeClearButton = function() {
-		this.$searchContainer.find( '.bs-extendedsearch-searchbar-clear' ).remove();
+		var $clearButton = this.$searchContainer.find( '.bs-extendedsearch-searchbar-clear' );
+		if( $clearButton.length === 0 ){
+			return;
+		}
+		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() + $clearButton.outerWidth(), true );
+		$clearButton.remove();
 		this.$searchBox.removeClass( 'clear-present' );
+	}
+
+	bs.extendedSearch.SearchBar.prototype.setSearchBoxWidthInline = function( width, important ) {
+		important = important || false;
+		var value = 'display: table-cell; width:' + width + 'px';
+		if( important ) {
+			value += " !important ";
+		}
+
+		this.$searchBox.attr( 'style', value );
 	}
 
 	bs.extendedSearch.SearchBar.prototype.toggleClearButton = function( value ) {

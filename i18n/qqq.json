@@ -97,5 +97,6 @@
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Label for field containing URL path folder can be reached through",
 	"bs-extendedsearch-pref-external-file-paths-path-help": "Help message for physical path input field",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Help message for url prefix input field",
-	"bs-extendedsearch-external-file-paths-desc": "Description message for configuration variable $bsgESExternalFilePaths"
+	"bs-extendedsearch-external-file-paths-desc": "Description message for configuration variable $bsgESExternalFilePaths",
+	"bs-extendedsearch-autocomplete-modified-time-label": "Label for last modified time in autocomplete. $1 - last modified timestamp (formatted)"
 }

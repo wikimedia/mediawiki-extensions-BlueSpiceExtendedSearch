@@ -7,33 +7,51 @@
 		this.basename = cfg.suggestion.basename;
 		this.type = cfg.suggestion.type;
 		this.imageUri = cfg.suggestion.image_uri ||
-				bs.extendedSearch.Autocomplete.getIconPath( this.type );
+				bs.extendedSearch.Autocomplete.prototype.getIconPath( this.type );
 
 		this.$element = $( '<div>' );
 
 		bs.extendedSearch.AutocompleteTopMatch.parent.call( this, cfg );
 		bs.extendedSearch.mixin.AutocompleteHeader.call( this, cfg.suggestion );
+		bs.extendedSearch.mixin.AutocompleteHitType.call( this, {
+			hitType: cfg.suggestion.typetext,
+			rankType: 'top'
+		} );
 
-		var $image = $( '<div>' )
+		this.$image = $( '<div>' )
 			.addClass( 'bs-extendedsearch-autocomplete-popup-top-match-item-image' )
 			.attr( 'style', "background-image: url(" + this.imageUri + ")" );
-		this.$element.append( $image );
+		this.$element.append( this.$image );
+
+		this.$info = $( '<div>' )
+			.addClass( 'bs-extendedsearch-autocomplete-popup-top-match-item-info' )
+			.append( this.$header, this.$type );
+
+		if( cfg.suggestion.modified_time ) {
+			bs.extendedSearch.mixin.AutocompleteModifiedTime.call( this, {
+				modified_time: cfg.suggestion.modified_time
+			} );
+			this.$info.append( this.$modifiedTime );
+		}
 
 		this.$element.append(
-			this.$header
+			this.$info
 		);
 
-		/*this.$element.append( $( '<span>' )
-			.addClass( 'bs-extendedsearch-autocomplete-popup-top-match-item-header' )
-			.html( this.basename )
-		);*/
+		this.$element.on( 'click', this.onResultClick );
 
 		this.$element.addClass( 'bs-extendedsearch-autocomplete-popup-top-match-item' );
-		/*this.$element.on( 'mouseenter', this.onMouseEnter.bind( this ) );
-		this.$element.on( 'mouseleave', this.onMouseLeave.bind( this ) );*/
 	}
 
 	OO.inheritClass( bs.extendedSearch.AutocompleteTopMatch, OO.ui.Widget );
 	OO.mixinClass( bs.extendedSearch.AutocompleteTopMatch, bs.extendedSearch.mixin.AutocompleteHeader );
+	OO.mixinClass( bs.extendedSearch.AutocompleteTopMatch, bs.extendedSearch.mixin.AutocompleteHitType );
+	OO.mixinClass( bs.extendedSearch.AutocompleteTopMatch, bs.extendedSearch.mixin.AutocompleteModifiedTime );
+
+	bs.extendedSearch.AutocompleteTopMatch.prototype.onResultClick = function( e ) {
+		//Anchor may be custom one, coming from backend, so we cannot target more specifically
+		var anchor = $( e.target ).find( 'a' );
+		window.location = anchor.attr( 'href' );
+	}
 
 } )( mediaWiki, jQuery, blueSpice, document );

@@ -141,7 +141,7 @@ class Base {
 					"filter" => [
 						"autocomplete_filter" => [
 							"type" => "ngram",
-							"min_gram" => 3,
+							"min_gram" => 1,
 							"max_gram" => 15
 						]
 					],

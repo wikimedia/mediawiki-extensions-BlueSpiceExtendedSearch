@@ -89,7 +89,7 @@
 	"bs-extendedsearch-source-type-specialpage-label": "Special page",
 	"bs-extendedsearch-result-relevance-relevant": "This result is important for me",
 	"bs-extendedsearch-result-relevance-not-relevant": "This result is not important for me",
-	"bs-extendedsearch-autocomplete-fulltext-search-button": "Full text search",
+	"bs-extendedsearch-autocomplete-fulltext-search-button": "Search full text",
 	"prefs-extendedsearch": "Extended search",
 	"bs-extendedsearch-user-preferred-namespaces": "Preferred namespaces",
 	"bs-extendedsearch-pref-external-file-paths": "External file paths",
@@ -97,5 +97,6 @@
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL prefix",
 	"bs-extendedsearch-pref-external-file-paths-path-help": "Location on disk or mounted drive",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Web location capable of serving files from this folder",
-	"bs-extendedsearch-external-file-paths-desc": "Array of external folders that should be indexed"
+	"bs-extendedsearch-external-file-paths-desc": "Array of external folders that should be indexed",
+	"bs-extendedsearch-autocomplete-modified-time-label": "Last modified: $1"
 }

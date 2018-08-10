@@ -72,6 +72,18 @@
 			return false;
 		}
 
+		//Left key
+		if( e.which == 37 ) {
+			this.navigateThroughResults( 'left' );
+			return false;
+		}
+
+		//Right key
+		if( e.which == 39 ) {
+			this.navigateThroughResults( 'right' );
+			return false;
+		}
+
 		return true;
 	}
 
@@ -102,7 +114,9 @@
 	}
 
 	function _showPopup( value ) {
-		this.getSuggestions( value );
+		if( value ) {
+			this.getSuggestions( value );
+		}
 	}
 
 	function _makePopup( suggestions, pageCreateInfo ) {
@@ -124,7 +138,8 @@
 		this.popup = new bs.extendedSearch.AutocompletePopup( popupCfg );
 
 		this.popup.$element.css( 'top', this.searchBar.$searchBox.outerHeight() + 'px' );
-		this.popup.$element.css( 'width', + this.getPopupWidth() + 'px' );
+		this.popup.$element.css( 'width', this.getPopupWidth() + 'px' );
+		this.popup.$element.css( 'height', "600px" );
 
 		var wrapperId = this.searchBar.$searchBoxWrapper.attr( 'id' );
 		this.popup.$element.insertAfter( $( '#' + wrapperId ) );
@@ -140,10 +155,6 @@
 	}
 
 	function _getSuggestions() {
-		if( this.searchBar.value.length < 3 ) {
-			return;
-		}
-
 		var lookup = new bs.extendedSearch.Lookup( this.lookupConfig );
 
 		this.suggestField = this.autocompleteConfig['SuggestField'];
@@ -224,7 +235,7 @@
 	}
 
 	function _navigateThroughResults( direction ) {
-		if( !this.popup ) {
+		if( !this.popup || this.searchBar.mobile ) {
 			return;
 		}
 		this.popup.changeCurrent( direction );
@@ -279,6 +290,6 @@
 	bs.extendedSearch.Autocomplete.prototype.setLookupToSubmit = _setLookupToSubmit;
 	bs.extendedSearch.Autocomplete.AC_RANK_TOP = 'top';
 	bs.extendedSearch.Autocomplete.AC_RANK_SECONDARY = 'secondary';
-	bs.extendedSearch.Autocomplete.AC_RANK_PRIMARY = 'primary';
+	bs.extendedSearch.Autocomplete.AC_RANK_NORMAL = 'normal';
 
 } )( mediaWiki, jQuery, blueSpice, document );

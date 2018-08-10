@@ -58,12 +58,14 @@ class Autocomplete extends \ApiBase {
 		$this->searchData = $this->getParameter( 'searchData' );
 	}
 
-	//Should this be here?
 	protected $pageCreateInfo;
 	protected function setPageCreatable() {
+		$pageName = $this->searchData['value'];
+		$pageName = ucfirst( $pageName );
+
 		$title = \Title::makeTitle(
 			$this->searchData['namespace'],
-			$this->searchData['value']
+			$pageName
 		);
 
 		if( $title->exists() == false && $title->userCan( 'createpage' ) && $title->userCan( 'edit' ) ) {

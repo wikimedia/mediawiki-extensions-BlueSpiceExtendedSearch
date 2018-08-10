@@ -6,7 +6,6 @@
 
 		//Init containers for each result type
 		this.$primaryResults = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-primary' );
-		this.$topMatches = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-top-match' );
 		this.$secondaryResults = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-secondary' );
 
 		this.namespaceId = cfg.namespaceId;
@@ -16,67 +15,66 @@
 
 		//Objects holding suggestions actually displayed
 		this.displayedResults = {
-			primary: [],
+			normal: [],
 			top: [],
 			secondary: []
 		};
+
+		var normalResultElements = [];
+		var topResultElements = [];
 
 		for( idx in cfg.data ) {
 			var suggestion = cfg.data[idx];
 			//Top matches
 			if( suggestion.rank == bs.extendedSearch.Autocomplete.AC_RANK_TOP ) {
 				if( limits.top > this.displayedResults.top.length ) {
-					this.$topMatches.append(
+					topResultElements.push(
 						new bs.extendedSearch.AutocompleteTopMatch( {
 							suggestion: suggestion
 						} ).$element
 					);
 					this.displayedResults.top.push( suggestion );
 				}
+				continue;
 			}
 
 			if( suggestion.rank == bs.extendedSearch.Autocomplete.AC_RANK_SECONDARY ) {
 				continue;
 			}
 
-			if( limits.primary <= this.displayedResults.primary.length ) {
-				break;
+			if( limits.normal <= this.displayedResults.normal.length ) {
+				continue;
 			}
 
-			var pageItem = new bs.extendedSearch.AutocompletePrimaryResult( {
+			var pageItem = new bs.extendedSearch.AutocompleteNormalResult( {
 				suggestion: suggestion,
 				term: this.searchTerm
 			} );
 
-			this.$primaryResults.append( pageItem.$element );
-
-			this.displayedResults.primary.push( suggestion );
+			normalResultElements.push( pageItem.$element );
+			this.displayedResults.normal.push( suggestion );
 		}
 
 		//If there are no primary results, display "no results" in primary section
 		//Fuzzy results will be displayed
-		if( this.displayedResults.primary.length === 0 ) {
+		if( this.displayedResults.top.length === 0
+			&& this.displayedResults.normal.length === 0 ) {
 			this.$primaryResults.append(
 				$( '<div>' )
 					.addClass( 'bs-extendedsearch-autocomplete-popup-primary-no-results' )
 					.html( mw.message( 'bs-extendedsearch-autocomplete-result-primary-no-results-label' ).plain() )
 			);
+		} else {
+			this.$primaryResults.append( topResultElements );
+			this.$primaryResults.append( normalResultElements );
 		}
 
 		//"Right column" container, holding top and fuzzy results
 		this.$specialResults = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-special-cnt' );
 
-		this.$topMatchLabel = $( '<span>' )
-			.addClass( 'bs-extendedsearch-autocomplete-popup-special-item-label' )
-			.html( mw.message( 'bs-extendedsearch-autocomplete-result-top-match-label' ).plain() );
-
 		this.$secondaryResultsLabel = $( '<span>' )
 			.addClass( 'bs-extendedsearch-autocomplete-popup-special-item-label' )
 			.html( mw.message( 'bs-extendedsearch-autocomplete-result-secondary-results-label' ).plain() );
-
-		if( this.$topMatches.children().length > 0 ) {
-			this.$specialResults.append( this.$topMatchLabel, this.$topMatches );
-		}
 	}
 
 	bs.extendedSearch.mixin.AutocompleteResults.prototype.fillSecondaryResults = function( suggestions ) {
@@ -110,6 +108,8 @@
 			this.basename = this.$pageAnchor.html();
 		}
 
+		this.basename = this.getSnippet( this.basename, 30, this.searchTerm );
+
 		this.boldSearchTerm();
 
 		//If backend provided an anchor use it, otherwise create it
@@ -124,6 +124,33 @@
 	}
 
 	OO.initClass( bs.extendedSearch.mixin.AutocompleteHeader );
+
+	bs.extendedSearch.mixin.AutocompleteHeader.prototype.getSnippet = function( text, length, mustContain ) {
+		var hasMoreText = '...';
+		if( text.length <= length ) {
+			return text;
+		}
+
+		mustContain = mustContain || '';
+		var startsWithMustContain = text.indexOf( mustContain ) === 0;
+		if( mustContain === '' || startsWithMustContain ) {
+			return text.substring( 0, length ) + hasMoreText;
+		}
+
+		var mustContainLen = mustContain.length;
+		if( mustContainLen >= length ) {
+			return mustContain.substring( 0, length ) + hasMoreText;
+		}
+
+		var restAfterMustContainLen = length - mustContainLen;
+		if( restAfterMustContainLen >= 6 ) {
+			var endsWithMustContain = text.slice( -mustContainLen ) === mustContain;
+			if( endsWithMustContain ) {
+				return text.substring( 0, restAfterMustContainLen ) + hasMoreText + mustContain;
+			}
+			return text.substring( 0, restAfterMustContainLen - 3 ) + hasMoreText + mustContain + hasMoreText + text.slice( -3 );
+		}
+	}
 
 	//Bolds out search term in the result title
 	bs.extendedSearch.mixin.AutocompleteHeader.prototype.boldSearchTerm = function() {
@@ -142,6 +169,16 @@
 
 	OO.initClass( bs.extendedSearch.mixin.AutocompleteHitType );
 
+	bs.extendedSearch.mixin.AutocompleteModifiedTime = function( cfg ) {
+		this.mtime = cfg.modified_time;
+
+		this.$modifiedTime = $( '<span>' )
+			.addClass( 'bs-extendedsearch-autocomplete-popup-item-modified-time' )
+			.html( mw.message( 'bs-extendedsearch-autocomplete-modified-time-label', this.mtime ).plain() );
+	}
+
+	OO.initClass( bs.extendedSearch.mixin.AutocompleteModifiedTime );
+
 	bs.extendedSearch.mixin.AutocompleteCreatePageLink = function( cfg ) {
 		cfg = cfg || {};
 
@@ -157,13 +194,14 @@
 		var termHtml = "<b class='bs-extendedsearch-autocomplete-create-page-link-term'>{term}</b>";
 		termHtml = termHtml.replace( '{term}', cfg.display_text );
 
+		this.$createPageLink = $( '<div>' )
+			.addClass( 'bs-extendedsearch-autocomplete-popup-create-page-link' )
+			.append(
+				$( '<a>' ).attr( 'href', cfg.full_url )
+				.html( mw.message( 'bs-extendedsearch-autocomplete-create-page-link', termHtml ).parse() )
+			);
 		cnt.append(
-			$( '<div>' )
-				.addClass( 'bs-extendedsearch-autocomplete-popup-create-page-link' )
-				.append(
-					$( '<a>' ).attr( 'href', cfg.full_url )
-					.html( mw.message( 'bs-extendedsearch-autocomplete-create-page-link', termHtml ).parse() )
-				)
+			this.$createPageLink
 		);
 	}
 
