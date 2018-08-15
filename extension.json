@@ -153,12 +153,14 @@
 				"oojs-ui"
 			]
 		},
+		"ext.blueSpiceExtendedSearch.SearchBar.styles": {
+			"styles": [
+				"ext.blueSpiceExtendedSearch.SearchBar.less"
+			]
+		},
 		"ext.blueSpiceExtendedSearch.SearchBar": {
 			"scripts": [
 				"ext.blueSpiceExtendedSearch.SearchBar.js"
-			],
-			"styles": [
-				"ext.blueSpiceExtendedSearch.SearchBar.less"
 			],
 			"messages": [
 				"bs-extendedsearch-autocomplete-result-primary-no-results-label",
@@ -181,6 +183,11 @@
 				"ext.blueSpiceExtendedSearch.Autocomplete"
 			]
 		},
+		"ext.blueSpiceExtendedSearch.Autocomplete.styles": {
+			"styles": [
+				"ext.blueSpiceExtendedSearch.Autocomplete.less"
+			]
+		},
 		"ext.blueSpiceExtendedSearch.Autocomplete": {
 			"scripts": [
 				"bs.extendedSearch/mixin/Autocomplete.js",
@@ -189,9 +196,6 @@
 				"bs.extendedSearch/widget/autocomplete/SecondaryResult.js",
 				"bs.extendedSearch/widget/autocomplete/TopMatch.js",
 				"bs.extendedSearch/Autocomplete.js"
-			],
-			"styles": [
-				"ext.blueSpiceExtendedSearch.Autocomplete.less"
 			],
 			"messages": [
 				"bs-extendedsearch-autocomplete-result-primary-no-results-label",
@@ -204,6 +208,11 @@
 			],
 			"dependencies": [
 				"ext.blueSpiceExtendedSearch.SearchBar"
+			]
+		},
+		"ext.blueSpiceExtendedSearch.SearchCenter.styles": {
+			"styles": [
+				"ext.blueSpiceExtendedSearch.SearchCenter.less"
 			]
 		},
 		"ext.blueSpiceExtendedSearch.SearchCenter": {
@@ -219,9 +228,6 @@
 				"bs.extendedSearch/panel/Results.js",
 				"bs.extendedSearch/panel/Tools.js",
 				"ext.blueSpiceExtendedSearch.SearchCenter.js"
-			],
-			"styles": [
-				"ext.blueSpiceExtendedSearch.SearchCenter.less"
 			],
 			"messages": [
 				"bs-extendedsearch-search-center-hitcount-widget",

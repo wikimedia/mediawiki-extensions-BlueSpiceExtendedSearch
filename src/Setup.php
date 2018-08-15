@@ -77,6 +77,12 @@ class Setup {
 		$title = $out->getTitle();
 		if( $title != \SpecialPage::getTitleFor( 'BSSearchCenter' ) ) {
 			$out->addModules( "ext.blueSpiceExtendedSearch.SearchFieldAutocomplete" );
+			$out->addModuleStyles(
+				"ext.blueSpiceExtendedSearch.Autocomplete.styles"
+			);
+			$out->addModuleStyles(
+				"ext.blueSpiceExtendedSearch.SearchBar.styles"
+			);
 		}
 
 		$autocompleteConfig = \ExtensionRegistry::getInstance()
