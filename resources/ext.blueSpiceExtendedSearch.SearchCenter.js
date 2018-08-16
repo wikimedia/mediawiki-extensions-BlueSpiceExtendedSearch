@@ -343,6 +343,12 @@
 	var searchBar = new bs.extendedSearch.SearchBar( {
 		useNamespacePills: false
 	} );
+		
+	searchBar.$searchForm.on( 'submit', function( e ) {
+		e.preventDefault();
+		bs.extendedSearch.SearchCenter.execSearch();
+	} );
+	
 
 	searchBar.onValueChanged = function() {
 		search.getLookupObject().removeForceTerm();

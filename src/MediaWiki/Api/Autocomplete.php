@@ -3,6 +3,30 @@
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
 class Autocomplete extends \ApiBase {
+	/**
+	 *
+	 * @var \BS\ExtendedSearch\Lookup
+	 */
+	protected $lookup = null;
+
+	/**
+	 *
+	 * @var string Backend name
+	 */
+	protected $backend = '';
+
+	/**
+	 *
+	 * @var array
+	 */
+	protected $searchData;
+
+	/**
+	 *
+	 * @var array
+	 */
+	protected $secondaryRequestData;
+
 	public function execute() {
 		$this->readInParameters();
 		$this->lookUpResults();
@@ -26,7 +50,12 @@ class Autocomplete extends \ApiBase {
 			'searchData' => [
 				\ApiBase::PARAM_TYPE => 'string',
 				\ApiBase::PARAM_REQUIRED => true,
-				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-query-param-search_data',
+				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-query-param-search-data',
+			],
+			'secondaryRequestData' => [
+				\ApiBase::PARAM_TYPE => 'string',
+				\ApiBase::PARAM_REQUIRED => false,
+				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-query-param-secondary-request-data',
 			]
 		];
 	}
@@ -42,20 +71,19 @@ class Autocomplete extends \ApiBase {
 		if( $paramName === 'searchData' ) {
 			return \FormatJson::decode( $value, true );
 		}
+
+		if( $paramName === 'secondaryRequestData' ) {
+			return \FormatJson::decode( $value, true );
+		}
+
 		return $value;
 	}
 
-	/**
-	 *
-	 * @var \BS\ExtendedSearch\Lookup
-	 */
-	protected $oLookup = null;
-	protected $sBackend = '';
-
 	protected function readInParameters() {
-		$this->oLookup = $this->getParameter( 'q' );
-		$this->sBackend = $this->getParameter( 'backend' );
+		$this->lookup = $this->getParameter( 'q' );
+		$this->backend = $this->getParameter( 'backend' );
 		$this->searchData = $this->getParameter( 'searchData' );
+		$this->secondaryRequestData = $this->getParameter( 'secondaryRequestData' );
 	}
 
 	protected $pageCreateInfo;
@@ -88,8 +116,16 @@ class Autocomplete extends \ApiBase {
 	 */
 	protected $suggestions;
 	protected function lookUpResults() {
-		$oBackend = \BS\ExtendedSearch\Backend::instance( $this->sBackend );
-		$this->suggestions = $oBackend->runAutocompleteLookup( $this->oLookup, $this->searchData );
+		$backend = \BS\ExtendedSearch\Backend::instance( $this->backend );
+		if( $this->secondaryRequestData ) {
+			$this->suggestions = $backend->runAutocompleteSecondaryLookup(
+				$this->lookup,
+				$this->searchData,
+				$this->secondaryRequestData
+			);
+			return;
+		}
+		$this->suggestions = $backend->runAutocompleteLookup( $this->lookup, $this->searchData );
 	}
 
 	protected $oResult;

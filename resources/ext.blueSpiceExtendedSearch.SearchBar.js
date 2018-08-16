@@ -61,6 +61,7 @@
 		}
 
 		var newNamespace = parts.shift();
+
 		if( !this.setNamespaceFromValue( newNamespace ) ) {
 			this.namespace = {};
 			this.value = value;
@@ -74,6 +75,15 @@
 	bs.extendedSearch.SearchBar.prototype.setNamespaceFromValue = function( nsText ) {
 		if( !this.namespaces ) {
 			this.namespaces = bs.extendedSearch.utils.getNamespacesList();
+		}
+
+		if( nsText === '' ) {
+			// Explicitly main
+			this.namespace = {
+				id: 0,
+				text: mw.message( 'bs-ns_main' ).plain()
+			};
+			return true;
 		}
 
 		if( nsText.toLowerCase() in this.namespaces ) {

@@ -177,6 +177,7 @@ class Base {
 			$result['score'] += $this->getMatchPercentage( $result['basename'], $searchData['value'] );
 		}
 	}
+
 	protected function getMatchPercentage( $result, $term ) {
 		$matches = [];
 		//How many times search term is repeated

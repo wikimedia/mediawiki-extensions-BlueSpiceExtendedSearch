@@ -16,6 +16,18 @@ class SearchCenter extends \SpecialPage {
 		$query = $this->getRequest()->getText( 'q' );
 		$lookup = $this->lookupFromQuery( $query );
 
+		$queryString = $lookup->getQueryString();
+		$rawTerm = $this->getRequest()->getText( 'raw_term' );
+		// If user has submitted the form too fast, before
+		// Lookup object had time to init/update on client side,
+		// we must use raw_term to set the lookup
+		if( $rawTerm != '' ) {
+			if( $queryString['query'] == '' || $queryString['query'] != $rawTerm ) {
+				$queryString['query'] = $rawTerm;
+				$lookup->setQueryString( $queryString );
+			}
+		}
+
 		$out = $this->getOutput();
 		$out->addModules( "ext.blueSpiceExtendedSearch.SearchCenter" );
 

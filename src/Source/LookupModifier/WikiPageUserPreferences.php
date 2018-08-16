@@ -24,8 +24,7 @@ class WikiPageUserPreferences extends Base {
 		}
 
 		if( !empty( $namespacesToBoost ) ) {
-			//TODO: Fine-tune boost number
-			$this->oLookup->addShouldTerms( 'namespace', $namespacesToBoost, 6, true );
+			$this->oLookup->addShouldTerms( 'namespace', $namespacesToBoost, 8, true );
 		}
 	}
 

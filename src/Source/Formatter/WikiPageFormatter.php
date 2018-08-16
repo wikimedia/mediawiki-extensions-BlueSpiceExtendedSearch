@@ -12,16 +12,14 @@ class WikiPageFormatter extends Base {
 		$resultStructure['page_anchor'] = 'page_anchor';
 		$resultStructure['highlight'] = 'highlight';
 		$resultStructure['secondaryInfos']['top']['items'][] = [
-			"name" => "namespace_text"
-		];
-		$resultStructure['secondaryInfos']['top']['items'][] = [
 			"name" => "sections"
 		];
 		$resultStructure['secondaryInfos']['bottom']['items'][] = [
 			"name" => "categories"
 		];
 
-		//All fields under "featured" key will only appear is result is featured
+		//$resultStructure['imageUri'] = "image_uri";
+
 		$resultStructure['featured']['highlight'] = "rendered_content_snippet";
 		$resultStructure['featured']['imageUri'] = "image_uri";
 
@@ -43,6 +41,37 @@ class WikiPageFormatter extends Base {
 		$result['display_text'] = $result['prefixed_title'];
 
 		$this->addAnchorAndImageUri( $result );
+	}
+
+	protected function isFeatured( $result ) {
+		if( $this->lookup == null ) {
+			return false;
+		}
+
+		$queryString = $this->lookup->getQueryString();
+		if( isset( $queryString['query'] ) == false ) {
+			return false;
+		}
+
+		$term = $queryString['query'];
+
+		$filters = $this->lookup->getFilters();
+		$namespaceFilters = [];
+		if( isset( $filters['terms']['namespace_text'] ) ) {
+			$namespaceFilters = $filters['terms']['namespace_text'];
+		}
+
+		$pageTitle = $result['prefixed_title'];
+
+		if( !empty( $namespaceFilters ) ) {
+			$pageTitle = $this->removeNamespace( $pageTitle );
+		}
+
+		if( strtolower( $term ) == strtolower( $pageTitle ) ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	protected function addAnchorAndImageUri( &$result ) {
@@ -152,15 +181,71 @@ class WikiPageFormatter extends Base {
 				continue;
 			}
 
-			//Do not show namespace part if user is already searching in particular NS
-			if( $result['namespace'] != $searchData['namespace'] || $searchData['namespace'] === 0 ) {
-				$result['display_text'] = $result['prefixed_title'];
-			} else {
-				$result['display_text'] = $result['basename'];
-			}
+			$result['display_text'] = $result['prefixed_title'];
 
 			$this->addAnchorAndImageUri( $result );
 		}
 	}
+
+	public function rankAutocompleteResults( &$results, $searchData ) {
+		foreach( $results as &$result ) {
+			if( $result['type'] !== $this->source->getTypeKey() ) {
+				continue;
+			}
+
+			$pageTitle = $result['prefixed_title'];
+			// If there is a namespace filter set, all results coming here will
+			// already be in desired namespace, so we should match only non-namespace
+			// part of a title to determine match rank.
+			if( $searchData['namespace'] !== NS_MAIN ) {
+				$pageTitle = $this->removeNamespace( $pageTitle );
+			}
+
+			if( strtolower( $pageTitle ) == strtolower( $searchData['value'] ) ) {
+				$result['rank'] = self::AC_RANK_TOP;
+			} else if( strpos( strtolower( $pageTitle ), strtolower( $searchData['value'] ) ) !== false ) {
+				$result['rank'] = self::AC_RANK_NORMAL;
+			} else {
+				$result['rank'] = self::AC_RANK_SECONDARY;
+			}
+
+			$result['is_ranked'] = true;
+		}
+	}
+
+	protected function removeNamespace( $prefixedTitle ) {
+		$bits = explode( ':',$prefixedTitle );
+		if( count( $bits ) == 2 ) {
+			return $bits[1];
+		} else {
+			return $prefixedTitle;
+		}
+	}
+
+	/**
+	 * Increase score of results that have search term in base text,
+	 * as opposed to in subpage
+	 * This should happen anyway, as if a doc contain search term in basename AND
+	 * in prefixed_title it will get scored higher
+	 *
+	 * @param array $results
+	 * @param array $searchData
+	 */
+	public function scoreAutocompleteResults( &$results, $searchData ) {
+		parent::scoreAutocompleteResults( $results, $searchData );
+		foreach( $results as &$result ) {
+			if( $this->getHasMatchInBasetext( $result[ 'basename' ], $searchData[ 'value' ] ) ) {
+				$result['score'] += 2;
+			}
+		}
+	}
+
+	public function getHasMatchInBasetext( $basename, $searchValue ) {
+		if( strpos( strtolower( $basename ), strtolower( $searchValue ) ) !== false ) {
+			return true;
+		}
+		return false;
+	}
+
 }
 

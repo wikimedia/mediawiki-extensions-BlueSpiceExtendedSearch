@@ -9,8 +9,8 @@ class WikiPageQSSourceFields extends Base {
 	 */
 	public function apply() {
 		$queryString = $this->oLookup->getQueryString();
-		//Search in basename field and boost it by 3
-		$fields = ['rendered_content'];
+
+		$fields = ['rendered_content', 'prefixed_title^2'];
 		if( isset( $queryString['fields'] ) && is_array( $queryString['fields'] ) ) {
 			$queryString['fields'] = array_merge( $queryString['fields'], $fields );
 		} else {
@@ -24,7 +24,7 @@ class WikiPageQSSourceFields extends Base {
 		$queryString = $this->oLookup->getQueryString();
 
 		if( isset( $queryString['fields'] ) && is_array( $queryString['fields'] ) ) {
-			$queryString['fields'] = array_diff( $queryString['fields'], ['rendered_content'] );
+			$queryString['fields'] = array_diff( $queryString['fields'], ['rendered_content', 'prefixed_title^2'] );
 		}
 
 		$this->oLookup->setQueryString( $queryString );

@@ -9,8 +9,7 @@ class BaseSimpleQSFields extends Base {
 	 */
 	public function apply() {
 		$simpleQS = $this->oLookup->getQueryString();
-		//Search in basename field and boost it by 3
-		$fields = ['basename^3', 'congregated'];
+		$fields = ['basename^4', 'congregated'];
 		if( isset( $simpleQS['fields'] ) && is_array( $simpleQS['fields'] ) ) {
 			$simpleQS['fields'] = array_merge( $simpleQS['fields'], $fields );
 		} else {
@@ -24,7 +23,7 @@ class BaseSimpleQSFields extends Base {
 		$simpleQS = $this->oLookup->getQueryString();
 
 		if( isset( $simpleQS['fields'] ) && is_array( $simpleQS['fields'] ) ) {
-			$simpleQS['fields'] = array_diff( $simpleQS['fields'], ['basename^3', 'congregated'] );
+			$simpleQS['fields'] = array_diff( $simpleQS['fields'], ['basename^4', 'congregated'] );
 		}
 
 		$this->oLookup->setQueryString( $simpleQS );

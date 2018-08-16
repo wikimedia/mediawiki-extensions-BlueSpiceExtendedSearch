@@ -243,7 +243,12 @@ class Backend {
 		$results = $this->formatQuerySuggestions( $results, $searchData );
 
 		return $results;
+	}
 
+	public function runAutocompleteSecondaryLookup( Lookup $lookup, $searchData, $secondaryRequestData ) {
+		$results = $this->runAutocompleteLookup( $lookup, $searchData );
+		// TODO: Implement smart way of deciding when secondary results are relevant
+		return $results;
 	}
 
 	protected function formatQuerySuggestions( $results, $searchData ) {

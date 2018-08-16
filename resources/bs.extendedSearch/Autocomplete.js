@@ -160,10 +160,12 @@
 		this.suggestField = this.autocompleteConfig['SuggestField'];
 
 		lookup.setBoolMatchQueryString( this.suggestField, this.searchBar.value );
-		if( this.searchBar.namespace.id ) {
+		if( $.isEmptyObject( this.searchBar.namespace ) == false ) {
 			lookup.addTermFilter( 'namespace', this.searchBar.namespace.id );
 		}
-		lookup.setSize( this.autocompleteConfig['DisplayLimits']['primary'] );
+		var primaryCount = this.autocompleteConfig['DisplayLimits']['normal'] +
+			this.autocompleteConfig['DisplayLimits']['top']
+		lookup.setSize( primaryCount );
 
 		var me = this;
 		this.runLookup( lookup ).done( function( response ) {
@@ -175,7 +177,11 @@
 				return;
 			}
 
-			me.getSecondaryResults().done( function( response ) {
+			if( $.isEmptyObject( me.searchBar.namespace ) && response.suggestions.length > 0 ) {
+				return;
+			}
+
+			me.getSecondaryResults( response.suggestions ).done( function( response ) {
 				me.addSecondaryToPopup( response.suggestions );
 			} );
 		} );
@@ -187,15 +193,21 @@
 	 *
 	 * @returns {Deferred}
 	 */
-	function _getSecondaryResults() {
+	function _getSecondaryResults( primarySuggestions ) {
 		var lookup = new bs.extendedSearch.Lookup( this.lookupConfig );
 		var suggestField = this.autocompleteConfig['SuggestField'];
 
 		lookup.setBoolMatchQueryString( this.suggestField, this.searchBar.value );
 		if( this.searchBar.namespace.id ) {
-			//Search for matches in other namespaces
-			lookup.addBoolMustNotTerms( 'namespace', this.searchBar.namespace.id );
-			lookup.setSize( this.autocompleteConfig['DisplayLimits']['secondary'] );
+			if( primarySuggestions.length === 0 ) {
+				//If we are in NS and there are no primary results, look for fuzzy in this NS
+				lookup.setBoolMatchQueryFuzziness( this.suggestField, 2, { prefix_length: 1 } );
+				lookup.addTermFilter( 'namespace', this.searchBar.namespace.id );
+			} else {
+				//Search for non-fuzzy matches in other namespaces
+				lookup.addBoolMustNotTerms( 'namespace', this.searchBar.namespace.id );
+				lookup.setSize( this.autocompleteConfig['DisplayLimits']['secondary'] );
+			}
 		} else {
 			lookup.setBoolMatchQueryFuzziness( this.suggestField, 2, { prefix_length: 1 } );
 			//Do not find non-fuzzy matches
@@ -203,18 +215,23 @@
 			lookup.setSize( this.autocompleteConfig['DisplayLimits']['secondary'] );
 		}
 
-		return this.runLookup( lookup );
+		return this.runLookup( lookup, {
+			secondaryRequestData: JSON.stringify( {
+				primary_suggestions: primarySuggestions
+			})
+		});
 	}
 
-	function _runLookup( lookup ) {
-		queryData = {
+	function _runLookup( lookup, data ) {
+		data = data || {};
+
+		queryData = $.extend( {
 			q: JSON.stringify( lookup ),
 			searchData: JSON.stringify( {
 				namespace: this.searchBar.namespace.id || 0,
 				value: this.searchBar.value
 			} )
-		}
-
+		}, data );
 		this.api.abort();
 
 		return this.api.get( $.extend(

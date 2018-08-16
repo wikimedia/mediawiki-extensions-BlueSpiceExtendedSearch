@@ -86,11 +86,11 @@
 				"default": "extensions/BlueSpiceExtendedSearch/resources/images/default-icon.png"
 			},
 			"FileIcons": {
-				"pdf": "extensions/BlueSpiceExtendedSearch/resources/images/file-icon/pdf.png",
-				"docx": "extensions/BlueSpiceExtendedSearch/resources/images/file-icon/doc.png",
-				"doc": "extensions/BlueSpiceExtendedSearch/resources/images/file-icon/doc.png",
-				"mp4": "extensions/BlueSpiceExtendedSearch/resources/images/file-icon/mp4.png",
-				"default": "extensions/BlueSpiceExtendedSearch/resources/images/file-icon/default.png"
+				"pdf": "/extensions/BlueSpiceExtendedSearch/resources/images/file-icon/pdf.png",
+				"docx": "/extensions/BlueSpiceExtendedSearch/resources/images/file-icon/doc.png",
+				"doc": "/extensions/BlueSpiceExtendedSearch/resources/images/file-icon/doc.png",
+				"mp4": "/extensions/BlueSpiceExtendedSearch/resources/images/file-icon/mp4.png",
+				"default": "/extensions/BlueSpiceExtendedSearch/resources/images/file-icon/default.png"
 			},
 			"FieldsWithANDFilterEnabled": {
 				"fields": ["categories"]
