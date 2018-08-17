@@ -13,7 +13,7 @@ class WikiPage extends DecoratorBase {
 		$aPC = array_merge( $aPC, [
 			'prefixed_title' => [
 				'type' => 'text',
-				'copy_to' => 'congregated',
+				'copy_to' => [ 'congregated', 'ac_ngram' ],
 			],
 			'sections' => [
 				'type' => 'text',

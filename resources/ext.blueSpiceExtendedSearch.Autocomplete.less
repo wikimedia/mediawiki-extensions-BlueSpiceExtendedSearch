@@ -56,6 +56,12 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 	max-height: 520px;
 	z-index: 99;
 	left: 0;
+	::-webkit-scrollbar {
+		width: 5px;
+	}
+	::-webkit-scrollbar-thumb {
+		background: @scrollbar-handle-color;
+	}
 	.bs-extendedsearch-autocomplete-popup-primary {
 		width: 50%;
 		font-size: 1.2em;
@@ -174,9 +180,7 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 			background-color: @autocomplete-selected-background-color;
 		}
 		a {
-			color: @link-color-new; //.new
-			padding-top: 18px;
-			padding-left: 37px;
+			color: @link-color-new;
 			width: 100%;
 			height: 55px;
 			display: block;

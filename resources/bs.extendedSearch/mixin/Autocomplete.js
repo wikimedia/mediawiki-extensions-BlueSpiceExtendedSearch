@@ -34,8 +34,8 @@
 						} ).$element
 					);
 					this.displayedResults.top.push( suggestion );
+					continue;
 				}
-				continue;
 			}
 
 			if( suggestion.rank == bs.extendedSearch.Autocomplete.AC_RANK_SECONDARY ) {
