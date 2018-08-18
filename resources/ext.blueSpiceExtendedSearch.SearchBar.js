@@ -1,7 +1,7 @@
 ( function( mw, $, bs, d, undefined ){
 	bs.extendedSearch.SearchBar = function( cfg ) {
 		this.init( cfg );
-	}
+	};
 
 	bs.extendedSearch.SearchBar.prototype.init = function( cfg ) {
 		cfg = cfg || {};
@@ -45,16 +45,16 @@
 		this.$searchBox.on( 'keydown', this.onKeyDown.bind( this ) );
 		this.$searchBox.on( 'keyup', this.onKeyUp.bind( this ) );
 		this.$searchBox.on( 'paste', this.onPaste.bind( this ) );
-	}
+	};
 
 	bs.extendedSearch.SearchBar.prototype.detectNamespace = function( value ) {
 		var parts = value.split( ':' );
-		if( parts.length == 1 ) {
+		if( parts.length === 1 ) {
 			this.namespace = this.namespace || {};
 			this.value = value;
 			return;
 		}
-		if( parts.length == 2 && parts[1] === '' ) {
+		if( parts.length === 2 && parts[1] === '' ) {
 			this.namespace = {};
 			this.value = '';
 			return;
@@ -70,7 +70,7 @@
 			this.value = parts.shift();
 			this.generateNamespacePill();
 		}
-	}
+	};
 
 	bs.extendedSearch.SearchBar.prototype.setNamespaceFromValue = function( nsText ) {
 		if( !this.namespaces ) {
@@ -91,7 +91,7 @@
 				id: this.namespaces[nsText.toLowerCase()],
 				text: nsText,
 				values: bs.extendedSearch.utils.getNamespaceNames( this.namespaces, this.namespaces[nsText.toLowerCase()] )
-			}
+			};
 
 			if( newNamespace.id !== this.namespace.id ) {
 				this.namespace = newNamespace;
@@ -101,7 +101,7 @@
 
 		//NS cannot be set
 		return false;
-	}
+	};
 
 	bs.extendedSearch.SearchBar.prototype.generateNamespacePill = function() {
 		this.removeNamespacePill();
@@ -110,7 +110,7 @@
 		this.$searchBox.before( this.$pill );
 		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() - this.$pill.outerWidth(), true );
 		this.$searchBox.val( this.value );
-	}
+	};
 
 	bs.extendedSearch.SearchBar.prototype.removeNamespacePill = function( clearNamespace ) {
 		clearNamespace = clearNamespace || false;
@@ -125,7 +125,7 @@
 		}
 		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() + pill.outerWidth(), true );
 		pill.remove();
-	}
+	};
 
 	bs.extendedSearch.SearchBar.prototype.addClearButton = function() {
 		if( this.$searchContainer.find( '.bs-extendedsearch-searchbar-clear' ).length > 0 ) {
@@ -143,7 +143,7 @@
 
 		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() - clearButton.$element.outerWidth(), true );
 		this.$searchBox.addClass( 'clear-present' );
-	}
+	};
 
 	bs.extendedSearch.SearchBar.prototype.removeClearButton = function() {
 		var $clearButton = this.$searchContainer.find( '.bs-extendedsearch-searchbar-clear' );
@@ -153,7 +153,7 @@
 		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() + $clearButton.outerWidth(), true );
 		$clearButton.remove();
 		this.$searchBox.removeClass( 'clear-present' );
-	}
+	};
 
 	bs.extendedSearch.SearchBar.prototype.setSearchBoxWidthInline = function( width, important ) {
 		important = important || false;
@@ -163,7 +163,7 @@
 		}
 
 		this.$searchBox.attr( 'style', value );
-	}
+	};
 
 	bs.extendedSearch.SearchBar.prototype.toggleClearButton = function( value ) {
 		var pillPresent =
@@ -178,14 +178,14 @@
 		} else {
 			this.removeClearButton();
 		}
-	}
+	};
 
 	bs.extendedSearch.SearchBar.prototype.onPaste = function( e ) {
 		var beforeValue = e.target.value;
 		var value = e.originalEvent.clipboardData.getData( 'Text' );
 		var isChanged = beforeValue !== value;
 
-		if( this.beforeValueChanged( e ) == false ) {
+		if( this.beforeValueChanged( e ) === false ) {
 			return;
 		}
 		if( !isChanged ) {
@@ -197,16 +197,16 @@
 		setTimeout( function() {
 			this.changeValue( value );
 		}.bind( this ), 200 );
-	}
+	};
 
 	bs.extendedSearch.SearchBar.prototype.onKeyUp = function( e ) {
 		var value = e.target.value;
 		var isChanged = this.valueBefore !== value;
-		if( this.beforeValueChanged( e ) == false ) {
+		if( this.beforeValueChanged( e ) === false ) {
 			return;
 		}
 
-		if( this.valueBefore == '' && value == '' && e.which == 8 ) {
+		if( this.valueBefore === '' && value === '' && e.which === 8 ) {
 			//Backspacing on empty field
 			if( this.useNamespacePills ) {
 				this.removeNamespacePill( true );
@@ -224,11 +224,11 @@
 		this.typingTimer = setTimeout( function() {
 			this.changeValue( value );
 		}.bind( this ), this.typingDoneInterval );
-	}
+	};
 
 	bs.extendedSearch.SearchBar.prototype.onKeyDown = function( e ) {
 		this.valueBefore = e.target.value;
-	}
+	};
 
 	bs.extendedSearch.SearchBar.prototype.onClearSearch = function( e ) {
 		this.$searchBox.val( '' );
@@ -236,11 +236,11 @@
 			this.removeNamespacePill( true );
 		}
 		this.toggleClearButton( '' );
-	}
+	};
 
 	bs.extendedSearch.SearchBar.prototype.onValueChanged = function() {
 		//For others to override
-	}
+	};
 
 	bs.extendedSearch.SearchBar.prototype.setValue = function( value ) {
 		this.$searchBox.val( value );
@@ -248,12 +248,12 @@
 			this.detectNamespace( value );
 		}
 		this.toggleClearButton( value );
-	}
+	};
 
 	bs.extendedSearch.SearchBar.prototype.beforeValueChanged = function( e ) {
 		//Others can override this to see if the value checking should be conducted
 		return true;
-	}
+	};
 
 	bs.extendedSearch.SearchBar.prototype.changeValue = function( value ) {
 		if( this.useNamespacePills && value ) {
@@ -265,5 +265,5 @@
 		this.toggleClearButton( value );
 		//"Fire" this only when value is actually changed
 		this.onValueChanged();
-	}
+	};
 } )( mediaWiki, jQuery, blueSpice, document );
