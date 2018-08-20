@@ -74,4 +74,8 @@ class WikiPages extends DecoratorBase {
 	public function getFormatter() {
 		return new Formatter\WikiPageFormatter( $this );
 	}
+
+	public function getSearchPermission() {
+		return 'extendedsearch-search-wikipage';
+	}
 }
