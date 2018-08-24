@@ -22,7 +22,14 @@ class SearchCenter extends \SpecialPage {
 		// Lookup object had time to init/update on client side,
 		// we must use raw_term to set the lookup
 		if( $rawTerm != '' ) {
-			if( $queryString['query'] == '' || $queryString['query'] != $rawTerm ) {
+			$queryStringBits = explode( '/', $queryString[ 'query' ] );
+			$rawTermIsSubpage = false;
+			if( !empty( $queryStringBits ) &&
+				$queryStringBits[ count( $queryStringBits ) - 1 ] == $rawTerm ) {
+				$rawTermIsSubpage = true;
+			}
+
+			if( $queryString['query'] == '' || ( $queryString['query'] != $rawTerm && !$rawTermIsSubpage ) ) {
 				$queryString['query'] = $rawTerm;
 				$lookup->setQueryString( $queryString );
 			}
@@ -101,9 +108,10 @@ class SearchCenter extends \SpecialPage {
 	 * otherwise returns empty Lookup
 	 *
 	 * @param string $query
+	 * @param boolean $queryIsLookup Is passed query a Lookup object
 	 * @return \BS\ExtendedSearch\Lookup
 	 */
-	protected function lookupFromQuery( $query ) {
+	protected function lookupFromQuery( $query, &$queryIsLookup ) {
 		$lookup = new \BS\ExtendedSearch\Lookup();
 		if( !$query ) {
 			return $lookup;
@@ -115,9 +123,11 @@ class SearchCenter extends \SpecialPage {
 		}
 
 		if( is_string( $query ) == false ) {
+			$queryIsLookup = true;
 			return $lookup;
 		}
 
+		$queryIsLookup = false;
 		$lookup->setQueryString( $query );
 		return $lookup;
 	}

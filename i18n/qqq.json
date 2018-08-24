@@ -98,5 +98,8 @@
 	"bs-extendedsearch-pref-external-file-paths-path-help": "Help message for physical path input field",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Help message for url prefix input field",
 	"bs-extendedsearch-external-file-paths-desc": "Description message for configuration variable $bsgESExternalFilePaths",
-	"bs-extendedsearch-autocomplete-modified-time-label": "Label for last modified time in autocomplete. $1 - last modified timestamp (formatted)"
+	"bs-extendedsearch-autocomplete-modified-time-label": "Label for last modified time in autocomplete. $1 - last modified timestamp (formatted)",
+	"bs-extendedseach-wikipage-section-more-text": "Text to show when there are more sections in a wikipage than can be showed. $1 - number of sections not shown",
+	"bs-extendedsearch-pref-compact-ac-paths": "Label for the field selecting whether to use simple autocomplete popup",
+	"bs-extendedsearch-compact-ac-paths-desc": "Description message for configuration variable $bsgESCompactAutocomplete"
 }

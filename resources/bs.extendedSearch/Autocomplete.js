@@ -9,6 +9,8 @@
 
 		this.api = new mw.Api();
 
+		this.mainpage = '';
+
 		//Wire the events
 		this.searchBar.$searchForm.on( 'submit', this.onSubmit.bind( this ) );
 		this.searchBar.beforeValueChanged = this.beforeValueChanged.bind( this );
@@ -36,7 +38,12 @@
 	function _setLookupToSubmit() {
 		//Make lookup and fill it with values from searchBar
 		var lookup = new bs.extendedSearch.Lookup( this.lookupConfig );
-		lookup.setQueryString( this.searchBar.value );
+		var queryString = this.searchBar.value;
+		if( this.searchBar.mainpage ) {
+			queryString = this.searchBar.mainpage + '/' + queryString;
+		}
+
+		lookup.setQueryString( queryString );
 		if( this.searchBar.namespace.id ) {
 			lookup.addTermsFilter( 'namespace_text', this.searchBar.namespace.text );
 		}
@@ -167,6 +174,17 @@
 			this.autocompleteConfig['DisplayLimits']['top']
 		lookup.setSize( primaryCount );
 
+		if( this.searchBar.mainpage ) {
+			var mainpageMatch = { match: {} };
+			mainpageMatch.match['basename'] = { query: this.searchBar.mainpage };
+
+			var origMatch = lookup.query.bool.must;
+			lookup.query.bool.must = [
+				origMatch,
+				mainpageMatch
+			];
+		}
+
 		var me = this;
 		this.runLookup( lookup ).done( function( response ) {
 			me.makePopup( response.suggestions, response.page_create_info );
@@ -229,7 +247,8 @@
 			q: JSON.stringify( lookup ),
 			searchData: JSON.stringify( {
 				namespace: this.searchBar.namespace.id || 0,
-				value: this.searchBar.value
+				value: this.searchBar.value,
+				mainpage: this.searchBar.mainpage || ''
 			} )
 		}, data );
 		this.api.abort();

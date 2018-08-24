@@ -26,13 +26,13 @@
 	bs.extendedSearch.mixin.ResultSecondaryInfo = function( cfg ) {
 		cfg = cfg || {};
 
-		this.secondaryInfos = cfg.secondaryInfos || [];
+		this.secondaryInfos = this.secondaryInfos || [];
 		if( this.secondaryInfos == [] ) {
 			return;
 		}
 
-		this.topSecondaryInfo = cfg.secondaryInfos.top || [];
-		this.bottomSecondaryInfo = cfg.secondaryInfos.bottom || [];
+		this.topSecondaryInfo = this.secondaryInfos.top || [];
+		this.bottomSecondaryInfo = this.secondaryInfos.bottom || [];
 
 		this.setTopSecondaryInfo( this.topSecondaryInfo.items );
 		this.setBottomSecondaryInfo( this.bottomSecondaryInfo.items );

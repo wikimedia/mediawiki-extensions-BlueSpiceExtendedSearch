@@ -1,14 +1,12 @@
 ( function( mw, $, bs, d, undefined ){
 	bs.util.registerNamespace( "bs.extendedSearch.mixin" );
 
-	bs.extendedSearch.ResultWidget = function( cfg ) {
+	bs.extendedSearch.ResultWidget = function( cfg, mobile ) {
 		cfg = cfg || {};
 
-		bs.extendedSearch.ResultWidget.parent.call( this, cfg );
+		this.mobile = mobile || false;
 
-		bs.extendedSearch.mixin.ResultImage.call( this, cfg );
-		bs.extendedSearch.mixin.ResultSecondaryInfo.call( this, cfg );
-		bs.extendedSearch.mixin.ResultRelevanceControl.call( this, cfg );
+		bs.extendedSearch.ResultWidget.parent.call( this, cfg );
 
 		this.headerText = cfg.headerText;
 		this.headerUri = cfg.headerUri;
@@ -16,6 +14,21 @@
 		this.secondaryInfos = cfg.secondaryInfos || [];
 		this.highlight = cfg.highlight || '';
 		this.featured = cfg.featured || false;
+
+		// If we are in desktop mode, show sections outside of secondaryInfos
+		if( !this.mobile && this.secondaryInfos.top.items.length > 0 ) {
+			for( var idx in this.secondaryInfos.top.items ) {
+				if( this.secondaryInfos.top.items[ idx ].name === 'sections' ) {
+					this.sections = this.secondaryInfos.top.items[ idx ];
+					this.secondaryInfos.top.items.splice( idx, 1 );
+					break;
+				}
+			}
+		}
+
+		bs.extendedSearch.mixin.ResultImage.call( this, cfg );
+		bs.extendedSearch.mixin.ResultSecondaryInfo.call( this, cfg );
+		bs.extendedSearch.mixin.ResultRelevanceControl.call( this, cfg );
 
 		this.id = cfg._id;
 		this.rawResult = cfg.raw_result || {};
@@ -45,12 +58,28 @@
 			);
 
 		this.$dataContainer.append( this.$headerContainer, this.$topSecondaryInfo, this.$highlightContainer, this.$bottomSecondaryInfo );
+
 		this.$element = $( '<div>' )
 			.addClass( 'bs-extendedsearch-result-container' )
 			.append( this.$image, this.$dataContainer, this.$relevanceControl );
 
+		if( this.sections ) {
+			this.$dataContainer.addClass( 'short' );
+			this.$sectionContainer = $( '<div>' )
+				.addClass( 'bs-extendedsearch-result-section-container' );
+			this.$sectionContainer.append( new OO.ui.LabelWidget( {
+				label: mw.message( this.sections.labelKey ).plain()
+			} ).$element );
+			this.$sectionContainer.append( this.sections.value );
+			this.$element.append( this.$sectionContainer );
+		}
+
 		if( this.featured ) {
 			this.$element.addClass( 'bs-extendedsearch-result-featured' );
+		}
+
+		if( this.mobile ) {
+			this.$element.addClass( 'bs-extendedsearch-result-mobile' );
 		}
 	}
 

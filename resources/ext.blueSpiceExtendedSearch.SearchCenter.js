@@ -252,7 +252,8 @@
 				total: response.total,
 				spellcheck: response.spellcheck,
 				caller: search,
-				total_approximated: response.total_approximated
+				total_approximated: response.total_approximated,
+				mobile: bs.extendedSearch.utils.isMobile()
 			} );
 		} );
 	}
@@ -341,14 +342,15 @@
 
 	//Init searchBar and wire it up
 	var searchBar = new bs.extendedSearch.SearchBar( {
-		useNamespacePills: false
+		useNamespacePills: false,
+		useSubpagePills: false
 	} );
-		
+
 	searchBar.$searchForm.on( 'submit', function( e ) {
 		e.preventDefault();
 		bs.extendedSearch.SearchCenter.execSearch();
 	} );
-	
+
 
 	searchBar.onValueChanged = function() {
 		search.getLookupObject().removeForceTerm();

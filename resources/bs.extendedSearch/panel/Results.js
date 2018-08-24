@@ -19,6 +19,8 @@
 		this.caller = cfg.caller;
 		this.lookup = this.caller.getLookupObject() || null;
 
+		this.mobile = cfg.mobile || false;
+
 		this.showResults();
 	}
 
@@ -95,10 +97,12 @@
 				.addClass( 'bs-extendedsearch-searchcenter-loading' )
 				.append( pbWidget.$element )
 		);
+		$( '#bs-es-tools, #bs-es-results' ).hide();
 	}
 
 	bs.extendedSearch.ResultsPanel.prototype.removeLoading = function() {
 		$( '.bs-extendedsearch-searchcenter-loading' ).remove();
+		$( '#bs-es-tools, #bs-es-results' ).show();
 	}
 
 	bs.extendedSearch.ResultsPanel.prototype.showHelp = function() {
@@ -119,7 +123,7 @@
 		var me = this;
 
 		$.each( results, function( idx, cfg ) {
-			var resultWidget = new bs.extendedSearch.ResultWidget( cfg );
+			var resultWidget = new bs.extendedSearch.ResultWidget( cfg, me.mobile );
 			me.appendResult( resultWidget );
 		} );
 	}

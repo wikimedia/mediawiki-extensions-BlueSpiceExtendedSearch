@@ -68,7 +68,7 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 		vertical-align: top;
 		padding-bottom: 10px;
 		height: inherit;
-		max-height: 520px;
+		max-height: inherit;
 		overflow-y: auto;
 		overflow-x: hidden;
 		display: inline-block;
@@ -181,6 +181,7 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 		}
 		a {
 			color: @link-color-new;
+			padding: 15px 20px 0px 35px;
 			width: 100%;
 			height: 55px;
 			display: block;
@@ -230,6 +231,8 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 		}
 	}
 	&.compact {
+		height: auto !important;
+		max-height: 380px;
 		.bs-extendedsearch-autocomplete-popup-primary {
 			font-size: 1em;
 			width: 100%;
@@ -238,6 +241,7 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 				padding: 5px;
 				position: relative;
 				height: 30px;
+				max-height: 30px;
 				&.bs-autocomplete-result-selected {
 					background-color: @autocomplete-selected-background-color;
 				}
@@ -250,6 +254,20 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 			}
 			.bs-extendedsearch-autocomplete-popup-primary-no-results {
 				padding: 15px;
+			}
+			.bs-extendedsearch-autocomplete-popup-create-page-link {
+				height: 30px;
+				a {
+					height: 30px;
+					padding: 5px;
+				}
+			}
+			.bs-extendedsearch-autocomplete-popup-fulltext-search-button {
+				height: 30px;
+				a {
+					height: 30px;
+					padding: 5px;
+				}
 			}
 		}
 	}

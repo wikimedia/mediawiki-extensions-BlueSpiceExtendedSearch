@@ -26,7 +26,7 @@
 		for( idx in cfg.data ) {
 			var suggestion = cfg.data[idx];
 			//Top matches
-			if( suggestion.rank == bs.extendedSearch.Autocomplete.AC_RANK_TOP ) {
+			if( !this.compact && suggestion.rank == bs.extendedSearch.Autocomplete.AC_RANK_TOP ) {
 				if( limits.top > this.displayedResults.top.length ) {
 					topResultElements.push(
 						new bs.extendedSearch.AutocompleteTopMatch( {

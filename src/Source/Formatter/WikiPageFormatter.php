@@ -112,9 +112,21 @@ class WikiPageFormatter extends Base {
 				break;
 			}
 			$linkTarget = $title->createFragmentTarget( $section );
+			if( strlen( $section ) > 25 ) {
+				$section = substr( $section, 0, 25 ) . Base::MORE_VALUES_TEXT;
+			}
 			$sections[] = $this->linkRenderer->makeLink( $linkTarget, $section );
 		}
-		return implode( Base::VALUE_SEPARATOR, $sections ) . ( $moreSections ? Base::MORE_VALUES_TEXT : '' );;
+
+		$sectionText = implode( Base::VALUE_SEPARATOR, $sections );
+		if( $moreSections ) {
+			$sectionText .=
+				wfMessage(
+					'bs-extendedseach-wikipage-section-more-text',
+					( count( $result['sections'] ) - 3 )
+				)->plain();
+		}
+		return $sectionText;
 	}
 
 	protected function getHighlight( $resultObject ) {
@@ -191,6 +203,14 @@ class WikiPageFormatter extends Base {
 		foreach( $results as &$result ) {
 			if( $result['type'] !== $this->source->getTypeKey() ) {
 				continue;
+			}
+
+			if( isset( $searchData['mainpage'] ) ) {
+				// Poor man's conditioning, should be done in query
+				if( $result['basename'] !== $searchData['mainpage'] ) {
+					$result['rank'] = self::AC_RANK_SECONDARY;
+					continue;
+				}
 			}
 
 			$pageTitle = $result['prefixed_title'];

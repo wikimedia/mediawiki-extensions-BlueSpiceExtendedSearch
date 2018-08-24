@@ -14,6 +14,10 @@
 		if( cfg.useNamespacePills === false ) {
 			this.useNamespacePills = false;
 		}
+		this.useSubpagePills = true;
+		if( cfg.useSubpagePills === false ) {
+			this.useSubpagePills = false;
+		}
 
 		if( bs.extendedSearch.utils.isMobile() ) {
 			this.mobile = true;
@@ -51,25 +55,40 @@
 		var parts = value.split( ':' );
 		if( parts.length === 1 ) {
 			this.namespace = this.namespace || {};
-			this.value = value;
-			return;
+			return value;
 		}
 		if( parts.length === 2 && parts[1] === '' ) {
 			this.namespace = {};
-			this.value = '';
-			return;
+			return '';
 		}
 
 		var newNamespace = parts.shift();
 
 		if( !this.setNamespaceFromValue( newNamespace ) ) {
 			this.namespace = {};
-			this.value = value;
-			return;
+			return value;
 		} else {
-			this.value = parts.shift();
-			this.generateNamespacePill();
+			value = parts.shift();
+			this.generateNamespacePill( value );
+			return value;
 		}
+	};
+
+	bs.extendedSearch.SearchBar.prototype.detectSubpage = function( value ) {
+		var parts = value.split( '/' );
+		if( parts.length === 1 ) {
+			this.mainpage = this.mainpage || '';
+			return value;
+		}
+		if( parts.length === 2 && parts[1] === '' ) {
+			this.mainpage = '';
+			return '';
+		}
+
+		this.mainpage = parts.shift();
+		value = parts.shift();
+		this.generateSubpagePill( value );
+		return value;
 	};
 
 	bs.extendedSearch.SearchBar.prototype.setNamespaceFromValue = function( nsText ) {
@@ -103,14 +122,25 @@
 		return false;
 	};
 
-	bs.extendedSearch.SearchBar.prototype.generateNamespacePill = function() {
+	bs.extendedSearch.SearchBar.prototype.generateNamespacePill = function( value ) {
+		value = value || this.value;
 		this.removeNamespacePill();
 
-		this.$pill = $( '<span>' ).addClass( 'bs-extendedsearch-searchbar-pill' ).html( this.namespace.text );
+		this.$pill = $( '<span>' ).addClass( 'bs-extendedsearch-searchbar-pill namespace-pill' ).html( this.namespace.text );
 		this.$searchBox.before( this.$pill );
 		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() - this.$pill.outerWidth(), true );
-		this.$searchBox.val( this.value );
+		this.$searchBox.val( value );
 	};
+
+	bs.extendedSearch.SearchBar.prototype.generateSubpagePill = function( value ) {
+		value = value || this.value;
+		this.removeSubpagePill();
+
+		this.$pill = $( '<span>' ).addClass( 'bs-extendedsearch-searchbar-pill subpage-pill' ).html( this.mainpage + '/' );
+		this.$searchBox.before( this.$pill );
+		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() - this.$pill.outerWidth(), true );
+		this.$searchBox.val( value );
+	}
 
 	bs.extendedSearch.SearchBar.prototype.removeNamespacePill = function( clearNamespace ) {
 		clearNamespace = clearNamespace || false;
@@ -119,12 +149,29 @@
 			this.namespace = {};
 		}
 
-		var pill = this.$searchContainer.find( '.bs-extendedsearch-searchbar-pill' );
+		var pill = this.$searchContainer.find( '.bs-extendedsearch-searchbar-pill.namespace-pill' );
 		if( pill.length === 0 ) {
-			return;
+			return false;
 		}
 		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() + pill.outerWidth(), true );
 		pill.remove();
+		return true;
+	};
+
+	bs.extendedSearch.SearchBar.prototype.removeSubpagePill = function( clearMainpage ) {
+		clearMainpage = clearMainpage || false;
+
+		if( clearMainpage ) {
+			this.mainpage = '';
+		}
+
+		var pill = this.$searchContainer.find( '.bs-extendedsearch-searchbar-pill.subpage-pill' );
+		if( pill.length === 0 ) {
+			return false;
+		}
+		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() + pill.outerWidth(), true );
+		pill.remove();
+		return true;
 	};
 
 	bs.extendedSearch.SearchBar.prototype.addClearButton = function() {
@@ -208,9 +255,15 @@
 
 		if( this.valueBefore === '' && value === '' && e.which === 8 ) {
 			//Backspacing on empty field
-			if( this.useNamespacePills ) {
-				this.removeNamespacePill( true );
-				isChanged = true;
+			if( this.useSubpagePills ) {
+				if( this.removeSubpagePill( true ) ) {
+					isChanged = true;
+				}
+			}
+			if( this.useNamespacePills && isChanged === false ) {
+				if( this.removeNamespacePill( true ) ) {
+					isChanged = true;
+				}
 			}
 		}
 
@@ -235,6 +288,9 @@
 		if( this.useNamespacePills ) {
 			this.removeNamespacePill( true );
 		}
+		if( this.useSubpagePills ) {
+			this.removeSubpagePill( true );
+		}
 		this.toggleClearButton( '' );
 	};
 
@@ -245,8 +301,13 @@
 	bs.extendedSearch.SearchBar.prototype.setValue = function( value ) {
 		this.$searchBox.val( value );
 		if( this.useNamespacePills ) {
-			this.detectNamespace( value );
+			value = this.detectNamespace( value );
 		}
+		if( this.useSubpagePills ) {
+			value = this.detectSubpage( value );
+		}
+
+		this.value = value;
 		this.toggleClearButton( value );
 	};
 
@@ -257,10 +318,12 @@
 
 	bs.extendedSearch.SearchBar.prototype.changeValue = function( value ) {
 		if( this.useNamespacePills && value ) {
-			this.detectNamespace( value );
-		} else {
-			this.value = value;
+			value = this.detectNamespace( value );
+		} if( this.useSubpagePills && value ) {
+			value = this.detectSubpage( value );
 		}
+
+		this.value = value;
 
 		this.toggleClearButton( value );
 		//"Fire" this only when value is actually changed

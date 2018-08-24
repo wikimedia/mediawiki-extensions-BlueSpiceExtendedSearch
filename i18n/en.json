@@ -49,7 +49,7 @@
 	"bs-extendedsearch-search-center-result-namespace_text-label": "Namespace:",
 	"bs-extendedsearch-search-center-result-categories-label": "Category:",
 	"bs-extendedsearch-search-center-result-author-label": "Author:",
-	"bs-extendedsearch-search-center-result-sections-label": "Section:",
+	"bs-extendedsearch-search-center-result-sections-label": "Sections:",
 	"bs-extendedsearch-search-center-result-ctime-label": "Created:",
 	"bs-extendedsearch-search-center-result-mtime-label": "Modified:",
 	"bs-extendedsearch-search-center-result-no-results": "There are no results for the given term",
@@ -98,5 +98,8 @@
 	"bs-extendedsearch-pref-external-file-paths-path-help": "Location on disk or mounted drive",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Web location capable of serving files from this folder",
 	"bs-extendedsearch-external-file-paths-desc": "Array of external folders that should be indexed",
-	"bs-extendedsearch-autocomplete-modified-time-label": "Last modified: $1"
+	"bs-extendedsearch-autocomplete-modified-time-label": "Last modified: $1",
+	"bs-extendedseach-wikipage-section-more-text": " ... $1 more",
+	"bs-extendedsearch-pref-compact-ac-paths": "Use simple autocomplete",
+	"bs-extendedsearch-compact-ac-paths-desc": "Whether to use simple autocomplete popup"
 }

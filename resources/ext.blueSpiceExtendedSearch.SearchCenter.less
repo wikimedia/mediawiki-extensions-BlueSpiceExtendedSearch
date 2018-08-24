@@ -27,6 +27,7 @@ div#bs-es-hitcount {
 /*Tools and filters*/
 div#bs-es-tools {
 	height: auto;
+	min-height: 43px;
 	background: #98a7c4;
 	clear: both;
 	padding-left:4px;
@@ -36,19 +37,18 @@ div#bs-es-tools {
 	}
 	div#bs-es-tools-tools {
 		padding: 5px;
-		display: inline-block;
-		min-width: 100px;
-		position: absolute;
-		right: 30px;
+		height: 43px;
+		display: table-cell;
+		min-width: 90px;
 		.bs-extendedsearch-filter-add-settings-button::before {
 			content: '\e994';
-			margin-left: 20px;
 			font-family: icomoon !important;
 			cursor: pointer;
 			font-size: 16px;
 			color: #ffffff;
 			position: relative;
 			display: inline-block;
+			vertical-align: middle;
 		}
 		.bs-extendedsearch-filter-add-download-button::before {
 			content: '\e95f';
@@ -59,17 +59,24 @@ div#bs-es-tools {
 			color: #ffffff;
 			position: relative;
 			display: inline-block;
+			vertical-align: middle;
 		}
 	}
 
 	div#bs-es-tools-filters {
 		padding: 5px;
-		display: inline-block;
-		width: 90%;
+		padding-bottom: 0px;
+		padding-right: 40px;
+		display: table-cell;
+		width: 100%;
+		position: relative;
+		vertical-align: top;
 		.bs-extendedsearch-filter-button-widget {
 			margin-right: 10px;
+			margin-bottom: 5px;
 			.bs-extendedsearch-filter-button-button {
 				border-radius: 10px 0 0 10px !important;
+				font-weight: normal;
 				&:hover {
 					text-decoration: none !important;
 				}
@@ -82,7 +89,6 @@ div#bs-es-tools {
 					a {
 						color: white !important;
 					}
-
 				}
 			}
 			.bs-extendedsearch-filter-group {
@@ -110,32 +116,34 @@ div#bs-es-tools {
 				margin-top: 5px;
 			}
 		}
-		.bs-extendedsearch-filter-add-widget-button:before {
-			content: '\ea5b';
-			font-family: icomoon !important;
-			cursor: pointer;
-			font-size: 16px;
-			color: #ffffff;
-			position: relative;
-			display: inline-block;
-		}
-		.bs-extendedsearch-filter-add-widget-button {
-			margin-top: -2em; //can not override padding, so negative margin
-			border-style: none !important;
-			background-color: transparent !important;
-			font-weight: normal !important;
+		#bs-extendedsearch-filter-add-button {
+			position: absolute;
+			right: 10px;
+			top: 8px;
+			.bs-extendedsearch-filter-add-widget-button:before {
+				content: '\ea5b';
+				font-family: icomoon !important;
+				cursor: pointer;
+				font-size: 16px;
+				color: #ffffff;
+				position: relative;
+				display: inline-block;
+			}
+			.bs-extendedsearch-filter-add-widget-button {
+				margin-top: -2em; //can not override padding, so negative margin
+				border-style: none !important;
+				background-color: transparent !important;
+				font-weight: normal !important;
+			}
 		}
 	}
 	&.mobile {
-		div#bs-es-tools-filters {
-			width: 80%;
-		}
 	}
 }
 
 /*Results*/
 div#bs-es-results {
-	padding-top: 5px;
+	padding: 10px;
 	background-color: @results-column-background-color;
 	.bs-extendedsearch-no-results,
 	.bs-extendedsearch-help {
@@ -146,18 +154,33 @@ div#bs-es-results {
 		font-size: 1.3em;
 	}
 	.bs-extendedsearch-result-container {
-		width: 98%;
+		width: 100%;
 		background-color: @results-background-color;
 		height: auto;
 		padding: 10px;
-		margin: 10px 0 10px 0;
+		margin-top: 10px;
 		min-height: @results-content-height;
 		display: flex;
 		&.bs-extendedsearch-result-featured {
 			background-color: @results-featured-background-color;
 			min-height: @results-featured-content-height;
-			border: 1px solid #98a4c4;
-			border-radius: 3px;
+			//border: 1px solid #98a4c4;
+			//border-radius: 3px;
+			.bs-extendedsearch-result-data-container {
+				width: 60%;
+				overflow-x: hidden;
+				overflow-y: auto;
+			}
+		}
+		&.bs-extendedsearch-result-mobile {
+			.bs-extendedsearch-result-data-container {
+				width: 100%;
+			}
+			&.bs-extendedsearch-result-featured {
+				.bs-extendedsearch-result-data-container {
+					width: 60%;
+				}
+			}
 		}
 		.bs-extendedsearch-result-image {
 			width: 110px;
@@ -173,6 +196,7 @@ div#bs-es-results {
 		}
 		.bs-extendedsearch-result-data-container {
 			min-height:@results-content-height;
+			width: 75%;
 			.bs-extendedsearch-result-header {
 				font-size: 1.3em;
 			}
@@ -207,6 +231,14 @@ div#bs-es-results {
 				overflow-y: hidden;
 			}
 		}
+		.bs-extendedsearch-result-section-container {
+			.oo-ui-labelWidget {
+				display: block;
+			}
+			width: 180px;
+			overflow-x: hidden;
+			margin-left: 20px;
+		}
 		.bs-extendedsearch-result-relevance-cnt {
 			position:absolute;
 			right: 40px;
@@ -231,7 +263,7 @@ div#bs-es-results {
 		padding: 10px;
 		margin: 10px 0 10px 0;
 		background-color: @results-background-color;
-		width: 98%;
+		width: 100%;
 		.bs-extendedsearch-loadmore-loader {
 			margin-left: auto;
 			margin-right: auto;
@@ -276,6 +308,3 @@ div#bs-es-results {
 .no-scroll {
 	overflow-y: hidden !important;
 }
-
-
-
