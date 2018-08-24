@@ -10,6 +10,7 @@ use BS\ExtendedSearch\Source\LookupModifier\BaseWildcarder;
 use BS\ExtendedSearch\Source\LookupModifier\BaseSortByID;
 use BS\ExtendedSearch\Source\LookupModifier\BaseTitleSecurityTrimmings;
 use BS\ExtendedSearch\Source\LookupModifier\BaseUserRelevance;
+use BS\ExtendedSearch\Source\LookupModifier\BaseTypeSecurityTrimming;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 
 class Base {
@@ -22,11 +23,13 @@ class Base {
 			'base-wildcarder' => BaseWildcarder::class,
 			'base-idsort' => BaseSortByID::class,
 			'base-titlesecuritytrimmings' => BaseTitleSecurityTrimmings::class,
-			'base-userrelevance' => BaseUserRelevance::class
+			'base-userrelevance' => BaseUserRelevance::class,
+			'base-typesecuritytrimmings' => BaseTypeSecurityTrimming::class
 		],
 		LookupModifier::TYPE_AUTOCOMPLETE => [
 			'base-acsourcefields' => BaseAutocompleteSourceFields::class,
-			'base-titlesecuritytrimmings' => BaseTitleSecurityTrimmings::class
+			'base-titlesecuritytrimmings' => BaseTitleSecurityTrimmings::class,
+			'base-typesecuritytrimmings' => BaseTypeSecurityTrimming::class
 		]
 	];
 
@@ -224,5 +227,10 @@ class Base {
 
 	public function getFormatter() {
 		return new Formatter\Base( $this );
+	}
+
+	public function getSearchPermission() {
+		// Default - no permission required
+		return '';
 	}
 }

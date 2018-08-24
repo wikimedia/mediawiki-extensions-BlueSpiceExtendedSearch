@@ -40,7 +40,7 @@ class SearchCenter extends \SpecialPage {
 			'ext.blueSpiceExtendedSearch.SearchBar.styles'
 		);
 
-		$localBackend = \BS\ExtendedSearch\Backend::instance( 'local' );
+		$localBackend = \BS\ExtendedSearch\Backend::instance();
 		$defaultResultStructure = $localBackend->getDefaultResultStructure();
 
 		//Add _score manually, as its not a real field
@@ -50,7 +50,6 @@ class SearchCenter extends \SpecialPage {
 		$availableTypes = [];
 		$resultStructures = [];
 
-		$sourceConfig = [];
 		foreach( $localBackend->getSources() as $sourceKey => $source ) {
 			foreach( $source->getMappingProvider()->getPropertyConfig() as $fieldName => $fieldConfig ) {
 				if( in_array( $fieldName, $sortableFields ) ) {
@@ -72,11 +71,10 @@ class SearchCenter extends \SpecialPage {
 			$resultStructure = $source->getFormatter()->getResultStructure( $defaultResultStructure );
 			$resultStructures[$source->getTypeKey()] = $resultStructure;
 
-			$availableTypes[] = $source->getTypeKey();
-
-			$sourceConfig[$sourceKey] = new \stdClass(); //In some future
-			//there might be additional configs per source. ATM we only need
-			//the key
+			$searchPermission = $source->getSearchPermission();
+			if( !$searchPermission || $this->getUser()->isAllowed( $searchPermission ) ) {
+				$availableTypes[] = $source->getTypeKey();
+			}
 		}
 
 		$out->enableOOUI();
@@ -88,7 +86,6 @@ class SearchCenter extends \SpecialPage {
 			$out->addJsConfigVars( 'bsgLookupConfig', \FormatJson::encode( $lookup ) );
 		}
 
-		$out->addJsConfigVars( 'bsgESSources', $sourceConfig );
 		//Structure of the result displayed in UI, decorated by each source
 		$out->addJsConfigVars( 'bsgESResultStructures', $resultStructures );
 		//Array of fields available for sorting

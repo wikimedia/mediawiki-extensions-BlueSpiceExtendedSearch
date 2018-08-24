@@ -34,4 +34,8 @@ class SpecialPages extends DecoratorBase {
 	public function getFormatter() {
 		return new Formatter\SpecialPageFormatter( $this );
 	}
+
+	public function getSearchPermission() {
+		return 'extendedsearch-search-specialpage';
+	}
 }

@@ -65,4 +65,8 @@ class ExternalFiles extends DecoratorBase {
 
 		return $oResult;
 	}
+
+	public function getSearchPermission() {
+		return 'extendedsearch-search-externalfile';
+	}
 }

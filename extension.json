@@ -25,6 +25,32 @@
 			},
 			"RunJobsTriggerHandlerRegistry": {
 				"bs-extendedsearch-update-external-files": "BS\\ExtendedSearch\\Source\\Updater\\ExternalFile::factory"
+			},
+			"PermissionRegistry": {
+				"extendedsearch-search-specialpage": {
+					"type": "global",
+					"roles": [
+						"reader", "editor", "admin"
+					]
+				},
+				"extendedsearch-search-wikipage": {
+					"type": "global",
+					"roles": [
+						"reader", "editor", "admin"
+					]
+				},
+				"extendedsearch-search-repofile": {
+					"type": "global",
+					"roles": [
+						"reader", "editor", "admin"
+					]
+				},
+				"extendedsearch-search-externalfile": {
+					"type": "global",
+					"roles": [
+						"reader", "editor", "admin"
+					]
+				}
 			}
 		},
 		"BlueSpiceExtendedSearch": {
