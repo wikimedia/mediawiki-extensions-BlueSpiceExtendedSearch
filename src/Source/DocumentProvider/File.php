@@ -15,6 +15,7 @@ class File extends DecoratorBase {
 		$magic = \MediaWiki\MediaWikiServices::getInstance()->getMimeAnalyzer();
 		$aDC = array_merge( $aDC, [
 			'basename' => $oFile->getBasename(),
+			'basename_exact' => $oFile->getBasename(),
 			'extension' => $oFile->getExtension(),
 			'mime_type' => $magic->guessMimeType( $oFile->getPathname() ),
 			'mtime' => $oFile->getMTime(),

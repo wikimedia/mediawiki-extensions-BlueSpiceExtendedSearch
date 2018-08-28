@@ -12,7 +12,8 @@ class Base {
 			'id' => $this->getDocumentId( $sUri ),
 			'sortable_id' => $this->getDocumentId( $sUri ),
 			'uri' => $sUri,
-			'basename' => wfBaseName( $sUri )
+			'basename' => wfBaseName( $sUri ),
+			'basename_exact' => wfBaseName( $sUri )
 		];
 	}
 }

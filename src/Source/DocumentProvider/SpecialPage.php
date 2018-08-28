@@ -14,6 +14,7 @@ class SpecialPage extends DecoratorBase {
 		$aDC = $this->oDecoratedDP->getDataConfig( $sUri, $oSpecialPage );
 		$aDC = array_merge( $aDC, [
 			'basename' => $oSpecialPage->getPageTitle()->getBaseText(),
+			'basename_exact' => $oSpecialPage->getPageTitle()->getBaseText(),
 			'extension' => 'special',
 			'mime_type' => 'text/html',
 			'prefixed_title' => $oSpecialPage->getPageTitle()->getPrefixedText(),

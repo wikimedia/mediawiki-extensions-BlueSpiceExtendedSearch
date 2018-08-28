@@ -23,7 +23,6 @@
 	//we don't want form to be submited, user should be navigate to that page
 	function _onSubmit( e ) {
 		e.preventDefault();
-		//return;
 		var overrideSubmitting = this.navigateToResultPage();
 		//If no result is selected, or URI cannot be retieved, submit to SearchCenter
 		if( !overrideSubmitting ) {
@@ -175,14 +174,20 @@
 		lookup.setSize( primaryCount );
 
 		if( this.searchBar.mainpage ) {
-			var mainpageMatch = { match: {} };
-			mainpageMatch.match['basename'] = { query: this.searchBar.mainpage };
-
+			var mainpage = this.searchBar.mainpage;
+			var mainpageQuery = { regexp: {} };
+			mainpageQuery.regexp['basename_exact'] = mainpage + "|" + mainpage + "/.*";
 			var origMatch = lookup.query.bool.must;
 			lookup.query.bool.must = [
 				origMatch,
-				mainpageMatch
+				mainpageQuery
 			];
+
+			//We dont want to search for subpages of a page with this name
+			// in all namespaces. If ns is not set search in NS_MAIN
+			if( $.isEmptyObject( this.searchBar.namespace )  ) {
+				lookup.addTermFilter( 'namespace', 0 );
+			}
 		}
 
 		var me = this;

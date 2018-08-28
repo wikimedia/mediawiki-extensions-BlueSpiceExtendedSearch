@@ -111,7 +111,7 @@ class SearchCenter extends \SpecialPage {
 	 * @param boolean $queryIsLookup Is passed query a Lookup object
 	 * @return \BS\ExtendedSearch\Lookup
 	 */
-	protected function lookupFromQuery( $query, &$queryIsLookup ) {
+	protected function lookupFromQuery( $query ) {
 		$lookup = new \BS\ExtendedSearch\Lookup();
 		if( !$query ) {
 			return $lookup;
@@ -123,11 +123,9 @@ class SearchCenter extends \SpecialPage {
 		}
 
 		if( is_string( $query ) == false ) {
-			$queryIsLookup = true;
 			return $lookup;
 		}
 
-		$queryIsLookup = false;
 		$lookup->setQueryString( $query );
 		return $lookup;
 	}

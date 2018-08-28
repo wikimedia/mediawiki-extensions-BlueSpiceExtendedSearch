@@ -205,20 +205,22 @@ class WikiPageFormatter extends Base {
 				continue;
 			}
 
-			if( isset( $searchData['mainpage'] ) ) {
-				// Poor man's conditioning, should be done in query
-				if( $result['basename'] !== $searchData['mainpage'] ) {
-					$result['rank'] = self::AC_RANK_SECONDARY;
-					continue;
-				}
-			}
-
 			$pageTitle = $result['prefixed_title'];
 			// If there is a namespace filter set, all results coming here will
 			// already be in desired namespace, so we should match only non-namespace
 			// part of a title to determine match rank.
 			if( $searchData['namespace'] !== NS_MAIN ) {
 				$pageTitle = $this->removeNamespace( $pageTitle );
+			}
+
+			if( isset( $searchData['mainpage'] ) ) {
+				// If we are querying subpages, we dont want base page
+				// as a result - kick it to secondary
+				if( strtolower( $pageTitle ) == strtolower( $searchData['mainpage'] ) ) {
+					$result['rank'] = self::AC_RANK_SECONDARY;
+					$result['is_ranked'] = true;
+					continue;
+				}
 			}
 
 			if( strtolower( $pageTitle ) == strtolower( $searchData['value'] ) ) {

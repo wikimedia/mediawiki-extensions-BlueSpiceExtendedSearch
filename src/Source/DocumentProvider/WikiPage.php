@@ -15,6 +15,7 @@ class WikiPage extends DecoratorBase {
 
 		$aDC = array_merge( $aDC, [
 			'basename' => $oWikiPage->getTitle()->getBaseText(),
+			'basename_exact' => $oWikiPage->getTitle()->getBaseText(),
 			'extension' => 'wiki',
 			'mime_type' => 'text/x-wiki',
 			'mtime' => wfTimestamp(

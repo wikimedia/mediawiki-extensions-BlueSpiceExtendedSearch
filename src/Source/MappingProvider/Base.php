@@ -30,6 +30,9 @@ class Base {
 				'copy_to' => [ 'congregated', 'ac_ngram' ],
 				'fielddata' => true //required in order to be sortable
 			],
+			'basename_exact' => [
+				'type' => 'keyword'
+			],
 			'extension' => [
 				'type' => 'keyword',
 				'copy_to' => 'congregated'

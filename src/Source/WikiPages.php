@@ -13,6 +13,7 @@ use BS\ExtendedSearch\Source\LookupModifier\WikiPageBoosters;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageAutocompleteRemoveTalk;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageSimpleQSFields;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageQSSourceFields;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageWildcarder;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 
 class WikiPages extends DecoratorBase {
@@ -25,7 +26,8 @@ class WikiPages extends DecoratorBase {
 			'wikipage-categoriesaggregation' => WikiPageCategoriesAggregation::class,
 			'wikipage-renderedcontenthighlight' => WikiPageRenderedContentHighlight::class,
 			'wikipage-qssourcefields' => WikiPageQSSourceFields::class,
-			'wikipage-boosters' => WikiPageBoosters::class
+			'wikipage-boosters' => WikiPageBoosters::class,
+			'wikipage-wildcarder' => WikiPageWildcarder::class
 		],
 		LookupModifier::TYPE_AUTOCOMPLETE => [
 			'wikipage-securitytrimming' => WikiPageSecurityTrimming::class,

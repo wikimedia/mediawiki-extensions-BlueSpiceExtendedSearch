@@ -126,7 +126,9 @@
 		value = value || this.value;
 		this.removeNamespacePill();
 
-		this.$pill = $( '<span>' ).addClass( 'bs-extendedsearch-searchbar-pill namespace-pill' ).html( this.namespace.text );
+		this.$pill = $( '<span>' )
+			.addClass( 'bs-extendedsearch-searchbar-pill namespace-pill' )
+			.html( this.namespace.text + ':' );
 		this.$searchBox.before( this.$pill );
 		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() - this.$pill.outerWidth(), true );
 		this.$searchBox.val( value );
@@ -136,7 +138,9 @@
 		value = value || this.value;
 		this.removeSubpagePill();
 
-		this.$pill = $( '<span>' ).addClass( 'bs-extendedsearch-searchbar-pill subpage-pill' ).html( this.mainpage + '/' );
+		this.$pill = $( '<span>' )
+			.addClass( 'bs-extendedsearch-searchbar-pill subpage-pill' )
+			.html( this.mainpage + '/' );
 		this.$searchBox.before( this.$pill );
 		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() - this.$pill.outerWidth(), true );
 		this.$searchBox.val( value );
