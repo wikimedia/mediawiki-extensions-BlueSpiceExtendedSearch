@@ -89,10 +89,13 @@ class Autocomplete extends \ApiBase {
 	protected $pageCreateInfo;
 	protected function setPageCreatable() {
 		$pageName = $this->searchData['value'];
-		if( isset( $this->searchData[ 'mainpage' ] ) ) {
+		if( isset( $this->searchData[ 'mainpage' ] )&& $this->searchData[ 'mainpage' ] !== '' ) {
 			$pageName = $this->searchData[ 'mainpage' ] . '/' . $pageName;
 		}
-		$pageName = ucfirst( $pageName );
+
+		if( $this->getConfig()->get( 'CapitalLinks' ) ) {
+			$pageName = ucfirst( $pageName );
+		}
 
 		$title = \Title::makeTitle(
 			$this->searchData['namespace'],

@@ -12,12 +12,12 @@ class WikiPageWildcarder extends Base {
 		$this->queryString = $this->oLookup->getQueryString();
 		$this->originalQuery = $this->queryString['query'];
 
-		if( $this->contansSubpages() ) {
+		if( $this->containsSubpages() ) {
 			return $this->setSubpageSearch();
 		}
 	}
 
-	protected function contansSubpages() {
+	protected function containsSubpages() {
 		$parts = explode( '/', $this->originalQuery );
 		if( count( $parts ) === 1 ) {
 			return false;
