@@ -158,17 +158,6 @@
 		this.basename = this.basename.replace( re, "<b>$1</b>" );
 	}
 
-	bs.extendedSearch.mixin.AutocompleteHitType = function( cfg ) {
-		this.hitType = cfg.hitType;
-		this.rankType = cfg.rankType;
-
-		this.$type = $( '<span>' )
-			.addClass( 'bs-extendedsearch-autocomplete-popup-' + this.rankType + '-item-type' )
-			.html( mw.message( 'bs-extendedsearch-autocomplete-result-type', this.hitType ).plain() );
-	}
-
-	OO.initClass( bs.extendedSearch.mixin.AutocompleteHitType );
-
 	bs.extendedSearch.mixin.AutocompleteModifiedTime = function( cfg ) {
 		this.mtime = cfg.modified_time;
 
@@ -191,15 +180,10 @@
 			cnt = this.$primaryResults;
 		}
 
-		var termHtml = "<b class='bs-extendedsearch-autocomplete-create-page-link-term'>{term}</b>";
-		termHtml = termHtml.replace( '{term}', cfg.display_text );
-
+		var $anchor = cfg.anchor;
 		this.$createPageLink = $( '<div>' )
 			.addClass( 'bs-extendedsearch-autocomplete-popup-create-page-link' )
-			.append(
-				$( '<a>' ).attr( 'href', cfg.full_url )
-				.html( mw.message( 'bs-extendedsearch-autocomplete-create-page-link', termHtml ).parse() )
-			);
+			.append( $anchor );
 		cnt.append(
 			this.$createPageLink
 		);

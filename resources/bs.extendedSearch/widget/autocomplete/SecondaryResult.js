@@ -7,11 +7,6 @@
 		this.$element = $( '<div>' );
 
 		bs.extendedSearch.AutocompleteSecondaryResult.parent.call( this, cfg );
-		bs.extendedSearch.mixin.AutocompleteHeader.call( this, cfg.suggestion );
-		bs.extendedSearch.mixin.AutocompleteHitType.call( this, {
-			hitType: cfg.suggestion.typetext,
-			rankType: 'secondary'
-		} );
 
 		this.$element.append( this.$header, this.$type );
 
@@ -20,6 +15,5 @@
 
 	OO.inheritClass( bs.extendedSearch.AutocompleteSecondaryResult, OO.ui.Widget );
 	OO.mixinClass( bs.extendedSearch.AutocompleteSecondaryResult, bs.extendedSearch.mixin.AutocompleteHeader );
-	OO.mixinClass( bs.extendedSearch.AutocompleteSecondaryResult, bs.extendedSearch.mixin.AutocompleteHitType );
 
 } )( mediaWiki, jQuery, blueSpice, document );

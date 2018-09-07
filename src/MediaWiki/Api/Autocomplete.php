@@ -104,10 +104,17 @@ class Autocomplete extends \ApiBase {
 
 		if( $title->exists() == false && $title->userCan( 'createpage' ) && $title->userCan( 'edit' ) ) {
 			$this->pageCreatable = true;
+
+			$linkRenderer = \MediaWiki\MediaWikiServices::getInstance()->getService( 'LinkRenderer' );
+			$anchorText = wfMessage(
+				'bs-extendedsearch-autocomplete-create-page-link',
+				$title->getFullText()
+			)->plain();
+			$anchor = $linkRenderer->makeLink( $title, $anchorText, [], ['action' => 'edit'] );
+
 			$this->pageCreateInfo = [
-				'display_text' => $title->getFullText(),
-				'full_url' => $title->getFullURL( ['action' => 'edit'] ),
-				'creatable' => 1
+				'creatable' => 1,
+				'anchor' => $anchor
 			];
 		} else {
 			$this->pageCreateInfo = [

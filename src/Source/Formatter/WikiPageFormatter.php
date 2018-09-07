@@ -32,10 +32,9 @@ class WikiPageFormatter extends Base {
 		}
 
 		parent::format( $result, $resultObject );
-
 		$result['categories'] = $this->formatCategories( $result['categories'] );
-		$result['sections'] = $this->formatSection( $result );
 		$result['highlight'] = $this->getHighlight( $resultObject );
+		$result['sections'] = $this->getSections( $result );
 		$result['rendered_content_snippet'] = $this->getRenderedContentSnippet( $result['rendered_content'] );
 
 		$result['display_text'] = $result['prefixed_title'];
@@ -102,11 +101,60 @@ class WikiPageFormatter extends Base {
 		return implode( Base::VALUE_SEPARATOR, $formattedCategories ) . ( $moreCategories ? Base::MORE_VALUES_TEXT : '' );
 	}
 
-	protected function formatSection( $result ) {
+	protected function getSections( $result ) {
+		$sourceText = $result[ 'source_content' ];
+
+		$highlightedTerm = $this->getHighlightedTerm( $result );
+		$sections = $result[ 'sections' ];
+
+		if( count( $sections ) === 0 || $highlightedTerm === '' ) {
+			return '';
+		}
+
+		$lines = explode( "\n", $sourceText );
+		$currentSection = false;
+		$matchedSections = [];
+
+		foreach( $lines as $line ) {
+			// Could use a better regex
+			preg_match( '/^(=*)([^=]*?)\1$/', $line, $matches );
+			if( isset( $matches[ 2 ] ) && $matches[ 1 ] !== '' ) {
+				// Line is a section
+				$currentSection = $matches[ 2 ];
+				$currentSection = str_replace( ' ', '_', $currentSection );
+				continue;
+			}
+
+			$line = strtolower( $line );
+			if( strpos( $line, $highlightedTerm ) !== false && $currentSection ) {
+				if( in_array( $currentSection, $sections ) ) {
+					$matchedSections[] = $currentSection;
+				}
+			}
+		}
+
+		$matchedSections = array_unique( $matchedSections );
+		return $this->formatSections( $result, $matchedSections );
+	}
+
+	protected function getHighlightedTerm( $result ) {
+		if( $result[ 'highlight' ] == '' ) {
+			return '';
+		}
+
+		$hightlightedTerm = [];
+		preg_match( '/<b>(.*?)<\/b>/', $result[ 'highlight' ], $hightlightedTerm );
+		if( !isset( $hightlightedTerm[ 1 ] ) ) {
+			return '';
+		}
+		return strtolower( $hightlightedTerm[ 1 ] );
+	}
+
+	protected function formatSections( $result, $sectionsToAdd ) {
 		$title = \Title::newFromText( $result['prefixed_title'] );
 		$sections = [];
 		$moreSections = false;
-		foreach( $result['sections'] as $idx => $section ) {
+		foreach( $sectionsToAdd as $idx => $section ) {
 			if( $idx > 2 ) {
 				$moreSections = true;
 				break;

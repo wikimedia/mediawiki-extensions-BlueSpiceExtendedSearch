@@ -118,8 +118,6 @@ class Base {
 	 */
 	public function formatAutocompleteResults( &$results, $searchData ) {
 		foreach( $results as &$result ) {
-			$type = $result['type'];
-			$result['typetext'] = $this->getTypeText( $type );
 			if( !isset( $result['mtime'] ) || $result['rank'] !== 'top' ) {
 				continue;
 			}

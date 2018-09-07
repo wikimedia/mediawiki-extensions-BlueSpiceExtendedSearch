@@ -13,10 +13,6 @@
 
 		bs.extendedSearch.AutocompleteTopMatch.parent.call( this, cfg );
 		bs.extendedSearch.mixin.AutocompleteHeader.call( this, cfg.suggestion );
-		bs.extendedSearch.mixin.AutocompleteHitType.call( this, {
-			hitType: cfg.suggestion.typetext,
-			rankType: 'top'
-		} );
 
 		this.$image = $( '<div>' )
 			.addClass( 'bs-extendedsearch-autocomplete-popup-top-match-item-image' )
@@ -45,7 +41,6 @@
 
 	OO.inheritClass( bs.extendedSearch.AutocompleteTopMatch, OO.ui.Widget );
 	OO.mixinClass( bs.extendedSearch.AutocompleteTopMatch, bs.extendedSearch.mixin.AutocompleteHeader );
-	OO.mixinClass( bs.extendedSearch.AutocompleteTopMatch, bs.extendedSearch.mixin.AutocompleteHitType );
 	OO.mixinClass( bs.extendedSearch.AutocompleteTopMatch, bs.extendedSearch.mixin.AutocompleteModifiedTime );
 
 	bs.extendedSearch.AutocompleteTopMatch.prototype.onResultClick = function( e ) {

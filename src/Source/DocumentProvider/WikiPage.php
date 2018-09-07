@@ -91,7 +91,10 @@ class WikiPage extends DecoratorBase {
 	protected function getHTMLContent( $oWikiPage ) {
 		$sHtml = '';
 		$oParserOutput = $oWikiPage->getContent()->getParserOutput( $oWikiPage->getTitle() );
-		$sHtml = $oParserOutput->getText();
+		$sHtml = $oParserOutput->getText( [
+			'allowTOC' => false,
+			'enableSectionEditLinks' => false
+		] );
 		return $this->stripTags( $sHtml );
 	}
 
