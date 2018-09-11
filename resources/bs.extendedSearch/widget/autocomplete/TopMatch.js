@@ -11,6 +11,8 @@
 
 		this.$element = $( '<div>' );
 
+		this.popup = cfg.popup;
+
 		bs.extendedSearch.AutocompleteTopMatch.parent.call( this, cfg );
 		bs.extendedSearch.mixin.AutocompleteHeader.call( this, cfg.suggestion );
 

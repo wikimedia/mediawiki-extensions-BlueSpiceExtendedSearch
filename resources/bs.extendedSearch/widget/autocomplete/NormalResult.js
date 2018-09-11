@@ -9,6 +9,7 @@
 		this.score = cfg.suggestion.score;
 
 		this.searchTerm = cfg.term || '';
+		this.popup = cfg.popup;
 
 		this.$element = $( '<div>' );
 
