@@ -1,0 +1,7 @@
+{
+	"@metadata": [],
+	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Vielleicht sind Sie auch auf der Suche nach...",
+	"bs-extendedsearch-search-center-result-help": "Geben Sie etwas in die Suchleiste oben ein....",
+	"bs-extendedsearch-search-center-result-exception": "Anfrage kann nicht ausgeführt werden, bitte ändern Sie den Suchbegriff.",
+	"bs-extendedsearch-search-center-hitcount-suggest": "Meinten Sie $1 ({{PLURAL:$2|$2 Treffer|$2 Treffer}})?"
+}

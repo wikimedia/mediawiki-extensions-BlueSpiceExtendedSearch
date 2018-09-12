@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Yusifmv"
+		]
+	},
+	"bs-extendedsearch-source-label-user": "Okoədə",
+	"bs-extendedsearch-search-center-filter-tags-label": "Nışon",
+	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Nışonon:",
+	"bs-extendedsearch-search-center-result-namespace_text-label": "Nomico:",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "Nom",
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nomico"
+}

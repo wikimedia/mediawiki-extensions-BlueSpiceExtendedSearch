@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fany"
+			"Fany",
+			"Zarisi"
 		]
 	},
+	"bs-extsearch-desc": "Elasticsearch recherche l'arrière-plan",
 	"prefs-extendedsearch": "Recherche avancée"
 }

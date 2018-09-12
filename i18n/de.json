@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Peter Böhm <boehm@hallowelt.com>"
+			"Peter Böhm <boehm@hallowelt.com>",
+			"Metalhead64"
 		]
 	},
 	"bs-extsearch-extensionname": "BlueSpice ExtendedSearch",
@@ -65,8 +66,8 @@
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Keine gültigen Übereinstimmungen für Ihre Anfrage",
 	"bs-extendedsearch-autocomplete-result-type": "Typ: $1",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "Beste Treffer",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Vielleicht sind Sie auch auf der Suche nach...",
-	"bs-extendedsearch-search-center-result-help": "Geben Sie etwas in die Suchleiste oben ein....",
+	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Vielleicht bist du auch auf der Suche nach...",
+	"bs-extendedsearch-search-center-result-help": "Gib etwas in die Suchleiste oben ein....",
 	"bs-extendedsearch-searchcenter-filter-or-label": "oder",
 	"bs-extendedsearch-searchcenter-filter-and-label": "und",
 	"bs-extendedsearch-searchcenter-sort-field-_score": "Relevanz",
@@ -76,10 +77,10 @@
 	"bs-extendedsearch-searchcenter-sort-field-size": "Größe",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Namensraum",
 	"bs-extendedsearch-search-center-filter-has-hidden": "...{{PLURAL:$1|und $1 weiteres|und $1 weitere}}",
-	"bs-extendedsearch-search-center-result-exception": "Anfrage kann nicht ausgeführt werden, bitte ändern Sie den Suchbegriff.",
+	"bs-extendedsearch-search-center-result-exception": "Anfrage kann nicht ausgeführt werden, bitte ändere den Suchbegriff.",
 	"bs-extendedsearch-autocomplete-create-page-link": "Seite erstellen \"$1\"",
 	"bs-extendedsearch-search-center-hitcount-replaced": "Anzeige der Ergebnisse für $1, stattdessen nach $2 suchen ({{PLURAL:$3|$3 Treffer|$3 Treffer}})",
-	"bs-extendedsearch-search-center-hitcount-suggest": "Meinten Sie $1 ({{PLURAL:$2|$2 Treffer|$2 Treffer}})?",
+	"bs-extendedsearch-search-center-hitcount-suggest": "Meintest du $1 ({{PLURAL:$2|Ein|$2}} Treffer)?",
 	"bs-extendedsearch-loadmore-label": "Mehr Ergebnisse laden",
 	"bs-extendedsearch-loadmore-error": "Weitere Ergebnisse können nicht abgerufen werden.",
 	"bs-extendedsearch-filter-label-count-only": "($1)",

@@ -1,8 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
-			"Okras"
+			"Okras",
+			"Vlad5250"
 		]
 	},
+	"apihelp-bs-extendedsearch-query-description": "Поиск по индексу",
+	"apihelp-bs-extendedsearch-query-summary": "Поиск по индексу",
+	"bs-extendedsearch-source-label-user": "Участник",
+	"bs-extendedsearch-admin-heading-sources": "Источники",
+	"bs-extendedsearch-search-center-filter-tags-label": "Тег",
+	"bs-extendedsearch-search-center-filter-categories-label": "Категория",
+	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Пространство имён:",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Категория:",
+	"bs-extendedsearch-search-center-filter-type-with-values-label": "Тип:",
+	"bs-extendedsearch-search-center-result-ctime-label": "Создано:",
+	"bs-extendedsearch-search-center-options-dialog-title": "Настройки поиска",
+	"bs-extendedsearch-autocomplete-create-page-link": "Создать страницу «$1»",
+	"bs-extendedsearch-autocomplete-fulltext-search-button": "Полнотекстовый поиск",
 	"prefs-extendedsearch": "Расширенный поиск"
 }

@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saraiki"
+		]
+	},
+	"bs-extendedsearch-search-input-placeholder": "لبھو۔۔۔",
+	"bs-extendedsearch-source-label-wikipage": "وکی ورقہ",
+	"bs-extendedsearch-source-label-specialpage": "خاص ورقہ",
+	"bs-extendedsearch-source-label-user": "ورتݨ آلا",
+	"bs-extendedsearch-admin-label-error": "نقص",
+	"bs-extendedsearch-search-center-addfilter-dialog-title": "چھاݨاں شامل کرو",
+	"bs-extendedsearch-search-center-filter-tags-label": "ٹیگ",
+	"bs-extendedsearch-search-center-filter-categories-label": "ون٘کی",
+	"bs-extendedsearch-search-center-filter-type-label": "قسم",
+	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "ناں جاہ:",
+	"bs-extendedsearch-search-center-filter-tags-with-values-label": "ٹیگ:",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "ون٘کی:",
+	"bs-extendedsearch-search-center-filter-type-with-values-label": "قسم:",
+	"bs-extendedsearch-search-center-result-categories-label": "ون٘کی:",
+	"bs-extendedsearch-search-center-result-author-label": "مصنف:",
+	"bs-extendedsearch-search-center-sort-order-asc": "چڑھدا ہویا",
+	"bs-extendedsearch-search-center-options-page-size": "ورقے دا سائز",
+	"bs-extendedsearch-autocomplete-result-type": "قِسم:$1",
+	"bs-extendedsearch-searchcenter-filter-or-label": "یا",
+	"bs-extendedsearch-searchcenter-filter-and-label": "اتے",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "ناں",
+	"bs-extendedsearch-searchcenter-sort-field-size": "سائز",
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "ناں جاہ",
+	"bs-extendedsearch-search-center-result-typetext-label": "قسم:",
+	"bs-extendedsearch-source-type-wikipage-label": "وکی ورقہ",
+	"bs-extendedsearch-source-type-repofile-label": "لوکیل فائل"
+}

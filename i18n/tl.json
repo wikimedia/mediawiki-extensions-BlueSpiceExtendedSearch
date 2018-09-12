@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Emem.calist"
+		]
+	},
+	"bs-extendedsearch-admin-label-error": "Ay naku! Mali pa.",
+	"bs-extendedsearch-search-center-addfilter-dialog-title": "Karagdagang PagsasaAyos",
+	"bs-extendedsearch-search-center-filter-categories-label": "Kategorya",
+	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Ipangalanan:",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Kategorya:",
+	"bs-extendedsearch-search-center-sort-order-desc": "Pababa",
+	"bs-extendedsearch-search-center-options-dialog-title": "Kaukulang paghahanap",
+	"bs-extendedsearch-search-center-options-sort-order": "Paano isasaayos",
+	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Baka pati eto ang hinahanap mo sa...",
+	"bs-extendedsearch-search-center-result-help": "Mag-type ka ng kaukulang maigagamit para i-search dito...",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "Kapangalanan",
+	"bs-extendedsearch-searchcenter-sort-field-ctime": "Oras ng napagumpisahan",
+	"bs-extendedsearch-search-center-filter-has-hidden": "...{{PLURAL:$1|atsaka $1 meron pang|atsaka $1 meron pa}}",
+	"bs-extendedsearch-search-center-hitcount-replaced": "Mga resulta para sa/kay $1, Hanapin para sa/kay",
+	"bs-extendedsearch-search-center-result-typetext-label": "Uri (ng mga resulta):",
+	"bs-extendedsearch-result-relevance-relevant": "Importante sa'ken ang resultang ito",
+	"bs-extendedsearch-result-relevance-not-relevant": "'Di na imporante ang resulta",
+	"bs-extendedsearch-pref-external-file-paths-path": "Pisikal na pinagdaanan"
+}

@@ -1,8 +1,24 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Goefie"
 		]
 	},
+	"bs-extendedsearch-source-label-user": "Gebruiker",
+	"bs-extendedsearch-admin-heading-sources": "Bronnen",
+	"bs-extendedsearch-admin-heading-sources-documentscount": "Documenten",
+	"bs-extendedsearch-search-center-filter-categories-label": "Categorie",
+	"bs-extendedsearch-search-center-filter-type-label": "Type",
+	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Labels:",
+	"bs-extendedsearch-search-center-filter-type-with-values-label": "Type:",
+	"bs-extendedsearch-search-center-result-categories-label": "Categorie:",
+	"bs-extendedsearch-search-center-result-ctime-label": "Aangemaakt:",
+	"bs-extendedsearch-search-center-sort-order-asc": "Oplopend",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Annuleren",
+	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Toepassen",
+	"bs-extendedsearch-search-center-options-sort-by": "Sorteren op",
+	"bs-extendedsearch-searchcenter-filter-or-label": "of",
+	"bs-extendedsearch-search-center-result-typetext-label": "Type:",
 	"prefs-extendedsearch": "Uitgebreid zoeken"
 }
