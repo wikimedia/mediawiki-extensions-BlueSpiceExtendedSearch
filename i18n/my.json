@@ -4,6 +4,7 @@
 			"Dr Lotus Black"
 		]
 	},
+	"bs-extendedsearch-search-input-placeholder": "ရှာဖွေပါ...",
 	"bs-extendedsearch-source-label-wikipage": "ဝီကီ စာမျက်နှာ",
 	"bs-extendedsearch-source-label-specialpage": "အထူး စာမျက်နှာ",
 	"bs-extendedsearch-source-label-user": "အသုံးပြုသူ",
@@ -35,6 +36,7 @@
 	"bs-extendedsearch-searchcenter-sort-field-ctime": "ဖန်တီးခဲ့သောရက်စွဲ",
 	"bs-extendedsearch-searchcenter-sort-field-size": "အရွယ်အစား",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "အမည်ညွှန်း",
+	"bs-extendedsearch-autocomplete-create-page-link": "\"$1\" စာမျက်နှာ ဖန်တီးရန်",
 	"bs-extendedsearch-search-center-result-typetext-label": "အမျိုးအစား:",
 	"bs-extendedsearch-source-type-wikipage-label": "ဝီကီစာမျက်နှာ",
 	"bs-extendedsearch-source-type-specialpage-label": "အထူး စာမျက်နှာ",

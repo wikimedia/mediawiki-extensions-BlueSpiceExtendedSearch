@@ -4,6 +4,7 @@
 			"Nikosgranturismogt"
 		]
 	},
+	"bs-extendedsearch-search-input-placeholder": "Εύρεση ...",
 	"bs-extendedsearch-source-label-user": "Χρήστης",
 	"bs-extendedsearch-admin-heading-sources": "Πηγές",
 	"bs-extendedsearch-search-center-filter-tags-label": "Ετικέτα",
@@ -12,5 +13,6 @@
 	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Κατηγορία:",
 	"bs-extendedsearch-search-center-filter-type-with-values-label": "Τύπος:",
 	"bs-extendedsearch-search-center-result-ctime-label": "Δημιουργήθηκε:",
-	"bs-extendedsearch-searchcenter-sort-field-basename": "Όνομα"
+	"bs-extendedsearch-searchcenter-sort-field-basename": "Όνομα",
+	"bs-extendedsearch-searchcenter-sort-field-ctime": "Ώρα δημιουργίας"
 }

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"V.narsikar"
+		]
+	},
+	"bs-extendedsearch-source-label-user": "सदस्य",
+	"bs-extendedsearch-admin-heading-sources": "स्रोत",
+	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "नामविश्व:",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "वर्ग:",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "नाव"
+}

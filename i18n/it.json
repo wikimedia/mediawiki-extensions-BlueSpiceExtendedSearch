@@ -4,5 +4,15 @@
 			"Beta16"
 		]
 	},
+	"bs-extendedsearch-source-label-user": "Utente",
+	"bs-extendedsearch-search-center-filter-tags-label": "Etichetta",
+	"bs-extendedsearch-search-center-filter-categories-label": "Categoria",
+	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Namespace:",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Categoria:",
+	"bs-extendedsearch-search-center-filter-type-with-values-label": "Tipo:",
+	"bs-extendedsearch-search-center-result-ctime-label": "Creata:",
+	"bs-extendedsearch-search-center-options-dialog-title": "Opzioni di ricerca",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "Nome",
+	"bs-extendedsearch-autocomplete-fulltext-search-button": "Ricerca nel testo",
 	"prefs-extendedsearch": "Ricerca avanzata"
 }
