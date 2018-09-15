@@ -7,10 +7,16 @@
 	"apihelp-bs-extendedsearch-query-summary": "Cirche l'indice",
 	"bs-extendedsearch-source-label-user": "Utende",
 	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|cazzamende|cazzaminde}} pe <b>$2</b>",
+	"bs-extendedsearch-search-center-filter-tags-label": "Tag",
 	"bs-extendedsearch-search-center-filter-categories-label": "Categorije",
 	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Namespace:",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Categorije:",
 	"bs-extendedsearch-search-center-filter-type-with-values-label": "Tipe:",
+	"bs-extendedsearch-search-center-result-ctime-label": "Ccrejate:",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "Nome",
 	"bs-extendedsearch-searchcenter-sort-field-ctime": "Tiembe de ccrejazione",
 	"bs-extendedsearch-autocomplete-create-page-link": "Ccreje 'a pàgene \"$1\"",
-	"prefs-extendedsearch": "Ricerche estese"
+	"bs-extendedsearch-autocomplete-fulltext-search-button": "Cirche jndr'à tutte 'u teste",
+	"prefs-extendedsearch": "Ricerche estese",
+	"bs-extendedsearch-pref-external-file-paths": "Percorse de le file de fore"
 }

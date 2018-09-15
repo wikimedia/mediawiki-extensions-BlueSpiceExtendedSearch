@@ -3,7 +3,8 @@
 		"authors": [
 			"Fany",
 			"Zarisi",
-			"Gomoko"
+			"Gomoko",
+			"Wladek92"
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch recherche l'arrière-plan",
@@ -91,15 +92,15 @@
 	"bs-extendedsearch-result-relevance-not-relevant": "Ce résultat n’est pas important pour moi",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "Rechercher en plein texte",
 	"prefs-extendedsearch": "Recherche avancée",
-	"bs-extendedsearch-user-preferred-namespaces": "Espaces de nom préférés",
-	"bs-extendedsearch-pref-external-file-paths": "Chemins de fichier externe",
+	"bs-extendedsearch-user-preferred-namespaces": "Espaces de noms préférés",
+	"bs-extendedsearch-pref-external-file-paths": "Chemins des fichiers externes",
 	"bs-extendedsearch-pref-external-file-paths-path": "Chemin physique",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Préfixe d’URL",
 	"bs-extendedsearch-pref-external-file-paths-path-help": "Emplacement sur le disque ou le disque monté",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Emplacement web capable de fournir les fichiers de ce répertoire",
-	"bs-extendedsearch-external-file-paths-desc": "Tableau de répertoires externes qui devraient être indexés",
+	"bs-extendedsearch-external-file-paths-desc": "Tableau de répertoires externes qui doivent être indexés",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Dernière modification : $1",
 	"bs-extendedseach-wikipage-section-more-text": "… $1 de plus",
-	"bs-extendedsearch-pref-compact-ac-paths": "Utiliser une complétion automatique simple",
+	"bs-extendedsearch-pref-compact-ac-paths": "Utiliser la complétion automatique simple",
 	"bs-extendedsearch-compact-ac-paths-desc": "S’il faut utiliser la popup de complétion automatique simple"
 }

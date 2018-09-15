@@ -31,6 +31,7 @@
 	"bs-extendedsearch-admin-heading-sources": "來源",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "文件",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "待更新任務",
+	"bs-extendedsearch-search-center-hitcount-widget": "<b>$2</b> $1 個{{PLURAL:$1|觸發|觸發}}",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "添加篩選",
 	"bs-extendedsearch-search-center-filter-extension-label": "額外",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "命名空間",

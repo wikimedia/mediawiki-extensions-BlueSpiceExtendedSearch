@@ -4,12 +4,17 @@
 			"Saraiki"
 		]
 	},
+	"bssearchadmin": "ڳولݨ ایڈمن",
+	"bssearchcenter": "ڳولݨ مرکز",
 	"bs-extendedsearch-search-input-placeholder": "لبھو۔۔۔",
 	"bs-extendedsearch-source-label-wikipage": "وکی ورقہ",
 	"bs-extendedsearch-source-label-specialpage": "خاص ورقہ",
+	"bs-extendedsearch-source-label-repofile": "فائل چڑھاؤ",
 	"bs-extendedsearch-source-label-user": "ورتݨ آلا",
 	"bs-extendedsearch-admin-label-error": "نقص",
+	"bs-extendedsearch-admin-heading-sources": "ماخذ",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "چھاݨاں شامل کرو",
+	"bs-extendedsearch-search-center-filter-namespace_text-label": "ناں جاہ",
 	"bs-extendedsearch-search-center-filter-tags-label": "ٹیگ",
 	"bs-extendedsearch-search-center-filter-categories-label": "ون٘کی",
 	"bs-extendedsearch-search-center-filter-type-label": "قسم",
@@ -20,8 +25,10 @@
 	"bs-extendedsearch-search-center-result-namespace_text-label": "ناں جاہ:",
 	"bs-extendedsearch-search-center-result-categories-label": "ون٘کی:",
 	"bs-extendedsearch-search-center-result-author-label": "مصنف:",
+	"bs-extendedsearch-search-center-result-ctime-label": "بݨ ڳیا:",
 	"bs-extendedsearch-search-center-sort-order-asc": "چڑھدا ہویا",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "منسوخ",
+	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "اطلاق",
 	"bs-extendedsearch-search-center-options-page-size": "ورقے دا سائز",
 	"bs-extendedsearch-search-center-options-sort-order": "چھانٹ ترتیب",
 	"bs-extendedsearch-autocomplete-result-type": "قِسم:$1",
@@ -32,5 +39,6 @@
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "ناں جاہ",
 	"bs-extendedsearch-search-center-result-typetext-label": "قسم:",
 	"bs-extendedsearch-source-type-wikipage-label": "وکی ورقہ",
-	"bs-extendedsearch-source-type-repofile-label": "لوکیل فائل"
+	"bs-extendedsearch-source-type-repofile-label": "لوکیل فائل",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix": "یوآرایل سابقہ"
 }

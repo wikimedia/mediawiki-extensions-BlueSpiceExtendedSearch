@@ -78,7 +78,7 @@
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Namensraum",
 	"bs-extendedsearch-search-center-filter-has-hidden": "...{{PLURAL:$1|und $1 weiteres|und $1 weitere}}",
 	"bs-extendedsearch-search-center-result-exception": "Anfrage kann nicht ausgeführt werden, bitte ändere den Suchbegriff.",
-	"bs-extendedsearch-autocomplete-create-page-link": "Seite erstellen \"$1\"",
+	"bs-extendedsearch-autocomplete-create-page-link": "Seite „$1“ erstellen",
 	"bs-extendedsearch-search-center-hitcount-replaced": "Anzeige der Ergebnisse für $1, stattdessen nach $2 suchen ({{PLURAL:$3|$3 Treffer|$3 Treffer}})",
 	"bs-extendedsearch-search-center-hitcount-suggest": "Meintest du $1 ({{PLURAL:$2|Ein|$2}} Treffer)?",
 	"bs-extendedsearch-loadmore-label": "Mehr Ergebnisse laden",

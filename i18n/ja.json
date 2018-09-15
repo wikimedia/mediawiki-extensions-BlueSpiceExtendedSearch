@@ -1,8 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"2nd-player"
 		]
 	},
+	"apihelp-bs-extendedsearch-query-param-q": "検索語句",
+	"bs-extendedsearch-search-center-filter-namespace_text-label": "名前空間",
+	"bs-extendedsearch-search-center-filter-categories-label": "カテゴリ",
+	"bs-extendedsearch-search-center-result-namespace_text-label": "名前空間:",
+	"bs-extendedsearch-search-center-result-categories-label": "カテゴリ:",
 	"prefs-extendedsearch": "拡張検索"
 }

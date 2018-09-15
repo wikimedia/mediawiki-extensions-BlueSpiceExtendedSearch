@@ -1,8 +1,24 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Vanbasten 23"
 		]
 	},
-	"prefs-extendedsearch": "Búsqueda extendida"
+	"bs-extendedsearch-source-label-user": "Usuario",
+	"bs-extendedsearch-admin-label-all-documents-count": "Número total de documentos en el índice",
+	"bs-extendedsearch-admin-heading-sources": "Fuentes",
+	"bs-extendedsearch-search-center-filter-tags-label": "Etiqueta",
+	"bs-extendedsearch-search-center-filter-categories-label": "Categoría",
+	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Espacio de nombres:",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Categoría:",
+	"bs-extendedsearch-search-center-filter-type-with-values-label": "Tipo:",
+	"bs-extendedsearch-search-center-result-ctime-label": "Creado:",
+	"bs-extendedsearch-search-center-options-dialog-title": "Opciones de búsqueda",
+	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Podrías estar buscando también por...",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "Nombre",
+	"bs-extendedsearch-autocomplete-create-page-link": "Crear la página «$1».",
+	"prefs-extendedsearch": "Búsqueda extendida",
+	"bs-extendedsearch-pref-external-file-paths": "Rutas del archivo externo",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Ubicación en el disco o disco montado"
 }
