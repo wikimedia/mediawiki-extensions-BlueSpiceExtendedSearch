@@ -7,7 +7,7 @@
 			"Wladek92"
 		]
 	},
-	"bs-extsearch-desc": "Elasticsearch recherche l'arrière-plan",
+	"bs-extsearch-desc": "Recherche Elasticsearch d'arrière-plan",
 	"bssearchadmin": "Administration de recherche",
 	"bssearchadmin-desc": "Fournit une interface de gestion de la recherche",
 	"bssearchcenter": "Rechercher un centre",
@@ -22,7 +22,7 @@
 	"apihelp-bs-extendedsearch-triggerupdate-param-title": "Titre de la page sur laquelle déclencher la mise à jour",
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Paramètres supplémentaires de la requête",
 	"apihelp-bs-extendedsearch-generic-param-backend": "Clé du serveur configuré qui doit être interrogé",
-	"apihelp-bs-extendedsearch-generic-param-sources": "Au moins une source dans le serveur spécifié, séparées par des barres verticales. Si vide, toutes les sources disponibles seront interrogées.",
+	"apihelp-bs-extendedsearch-generic-param-sources": "Une ou plusieurs sources dans le serveur spécifié, séparées par des barres verticales. Si vide, toutes les sources disponibles seront interrogées.",
 	"bs-extendedsearch-search-input-placeholder": "Trouver …",
 	"bs-extendedsearch-source-label-wikipage": "Page du wiki",
 	"bs-extendedsearch-source-label-specialpage": "Page spéciale",

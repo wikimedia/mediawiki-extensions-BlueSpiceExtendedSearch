@@ -4,6 +4,7 @@
 			"Robby"
 		]
 	},
+	"bs-extendedsearch-search-input-placeholder": "Fannen ...",
 	"bs-extendedsearch-source-label-specialpage": "Spezialsäit",
 	"bs-extendedsearch-source-label-user": "Benotzer",
 	"bs-extendedsearch-admin-label-error": "Feeler",
@@ -16,7 +17,9 @@
 	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Nummraum:",
 	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Kategorie:",
 	"bs-extendedsearch-search-center-filter-type-with-values-label": "Typ:",
+	"bs-extendedsearch-search-center-result-namespace_text-label": "Nummraum:",
 	"bs-extendedsearch-search-center-result-categories-label": "Kategorie:",
+	"bs-extendedsearch-search-center-pagesize-dialog-title": "Resultater pro Säit",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Ofbriechen",
 	"bs-extendedsearch-search-center-options-page-size": "Gréisst vun der Säit",
 	"bs-extendedsearch-autocomplete-result-type": "Typ: $1",
@@ -25,7 +28,9 @@
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Numm",
 	"bs-extendedsearch-searchcenter-sort-field-size": "Gréisst",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nummraum",
+	"bs-extendedsearch-loadmore-label": "Méi Resultater lueden",
 	"bs-extendedsearch-search-center-result-typetext-label": "Typ:",
 	"bs-extendedsearch-source-type-specialpage-label": "Spezialsäit",
-	"prefs-extendedsearch": "Erweidert Sich"
+	"prefs-extendedsearch": "Erweidert Sich",
+	"bs-extendedsearch-autocomplete-modified-time-label": "Lescht Ännerung: $1"
 }

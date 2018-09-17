@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rul1902"
+		]
+	},
+	"bssearchcenter": "အင်းၰူ့ခီႋလယ့်",
+	"bs-extendedsearch-search-input-placeholder": "အင်းၰူ့လာ...",
+	"bs-extendedsearch-source-label-user": "ဆ်ုသုံ့ဆာ",
+	"bs-extendedsearch-admin-label-error": "ဆ်ုမး",
+	"bs-extendedsearch-search-center-filter-categories-label": "ကၞါင့်",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "ကၞါင့်:",
+	"bs-extendedsearch-search-center-filter-type-with-values-label": "အ်ုမိင်အ်ုကါင်",
+	"bs-extendedsearch-search-center-result-categories-label": "ကၞါင့်",
+	"bs-extendedsearch-search-center-pagesize-dialog-title": "လိက်မေံသးဆ်ုကါင်ဖါ အ်ုတင်ၮေဝ်ႋ",
+	"bs-extendedsearch-searchcenter-filter-or-label": "လ်ုမွာဲဝး",
+	"bs-extendedsearch-search-center-result-typetext-label": "အ်ုမိင်ကါင်ဖါ:"
+}

@@ -5,6 +5,7 @@
 		]
 	},
 	"bssearchadmin": "Претрага администатора",
+	"bssearchadmin-desc": "Пружа интерфејс за управљање претрагом",
 	"bssearchcenter": "Центар за претраживање",
 	"apihelp-bs-extendedsearch-query-description": "Претрага индекса",
 	"apihelp-bs-extendedsearch-query-summary": "Претрага индекса",
