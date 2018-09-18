@@ -59,7 +59,7 @@
 	"bs-extendedsearch-search-center-options-dialog-title": "Search options",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Cancel",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Apply",
-	"bs-extendedsearch-search-center-options-page-size": "Page size",
+	"bs-extendedsearch-search-center-options-page-size": "Entries per page",
 	"bs-extendedsearch-search-center-options-sort-by": "Sort by",
 	"bs-extendedsearch-search-center-options-sort-order": "Sort order",
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "No valid matches for your query",
