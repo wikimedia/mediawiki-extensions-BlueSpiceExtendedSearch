@@ -9,7 +9,7 @@
 	"bssearchcenter": "Центар за претраживање",
 	"apihelp-bs-extendedsearch-query-description": "Претрага индекса",
 	"apihelp-bs-extendedsearch-query-summary": "Претрага индекса",
-	"apihelp-bs-extendedsearch-query-param-q": "Појам упита",
+	"apihelp-bs-extendedsearch-query-param-q": "Термин упита",
 	"apihelp-bs-extendedsearch-query-param-params": "Додатни параметри за упит",
 	"apihelp-bs-extendedsearch-stats-param-stats": "Списак статистика које треба да се врате",
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Додатни параметри за упит",
