@@ -34,7 +34,9 @@ class WikiPage extends DecoratorBase {
 			'rendered_content' => $this->getHTMLContent( $oWikiPage ),
 			'namespace' => $oWikiPage->getTitle()->getNamespace(),
 			'namespace_text' => $this->getNamespaceText( $oWikiPage ),
-			'tags' => $this->getTags( $oWikiPage )
+			'tags' => $this->getTags( $oWikiPage ),
+			'is_redirect' => $oWikiPage->getTitle()->isRedirect(),
+			'redirected_from' => $this->getRedirects( $oWikiPage )
 		] );
 
 		return $aDC;
@@ -160,5 +162,15 @@ class WikiPage extends DecoratorBase {
 			return array_unique( $rawTags[1] );
 		}
 		return [];
+	}
+
+	protected function getRedirects( \WikiPage $oWikiPage ) {
+		$redirs = $oWikiPage->getTitle()->getRedirectsHere();
+		$indexable = [];
+		foreach( $redirs as $redirect ) {
+			$indexable[] = $redirect->getPrefixedText();
+		}
+
+		return $indexable;
 	}
 }

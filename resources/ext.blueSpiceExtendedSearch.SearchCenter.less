@@ -233,13 +233,22 @@ div#bs-es-results {
 				overflow-y: hidden;
 			}
 		}
-		.bs-extendedsearch-result-section-container {
-			.oo-ui-labelWidget {
-				display: block;
-			}
+		.bs-extendedsearch-result-links-container {
 			width: 180px;
 			overflow-x: hidden;
 			margin-left: 20px;
+			.bs-extendedsearch-result-section-container,
+			.bs-extendedsearch-result-redirects-container{
+				.oo-ui-labelWidget {
+					display: block;
+				}
+				width: 180px;
+				overflow-x: hidden;
+				margin-left: 20px;
+				&:first-of-type {
+					margin-bottom: 10px;
+				}
+			}
 		}
 		.bs-extendedsearch-result-relevance-cnt {
 			position:absolute;

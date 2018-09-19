@@ -14,6 +14,9 @@ class WikiPageFormatter extends Base {
 		$resultStructure['secondaryInfos']['top']['items'][] = [
 			"name" => "sections"
 		];
+		$resultStructure['secondaryInfos']['top']['items'][] = [
+			"name" => "redirects"
+		];
 		$resultStructure['secondaryInfos']['bottom']['items'][] = [
 			"name" => "categories"
 		];
@@ -35,6 +38,7 @@ class WikiPageFormatter extends Base {
 		$result['categories'] = $this->formatCategories( $result['categories'] );
 		$result['highlight'] = $this->getHighlight( $resultObject );
 		$result['sections'] = $this->getSections( $result );
+		$result['redirects'] = $this->formatRedirects( $result );
 		$result['rendered_content_snippet'] = $this->getRenderedContentSnippet( $result['rendered_content'] );
 
 		$result['display_text'] = $result['prefixed_title'];
@@ -101,6 +105,12 @@ class WikiPageFormatter extends Base {
 		return implode( Base::VALUE_SEPARATOR, $formattedCategories ) . ( $moreCategories ? Base::MORE_VALUES_TEXT : '' );
 	}
 
+	/**
+	 * Get sections that match the search term
+	 *
+	 * @param array $result
+	 * @return string Formatted sections
+	 */
 	protected function getSections( $result ) {
 		$sourceText = $result[ 'source_content' ];
 
@@ -111,29 +121,15 @@ class WikiPageFormatter extends Base {
 			return '';
 		}
 
-		$lines = explode( "\n", $sourceText );
-		$currentSection = false;
 		$matchedSections = [];
-
-		foreach( $lines as $line ) {
-			// Could use a better regex
-			preg_match( '/^(=*)([^=]*?)\1$/', $line, $matches );
-			if( isset( $matches[ 2 ] ) && $matches[ 1 ] !== '' ) {
-				// Line is a section
-				$currentSection = $matches[ 2 ];
-				$currentSection = str_replace( ' ', '_', $currentSection );
-				continue;
-			}
-
-			$line = strtolower( $line );
-			if( strpos( $line, $highlightedTerm ) !== false && $currentSection ) {
-				if( in_array( $currentSection, $sections ) ) {
-					$matchedSections[] = $currentSection;
-				}
+		foreach( $sections as $section ) {
+			$lcTerm = strtolower( $highlightedTerm );
+			$lcSection = strtolower( $section );
+			if( strpos( $lcSection, $lcTerm ) !== false ) {
+				$matchedSections[] = $section;
 			}
 		}
 
-		$matchedSections = array_unique( $matchedSections );
 		return $this->formatSections( $result, $matchedSections );
 	}
 
@@ -160,10 +156,11 @@ class WikiPageFormatter extends Base {
 				break;
 			}
 			$linkTarget = $title->createFragmentTarget( $section );
-			if( strlen( $section ) > 25 ) {
-				$section = substr( $section, 0, 25 ) . Base::MORE_VALUES_TEXT;
+			$displayText = str_replace( '_', ' ', $section );
+			if( strlen( $displayText ) > 25 ) {
+				$displayText = substr( $displayText, 0, 25 ) . Base::MORE_VALUES_TEXT;
 			}
-			$sections[] = $this->linkRenderer->makeLink( $linkTarget, $section );
+			$sections[] = $this->linkRenderer->makeLink( $linkTarget, $displayText );
 		}
 
 		$sectionText = implode( Base::VALUE_SEPARATOR, $sections );
@@ -175,6 +172,28 @@ class WikiPageFormatter extends Base {
 				)->plain();
 		}
 		return $sectionText;
+	}
+
+	protected function formatRedirects( $result ) {
+		if( empty( $result[ 'redirected_from' ] ) ) {
+			return '';
+		}
+
+		$redirs = [];
+		foreach( $result[ 'redirected_from'] as $prefixedTitle ) {
+			$redirTitle = \Title::newFromText( $prefixedTitle );
+			if( $redirTitle instanceof \Title === false ) {
+				continue;
+			}
+
+			$displayText = str_replace( '_', ' ', $prefixedTitle );
+			if( strlen( $displayText ) > 25 ) {
+				$displayText = substr( $displayText, 0, 25 ) . Base::MORE_VALUES_TEXT;
+			}
+			$redirs[] = $this->linkRenderer->makeLink( $redirTitle, $displayText );
+		}
+
+		return implode( Base::VALUE_SEPARATOR, $redirs );
 	}
 
 	protected function getHighlight( $resultObject ) {

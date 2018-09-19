@@ -316,7 +316,8 @@
 				"bs-extendedsearch-source-type-specialpage-label",
 				"bs-extendedsearch-source-type-repofile-label",
 				"bs-extendedsearch-result-relevance-relevant",
-				"bs-extendedsearch-result-relevance-not-relevant"
+				"bs-extendedsearch-result-relevance-not-relevant",
+				"bs-extendedsearch-search-center-result-redirects-label"
 			],
 			"dependencies" : [
 				"ext.bluespice.extjs",

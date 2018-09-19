@@ -103,5 +103,6 @@
 	"bs-extendedsearch-autocomplete-modified-time-label": "Label for last modified time in autocomplete. $1 - last modified timestamp (formatted)",
 	"bs-extendedseach-wikipage-section-more-text": "Text to show when there are more sections in a wikipage than can be showed. $1 - number of sections not shown",
 	"bs-extendedsearch-pref-compact-ac-paths": "Label for the field selecting whether to use simple autocomplete popup",
-	"bs-extendedsearch-compact-ac-paths-desc": "Description message for configuration variable $bsgESCompactAutocomplete"
+	"bs-extendedsearch-compact-ac-paths-desc": "Description message for configuration variable $bsgESCompactAutocomplete",
+	"bs-extendedsearch-search-center-result-redirects-label": "Label for the field in the result showing links to pages that redirect to this page"
 }
