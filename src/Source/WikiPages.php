@@ -10,10 +10,11 @@ use BS\ExtendedSearch\Source\LookupModifier\WikiPageSecurityTrimming;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageRenderedContentHighlight;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageAutocompleteSourceFields;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageBoosters;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageAutocompleteRemoveTalk;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageAutocompleteRemoveUnwanted;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageSimpleQSFields;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageQSSourceFields;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageWildcarder;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageRemoveUnwanted;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 
 class WikiPages extends DecoratorBase {
@@ -27,13 +28,14 @@ class WikiPages extends DecoratorBase {
 			'wikipage-renderedcontenthighlight' => WikiPageRenderedContentHighlight::class,
 			'wikipage-qssourcefields' => WikiPageQSSourceFields::class,
 			'wikipage-boosters' => WikiPageBoosters::class,
-			'wikipage-wildcarder' => WikiPageWildcarder::class
+			'wikipage-wildcarder' => WikiPageWildcarder::class,
+			'wikipage-unwanted' => WikiPageRemoveUnwanted::class
 		],
 		LookupModifier::TYPE_AUTOCOMPLETE => [
 			'wikipage-securitytrimming' => WikiPageSecurityTrimming::class,
 			'wikipage-acsourcefields' => WikiPageAutocompleteSourceFields::class,
 			'wikipage-boosters' => WikiPageBoosters::class,
-			'wikipage-acnotalk' => WikiPageAutocompleteRemoveTalk::class
+			'wikipage-acunwanted' => WikiPageAutocompleteRemoveUnwanted::class
 		]
 	];
 

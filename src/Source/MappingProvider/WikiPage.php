@@ -16,7 +16,7 @@ class WikiPage extends DecoratorBase {
 				'copy_to' => [ 'congregated', 'ac_ngram' ],
 			],
 			'sections' => [
-				'type' => 'text',
+				'type' => 'keyword',
 				'copy_to' => 'congregated'
 			],
 			'source_content' => [
@@ -41,6 +41,12 @@ class WikiPage extends DecoratorBase {
 			],
 			'tags' => [
 				'type' => 'keyword'
+			],
+			'is_redirect' => [
+				'type' => 'boolean'
+			],
+			'redirected_from' => [
+				'type' => 'text'
 			]
 		] );
 

@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
 class WikiPageUserPreferences extends Base {
+	protected $namespacesToBoost;
 
 	public function apply() {
 		$options = $this->oContext->getUser()->getOptions();
@@ -23,11 +24,13 @@ class WikiPageUserPreferences extends Base {
 			}
 		}
 
-		if( !empty( $namespacesToBoost ) ) {
-			$this->oLookup->addShouldTerms( 'namespace', $namespacesToBoost, 8, true );
+		$this->namespacesToBoost = $namespacesToBoost;
+		if( !empty( $this->namespacesToBoost ) ) {
+			$this->oLookup->addShouldTerms( 'namespace', $this->namespacesToBoost, 8, true );
 		}
 	}
 
 	public function undo() {
+		$this->oLookup->removeShouldTerms( 'namespace', $this->namespacesToBoost );
 	}
 }

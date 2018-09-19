@@ -8,7 +8,7 @@ class WikiPageBoosters extends Base {
 		// Boost "wikipage" type as its most important on a wiki
 		$this->oLookup->addShouldMatch( '_type', 'wikipage', 5 );
 		// Boost NS_MAIN
-		$this->oLookup->addShouldTerms( 'namespace', NS_MAIN, 6, false );
+		$this->oLookup->addShouldTerms( 'namespace', NS_MAIN, 2, false );
 		// Boost $wgContentNamespaces
 		$contentNamespaces = \MWNamespace::getContentNamespaces();
 		$this->oLookup->addShouldTerms( 'namespace', array_values( $contentNamespaces ), 4, false );
