@@ -40,7 +40,7 @@
 	"bs-extendedsearch-search-center-options-dialog-title": "Настройки поиска",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Отмена",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Применить",
-	"bs-extendedsearch-search-center-options-page-size": "Размер страницы",
+	"bs-extendedsearch-search-center-options-page-size": "Записей на страницу",
 	"bs-extendedsearch-search-center-options-sort-by": "Сортировать по",
 	"bs-extendedsearch-search-center-options-sort-order": "Порядок сортировки",
 	"bs-extendedsearch-autocomplete-result-type": "Тип: $1",
@@ -64,5 +64,6 @@
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL-префикс",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Последнее изменение: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... $1 ещё",
-	"bs-extendedsearch-pref-compact-ac-paths": "Использовать простое автозаполнение"
+	"bs-extendedsearch-pref-compact-ac-paths": "Использовать простое автозаполнение",
+	"bs-extendedsearch-search-center-result-redirects-label": "Перенаправлено с:"
 }

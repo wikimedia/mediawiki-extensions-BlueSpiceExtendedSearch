@@ -58,7 +58,7 @@
 	"bs-extendedsearch-search-center-options-dialog-title": "خيارات البحث",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "إلغاء",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "تطبيق",
-	"bs-extendedsearch-search-center-options-page-size": "حجم الصفحة",
+	"bs-extendedsearch-search-center-options-page-size": "الإدخالات لكل صفحة",
 	"bs-extendedsearch-search-center-options-sort-by": "الترتيب حسب",
 	"bs-extendedsearch-search-center-options-sort-order": "ترتيب الفرز",
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "لا توجد تطابقات صحيحة لاستعلامك",
@@ -99,5 +99,6 @@
 	"bs-extendedsearch-autocomplete-modified-time-label": "آخر تعديل: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... $1 أكثر",
 	"bs-extendedsearch-pref-compact-ac-paths": "استخدم الإكمال التلقائي البسيط",
-	"bs-extendedsearch-compact-ac-paths-desc": "تحديد ما إذا كنت تريد استخدام منبثقة الإكمال التلقائي البسيط"
+	"bs-extendedsearch-compact-ac-paths-desc": "تحديد ما إذا كنت تريد استخدام منبثقة الإكمال التلقائي البسيط",
+	"bs-extendedsearch-search-center-result-redirects-label": "تم التحويل من:"
 }

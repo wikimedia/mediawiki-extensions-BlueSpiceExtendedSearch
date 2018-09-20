@@ -44,7 +44,7 @@
 	"bs-extendedsearch-search-center-options-dialog-title": "Претрага опција",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Откажи",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Примени",
-	"bs-extendedsearch-search-center-options-page-size": "Величина странице",
+	"bs-extendedsearch-search-center-options-page-size": "Уноси по страници",
 	"bs-extendedsearch-search-center-options-sort-by": "Сортирај по",
 	"bs-extendedsearch-search-center-options-sort-order": "Редослед сортирања",
 	"bs-extendedsearch-autocomplete-result-type": "Тип: $1",
@@ -68,5 +68,6 @@
 	"bs-extendedsearch-pref-external-file-paths": "Спољашња путања датотеке",
 	"bs-extendedsearch-pref-external-file-paths-path": "Физичка путања",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL префикс",
-	"bs-extendedsearch-pref-compact-ac-paths": "Користи једноставно аутоматско довршавање"
+	"bs-extendedsearch-pref-compact-ac-paths": "Користи једноставно аутоматско довршавање",
+	"bs-extendedsearch-search-center-result-redirects-label": "Преусмерено са:"
 }

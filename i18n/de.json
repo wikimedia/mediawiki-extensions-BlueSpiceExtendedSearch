@@ -60,7 +60,7 @@
 	"bs-extendedsearch-search-center-options-dialog-title": "Suchoptionen",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Abbrechen",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Anwenden",
-	"bs-extendedsearch-search-center-options-page-size": "Seitengröße",
+	"bs-extendedsearch-search-center-options-page-size": "Einträge pro Seite",
 	"bs-extendedsearch-search-center-options-sort-by": "Sortieren nach",
 	"bs-extendedsearch-search-center-options-sort-order": "Sortierreihenfolge",
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Keine gültigen Übereinstimmungen für Ihre Anfrage",
@@ -102,5 +102,6 @@
 	"bs-extendedsearch-autocomplete-modified-time-label": "Letzte Änderung: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... $1 weitere",
 	"bs-extendedsearch-pref-compact-ac-paths": "Einfache automatische Vervollständigung verwendene",
-	"bs-extendedsearch-compact-ac-paths-desc": "Das einfache Popup-Fenster mit automatischer Vervollständigung verwenden."
+	"bs-extendedsearch-compact-ac-paths-desc": "Das einfache Popup-Fenster mit automatischer Vervollständigung verwenden.",
+	"bs-extendedsearch-search-center-result-redirects-label": "Weitergeleitet von:"
 }

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"夢蝶葬花"
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch搜索后端",
@@ -42,5 +43,17 @@
 	"bs-extendedsearch-search-center-result-sections-label": "章节：",
 	"bs-extendedsearch-search-center-result-ctime-label": "创建：",
 	"bs-extendedsearch-search-center-result-mtime-label": "修改：",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "取消",
+	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "应用",
+	"bs-extendedsearch-search-center-options-sort-by": "排序方式",
+	"bs-extendedsearch-search-center-options-sort-order": "排序顺序",
+	"bs-extendedsearch-autocomplete-result-type": "类型：$1",
+	"bs-extendedsearch-searchcenter-filter-or-label": "或",
+	"bs-extendedsearch-searchcenter-filter-and-label": "和",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "名字",
+	"bs-extendedsearch-searchcenter-sort-field-size": "大小",
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "名字空间",
+	"bs-extendedsearch-autocomplete-create-page-link": "创建页面“$1”。",
+	"bs-extendedsearch-loadmore-label": "正在加载更多结果……",
 	"prefs-extendedsearch": "扩展搜索"
 }

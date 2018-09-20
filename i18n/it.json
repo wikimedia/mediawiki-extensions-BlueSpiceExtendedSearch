@@ -24,6 +24,7 @@
 	"bs-extendedsearch-search-center-options-dialog-title": "Opzioni di ricerca",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Annulla",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Applica",
+	"bs-extendedsearch-search-center-options-page-size": "Elementi per pagina",
 	"bs-extendedsearch-search-center-options-sort-by": "Ordina per",
 	"bs-extendedsearch-autocomplete-result-type": "Tipo: $1",
 	"bs-extendedsearch-searchcenter-filter-or-label": "o",

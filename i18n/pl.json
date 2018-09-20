@@ -53,5 +53,6 @@
 	"bs-extendedsearch-pref-external-file-paths": "Zewnętrzne ścieżki plików",
 	"bs-extendedsearch-pref-external-file-paths-path": "Ścieżka fizyczna",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Prefiks adresu URL",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "Lokalizacja na dysku lub zamontowanym napędzie"
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Lokalizacja na dysku lub zamontowanym napędzie",
+	"bs-extendedsearch-search-center-result-redirects-label": "Przekierowano z:"
 }

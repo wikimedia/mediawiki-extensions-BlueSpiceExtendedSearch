@@ -61,7 +61,7 @@
 	"bs-extendedsearch-search-center-options-dialog-title": "Options de recherche",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Annuler",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Appliquer",
-	"bs-extendedsearch-search-center-options-page-size": "Taille de la page",
+	"bs-extendedsearch-search-center-options-page-size": "Entrées par page",
 	"bs-extendedsearch-search-center-options-sort-by": "Trier par",
 	"bs-extendedsearch-search-center-options-sort-order": "Ordre de tri",
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Aucune correspondance valide pour votre requête",
@@ -102,5 +102,6 @@
 	"bs-extendedsearch-autocomplete-modified-time-label": "Dernière modification : $1",
 	"bs-extendedseach-wikipage-section-more-text": "… $1 de plus",
 	"bs-extendedsearch-pref-compact-ac-paths": "Utiliser la complétion automatique simple",
-	"bs-extendedsearch-compact-ac-paths-desc": "S’il faut utiliser la popup de complétion automatique simple"
+	"bs-extendedsearch-compact-ac-paths-desc": "S’il faut utiliser la popup de complétion automatique simple",
+	"bs-extendedsearch-search-center-result-redirects-label": "Redirigé depuis:"
 }
