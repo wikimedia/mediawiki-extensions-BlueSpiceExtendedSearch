@@ -18,5 +18,6 @@
 	"bs-extendedsearch-autocomplete-create-page-link": "Ccreje 'a pàgene \"$1\"",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "Cirche jndr'à tutte 'u teste",
 	"prefs-extendedsearch": "Ricerche estese",
-	"bs-extendedsearch-pref-external-file-paths": "Percorse de le file de fore"
+	"bs-extendedsearch-pref-external-file-paths": "Percorse de le file de fore",
+	"bs-extendedsearch-search-center-result-redirects-label": "Redirezionate da:"
 }

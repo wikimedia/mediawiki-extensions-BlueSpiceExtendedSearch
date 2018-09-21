@@ -59,7 +59,7 @@
 	"bs-extendedsearch-search-center-options-dialog-title": "Opções de pesquisa",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Cancelar",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Aplicar",
-	"bs-extendedsearch-search-center-options-page-size": "Tamanho da página",
+	"bs-extendedsearch-search-center-options-page-size": "Entradas por página",
 	"bs-extendedsearch-search-center-options-sort-by": "Ordenar por",
 	"bs-extendedsearch-search-center-options-sort-order": "Sentido de ordenação",
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Não há correspondências válidas para a sua consulta",
@@ -100,5 +100,6 @@
 	"bs-extendedsearch-autocomplete-modified-time-label": "Última modificação: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... mais $1",
 	"bs-extendedsearch-pref-compact-ac-paths": "Usar o preenchimento automático simples",
-	"bs-extendedsearch-compact-ac-paths-desc": "Se deve ser usada a janela de preenchimento automático"
+	"bs-extendedsearch-compact-ac-paths-desc": "Se deve ser usada a janela de preenchimento automático",
+	"bs-extendedsearch-search-center-result-redirects-label": "Redirecionada de:"
 }

@@ -36,5 +36,6 @@
 	"bs-extendedsearch-result-relevance-relevant": "Questo risultato è importante per me",
 	"bs-extendedsearch-result-relevance-not-relevant": "Questo risultato non è importante per me",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "Ricerca nel testo",
-	"prefs-extendedsearch": "Ricerca avanzata"
+	"prefs-extendedsearch": "Ricerca avanzata",
+	"bs-extendedsearch-search-center-result-redirects-label": "Reindirizzamento da:"
 }

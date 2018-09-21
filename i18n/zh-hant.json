@@ -57,7 +57,7 @@
 	"bs-extendedsearch-search-center-options-dialog-title": "搜尋選項",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "取消",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "套用",
-	"bs-extendedsearch-search-center-options-page-size": "頁面大小",
+	"bs-extendedsearch-search-center-options-page-size": "各頁面項目",
 	"bs-extendedsearch-search-center-options-sort-by": "排序依",
 	"bs-extendedsearch-search-center-options-sort-order": "排序",
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "對於您的查詢沒有可用的符合內容",
@@ -95,5 +95,6 @@
 	"bs-extendedsearch-autocomplete-modified-time-label": "最近修改於：$1",
 	"bs-extendedseach-wikipage-section-more-text": " ...更多 $1 個",
 	"bs-extendedsearch-pref-compact-ac-paths": "使用簡易自動完成",
-	"bs-extendedsearch-compact-ac-paths-desc": "是否使用簡易自動完成彈跳視窗"
+	"bs-extendedsearch-compact-ac-paths-desc": "是否使用簡易自動完成彈跳視窗",
+	"bs-extendedsearch-search-center-result-redirects-label": "重新導向自："
 }

@@ -45,7 +45,7 @@
 	"bs-extendedsearch-search-center-options-dialog-title": "검색 옵션",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "취소",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "적용",
-	"bs-extendedsearch-search-center-options-page-size": "페이지 크기",
+	"bs-extendedsearch-search-center-options-page-size": "페이지 당 항목",
 	"bs-extendedsearch-search-center-options-sort-by": "정렬 기준",
 	"bs-extendedsearch-search-center-options-sort-order": "정렬 순서",
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "쿼리에 맞는 일치 항목이 없습니다",
@@ -83,5 +83,6 @@
 	"bs-extendedsearch-autocomplete-modified-time-label": "최근 수정 시간: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... $1개 더 보기",
 	"bs-extendedsearch-pref-compact-ac-paths": "단순한 자동 완성 사용",
-	"bs-extendedsearch-compact-ac-paths-desc": "단순한 자동 완성 팝업을 사용할지의 여부"
+	"bs-extendedsearch-compact-ac-paths-desc": "단순한 자동 완성 팝업을 사용할지의 여부",
+	"bs-extendedsearch-search-center-result-redirects-label": "다음에서 넘어옴:"
 }
