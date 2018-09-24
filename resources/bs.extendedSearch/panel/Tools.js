@@ -9,6 +9,8 @@
 		this.caller = this.cfg.caller;
 		this.mobile = this.cfg.mobile || false;
 
+		this.defaultFilters = this.cfg.defaultFilters || [];
+
 		//Replaces "add filter" button
 		$( '#bs-extendedsearch-filter-add-button' ).remove();
 
@@ -42,6 +44,7 @@
 		}
 
 		this.addFiltersFromLookup();
+		this.addDefaultFilters();
 	}
 
 	/**
@@ -293,6 +296,19 @@
 			}
 		}
 	}
+
+	bs.extendedSearch.ToolsPanel.prototype.addDefaultFilters = function() {
+		for( var idx in this.defaultFilters ) {
+			var defFilter = this.defaultFilters[idx];
+			for( availableFilterIdx in this.filterData ) {
+				var filter = this.filterData[availableFilterIdx].filter;
+				if( filter.id !== defFilter ) {
+					continue;
+				}
+				this.addFilterWidget( filter );
+			}
+		}
+	};
 
 	bs.extendedSearch.ToolsPanel.prototype.showExportSearchDialog = function() {
 		var headers = $( '.bs-extendedsearch-result-header' );

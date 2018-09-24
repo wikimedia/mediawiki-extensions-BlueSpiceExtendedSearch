@@ -12,6 +12,8 @@ class SearchCenter extends \SpecialPage {
 	public function execute( $subPage ) {
 		$this->setHeaders();
 
+		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsg' );
+
 		//Query string param that can contain search term or entire lookup object
 		$query = $this->getRequest()->getText( 'q' );
 		$lookup = $this->lookupFromQuery( $query );
@@ -99,8 +101,8 @@ class SearchCenter extends \SpecialPage {
 		$out->addJsConfigVars( 'bsgESSortableFields', $sortableFields );
 		//Array of each source's types.
 		$out->addJsConfigVars( 'bsgESAvailbleTypes', $availableTypes );
-		//TODO: Get from settings once that structure is created
 		$out->addJsConfigVars( 'bsgESResultsPerPage', 25 );
+		$out->addJsConfigVars( 'ESSearchCenterDefaultFilters', $config->get( 'ESSearchCenterDefaultFilters' ) );
 	}
 
 	/**
