@@ -236,7 +236,8 @@
 					search.getFilters( response.filters )
 				),
 				caller: search,
-				mobile: bs.extendedSearch.utils.isMobile()
+				mobile: bs.extendedSearch.utils.isMobile(),
+				defaultFilters: mw.config.get( 'ESSearchCenterDefaultFilters' )
 			} );
 
 			toolsPanel.init();
