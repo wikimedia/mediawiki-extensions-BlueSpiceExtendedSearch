@@ -145,7 +145,7 @@ class Base {
 						"autocomplete_filter" => [
 							"type" => "ngram",
 							"min_gram" => 1,
-							"max_gram" => 15
+							"max_gram" => 23
 						]
 					],
 					"analyzer" => [

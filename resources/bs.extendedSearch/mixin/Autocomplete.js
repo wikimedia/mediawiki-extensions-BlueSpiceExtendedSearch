@@ -138,6 +138,8 @@
 			return text;
 		}
 
+		length = length - 3; // To fit in the dots
+
 		mustContain = mustContain || '';
 		var startsWithMustContain = text.indexOf( mustContain ) === 0;
 		if( mustContain === '' || startsWithMustContain ) {
