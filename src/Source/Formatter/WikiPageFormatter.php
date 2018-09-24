@@ -312,20 +312,27 @@ class WikiPageFormatter extends Base {
 	}
 
 	/**
-	 * Increase score of results that have search term in base text,
+	 * - For wikipages, its important to get match percentage for prefixed_title,
+	 * because that is what is displayed to the user
+	 *
+	 * - Increase score of results that have search term in base text,
 	 * as opposed to in subpage
 	 * This should happen anyway, as if a doc contain search term in basename AND
 	 * in prefixed_title it will get scored higher
 	 *
-	 * @param array $results
+	 * @param array $result
 	 * @param array $searchData
 	 */
-	public function scoreAutocompleteResults( &$results, $searchData ) {
-		parent::scoreAutocompleteResults( $results, $searchData );
-		foreach( $results as &$result ) {
-			if( $this->getHasMatchInBasetext( $result[ 'basename' ], $searchData[ 'value' ] ) ) {
-				$result['score'] += 2;
-			}
+	public function scoreSingleAutocompleteResult( &$result, $searchData ) {
+		if( $result['type'] !== $this->source->getTypeKey() ) {
+			return parent::scoreSingleAutocompleteResult( $result, $searchData );
+		}
+		$result['score'] += $this->getMatchPercentage(
+			$result['prefixed_title'],
+			$searchData['value']
+		) * 0.1;
+		if( $this->getHasMatchInBasetext( $result[ 'basename' ], $searchData[ 'value' ] ) ) {
+			$result['score'] += 2;
 		}
 	}
 

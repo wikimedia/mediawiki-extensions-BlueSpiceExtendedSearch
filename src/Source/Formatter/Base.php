@@ -165,25 +165,44 @@ class Base {
 	}
 
 	/**
-	 * Allows modifying scoring of the AC results, after query has ran.
+	 * Allows modifying scoring of the AC results, after query has ran
+	 * This is run for entire result set, and should not be overriden
 	 *
 	 * @param array $results
 	 * @param array $searchData
 	 */
 	public function scoreAutocompleteResults( &$results, $searchData ) {
 		foreach( $results as &$result ) {
-			$result['score'] += $this->getMatchPercentage( $result['basename'], $searchData['value'] );
+			$this->scoreSingleAutocompleteResult( $result, $searchData );
 		}
 	}
 
-	protected function getMatchPercentage( $result, $term ) {
+	/**
+	 * Allows modifying scoring of the AC results, after query has ran
+	 * This function runs for each result in AC result set, and its supposed
+	 * to be overriden by individual types if needed
+	 *
+	 * @param array $result
+	 * @param type $searchData
+	 */
+	public function scoreSingleAutocompleteResult( &$result, $searchData ) {
+		$result['score'] += $this->getMatchPercentage(
+			$result['basename'],
+			$searchData['value']
+		) * 0.1;
+	}
+
+	protected function getMatchPercentage( $title, $term ) {
+		if( strlen( $title ) === 0 ) {
+			return 0;
+		}
 		$matches = [];
 		//How many times search term is repeated
-		preg_match_all( '/' . $term . '/', $result, $matches );
+		preg_match_all( '/' . $term . '/', $title, $matches );
 
 		$termLength = strlen( $term ) * count( $matches );
 
-		return ( $termLength * 100 ) / strlen( $result );
+		return ( $termLength * 100 ) / strlen( $title );
 	}
 
 	/**
