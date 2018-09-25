@@ -55,6 +55,7 @@
 		}
 
 		this.$header.addClass( 'bs-extendedsearch-result-header' );
+		this.$image.on( 'click', { pageAnchor: this.$header }, this.onImageClick );
 
 		this.$headerContainer.append( this.$header );
 
@@ -126,6 +127,11 @@
 
 	bs.extendedSearch.ResultWidget.prototype.getRawResult = function() {
 		return this.rawResult;
+	}
+
+	bs.extendedSearch.ResultWidget.prototype.onImageClick = function( e ) {
+		var anchor = e.data.pageAnchor;
+		window.location = anchor.attr( 'href' );
 	}
 
 	//Experimental

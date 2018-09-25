@@ -4,17 +4,17 @@
 	bs.extendedSearch.mixin.ResultImage = function( cfg ) {
 		cfg = cfg || {};
 
+		this.$image = $( '<div>' );
+
 		this.imageUri = cfg.imageUri || '';
 		if( !this.imageUri ) {
-			this.$image = null;
 			return;
 		}
 
 		//We need div inside a div because of flex layout,
 		//inner div must set size. Using background property
 		//because of more cross-browser support for fit-to-box features
-		this.$image = $( '<div>' )
-			.addClass( 'bs-extendedsearch-result-image' )
+		this.$image.addClass( 'bs-extendedsearch-result-image' )
 			.append( $( '<div>' )
 				.addClass( 'bs-extendedsearch-result-image-inner' )
 				.attr( 'style', "background-image: url(" + this.imageUri + ")" )
