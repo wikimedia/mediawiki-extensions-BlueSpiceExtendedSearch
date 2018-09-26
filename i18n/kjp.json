@@ -9,11 +9,15 @@
 	"bs-extendedsearch-source-label-user": "ဆ်ုသုံ့ဆာ",
 	"bs-extendedsearch-admin-label-error": "ဆ်ုမး",
 	"bs-extendedsearch-search-center-filter-categories-label": "ကၞါင့်",
+	"bs-extendedsearch-search-center-filter-type-label": "အ်ုမိင်အ်ုကုဂ်လ်ုဖး",
 	"bs-extendedsearch-search-center-filter-categories-with-values-label": "ကၞါင့်:",
 	"bs-extendedsearch-search-center-filter-type-with-values-label": "အ်ုမိင်အ်ုကါင်",
 	"bs-extendedsearch-search-center-result-categories-label": "ကၞါင့်",
 	"bs-extendedsearch-search-center-pagesize-dialog-title": "လိက်မေံသးဆ်ုကါင်ဖါ အ်ုတင်ၮေဝ်ႋ",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "မာလိုင်အေး",
+	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "အ်ုၯာင်ႋလင်ၜေ့မ်ုအှ်",
 	"bs-extendedsearch-searchcenter-filter-or-label": "လ်ုမွာဲဝး",
+	"bs-extendedsearch-searchcenter-sort-field-size": "အ်ုၯင်",
 	"bs-extendedsearch-search-center-result-typetext-label": "အ်ုမိင်ကါင်ဖါ:",
 	"bs-extendedsearch-search-center-result-redirects-label": "မ်ုကျးက္ဍာလ်ု:"
 }

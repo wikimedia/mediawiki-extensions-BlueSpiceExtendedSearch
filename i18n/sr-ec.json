@@ -69,5 +69,6 @@
 	"bs-extendedsearch-pref-external-file-paths-path": "Физичка путања",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL префикс",
 	"bs-extendedsearch-pref-compact-ac-paths": "Користи једноставно аутоматско довршавање",
-	"bs-extendedsearch-search-center-result-redirects-label": "Преусмерено са:"
+	"bs-extendedsearch-search-center-result-redirects-label": "Преусмерено са:",
+	"bs-extendedsearch-default-filters-desc": "Низ филтера који се подразумевано постављају"
 }

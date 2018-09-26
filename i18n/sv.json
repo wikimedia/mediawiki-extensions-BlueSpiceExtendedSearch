@@ -70,5 +70,6 @@
 	"bs-extendedsearch-pref-external-file-paths-path": "Fysisk sökväg",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Senast ändrad: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... $1 fler",
-	"bs-extendedsearch-search-center-result-redirects-label": "Omdirigerad från:"
+	"bs-extendedsearch-search-center-result-redirects-label": "Omdirigerad från:",
+	"bs-extendedsearch-default-filters-desc": "Array över filter att ange som standard"
 }

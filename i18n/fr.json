@@ -103,5 +103,6 @@
 	"bs-extendedseach-wikipage-section-more-text": "… $1 de plus",
 	"bs-extendedsearch-pref-compact-ac-paths": "Utiliser la complétion automatique simple",
 	"bs-extendedsearch-compact-ac-paths-desc": "S’il faut utiliser la popup de complétion automatique simple",
-	"bs-extendedsearch-search-center-result-redirects-label": "Redirigé depuis:"
+	"bs-extendedsearch-search-center-result-redirects-label": "Redirigé depuis:",
+	"bs-extendedsearch-default-filters-desc": "Tableau des filtres à inititaliser par défaut"
 }

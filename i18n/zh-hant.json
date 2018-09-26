@@ -6,6 +6,7 @@
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch 搜尋後端",
+	"bssearchadmin": "搜尋管理",
 	"bssearchadmin-desc": "提供搜尋的管理介面",
 	"bssearchcenter": "搜尋中心",
 	"apihelp-bs-extendedsearch-query-description": "搜尋索引",
@@ -31,7 +32,8 @@
 	"bs-extendedsearch-admin-heading-sources": "來源",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "文件",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "待更新任務",
-	"bs-extendedsearch-search-center-hitcount-widget": "<b>$2</b> $1 個{{PLURAL:$1|觸發|觸發}}",
+	"bs-extendedsearch-search-center-hitcount-widget": "$1 次{{PLURAL:$1|觸發|觸發}}<b>$2</b>",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "約 $1 次{{PLURAL:$1|觸發|觸發}}<b>$2</b>",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "添加篩選",
 	"bs-extendedsearch-search-center-filter-extension-label": "額外",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "命名空間",
@@ -76,6 +78,8 @@
 	"bs-extendedsearch-search-center-filter-has-hidden": "...以及更多 {{PLURAL:$1|$1|$1}} 個",
 	"bs-extendedsearch-search-center-result-exception": "查詢無法執行，請更改搜尋項。",
 	"bs-extendedsearch-autocomplete-create-page-link": "建立頁面「$1」",
+	"bs-extendedsearch-search-center-hitcount-replaced": "顯示取代$2的$1搜尋結果（{{PLURAL:$3|$3|$3}} 次觸發）",
+	"bs-extendedsearch-search-center-hitcount-suggest": "您是指$1（{{PLURAL:$2|$2|$2}} 次觸發）嗎？",
 	"bs-extendedsearch-loadmore-label": "載入更多結果",
 	"bs-extendedsearch-loadmore-error": "無法取得更多結果",
 	"bs-extendedsearch-search-center-result-typetext-label": "類型：",
@@ -91,10 +95,12 @@
 	"bs-extendedsearch-pref-external-file-paths-path": "實體路徑",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL 前綴",
 	"bs-extendedsearch-pref-external-file-paths-path-help": "在磁碟或掛載裝置的位置",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "可提供來自此資料夾檔案服務的網站位置",
 	"bs-extendedsearch-external-file-paths-desc": "應被索引化的外部資料夾陣列",
 	"bs-extendedsearch-autocomplete-modified-time-label": "最近修改於：$1",
 	"bs-extendedseach-wikipage-section-more-text": " ...更多 $1 個",
 	"bs-extendedsearch-pref-compact-ac-paths": "使用簡易自動完成",
 	"bs-extendedsearch-compact-ac-paths-desc": "是否使用簡易自動完成彈跳視窗",
-	"bs-extendedsearch-search-center-result-redirects-label": "重新導向自："
+	"bs-extendedsearch-search-center-result-redirects-label": "重新導向自：",
+	"bs-extendedsearch-default-filters-desc": "預設所要設定的篩選陣列"
 }

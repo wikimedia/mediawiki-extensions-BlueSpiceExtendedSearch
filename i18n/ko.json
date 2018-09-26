@@ -84,5 +84,6 @@
 	"bs-extendedseach-wikipage-section-more-text": " ... $1개 더 보기",
 	"bs-extendedsearch-pref-compact-ac-paths": "단순한 자동 완성 사용",
 	"bs-extendedsearch-compact-ac-paths-desc": "단순한 자동 완성 팝업을 사용할지의 여부",
-	"bs-extendedsearch-search-center-result-redirects-label": "다음에서 넘어옴:"
+	"bs-extendedsearch-search-center-result-redirects-label": "다음에서 넘어옴:",
+	"bs-extendedsearch-default-filters-desc": "기본값으로 설정할 필터 배열"
 }
