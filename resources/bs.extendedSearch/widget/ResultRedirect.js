@@ -36,6 +36,8 @@
 
 		this.$dataContainer.append( this.$headerContainer, this.$redirectTargetContainer );
 
+		this.$image.on( 'click', { pageAnchor: this.$redirectTargetAnchor }, this.onImageClick );
+
 		this.$element = $( '<div>' )
 			.addClass( 'bs-extendedsearch-result-container redirect' )
 			.append( this.$image, this.$dataContainer );
