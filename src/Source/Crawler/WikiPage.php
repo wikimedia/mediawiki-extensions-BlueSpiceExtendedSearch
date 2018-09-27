@@ -8,14 +8,24 @@ class WikiPage extends Base {
 	public function crawl() {
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
-			'page',
-			'*',
-			$this->makeQueryConditions()
+			[ 'page', 'page_props' ],
+			[ 'page_id', "GROUP_CONCAT( pp_propname SEPARATOR '|' ) as prop_names" ],
+			$this->makeQueryConditions(),
+			__METHOD__,
+			[ 'GROUP BY' => 'page_id' ],
+			[ 'page_props' => [ 'LEFT OUTER JOIN', [ 'page_id=pp_page' ] ] ]
 		);
-		$aTitles = \TitleArray::newFromResult( $res );
 
-		foreach( $aTitles as $oTitle ) {
-			$this->addToJobQueue( $oTitle );
+		foreach( $res as $row ) {
+			$title = \Title::newFromID( $row->page_id );
+
+			// Not ideal, but beats running page_props query for each page
+			$props = explode( '|', $row->prop_names );
+			$props = array_unique( $props );
+			if( in_array( 'noindex', $props ) ) {
+				continue;
+			}
+			$this->addToJobQueue( $title );
 		}
 	}
 
