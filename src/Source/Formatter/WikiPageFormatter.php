@@ -349,16 +349,58 @@ class WikiPageFormatter extends Base {
 		if( $result['type'] !== $this->source->getTypeKey() ) {
 			return parent::scoreSingleAutocompleteResult( $result, $searchData );
 		}
+		$result['score'] += $this->isACMatchInPreferredNamespace( $result ) ? 10 : 0;
 		$result['score'] += $this->getMatchPercentage(
 			$result['prefixed_title'],
 			$searchData['value']
 		) * 0.1;
-		if( $this->getHasMatchInBasetext( $result[ 'basename' ], $searchData[ 'value' ] ) ) {
-			$result['score'] += 2;
+		if( $this->isSubpage( $result ) ) {
+			if( $this->getHasMatchInBasetext( $result[ 'basename' ], $searchData[ 'value' ] ) ) {
+				$result['score'] += 2;
+			}
 		}
 	}
 
-	public function getHasMatchInBasetext( $basename, $searchValue ) {
+	protected function isACMatchInPreferredNamespace( $result ) {
+		$title = \Title::newFromText( $result['prefixed_title'] );
+		if( $title instanceof \Title === false ) {
+			return false;
+		}
+		if( in_array( $title->getNamespace(), $this->getUserPreferredNamespaces() ) ) {
+			return true;
+		}
+		return false;
+	}
+
+	protected function getUserPreferredNamespaces() {
+		$options = $this->getContext()->getUser()->getOptions();
+
+		$preferredNamespaces = [];
+		foreach( $options as $optionName => $optionValue ) {
+			if( strpos( $optionName, 'searchNs' ) !== 0 ) {
+				continue;
+			}
+
+			$optionValue = (int) $optionValue;
+			if( $optionValue != 1 ) {
+				continue;
+			}
+
+			$nsId = (int)substr( $optionName, strlen( 'searchNs' ) );
+			$preferredNamespaces[] = $nsId;
+		}
+
+		return $preferredNamespaces;
+	}
+
+	protected function isSubpage( $result ) {
+		if( strpos( '/', $result['prefixed_text'] ) === false ) {
+			return false;
+		}
+		return true;
+	}
+
+	protected function getHasMatchInBasetext( $basename, $searchValue ) {
 		if( strpos( strtolower( $basename ), strtolower( $searchValue ) ) !== false ) {
 			return true;
 		}
