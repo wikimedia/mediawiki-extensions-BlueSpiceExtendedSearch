@@ -19,7 +19,7 @@ class ExternalFileFormatter extends FileFormatter {
 		//Is there a centralized place to get file icons, so
 		//that those do not have to come with this extension?
 		$fileIcons = \ExtensionRegistry::getInstance()
-			->getAttribute( 'BlueSpiceExtendedSearchFileIcons' );
+			->getAttribute( 'BlueSpiceExtendedSearchIcons' );
 
 		if( isset( $fileIcons[$extension] ) ) {
 			return $fileIcons[$extension];

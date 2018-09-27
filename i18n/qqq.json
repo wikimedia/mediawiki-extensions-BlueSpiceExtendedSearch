@@ -105,5 +105,6 @@
 	"bs-extendedsearch-pref-compact-ac-paths": "Label for the field selecting whether to use simple autocomplete popup",
 	"bs-extendedsearch-compact-ac-paths-desc": "Description message for configuration variable $bsgESCompactAutocomplete",
 	"bs-extendedsearch-search-center-result-redirects-label": "Label for the field in the result showing links to pages that redirect to this page",
-	"bs-extendedsearch-default-filters-desc": "Description message for configuration variable $bsgESSearchCenterDefaultFilters"
+	"bs-extendedsearch-default-filters-desc": "Description message for configuration variable $bsgESSearchCenterDefaultFilters",
+	"bs-extendedsearch-redirect-target-label": "Label for the redirect target page anchor in results that are redirect pages"
 }

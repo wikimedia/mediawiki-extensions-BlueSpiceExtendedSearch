@@ -25,7 +25,7 @@ class FileFormatter extends Base {
 
 		$extension = $result['extension'];
 		$fileIcons = \ExtensionRegistry::getInstance()
-			->getAttribute( 'BlueSpiceExtendedSearchFileIcons' );
+			->getAttribute( 'BlueSpiceExtendedSearchIcons' );
 
 		if( isset( $fileIcons[$extension] ) ) {
 			return $fileIcons[$extension];

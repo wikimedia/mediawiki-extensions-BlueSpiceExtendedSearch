@@ -148,7 +148,7 @@
 				"specialpage": "extensions/BlueSpiceExtendedSearch/resources/images/specialpage-icon.png",
 				"default": "extensions/BlueSpiceExtendedSearch/resources/images/default-icon.png"
 			},
-			"FileIcons": {
+			"Icons": {
 				"pdf": "/extensions/BlueSpiceExtendedSearch/resources/images/file-icon/icon-pdf.png",
 				"docx": "/extensions/BlueSpiceExtendedSearch/resources/images/file-icon/icon-docx.png",
 				"doc": "/extensions/BlueSpiceExtendedSearch/resources/images/file-icon/icon-doc.png",
@@ -157,7 +157,8 @@
 				"ppt": "/extensions/BlueSpiceExtendedSearch/resources/images/file-icon/icon-ppt.png",
 				"pptx": "/extensions/BlueSpiceExtendedSearch/resources/images/file-icon/icon-pptx.png",
 				"mp4": "/extensions/BlueSpiceExtendedSearch/resources/images/file-icon/icon-mp4.png",
-				"default": "/extensions/BlueSpiceExtendedSearch/resources/images/file-icon/default.png"
+				"default": "/extensions/BlueSpiceExtendedSearch/resources/images/file-icon/default.png",
+				"redirect": "/extensions/BlueSpiceExtendedSearch/resources/images/icon/redirect.png"
 			},
 			"FieldsWithANDFilterEnabled": {
 				"fields": ["categories"]
@@ -292,6 +293,7 @@
 				"bs.extendedSearch/mixin/Result.js",
 				"bs.extendedSearch/mixin/Filter.js",
 				"bs.extendedSearch/widget/Result.js",
+				"bs.extendedSearch/widget/ResultRedirect.js",
 				"bs.extendedSearch/widget/HitCount.js",
 				"bs.extendedSearch/widget/Filter.js",
 				"bs.extendedSearch/widget/LoadMoreButton.js",
@@ -353,7 +355,8 @@
 				"bs-extendedsearch-source-type-repofile-label",
 				"bs-extendedsearch-result-relevance-relevant",
 				"bs-extendedsearch-result-relevance-not-relevant",
-				"bs-extendedsearch-search-center-result-redirects-label"
+				"bs-extendedsearch-search-center-result-redirects-label",
+				"bs-extendedsearch-redirect-target-label"
 			],
 			"dependencies" : [
 				"ext.bluespice.extjs",

@@ -45,6 +45,9 @@ class WikiPage extends DecoratorBase {
 			'is_redirect' => [
 				'type' => 'boolean'
 			],
+			'redirects_to' => [
+				'type' => 'keyword'
+			],
 			'redirected_from' => [
 				'type' => 'text'
 			]

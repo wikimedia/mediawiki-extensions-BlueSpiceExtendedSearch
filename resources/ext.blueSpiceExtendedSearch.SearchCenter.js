@@ -94,6 +94,17 @@
 		var structuredResults = [];
 
 		$.each( results, function( idx, result ) {
+			if( result.is_redirect ) {
+				structuredResults.push( {
+					is_redirect: true,
+					page_anchor: result.page_anchor,
+					redirect_target_anchor: result.redirect_target_anchor,
+					image_uri: result.image_uri,
+					_id: result.id,
+					raw_result: result
+				} );
+				return;
+			}
 			var resultStructure = resultStructures[result["type"]];
 			var cfg = {};
 			//dummy criteria for featured - prototype only

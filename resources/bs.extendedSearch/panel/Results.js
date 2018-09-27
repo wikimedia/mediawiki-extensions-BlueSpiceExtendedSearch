@@ -123,7 +123,12 @@
 		var me = this;
 
 		$.each( results, function( idx, cfg ) {
-			var resultWidget = new bs.extendedSearch.ResultWidget( cfg, me.mobile );
+			var resultWidget;
+			if( cfg.is_redirect ) {
+				resultWidget = new bs.extendedSearch.ResultRedirectWidget( cfg, me.mobile );
+			} else {
+				resultWidget = new bs.extendedSearch.ResultWidget( cfg, me.mobile );
+			}
 			me.appendResult( resultWidget );
 		} );
 	}

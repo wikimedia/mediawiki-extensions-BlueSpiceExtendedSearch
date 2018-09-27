@@ -5,12 +5,10 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 class WikiPageRemoveUnwanted extends Base {
 
 	public function apply() {
-		// Do not search redirect pages
-		$this->oLookup->addBoolMustNotTerms( 'is_redirect', true );
+		// Its empty for now, but not removed yet
 	}
 
 	public function undo() {
-		$this->oLookup->removeBoolMustNot( 'is_redirect' );
 	}
 
 }

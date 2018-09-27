@@ -35,10 +35,14 @@ class WikiPageFormatter extends Base {
 		}
 
 		parent::format( $result, $resultObject );
+
+		if( $result['is_redirect'] === true ) {
+			return $this->formatRedirect( $result );
+		}
 		$result['categories'] = $this->formatCategories( $result['categories'] );
 		$result['highlight'] = $this->getHighlight( $resultObject );
 		$result['sections'] = $this->getSections( $result );
-		$result['redirects'] = $this->formatRedirects( $result );
+		$result['redirects'] = $this->formatRedirectedFrom( $result );
 		$result['rendered_content_snippet'] = $this->getRenderedContentSnippet( $result['rendered_content'] );
 
 		$result['display_text'] = $result['prefixed_title'];
@@ -174,7 +178,7 @@ class WikiPageFormatter extends Base {
 		return $sectionText;
 	}
 
-	protected function formatRedirects( $result ) {
+	protected function formatRedirectedFrom( $result ) {
 		if( empty( $result[ 'redirected_from' ] ) ) {
 			return '';
 		}
@@ -250,6 +254,24 @@ class WikiPageFormatter extends Base {
 
 	protected function getPageAnchor( $title, $text ) {
 		return $this->linkRenderer->makeLink( $title, $text );
+	}
+
+	protected function formatRedirect( &$result ) {
+		$title = \Title::newFromText( $result['prefixed_title'] );
+		$redirTarget = \Title::newFromText( $result['redirects_to'] );
+		if( $redirTarget instanceof \Title === false ) {
+			return;
+		}
+		$result['is_redirect'] = 1;
+		$result['page_anchor'] = $this->getPageAnchor( $title, $result['display_text'] );
+		$result['redirect_target_anchor'] = $this->getPageAnchor( $redirTarget, $result['redirects_to'] );
+
+		$icons = \ExtensionRegistry::getInstance()
+			->getAttribute( 'BlueSpiceExtendedSearchIcons' );
+		if( isset( $icons['redirect'] ) ) {
+			$result['image_uri'] = $icons['redirect'];
+		}
+
 	}
 
 	public function formatAutocompleteResults( &$results, $searchData ) {

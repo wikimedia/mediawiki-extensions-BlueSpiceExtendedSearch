@@ -103,5 +103,6 @@
 	"bs-extendedsearch-pref-compact-ac-paths": "Use simple autocomplete",
 	"bs-extendedsearch-compact-ac-paths-desc": "Whether to use simple autocomplete popup",
 	"bs-extendedsearch-search-center-result-redirects-label": "Redirected from:",
-	"bs-extendedsearch-default-filters-desc": "Array of filters to be set by default"
+	"bs-extendedsearch-default-filters-desc": "Array of filters to be set by default",
+	"bs-extendedsearch-redirect-target-label": "Redirects to:"
 }

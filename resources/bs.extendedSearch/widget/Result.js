@@ -15,20 +15,13 @@
 		this.highlight = cfg.highlight || '';
 		this.featured = cfg.featured || false;
 
-		// If we are in desktop mode, show sections and redirects outside of secondaryInfos
+		// If we are in desktop mode, show sections of secondaryInfos
 		if( !this.mobile && this.secondaryInfos.top.items.length > 0 ) {
 			for( var idx in this.secondaryInfos.top.items ) {
 				if( this.secondaryInfos.top.items[ idx ].name === 'sections' ) {
 					this.sections = this.secondaryInfos.top.items[ idx ];
 					this.secondaryInfos.top.items.splice( idx, 1 );
 					break;
-				}
-			}
-			for( var idx in this.secondaryInfos.top.items ) {
-				if( this.secondaryInfos.top.items[ idx ].name === 'redirects' ) {
-					this.redirects = this.secondaryInfos.top.items[ idx ];
-					this.redirects.indexInSecondary = idx;
-					continue;
 				}
 			}
 		}
@@ -71,7 +64,7 @@
 			.addClass( 'bs-extendedsearch-result-container' )
 			.append( this.$image, this.$dataContainer, this.$relevanceControl );
 
-		if( this.sections || this.redirects ) {
+		if( this.sections ) {
 			this.$linksContainer = $( '<div>' )
 				.addClass( 'bs-extendedsearch-result-links-container' );
 
@@ -86,16 +79,6 @@
 				this.$linksContainer.append( this.$sectionContainer );
 			}
 
-			if( this.redirects ) {
-				this.$dataContainer.addClass( 'short' );
-				this.$redirectsContainer = $( '<div>' )
-					.addClass( 'bs-extendedsearch-result-redirects-container' );
-				this.$redirectsContainer.append( new OO.ui.LabelWidget( {
-					label: mw.message( this.redirects.labelKey ).plain()
-				} ).$element );
-				this.$redirectsContainer.append( this.redirects.value );
-				this.$linksContainer.append( this.$redirectsContainer );
-			}
 			this.$element.append( this.$linksContainer );
 		}
 
