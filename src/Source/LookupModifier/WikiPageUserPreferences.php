@@ -13,7 +13,9 @@ class WikiPageUserPreferences extends Base {
 			if( strpos( $optionName, 'searchNs' ) !== 0 ) {
 				continue;
 			}
-			if( $optionValue === false ) {
+
+			$optionValue = (int) $optionValue;
+			if( $optionValue != 1 ) {
 				continue;
 			}
 
