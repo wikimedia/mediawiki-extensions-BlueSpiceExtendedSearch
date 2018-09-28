@@ -28,7 +28,7 @@ class WikiPageUserPreferences extends Base {
 
 		$this->namespacesToBoost = $namespacesToBoost;
 		if( !empty( $this->namespacesToBoost ) ) {
-			$this->oLookup->addShouldTerms( 'namespace', $this->namespacesToBoost, 8, true );
+			$this->oLookup->addShouldTerms( 'namespace', $this->namespacesToBoost, 8, false );
 		}
 	}
 

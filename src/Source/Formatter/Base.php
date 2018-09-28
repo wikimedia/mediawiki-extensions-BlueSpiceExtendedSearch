@@ -147,12 +147,13 @@ class Base {
 	 * @param type $searchData
 	 */
 	public function rankAutocompleteResults( &$results, $searchData ) {
+		$top = $this->getACHighestScored( $results );
 		foreach( $results as &$result ) {
 			if( $result['is_ranked'] == true ) {
 				return;
 			}
 
-			if( strtolower( $result['basename'] ) == strtolower( $searchData['value'] ) ) {
+			if( strtolower( $result['basename'] ) == strtolower( $searchData['value'] ) && $top['_id'] === $result['_id'] ) {
 				$result['rank'] = self::AC_RANK_TOP;
 			} else if( strpos( strtolower( $result['basename'] ), strtolower( $searchData['value'] ) ) !== false ) {
 				$result['rank'] = self::AC_RANK_NORMAL;
@@ -162,47 +163,6 @@ class Base {
 
 			$result['is_ranked'] = true;
 		}
-	}
-
-	/**
-	 * Allows modifying scoring of the AC results, after query has ran
-	 * This is run for entire result set, and should not be overriden
-	 *
-	 * @param array $results
-	 * @param array $searchData
-	 */
-	public function scoreAutocompleteResults( &$results, $searchData ) {
-		foreach( $results as &$result ) {
-			$this->scoreSingleAutocompleteResult( $result, $searchData );
-		}
-	}
-
-	/**
-	 * Allows modifying scoring of the AC results, after query has ran
-	 * This function runs for each result in AC result set, and its supposed
-	 * to be overriden by individual types if needed
-	 *
-	 * @param array $result
-	 * @param type $searchData
-	 */
-	public function scoreSingleAutocompleteResult( &$result, $searchData ) {
-		$result['score'] += $this->getMatchPercentage(
-			$result['basename'],
-			$searchData['value']
-		) * 0.1;
-	}
-
-	protected function getMatchPercentage( $title, $term ) {
-		if( strlen( $title ) === 0 ) {
-			return 0;
-		}
-		$matches = [];
-		//How many times search term is repeated
-		preg_match_all( '/' . $term . '/', $title, $matches );
-
-		$termLength = strlen( $term ) * count( $matches );
-
-		return ( $termLength * 100 ) / strlen( $title );
 	}
 
 	/**
@@ -237,5 +197,16 @@ class Base {
 	 */
 	public function formatFilters( &$aggs, &$filterCfg, $fieldsWithANDEnabled = false ) {
 		return;
+	}
+
+	protected function getACHighestScored( $results ) {
+		$highest = false;
+		foreach( $results as $result ) {
+			if( !$highest || ( $result['score'] > $highest['score'] ) ) {
+				$highest = $result;
+			}
+		}
+
+		return $highest;
 	}
 }

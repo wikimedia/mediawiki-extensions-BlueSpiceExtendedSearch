@@ -289,6 +289,7 @@ class WikiPageFormatter extends Base {
 	}
 
 	public function rankAutocompleteResults( &$results, $searchData ) {
+		$top = $this->getACHighestScored( $results );
 		foreach( $results as &$result ) {
 			if( $result['type'] !== $this->source->getTypeKey() ) {
 				continue;
@@ -312,7 +313,7 @@ class WikiPageFormatter extends Base {
 				}
 			}
 
-			if( strtolower( $pageTitle ) == strtolower( $searchData['value'] ) ) {
+			if( strtolower( $pageTitle ) == strtolower( $searchData['value'] ) && $top['_id'] === $result['_id'] ) {
 				$result['rank'] = self::AC_RANK_TOP;
 			} else if( strpos( strtolower( $pageTitle ), strtolower( $searchData['value'] ) ) !== false ) {
 				$result['rank'] = self::AC_RANK_NORMAL;
@@ -331,80 +332,6 @@ class WikiPageFormatter extends Base {
 		} else {
 			return $prefixedTitle;
 		}
-	}
-
-	/**
-	 * - For wikipages, its important to get match percentage for prefixed_title,
-	 * because that is what is displayed to the user
-	 *
-	 * - Increase score of results that have search term in base text,
-	 * as opposed to in subpage
-	 * This should happen anyway, as if a doc contain search term in basename AND
-	 * in prefixed_title it will get scored higher
-	 *
-	 * @param array $result
-	 * @param array $searchData
-	 */
-	public function scoreSingleAutocompleteResult( &$result, $searchData ) {
-		if( $result['type'] !== $this->source->getTypeKey() ) {
-			return parent::scoreSingleAutocompleteResult( $result, $searchData );
-		}
-		$result['score'] += $this->isACMatchInPreferredNamespace( $result ) ? 10 : 0;
-		$result['score'] += $this->getMatchPercentage(
-			$result['prefixed_title'],
-			$searchData['value']
-		) * 0.1;
-		if( $this->isSubpage( $result ) ) {
-			if( $this->getHasMatchInBasetext( $result[ 'basename' ], $searchData[ 'value' ] ) ) {
-				$result['score'] += 2;
-			}
-		}
-	}
-
-	protected function isACMatchInPreferredNamespace( $result ) {
-		$title = \Title::newFromText( $result['prefixed_title'] );
-		if( $title instanceof \Title === false ) {
-			return false;
-		}
-		if( in_array( $title->getNamespace(), $this->getUserPreferredNamespaces() ) ) {
-			return true;
-		}
-		return false;
-	}
-
-	protected function getUserPreferredNamespaces() {
-		$options = $this->getContext()->getUser()->getOptions();
-
-		$preferredNamespaces = [];
-		foreach( $options as $optionName => $optionValue ) {
-			if( strpos( $optionName, 'searchNs' ) !== 0 ) {
-				continue;
-			}
-
-			$optionValue = (int) $optionValue;
-			if( $optionValue != 1 ) {
-				continue;
-			}
-
-			$nsId = (int)substr( $optionName, strlen( 'searchNs' ) );
-			$preferredNamespaces[] = $nsId;
-		}
-
-		return $preferredNamespaces;
-	}
-
-	protected function isSubpage( $result ) {
-		if( strpos( '/', $result['prefixed_text'] ) === false ) {
-			return false;
-		}
-		return true;
-	}
-
-	protected function getHasMatchInBasetext( $basename, $searchValue ) {
-		if( strpos( strtolower( $basename ), strtolower( $searchValue ) ) !== false ) {
-			return true;
-		}
-		return false;
 	}
 
 }

@@ -37,7 +37,8 @@ class WikiPage extends DecoratorBase {
 			'tags' => $this->getTags( $oWikiPage ),
 			'is_redirect' => $oWikiPage->getTitle()->isRedirect(),
 			'redirects_to' => $this->getRedirectsTo( $oWikiPage ),
-			'redirected_from' => $this->getRedirects( $oWikiPage )
+			'redirected_from' => $this->getRedirects( $oWikiPage ),
+			'page_language' => $oWikiPage->getTitle()->getPageLanguage()->getCode()
 		] );
 
 		return $aDC;

@@ -50,6 +50,9 @@ class WikiPage extends DecoratorBase {
 			],
 			'redirected_from' => [
 				'type' => 'text'
+			],
+			'page_language' => [
+				'type' => 'keyword'
 			]
 		] );
 

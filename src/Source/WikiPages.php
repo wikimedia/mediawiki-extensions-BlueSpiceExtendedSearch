@@ -35,7 +35,8 @@ class WikiPages extends DecoratorBase {
 			'wikipage-securitytrimming' => WikiPageSecurityTrimming::class,
 			'wikipage-acsourcefields' => WikiPageAutocompleteSourceFields::class,
 			'wikipage-boosters' => WikiPageBoosters::class,
-			'wikipage-acunwanted' => WikiPageAutocompleteRemoveUnwanted::class
+			'wikipage-acunwanted' => WikiPageAutocompleteRemoveUnwanted::class,
+			'wikipage-userpreferences' => WikiPageUserPreferences::class
 		]
 	];
 

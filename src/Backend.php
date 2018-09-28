@@ -260,7 +260,6 @@ class Backend {
 		$lcSearchTerm = strtolower( $searchData['value'] );
 
 		foreach( $this->getSources() as $sourceKey => $source ) {
-			$source->getFormatter()->scoreAutocompleteResults( $results, $searchData );
 			$source->getFormatter()->rankAutocompleteResults( $results, $searchData );
 			//when results are ranked based on original data, it can be modified
 			$source->getFormatter()->formatAutocompleteResults( $results, $searchData );
@@ -280,6 +279,7 @@ class Backend {
 		$res = [];
 		foreach( $results->getResults() as $suggestion ) {
 			$item = [
+				"_id" => $suggestion->getId(),
 				"type" => $suggestion->getType(),
 				"score" => $suggestion->getScore(),
 				"rank" => false,
