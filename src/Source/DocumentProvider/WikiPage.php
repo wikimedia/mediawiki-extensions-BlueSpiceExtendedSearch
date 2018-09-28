@@ -38,7 +38,8 @@ class WikiPage extends DecoratorBase {
 			'is_redirect' => $oWikiPage->getTitle()->isRedirect(),
 			'redirects_to' => $this->getRedirectsTo( $oWikiPage ),
 			'redirected_from' => $this->getRedirects( $oWikiPage ),
-			'page_language' => $oWikiPage->getTitle()->getPageLanguage()->getCode()
+			'page_language' => $oWikiPage->getTitle()->getPageLanguage()->getCode(),
+			'display_title' => $this->getDisplayTitle( $oWikiPage->getTitle() )
 		] );
 
 		return $aDC;
@@ -173,7 +174,7 @@ class WikiPage extends DecoratorBase {
 
 		$redirTitle = $oWikiPage->getRedirectTarget();
 		if( $redirTitle instanceof \Title ) {
-			return $redirTitle->getPrefixedText();
+			return $this->getDisplayTitle( $redirTitle );
 		}
 		return '';
 	}
@@ -186,5 +187,30 @@ class WikiPage extends DecoratorBase {
 		}
 
 		return $indexable;
+	}
+
+	protected function getDisplayTitle( \Title $title ) {
+		$pageProps = $this->getPageProps( $title );
+		if( isset( $pageProps['displaytitle'] ) ) {
+			return $pageProps['displaytitle'];
+		}
+		return $title->getPrefixedText();
+	}
+
+	protected function getPageProps( \Title $title ) {
+		$lb = \MediaWiki\MediaWikiServices::getInstance()->getDBLoadBalancer();
+		$db = $lb->getConnection( DB_REPLICA );
+
+		$res = $db->select(
+			'page_props',
+			[ '*' ],
+			[ 'pp_page' => $title->getArticleID() ]
+		);
+
+		$props = [];
+		foreach( $res as $row ) {
+			$props[$row->pp_propname] = $row->pp_value;
+		}
+		return $props;
 	}
 }

@@ -104,5 +104,10 @@
 	"bs-extendedsearch-compact-ac-paths-desc": "Whether to use simple autocomplete popup",
 	"bs-extendedsearch-search-center-result-redirects-label": "Redirected from:",
 	"bs-extendedsearch-default-filters-desc": "Array of filters to be set by default",
-	"bs-extendedsearch-redirect-target-label": "Redirects to:"
+	"bs-extendedsearch-redirect-target-label": "Redirects to:",
+	"bs-extendedsearch-search-center-filter-page_language-label": "Page language",
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Page language:",
+	"bs-extendedsearch-wikipage-title-original": "(original title: $1)",
+	"bs-extendedsearch-auto-set-lang-filter-desc": "Whether to set page language filter automatically based on user/wiki language",
+	"bs-extendedsearch-pref-auto-set-lang-filter": "Automatically set language filter"
 }

@@ -65,6 +65,7 @@
 					hasHiddenLabelKey: 'bs-extendedsearch-search-center-filter-has-hidden',
 					id: filterId,
 					isANDEnabled: rawFilter.isANDEnabled,
+					multiSelect: rawFilter.multiSelect,
 					options: []
 				}
 			};

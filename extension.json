@@ -17,7 +17,8 @@
 					"className": "BS\\ExtendedSearch\\Setup",
 					"configDefinitions": {
 						"ESExternalFilePaths": "BS\\ExtendedSearch\\ConfigDefinition\\ExternalFilePaths::getInstance",
-						"ESCompactAutocomplete": "BS\\ExtendedSearch\\ConfigDefinition\\CompactAutocomplete::getInstance"
+						"ESCompactAutocomplete": "BS\\ExtendedSearch\\ConfigDefinition\\CompactAutocomplete::getInstance",
+						"ESAutoSetLangFilter": "BS\\ExtendedSearch\\ConfigDefinition\\AutoSetLanguageFilter::getInstance"
 					}
 				}
 			},
@@ -167,7 +168,10 @@
 				"suggestField": "basename",
 				"replaceThreshold": 0.01,
 				"suggestThreshold": 0.3
-			}
+			},
+			"SingleSelectFilters": [
+				"page_language"
+			]
 		},
 		"BlueSpiceTagCloud": {
 			"StoreRegistry": {
@@ -356,7 +360,10 @@
 				"bs-extendedsearch-result-relevance-relevant",
 				"bs-extendedsearch-result-relevance-not-relevant",
 				"bs-extendedsearch-search-center-result-redirects-label",
-				"bs-extendedsearch-redirect-target-label"
+				"bs-extendedsearch-redirect-target-label",
+				"bs-extendedsearch-search-center-filter-page_language-label",
+				"bs-extendedsearch-search-center-filter-page_language-with-values-label",
+				"bs-extendedsearch-wikipage-title-original"
 			],
 			"dependencies" : [
 				"ext.bluespice.extjs",
@@ -397,6 +404,11 @@
 			"descriptionmsg": "bs-extendedsearch-default-filters-desc",
 			"public": true,
 			"value": [ "namespace_text", "categories" ]
+		},
+		"ESAutoSetLangFilter": {
+			"descriptionmsg": "bs-extendedsearch-auto-set-lang-filter-desc",
+			"public": true,
+			"value": false
 		}
 	},
 	"JobClasses": {

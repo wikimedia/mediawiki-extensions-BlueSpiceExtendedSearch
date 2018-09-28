@@ -8,6 +8,7 @@
 		this.options = cfg.options || [];
 		this.selectedOptions = cfg.selectedOptions || [];
 		this.isANDEnabled = cfg.isANDEnabled == 1 ? true : false;
+		this.multiSelect = cfg.multiSelect == 1 ? true : false;
 		this.filterType = cfg.filterType || "or";
 		this.mobile = cfg.mobile || false;
 
@@ -138,7 +139,6 @@
 
 		this.$optionsContainer.append( this.actions.$element );
 
-		this.optionsCheckboxWidgetID = 'bs-extendedsearch-filter-options-checkbox-widget';
 		this.addCheckboxWidget( this.options );
 
 		return this.$optionsContainer;
@@ -150,10 +150,10 @@
 			options: options
 		} );
 
-		this.optionsCheckboxWidget.$element.attr( 'id', this.optionsCheckboxWidgetID );
+		this.optionsCheckboxWidget.$element.addClass( 'bs-extendedsearch-filter-options-checkbox-widget' );
 
 		this.optionsCheckboxWidget.checkboxMultiselectWidget.on( 'change', function () {
-			this.onOptionsChange( this.optionsCheckboxWidget.checkboxMultiselectWidget.findSelectedItemsData() );
+			this.onOptionsChange( this.selectedOptions, this.optionsCheckboxWidget.checkboxMultiselectWidget.findSelectedItemsData() );
 		}.bind( this ) );
 
 		this.$optionsContainer.append( this.optionsCheckboxWidget.$element );
@@ -217,11 +217,22 @@
 		this.setLabel( label );
 	}
 
-	bs.extendedSearch.FilterWidget.prototype.onOptionsChange = function( values )  {
+	bs.extendedSearch.FilterWidget.prototype.onOptionsChange = function( oldValues, values ) {
+		if( this.multiSelect === false ) {
+			values = arrayDiff( values, oldValues );
+			this.optionsCheckboxWidget.setValue( values );
+		}
+
 		this.selectedOptions = values;
 		this.setFilterLabel();
 
 		this.dirty = true;
+
+		function arrayDiff( array1, array2 ) {
+			return array1.filter( function( el ) {
+				return array2.indexOf( el ) === -1;
+			} );
+		}
 	};
 
 	bs.extendedSearch.FilterAddWidget = function( cfg ) {

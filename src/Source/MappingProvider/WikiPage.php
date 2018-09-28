@@ -53,6 +53,10 @@ class WikiPage extends DecoratorBase {
 			],
 			'page_language' => [
 				'type' => 'keyword'
+			],
+			'display_title' => [
+				'type' => 'keyword',
+				'copy_to' => [ 'congregated', 'ac_ngram' ]
 			]
 		] );
 

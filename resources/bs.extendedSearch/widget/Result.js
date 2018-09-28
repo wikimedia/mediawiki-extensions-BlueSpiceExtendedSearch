@@ -29,6 +29,7 @@
 		bs.extendedSearch.mixin.ResultImage.call( this, cfg );
 		bs.extendedSearch.mixin.ResultSecondaryInfo.call( this, cfg );
 		bs.extendedSearch.mixin.ResultRelevanceControl.call( this, cfg );
+		bs.extendedSearch.mixin.ResultOriginalTitle.call( this, cfg );
 
 		this.id = cfg._id;
 		this.rawResult = cfg.raw_result || {};
@@ -50,7 +51,7 @@
 		this.$header.addClass( 'bs-extendedsearch-result-header' );
 		this.$image.on( 'click', { pageAnchor: this.$header }, this.onImageClick );
 
-		this.$headerContainer.append( this.$header );
+		this.$headerContainer.append( this.$header, this.$originalTitle );
 
 		this.$highlightContainer = $( '<div>' )
 			.addClass( 'bs-extendedsearch-result-highlight-container' )
@@ -95,6 +96,7 @@
 	OO.mixinClass( bs.extendedSearch.ResultWidget, bs.extendedSearch.mixin.ResultImage );
 	OO.mixinClass( bs.extendedSearch.ResultWidget, bs.extendedSearch.mixin.ResultSecondaryInfo );
 	OO.mixinClass( bs.extendedSearch.ResultWidget, bs.extendedSearch.mixin.ResultRelevanceControl );
+	OO.mixinClass( bs.extendedSearch.ResultWidget, bs.extendedSearch.mixin.ResultOriginalTitle );
 
 	bs.extendedSearch.ResultWidget.prototype.getId = function() {
 		return this.id;

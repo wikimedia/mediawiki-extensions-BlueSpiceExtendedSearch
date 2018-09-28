@@ -106,5 +106,10 @@
 	"bs-extendedsearch-compact-ac-paths-desc": "Description message for configuration variable $bsgESCompactAutocomplete",
 	"bs-extendedsearch-search-center-result-redirects-label": "Label for the field in the result showing links to pages that redirect to this page",
 	"bs-extendedsearch-default-filters-desc": "Description message for configuration variable $bsgESSearchCenterDefaultFilters",
-	"bs-extendedsearch-redirect-target-label": "Label for the redirect target page anchor in results that are redirect pages"
+	"bs-extendedsearch-redirect-target-label": "Label for the redirect target page anchor in results that are redirect pages",
+	"bs-extendedsearch-search-center-filter-page_language-label": "Label for the page language filter when its empty (nothing selected)",
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Label for the page language filter when there are values selected",
+	"bs-extendedsearch-wikipage-title-original": "Text displaying original page title if page display title differs from page title. $1 - Original page title",
+	"bs-extendedsearch-auto-set-lang-filter-desc": "Description message for configuration variable $bsgESAutoSetLangFilter",
+	"bs-extendedsearch-pref-auto-set-lang-filter": "Label for the config field configuring if the language filter should automatically be set based on user language"
 }

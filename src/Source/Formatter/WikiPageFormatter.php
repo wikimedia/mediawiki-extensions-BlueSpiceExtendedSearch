@@ -10,6 +10,7 @@ class WikiPageFormatter extends Base {
 	public function getResultStructure ( $defaultResultStructure = [] ) {
 		$resultStructure = $defaultResultStructure;
 		$resultStructure['page_anchor'] = 'page_anchor';
+		$resultStructure['original_title'] = 'original_title';
 		$resultStructure['highlight'] = 'highlight';
 		$resultStructure['secondaryInfos']['top']['items'][] = [
 			"name" => "sections"
@@ -45,7 +46,8 @@ class WikiPageFormatter extends Base {
 		$result['redirects'] = $this->formatRedirectedFrom( $result );
 		$result['rendered_content_snippet'] = $this->getRenderedContentSnippet( $result['rendered_content'] );
 
-		$result['display_text'] = $result['prefixed_title'];
+		$result['basename'] = $result['display_title'];
+		$result['original_title'] = $this->getOriginalTitleText( $result );
 
 		$this->addAnchorAndImageUri( $result );
 	}
@@ -84,7 +86,7 @@ class WikiPageFormatter extends Base {
 	protected function addAnchorAndImageUri( &$result ) {
 		$title = \Title::newFromText( $result['prefixed_title'] );
 		if( $title instanceof \Title && $title->getNamespace() == $result['namespace'] ) {
-			$result['page_anchor'] = $this->getPageAnchor( $title, $result['display_text'] );
+			$result['page_anchor'] = $this->getPageAnchor( $title, $result['display_title'] );
 			if( $title->exists() ) {
 				$result['image_uri'] = $this->getImageUri( $result['prefixed_title'], 150 );
 			}
@@ -116,8 +118,6 @@ class WikiPageFormatter extends Base {
 	 * @return string Formatted sections
 	 */
 	protected function getSections( $result ) {
-		$sourceText = $result[ 'source_content' ];
-
 		$highlightedTerm = $this->getHighlightedTerm( $result );
 		$sections = $result[ 'sections' ];
 
@@ -263,7 +263,7 @@ class WikiPageFormatter extends Base {
 			return;
 		}
 		$result['is_redirect'] = 1;
-		$result['page_anchor'] = $this->getPageAnchor( $title, $result['display_text'] );
+		$result['page_anchor'] = $this->getPageAnchor( $title, $result['display_title'] );
 		$result['redirect_target_anchor'] = $this->getPageAnchor( $redirTarget, $result['redirects_to'] );
 
 		$icons = \ExtensionRegistry::getInstance()
@@ -271,7 +271,15 @@ class WikiPageFormatter extends Base {
 		if( isset( $icons['redirect'] ) ) {
 			$result['image_uri'] = $icons['redirect'];
 		}
+	}
 
+	protected function getOriginalTitleText( $result ) {
+		$displayTitle = $result['display_title'];
+		$prefixedTitle = $result['prefixed_title'];
+		if( $displayTitle != $prefixedTitle ) {
+			return $prefixedTitle;
+		}
+		return '';
 	}
 
 	public function formatAutocompleteResults( &$results, $searchData ) {
@@ -282,7 +290,7 @@ class WikiPageFormatter extends Base {
 				continue;
 			}
 
-			$result['display_text'] = $result['prefixed_title'];
+			$result['display_text'] = $result['display_title'];
 
 			$this->addAnchorAndImageUri( $result );
 		}
@@ -295,7 +303,7 @@ class WikiPageFormatter extends Base {
 				continue;
 			}
 
-			$pageTitle = $result['prefixed_title'];
+			$pageTitle = $result['display_title'];
 			// If there is a namespace filter set, all results coming here will
 			// already be in desired namespace, so we should match only non-namespace
 			// part of a title to determine match rank.

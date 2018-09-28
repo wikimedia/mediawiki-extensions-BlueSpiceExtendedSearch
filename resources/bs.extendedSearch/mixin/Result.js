@@ -121,4 +121,22 @@
 	}
 
 	OO.initClass( bs.extendedSearch.mixin.ResultRelevanceControl );
+
+	bs.extendedSearch.mixin.ResultOriginalTitle = function( cfg ) {
+		cfg = cfg || {};
+
+		this.$originalTitle = $( '<div>' );
+
+		this.originalTitle = cfg.original_title || '';
+		if( !this.originalTitle ) {
+			return;
+		}
+
+		var originalTitleText = mw.message( "bs-extendedsearch-wikipage-title-original", this.originalTitle ).text();
+		this.$originalTitle
+			.addClass( 'bs-extendedsearch-result-original-title' )
+			.append( new OO.ui.LabelWidget( { label: originalTitleText } ).$element );
+	}
+
+	OO.initClass( bs.extendedSearch.mixin.ResultOriginalTitle );
 } )( mediaWiki, jQuery, blueSpice, document );

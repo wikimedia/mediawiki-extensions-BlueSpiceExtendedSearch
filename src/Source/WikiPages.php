@@ -15,6 +15,8 @@ use BS\ExtendedSearch\Source\LookupModifier\WikiPageSimpleQSFields;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageQSSourceFields;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageWildcarder;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageRemoveUnwanted;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageLanguageAggregation;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageLanguageFilter;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 
 class WikiPages extends DecoratorBase {
@@ -29,7 +31,9 @@ class WikiPages extends DecoratorBase {
 			'wikipage-qssourcefields' => WikiPageQSSourceFields::class,
 			'wikipage-boosters' => WikiPageBoosters::class,
 			'wikipage-wildcarder' => WikiPageWildcarder::class,
-			'wikipage-unwanted' => WikiPageRemoveUnwanted::class
+			'wikipage-unwanted' => WikiPageRemoveUnwanted::class,
+			'wikipage-pagelangaggregation' => WikiPageLanguageAggregation::class,
+			'wikipage-langfilter' => WikiPageLanguageFilter::class
 		],
 		LookupModifier::TYPE_AUTOCOMPLETE => [
 			'wikipage-securitytrimming' => WikiPageSecurityTrimming::class,

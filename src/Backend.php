@@ -518,6 +518,10 @@ class Backend {
 		$fieldsWithANDEnabled = \ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchFieldsWithANDFilterEnabled' );
 
+		// Filters that can only have one option selected at a time
+		$singleSelectFitlers = \ExtensionRegistry::getInstance()
+			->getAttribute( 'BlueSpiceExtendedSearchSingleSelectFilters' );
+
 		$aggs = $results->getAggregations();
 
 		$filterCfg = [];
@@ -533,10 +537,14 @@ class Backend {
 			$fieldName = substr( $filterName, 6 );
 			$filterCfg[$fieldName] = [
 				'buckets' => $agg['buckets'],
-				'isANDEnabled' => 0
+				'isANDEnabled' => 0,
+				'multiSelect' => 1
 			];
 			if( in_array( $fieldName, $fieldsWithANDEnabled['fields'] ) ) {
 				$filterCfg[$fieldName]['isANDEnabled'] = 1;
+			}
+			if( in_array( $fieldName, $singleSelectFitlers ) ) {
+				$filterCfg[$fieldName]['multiSelect'] = 0;
 			}
 		}
 
