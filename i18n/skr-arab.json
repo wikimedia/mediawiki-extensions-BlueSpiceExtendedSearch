@@ -48,5 +48,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "وکی ورقہ",
 	"bs-extendedsearch-source-type-repofile-label": "لوکیل فائل",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "پوری عبارت ڳولو",
-	"bs-extendedsearch-pref-external-file-paths-url-prefix": "یوآرایل سابقہ"
+	"bs-extendedsearch-pref-external-file-paths-url-prefix": "یوآرایل سابقہ",
+	"bs-extendedsearch-search-center-filter-page_language-label": "ورقے دی زبان"
 }

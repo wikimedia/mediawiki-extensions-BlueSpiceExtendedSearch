@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nike"
+		]
+	},
+	"bs-extendedsearch-search-center-filter-page_language-label": "Sivun kieli",
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Sivun kieli:",
+	"bs-extendedsearch-wikipage-title-original": "(alkuperäinen sivunimi: $1)",
+	"bs-extendedsearch-pref-auto-set-lang-filter": "Aseta kielisuodatin automaattisesti"
+}

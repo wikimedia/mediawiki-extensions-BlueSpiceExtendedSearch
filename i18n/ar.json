@@ -102,5 +102,11 @@
 	"bs-extendedsearch-pref-compact-ac-paths": "استخدم الإكمال التلقائي البسيط",
 	"bs-extendedsearch-compact-ac-paths-desc": "تحديد ما إذا كنت تريد استخدام منبثقة الإكمال التلقائي البسيط",
 	"bs-extendedsearch-search-center-result-redirects-label": "تم التحويل من:",
-	"bs-extendedsearch-default-filters-desc": "قائمة المرشحات للضبط افتراضيا"
+	"bs-extendedsearch-default-filters-desc": "قائمة المرشحات للضبط افتراضيا",
+	"bs-extendedsearch-redirect-target-label": "تحويلات إلى:",
+	"bs-extendedsearch-search-center-filter-page_language-label": "لغة الصفحة",
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "لغة الصفحة:",
+	"bs-extendedsearch-wikipage-title-original": "(العنوان الأصلي: $1)",
+	"bs-extendedsearch-auto-set-lang-filter-desc": "ما إذا كان يتم ضبط مرشح لغة الصفحة تلقائيا بناء على لغة المستخدم/الويكي",
+	"bs-extendedsearch-pref-auto-set-lang-filter": "ضبط مرشح اللغة تلقائيا"
 }

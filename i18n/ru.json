@@ -65,5 +65,8 @@
 	"bs-extendedsearch-autocomplete-modified-time-label": "Последнее изменение: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... $1 ещё",
 	"bs-extendedsearch-pref-compact-ac-paths": "Использовать простое автозаполнение",
-	"bs-extendedsearch-search-center-result-redirects-label": "Перенаправлено с:"
+	"bs-extendedsearch-search-center-result-redirects-label": "Перенаправлено с:",
+	"bs-extendedsearch-search-center-filter-page_language-label": "Язык страницы",
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Язык страницы:",
+	"bs-extendedsearch-wikipage-title-original": "(оригинальное название: $1)"
 }

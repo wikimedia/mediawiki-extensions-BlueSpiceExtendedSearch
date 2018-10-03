@@ -102,5 +102,11 @@
 	"bs-extendedsearch-pref-compact-ac-paths": "使用簡易自動完成",
 	"bs-extendedsearch-compact-ac-paths-desc": "是否使用簡易自動完成彈跳視窗",
 	"bs-extendedsearch-search-center-result-redirects-label": "重新導向自：",
-	"bs-extendedsearch-default-filters-desc": "預設所要設定的篩選陣列"
+	"bs-extendedsearch-default-filters-desc": "預設所要設定的篩選陣列",
+	"bs-extendedsearch-redirect-target-label": "重新導向至：",
+	"bs-extendedsearch-search-center-filter-page_language-label": "頁面語言",
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "頁面語言：",
+	"bs-extendedsearch-wikipage-title-original": "（原始標題：$1）",
+	"bs-extendedsearch-auto-set-lang-filter-desc": "是否基於使用者/wiki 的語言來自動設定頁面語言篩選",
+	"bs-extendedsearch-pref-auto-set-lang-filter": "自動設定語言篩選"
 }

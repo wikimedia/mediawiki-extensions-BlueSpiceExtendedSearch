@@ -105,5 +105,11 @@
 	"bs-extendedsearch-pref-compact-ac-paths": "Einfache automatische Vervollständigung verwenden",
 	"bs-extendedsearch-compact-ac-paths-desc": "Das einfache Popup-Fenster mit automatischer Vervollständigung verwenden.",
 	"bs-extendedsearch-search-center-result-redirects-label": "Weitergeleitet von:",
-	"bs-extendedsearch-default-filters-desc": "Anordnung von standardmäßig festzulegenden Filtern"
+	"bs-extendedsearch-default-filters-desc": "Anordnung von standardmäßig festzulegenden Filtern",
+	"bs-extendedsearch-redirect-target-label": "Weiterleitung nach:",
+	"bs-extendedsearch-search-center-filter-page_language-label": "Seitensprache",
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Seitensprache:",
+	"bs-extendedsearch-wikipage-title-original": "(Ursprünglicher Titel: $1)",
+	"bs-extendedsearch-auto-set-lang-filter-desc": "Ob der Seitensprachenfilter automatisch basierend auf der Benutzer-/Wikisprache festgelegt werden soll.",
+	"bs-extendedsearch-pref-auto-set-lang-filter": "Sprachfilter automatisch festgelegt"
 }

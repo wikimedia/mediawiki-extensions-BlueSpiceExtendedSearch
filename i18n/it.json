@@ -37,5 +37,10 @@
 	"bs-extendedsearch-result-relevance-not-relevant": "Questo risultato non è importante per me",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "Ricerca nel testo",
 	"prefs-extendedsearch": "Ricerca avanzata",
-	"bs-extendedsearch-search-center-result-redirects-label": "Reindirizzamento da:"
+	"bs-extendedsearch-search-center-result-redirects-label": "Reindirizzamento da:",
+	"bs-extendedsearch-redirect-target-label": "Reindirizza a:",
+	"bs-extendedsearch-search-center-filter-page_language-label": "Lingua della pagina",
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Lingua della pagina:",
+	"bs-extendedsearch-wikipage-title-original": "(titolo originale: $1)",
+	"bs-extendedsearch-pref-auto-set-lang-filter": "Imposta automaticamente il filtro della lingua"
 }

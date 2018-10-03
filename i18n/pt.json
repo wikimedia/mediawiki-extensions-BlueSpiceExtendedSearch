@@ -102,5 +102,11 @@
 	"bs-extendedsearch-pref-compact-ac-paths": "Usar o preenchimento automático simples",
 	"bs-extendedsearch-compact-ac-paths-desc": "Se deve ser usada a janela de preenchimento automático",
 	"bs-extendedsearch-search-center-result-redirects-label": "Redirecionada de:",
-	"bs-extendedsearch-default-filters-desc": "Matriz de filtros ativos por padrão"
+	"bs-extendedsearch-default-filters-desc": "Matriz dos filtros ativados por padrão",
+	"bs-extendedsearch-redirect-target-label": "Redireciona para:",
+	"bs-extendedsearch-search-center-filter-page_language-label": "Língua da página",
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Língua da página:",
+	"bs-extendedsearch-wikipage-title-original": "(título original: $1)",
+	"bs-extendedsearch-auto-set-lang-filter-desc": "Definir o filtro da língua de página automaticamente, com base na língua do utilizador ou da wiki, ou não",
+	"bs-extendedsearch-pref-auto-set-lang-filter": "Definir automaticamente o filtro da língua"
 }

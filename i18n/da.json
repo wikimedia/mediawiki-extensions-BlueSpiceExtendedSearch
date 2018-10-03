@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saederup92"
+		]
+	},
+	"bs-extendedsearch-search-input-placeholder": "Find ...",
+	"bs-extendedsearch-source-label-user": "Bruger",
+	"bs-extendedsearch-admin-heading-sources-documentscount": "Dokumenter",
+	"bs-extendedsearch-search-center-filter-categories-label": "Kategori",
+	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Navnerum:",
+	"bs-extendedsearch-search-center-filter-type-with-values-label": "Type:",
+	"bs-extendedsearch-searchcenter-filter-or-label": "eller",
+	"bs-extendedsearch-search-center-filter-page_language-label": "Sprog på side",
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Sprog på side:"
+}
