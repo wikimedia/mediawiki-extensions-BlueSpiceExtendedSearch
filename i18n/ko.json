@@ -89,5 +89,6 @@
 	"bs-extendedsearch-redirect-target-label": "다음으로 넘겨주기:",
 	"bs-extendedsearch-search-center-filter-page_language-label": "문서 언어",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "문서 언어:",
-	"bs-extendedsearch-wikipage-title-original": "(원래 제목: $1)"
+	"bs-extendedsearch-wikipage-title-original": "(원래 제목: $1)",
+	"bs-extendedsearch-pref-auto-set-lang-filter": "자동으로 언어 필터 설정"
 }

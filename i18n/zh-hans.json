@@ -3,7 +3,8 @@
 		"authors": [
 			"Liuxinyu970226",
 			"夢蝶葬花",
-			"Phenolla"
+			"Phenolla",
+			"A Chinese Wikipedian"
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch搜索后端",
@@ -104,5 +105,7 @@
 	"bs-extendedsearch-compact-ac-paths-desc": "是否使用简单自动完成弹窗",
 	"bs-extendedsearch-search-center-result-redirects-label": "重定向自：",
 	"bs-extendedsearch-default-filters-desc": "要设置为默认的过滤器数组",
-	"bs-extendedsearch-redirect-target-label": "重定向至："
+	"bs-extendedsearch-redirect-target-label": "重定向至：",
+	"bs-extendedsearch-search-center-filter-page_language-label": "页面语言",
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "页面语言："
 }
