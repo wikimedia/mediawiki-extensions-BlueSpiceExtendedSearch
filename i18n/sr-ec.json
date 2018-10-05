@@ -21,6 +21,8 @@
 	"bs-extendedsearch-admin-label-error": "Грешка",
 	"bs-extendedsearch-admin-heading-sources": "Извори",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Документи",
+	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|погодак|поготка|погодака}} за термин „$2”",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "око $1 {{PLURAL:$1|погодак|поготка|погодака}} за термин „$2”",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Додавање филтера",
 	"bs-extendedsearch-search-center-filter-extension-label": "Додатак",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Именски простор",
@@ -75,5 +77,6 @@
 	"bs-extendedsearch-search-center-filter-page_language-label": "Језик странице",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Језик странице:",
 	"bs-extendedsearch-wikipage-title-original": "(оргинални наслов: $1)",
-	"bs-extendedsearch-pref-auto-set-lang-filter": "Аутоматски постави филтер језика"
+	"bs-extendedsearch-pref-auto-set-lang-filter": "Аутоматски постави филтер језика",
+	"bs-extendedsearch-search-center-create-page-link": "Направите страницу „$1”"
 }

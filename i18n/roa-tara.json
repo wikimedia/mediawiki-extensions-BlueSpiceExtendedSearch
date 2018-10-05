@@ -11,7 +11,7 @@
 	"bs-extendedsearch-source-label-repofile": "Careche 'u file",
 	"bs-extendedsearch-source-label-user": "Utende",
 	"bs-extendedsearch-admin-label-error": "Errore",
-	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|cazzamende|cazzaminde}} pe <b>$2</b>",
+	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|cazzamende|cazzaminde}} pe $2",
 	"bs-extendedsearch-search-center-filter-tags-label": "Tag",
 	"bs-extendedsearch-search-center-filter-categories-label": "Categorije",
 	"bs-extendedsearch-search-center-filter-type-label": "Tipe",

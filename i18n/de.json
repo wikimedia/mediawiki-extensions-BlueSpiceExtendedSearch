@@ -23,6 +23,7 @@
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Zusätzliche Parameter für die Abfrage",
 	"apihelp-bs-extendedsearch-generic-param-backend": "Schlüssel des konfigurierten Backends, der abgefragt werden soll.",
 	"apihelp-bs-extendedsearch-generic-param-sources": "Eine oder mehrere Quellen innerhalb des angegebenen Backends, getrennt durch eine Pipe. Wenn leer, werden alle verfügbaren Quellen abgefragt.",
+	"apihelp-bs-extendedsearch-query-param-search-term": "Begriff, für den die Suche ausgeführt wird.",
 	"bs-extendedsearch-search-input-placeholder": "Finde ...",
 	"bs-extendedsearch-source-label-wikipage": "Wiki-Seite",
 	"bs-extendedsearch-source-label-specialpage": "Spezialseite",
@@ -34,8 +35,8 @@
 	"bs-extendedsearch-admin-heading-sources": "Quellen",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Dokumente",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Ausstehende Aktualisierungsaufträge",
-	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|Treffer|Treffer}} für <b>$2</b>",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Etwa $1 {{PLURAL:$1|Treffer|Treffer}} für <b>$2</b>",
+	"bs-extendedsearch-search-center-hitcount-widget": "{{PLURAL:$1|Ein Treffer|$1 Treffer}} für $2",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Etwa {{PLURAL:$1|ein Treffer|$1 Treffer}} für $2",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Filter hinzufügen",
 	"bs-extendedsearch-search-center-filter-extension-label": "Erweiterung",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Namensraum",
@@ -111,5 +112,6 @@
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Seitensprache:",
 	"bs-extendedsearch-wikipage-title-original": "(Ursprünglicher Titel: $1)",
 	"bs-extendedsearch-auto-set-lang-filter-desc": "Ob der Seitensprachenfilter automatisch basierend auf der Benutzer-/Wikisprache festgelegt werden soll.",
-	"bs-extendedsearch-pref-auto-set-lang-filter": "Sprachfilter automatisch festgelegt"
+	"bs-extendedsearch-pref-auto-set-lang-filter": "Sprachfilter automatisch festgelegt",
+	"bs-extendedsearch-search-center-create-page-link": "Seite „$1“ erstellen"
 }
