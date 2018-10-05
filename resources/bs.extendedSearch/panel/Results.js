@@ -25,22 +25,7 @@
 	}
 
 	bs.extendedSearch.ResultsPanel.prototype.showResults = function() {
-		var me = this;
-
-		var term = me.lookup.getQueryString().query || '';
-
-		var hitCountWidget = new bs.extendedSearch.HitCountWidget({
-			term: term,
-			count: me.total,
-			spellcheck: me.spellcheck,
-			total_approximated: me.total_approximated
-		});
-
-		hitCountWidget.$element.on( 'forceSearchTerm', this.caller.forceSearchTerm.bind( this.caller ) );
-
-		$('#bs-es-hitcount' ).append( hitCountWidget.$element );
 		this.addResultsInternally( this.results );
-
 		this.addLoadMoreButton();
 	}
 
@@ -66,11 +51,9 @@
 	bs.extendedSearch.ResultsPanel.prototype.clearAll = function() {
 		this.clearResults();
 		$( '#bs-es-tools' ).html('');
-		$( '#bs-es-hitcount' ).html('');
 	}
 
 	bs.extendedSearch.ResultsPanel.prototype.showNoResults = function() {
-		$( '#bs-es-tools' ).addClass( 'bs-extendedsearch-tools-when-no-results' );
 		$( '#bs-es-results' ).html(
 			$( '<div>' )
 			.addClass( 'bs-extendedsearch-no-results' )

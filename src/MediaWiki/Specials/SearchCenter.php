@@ -87,8 +87,8 @@ class SearchCenter extends \SpecialPage {
 		}
 
 		$out->enableOOUI();
-		$out->addHTML( \Html::element( 'div', [ 'id' => 'bs-es-hitcount' ] ) );
 		$out->addHTML( \Html::element( 'div', [ 'id' => 'bs-es-tools' ] ) );
+		$out->addHTML( \Html::element( 'div', [ 'id' => 'bs-es-alt-search' ] ) );
 		$out->addHTML( \Html::element( 'div', [ 'id' => 'bs-es-results' ] ) );
 
 		if( $lookup ) {

@@ -299,6 +299,7 @@
 				"bs.extendedSearch/widget/Result.js",
 				"bs.extendedSearch/widget/ResultRedirect.js",
 				"bs.extendedSearch/widget/HitCount.js",
+				"bs.extendedSearch/widget/Spellcheck.js",
 				"bs.extendedSearch/widget/Filter.js",
 				"bs.extendedSearch/widget/LoadMoreButton.js",
 				"bs.extendedSearch/dialog/AddFilter.js",
@@ -363,7 +364,8 @@
 				"bs-extendedsearch-redirect-target-label",
 				"bs-extendedsearch-search-center-filter-page_language-label",
 				"bs-extendedsearch-search-center-filter-page_language-with-values-label",
-				"bs-extendedsearch-wikipage-title-original"
+				"bs-extendedsearch-wikipage-title-original",
+				"bs-extendedsearch-search-center-create-page-link"
 			],
 			"dependencies" : [
 				"ext.bluespice.extjs",

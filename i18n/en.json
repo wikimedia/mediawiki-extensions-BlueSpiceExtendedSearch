@@ -20,7 +20,8 @@
 	"apihelp-bs-extendedsearch-triggerupdate-param-title": "Title of the page the update should be triggered",
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Additional parameters for the query",
 	"apihelp-bs-extendedsearch-generic-param-backend": "Key of the configured backend that should be queried",
-	"apihelp-bs-extendedsearch-generic-param-sources" : "One or more sources within the specified backend separated by pipe. If empty, all available sources will be queried.",
+	"apihelp-bs-extendedsearch-generic-param-sources": "One or more sources within the specified backend separated by pipe. If empty, all available sources will be queried.",
+	"apihelp-bs-extendedsearch-query-param-search-term": "Term for which the search is conducted for",
 	"bs-extendedsearch-search-input-placeholder": "Find ...",
 	"bs-extendedsearch-source-label-wikipage": "Wiki page",
 	"bs-extendedsearch-source-label-specialpage": "Special page",
@@ -32,8 +33,8 @@
 	"bs-extendedsearch-admin-heading-sources": "Sources",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Documents",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Pending update jobs",
-	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|hit|hits}} for <b>$2</b>",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "about $1 {{PLURAL:$1|hit|hits}} for <b>$2</b>",
+	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|hit|hits}} for $2",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "about $1 {{PLURAL:$1|hit|hits}} for $2",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Add Filter",
 	"bs-extendedsearch-search-center-filter-extension-label": "Extension",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Namespace",
@@ -109,5 +110,6 @@
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Page language:",
 	"bs-extendedsearch-wikipage-title-original": "(original title: $1)",
 	"bs-extendedsearch-auto-set-lang-filter-desc": "Whether to set page language filter automatically based on user/wiki language",
-	"bs-extendedsearch-pref-auto-set-lang-filter": "Automatically set language filter"
+	"bs-extendedsearch-pref-auto-set-lang-filter": "Automatically set language filter",
+	"bs-extendedsearch-search-center-create-page-link": "Create page \"$1\""
 }

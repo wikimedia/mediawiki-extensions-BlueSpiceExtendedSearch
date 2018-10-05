@@ -4,25 +4,48 @@
 	}
 
 	bs.extendedSearch.ToolsPanel.prototype.init = function() {
+
 		this.lookup = this.cfg.lookup;
 		this.filterData = this.cfg.filterData;
 		this.caller = this.cfg.caller;
 		this.mobile = this.cfg.mobile || false;
+		this.hitCounter = this.cfg.hitCounter;
+		this.pageCreateData = this.cfg.pageCreateData;
 
 		this.defaultFilters = this.cfg.defaultFilters || [];
 
-		//Replaces "add filter" button
+		this.$element = $( '#bs-es-tools' );
+
+		// Replaces "add filter" button
 		$( '#bs-extendedsearch-filter-add-button' ).remove();
 
-		var addFilterWidgetObject = new bs.extendedSearch.FilterAddWidget( { filterData: this.filterData } );
-		addFilterWidgetObject.$element.on( 'widgetToAddSelected', this.onWidgetToAddSelected.bind( this ) );
+		this.$toolsContainer = $( '<div>' ).attr( 'id', 'bs-es-tools-tools' );
+		if( $.isEmptyObject( this.pageCreateData ) === false ) {
+			var createPageButton = new OO.ui.ButtonWidget( {
+				framed: false,
+				label: '',
+				href: this.pageCreateData.url
+			} );
+			createPageButton.$element.addClass( 'bs-extendedsearch-create-page-button tools-button' );
+			createPageButton.$element.attr(
+				'title',
+				mw.message( 'bs-extendedsearch-search-center-create-page-link', this.pageCreateData.title ).text()
+			);
+			createPageButton.$element.on( 'click', { url: this.pageCreateData.url }, function( e ) {
+				window.location.href = e.data.url;
+			} );
+			this.$toolsContainer.append( createPageButton.$element );
+		}
+
+		var addFilterWidget = new bs.extendedSearch.FilterAddWidget( { filterData: this.filterData } );
+		addFilterWidget.$element.on( 'widgetToAddSelected', this.onWidgetToAddSelected.bind( this ) );
 
 		//Adds button that shows search options dialog
 		this.optionsButton = new OO.ui.ButtonWidget( {
 			framed: false,
 			label: ''
 		} );
-		this.optionsButton.$element.addClass('bs-extendedsearch-filter-add-settings-button');
+		this.optionsButton.$element.addClass( 'bs-extendedsearch-settings-button tools-button' );
 		this.setSearchOptionsConfig();
 
 		this.optionsButton.$element.on( 'click', { options: this.searchOptionsConfig }, this.openOptionsDialog.bind( this ) );
@@ -31,21 +54,30 @@
 			framed: false,
 			label: ''
 		} );
-		this.exportButton.$element.addClass('bs-extendedsearch-filter-add-download-button');
+		this.exportButton.$element.addClass( 'bs-extendedsearch-export-button tools-button' );
 		this.exportButton.$element.on( 'click', this.showExportSearchDialog.bind( this ) );
 
-		$( '#bs-es-tools' ).append(
-			$( '<div>' ).attr( 'id', 'bs-es-tools-filters' ).append( addFilterWidgetObject.$element ),
-			$( '<div>' ).attr( 'id', 'bs-es-tools-tools' ).append( this.optionsButton.$element, this.exportButton.$element )
+		this.$filtersContainer = $( '<div>' ).attr( 'id', 'bs-es-tools-filters' );
+		this.$toolsContainer.append(
+			addFilterWidget.$element,
+			this.optionsButton.$element,
+			this.exportButton.$element
 		);
 
+		this.$element.append(
+			this.hitCounter.$element,
+			this.$toolsContainer,
+			this.$filtersContainer
+		);
+		this.$element.addClass( 'bs-es-tools' );
+
 		if( this.mobile ) {
-			$( '#bs-es-tools' ).addClass( 'mobile' );
+			this.$element.addClass( 'mobile' );
 		}
 
 		this.addFiltersFromLookup();
 		this.addDefaultFilters();
-	}
+	};
 
 	/**
 	 * Actually adds FilterWidget element to DOM
@@ -54,12 +86,11 @@
 	 * @param {String} id
 	 */
 	bs.extendedSearch.ToolsPanel.prototype.appendFilter = function( filter, id ) {
-		var addFilterButton = $( '#bs-extendedsearch-filter-add-button' );
 		var existingFilter = $( '#bs-extendedsearch-filter-' + id );
 		if( existingFilter.length > 0 ) {
 			return;
 		}
-		filter.$element.insertBefore( addFilterButton );
+		this.$filtersContainer.append( filter.$element );
 	}
 
 	/**

@@ -224,6 +224,8 @@
 		var resultsPanel = new bs.extendedSearch.ResultsPanel({});
 
 		resultsPanel.clearAll();
+		$( '#bs-es-tools' ).removeClass( 'bs-es-tools' );
+		$( '#bs-es-alt-search' ).empty();
 		resultsPanel.showLoading();
 
 		var queryData = bs.extendedSearch.utils.getFragment();
@@ -232,14 +234,29 @@
 			resultsPanel.showHelp();
 			return;
 		}
+		queryData.term = searchBar.$searchBox.val();
 
-		var searchPromisse = this.runApiCall( queryData );
-		searchPromisse.done( function( response ) {
+		var searchPromise = this.runApiCall( queryData );
+		searchPromise.done( function( response ) {
 			if( response.exception ) {
 				return resultsPanel.showError();
 			}
 			//Lookup object might have changed due to LookupModifiers
 			search.makeLookup( JSON.parse( response.lookup ) );
+
+			var term = this.getLookupObject().getQueryString().query || '';
+			var hitCount =  new bs.extendedSearch.HitCountWidget( {
+				term: term,
+				count: response.total,
+				total_approximated: response.total_approximated
+			} );
+
+			var spellCheck = new bs.extendedSearch.SpellcheckWidget( response.spellcheck );
+			spellCheck.$element.on( 'forceSearchTerm', this.forceSearchTerm.bind( this ) );
+			if( bs.extendedSearch.utils.isMobile() ) {
+				$('#bs-es-alt-search' ).addClass( 'mobile' );
+			}
+			$('#bs-es-alt-search' ).append( spellCheck.$element );
 
 			var toolsPanel = new bs.extendedSearch.ToolsPanel( {
 				lookup: search.getLookupObject(),
@@ -249,7 +266,9 @@
 				),
 				caller: search,
 				mobile: bs.extendedSearch.utils.isMobile(),
-				defaultFilters: mw.config.get( 'ESSearchCenterDefaultFilters' )
+				defaultFilters: mw.config.get( 'ESSearchCenterDefaultFilters' ),
+				hitCounter: hitCount,
+				pageCreateData: response.page_create_data || {}
 			} );
 
 			toolsPanel.init();
@@ -268,7 +287,7 @@
 				total_approximated: response.total_approximated,
 				mobile: bs.extendedSearch.utils.isMobile()
 			} );
-		} );
+		}.bind( this ) );
 	}
 
 	function _runApiCall( queryData, action ) {
@@ -356,7 +375,7 @@
 	//Init searchBar and wire it up
 	var searchBar = new bs.extendedSearch.SearchBar( {
 		useNamespacePills: false,
-		useSubpagePills: true
+		useSubpagePills: false
 	} );
 
 	searchBar.$searchForm.on( 'submit', function( e ) {

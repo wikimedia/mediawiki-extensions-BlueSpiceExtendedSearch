@@ -3,9 +3,13 @@
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
 class Query extends \ApiBase {
+	protected $searchTerm;
+	protected $pageCreateData = [];
+
 	public function execute() {
 		$this->readInParameters();
 		$this->lookUpResults();
+		$this->setPageCreatable();
 		$this->returnResults();
 	}
 
@@ -21,6 +25,11 @@ class Query extends \ApiBase {
 				\ApiBase::PARAM_REQUIRED => false,
 				\ApiBase::PARAM_DFLT => 'local',
 				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-generic-param-backend',
+			],
+			'searchTerm' => [
+				\ApiBase::PARAM_TYPE => 'string',
+				\ApiBase::PARAM_REQUIRED => false,
+				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-query-param-search-term'
 			]
 		];
 	}
@@ -53,6 +62,7 @@ class Query extends \ApiBase {
 	protected function readInParameters() {
 		$this->oLookup = $this->getParameter( 'q' );
 		$this->sBackend = $this->getParameter( 'backend' );
+		$this->searchTerm = $this->getParameter( 'term' );
 	}
 
 	/**
@@ -82,5 +92,32 @@ class Query extends \ApiBase {
 		$oResult->addValue( null , 'spellcheck', $this->resultSet->spellcheck );
 		$oResult->addValue( null , 'lookup', \FormatJson::encode( $this->oLookup ) );
 		$oResult->addValue( null , 'total_approximated', $this->resultSet->total_approximated );
+		if( !empty( $this->pageCreateData ) ) {
+			$oResult->addValue( null , 'page_create_data', $this->pageCreateData );
+		}
+	}
+
+	protected function setPageCreatable() {
+		if( !$this->searchTerm ) {
+			return;
+		}
+		$pageName = $this->searchTerm;
+
+		if( $this->getConfig()->get( 'CapitalLinks' ) ) {
+			$pageName = ucfirst( $pageName );
+		}
+
+		$title = \Title::newFromText( $pageName );
+
+		if( $title instanceof \Title === false ) {
+			return;
+		}
+
+		if( $title->exists() == false && $title->userCan( 'createpage' ) && $title->userCan( 'edit' ) ) {
+			$this->pageCreateData = [
+				'title' => $title->getPrefixedText(),
+				'url' => $title->getLocalURL( [ 'action' => 'edit' ] )
+			];
+		}
 	}
 }

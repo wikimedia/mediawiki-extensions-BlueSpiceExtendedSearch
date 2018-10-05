@@ -10,84 +10,134 @@ div.bs-extendedsearch-center-layout {
 	}
 }
 
-/*Hit counter*/
-div#bs-es-hitcount {
+div#bs-es-alt-search {
 	margin-top: 5px;
-	font-size: 1.4em;
-	.bs-extendedsearch-search-center-hitcount-replaced,
-	.bs-extendedsearch-search-center-hitcount-suggest {
+	margin-bottom: 10px;
+	.bs-extendedsearch-search-center-alt-search-replaced,
+	.bs-extendedsearch-search-center-alt-search-suggest {
 		font-size: 0.8em;
 		margin-bottom: 10px;
 		a {
 			cursor: pointer;
 		}
 	}
+	&.mobile {
+		.bs-extendedsearch-search-center-alt-search {
+			padding-left: 10px;
+		}
+	}
 }
 
 /*Tools and filters*/
-div#bs-es-tools {
+div.bs-es-tools {
 	height: auto;
 	min-height: 43px;
-	background: #98a7c4;
+	border-top: 2px solid @tools-base-color;
+	border-bottom: 2px solid @tools-base-color;
 	clear: both;
+	position: relative;
 	padding-left:4px;
 	padding-right:4px;
-	&.bs-extendedsearch-tools-when-no-results {
-		margin-top: 15px;
+	.bs-extendedsearch-search-center-hitcount {
+		margin-top: 5px;
+		font-size: 1.4em;
+		display: inline-block;
+		width: 70%;
 	}
 	div#bs-es-tools-tools {
 		padding: 5px;
 		height: 43px;
-		display: table-cell;
-		min-width: 90px;
-		.bs-extendedsearch-filter-add-settings-button::before {
-			content: '\e994';
-			font-family: icomoon !important;
-			cursor: pointer;
-			font-size: 16px;
-			color: #ffffff;
-			position: relative;
+		display: inline-block;
+		min-width: 200px;
+		width: 30%;
+		text-align: right;
+		.tools-button {
+			background: @tools-base-color !important;
 			display: inline-block;
-			vertical-align: middle;
-		}
-		.bs-extendedsearch-filter-add-download-button::before {
-			content: '\e95f';
-			margin-left: 20px;
-			font-family: icomoon !important;
-			cursor: pointer;
-			font-size: 16px;
-			color: #ffffff;
+			width: 30px;
+			height: 30px;
 			position: relative;
-			display: inline-block;
-			vertical-align: middle;
+			border-radius: 100px;
+			cursor: pointer;
+			margin-left: 10px;
+			text-align: center;
+			&:before {
+				cursor: pointer;
+				font-size: 16px;
+				color: @tools-text-color;
+				position: relative;
+				display: inline-block;
+				vertical-align: middle;
+			}
+			&:hover:before {
+				color: @tools-hover-color;
+			}
+			&.bs-extendedsearch-settings-button::before {
+				content: '\e994';
+				font-family: icomoon !important;
+			}
+
+			&.bs-extendedsearch-export-button::before {
+				content: '\e95f';
+				font-family: icomoon !important;
+			}
+			&#bs-extendedsearch-filter-add-button::before {
+				content: '\ea5b';
+				font-family: icomoon !important;
+			}
+			&.bs-extendedsearch-create-page-button::before {
+				content: '\ea0a';
+				font-family: icomoon !important;
+			}
 		}
+
 	}
 
 	div#bs-es-tools-filters {
 		padding: 5px;
 		padding-bottom: 0px;
-		padding-right: 40px;
-		display: table-cell;
 		width: 100%;
-		position: relative;
-		vertical-align: top;
 		.bs-extendedsearch-filter-button-widget {
 			margin-right: 10px;
 			margin-bottom: 5px;
 			.bs-extendedsearch-filter-button-button {
-				border-radius: 10px 0 0 10px !important;
+				border-radius: 5px 0 0 5px !important;
 				font-weight: normal;
+				background-color: @tools-base-color;
+				color: @tools-text-color;
+				padding: 0px 10px 0px 10px;
+				height: 24px;
+				border: none;
+				span.oo-ui-labelElement-label {
+					padding-top: 2px;
+					vertical-align: middle;
+					color: @tools-text-color;
+				}
 				&:hover {
 					text-decoration: none !important;
 				}
 			}
-			.bs-extendedsearch-filter-button-remove a{
-				border-radius: 0 10px 10px 0 !important;
+			.bs-extendedsearch-filter-button-remove a {
+				border-radius: 0 5px 5px 0 !important;
+				background-color: @tools-base-color;
+				height: 20px;
+				padding: 12px 3px 12px 22px;
+				border: none;
+				span.oo-ui-indicatorElement-indicator {
+					right: 8px;
+					background: none;
+					&:before {
+						content: '\ea0f';
+						font-family: icomoon !important;
+						color: @tools-text-color;
+						font-size: 7px;
+					}
+				}
 			}
 			.bs-extendedsearch-filter-and-or-switch {
 				.oo-ui-optionWidget-selected {
 					a {
-						color: white !important;
+						color: @tools-text-color !important;
 					}
 				}
 			}
@@ -116,37 +166,39 @@ div#bs-es-tools {
 				margin-top: 5px;
 			}
 		}
-		#bs-extendedsearch-filter-add-button {
-			position: absolute;
-			right: 23px;
-			top: 10px;
-			a {
-				padding: 0;
-			}
-			.bs-extendedsearch-filter-add-widget-button:before {
-				content: '\ea5b';
-				font-family: icomoon !important;
-				cursor: pointer;
-				font-size: 16px;
-				color: #ffffff;
-				position: relative;
-				display: inline-block;
-			}
-			.bs-extendedsearch-filter-add-widget-button {
-				border-style: none !important;
-				background-color: transparent !important;
-				font-weight: normal !important;
-			}
-		}
 	}
 	&.mobile {
+		.bs-extendedsearch-search-center-hitcount {
+			margin-top: 5px;
+			font-size: 1.2em;
+			display: block;
+			width: 100%;
+			text-align: center;
+		}
+		div#bs-es-tools-tools {
+			padding: 5px;
+			height: 43px;
+			display: block;
+			width: 100%;
+			text-align: center;
+		}
+		.bs-extendedsearch-filter-button-widget {
+			width: 100%;
+			display: table;
+			.bs-extendedsearch-filter-button-button {
+				display: table-cell;
+				text-align: left;
+				width: 90%;
+			}
+			.bs-extendedsearch-filter-button-remove {
+				display: table-cell;
+			}
+		}
 	}
 }
 
 /*Results*/
 div#bs-es-results {
-	padding: 10px;
-	background-color: @results-column-background-color;
 	.bs-extendedsearch-no-results,
 	.bs-extendedsearch-help {
 		text-align: center;
@@ -157,6 +209,7 @@ div#bs-es-results {
 	}
 	.bs-extendedsearch-result-container {
 		width: 100%;
+		border-radius: 10px;
 		background-color: @results-background-color;
 		height: auto;
 		padding: 10px;
@@ -177,6 +230,9 @@ div#bs-es-results {
 		&.bs-extendedsearch-result-mobile {
 			.bs-extendedsearch-result-data-container {
 				width: 100%;
+				.bs-extendedsearch-result-header-container {
+					width: 90%;
+				}
 			}
 			&.bs-extendedsearch-result-featured {
 				.bs-extendedsearch-result-data-container {
@@ -185,7 +241,6 @@ div#bs-es-results {
 			}
 		}
 		&.redirect {
-			height: 70px;
 			min-height: 70px;
 			.bs-extendedsearch-result-image {
 				width: 60px;
@@ -283,19 +338,6 @@ div#bs-es-results {
 			right: 40px;
 		}
 	}
-	/*Paginator*/
-	.bs-extendedsearch-paginator {
-		text-align: center;
-		padding: 20px;
-		.bs-extendedsearch-paginator-button-current {
-			background-color: grey !important;
-		}
-		.bs-extendedsearch-paginator-separator {
-			padding-left: 5px;
-			padding-right: 10px;
-			font-size: 1.4em;
-		}
-	}
 
 	.bs-extendedsearch-loadmore {
 		text-align: center;
@@ -303,6 +345,7 @@ div#bs-es-results {
 		margin: 10px 0 10px 0;
 		background-color: @results-background-color;
 		width: 100%;
+		border-radius: 10px;
 		.bs-extendedsearch-loadmore-loader {
 			margin-left: auto;
 			margin-right: auto;

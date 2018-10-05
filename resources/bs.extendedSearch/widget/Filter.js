@@ -237,25 +237,19 @@
 
 	bs.extendedSearch.FilterAddWidget = function( cfg ) {
 		cfg = cfg || {};
+		cfg.framed = false;
+		cfg.label = '';
 
 		bs.extendedSearch.FilterAddWidget.parent.call( this, cfg );
 
-		OO.ui.mixin.ButtonElement.call( this, cfg );
-
-		this.$button
-			.addClass( 'bs-extendedsearch-filter-add-widget-button' )
-			.append( this.$indicator )
-			.on( 'click', { cfg: cfg, parent: this }, this.openAddWidgetDialog );
-
 		this.$element
 			.attr( 'id', 'bs-extendedsearch-filter-add-button' )
-			.addClass( 'bs-extendedsearch-filter-add-widget' )
-			.append( this.$button );
+			.addClass( 'bs-extendedsearch-filter-add-widget tools-button' )
+			.append( this.$button )
+			.on( 'click', { cfg: cfg, parent: this }, this.openAddWidgetDialog );
 	}
 
-	OO.inheritClass( bs.extendedSearch.FilterAddWidget, OO.ui.Widget );
-
-	OO.mixinClass( bs.extendedSearch.FilterAddWidget, OO.ui.mixin.ButtonElement );
+	OO.inheritClass( bs.extendedSearch.FilterAddWidget, OO.ui.ButtonWidget );
 
 	bs.extendedSearch.FilterAddWidget.prototype.openAddWidgetDialog = function( e ) {
 		var windowManager = OO.ui.getWindowManager();
