@@ -21,6 +21,7 @@
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "وسائط إضافية للاستعلام",
 	"apihelp-bs-extendedsearch-generic-param-backend": "مفتاح الواجهة الخلفية التي تمت تهيئتها التي يجب الاستعلام عنها",
 	"apihelp-bs-extendedsearch-generic-param-sources": "مصدر واحد أو أكثر داخل الخلفية المحددة مفصولة بواسطة أنبوب، إذا كان فارغا، سيتم الاستعلام عن جميع المصادر المتاحة.",
+	"apihelp-bs-extendedsearch-query-param-search-term": "المصطلح التي يتم إجراء البحث عنه",
 	"bs-extendedsearch-search-input-placeholder": "إيجاد...",
 	"bs-extendedsearch-source-label-wikipage": "صفحة ويكي",
 	"bs-extendedsearch-source-label-specialpage": "صفحة خاصة",
@@ -108,5 +109,6 @@
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "لغة الصفحة:",
 	"bs-extendedsearch-wikipage-title-original": "(العنوان الأصلي: $1)",
 	"bs-extendedsearch-auto-set-lang-filter-desc": "ما إذا كان يتم ضبط مرشح لغة الصفحة تلقائيا بناء على لغة المستخدم/الويكي",
-	"bs-extendedsearch-pref-auto-set-lang-filter": "ضبط مرشح اللغة تلقائيا"
+	"bs-extendedsearch-pref-auto-set-lang-filter": "ضبط مرشح اللغة تلقائيا",
+	"bs-extendedsearch-search-center-create-page-link": "إنشاء صفحة \"$1\""
 }

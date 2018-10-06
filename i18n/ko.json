@@ -12,6 +12,7 @@
 	"apihelp-bs-extendedsearch-query-param-params": "쿼리의 추가 변수",
 	"apihelp-bs-extendedsearch-stats-param-stats": "반환되어야 하는 통계 목록",
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "쿼리의 추가 변수",
+	"apihelp-bs-extendedsearch-query-param-search-term": "검색을 수행할 대상이 되는 용어",
 	"bs-extendedsearch-search-input-placeholder": "찾기 ...",
 	"bs-extendedsearch-source-label-wikipage": "위키 페이지",
 	"bs-extendedsearch-source-label-specialpage": "특수 문서",
@@ -90,5 +91,6 @@
 	"bs-extendedsearch-search-center-filter-page_language-label": "문서 언어",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "문서 언어:",
 	"bs-extendedsearch-wikipage-title-original": "(원래 제목: $1)",
-	"bs-extendedsearch-pref-auto-set-lang-filter": "자동으로 언어 필터 설정"
+	"bs-extendedsearch-pref-auto-set-lang-filter": "자동으로 언어 필터 설정",
+	"bs-extendedsearch-search-center-create-page-link": "\"$1\" 문서 만들기"
 }
