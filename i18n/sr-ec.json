@@ -13,6 +13,7 @@
 	"apihelp-bs-extendedsearch-query-param-params": "Додатни параметри за упит",
 	"apihelp-bs-extendedsearch-stats-param-stats": "Списак статистика које треба да се врате",
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Додатни параметри за упит",
+	"apihelp-bs-extendedsearch-query-param-search-term": "Термин за којим се спроводи претрага",
 	"bs-extendedsearch-search-input-placeholder": "Пронађите …",
 	"bs-extendedsearch-source-label-wikipage": "Вики страница",
 	"bs-extendedsearch-source-label-specialpage": "Посебна страница",

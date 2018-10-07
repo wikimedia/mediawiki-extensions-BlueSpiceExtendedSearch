@@ -21,6 +21,7 @@
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "查詢用的額外參數",
 	"apihelp-bs-extendedsearch-generic-param-backend": "應查詢設置後端的鍵值",
 	"apihelp-bs-extendedsearch-generic-param-sources": "以豎線所分隔指定後端的一個或多個來源。若為空，所有可用來源皆會被查詢。",
+	"apihelp-bs-extendedsearch-query-param-search-term": "引導搜尋的項",
 	"bs-extendedsearch-search-input-placeholder": "尋找...",
 	"bs-extendedsearch-source-label-wikipage": "Wiki 頁面",
 	"bs-extendedsearch-source-label-specialpage": "特殊頁面",
@@ -108,5 +109,6 @@
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "頁面語言：",
 	"bs-extendedsearch-wikipage-title-original": "（原始標題：$1）",
 	"bs-extendedsearch-auto-set-lang-filter-desc": "是否基於使用者/wiki 的語言來自動設定頁面語言篩選",
-	"bs-extendedsearch-pref-auto-set-lang-filter": "自動設定語言篩選"
+	"bs-extendedsearch-pref-auto-set-lang-filter": "自動設定語言篩選",
+	"bs-extendedsearch-search-center-create-page-link": "建立頁面\"$1\""
 }

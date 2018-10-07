@@ -12,5 +12,6 @@
 	"bs-extendedsearch-search-center-filter-type-with-values-label": "Type:",
 	"bs-extendedsearch-searchcenter-filter-or-label": "eller",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Sprog på side",
-	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Sprog på side:"
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Sprog på side:",
+	"bs-extendedsearch-search-center-create-page-link": "Opret siden \"$1\""
 }

@@ -68,5 +68,6 @@
 	"bs-extendedsearch-search-center-result-redirects-label": "Перенаправлено с:",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Язык страницы",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Язык страницы:",
-	"bs-extendedsearch-wikipage-title-original": "(оригинальное название: $1)"
+	"bs-extendedsearch-wikipage-title-original": "(оригинальное название: $1)",
+	"bs-extendedsearch-search-center-create-page-link": "Создать страницу «$1»"
 }

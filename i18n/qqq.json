@@ -23,7 +23,7 @@
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "{{doc-apihelp-param|bs-extendedsearch-triggerupdate|params}}",
 	"apihelp-bs-extendedsearch-generic-param-backend": "{{doc-apihelp-param|bs-extendedsearch-generic|backend}}",
 	"apihelp-bs-extendedsearch-generic-param-sources": "{{doc-apihelp-param|bs-extendedsearch-generic|sources}}",
-	"apihelp-bs-extendedsearch-query-param-search-term": "{{doc-apihelp-param|bs-extendedsearch-generic|term}}",
+	"apihelp-bs-extendedsearch-query-param-search-term": "{{doc-apihelp-param|bs-extendedsearch-query|search-term}}",
 	"bs-extendedsearch-search-input-placeholder": "Placeholder text within the search input field",
 	"bs-extendedsearch-source-label-wikipage": "Label for heading of a section that lists hits from the source 'wikipage'",
 	"bs-extendedsearch-source-label-specialpage": "Label for heading of a section that lists hits from the source 'specialpage'",
