@@ -53,5 +53,6 @@
 	"bs-extendedsearch-pref-external-file-paths-path": "Φυσική διαδρομή",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Τελευταία επεξεργασία: $1",
 	"bs-extendedseach-wikipage-section-more-text": "... $1 περισσότερα",
-	"bs-extendedsearch-redirect-target-label": "Ανακατευθύνει σε:"
+	"bs-extendedsearch-redirect-target-label": "Ανακατευθύνει σε:",
+	"bs-extendedsearch-search-center-create-page-link": "Δημιουργία σελίδας \"$1\""
 }
