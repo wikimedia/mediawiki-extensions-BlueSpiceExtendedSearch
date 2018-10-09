@@ -5,6 +5,7 @@
 		]
 	},
 	"apihelp-bs-extendedsearch-query-summary": "Cirche l'indice",
+	"apihelp-bs-extendedsearch-query-param-search-term": "Termine ca avène ausate pa recerche",
 	"bs-extendedsearch-search-input-placeholder": "Iacchie ...",
 	"bs-extendedsearch-source-label-wikipage": "Pàgene uicchi",
 	"bs-extendedsearch-source-label-specialpage": "Pàgena speciale",
