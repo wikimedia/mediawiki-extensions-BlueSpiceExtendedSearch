@@ -21,6 +21,7 @@
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Parâmetros adicionais para a consulta",
 	"apihelp-bs-extendedsearch-generic-param-backend": "Chave do motor configurado que deve ser consultado",
 	"apihelp-bs-extendedsearch-generic-param-sources": "Uma ou mais fontes dentro do motor especificado, separadas por uma barra vertical. Se vazio, serão consultadas todas as fontes disponíveis.",
+	"apihelp-bs-extendedsearch-query-param-search-term": "Termo para o qual a pesquisa é feita",
 	"bs-extendedsearch-search-input-placeholder": "Pesquisar...",
 	"bs-extendedsearch-source-label-wikipage": "Página wiki",
 	"bs-extendedsearch-source-label-specialpage": "Página especial",
@@ -108,5 +109,6 @@
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Língua da página:",
 	"bs-extendedsearch-wikipage-title-original": "(título original: $1)",
 	"bs-extendedsearch-auto-set-lang-filter-desc": "Definir o filtro da língua de página automaticamente, com base na língua do utilizador ou da wiki, ou não",
-	"bs-extendedsearch-pref-auto-set-lang-filter": "Definir automaticamente o filtro da língua"
+	"bs-extendedsearch-pref-auto-set-lang-filter": "Definir automaticamente o filtro da língua",
+	"bs-extendedsearch-search-center-create-page-link": "Criar a página \"$1\""
 }

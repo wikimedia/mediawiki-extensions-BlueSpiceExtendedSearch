@@ -50,5 +50,6 @@
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "پوری عبارت ڳولو",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "یوآرایل سابقہ",
 	"bs-extendedsearch-search-center-filter-page_language-label": "ورقے دی زبان",
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "ورقے دی زبان:",
 	"bs-extendedsearch-search-center-create-page-link": "ورقہ \"$1\" بݨاؤ"
 }
