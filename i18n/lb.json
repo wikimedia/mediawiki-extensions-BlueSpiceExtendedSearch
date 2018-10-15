@@ -36,5 +36,6 @@
 	"bs-extendedsearch-redirect-target-label": "Viruleedung op:",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Sprooch vun der Säit",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Sprooch vun der Säit:",
+	"bs-extendedsearch-wikipage-title-original": "(Originaltitel: $1)",
 	"bs-extendedsearch-search-center-create-page-link": "Säit \"$1\" uleeën"
 }
