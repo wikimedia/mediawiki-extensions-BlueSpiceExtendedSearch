@@ -181,6 +181,12 @@
 			"StoreRegistry": {
 				"searchstats": "\\BS\\ExtendedSearch\\Data\\TagCloud\\Searchstats\\Store"
 			}
+		},
+		"BlueSpiceSimpleFarmer": {
+			"PostInstanceCreationCommandFactories": {
+				"initbackend": "BS\\ExtendedSearch\\SimpleFarmer\\CommandDescription\\InitBackend::factory",
+				"rebuildindex": "BS\\ExtendedSearch\\SimpleFarmer\\CommandDescription\\RebuildIndex::factory"
+			}
 		}
 	},
 	"MessagesDirs": {
