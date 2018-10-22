@@ -95,4 +95,9 @@ class Setup {
 		$out->addJsConfigVars( 'bsgESAutocompleteConfig', $autocompleteConfig );
 		$out->addJsConfigVars( 'bsgESSourceIcons', $sourceIcons );
 	}
+
+	public static function getSearchEngineClass( \IDatabase $db ) {
+		$seFactory = \MediaWiki\MediaWikiServices::getInstance()->getSearchEngineFactory();
+		return $seFactory::getSearchEngineClass( $db );
+	}
 }
