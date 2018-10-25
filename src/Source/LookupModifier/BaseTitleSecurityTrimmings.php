@@ -68,6 +68,7 @@ class BaseTitleSecurityTrimmings extends Base {
 	 */
 	protected function getExcludesForCurrentPage( $prepLookup, $size, &$excludes ) {
 		$validCount = 0;
+		$user = \RequestContext::getMain()->getUser();
 
 		while( $validCount < $size ) {
 			$results = $this->runPrepQuery( $prepLookup );
@@ -89,6 +90,14 @@ class BaseTitleSecurityTrimmings extends Base {
 				if( !$title instanceof \Title ) {
 					if( $title->isContentPage() && $title->exists() == false ) {
 						//I cant think of a good reason to show non-existing title in the search
+						$excludes[] = $resultObject->getId();
+						continue;
+					}
+				}
+
+				if( $title->isSpecialPage() ) {
+					$sp = \SpecialPageFactory::getPage( $title->getDBkey() );
+					if( !$sp instanceof \SpecialPage || !$user->isAllowed( $sp->getRestriction() ) ) {
 						$excludes[] = $resultObject->getId();
 						continue;
 					}
