@@ -26,9 +26,15 @@
 	OO.mixinClass( bs.extendedSearch.AutocompleteNormalResult, bs.extendedSearch.mixin.AutocompleteHeader );
 
 	bs.extendedSearch.AutocompleteNormalResult.prototype.onResultClick = function( e ) {
+		var $target = $( e.target );
+		if( $target.hasClass( 'bs-extendedsearch-autocomplete-popup-primary-item' ) === false ) {
+			return;
+		}
 		//Anchor may be custom one, coming from backend, so we cannot target more specifically
-		var anchor = $( e.target ).find( 'a' );
-		window.location = anchor.attr( 'href' );
+		var $anchor = $target.find( 'a' );
+		if( $anchor ) {
+			window.location = $anchor.attr( 'href' );
+		}
 	}
 
 } )( mediaWiki, jQuery, blueSpice, document );
