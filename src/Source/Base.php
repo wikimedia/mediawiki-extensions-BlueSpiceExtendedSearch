@@ -22,14 +22,14 @@ class Base {
 			'base-simpleqsfields' => BaseSimpleQSFields::class,
 			'base-wildcarder' => BaseWildcarder::class,
 			'base-idsort' => BaseSortByID::class,
-			'base-titlesecuritytrimmings' => BaseTitleSecurityTrimmings::class,
 			'base-userrelevance' => BaseUserRelevance::class,
-			'base-typesecuritytrimmings' => BaseTypeSecurityTrimming::class
+			'base-typesecuritytrimmings' => BaseTypeSecurityTrimming::class,
+			'base-titlesecuritytrimmings' => BaseTitleSecurityTrimmings::class,
 		],
 		LookupModifier::TYPE_AUTOCOMPLETE => [
 			'base-acsourcefields' => BaseAutocompleteSourceFields::class,
+			'base-typesecuritytrimmings' => BaseTypeSecurityTrimming::class,
 			'base-titlesecuritytrimmings' => BaseTitleSecurityTrimmings::class,
-			'base-typesecuritytrimmings' => BaseTypeSecurityTrimming::class
 		]
 	];
 
