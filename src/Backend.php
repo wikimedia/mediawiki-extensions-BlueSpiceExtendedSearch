@@ -217,6 +217,28 @@ class Backend {
 	}
 
 	/**
+	 * Collects all the lookup modifiers for particular search type
+	 *
+	 * @param \BS\ExtendedSearch\Lookup $lookup
+	 * @param string $type
+	 * @return array|LookupModifier[]
+	 */
+	public function getLookupModifiers( $lookup, $type ) {
+		$lookupModifiers = [];
+		foreach( $this->sources as $sourceKey => $source ) {
+			$lookupModifiers += $source->getLookupModifiers( $lookup, $this->getContext(), $type );
+		}
+		uasort( $lookupModifiers, function( $a, $b ) {
+			if ( $a->getPriority() === $b->getPriority() ) {
+				return 0;
+			}
+			return ( $a->getPriority() > $b->getPriority() ) ? 1 : -1;
+		} );
+
+		return $lookupModifiers;
+	}
+
+	/**
 	 * Runs quick query agains ElasticSearch
 	 *
 	 * @param \BS\ExtendedSearch\Lookup $lookup
@@ -229,11 +251,8 @@ class Backend {
 		$search->addIndex( $this->config->get( 'index' ) . '_*' );
 
 		$results = [];
-		$lookupModifiers = [];
-		foreach( $this->sources as $sourceKey => $source ) {
-			$lookupModifiers += $source->getLookupModifiers( $lookup, $this->getContext(), LookupModifier::TYPE_AUTOCOMPLETE );
-		}
 
+		$lookupModifiers = $this->getLookupModifiers( $lookup, LookupModifier::TYPE_AUTOCOMPLETE );
 		foreach( $lookupModifiers as $sLMKey => $lookupModifier ) {
 			$lookupModifier->apply();
 		}
@@ -306,11 +325,7 @@ class Backend {
 		$origQS = $lookup->getQueryString();
 		$origTerm = $origQS['query'];
 
-		$lookupModifiers = [];
-		foreach( $this->sources as $sourceKey => $source ) {
-			$lookupModifiers += $source->getLookupModifiers( $lookup, $this->getContext(), LookupModifier::TYPE_SEARCH );
-		}
-
+		$lookupModifiers = $this->getLookupModifiers( $lookup, LookupModifier::TYPE_SEARCH );
 		foreach( $lookupModifiers as $sLMKey => $lookupModifier ) {
 			$lookupModifier->apply();
 		}

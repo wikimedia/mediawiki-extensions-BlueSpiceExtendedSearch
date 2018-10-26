@@ -62,4 +62,8 @@ class BaseWildcarder extends Base {
 		$this->queryString['query'] = $this->originalQuery;
 		$this->oLookup->setQueryString( $this->queryString );
 	}
+
+	public function getPriority() {
+		return 90;
+	}
 }
