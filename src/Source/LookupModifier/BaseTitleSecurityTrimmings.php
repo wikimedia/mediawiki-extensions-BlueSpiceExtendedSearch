@@ -24,6 +24,10 @@ class BaseTitleSecurityTrimmings extends Base {
 		$this->search = $search;
 	}
 
+	public function getPriority() {
+		return 100;
+	}
+
 	/**
 	 * Filters out titles user is not allowed to read, guaranteeing
 	 * there will be enough valid (allowed) results to fill the page -
@@ -79,6 +83,7 @@ class BaseTitleSecurityTrimmings extends Base {
 
 			foreach( $results->getResults() as $resultObject ) {
 				$data = $resultObject->getData();
+
 				if( isset( $data['namespace'] ) == false ) {
 					//If result has no namespace set, \Title creation is N/A
 					//therefore we should allow user to see it

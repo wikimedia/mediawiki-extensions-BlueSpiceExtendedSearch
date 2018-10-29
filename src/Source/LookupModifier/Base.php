@@ -28,6 +28,17 @@ abstract class Base {
 		$this->oContext = $oContext;
 	}
 
+	/**
+	 * Gets how far down should the LM be executed
+	 *
+	 * Allowed values: 1-100
+	 *
+	 * @return int
+	 */
+	public function getPriority() {
+		return 1;
+	}
+
 	abstract public function apply();
 
 	/**
