@@ -228,6 +228,7 @@ class Backend {
 		foreach( $this->sources as $sourceKey => $source ) {
 			$lookupModifiers += $source->getLookupModifiers( $lookup, $this->getContext(), $type );
 		}
+
 		uasort( $lookupModifiers, function( $a, $b ) {
 			if ( $a->getPriority() === $b->getPriority() ) {
 				return 0;

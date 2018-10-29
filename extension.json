@@ -116,6 +116,7 @@
 					"class": "BS\\ExtendedSearch\\Source\\ExternalFiles"
 				}
 			},
+			"AdditionalLookupModifiers": {},
 			"DefaultResultStructure": {
 				"headerText": "basename",
 				"headerUri": "uri",
