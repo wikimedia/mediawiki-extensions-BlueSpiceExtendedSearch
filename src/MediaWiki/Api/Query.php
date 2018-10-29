@@ -62,7 +62,7 @@ class Query extends \ApiBase {
 	protected function readInParameters() {
 		$this->oLookup = $this->getParameter( 'q' );
 		$this->sBackend = $this->getParameter( 'backend' );
-		$this->searchTerm = $this->getParameter( 'term' );
+		$this->searchTerm = $this->getParameter( 'searchTerm' );
 	}
 
 	/**

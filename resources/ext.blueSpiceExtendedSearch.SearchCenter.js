@@ -234,7 +234,7 @@
 			resultsPanel.showHelp();
 			return;
 		}
-		queryData.term = searchBar.$searchBox.val();
+		queryData.searchTerm = searchBar.$searchBox.val();
 
 		var searchPromise = this.runApiCall( queryData );
 		searchPromise.done( function( response ) {

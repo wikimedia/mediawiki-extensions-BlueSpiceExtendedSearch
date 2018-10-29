@@ -122,8 +122,20 @@ class Base {
 			return [];
 		}
 
+		$additionalLookupModifiers = \ExtensionRegistry::getInstance()
+			->getAttribute( 'BlueSpiceExtendedSearchAdditionalLookupModifiers' );
+
+		$lmClasses = $this->lookupModifiers[$sType];
+		if ( isset( $additionalLookupModifiers[$this->getTypeKey()] ) &&
+			isset( $additionalLookupModifiers[$this->getTypeKey()][$sType] ) ) {
+			$lmClasses = array_merge(
+				$lmClasses,
+				$additionalLookupModifiers[$this->getTypeKey()][$sType]
+			);
+		}
+
 		$lookupModifiers = [];
-		foreach( $this->lookupModifiers[$sType] as $key => $class ) {
+		foreach( $lmClasses as $key => $class ) {
 			$lookupModifiers[$key] = new $class( $oLookup, $oContext );
 		}
 
