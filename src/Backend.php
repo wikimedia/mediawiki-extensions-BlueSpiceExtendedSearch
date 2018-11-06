@@ -31,7 +31,7 @@ class Backend {
 
 	public function __construct( $config ) {
 		if( !isset( $config['index'] ) ) {
-			$config['index'] = wfWikiID();
+			$config['index'] = strtolower( wfWikiID() );
 		}
 
 		$this->config = new \HashConfig( $config );
