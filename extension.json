@@ -204,7 +204,7 @@
 	"Hooks": {
 		"ResourceLoaderTestModules": "BS\\ExtendedSearch\\Setup::onResourceLoaderTestModules",
 		"SkinTemplateOutputPageBeforeExec": "BS\\ExtendedSearch\\Setup::onSkinTemplateOutputPageBeforeExec",
-		"BeforePageDisplay": "BS\\ExtendedSearch\\Setup::onBeforePageDisplay",
+		"BeforePageDisplay": "BS\\ExtendedSearch\\Hook\\BeforePageDisplay\\AddResources::callback",
 		"LoadExtensionSchemaUpdates":  [
 			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddRelevanceTable::callback",
 			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddHistoryTable::callback"
