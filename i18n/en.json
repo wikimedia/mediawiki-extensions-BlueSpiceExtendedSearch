@@ -111,5 +111,10 @@
 	"bs-extendedsearch-wikipage-title-original": "(original title: $1)",
 	"bs-extendedsearch-auto-set-lang-filter-desc": "Whether to set page language filter automatically based on user/wiki language",
 	"bs-extendedsearch-pref-auto-set-lang-filter": "Automatically set language filter",
-	"bs-extendedsearch-search-center-create-page-link": "Create page \"$1\""
+	"bs-extendedsearch-search-center-create-page-link": "Create page \"$1\"",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Page $1: Text: $2",
+	"bs-extendedsearch-privacy-transparency-history-item": "$1 ($2)",
+	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpiceExtendedSearch - Search history: term (times searched): $1",
+	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch - {{GENDER:$2|You}} have {{PLURAL:$1|$1 page|$1 pages}} marked as relevant search {{PLURAL:$1|result|results}}"
+
 }
