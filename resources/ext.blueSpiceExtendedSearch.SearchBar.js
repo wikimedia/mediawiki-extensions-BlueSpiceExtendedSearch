@@ -125,12 +125,13 @@
 	bs.extendedSearch.SearchBar.prototype.generateNamespacePill = function( value ) {
 		value = value || this.value;
 		this.removeNamespacePill();
+		var sbW = this.$searchBox.outerWidth();
 
 		this.$pill = $( '<span>' )
 			.addClass( 'bs-extendedsearch-searchbar-pill namespace-pill' )
 			.html( this.namespace.text + ':' );
 		this.$searchBox.before( this.$pill );
-		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() - this.$pill.outerWidth(), true );
+		this.setSearchBoxWidthInline( sbW - this.$pill.outerWidth(), true );
 		this.$searchBox.val( value );
 	};
 
@@ -138,11 +139,13 @@
 		value = value || this.value;
 		this.removeSubpagePill();
 
+		var sbW = this.$searchBox.outerWidth();
+
 		this.$pill = $( '<span>' )
 			.addClass( 'bs-extendedsearch-searchbar-pill subpage-pill' )
 			.html( this.mainpage + '/' );
 		this.$searchBox.before( this.$pill );
-		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() - this.$pill.outerWidth(), true );
+		this.setSearchBoxWidthInline( sbW - this.$pill.outerWidth(), true );
 		this.$searchBox.val( value );
 	}
 
@@ -188,11 +191,14 @@
 			framed: false
 		} );
 
-		clearButton.$element.addClass( 'bs-extendedsearch-searchbar-clear' );
-		clearButton.$element.on( 'click', this.onClearSearch.bind( this ) );
-		clearButton.$element.insertAfter( this.$searchBox );
+		var sbW = this.$searchBox.outerWidth();
 
-		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() - clearButton.$element.outerWidth(), true );
+		clearButton.$element.addClass( 'bs-extendedsearch-searchbar-clear' );
+		clearButton.$element.insertAfter( this.$searchBox );
+		clearButton.$element.on( 'click', this.onClearSearch.bind( this ) );
+		var cbW = clearButton.$element.outerWidth();
+
+		this.setSearchBoxWidthInline( sbW - cbW, true );
 		this.$searchBox.addClass( 'clear-present' );
 	};
 
