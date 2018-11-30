@@ -21,9 +21,10 @@ class ExternalFileFormatter extends FileFormatter {
 		$fileIcons = \ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchIcons' );
 
+		$scriptPath = $this->getContext()->getConfig()->get( 'ScriptPath' );
 		if( isset( $fileIcons[$extension] ) ) {
-			return $fileIcons[$extension];
+			return $scriptPath . $fileIcons[$extension];
 		}
-		return $fileIcons['default'];
+		return $scriptPath . $fileIcons['default'];
 	}
 }
