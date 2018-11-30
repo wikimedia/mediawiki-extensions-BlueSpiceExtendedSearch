@@ -268,8 +268,10 @@ class WikiPageFormatter extends Base {
 
 		$icons = \ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchIcons' );
+
+		$scriptPath = $this->getContext()->getConfig()->get( 'ScriptPath' );
 		if( isset( $icons['redirect'] ) ) {
-			$result['image_uri'] = $icons['redirect'];
+			$result['image_uri'] = $scriptPath . $icons['redirect'];
 		}
 	}
 
