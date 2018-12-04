@@ -73,29 +73,6 @@ class Setup {
 		return true;
 	}
 
-	public static function onBeforePageDisplay( \OutputPage &$out, \Skin &$skin ) {
-		$title = $out->getTitle();
-		if( $title != \SpecialPage::getTitleFor( 'BSSearchCenter' ) ) {
-			$config = \MediaWiki\MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
-			$out->addJsConfigVars( "ESUseCompactAutocomplete", $config->get( 'ESCompactAutocomplete' ) );
-			$out->addModules( "ext.blueSpiceExtendedSearch.SearchFieldAutocomplete" );
-			$out->addModuleStyles(
-				"ext.blueSpiceExtendedSearch.Autocomplete.styles"
-			);
-			$out->addModuleStyles(
-				"ext.blueSpiceExtendedSearch.SearchBar.styles"
-			);
-		}
-
-		$autocompleteConfig = \ExtensionRegistry::getInstance()
-			->getAttribute( 'BlueSpiceExtendedSearchAutocomplete' );
-		$sourceIcons = \ExtensionRegistry::getInstance()
-			->getAttribute( 'BlueSpiceExtendedSearchSourceIcons' );
-
-		$out->addJsConfigVars( 'bsgESAutocompleteConfig', $autocompleteConfig );
-		$out->addJsConfigVars( 'bsgESSourceIcons', $sourceIcons );
-	}
-
 	public static function getSearchEngineClass( \IDatabase $db ) {
 		$seFactory = \MediaWiki\MediaWikiServices::getInstance()->getSearchEngineFactory();
 		return $seFactory::getSearchEngineClass( $db );
