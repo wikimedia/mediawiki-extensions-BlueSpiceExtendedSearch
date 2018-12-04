@@ -187,6 +187,11 @@
 				"initbackend": "BS\\ExtendedSearch\\SimpleFarmer\\CommandDescription\\InitBackend::factory",
 				"rebuildindex": "BS\\ExtendedSearch\\SimpleFarmer\\CommandDescription\\RebuildIndex::factory"
 			}
+		},
+		"BlueSpicePrivacy": {
+			"Handlers": [
+				"\\BS\\ExtendedSearch\\Privacy\\Handler"
+			]
 		}
 	},
 	"MessagesDirs": {

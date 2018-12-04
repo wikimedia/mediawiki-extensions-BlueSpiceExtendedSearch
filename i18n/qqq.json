@@ -113,5 +113,9 @@
 	"bs-extendedsearch-wikipage-title-original": "Text displaying original page title if page display title differs from page title. $1 - Original page title",
 	"bs-extendedsearch-auto-set-lang-filter-desc": "Description message for configuration variable $bsgESAutoSetLangFilter",
 	"bs-extendedsearch-pref-auto-set-lang-filter": "Label for the config field configuring if the language filter should automatically be set based on user language",
-	"bs-extendedsearch-search-center-create-page-link": "Text for the link offering to create non-existing page. $1 - prefixed name of the page"
+	"bs-extendedsearch-search-center-create-page-link": "Text for the link offering to create non-existing page. $1 - prefixed name of the page",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Message for item in BlueSpicePrivacy when exporting users mentions on a page. $1 - list of mentions",
+	"bs-extendedsearch-privacy-transparency-history-item": "Message for item in BlueSpicePrivacy when exporting individual entries from search history. $1 - search term, $2 - number of times searched",
+	"bs-extendedsearch-privacy-transparency-history-summary": "Message for item in BlueSpicePrivacy when exporting user search history. $1 - conflated list of search terms",
+	"bs-extendedsearch-privacy-transparency-relevance": "Message for item in BlueSpicePrivacy when exporting user's relevant pages. $1 - number of relevant pages, $2 - user that this data is generated for (used only for gender determination)"
 }
