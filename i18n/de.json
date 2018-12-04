@@ -113,5 +113,8 @@
 	"bs-extendedsearch-wikipage-title-original": "(Ursprünglicher Titel: $1)",
 	"bs-extendedsearch-auto-set-lang-filter-desc": "Ob der Seitensprachenfilter automatisch basierend auf der Benutzer-/Wikisprache festgelegt werden soll.",
 	"bs-extendedsearch-pref-auto-set-lang-filter": "Sprachfilter automatisch festgelegt",
-	"bs-extendedsearch-search-center-create-page-link": "Seite „$1“ erstellen"
+	"bs-extendedsearch-search-center-create-page-link": "Seite „$1“ erstellen",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Seite $1: Text: $2",
+	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpiceExtendedSearch – Suchverlauf: Begriff (Male gesucht): $1",
+	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch – {{GENDER:$2|Du}} hast {{PLURAL:$1|eine Seite|$1 Seiten}} als {{PLURAL:$1|relevantes Suchergebnis|relevante Suchergebnisse}} markiert"
 }
