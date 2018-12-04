@@ -19,6 +19,14 @@ class DecoratorBase extends Base {
 	}
 
 	/**
+	 * @param Base $base
+	 * @return DecoratorBase
+	 */
+	public static function create( $base ) {
+		return new self( $base );
+	}
+
+	/**
 	 *
 	 * @return \BS\ExtendedSearch\Backend
 	 */

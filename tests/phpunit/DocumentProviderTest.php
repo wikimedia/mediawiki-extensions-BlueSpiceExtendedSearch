@@ -28,8 +28,6 @@ class DocumentProviderTest extends \MediaWikiTestCase {
 		);
 
 		$oWikiPage = \WikiPage::factory( \Title::newFromText( 'Help:WikiPageTest' ) );
-		error_log( $oWikiPage->getTitle()->exists() );
-		error_log( $oWikiPage->getOldestRevision()->getTimestamp() );
 		$sTestUri = $oWikiPage->getTitle()->getCanonicalURL();
 		$sTestUriMD5 = md5( $sTestUri );
 

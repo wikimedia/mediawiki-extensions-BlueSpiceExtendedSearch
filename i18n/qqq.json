@@ -117,5 +117,8 @@
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Message for item in BlueSpicePrivacy when exporting users mentions on a page. $1 - list of mentions",
 	"bs-extendedsearch-privacy-transparency-history-item": "Message for item in BlueSpicePrivacy when exporting individual entries from search history. $1 - search term, $2 - number of times searched",
 	"bs-extendedsearch-privacy-transparency-history-summary": "Message for item in BlueSpicePrivacy when exporting user search history. $1 - conflated list of search terms",
-	"bs-extendedsearch-privacy-transparency-relevance": "Message for item in BlueSpicePrivacy when exporting user's relevant pages. $1 - number of relevant pages, $2 - user that this data is generated for (used only for gender determination)"
+	"bs-extendedsearch-privacy-transparency-relevance": "Message for item in BlueSpicePrivacy when exporting user's relevant pages. $1 - number of relevant pages, $2 - user that this data is generated for (used only for gender determination)",
+	"bs-extendedsearch-filter-add-button-label": "Tooltip text for a button that add a new filter to the search",
+	"bs-extendedsearch-options-button-label": "Tooltip text for a button that opens search options dialog",
+	"bs-extendedsearch-export-button-label": "Tooltip text for a button that opens a dialog to export the search results"
 }

@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\Crawler;
 
+use MediaWiki\MediaWikiServices;
+
 class Base {
 
 	protected $sJobClass = '';
@@ -50,7 +52,7 @@ class Base {
 		}
 
 		$oDummyJob = new $this->sJobClass( \Title::newMainPage(), [] );
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$res = $dbr->selectRow(
 			'job',
 			'COUNT(*) AS count',

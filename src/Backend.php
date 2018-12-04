@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch;
 
+use BlueSpice\ExtensionAttributeBasedRegistry;
 use MediaWiki\MediaWikiServices;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 use Wikimedia\ObjectFactory;
@@ -44,41 +45,12 @@ class Backend {
 	 * @throws \Exception
 	 */
 	public function getSource( $sourceKey ) {
-		if( isset( $this->sources[$sourceKey] ) ) {
-			return $this->sources[$sourceKey];
-		}
+		$sourceFactory = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchSourceFactory' );
+		$source = $sourceFactory->makeSource( $sourceKey );
 
-		$sourceConfigs = $this->config->get( 'sources' );
-		if( !isset( $sourceConfigs[$sourceKey] ) ) {
-			throw new \Exception( "SOURCE: Key '$sourceKey' not set in config!" );
-		}
+		\Hooks::run( 'BSExtendedSearchMakeSource', [ $this, $sourceKey, &$source ] );
 
-		//Decorator!
-		$oBaseSourceArgs = [[]]; //Yes, array-in-an-array
-		if( isset( $sourceConfigs[$sourceKey]['args'] ) ) {
-			$oBaseSourceArgs = $sourceConfigs[$sourceKey]['args'];
-		}
-
-		if( !isset( $oBaseSourceArgs[0]['sourcekey'] ) ) {
-			$oBaseSourceArgs[0]['sourcekey'] = $sourceKey;
-		}
-
-		//Dependency injection of Backend into Source
-		array_unshift ($oBaseSourceArgs, $this );
-
-		$oBaseSource = ObjectFactory::getObjectFromSpec( [
-			'class' => 'BS\ExtendedSearch\Source\Base',
-			'args' => $oBaseSourceArgs
-		] );
-
-		$oDecoratedSource = ObjectFactory::getObjectFromSpec( [
-			'class' => $sourceConfigs[$sourceKey]['class'],
-			'args' => [ $oBaseSource ]
-		] );
-
-		\Hooks::run( 'BSExtendedSearchMakeSource', [ $this, $sourceKey, &$oDecoratedSource ] );
-
-		$this->sources[$sourceKey] = $oDecoratedSource;
+		$this->sources[$sourceKey] = $source;
 
 		return $this->sources[$sourceKey];
 	}
@@ -88,7 +60,7 @@ class Backend {
 	 * @return Source\Base[]
 	 */
 	public function getSources() {
-		foreach( $this->config->get('sources') as $sourceKey => $sSourceConfig ) {
+		foreach( $this->config->get('sources') as $sourceKey ) {
 			$this->getSource( $sourceKey );
 		}
 		return $this->sources;
@@ -128,13 +100,13 @@ class Backend {
 	}
 
 	protected static function newInstance() {
-		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsg' );
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
 
 		$backendClass = $config->get( 'ESBackendClass' );
 		$backendHost = $config->get( 'ESBackendHost' );
 		$backendPort = $config->get( 'ESBackendPort' );
-		$sourceRegistry = new SourceRegistry();
-		$sources = $sourceRegistry->getAllSources();
+		$sourceRegistry = new ExtensionAttributeBasedRegistry( 'BlueSpiceExtendedSearchSources' );
+		$sources = $sourceRegistry->getAllKeys();
 
 		return new $backendClass ( [
 			'connection' => [
@@ -318,6 +290,7 @@ class Backend {
 	 * Runs query against ElasticSearch and formats returned values
 	 *
 	 * @param Lookup $lookup
+	 * @return \stdClass[]
 	 */
 	public function runLookup( $lookup ) {
 		$search = new \Elastica\Search( $this->getClient() );
