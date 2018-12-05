@@ -112,5 +112,6 @@
 	"bs-extendedsearch-wikipage-title-original": "(titre original: $1)",
 	"bs-extendedsearch-auto-set-lang-filter-desc": "S’il faut fixer automatiquement le filtre de langue des pages en fonction de la langue de l’utilisateur/wiki",
 	"bs-extendedsearch-pref-auto-set-lang-filter": "Fixer automatiquement le filtre de langue",
-	"bs-extendedsearch-search-center-create-page-link": "Créer la page « $1 »"
+	"bs-extendedsearch-search-center-create-page-link": "Créer la page « $1 »",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Page $1: Texte: $2"
 }

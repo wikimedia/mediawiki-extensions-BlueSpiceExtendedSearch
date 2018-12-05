@@ -7,5 +7,6 @@
 	"bs-extendedsearch-source-label-user": "Lietotājs",
 	"bs-extendedsearch-search-center-filter-categories-label": "Kategorija",
 	"bs-extendedsearch-search-center-options-page-size": "Lapas izmērs",
-	"bs-extendedsearch-searchcenter-sort-field-namespace": "Vārdtelpa"
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "Vārdtelpa",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Lapa $1: Teksts: $2"
 }

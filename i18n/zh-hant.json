@@ -110,5 +110,8 @@
 	"bs-extendedsearch-wikipage-title-original": "（原始標題：$1）",
 	"bs-extendedsearch-auto-set-lang-filter-desc": "是否基於使用者/wiki 的語言來自動設定頁面語言篩選",
 	"bs-extendedsearch-pref-auto-set-lang-filter": "自動設定語言篩選",
-	"bs-extendedsearch-search-center-create-page-link": "建立頁面\"$1\""
+	"bs-extendedsearch-search-center-create-page-link": "建立頁面\"$1\"",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "頁面$1：文字：$2",
+	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpiceExtendedSearch - 搜尋歷史：項（已搜尋項）：$1",
+	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch - {{GENDER:$2|您}}有 {{PLURAL:$1|$1|$1}} 個頁面被標記為相關搜尋{{PLURAL:$1|結果|結果}}"
 }
