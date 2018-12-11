@@ -244,6 +244,7 @@
 
 		this.$element
 			.attr( 'id', 'bs-extendedsearch-filter-add-button' )
+			.attr( 'title', mw.message( 'bs-extendedsearch-filter-add-button-label' ).text() )
 			.addClass( 'bs-extendedsearch-filter-add-widget tools-button' )
 			.append( this.$button )
 			.on( 'click', { cfg: cfg, parent: this }, this.openAddWidgetDialog );

@@ -4,6 +4,14 @@ namespace BS\ExtendedSearch\Source;
 
 class ExternalFiles extends DecoratorBase {
 	/**
+	 * @param Base $base
+	 * @return ExternalFiles
+	 */
+	public static function create( $base ) {
+		return new self( $base );
+	}
+
+	/**
 	 *
 	 * @return \BS\ExtendedSearch\Source\Crawler\ExternalFile
 	 */

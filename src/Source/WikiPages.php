@@ -45,6 +45,14 @@ class WikiPages extends DecoratorBase {
 	];
 
 	/**
+	 * @param Base $base
+	 * @return WikiPages
+	 */
+	public static function create( $base ) {
+		return new self( $base );
+	}
+
+	/**
 	 *
 	 * @return \BS\ExtendedSearch\Source\Crawler\WikiPage
 	 */

@@ -2,11 +2,13 @@
 
 namespace BS\ExtendedSearch\Source\Crawler;
 
+use MediaWiki\MediaWikiServices;
+
 class WikiPage extends Base {
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateWikiPage';
 
 	public function crawl() {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$res = $dbr->select(
 			[ 'page', 'page_props' ],
 			[ 'page_id', "GROUP_CONCAT( pp_propname SEPARATOR '|' ) as prop_names" ],

@@ -6,6 +6,14 @@ use BS\ExtendedSearch\Source\LookupModifier\FileContent;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 
 class RepoFiles extends DecoratorBase {
+	/**
+	 * @param Base $base
+	 * @return RepoFiles
+	 */
+	public static function create( $base ) {
+		return new self( $base );
+	}
+
 	protected $lookupModifiers = [
 		LookupModifier::TYPE_SEARCH => [
 			'file-content' => FileContent::class

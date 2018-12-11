@@ -3,6 +3,13 @@
 namespace BS\ExtendedSearch\Source;
 
 class SpecialPages extends DecoratorBase {
+	/**
+	 * @param Base $base
+	 * @return SpecialPages
+	 */
+	public static function create( $base ) {
+		return new self( $base );
+	}
 
 	/**
 	 *

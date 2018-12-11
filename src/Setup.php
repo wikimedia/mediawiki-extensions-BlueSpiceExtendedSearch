@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch;
 
 use BS\ExtendedSearch\Backend as SearchBackend;
+use BS\ExtendedSearch\MediaWiki\Backend\BlueSpiceSearch;
 
 class Setup {
 	/**
@@ -13,6 +14,9 @@ class Setup {
 		foreach( $sources as $source ) {
 			$source->getUpdater()->init( $GLOBALS['wgHooks'] );
 		}
+
+		// Set ExtendedSearch backend as default MW engine
+		$GLOBALS['wgSearchType'] = BlueSpiceSearch::class;
 	}
 
 	//TODO: Move hooks to proper classes

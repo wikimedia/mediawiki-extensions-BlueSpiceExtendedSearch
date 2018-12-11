@@ -17,11 +17,11 @@ class File extends DecoratorBase {
 
 	public function getPropertyConfig() {
 		$aPC = $this->oDecoratedMP->getPropertyConfig();
-		$aPC += [
+		$aPC = array_merge( $aPC, [
 			'the_file' => [
 				'type' => 'binary'
 			]
-		];
+		] );
 
 		return $aPC;
 	}

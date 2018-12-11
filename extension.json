@@ -96,25 +96,10 @@
 		},
 		"BlueSpiceExtendedSearch": {
 			"Sources": {
-				"wikipage": {
-					"class": "BS\\ExtendedSearch\\Source\\WikiPages",
-					"args": [
-						{
-							"skip_namespaces": [
-								8, 9, 10, 11, 14, 15
-							]
-						}
-					]
-				},
-				"specialpage": {
-					"class": "BS\\ExtendedSearch\\Source\\SpecialPages"
-				},
-				"repofile": {
-					"class": "BS\\ExtendedSearch\\Source\\RepoFiles"
-				},
-				"externalfile": {
-					"class": "BS\\ExtendedSearch\\Source\\ExternalFiles"
-				}
+				"wikipage": "BS\\ExtendedSearch\\Source\\WikiPages::create",
+				"specialpage":"BS\\ExtendedSearch\\Source\\SpecialPages::create",
+				"repofile": "BS\\ExtendedSearch\\Source\\RepoFiles::create",
+				"externalfile": "BS\\ExtendedSearch\\Source\\ExternalFiles::create"
 			},
 			"AdditionalLookupModifiers": {},
 			"DefaultResultStructure": {
@@ -199,6 +184,9 @@
 			"i18n"
 		]
 	},
+	"ServiceWiringFiles": [
+		"includes/ServiceWiring.php"
+	],
 	"ExtensionMessagesFiles": {
 		"BlueSpiceExtendedSearchAdminAlias": "languages/BSSearchAdmin.alias.php",
 		"BlueSpiceExtendedSearchCenterAlias": "languages/BSSearchCenter.alias.php"
@@ -380,7 +368,10 @@
 				"bs-extendedsearch-search-center-filter-page_language-label",
 				"bs-extendedsearch-search-center-filter-page_language-with-values-label",
 				"bs-extendedsearch-wikipage-title-original",
-				"bs-extendedsearch-search-center-create-page-link"
+				"bs-extendedsearch-search-center-create-page-link",
+				"bs-extendedsearch-filter-add-button-label",
+				"bs-extendedsearch-options-button-label",
+				"bs-extendedsearch-export-button-label"
 			],
 			"dependencies" : [
 				"ext.bluespice.extjs",
@@ -426,6 +417,17 @@
 			"descriptionmsg": "bs-extendedsearch-auto-set-lang-filter-desc",
 			"public": true,
 			"value": false
+		},
+		"ESSourceConfig": {
+			"value": {
+				"wikipage": {
+					"skip_namespaces": [ 8, 9 ]
+				},
+				"repofile": {
+					"extension_blacklist": [ "mp4" ]
+				}
+			},
+			"public": false
 		}
 	},
 	"JobClasses": {
