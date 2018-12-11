@@ -55,5 +55,8 @@
 	"bs-extendedsearch-pref-external-file-paths": "Percorse de le file de fore",
 	"bs-extendedsearch-search-center-result-redirects-label": "Redirezionate da:",
 	"bs-extendedsearch-search-center-create-page-link": "Ccreje 'a pàgene \"$1\"",
-	"bs-extendedsearch-privacy-transparency-content-highlight": "Pàgene $1: Teste: $2"
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Pàgene $1: Teste: $2",
+	"bs-extendedsearch-filter-add-button-label": "Aggiunge 'nu filtre",
+	"bs-extendedsearch-options-button-label": "Opziune de recerche",
+	"bs-extendedsearch-export-button-label": "Esporte le resultate d'a recerche"
 }

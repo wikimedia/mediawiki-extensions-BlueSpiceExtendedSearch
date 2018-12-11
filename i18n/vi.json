@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Nhatminh01"
+			"Nhatminh01",
+			"Leduyquang753"
 		]
 	},
-	"bs-extendedsearch-redirect-target-label": "Đổi hướng đến:"
+	"bs-extendedsearch-redirect-target-label": "Đổi hướng đến:",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Trang $1: Văn bản: $2"
 }
