@@ -15,6 +15,8 @@
 		this.highlight = cfg.highlight || '';
 		this.featured = cfg.featured || false;
 
+		this.isExternal = cfg.isExternal || false;
+
 		// If we are in desktop mode, show sections of secondaryInfos
 		if( !this.mobile && this.secondaryInfos.top.items.length > 0 ) {
 			for( var idx in this.secondaryInfos.top.items ) {
@@ -40,12 +42,15 @@
 		this.$headerContainer = $( '<div>' )
 			.addClass( 'bs-extendedsearch-result-header-container' );
 
-		if( this.headerAnchor ) {
+		if( this.headerAnchor && !this.isExternal ) {
 			this.$header = $( this.headerAnchor );
 		} else {
 			this.$header = $( '<a>' )
 				.attr( 'href', this.headerUri )
 				.html( this.headerText );
+			if( this.isExternal ) {
+				this.$header.attr( 'target', '_blank' );
+			}
 		}
 
 		this.$header.addClass( 'bs-extendedsearch-result-header' );

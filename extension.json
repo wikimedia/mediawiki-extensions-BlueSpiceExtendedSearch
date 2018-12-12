@@ -296,6 +296,7 @@
 			]
 		},
 		"ext.blueSpiceExtendedSearch.SearchCenter": {
+			"group": "es-search-center",
 			"scripts": [
 				"bs.extendedSearch/mixin/Result.js",
 				"bs.extendedSearch/mixin/Filter.js",
@@ -308,6 +309,7 @@
 				"bs.extendedSearch/dialog/AddFilter.js",
 				"bs.extendedSearch/dialog/OptionsDialog.js",
 				"bs.extendedSearch/panel/Results.js",
+				"bs.extendedSearch/panel/ResultMessage.js",
 				"bs.extendedSearch/panel/Tools.js",
 				"ext.blueSpiceExtendedSearch.SearchCenter.js"
 			],
