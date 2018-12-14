@@ -92,5 +92,8 @@
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "문서 언어:",
 	"bs-extendedsearch-wikipage-title-original": "(원래 제목: $1)",
 	"bs-extendedsearch-pref-auto-set-lang-filter": "자동으로 언어 필터 설정",
-	"bs-extendedsearch-search-center-create-page-link": "\"$1\" 문서 만들기"
+	"bs-extendedsearch-search-center-create-page-link": "\"$1\" 문서 만들기",
+	"bs-extendedsearch-filter-add-button-label": "필터 추가",
+	"bs-extendedsearch-options-button-label": "검색 옵션",
+	"bs-extendedsearch-export-button-label": "검색 결과 내보내기"
 }

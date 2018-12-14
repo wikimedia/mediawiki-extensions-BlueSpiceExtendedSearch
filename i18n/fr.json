@@ -5,7 +5,8 @@
 			"Zarisi",
 			"Gomoko",
 			"Wladek92",
-			"Alacabe"
+			"Alacabe",
+			"Eihel"
 		]
 	},
 	"bs-extsearch-desc": "Recherche Elasticsearch d'arrière-plan",
@@ -116,5 +117,8 @@
 	"bs-extendedsearch-search-center-create-page-link": "Créer la page « $1 »",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Page $1: Texte: $2",
 	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpiceExtendedSearch - Historique de recherches : mot-clé (nombre de fois recherché) : $1",
-	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch - {{GENDER:$2|Vous}} avez {{PLURAL:$1|$1 page marquée|$1 pages marquées}} comme {{PLURAL:$1|résultat de recherche significatif|résultats de recherche significatifs}}"
+	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch - {{GENDER:$2|Vous}} avez {{PLURAL:$1|$1 page marquée|$1 pages marquées}} comme {{PLURAL:$1|résultat de recherche significatif|résultats de recherche significatifs}}",
+	"bs-extendedsearch-filter-add-button-label": "Ajouter un filtre",
+	"bs-extendedsearch-options-button-label": "Options de recherche",
+	"bs-extendedsearch-export-button-label": "Exporter les résultats de recherche"
 }
