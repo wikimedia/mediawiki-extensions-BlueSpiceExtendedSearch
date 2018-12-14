@@ -221,25 +221,37 @@
 
 	var api = new mw.Api();
 	function _execSearch() {
-		var resultsPanel = new bs.extendedSearch.ResultsPanel({});
+		var $resultCnt = $( '#bs-es-results' );
+		var $toolsCnt = $( '#bs-es-tools' );
+		var $altSearchCnt = $( '#bs-es-alt-search' );
 
-		resultsPanel.clearAll();
-		$( '#bs-es-tools' ).removeClass( 'bs-es-tools' );
-		$( '#bs-es-alt-search' ).empty();
-		resultsPanel.showLoading();
+		$resultCnt.children().remove();
+		$toolsCnt.children().remove();
+		$toolsCnt.removeClass( 'bs-es-tools' );
+		$altSearchCnt.children().remove();
+		search.showLoading();
 
 		var queryData = bs.extendedSearch.utils.getFragment();
 		if( $.isEmptyObject( queryData ) || searchBar.$searchBox.val() === '' ) {
-			resultsPanel.removeLoading();
-			resultsPanel.showHelp();
+			search.removeLoading();
+			$resultCnt.append( new bs.extendedSearch.ResultMessage( {
+				mode: 'help'
+			} ).$element );
+			$resultCnt.trigger( 'resultsReady' );
 			return;
 		}
 		queryData.searchTerm = searchBar.$searchBox.val();
 
 		var searchPromise = this.runApiCall( queryData );
+		$( d ).trigger( 'BSExtendedSearchSearchCenterExecSearch', [ queryData, search ] );
+
 		searchPromise.done( function( response ) {
 			if( response.exception ) {
-				return resultsPanel.showError();
+				search.removeLoading();
+				$resultCnt.trigger( 'resultsReady' );
+				return $resultCnt.append( new bs.extendedSearch.ResultMessage( {
+					mode: 'error'
+				} ).$element );
 			}
 			//Lookup object might have changed due to LookupModifiers
 			search.makeLookup( JSON.parse( response.lookup ) );
@@ -254,9 +266,9 @@
 			var spellCheck = new bs.extendedSearch.SpellcheckWidget( response.spellcheck );
 			spellCheck.$element.on( 'forceSearchTerm', this.forceSearchTerm.bind( this ) );
 			if( bs.extendedSearch.utils.isMobile() ) {
-				$('#bs-es-alt-search' ).addClass( 'mobile' );
+				$altSearchCnt.addClass( 'mobile' );
 			}
-			$('#bs-es-alt-search' ).append( spellCheck.$element );
+			$altSearchCnt.append( spellCheck.$element );
 
 			var toolsPanel = new bs.extendedSearch.ToolsPanel( {
 				lookup: search.getLookupObject(),
@@ -272,14 +284,16 @@
 			} );
 
 			toolsPanel.init();
+
 			if( response.total === 0 ) {
-				return resultsPanel.init( {
-					results: [],
-					total: 0
-				} );
+				search.removeLoading();
+				return $resultCnt.append( new bs.extendedSearch.ResultMessage( {
+					mode: 'noResults'
+				} ).$element );
 			}
 
-			return resultsPanel.init( {
+			var resultPanel = new bs.extendedSearch.ResultsPanel( {
+				$element: $resultCnt,
 				results: search.applyResultsToStructure( response.results ),
 				total: response.total,
 				spellcheck: response.spellcheck,
@@ -287,7 +301,34 @@
 				total_approximated: response.total_approximated,
 				mobile: bs.extendedSearch.utils.isMobile()
 			} );
+			$resultCnt.append( resultPanel.$element );
+
+			$resultCnt.trigger( 'resultsReady' );
+			search.removeLoading();
 		}.bind( this ) );
+	}
+
+	function _showLoading() {
+		if( $( '.bs-extendedsearch-searchcenter-loading' ).length > 0 ) {
+			return;
+		}
+
+		var pbWidget = new OO.ui.ProgressBarWidget({
+			progress: false
+		} );
+
+		//Insert loader before results div to avoid reseting it
+		$( '#bs-es-results' ).before(
+			$( '<div>' )
+				.addClass( 'bs-extendedsearch-searchcenter-loading' )
+				.append( pbWidget.$element )
+		);
+		$( '#bs-es-tools, #bs-es-results' ).hide();
+	}
+
+	function _removeLoading() {
+		$( '.bs-extendedsearch-searchcenter-loading' ).remove();
+		$( '#bs-es-tools, #bs-es-results' ).show();
 	}
 
 	function _runApiCall( queryData, action ) {
@@ -367,7 +408,9 @@
 		formatSecondaryInfoItems: _formatSecondaryInfoItems,
 		getResultValueByKey: _getResultValueByKey,
 		forceSearchTerm: _forceSearchTerm,
-		runApiCall: _runApiCall
+		runApiCall: _runApiCall,
+		showLoading: _showLoading,
+		removeLoading: _removeLoading
 	};
 
 	var search = bs.extendedSearch.SearchCenter;
