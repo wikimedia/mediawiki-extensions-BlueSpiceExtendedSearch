@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Nikosgranturismogt"
+			"Nikosgranturismogt",
+			"KATRINE1993"
 		]
 	},
 	"bssearchadmin": "Αναζήτηση διαχειριστή",
@@ -54,5 +55,7 @@
 	"bs-extendedsearch-autocomplete-modified-time-label": "Τελευταία επεξεργασία: $1",
 	"bs-extendedseach-wikipage-section-more-text": "... $1 περισσότερα",
 	"bs-extendedsearch-redirect-target-label": "Ανακατευθύνει σε:",
-	"bs-extendedsearch-search-center-create-page-link": "Δημιουργία σελίδας \"$1\""
+	"bs-extendedsearch-search-center-create-page-link": "Δημιουργία σελίδας \"$1\"",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Σελίδα $1: Κείμενο: $2",
+	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpiceExtendedSearch - Ιστορικό αναζήτησης: όρος (φορές που αναζητήθηκε ): $1"
 }

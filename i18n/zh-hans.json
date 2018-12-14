@@ -23,6 +23,7 @@
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "用于查询的额外参数",
 	"apihelp-bs-extendedsearch-generic-param-backend": "应查询的配置后端关键字",
 	"apihelp-bs-extendedsearch-generic-param-sources": "特定后端中的一个或多个资源，以竖线分隔。如果为空，所有可用资源都将查询。",
+	"apihelp-bs-extendedsearch-query-param-search-term": "进行搜索的术语",
 	"bs-extendedsearch-search-input-placeholder": "查找...",
 	"bs-extendedsearch-source-label-wikipage": "Wiki页面",
 	"bs-extendedsearch-source-label-specialpage": "特殊页面",
@@ -107,5 +108,7 @@
 	"bs-extendedsearch-default-filters-desc": "要设置为默认的过滤器数组",
 	"bs-extendedsearch-redirect-target-label": "重定向至：",
 	"bs-extendedsearch-search-center-filter-page_language-label": "页面语言",
-	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "页面语言："
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "页面语言：",
+	"bs-extendedsearch-pref-auto-set-lang-filter": "自动设置语言过滤器",
+	"bs-extendedsearch-search-center-create-page-link": "创建页面“$1”。"
 }

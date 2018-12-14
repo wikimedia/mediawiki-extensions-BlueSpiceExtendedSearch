@@ -57,5 +57,6 @@
 	"bs-extendedsearch-search-center-result-redirects-label": "Przekierowano z:",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Język strony",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Język strony:",
-	"bs-extendedsearch-wikipage-title-original": "(tytuł oryginalny: $1)"
+	"bs-extendedsearch-wikipage-title-original": "(tytuł oryginalny: $1)",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Strona $1: Tekst: $2"
 }

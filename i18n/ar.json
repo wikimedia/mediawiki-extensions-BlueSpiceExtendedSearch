@@ -25,7 +25,7 @@
 	"bs-extendedsearch-search-input-placeholder": "إيجاد...",
 	"bs-extendedsearch-source-label-wikipage": "صفحة ويكي",
 	"bs-extendedsearch-source-label-specialpage": "صفحة خاصة",
-	"bs-extendedsearch-source-label-repofile": "ارفع ملفا",
+	"bs-extendedsearch-source-label-repofile": "رفع ملف",
 	"bs-extendedsearch-source-label-user": "المستخدم",
 	"bs-extendedsearch-admin-heading-backend": "الخلفية المحلية",
 	"bs-extendedsearch-admin-label-error": "خطأ",
@@ -110,5 +110,8 @@
 	"bs-extendedsearch-wikipage-title-original": "(العنوان الأصلي: $1)",
 	"bs-extendedsearch-auto-set-lang-filter-desc": "ما إذا كان يتم ضبط مرشح لغة الصفحة تلقائيا بناء على لغة المستخدم/الويكي",
 	"bs-extendedsearch-pref-auto-set-lang-filter": "ضبط مرشح اللغة تلقائيا",
-	"bs-extendedsearch-search-center-create-page-link": "إنشاء صفحة \"$1\""
+	"bs-extendedsearch-search-center-create-page-link": "إنشاء صفحة \"$1\"",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "الصفحة $1: النص: $2",
+	"bs-extendedsearch-privacy-transparency-history-summary": "بحث بلو سبيس الممتد - تاريخ البحث: المصطلح (عدد مرات البحث): $1",
+	"bs-extendedsearch-privacy-transparency-relevance": "بحث بلو سبيس الممتد - {{GENDER:$2|أنت}} لديك {{PLURAL:$1|$1 صفحة|$1 صفحات}} معلم عليها ك{{PLURAL:$1|نتيجة|نتائج}} بحث متعلقة"
 }

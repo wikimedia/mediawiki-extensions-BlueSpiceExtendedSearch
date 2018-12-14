@@ -79,5 +79,8 @@
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Језик странице:",
 	"bs-extendedsearch-wikipage-title-original": "(оргинални наслов: $1)",
 	"bs-extendedsearch-pref-auto-set-lang-filter": "Аутоматски постави филтер језика",
-	"bs-extendedsearch-search-center-create-page-link": "Направите страницу „$1”"
+	"bs-extendedsearch-search-center-create-page-link": "Направите страницу „$1”",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Страница $1: Текст: $2",
+	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpice проширена претрага — историја претраге: термин (претраживано пута): $1",
+	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpice проширена претрага — {{GENDER:$2|Имате}} {{PLURAL:$1|1=једну страницу означену|$1 страницу означену|$1 странице означене|$1 страница означених}} као {{PLURAL:$1|1=релевантан резултат претраге|релевантан резултат претраге|релевантни резултати претраге}}"
 }

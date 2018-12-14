@@ -46,5 +46,6 @@
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Lingua della pagina:",
 	"bs-extendedsearch-wikipage-title-original": "(titolo originale: $1)",
 	"bs-extendedsearch-pref-auto-set-lang-filter": "Imposta automaticamente il filtro della lingua",
-	"bs-extendedsearch-search-center-create-page-link": "Crea pagina \"$1\""
+	"bs-extendedsearch-search-center-create-page-link": "Crea pagina \"$1\"",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Pagina $1: Testo: $2"
 }
