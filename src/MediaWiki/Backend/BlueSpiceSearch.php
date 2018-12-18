@@ -56,7 +56,7 @@ class BlueSpiceSearch extends \SearchEngine {
 		$lookup->addSourceField( 'prefixed_title' );
 		$lookup->setSize( $this->limit );
 		$lookup->setFrom( $this->offset );
-		$lookup->addSort( '_score', Lookup::SORT_DESC  );
+		$lookup->addSort( '_score', Lookup::SORT_DESC );
 
 		$search = new \Elastica\Search( $this->backend->getClient() );
 		$search->addIndex( $this->backend->getConfig()->get( 'index' ) . '_wikipage' );
@@ -89,8 +89,13 @@ class BlueSpiceSearch extends \SearchEngine {
 		$lookup->setSize( $this->limit );
 		$lookup->setFrom( $this->offset );
 		$lookup->addSort( '_score', Lookup::SORT_DESC );
+		$lookup->addSort( 'mtime', Lookup::SORT_DESC );
 
 		$resultSet = $this->backend->runLookup( $lookup );
+
+		if ( property_exists( $resultSet, 'exception' ) ) {
+			return [];
+		}
 
 		$titles = [];
 		foreach ( $resultSet->results as $item ) {
