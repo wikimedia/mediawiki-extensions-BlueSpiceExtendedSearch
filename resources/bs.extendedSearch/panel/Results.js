@@ -87,7 +87,7 @@
 		var sortFields = loadMoreLookup.getSort();
 		for( var i = 0; i < sortFields.length; i++ ) {
 			for( var field in sortFields[i] ) {
-				if ( !sortFields[i].hasProperty( field ) ) {
+				if ( !sortFields[i].hasOwnProperty( field ) ) {
 					continue;
 				}
 				if( field.charAt( 0 ) === '_' ) {

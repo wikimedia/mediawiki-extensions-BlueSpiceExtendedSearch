@@ -4,6 +4,6 @@
 	var searchBar = new bs.extendedSearch.SearchBar();
 
 	var useCompact = mw.config.get( 'ESUseCompactAutocomplete' );
-	autocomplete.init( {searchBar:searchBar, compact: useCompact } );
+	autocomplete.init( { searchBar: searchBar, compact: useCompact } );
 
 } )( mediaWiki, jQuery, blueSpice, document );

@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch\Source;
 
+use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageNamespaceTextAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageCategoriesAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageUserPreferences;

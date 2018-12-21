@@ -17,11 +17,12 @@
 
 		this.isExternal = cfg.isExternal || false;
 
-		// If we are in desktop mode, show sections of secondaryInfos
+		this.rightLinks = [];
+		// If we are in desktop mode, show right links
 		if( !this.mobile && this.secondaryInfos.top.items.length > 0 ) {
 			for( var i = 0; i < this.secondaryInfos.top.items.length; i++ ) {
-				if( this.secondaryInfos.top.items[ i ].name === 'sections' ) {
-					this.sections = this.secondaryInfos.top.items[ i ];
+				if( this.secondaryInfos.top.items[ i ].showInRightLinks === true ) {
+					this.rightLinks.push( this.secondaryInfos.top.items[ i ] );
 					this.secondaryInfos.top.items.splice( i, 1 );
 					break;
 				}
@@ -70,19 +71,20 @@
 			.addClass( 'bs-extendedsearch-result-container' )
 			.append( this.$image, this.$dataContainer, this.$relevanceControl );
 
-		if( this.sections ) {
+		if( this.rightLinks.length > 0 ) {
 			this.$linksContainer = $( '<div>' )
 				.addClass( 'bs-extendedsearch-result-links-container' );
 
-			if( this.sections ) {
-				this.$dataContainer.addClass( 'short' );
-				this.$sectionContainer = $( '<div>' )
-					.addClass( 'bs-extendedsearch-result-section-container' );
-				this.$sectionContainer.append( new OO.ui.LabelWidget( {
-					label: mw.message( this.sections.labelKey ).plain()
+			this.$dataContainer.addClass( 'short' );
+			for( var idx in this.rightLinks ) {
+				this.$innerContainer = $( '<div>' )
+					.addClass( 'bs-extendedsearch-result-links-inner' );
+
+				this.$innerContainer.append( new OO.ui.LabelWidget( {
+					label: mw.message( this.rightLinks[idx].labelKey ).plain()
 				} ).$element );
-				this.$sectionContainer.append( this.sections.value );
-				this.$linksContainer.append( this.$sectionContainer );
+				this.$innerContainer.append( this.rightLinks[idx].value );
+				this.$linksContainer.append( this.$innerContainer );
 			}
 
 			this.$element.append( this.$linksContainer );

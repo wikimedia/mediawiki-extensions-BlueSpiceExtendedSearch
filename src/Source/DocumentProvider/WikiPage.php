@@ -39,7 +39,8 @@ class WikiPage extends DecoratorBase {
 			'redirects_to' => $this->getRedirectsTo( $oWikiPage ),
 			'redirected_from' => $this->getRedirects( $oWikiPage ),
 			'page_language' => $oWikiPage->getTitle()->getPageLanguage()->getCode(),
-			'display_title' => $this->getDisplayTitle( $oWikiPage->getTitle() )
+			'display_title' => $this->getDisplayTitle( $oWikiPage->getTitle() ),
+			'used_files' => $this->getUserFiles( $oWikiPage )
 		] );
 
 		return $aDC;
@@ -212,5 +213,12 @@ class WikiPage extends DecoratorBase {
 			$props[$row->pp_propname] = $row->pp_value;
 		}
 		return $props;
+	}
+
+	protected function getUserFiles( \WikiPage $wikiPage ) {
+		$parserOutput = $wikiPage->getContent()->getParserOutput( $wikiPage->getTitle() );
+		$files = $parserOutput->getImages();
+
+		return array_keys( $files );
 	}
 }

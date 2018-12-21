@@ -45,15 +45,6 @@ class SearchCenter extends \SpecialPage {
 
 		$out = $this->getOutput();
 		$out->addModules( "ext.blueSpiceExtendedSearch.SearchCenter" );
-		$out->addModuleStyles(
-			"ext.blueSpiceExtendedSearch.SearchCenter.styles"
-		);
-		$out->addModuleStyles(
-			'ext.blueSpiceExtendedSearch.Autocomplete.styles'
-		);
-		$out->addModuleStyles(
-			'ext.blueSpiceExtendedSearch.SearchBar.styles'
-		);
 
 		$localBackend = \BS\ExtendedSearch\Backend::instance();
 		$defaultResultStructure = $localBackend->getDefaultResultStructure();
