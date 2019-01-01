@@ -93,5 +93,8 @@
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Sidspråk:",
 	"bs-extendedsearch-wikipage-title-original": "(originaltitel: $1)",
 	"bs-extendedsearch-pref-auto-set-lang-filter": "Ange språkfilter automatiskt",
-	"bs-extendedsearch-search-center-create-page-link": "Skapa sidan \"$1\"."
+	"bs-extendedsearch-search-center-create-page-link": "Skapa sidan \"$1\".",
+	"bs-extendedsearch-filter-add-button-label": "Lägg till ett filter",
+	"bs-extendedsearch-options-button-label": "Sökalternativ",
+	"bs-extendedsearch-export-button-label": "Exportera sökresultat"
 }
