@@ -20,5 +20,6 @@
 	"bs-extendedsearch-autocomplete-create-page-link": "Crear la página «$1».",
 	"prefs-extendedsearch": "Búsqueda extendida",
 	"bs-extendedsearch-pref-external-file-paths": "Rutas del archivo externo",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "Ubicación en el disco o disco montado"
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Ubicación en el disco o disco montado",
+	"bs-extendedsearch-export-button-label": "Exportar resultados de búsqueda"
 }
