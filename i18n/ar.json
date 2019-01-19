@@ -5,6 +5,7 @@
 			"Meno25"
 		]
 	},
+	"bs-extsearch-extensionname": "بحث بلو سبيس الممتد",
 	"bs-extsearch-desc": "Elasticsearch search backend",
 	"bssearchadmin": "إداري البحث",
 	"bssearchadmin-desc": "يوفر واجهة إدارة البحث",
