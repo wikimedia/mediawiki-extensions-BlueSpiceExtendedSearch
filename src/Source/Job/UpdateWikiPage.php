@@ -15,15 +15,15 @@ class UpdateWikiPage extends UpdateTitleBase {
 		parent::__construct( 'updateWikiPageIndex', $title, $params );
 	}
 
-	public function run() {
-		$skipNamespaces = $this->getSource()->getConfig()->get( 'skip_namespaces' );
-		if( in_array( $this->getTitle()->getNamespace(), $skipNamespaces ) ) {
-			return true;
-		}
-		parent::run();
+	protected function skipProcessing() {
+		return in_array(
+			$this->getTitle()->getNamespace(),
+			$this->getSource()->getConfig()->get( 'skip_namespaces' )
+		);
 	}
 
 	protected function getDocumentProviderSource() {
 		return \WikiPage::factory( $this->getTitle() );
 	}
+
 }
