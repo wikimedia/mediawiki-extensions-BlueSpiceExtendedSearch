@@ -14,18 +14,24 @@ class UpdateExternalFile extends UpdateBase {
 		parent::__construct( 'updateExternalFileIndex', $title, $params );
 	}
 
-	public function run() {
+	public function doRun() {
 		$oDP = $this->getSource()->getDocumentProvider();
 		$oFile = new \SplFileInfo( $this->params['src'] );
 
-		if( !file_exists( $oFile->getPathname() ) ) {
+		if( $this->isDeletion() ) {
 			$this->getSource()->deleteDocumentsFromIndex(
 				[ $oDP->getDocumentId( $this->params['dest'] ) ]
 			);
+			return [ 'id' => $oDP->getDocumentId( $this->params['dest'] ) ];
 		}
-		else {
-			$aDC = $oDP->getDataConfig(	$this->params['dest'], $oFile );
-			$this->getSource()->addDocumentsToIndex( [ $aDC ] );
-		}
+		$aDC = $oDP->getDataConfig(	$this->params['dest'], $oFile );
+		$this->getSource()->addDocumentsToIndex( [ $aDC ] );
+		return $aDC;
 	}
+
+	protected function isDeletion() {
+		$file = new \SplFileInfo( $this->params['src'] );
+		return !file_exists( $file->getPathname() );
+	}
+
 }

@@ -2,7 +2,13 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
+use Exception;
+use Status;
+use BlueSpice\Services;
+use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Source\Base;
+use BS\ExtendedSearch\ExternalIndexFactory;
+use BS\ExtendedSearch\IExternalIndex;
 
 abstract class UpdateBase extends \Job {
 	const ACTION_DELETE = 'delete';
@@ -14,17 +20,37 @@ abstract class UpdateBase extends \Job {
 	protected $sSourceKey = '';
 
 	/**
+	 * Run the job
+	 * @return bool Success
+	 */
+	public function run() {
+		if ( $this->skipProcessing() ) {
+			return true;
+		}
+		$dC = $this->doRun();
+		if ( !empty( $dC ) && is_array( $dC ) ) {
+			$status = $this->pushToExternal( $dC );
+			if ( !$status->isOK() ) {
+				$this->setLastError( $status->getMessage() );
+			}
+		}
+		return true;
+	}
+
+	abstract protected function isDeletion();
+
+	/**
 	 *
-	 * @return \BS\ExtendedSearch\Backend
+	 * @return Backend
 	 */
 	protected function getBackend() {
-		return \BS\ExtendedSearch\Backend::instance( $this->getBackendKey() );
+		return Backend::instance( $this->getBackendKey() );
 	}
 
 	/**
 	 *
 	 * @return Base
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	protected function getSource() {
 		return $this->getBackend()->getSource( $this->getSourceKey() );
@@ -51,4 +77,57 @@ abstract class UpdateBase extends \Job {
 		}
 		return $this->sSourceKey;
 	}
+
+	/**
+	 * Execute this job and return the data config as an array
+	 * @return array
+	 */
+	abstract protected function doRun();
+
+	/**
+	 *
+	 * @param array $dC
+	 * @return Status
+	 */
+	protected function pushToExternal( $dC ) {
+		$status = Status::newGood();
+		$dC[IExternalIndex::FIELD_SOURCE_KEY] = $this->getSourceKey();
+		$dC[IExternalIndex::FIELD_BACKEND_KEY] = $this->getBackendKey();
+		$dC[IExternalIndex::FIELD_INDEX_NAME] = $this->getBackend()->getConfig()->get(
+			'index'
+		);
+		foreach( $this->getExternalIndexFactory()->getTypes() as $type ) {
+			try {
+				$externalIndex = $this->getExternalIndexFactory()->getExternalIndex( $type, $dC );
+				if ( !$externalIndex ) {
+					continue;
+				}
+				$status->merge( $externalIndex->push(
+					$this->isDeletion() ? static::ACTION_DELETE : static::ACTION_UPDATE
+				) );
+			} catch( Exception $e ) {
+				$status->error( $e );
+			}
+		}
+		return $status;
+	}
+
+	/**
+	 *
+	 * @return ExternalIndexFactory
+	 */
+	protected function getExternalIndexFactory() {
+		return Services::getInstance()->getService(
+			'BSExtendedSearchExternalIndexFactory'
+		);
+	}
+
+	/**
+	 *
+	 * @return bool
+	 */
+	protected function skipProcessing() {
+		return false;
+	}
+
 }
