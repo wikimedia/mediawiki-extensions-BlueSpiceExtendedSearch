@@ -1,5 +1,8 @@
 bs.extendedSearch.Lookup = function( config ) {
 	for( var field in config ) {
+		if ( !config.hasOwnProperty( field ) ) {
+			continue;
+		}
 		if( $.isFunction( config[field] ) ) {
 			continue;
 		}
@@ -162,11 +165,11 @@ bs.extendedSearch.Lookup.prototype.getQueryString = function () {
 bs.extendedSearch.Lookup.prototype.clearQueryString = function () {
 	this.ensurePropertyPath( 'query.bool.must', {} );
 
-	for( mustIdx in this.query.bool.must ) {
-		var must = this.query.bool.must[mustIdx];
+	for( var i = 0; i < this.query.bool.must.length; i++ ) {
+		var must = this.query.bool.must[i];
 
 		if( 'query_string' in must ) {
-			this.query.bool.must.splice( mustIdx, 1 );
+			this.query.bool.must.splice( i, 1 );
 		}
 	}
 	return this;
@@ -179,7 +182,7 @@ bs.extendedSearch.Lookup.prototype.addBoolMustNotTerms = function( field, value 
 		value = [value];
 	}
 
-	for( idx in this.query.bool.must_not ) {
+	for( var idx = 0 ; idx < this.query.bool.must_not.length; idx++ ) {
 		var terms = this.query.bool.must_not[idx];
 		if( terms.terms[field] ) {
 			this.query.bool.must_not[idx].terms[field] = $.merge(
@@ -206,10 +209,13 @@ bs.extendedSearch.Lookup.prototype.removeBoolMustNot = function( field ) {
 	this.ensurePropertyPath( 'query.bool.must_not', [] );
 
 	var newMustNots = [];
-	for( idx in this.query.bool.must_not ) {
+	for( var idx = 0 ; idx < this.query.bool.must_not.length; idx++ ) {
 		var terms = this.query.bool.must_not[idx];
-		for( fieldName in terms.terms ) {
-			if( fieldName == field ) {
+		for( var fieldName in terms.terms ) {
+			if ( !terms.terms.hasOwnProperty( fieldName) ) {
+				continue;
+			}
+			if( fieldName === field ) {
 				continue;
 			}
 			newMustNots.push( terms );
@@ -274,11 +280,17 @@ bs.extendedSearch.Lookup.prototype.getFilters = function () {
 	for( var i = 0; i < this.query.bool.filter.length; i++ ) {
 		var filter = this.query.bool.filter[i];
 
-		for( typeName in filter ) {
+		for( var typeName in filter ) {
+			if ( !filter.hasOwnProperty( typeName ) ) {
+				continue;
+			}
 			if( !filters[typeName] ) {
 				filters[typeName] = {};
 			}
-			for( fieldName in filter[typeName] ) {
+			for( var fieldName in filter[typeName] ) {
+				if ( !filter[typeName].hasOwnProperty( fieldName ) ) {
+					continue;
+				}
 				if( !filters[typeName][fieldName] ) {
 					filters[typeName][fieldName] = [];
 				}
@@ -363,9 +375,9 @@ bs.extendedSearch.Lookup.prototype.addTermFilter = function( field, value ) {
 		value = [ value ];
 	}
 
-	for( valueIdx in value ) {
+	for( var valueIdx = 0; valueIdx < value.length; valueIdx++ ) {
 		var exists = false;
-		for( idx in this.query.bool.filter ) {
+		for( var idx = 0; idx < this.query.bool.filter.length; idx++ ) {
 			var filter = this.query.bool.filter[idx];
 			if( filter.term && filter.term[field] && filter.term[field] == value[valueIdx] ) {
 				exists = true;
@@ -451,8 +463,8 @@ bs.extendedSearch.Lookup.prototype.removeTermFilter = function( field, value ) {
 		value = [ value ];
 	}
 
-	for( valueIdx in value ) {
-		for( idx in this.query.bool.filter ) {
+	for( var valueIdx = 0; valueIdx < value.length; valueIdx++ ) {
+		for( var idx = 0; idx < this.query.bool.filter.length; idx++ ) {
 			var filter = this.query.bool.filter[idx];
 			if( filter.term && filter.term[field] && filter.term[field] == value[valueIdx] ) {
 				this.query.bool.filter.splice( idx, 1 );
@@ -586,7 +598,7 @@ bs.extendedSearch.Lookup.prototype.addShouldTerms = function( field, value, boos
 
 	var appended = false;
 	if( append ) {
-		for( shouldIdx in this.query.bool.should ) {
+		for( var shouldIdx = 0; shouldIdx < this.query.bool.should.length; shouldIdx++ ) {
 			var should = this.query.bool.should[shouldIdx];
 			if( !( field in should.terms ) ) {
 				continue;
@@ -620,7 +632,7 @@ bs.extendedSearch.Lookup.prototype.addShouldMatch = function( field, value, boos
 	this.ensurePropertyPath( 'query.bool.should', [] );
 	boost = boost || 1;
 
-	for( shouldIdx in this.query.bool.should ) {
+	for( var shouldIdx = 0; shouldIdx < this.query.bool.should.length; shouldIdx++ ) {
 		var should = this.query.bool.should[shouldIdx];
 		if( !should.match || !should.match[field] ) {
 			continue;
@@ -658,7 +670,7 @@ bs.extendedSearch.Lookup.prototype.removeShouldTerms = function( field, value ) 
 		value = [value];
 	}
 
-	for( shouldIdx in this.query.bool.should ) {
+	for( var shouldIdx = 0; shouldIdx < this.query.bool.should.length; shouldIdx++ ) {
 		var should = this.query.bool.should[shouldIdx];
 		if( !should.terms || !should.terms[field] ) {
 			continue;
@@ -690,7 +702,7 @@ bs.extendedSearch.Lookup.prototype.removeShouldMatch = function( field ) {
 	this.ensurePropertyPath( 'query.bool.should', [] );
 
 	var newShoulds = [];
-	for( shouldIdx in this.query.bool.should ) {
+	for( var shouldIdx = 0; shouldIdx < this.query.bool.should.length; shouldIdx++ ) {
 		var should = this.query.bool.should[shouldIdx];
 		if( !should.match || !should.match[field] ) {
 			newShoulds.push( should );
@@ -791,9 +803,9 @@ bs.extendedSearch.Lookup.prototype.removeSourceField = function( field ) {
 	}
 
 	var newSource = [];
-	for( fieldIdx in this._source ) {
-		var sourceField = this._source[fieldIdx];
-		if( $.inArray( sourceField, field ) != -1 ) {
+	for( var i = 0; i < this._source.length; i++ ) {
+		var sourceField = this._source[i];
+		if( $.inArray( sourceField, field ) !== -1 ) {
 			continue;
 		}
 		newSource.push( sourceField );
@@ -876,7 +888,10 @@ bs.extendedSearch.Lookup.prototype.removeAutocompleteSuggest = function( suggest
 	this.ensurePropertyPath( 'suggest', {} );
 
 	var newSuggest = {};
-	for( field in this.suggest ) {
+	for( var field in this.suggest ) {
+		if ( !this.suggest.hasOwnProperty( field ) ) {
+			continue;
+		}
 		if( field === suggestName ) {
 			continue;
 		}
@@ -947,9 +962,9 @@ bs.extendedSearch.Lookup.prototype.removeAutocompleteSuggestContextValue = funct
 	this.ensurePropertyPath( 'suggest.' + acField + '.completion.contexts.' + contextField, [] );
 
 	var newValues = [];
-	for( idx in this.suggest[acField]['completion']['contexts'][contextField] ) {
-		var contextValue = this.suggest[acField]['completion']['contexts'][contextField][idx];
-		if( contextValue != value ) {
+	for( var i = 0; i < this.suggest[acField]['completion']['contexts'][contextField].length; i++ ) {
+		var contextValue = this.suggest[acField]['completion']['contexts'][contextField][i];
+		if( contextValue !== value ) {
 			newValues.push( contextValue );
 		}
 	}

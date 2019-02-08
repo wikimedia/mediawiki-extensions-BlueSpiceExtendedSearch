@@ -73,6 +73,9 @@
 		var hashMap = {};
 
 		for( var key in obj ) {
+			if ( !obj.hasOwnProperty( key ) ) {
+				continue;
+			}
 			var value = obj[key];
 			var encValue = JSON.stringify( value );
 			hashMap[key] = encValue;
@@ -93,9 +96,12 @@
 
 	function _getNamespaceNames( namespaces, id ) {
 		var names = [];
-		for( namespaceName in namespaces ) {
+		for( var namespaceName in namespaces ) {
+			if ( !namespaces.hasOwnProperty( namespaceName ) )  {
+				continue;
+			}
 			var nsId = namespaces[namespaceName];
-			if( nsId == id ) {
+			if( nsId === id ) {
 				names.push( namespaceName.charAt(0).toUpperCase() + namespaceName.slice(1) );
 			}
 		}

@@ -19,10 +19,10 @@
 
 		// If we are in desktop mode, show sections of secondaryInfos
 		if( !this.mobile && this.secondaryInfos.top.items.length > 0 ) {
-			for( var idx in this.secondaryInfos.top.items ) {
-				if( this.secondaryInfos.top.items[ idx ].name === 'sections' ) {
-					this.sections = this.secondaryInfos.top.items[ idx ];
-					this.secondaryInfos.top.items.splice( idx, 1 );
+			for( var i = 0; i < this.secondaryInfos.top.items.length; i++ ) {
+				if( this.secondaryInfos.top.items[ i ].name === 'sections' ) {
+					this.sections = this.secondaryInfos.top.items[ i ];
+					this.secondaryInfos.top.items.splice( i, 1 );
 					break;
 				}
 			}
