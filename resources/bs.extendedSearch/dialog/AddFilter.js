@@ -44,6 +44,9 @@
 
 	bs.extendedSearch.FilterAddDialog.prototype.addFilters = function() {
 		for( var group in this.groupedFilters ) {
+			if ( !this.groupedFilters.hasOwnProperty( group ) ) {
+				continue;
+			}
 			if( group === 'root' ) {
 				this.addChildFilters( this.groupedFilters[group], this.content.$element );
 				continue;
@@ -59,8 +62,8 @@
 	}
 
 	bs.extendedSearch.FilterAddDialog.prototype.addChildFilters = function( filters, $element ) {
-		for( var idx in filters ) {
-			var filter = filters[idx];
+		for ( var i = 0; i < filters.length; i++ ) {
+			var filter = filters[i];
 			filter.disabled = false;
 
 			if( $( '#bs-extendedsearch-filter-' + filter.filter.id ).length > 0 ) {
@@ -74,8 +77,8 @@
 
 	bs.extendedSearch.FilterAddDialog.prototype.groupFilters = function() {
 		this.groupedFilters = {};
-		for( var idx in this.availableFilters ) {
-			var filter = this.availableFilters[idx];
+		for( var i = 0; i < this.availableFilters.length; i++ ) {
+			var filter = this.availableFilters[i];
 
 			if( !filter.group ) {
 				filter.group = 'root';

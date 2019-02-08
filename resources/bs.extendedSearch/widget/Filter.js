@@ -162,8 +162,8 @@
 	bs.extendedSearch.FilterWidget.prototype.onOptionsFilter = function() {
 		var searchTerm = this.filterBox.value;
 		var filteredOptions = [];
-		for( idx in this.options ) {
-			var option = this.options[idx];
+		for( var i = 0; i < this.options.length; i++ ) {
+			var option = this.options[i];
 			if( this.selectedOptions.indexOf( option.data ) !== -1 ) {
 				filteredOptions.push( option );
 				continue;
@@ -198,9 +198,9 @@
 			}
 
 			var labeledValues = [];
-			for( var idx in values ) {
-				var value = values[idx];
-				for( var optionIdx in this.optionsCheckboxWidget.checkboxMultiselectWidget.items ) {
+			for( var i = 0; i < values.length; i++ ) {
+				var value = values[i];
+				for( var optionIdx = 0; optionIdx < this.optionsCheckboxWidget.checkboxMultiselectWidget.items.length; optionIdx++ ) {
 					var option = this.optionsCheckboxWidget.checkboxMultiselectWidget.items[optionIdx];
 					if( option.data === value ) {
 						labeledValues.push( option.label );

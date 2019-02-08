@@ -108,15 +108,15 @@
 		var sortBy = values.sortBy || [];
 		var sortOrder = values.sortOrder || bs.extendedSearch.Lookup.SORT_ASC;
 
-		for( idx in this.currentSortFields ) {
-			var sortedField = this.currentSortFields[idx];
-			if( sortBy.indexOf( sortedField ) == -1 ) {
+		for( var i = 0; i < this.currentSortFields.length; i++ ) {
+			var sortedField = this.currentSortFields[i];
+			if( sortBy.indexOf( sortedField ) === -1 ) {
 				this.lookup.removeSort( sortedField );
 			}
 		}
 
-		for( idx in sortBy ) {
-			this.lookup.addSort( sortBy[idx], sortOrder );
+		for( var i = 0; i < sortBy.length; i++ ) {
+			this.lookup.addSort( sortBy[i], sortOrder );
 		}
 
 		bs.extendedSearch.SearchCenter.updateQueryHash();
@@ -129,8 +129,8 @@
 	bs.extendedSearch.ToolsPanel.prototype.setSortableFields = 	function() {
 		var fields = mw.config.get( 'bsgESSortableFields' );
 		this.sortableFields = [];
-		for( fieldIdx in fields ) {
-			var field = fields[fieldIdx];
+		for( var i = 0; i < fields.length; i++ ) {
+			var field = fields[i];
 
 			var label = field.charAt(0).toUpperCase() + field.slice(1);
 			if( mw.message( 'bs-extendedsearch-searchcenter-sort-field-' + field ).exists() ) {
@@ -153,9 +153,13 @@
 	bs.extendedSearch.ToolsPanel.prototype.setCurrentSortFields = function() {
 		var sortedFields = [];
 		var sortOrder = '';
-		for( sortIdx in this.lookup.getSort() ) {
-			var field = this.lookup.getSort()[sortIdx];
-			for( fieldName in field ) {
+		var sort = this.lookup.getSort();
+		for( var i = 0; i < sort.length; i++ ) {
+			var field = sort[i];
+			for( var fieldName in field ) {
+				if ( !field.hasOwnProperty( fieldName ) ) {
+					continue;
+				}
 				sortedFields.push( fieldName );
 				sortOrder = field[fieldName].order;
 			}
@@ -240,8 +244,8 @@
 			params.filterId = bs.extendedSearch.Lookup.TYPE_FIELD_NAME;
 		}
 
-		for( idx in params.options ) {
-			var value = params.options[idx];
+		for( var i = 0; i < params.options.length; i++ ) {
+			var value = params.options[i];
 			this.lookup.removeFilter( params.filterId, value.data );
 		}
 
@@ -284,34 +288,40 @@
 	 */
 	bs.extendedSearch.ToolsPanel.prototype.addFiltersFromLookup = function() {
 		var queryFiltersWithTypes = this.lookup.getFilters();
-		for( filterType in queryFiltersWithTypes ) {
+		for( var filterType in queryFiltersWithTypes ) {
+			if ( !queryFiltersWithTypes.hasOwnProperty( filterType ) ) {
+				continue;
+			}
 			var queryFilter = queryFiltersWithTypes[filterType];
-			for( filterId in queryFilter ) {
+			for( var filterId in queryFilter ) {
+				if ( !queryFilter.hasOwnProperty( filterId ) ) {
+					continue;
+				}
 				var filterValues = queryFilter[filterId];
 				if( filterId == bs.extendedSearch.Lookup.TYPE_FIELD_NAME ) {
 					filterId = 'type';
 				}
-				for( availableFilterIdx in this.filterData ) {
-					var filter = this.filterData[availableFilterIdx].filter;
+				for( var i = 0; i < this.filterData.length; i++ ) {
+					var filter = this.filterData[i].filter;
 					if( filter.id !== filterId ) {
 						continue;
 					}
 
-					if( filterType == 'terms' ) {
+					if( filterType === 'terms' ) {
 						filter.filterType = 'or';
-					} else if ( filterType == 'term' ) {
+					} else if ( filterType === 'term' ) {
 						filter.filterType = 'and';
 					}
 
 					var selectedOptions = filterValues;
 					filter.selectedOptions = selectedOptions;
 
-					//in case selected options are not in offered options we must add them
-					for( idx in filter.selectedOptions ) {
-						var selectedOption = filter.selectedOptions[idx];
+					// in case selected options are not in offered options we must add them
+					for( var j = 0; j < filter.selectedOptions.length; j++ ) {
+						var selectedOption = filter.selectedOptions[j];
 						var hasOption = false;
-						for( optionIdx in filter.options ) {
-							if( filter.options[optionIdx].data == selectedOption ) {
+						for( var k = 0; k < filter.options.length; k++ ) {
+							if( filter.options[k].data === selectedOption ) {
 								hasOption = true;
 								break;
 							}
@@ -331,9 +341,9 @@
 	}
 
 	bs.extendedSearch.ToolsPanel.prototype.addDefaultFilters = function() {
-		for( var idx in this.defaultFilters ) {
-			var defFilter = this.defaultFilters[idx];
-			for( availableFilterIdx in this.filterData ) {
+		for( var i = 0; i < this.defaultFilters.length; i++ ) {
+			var defFilter = this.defaultFilters[i];
+			for( var availableFilterIdx = 0; availableFilterIdx < this.filterData.length; availableFilterIdx++ ) {
 				var filter = this.filterData[availableFilterIdx].filter;
 				if( filter.id !== defFilter ) {
 					continue;
@@ -362,5 +372,3 @@
 	}
 
 } )( mediaWiki, jQuery, blueSpice, document );
-
-

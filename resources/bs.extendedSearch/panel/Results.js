@@ -85,9 +85,12 @@
 		//We dont want to touch original lookup set in the URL hash
 		var loadMoreLookup = $.extend( true, {}, this.lookup );
 		var sortFields = loadMoreLookup.getSort();
-		for( var idx in sortFields ) {
-			for( field in sortFields[idx] ) {
-				if( field.charAt( 0 ) == '_' ) {
+		for( var i = 0; i < sortFields.length; i++ ) {
+			for( var field in sortFields[i] ) {
+				if ( !sortFields[i].hasProperty( field ) ) {
+					continue;
+				}
+				if( field.charAt( 0 ) === '_' ) {
 					field = field.slice( 1 );
 				}
 

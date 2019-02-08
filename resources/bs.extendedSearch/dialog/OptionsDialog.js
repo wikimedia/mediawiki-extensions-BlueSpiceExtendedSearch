@@ -57,8 +57,8 @@
 			return new OO.ui.Process( function() {
 				var results = {};
 
-				for( pageIdx in me.optionPages ) {
-					var pageName = me.optionPages[pageIdx];
+				for( var i = 0; i < me.optionPages.length; i++ ) {
+					var pageName = me.optionPages[i];
 					var page = me.booklet.getPage( pageName );
 					var value = page.getValue();
 					results[pageName] = value;

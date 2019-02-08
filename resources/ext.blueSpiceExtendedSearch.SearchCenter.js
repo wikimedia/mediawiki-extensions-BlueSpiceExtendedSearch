@@ -25,7 +25,7 @@
 			}
 		};
 
-		for( var idx in availableTypes ) {
+		for( var idx = 0; idx < availableTypes.length; idx++ ) {
 			var type = availableTypes[idx];
 			var message = type;
 			if( mw.message( 'bs-extendedsearch-source-type-' + type + '-label' ).exists()  ) {
@@ -51,6 +51,9 @@
 	function _getFilters( rawFilters ) {
 		var filters = [];
 		for( var filterId in rawFilters ) {
+			if ( !rawFilters.hasOwnProperty( filterId ) ) {
+				continue;
+			}
 			var rawFilter = rawFilters[filterId];
 			//TODO: Change this with some mechanism to get label keys
 			var labelFilterId = filterId.replace( '.', '-' );
@@ -70,8 +73,8 @@
 				}
 			};
 
-			for( var bucketIdx in rawFilter.buckets ) {
-				var bucket = rawFilter.buckets[bucketIdx];
+			for( var i = 0; i < rawFilter.buckets.length; i++ ) {
+				var bucket = rawFilter.buckets[i];
 				filter.filter.options.push( {
 					label: bucket.label || bucket.key,
 					data: bucket.key,
@@ -114,6 +117,9 @@
 			}
 
 			for( var cfgKey in resultStructure ) {
+				if ( !resultStructure.hasOwnProperty( cfgKey ) ) {
+					continue;
+				}
 				if( cfgKey === 'secondaryInfos' ) {
 					cfg[cfgKey] = {
 						top: {
@@ -142,6 +148,9 @@
 			//override values for featured results
 			if( cfg.featured === true ) {
 				for( var featuredField in resultStructure['featured'] ) {
+					if ( !resultStructure['featured'].hasOwnProperty( featuredField ) ) {
+						continue;
+					}
 					var resultKey = resultStructure['featured'][featuredField];
 					var keyValue = search.getResultValueByKey( result, resultKey );
 					if( !( keyValue ) ) {
@@ -169,8 +178,9 @@
 	 */
 	function _formatSecondaryInfoItems( items, result ) {
 		var formattedItems = [];
-		for( var idx in items ) {
-			var item = items[idx];
+
+		for( var i = 0; i < items.length; i++ ) {
+			var item = items[i];
 			if( !( item.name in result ) ) {
 				continue;
 			}
@@ -205,8 +215,8 @@
 		}
 
 		var keyBits = key.split( '.' );
-		for( var bitIdx in keyBits ) {
-			var keyBit = keyBits[bitIdx];
+		for( var i = 0; i < keyBits.length; i++ ) {
+			var keyBit = keyBits[i];
 			if( result[keyBit] ) {
 				result = result[keyBit];
 				value = result;
