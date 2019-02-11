@@ -314,6 +314,11 @@ class Backend {
 			$spellcheck = $this->spellCheck( $lookup, $search, $origTerm );
 			$results = $search->search( $lookup->getQueryDSL() );
 		} catch( \RuntimeException $ex ) {
+			wfDebugLog(
+				'BSExtendedSearch',
+				__METHOD__ . " error: {$ex->getMessage()}"
+			);
+
 			$ret = new \stdClass();
 			//we cannot return anything else other than just exception type,
 			//because any exception message may contain
