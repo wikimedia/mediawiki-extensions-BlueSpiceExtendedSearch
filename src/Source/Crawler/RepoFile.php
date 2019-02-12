@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\Crawler;
 
-class RepoFile extends WikiPage {
+class RepoFile extends File {
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateRepoFile';
 
 	public function crawl() {
@@ -19,13 +19,9 @@ class RepoFile extends WikiPage {
 			if ( $file instanceof \LocalFile === false ) {
 				continue;
 			}
-			if ( $this->oConfig->has( 'extension_blacklist' ) ) {
-				$lcExt = strtolower( $file->getExtension() );
-				foreach( $this->oConfig->get( 'extension_blacklist' ) as $blacklisted ) {
-					if ( $lcExt === strtolower( $blacklisted ) ) {
-						continue 2;
-					}
-				}
+
+			if ( $this->shouldSkip( $file ) ) {
+				continue;
 			}
 
 			$this->addToJobQueue( $title );
