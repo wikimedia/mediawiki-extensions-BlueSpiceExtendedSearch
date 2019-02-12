@@ -19,7 +19,7 @@ class UpdateSpecialPage extends UpdateTitleBase {
 		return \SpecialPageFactory::getPage( $this->getTitle()->getText() );
 	}
 
-	public function run() {
+	public function doRun() {
 		//We need to override UpdateTitleBase::run because as SpecialPage
 		//title does never "exist" in the database
 		$oDP = $this->getSource()->getDocumentProvider();
@@ -28,5 +28,10 @@ class UpdateSpecialPage extends UpdateTitleBase {
 			$this->getDocumentProviderSource()
 		);
 		$this->getSource()->addDocumentsToIndex( [ $aDC ] );
+		return $aDC;
+	}
+
+	protected function isDeletion() {
+		return false;
 	}
 }
