@@ -6,6 +6,8 @@
 			"Mainframe98"
 		]
 	},
+	"bs-extendedsearch-search-input-placeholder": "Zoeken ...",
+	"bs-extendedsearch-source-label-specialpage": "Speciale pagina",
 	"bs-extendedsearch-source-label-repofile": "Bestand uploaden",
 	"bs-extendedsearch-source-label-user": "Gebruiker",
 	"bs-extendedsearch-admin-label-error": "Fout",
