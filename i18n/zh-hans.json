@@ -4,7 +4,8 @@
 			"Liuxinyu970226",
 			"夢蝶葬花",
 			"Phenolla",
-			"A Chinese Wikipedian"
+			"A Chinese Wikipedian",
+			"Ff98sha"
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch搜索后端",
@@ -110,5 +111,8 @@
 	"bs-extendedsearch-search-center-filter-page_language-label": "页面语言",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "页面语言：",
 	"bs-extendedsearch-pref-auto-set-lang-filter": "自动设置语言过滤器",
-	"bs-extendedsearch-search-center-create-page-link": "创建页面“$1”。"
+	"bs-extendedsearch-search-center-create-page-link": "创建页面“$1”。",
+	"bs-extendedsearch-filter-add-button-label": "添加过滤器",
+	"bs-extendedsearch-options-button-label": "搜索选项",
+	"bs-extendedsearch-export-button-label": "导出搜索结果"
 }
