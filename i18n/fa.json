@@ -1,8 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alirezaaa"
+			"Alirezaaa",
+			"Amirsara"
 		]
 	},
+	"bs-extendedsearch-search-input-placeholder": "یافتن…",
+	"bs-extendedsearch-source-label-wikipage": "صفحه ویکی",
+	"bs-extendedsearch-source-label-specialpage": "صفحهٔ ویژه",
+	"bs-extendedsearch-source-label-repofile": "بارگذاری پرونده",
+	"bs-extendedsearch-source-label-user": "کاربر",
+	"bs-extendedsearch-admin-label-error": "خطا",
+	"bs-extendedsearch-search-center-filter-tags-label": "برچسب",
+	"bs-extendedsearch-search-center-filter-tags-with-values-label": "برچسب‌ها:",
+	"bs-extendedsearch-searchcenter-filter-or-label": "یا",
+	"bs-extendedsearch-searchcenter-sort-field-size": "اندازه",
 	"prefs-extendedsearch": "جستجوی گسترده"
 }
