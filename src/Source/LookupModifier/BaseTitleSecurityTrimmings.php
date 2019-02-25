@@ -49,6 +49,7 @@ class BaseTitleSecurityTrimmings extends Base {
 		$prepLookup->clearSourceField();
 		$prepLookup->addSourceField( 'basename' );
 		$prepLookup->addSourceField( 'namespace' );
+		$prepLookup->addSourceField( 'prefixed_title' );
 
 		$excludes = [];
 
@@ -91,7 +92,12 @@ class BaseTitleSecurityTrimmings extends Base {
 					continue;
 				}
 
-				$title = \Title::makeTitle( $data['namespace'], $data['basename'] );
+				if( isset( $data['prefixed_title'] ) ) {
+					$title = \Title::newFromText( $data['prefixed_title'] );
+				}
+				else {
+					$title = \Title::makeTitle( $data['namespace'], $data['basename'] );
+				}
 				if ( !$title instanceof \Title ) {
 					if ( $title->isContentPage() && $title->exists() == false ) {
 						// I cant think of a good reason to show non-existing title in the search
