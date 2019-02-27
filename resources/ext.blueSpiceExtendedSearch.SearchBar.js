@@ -1,7 +1,12 @@
 ( function( mw, $, bs, d, undefined ){
 	bs.extendedSearch.SearchBar = function( cfg ) {
+		OO.EventEmitter.call( this );
+
 		this.init( cfg );
 	};
+
+	OO.initClass( bs.extendedSearch.SearchBar );
+	OO.mixinClass( bs.extendedSearch.SearchBar, OO.EventEmitter );
 
 	bs.extendedSearch.SearchBar.prototype.init = function( cfg ) {
 		cfg = cfg || {};
@@ -11,11 +16,11 @@
 		this.namespace = {};
 
 		this.useNamespacePills = true;
-		if( cfg.useNamespacePills === false ) {
+		if( cfg.hasOwnProperty( 'useNamespacePills' ) && cfg.useNamespacePills === false ) {
 			this.useNamespacePills = false;
 		}
 		this.useSubpagePills = true;
-		if( cfg.useSubpagePills === false ) {
+		if( cfg.hasOwnProperty( 'useSubpagePills' ) && cfg.useSubpagePills === false ) {
 			this.useSubpagePills = false;
 		}
 
@@ -41,8 +46,9 @@
 			.attr( 'id', cfg.cntId + '-wrapper' );
 
 		//Wrap search box input in another div to make it sizable when pill is added
-		this.$searchBoxWrapper.attr( 'style', 'width: ' + this.$searchBox.outerWidth() + 'px; !important' );
-		this.$searchBox.attr( 'style' , 'display: table-cell;' );
+		var wrapperWidth = this.$searchForm.children( '.form-group' ).find( 'input' ).outerWidth();
+		this.$searchBoxWrapper.attr( 'style', 'width: ' + wrapperWidth + 'px !important' );
+		this.$searchBox.attr( 'style', 'display: table-cell;' );
 		this.$searchBox.wrap( this.$searchBoxWrapper );
 
 		//Wire the events
@@ -241,8 +247,9 @@
 		var beforeValue = e.target.value;
 		var value = e.originalEvent.clipboardData.getData( 'Text' );
 		var isChanged = beforeValue !== value;
-
-		if( this.beforeValueChanged( e ) === false ) {
+		var shouldAbort = { abort: false };
+		this.emit( 'beforeValueChanged', e, shouldAbort );
+		if( shouldAbort.abort === true ) {
 			return;
 		}
 		if( !isChanged ) {
@@ -259,10 +266,11 @@
 	bs.extendedSearch.SearchBar.prototype.onKeyUp = function( e ) {
 		var value = e.target.value;
 		var isChanged = this.valueBefore !== value;
-		if( this.beforeValueChanged( e ) === false ) {
+		var shouldAbort = { abort: false };
+		this.emit( 'beforeValueChanged', e, shouldAbort );
+		if( shouldAbort.abort === true ) {
 			return;
 		}
-
 		if( this.valueBefore === '' && value === '' && e.which === 8 ) {
 			//Backspacing on empty field
 			if( this.useSubpagePills ) {
@@ -294,6 +302,8 @@
 	};
 
 	bs.extendedSearch.SearchBar.prototype.onClearSearch = function( e ) {
+		this.emit( 'beforeClearSearch', e );
+
 		this.$searchBox.val( '' );
 		if( this.useNamespacePills ) {
 			this.removeNamespacePill( true );
@@ -302,10 +312,8 @@
 			this.removeSubpagePill( true );
 		}
 		this.toggleClearButton( '' );
-	};
 
-	bs.extendedSearch.SearchBar.prototype.onValueChanged = function() {
-		//For others to override
+		this.emit( 'clearSearch', e );
 	};
 
 	bs.extendedSearch.SearchBar.prototype.setValue = function( value ) {
@@ -321,11 +329,6 @@
 		this.toggleClearButton( value );
 	};
 
-	bs.extendedSearch.SearchBar.prototype.beforeValueChanged = function( e ) {
-		//Others can override this to see if the value checking should be conducted
-		return true;
-	};
-
 	bs.extendedSearch.SearchBar.prototype.changeValue = function( value ) {
 		if( this.useNamespacePills && value ) {
 			value = this.detectNamespace( value );
@@ -336,7 +339,7 @@
 		this.value = value;
 
 		this.toggleClearButton( value );
-		//"Fire" this only when value is actually changed
-		this.onValueChanged();
+		// Emit only when value is actually changed
+		this.emit( 'valueChanged' );
 	};
 } )( mediaWiki, jQuery, blueSpice, document );

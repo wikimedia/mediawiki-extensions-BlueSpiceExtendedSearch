@@ -118,5 +118,6 @@
 	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch - {{GENDER:$2|You}} have {{PLURAL:$1|$1 page|$1 pages}} marked as relevant search {{PLURAL:$1|result|results}}",
 	"bs-extendedsearch-filter-add-button-label": "Add a filter",
 	"bs-extendedsearch-options-button-label": "Search options",
-	"bs-extendedsearch-export-button-label": "Export search results"
+	"bs-extendedsearch-export-button-label": "Export search results",
+	"bs-extendedsearch-search-center-result-file-usage-label": "Used on pages"
 }

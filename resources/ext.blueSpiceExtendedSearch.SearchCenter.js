@@ -194,7 +194,8 @@
 				nolabel: item.nolabel || false,
 				labelKey: item.labelKey || 'bs-extendedsearch-search-center-result-' + item.name + '-label',
 				name: item.name,
-				value: keyValue
+				value: keyValue,
+				showInRightLinks: item.showInRightLinks || false
 			} );
 		}
 		return formattedItems;
@@ -437,18 +438,16 @@
 	} );
 
 
-	searchBar.onValueChanged = function() {
+	searchBar.on( 'valueChanged', function() {
 		search.getLookupObject().removeForceTerm();
-		search.getLookupObject().setQueryString( this.value );
+		search.getLookupObject().setQueryString( searchBar.value );
 		updateQueryHash();
-	};
+	} );
 
-	searchBar.onClearSearch = function() {
-		bs.extendedSearch.SearchBar.prototype.onClearSearch.call( this );
-
+	searchBar.on ( 'clearSearch', function() {
 		search.clearLookupObject();
 		bs.extendedSearch.utils.clearFragment();
-	};
+	} );
 
 	function updateQueryHash() {
 		bs.extendedSearch.utils.setFragment({
@@ -470,7 +469,7 @@
 		config = JSON.parse( mw.config.get( 'bsgLookupConfig' ) );
 	}
 
-	if( $.isEmptyObject( config ) == false ) {
+	if( $.isEmptyObject( config ) === false ) {
 		search.makeLookup( config );
 		//Update searchBar if page is loaded with query present
 		var query = search.getLookupObject().getQueryString();
@@ -481,11 +480,8 @@
 			updateQueryHash();
 		}
 
-		//Remove query string param "q" in case its set
-		var queryStringParam = bs.extendedSearch.utils.getQueryStringParam( 'q' );
-		if( queryStringParam ) {
-			bs.extendedSearch.utils.removeQueryStringParam( 'q' );
-		}
+		// Remove query string params passed once we set the hash
+		bs.extendedSearch.utils.removeQueryStringParams( [ 'q', 'raw_term', 'fulltext' ] );
 	}
 
 } )( mediaWiki, jQuery, blueSpice, document );

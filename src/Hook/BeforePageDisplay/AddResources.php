@@ -6,18 +6,13 @@ class AddResources extends \BlueSpice\Hook\BeforePageDisplay {
 
 	protected function doProcess() {
 		$title = $this->out->getTitle();
-		if( $title != \SpecialPage::getTitleFor( 'BSSearchCenter' ) ) {
+		if ( $title->equals( \SpecialPage::getTitleFor( 'BSSearchCenter' ) ) === false ) {
 			$this->out->addJsConfigVars(
 				"ESUseCompactAutocomplete",
 				$this->getConfig()->get( 'ESCompactAutocomplete' )
 			);
+
 			$this->out->addModules( "ext.blueSpiceExtendedSearch.SearchFieldAutocomplete" );
-			$this->out->addModuleStyles(
-				"ext.blueSpiceExtendedSearch.Autocomplete.styles"
-			);
-			$this->out->addModuleStyles(
-				"ext.blueSpiceExtendedSearch.SearchBar.styles"
-			);
 		}
 
 		$autocompleteConfig = \ExtensionRegistry::getInstance()
