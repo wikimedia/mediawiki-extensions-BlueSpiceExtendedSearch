@@ -398,6 +398,9 @@
 		"ESBackendPort": {
 			"value": "9200"
 		},
+		"ESBackendTransport": {
+			"value": "http"
+		},
 		"ESEnableSearchHistoryTracking": {
 			"value": true
 		},
