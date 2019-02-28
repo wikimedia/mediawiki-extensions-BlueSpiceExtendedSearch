@@ -103,13 +103,15 @@ class Backend {
 		$backendClass = $config->get( 'ESBackendClass' );
 		$backendHost = $config->get( 'ESBackendHost' );
 		$backendPort = $config->get( 'ESBackendPort' );
+		$backendTransport = $config->get( 'ESBackendTransport' );
 		$sourceRegistry = new ExtensionAttributeBasedRegistry( 'BlueSpiceExtendedSearchSources' );
 		$sources = $sourceRegistry->getAllKeys();
 
 		return new $backendClass ( [
 			'connection' => [
 				'host' => $backendHost,
-				'port' => $backendPort
+				'port' => $backendPort,
+				'transport' => $backendTransport
 			],
 			'sources' => $sources
 		] );
