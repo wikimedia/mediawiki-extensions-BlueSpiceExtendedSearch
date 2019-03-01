@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\Crawler;
 
-class ExternalFile extends Base {
+class ExternalFile extends File {
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateExternalFile';
 
 	public function crawl() {
@@ -24,6 +24,10 @@ class ExternalFile extends Base {
 			foreach( $files as $file ) {
 				$file instanceof \SplFileInfo;
 				if( $file->isDir() ) {
+					continue;
+				}
+
+				if ( $this->shouldSkip( $file ) ) {
 					continue;
 				}
 
