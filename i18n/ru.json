@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Okras",
-			"Vlad5250"
+			"Vlad5250",
+			"Romanko Mikhail"
 		]
 	},
+	"bssearchadmin": "Поиск администратора",
 	"bssearchcenter": "Центр поиска",
 	"apihelp-bs-extendedsearch-query-description": "Поиск по индексу",
 	"apihelp-bs-extendedsearch-query-summary": "Поиск по индексу",
@@ -66,8 +68,13 @@
 	"bs-extendedseach-wikipage-section-more-text": " ... $1 ещё",
 	"bs-extendedsearch-pref-compact-ac-paths": "Использовать простое автозаполнение",
 	"bs-extendedsearch-search-center-result-redirects-label": "Перенаправлено с:",
+	"bs-extendedsearch-redirect-target-label": "Перенаправить на:",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Язык страницы",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Язык страницы:",
 	"bs-extendedsearch-wikipage-title-original": "(оригинальное название: $1)",
-	"bs-extendedsearch-search-center-create-page-link": "Создать страницу «$1»"
+	"bs-extendedsearch-search-center-create-page-link": "Создать страницу «$1»",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Страница $1: Текст: $2",
+	"bs-extendedsearch-filter-add-button-label": "Добавить фильтр",
+	"bs-extendedsearch-options-button-label": "Настройки поиска",
+	"bs-extendedsearch-export-button-label": "Экспортировать результаты поиска"
 }
