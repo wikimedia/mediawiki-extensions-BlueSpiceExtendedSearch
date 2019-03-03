@@ -5,7 +5,8 @@
 			"夢蝶葬花",
 			"Phenolla",
 			"A Chinese Wikipedian",
-			"Ff98sha"
+			"Ff98sha",
+			"佛壁灯"
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch搜索后端",
@@ -110,8 +111,13 @@
 	"bs-extendedsearch-redirect-target-label": "重定向至：",
 	"bs-extendedsearch-search-center-filter-page_language-label": "页面语言",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "页面语言：",
+	"bs-extendedsearch-wikipage-title-original": "(原始标题: $1)",
+	"bs-extendedsearch-auto-set-lang-filter-desc": "是否根据用户/维基语言自动设置页面语言过滤器",
 	"bs-extendedsearch-pref-auto-set-lang-filter": "自动设置语言过滤器",
 	"bs-extendedsearch-search-center-create-page-link": "创建页面“$1”。",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "页面 $1: 文本: $2",
+	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpiceExtendedSearch - 搜索历史: 条目 (搜索次数): $1",
+	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch - {{GENDER:$2|您}}将 $1 页标记为有相关搜索结果。",
 	"bs-extendedsearch-filter-add-button-label": "添加过滤器",
 	"bs-extendedsearch-options-button-label": "搜索选项",
 	"bs-extendedsearch-export-button-label": "导出搜索结果"
