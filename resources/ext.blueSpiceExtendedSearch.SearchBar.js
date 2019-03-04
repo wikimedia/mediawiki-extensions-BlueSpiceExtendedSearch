@@ -47,7 +47,7 @@
 
 		//Wrap search box input in another div to make it sizable when pill is added
 		var wrapperWidth = this.$searchForm.children( '.form-group' ).find( 'input' ).outerWidth();
-		this.$searchBoxWrapper.attr( 'style', 'width: ' + wrapperWidth + 'px !important' );
+		this.$searchBoxWrapper.attr( 'style', 'width: ' + wrapperWidth + 'px' );
 		this.$searchBox.attr( 'style', 'display: table-cell;' );
 		this.$searchBox.wrap( this.$searchBoxWrapper );
 
@@ -137,7 +137,7 @@
 			.addClass( 'bs-extendedsearch-searchbar-pill namespace-pill' )
 			.html( this.namespace.text + ':' );
 		this.$searchBox.before( this.$pill );
-		this.setSearchBoxWidthInline( sbW - this.$pill.outerWidth(), true );
+		this.setSearchBoxWidthInline( sbW - this.$pill.outerWidth() );
 		this.$searchBox.val( value );
 	};
 
@@ -151,7 +151,7 @@
 			.addClass( 'bs-extendedsearch-searchbar-pill subpage-pill' )
 			.html( this.mainpage + '/' );
 		this.$searchBox.before( this.$pill );
-		this.setSearchBoxWidthInline( sbW - this.$pill.outerWidth(), true );
+		this.setSearchBoxWidthInline( sbW - this.$pill.outerWidth() );
 		this.$searchBox.val( value );
 	}
 
@@ -166,7 +166,7 @@
 		if( pill.length === 0 ) {
 			return false;
 		}
-		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() + pill.outerWidth(), true );
+		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() + pill.outerWidth() );
 		pill.remove();
 		return true;
 	};
@@ -182,7 +182,7 @@
 		if( pill.length === 0 ) {
 			return false;
 		}
-		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() + pill.outerWidth(), true );
+		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() + pill.outerWidth() );
 		pill.remove();
 		return true;
 	};
@@ -204,7 +204,7 @@
 		clearButton.$element.on( 'click', this.onClearSearch.bind( this ) );
 		var cbW = clearButton.$element.outerWidth();
 
-		this.setSearchBoxWidthInline( sbW - cbW, true );
+		this.setSearchBoxWidthInline( sbW - cbW );
 		this.$searchBox.addClass( 'clear-present' );
 	};
 
@@ -213,17 +213,13 @@
 		if( $clearButton.length === 0 ){
 			return;
 		}
-		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() + $clearButton.outerWidth(), true );
+		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() + $clearButton.outerWidth() );
 		$clearButton.remove();
 		this.$searchBox.removeClass( 'clear-present' );
 	};
 
-	bs.extendedSearch.SearchBar.prototype.setSearchBoxWidthInline = function( width, important ) {
-		important = important || false;
+	bs.extendedSearch.SearchBar.prototype.setSearchBoxWidthInline = function( width ) {
 		var value = 'display: table-cell; width:' + width + 'px';
-		if( important ) {
-			value += " !important ";
-		}
 
 		this.$searchBox.attr( 'style', value );
 	};
