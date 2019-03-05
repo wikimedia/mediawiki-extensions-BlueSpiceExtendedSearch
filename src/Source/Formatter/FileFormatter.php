@@ -38,6 +38,9 @@ class FileFormatter extends Base {
 		$resultStructure = $defaultResultStructure;
 		$resultStructure['imageUri'] = "image_uri";
 		$resultStructure['highlight'] = "highlight";
+		$resultStructure['secondaryResults']['top']['items'][] = [
+			"name" => "file_usage"
+		];
 
 		//All fields under "featured" key will only appear is result is featured
 		$resultStructure['featured']['imageUri'] = "image_uri";

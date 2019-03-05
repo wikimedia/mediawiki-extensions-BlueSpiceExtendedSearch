@@ -83,14 +83,15 @@
 		//Fuzzy results when no NS is selected and hits in other NSs when it is
 		for( var i = 0; i < suggestions.length; i++ ) {
 			var suggestion = suggestions[i];
-			if( suggestion.rank == bs.extendedSearch.Autocomplete.AC_RANK_SECONDARY
+			if( suggestion.rank === bs.extendedSearch.Autocomplete.AC_RANK_SECONDARY
 					|| this.namespaceId != 0 ) {
 				if( this.displayLimits.secondary <= this.displayedResults.secondary.length ) {
 					continue;
 				}
 				this.$secondaryResults.append(
 					new bs.extendedSearch.AutocompleteSecondaryResult( {
-						suggestion: suggestion
+						suggestion: suggestion,
+						popup: this
 					} ).$element
 				);
 				this.displayedResults.secondary.push( suggestion );

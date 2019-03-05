@@ -13,7 +13,10 @@ class WikiPage extends DecoratorBase {
 		$aPC = array_merge( $aPC, [
 			'prefixed_title' => [
 				'type' => 'text',
-				'copy_to' => [ 'congregated', 'ac_ngram' ],
+				'copy_to' => [ 'congregated', 'ac_ngram', 'prefixed_title_exact' ],
+			],
+			'prefixed_title_exact' => [
+				'type' => 'keyword'
 			],
 			'sections' => [
 				'type' => 'keyword',
@@ -26,7 +29,7 @@ class WikiPage extends DecoratorBase {
 			'rendered_content' => [
 				'type' => 'text',
 				'copy_to' => 'congregated',
-				'store' => true //required to be able to retrive highlights
+				'store' => true //required to be able to retrieve highlights
 			],
 			'namespace' => [
 				'type' => 'integer'
@@ -57,6 +60,9 @@ class WikiPage extends DecoratorBase {
 			'display_title' => [
 				'type' => 'keyword',
 				'copy_to' => [ 'congregated', 'ac_ngram' ]
+			],
+			'used_files' => [
+				'type' => 'keyword'
 			]
 		] );
 

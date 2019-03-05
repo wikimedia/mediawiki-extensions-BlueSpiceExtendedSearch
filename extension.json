@@ -1,7 +1,7 @@
 {
 	"name": "BlueSpiceExtendedSearch",
 	"license-name": "GPL-3.0-only",
-	"version": "3.0.1",
+	"version": "3.1.0",
 	"author": [
 		"Robert Vogel",
 		"Dejan Savuljesku"
@@ -234,14 +234,12 @@
 				"oojs-ui"
 			]
 		},
-		"ext.blueSpiceExtendedSearch.SearchBar.styles": {
-			"styles": [
-				"ext.blueSpiceExtendedSearch.SearchBar.less"
-			]
-		},
 		"ext.blueSpiceExtendedSearch.SearchBar": {
 			"scripts": [
 				"ext.blueSpiceExtendedSearch.SearchBar.js"
+			],
+			"styles": [
+				"ext.blueSpiceExtendedSearch.SearchBar.less"
 			],
 			"messages": [
 				"bs-extendedsearch-autocomplete-result-primary-no-results-label",
@@ -264,11 +262,6 @@
 				"ext.blueSpiceExtendedSearch.Autocomplete"
 			]
 		},
-		"ext.blueSpiceExtendedSearch.Autocomplete.styles": {
-			"styles": [
-				"ext.blueSpiceExtendedSearch.Autocomplete.less"
-			]
-		},
 		"ext.blueSpiceExtendedSearch.Autocomplete": {
 			"scripts": [
 				"bs.extendedSearch/mixin/Autocomplete.js",
@@ -277,6 +270,9 @@
 				"bs.extendedSearch/widget/autocomplete/SecondaryResult.js",
 				"bs.extendedSearch/widget/autocomplete/TopMatch.js",
 				"bs.extendedSearch/Autocomplete.js"
+			],
+			"styles": [
+				"ext.blueSpiceExtendedSearch.Autocomplete.less"
 			],
 			"messages": [
 				"bs-extendedsearch-autocomplete-result-primary-no-results-label",
@@ -289,11 +285,6 @@
 			],
 			"dependencies": [
 				"ext.blueSpiceExtendedSearch.SearchBar"
-			]
-		},
-		"ext.blueSpiceExtendedSearch.SearchCenter.styles": {
-			"styles": [
-				"ext.blueSpiceExtendedSearch.SearchCenter.less"
 			]
 		},
 		"ext.blueSpiceExtendedSearch.SearchCenter": {
@@ -313,6 +304,9 @@
 				"bs.extendedSearch/panel/ResultMessage.js",
 				"bs.extendedSearch/panel/Tools.js",
 				"ext.blueSpiceExtendedSearch.SearchCenter.js"
+			],
+			"styles": [
+				"ext.blueSpiceExtendedSearch.SearchCenter.less"
 			],
 			"messages": [
 				"bs-extendedsearch-search-center-hitcount-widget",
@@ -372,9 +366,11 @@
 				"bs-extendedsearch-search-center-filter-page_language-with-values-label",
 				"bs-extendedsearch-wikipage-title-original",
 				"bs-extendedsearch-search-center-create-page-link",
+				"bs-extendedsearch-search-center-create-page-link",
 				"bs-extendedsearch-filter-add-button-label",
 				"bs-extendedsearch-options-button-label",
-				"bs-extendedsearch-export-button-label"
+				"bs-extendedsearch-export-button-label",
+				"bs-extendedsearch-search-center-result-file-usage-label"
 			],
 			"dependencies" : [
 				"ext.bluespice.extjs",

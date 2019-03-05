@@ -5,6 +5,7 @@ namespace BS\ExtendedSearch\Source\Formatter;
 use BS\ExtendedSearch\Source\Formatter\Base;
 use BlueSpice\DynamicFileDispatcher\Params;
 use BlueSpice\DynamicFileDispatcher\ArticlePreviewImage;
+use MediaWiki\MediaWikiServices;
 
 class WikiPageFormatter extends Base {
 	public function getResultStructure ( $defaultResultStructure = [] ) {
@@ -13,7 +14,12 @@ class WikiPageFormatter extends Base {
 		$resultStructure['original_title'] = 'original_title';
 		$resultStructure['highlight'] = 'highlight';
 		$resultStructure['secondaryInfos']['top']['items'][] = [
-			"name" => "sections"
+			"name" => "sections",
+			"showInRightLinks" => true
+		];
+		$resultStructure['secondaryInfos']['top']['items'][] = [
+			"name" => "file-usage",
+			"showInRightLinks" => true
 		];
 		$resultStructure['secondaryInfos']['top']['items'][] = [
 			"name" => "redirects"
@@ -48,6 +54,12 @@ class WikiPageFormatter extends Base {
 
 		$result['basename'] = $result['display_title'];
 		$result['original_title'] = $this->getOriginalTitleText( $result );
+
+		$result['file-usage'] = '';
+		if ( $result['namespace'] === NS_FILE ) {
+			$result['file-usage'] = $this->getFileUsage( $result['prefixed_title'] );
+		}
+
 
 		$this->addAnchorAndImageUri( $result );
 	}
@@ -344,5 +356,42 @@ class WikiPageFormatter extends Base {
 		}
 	}
 
-}
+	protected function getFileUsage( $title ) {
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()
+			->getConnection( DB_REPLICA );
 
+		// Would be nice to get this info from the index w/o running another query
+		$target = \Title::newFromText( $title );
+		$res = $dbr->select(
+			[ 'imagelinks', 'page' ],
+			[ 'page_namespace', 'page_title', 'il_to' ],
+			[ 'il_to' => $target->getDBkey(), 'il_from = page_id' ],
+			__METHOD__,
+			[ 'LIMIT' => 5, 'ORDER BY' => 'il_from', ]
+		);
+		if ( $res->numRows() === 0 ) {
+			return '';
+		}
+
+		$usedInPages = [];
+		foreach( $res as $row ) {
+			$usedInPages[] = \Title::makeTitle(
+				$row->page_namespace,
+				$row->page_title
+			);
+		}
+
+		$morePages = false;
+		$formattedPages = [];
+		foreach( $usedInPages as $idx => $pageTitle ) {
+			if( $idx > 2 ) {
+				$morePages = true;
+				break;
+			}
+			$formattedPages[] = $this->linkRenderer->makeLink( $pageTitle );
+		}
+
+		return implode( Base::VALUE_SEPARATOR, $formattedPages ) . ( $morePages ? Base::MORE_VALUES_TEXT : '' );
+	}
+
+}
