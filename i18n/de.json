@@ -119,5 +119,8 @@
 	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch – {{GENDER:$2|Du}} hast {{PLURAL:$1|eine Seite|$1 Seiten}} als {{PLURAL:$1|relevantes Suchergebnis|relevante Suchergebnisse}} markiert",
 	"bs-extendedsearch-filter-add-button-label": "Einen Filter hinzufügen",
 	"bs-extendedsearch-options-button-label": "Suchoptionen",
-	"bs-extendedsearch-export-button-label": "Suchergebnisse exportieren"
+	"bs-extendedsearch-export-button-label": "Suchergebnisse exportieren",
+	"bs-extendedsearch-flyout-similar-pages-title": "Ähnliche Seiten",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Keine ähnlichen Seiten gefunden",
+	"bs-extendedsearch-search-center-result-file-usage-label": "Verwendet auf den Seiten"
 }

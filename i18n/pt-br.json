@@ -116,5 +116,8 @@
 	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch - {{GENDER:$2|Tem}} $1 {{PLURAL:$1|página marcada como|páginas marcadas como}} {{PLURAL:$1|resultado relevante|resultados relevantes}} de pesquisas",
 	"bs-extendedsearch-filter-add-button-label": "Acrescentar um filtro",
 	"bs-extendedsearch-options-button-label": "Opções de pesquisa",
-	"bs-extendedsearch-export-button-label": "Exportar resultados da pesquisa"
+	"bs-extendedsearch-export-button-label": "Exportar resultados da pesquisa",
+	"bs-extendedsearch-flyout-similar-pages-title": "Páginas similares",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Nenhuma página semelhante encontrada",
+	"bs-extendedsearch-search-center-result-file-usage-label": "Usado em páginas"
 }
