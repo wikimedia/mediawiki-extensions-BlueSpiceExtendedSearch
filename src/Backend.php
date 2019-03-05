@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch;
 
 use BlueSpice\ExtensionAttributeBasedRegistry;
+use BS\ExtendedSearch\Source\WikiPages;
 use MediaWiki\MediaWikiServices;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 use Wikimedia\ObjectFactory;
@@ -613,5 +614,109 @@ class Backend {
 				'esh_lookup' => serialize( $data['lookup'] )
 			]
 		);
+	}
+
+	/**
+	 * Gets pages similar to given page
+	 *
+	 * TODO: Whether hard-coded values here should go to configs
+	 * depends on fine-tuning, then we will know if it makes sense
+	 *
+	 * @param \Title $title
+	 * @return array
+	 */
+	public function getSimilarPages( \Title $title ) {
+		$wikipageSource = $this->getSource( 'wikipage' );
+		if ( $wikipageSource instanceof WikiPages === false ) {
+			return [];
+		}
+
+		// Searching "like" certain _id showed to yield best results
+		$docId = $this->getDocIdForTitle( $title );
+		if ( $docId === null ) {
+			return [];
+		}
+
+		$index = $this->getIndexByType( $wikipageSource->getTypeKey() );
+		$lookup = new Lookup();
+		$lookup->setMLTQuery(
+			$docId,
+			[ 'prefixed_title', 'source_content' ],
+			[
+				// This is very important config. It is the minimal number of docs that need to be similar.
+				// If it cannot find enough similar docs, it will return basically random results.
+				"min_doc_freq" => 1
+			],
+			$index->getName()
+		);
+		$lookup->addSourceField( 'prefixed_title' );
+		$lookup->setSize( 10 );
+
+		$search = new \Elastica\Search( $this->getClient() );
+		$search->addIndex( $index );
+		$results = $search->search( $lookup->getQueryDSL() );
+
+		$results = $results->getResults();
+		$topScore = 0;
+		foreach( $results as $result ) {
+			if( $result->getScore() > $topScore ) {
+				$topScore = $result->getScore();
+			}
+		}
+
+		$pages = [];
+		foreach( $results as $result ) {
+			$score = $result->getScore();
+			if ( $topScore > 0 ) {
+				$percentOfTopScore = $score * 100 / $topScore;
+				if ( $percentOfTopScore < 50 ) {
+					// Results that score less than 50% of top score
+					// are usually useless
+					continue;
+				}
+			}
+
+			$data = $result->getData();
+			$title = \Title::newFromText( $data['prefixed_title'] );
+			if ( $title instanceof \Title === false || $title->exists() === false ) {
+				continue;
+			}
+			$pages[$title->getPrefixedText()] = $title;
+		}
+
+		return $pages;
+	}
+
+	/**
+	 * Get indexed _id of the given Title
+	 *
+	 * @param \Title $title
+	 * @return string|null if page not indexed
+	 */
+	protected function getDocIdForTitle( \Title $title ) {
+		$wikipageSource = $this->getSource( 'wikipage' );
+
+		$search = new \Elastica\Search( $this->getClient() );
+		$search->addIndex( $this->getIndexByType( $wikipageSource->getTypeKey() ) );
+
+		$lookup = new Lookup( [
+			"query" => [
+				"term" => [
+					"prefixed_title_exact" => $title->getPrefixedText()
+				]
+			]
+		] );
+		$lookup->setSize( 1 );
+		$lookup->addSourceField( "prefixed_title" );
+
+		$results = $search->search( $lookup->getQueryDSL() );
+
+		if ( $results->count() === 0 ) {
+			return null;
+		}
+
+		foreach( $results->getResults() as $result ) {
+			return $result->getId();
+		}
 	}
 }

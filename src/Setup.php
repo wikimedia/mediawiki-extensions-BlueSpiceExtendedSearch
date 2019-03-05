@@ -54,7 +54,7 @@ class Setup {
 			)
 		);
 
-		$template->set( 'bs_search_method', 'POST' );
+		$template->set( 'bs_search_method', 'GET' );
 
 		$template->set( 'bs_search_mobile_id', 'bs-extendedsearch-mobile-box' );
 		$template->set(

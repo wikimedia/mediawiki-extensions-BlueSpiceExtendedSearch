@@ -36,12 +36,16 @@
 		}
 	}
 
-	function _removeQueryStringParam( param ) {
+	function _removeQueryStringParams( params ) {
+		if ( $.isArray( params ) === false ) {
+			params = [ params ];
+		}
 		var search = location.search;
-		search = search
-			.replace( new RegExp('[?&]' + param + '=[^&#]*(#.*)?$' ), '$1' )
-			.replace( new RegExp('([?&])' + param + '=[^&]*&'), '$1' );
-
+		for( var i = 0; i < params.length; i++ ) {
+			search = search
+				.replace( new RegExp('[?&]' + params[i] + '=[^&#]*(#.*)?$' ), '$1' )
+				.replace( new RegExp('([?&])' + params[i] + '=[^&]*&'), '$1' );
+		}
 		var newUrl = window.location.href.replace( window.location.search, search );
 		this.pushHistory(
 			newUrl
@@ -49,7 +53,7 @@
 	}
 
 	function _pushHistory( url ) {
-		window.history.pushState({path:url},'',url);
+		window.history.replaceState( {path:url},'',url );
 	}
 	/**
 	 *
@@ -68,8 +72,7 @@
 	 * @param Location loc
 	 * @returns void
 	 */
-	function _setFragment( obj, loc ) {
-		var location = loc || window.location;
+	function _setFragment( obj ) {
 		var hashMap = {};
 
 		for( var key in obj ) {
@@ -81,7 +84,8 @@
 			hashMap[key] = encValue;
 		}
 
-		location.hash = $.param( hashMap );
+		history.replaceState( undefined, undefined, "#" + $.param( hashMap ) );
+		$( window ).trigger( 'hashchange' );
 	}
 
 	function _clearFragment( loc ) {
@@ -111,9 +115,8 @@
 	function _isMobile() {
 		//MobileFrontend is required to make this decision
 		//on load-time, it is not used, so we init correct type here
-		var $mobileSearchBox = $( '#bs-extendedsearch-mobile-box' );
-
-		if ( $mobileSearchBox.is( ':visible' ) ) {
+		var $nav = $( '.calumma-mobile-visible' );
+		if ( $nav.is( ':visible' ) && window.innerWidth < 1000 ) {
 			return true;
 		}
 
@@ -127,7 +130,7 @@
 		getQueryStringParam: _getQueryStringParam,
 		getNamespacesList: _getNamespacesList,
 		getNamespaceNames: _getNamespaceNames,
-		removeQueryStringParam: _removeQueryStringParam,
+		removeQueryStringParams: _removeQueryStringParams,
 		pushHistory: _pushHistory,
 		isMobile: _isMobile
 	};

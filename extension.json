@@ -94,6 +94,14 @@
 				}
 			}
 		},
+		"BlueSpiceArticleInfo": {
+			"FlyoutModules": {
+				"similar-pages": {
+					"module": "ext.blueSpiceExtendedSearch.similarpages.flyout",
+					"make-items-callback": "bs.extendedsearch.flyout.makeSimilarPages"
+				}
+			}
+		},
 		"BlueSpiceExtendedSearch": {
 			"Sources": {
 				"wikipage": "BS\\ExtendedSearch\\Source\\WikiPages::create",
@@ -198,7 +206,10 @@
 	"Hooks": {
 		"ResourceLoaderTestModules": "BS\\ExtendedSearch\\Setup::onResourceLoaderTestModules",
 		"SkinTemplateOutputPageBeforeExec": "BS\\ExtendedSearch\\Setup::onSkinTemplateOutputPageBeforeExec",
-		"BeforePageDisplay": "BS\\ExtendedSearch\\Hook\\BeforePageDisplay\\AddResources::callback",
+		"BeforePageDisplay": [
+			"BS\\ExtendedSearch\\Hook\\BeforePageDisplay\\AddResources::callback",
+			"BS\\ExtendedSearch\\Hook\\BeforePageDisplay\\AddSimilarPages::callback"
+		],
 		"LoadExtensionSchemaUpdates":  [
 			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddRelevanceTable::callback",
 			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddHistoryTable::callback"
@@ -234,14 +245,12 @@
 				"oojs-ui"
 			]
 		},
-		"ext.blueSpiceExtendedSearch.SearchBar.styles": {
-			"styles": [
-				"ext.blueSpiceExtendedSearch.SearchBar.less"
-			]
-		},
 		"ext.blueSpiceExtendedSearch.SearchBar": {
 			"scripts": [
 				"ext.blueSpiceExtendedSearch.SearchBar.js"
+			],
+			"styles": [
+				"ext.blueSpiceExtendedSearch.SearchBar.less"
 			],
 			"messages": [
 				"bs-extendedsearch-autocomplete-result-primary-no-results-label",
@@ -264,11 +273,6 @@
 				"ext.blueSpiceExtendedSearch.Autocomplete"
 			]
 		},
-		"ext.blueSpiceExtendedSearch.Autocomplete.styles": {
-			"styles": [
-				"ext.blueSpiceExtendedSearch.Autocomplete.less"
-			]
-		},
 		"ext.blueSpiceExtendedSearch.Autocomplete": {
 			"scripts": [
 				"bs.extendedSearch/mixin/Autocomplete.js",
@@ -277,6 +281,9 @@
 				"bs.extendedSearch/widget/autocomplete/SecondaryResult.js",
 				"bs.extendedSearch/widget/autocomplete/TopMatch.js",
 				"bs.extendedSearch/Autocomplete.js"
+			],
+			"styles": [
+				"ext.blueSpiceExtendedSearch.Autocomplete.less"
 			],
 			"messages": [
 				"bs-extendedsearch-autocomplete-result-primary-no-results-label",
@@ -289,11 +296,6 @@
 			],
 			"dependencies": [
 				"ext.blueSpiceExtendedSearch.SearchBar"
-			]
-		},
-		"ext.blueSpiceExtendedSearch.SearchCenter.styles": {
-			"styles": [
-				"ext.blueSpiceExtendedSearch.SearchCenter.less"
 			]
 		},
 		"ext.blueSpiceExtendedSearch.SearchCenter": {
@@ -313,6 +315,9 @@
 				"bs.extendedSearch/panel/ResultMessage.js",
 				"bs.extendedSearch/panel/Tools.js",
 				"ext.blueSpiceExtendedSearch.SearchCenter.js"
+			],
+			"styles": [
+				"ext.blueSpiceExtendedSearch.SearchCenter.less"
 			],
 			"messages": [
 				"bs-extendedsearch-search-center-hitcount-widget",
@@ -374,7 +379,8 @@
 				"bs-extendedsearch-search-center-create-page-link",
 				"bs-extendedsearch-filter-add-button-label",
 				"bs-extendedsearch-options-button-label",
-				"bs-extendedsearch-export-button-label"
+				"bs-extendedsearch-export-button-label",
+				"bs-extendedsearch-search-center-result-file-usage-label"
 			],
 			"dependencies" : [
 				"ext.bluespice.extjs",
@@ -384,6 +390,18 @@
 		"ext.blueSpiceExtendedSearch.SearchAdmin.styles": {
 			"styles": [
 				"ext.blueSpiceExtendedSearch.SearchAdmin.less"
+			]
+		},
+		"ext.blueSpiceExtendedSearch.similarpages.flyout": {
+			"scripts": [
+				"ext.blueSpiceExtendedSearch.similarpages.flyout.js"
+			],
+			"messages": [
+				"bs-extendedsearch-flyout-similar-pages-title",
+				"bs-extendedsearch-flyout-similar-pages-emptytext"
+			],
+			"dependencies": [
+				"ext.bluespice.extjs"
 			]
 		}
 	},

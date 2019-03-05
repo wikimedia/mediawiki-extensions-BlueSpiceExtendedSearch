@@ -13,9 +13,9 @@
 
 		//Wire the events
 		this.searchBar.$searchForm.on( 'submit', this.onSubmit.bind( this ) );
-		this.searchBar.beforeValueChanged = this.beforeValueChanged.bind( this );
-		this.searchBar.onValueChanged = this.onValueChanged.bind( this );
-		this.searchBar.onClearSearch = this.onClearSearch.bind( this );
+		this.searchBar.on( 'beforeValueChanged', this.beforeValueChanged.bind( this ) );
+		this.searchBar.on( 'valueChanged', this.onValueChanged.bind( this ) );
+		this.searchBar.on( 'clearSearch', this.onClearSearch.bind( this ) );
 		$( window ).on( 'click', this.onWindowClick.bind( this ) );
 	}
 
@@ -55,42 +55,48 @@
 		this.searchBar.$searchForm.append( $lookupField );
 	}
 
-	function _beforeValueChanged( e ) {
+	function _beforeValueChanged( e, shouldAbort ) {
 		if( e.type != 'keyup' ) {
+			shouldAbort.abort = false;
 			return;
 		}
 
 		//Escape - close popup
 		if( e.which == 27 ) {
 			this.removePopup();
-			return false;
+			shouldAbort.abort = true;
+			return;
 		}
 
 		//Down key
 		if( e.which == 40 ) {
 			this.navigateThroughResults( 'down' );
-			return false;
+			shouldAbort.abort = true;
+			return;
 		}
 
 		//Up key
 		if( e.which == 38 ) {
 			this.navigateThroughResults( 'up' );
-			return false;
+			shouldAbort.abort = true;
+			return;
 		}
 
 		//Left key
 		if( e.which == 37 ) {
 			this.navigateThroughResults( 'left' );
-			return false;
+			shouldAbort.abort = true;
+			return;
 		}
 
 		//Right key
 		if( e.which == 39 ) {
 			this.navigateThroughResults( 'right' );
-			return false;
+			shouldAbort.abort = true;
+			return;
 		}
 
-		return true;
+		shouldAbort.abort = false;
 	}
 
 	function _onValueChanged() {
@@ -108,7 +114,6 @@
 
 	//Clear all search params
 	function _onClearSearch() {
-		bs.extendedSearch.SearchBar.prototype.onClearSearch.call( this.searchBar );
 		this.removePopup();
 	}
 
@@ -183,7 +188,7 @@
 				mainpageQuery
 			];
 
-			//We dont want to search for subpages of a page with this name
+			// We dont want to search for subpages of a page with this name
 			// in all namespaces. If ns is not set search in NS_MAIN
 			if( $.isEmptyObject( this.searchBar.namespace )  ) {
 				lookup.addTermFilter( 'namespace', 0 );

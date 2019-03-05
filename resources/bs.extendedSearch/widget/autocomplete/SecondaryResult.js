@@ -4,9 +4,12 @@
 	bs.extendedSearch.AutocompleteSecondaryResult = function( cfg ) {
 		cfg = cfg || {};
 
+		this.popup = cfg.popup;
+
 		this.$element = $( '<div>' );
 
-		bs.extendedSearch.AutocompleteSecondaryResult.parent.call( this, cfg );
+		bs.extendedSearch.AutocompleteSecondaryResult.parent.call( this, {} );
+		bs.extendedSearch.mixin.AutocompleteHeader.call( this, cfg.suggestion );
 
 		this.$element.append( this.$header, this.$type );
 
