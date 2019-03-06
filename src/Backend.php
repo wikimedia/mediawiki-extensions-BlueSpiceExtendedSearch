@@ -54,6 +54,15 @@ class Backend {
 	}
 
 	/**
+	 * @param $sourceKey
+	 */
+	public function destroySource( $sourceKey ) {
+		unset( $this->sources[$sourceKey] );
+		$sourceFactory = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchSourceFactory' );
+		$sourceFactory->destroySource( $sourceKey );
+	}
+
+	/**
 	 *
 	 * @return Source\Base[]
 	 */

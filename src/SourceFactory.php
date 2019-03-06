@@ -70,6 +70,12 @@ class SourceFactory {
 		return $this->sources[$sourceKey];
 	}
 
+	public function destroySource( $sourceKey ) {
+		if ( isset( $this->sources[$sourceKey] ) ) {
+			unset( $this->sources[$sourceKey] );
+		}
+	}
+
 	/**
 	 * @param string $sourceKey
 	 * @throws \InvalidArgumentException

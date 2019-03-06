@@ -11,6 +11,11 @@ class File extends DecoratorBase {
 	 * @return array
 	 */
 	public function getDataConfig( $sUri, $oFile ) {
+		$contents = file_get_contents(
+			$oFile->getPathname()
+		);
+		$contents = base64_encode( $contents );
+
 		$aDC = $this->oDecoratedDP->getDataConfig( $sUri, $oFile );
 		$magic = \MediaWiki\MediaWikiServices::getInstance()->getMimeAnalyzer();
 		$aDC = array_merge( $aDC, [
@@ -22,12 +27,11 @@ class File extends DecoratorBase {
 			'ctime' => $oFile->getCTime(),
 			'size' => $oFile->getSize(),
 			'source_file_path' => $oFile->getPathname(),
-			'the_file' => base64_encode(
-				file_get_contents(
-					$oFile->getPathname()
-				)
-			)
+			'the_file' => $contents
 		] );
+
+		$contents = null;
+		unset( $contents );
 
 		return $aDC;
 	}

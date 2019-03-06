@@ -427,11 +427,11 @@
 				},
 				"repofile": {
 					"extension_blacklist": [ "mp4" ],
-					"max_size": 50000000
+					"max_size": 20000000
 				},
 				"externalfile": {
 					"extension_blacklist": [ "mp4" ],
-					"max_size": 50000000
+					"max_size": 20000000
 				}
 			},
 			"public": false
