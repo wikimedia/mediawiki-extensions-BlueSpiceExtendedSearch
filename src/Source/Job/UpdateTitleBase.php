@@ -9,14 +9,16 @@ class UpdateTitleBase extends UpdateBase {
 	}
 
 	protected function doRun() {
-		$oDP = $this->getSource()->getDocumentProvider();
+		$this->dp = $this->getSource()->getDocumentProvider();
 		if ( $this->isDeletion() ) {
 			$this->getSource()->deleteDocumentsFromIndex(
-				[ $oDP->getDocumentId( $this->getDocumentProviderUri() ) ]
+				[ $this->dp->getDocumentId( $this->getDocumentProviderUri() ) ]
 			);
-			return [ 'id' => $oDP->getDocumentId( $this->getDocumentProviderUri() ) ];
+			$id = $this->dp->getDocumentId( $this->getDocumentProviderUri() );
+			return [ 'id' => $id ];
 		}
-		$aDC = $oDP->getDataConfig(
+
+		$aDC = $this->dp->getDataConfig(
 			$this->getDocumentProviderUri(),
 			$this->getDocumentProviderSource()
 		);

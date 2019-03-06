@@ -15,16 +15,17 @@ class UpdateExternalFile extends UpdateBase {
 	}
 
 	public function doRun() {
-		$oDP = $this->getSource()->getDocumentProvider();
+		$this->dp = $this->getSource()->getDocumentProvider();
 		$oFile = new \SplFileInfo( $this->params['src'] );
 
 		if( $this->isDeletion() ) {
 			$this->getSource()->deleteDocumentsFromIndex(
-				[ $oDP->getDocumentId( $this->params['dest'] ) ]
+				[ $this->dp->getDocumentId( $this->params['dest'] ) ]
 			);
-			return [ 'id' => $oDP->getDocumentId( $this->params['dest'] ) ];
+			$id = $this->dp->getDocumentId( $this->params['dest'] );
+			return [ 'id' => $id ];
 		}
-		$aDC = $oDP->getDataConfig(	$this->params['dest'], $oFile );
+		$aDC = $this->dp->getDataConfig( $this->params['dest'], $oFile );
 		$this->getSource()->addDocumentsToIndex( [ $aDC ] );
 		return $aDC;
 	}

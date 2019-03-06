@@ -3,6 +3,15 @@
 namespace BS\ExtendedSearch\Source\DocumentProvider;
 
 class WikiPage extends DecoratorBase {
+	/**
+	 * @var \Content
+	 */
+	protected $content;
+
+	/**
+	 * @var \ParserOutput
+	 */
+	protected $parserOutput;
 
 	/**
 	 *
@@ -12,6 +21,9 @@ class WikiPage extends DecoratorBase {
 	 */
 	public function getDataConfig( $sUri, $oWikiPage ) {
 		$aDC = $this->oDecoratedDP->getDataConfig( $sUri, $oWikiPage );
+
+		$this->content = $oWikiPage->getContent();
+		$this->parserOutput = $this->content->getParserOutput( $oWikiPage->getTitle() );
 
 		$aDC = array_merge( $aDC, [
 			'basename' => $oWikiPage->getTitle()->getBaseText(),
@@ -29,12 +41,12 @@ class WikiPage extends DecoratorBase {
 			'size' => $oWikiPage->getTitle()->getLength(),
 			'categories' => $this->getCategories( $oWikiPage ),
 			'prefixed_title' => $oWikiPage->getTitle()->getPrefixedText(),
-			'sections' => $this->getSections( $oWikiPage ),
-			'source_content' => $this->getTextContent( $oWikiPage ),
-			'rendered_content' => $this->getHTMLContent( $oWikiPage ),
+			'sections' => $this->getSections(),
+			'source_content' => $this->getTextContent(),
+			'rendered_content' => $this->getHTMLContent(),
 			'namespace' => $oWikiPage->getTitle()->getNamespace(),
 			'namespace_text' => $this->getNamespaceText( $oWikiPage ),
-			'tags' => $this->getTags( $oWikiPage ),
+			'tags' => $this->getTags(),
 			'is_redirect' => $oWikiPage->getTitle()->isRedirect(),
 			'redirects_to' => $this->getRedirectsTo( $oWikiPage ),
 			'redirected_from' => $this->getRedirects( $oWikiPage ),
@@ -43,7 +55,17 @@ class WikiPage extends DecoratorBase {
 			'used_files' => $this->getUserFiles( $oWikiPage )
 		] );
 
+
 		return $aDC;
+	}
+
+	public function __destruct() {
+		parent::__destruct();
+		$this->parserOutput = null;
+		$this->content = null;
+		if ( \MediaWiki\MediaWikiServices::getInstance()->getParser()->getOptions() instanceof \ParserOptions ) {
+			\MediaWiki\MediaWikiServices::getInstance()->getParser()->clearState();
+		}
 	}
 
 	/**
@@ -75,29 +97,24 @@ class WikiPage extends DecoratorBase {
 	}
 
 	/**
-	 *
-	 * @param \WikiPage $oWikiPage
+
 	 * @return string
 	 */
-	protected function getTextContent( $oWikiPage ) {
+	protected function getTextContent() {
 		$sText = '';
-		$oContent = $oWikiPage->getContent();
-		if( $oContent instanceof \Content ) {
+		if( $this->content instanceof \Content ) {
 			//maybe ContentHandler::getContentText is better?
-			$sText = $oContent->getTextForSearchIndex();
+			$sText = $this->content->getTextForSearchIndex();
 		}
 		return $this->stripTags( $sText );
 	}
 
 	/**
 	 *
-	 * @param \WikiPage $oWikiPage
 	 * @return string
 	 */
-	protected function getHTMLContent( $oWikiPage ) {
-		$sHtml = '';
-		$oParserOutput = $oWikiPage->getContent()->getParserOutput( $oWikiPage->getTitle() );
-		$sHtml = $oParserOutput->getText( [
+	protected function getHTMLContent() {
+		$sHtml = $this->parserOutput->getText( [
 			'allowTOC' => false,
 			'enableSectionEditLinks' => false
 		] );
@@ -106,13 +123,11 @@ class WikiPage extends DecoratorBase {
 
 	/**
 	 *
-	 * @param \WikiPage $oWikiPage
 	 * @return array
 	 */
-	protected function getSections( $oWikiPage ) {
+	protected function getSections() {
 		$aSections = [];
-		$oParserOutput = $oWikiPage->getContent()->getParserOutput( $oWikiPage->getTitle() );
-		$aRawSections = $oParserOutput->getSections();
+		$aRawSections = $this->parserOutput->getSections();
 		foreach( $aRawSections as $aRawSection ) {
 			$aSections[] = $aRawSection['anchor'];
 		}
@@ -132,11 +147,11 @@ class WikiPage extends DecoratorBase {
 	 * @param type $oWikiPage
 	 * @return array
 	 */
-	protected function getTags( $oWikiPage ) {
+	protected function getTags() {
 		$res = [];
 
 		$registeredTags = \MediaWiki\MediaWikiServices::getInstance()->getParser()->getTags();
-		$pageTags = $this->parseWikipageForTags( $oWikiPage );
+		$pageTags = $this->parseWikipageForTags();
 		foreach( $pageTags as $pageTag ) {
 			if( in_array( $pageTag, $registeredTags ) ) {
 				$res[] = $pageTag;
@@ -150,12 +165,11 @@ class WikiPage extends DecoratorBase {
 	 * @param type $oWikiPage
 	 * @return array
 	 */
-	protected function parseWikipageForTags( $oWikiPage ) {
-		$content = $oWikiPage->getContent();
-		if( $content instanceof \Content == false ) {
+	protected function parseWikipageForTags() {
+		if( $this->content instanceof \Content == false ) {
 			return [];
 		}
-		$text = $content->getNativeData();
+		$text = $this->content->getNativeData();
 		$rawTags = [];
 		preg_match_all( '/<([^\/\s>]+)(\s|>|\/>)/', $text, $rawTags );
 		if( isset( $rawTags[1] ) ) {
@@ -207,11 +221,11 @@ class WikiPage extends DecoratorBase {
 			[ '*' ],
 			[ 'pp_page' => $title->getArticleID() ]
 		);
-
 		$props = [];
 		foreach( $res as $row ) {
 			$props[$row->pp_propname] = $row->pp_value;
 		}
+		$db->freeResult( $res );
 		return $props;
 	}
 

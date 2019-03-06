@@ -61,4 +61,9 @@ class UpdateRepoFile extends UpdateTitleBase {
 	protected function isDeletion() {
 		return false;
 	}
+
+	public function __destruct() {
+		$this->file = null;
+		unset( $this->file );
+	}
 }
