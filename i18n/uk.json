@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ата",
-			"Piramidion"
+			"Piramidion",
+			"Vlad5250"
 		]
 	},
 	"bs-extsearch-desc": "Бекенд пошуку через Elasticsearch",
@@ -116,5 +117,8 @@
 	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch — {{GENDER:$2|у Вас}} є {{PLURAL:$1|$1 сторінка, позначена|$1 сторінки, позначені|$1 сторінок, позначених}} як {{PLURAL:$1|релевантний пошуковий результат|релевантні пошукові результати}}",
 	"bs-extendedsearch-filter-add-button-label": "Додати фільтр",
 	"bs-extendedsearch-options-button-label": "Параметри пошуку",
-	"bs-extendedsearch-export-button-label": "Експортувати пошукові результати"
+	"bs-extendedsearch-export-button-label": "Експортувати пошукові результати",
+	"bs-extendedsearch-flyout-similar-pages-title": "Схожі сторінки",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Подібні сторінки не знайдено",
+	"bs-extendedsearch-search-center-result-file-usage-label": "Використовується на сторінках"
 }

@@ -33,8 +33,8 @@
 	"bs-extendedsearch-admin-heading-sources": "來源",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "文件",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "待更新任務",
-	"bs-extendedsearch-search-center-hitcount-widget": "$1 次{{PLURAL:$1|觸發|觸發}}$2",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "約 $1 次{{PLURAL:$1|觸發|觸發}}$2",
+	"bs-extendedsearch-search-center-hitcount-widget": "$1 次{{PLURAL:$1|觸發}}$2",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "約 $1 次{{PLURAL:$1|觸發}}$2",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "添加篩選",
 	"bs-extendedsearch-search-center-filter-extension-label": "額外",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "命名空間",
@@ -116,5 +116,8 @@
 	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch - {{GENDER:$2|您}}有 {{PLURAL:$1|$1|$1}} 個頁面被標記為相關搜尋{{PLURAL:$1|結果|結果}}",
 	"bs-extendedsearch-filter-add-button-label": "添加篩選",
 	"bs-extendedsearch-options-button-label": "搜尋選項",
-	"bs-extendedsearch-export-button-label": "匯出搜尋結果"
+	"bs-extendedsearch-export-button-label": "匯出搜尋結果",
+	"bs-extendedsearch-flyout-similar-pages-title": "相似的頁面",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "查無相似的頁面",
+	"bs-extendedsearch-search-center-result-file-usage-label": "使用於頁面"
 }
