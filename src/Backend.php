@@ -167,7 +167,7 @@ class Backend {
 			}
 
 			$response2 = $mapping->send( [
-				//Neccessary if more than one type has a 'attachment' field from 'mapper-attachments'
+				//Necessary if more than one type has a 'attachment' field from 'mapper-attachments'
 				'update_all_types' => ''
 			] );
 
