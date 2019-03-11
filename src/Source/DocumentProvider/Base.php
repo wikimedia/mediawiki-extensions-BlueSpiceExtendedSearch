@@ -16,4 +16,6 @@ class Base {
 			'basename_exact' => wfBaseName( $sUri )
 		];
 	}
+
+	public function __destruct() {}
 }

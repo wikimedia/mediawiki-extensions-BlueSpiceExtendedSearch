@@ -20,6 +20,11 @@ abstract class UpdateBase extends \Job {
 	protected $sSourceKey = '';
 
 	/**
+	 * @var \BS\ExtendedSearch\Source\DocumentProvider\Base
+	 */
+	protected $dp;
+
+	/**
 	 * Run the job
 	 * @return bool Success
 	 */
@@ -28,12 +33,18 @@ abstract class UpdateBase extends \Job {
 			return true;
 		}
 		$dC = $this->doRun();
+
 		if ( !empty( $dC ) && is_array( $dC ) ) {
 			$status = $this->pushToExternal( $dC );
 			if ( !$status->isOK() ) {
 				$this->setLastError( $status->getMessage() );
 			}
 		}
+		$dC = null;
+		unset( $dC );
+		$this->destroyDP();
+		$this->destroySource();
+
 		return true;
 	}
 
@@ -55,6 +66,11 @@ abstract class UpdateBase extends \Job {
 	protected function getSource() {
 		return $this->getBackend()->getSource( $this->getSourceKey() );
 	}
+
+	protected function destroySource() {
+		$this->getBackend()->destroySource( $this->getSourceKey() );
+	}
+
 
 	/**
 	 *
@@ -109,6 +125,7 @@ abstract class UpdateBase extends \Job {
 				$status->error( $e );
 			}
 		}
+		$dC = null;
 		return $status;
 	}
 
@@ -128,6 +145,11 @@ abstract class UpdateBase extends \Job {
 	 */
 	protected function skipProcessing() {
 		return false;
+	}
+
+	protected function destroyDP() {
+		$this->dp = null;
+		unset( $this->dp );
 	}
 
 }
