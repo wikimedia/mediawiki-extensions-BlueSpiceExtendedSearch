@@ -406,6 +406,12 @@
 		updateQueryHash();
 	}
 
+	function updateQueryHash() {
+		bs.extendedSearch.utils.setFragment({
+			q: JSON.stringify(search.getLookupObject())
+		});
+	}
+
 	bs.extendedSearch.SearchCenter = {
 		execSearch: _execSearch,
 		getLookupObject: _getLookupObject,
@@ -425,71 +431,65 @@
 	};
 
 	var search = bs.extendedSearch.SearchCenter;
+	var searchBar;
+	$( function() {
+		//Init searchBar and wire it up
+		searchBar = new bs.extendedSearch.SearchBar( {
+			useNamespacePills: false,
+			useSubpagePills: false
+		} );
 
-	//Init searchBar and wire it up
-	var searchBar = new bs.extendedSearch.SearchBar( {
-		useNamespacePills: false,
-		useSubpagePills: false
-	} );
+		searchBar.$searchForm.on( 'submit', function (e) {
+			e.preventDefault();
+			bs.extendedSearch.SearchCenter.execSearch();
+		} );
 
-	searchBar.$searchForm.on( 'submit', function( e ) {
-		e.preventDefault();
+
+		searchBar.on( 'valueChanged', function () {
+			search.getLookupObject().removeForceTerm();
+			search.getLookupObject().setQueryString( searchBar.value );
+			search.updateQueryHash();
+		} );
+
+		searchBar.on( 'clearSearch', function () {
+			search.clearLookupObject();
+			bs.extendedSearch.utils.clearFragment();
+		} );
+
+		//Init lookup object - get lookup config any way possible
+		var fragmentParams = bs.extendedSearch.utils.getFragment();
+		var updateHash = true;
+		var config;
+
+		if ( "q" in fragmentParams ) {
+			//Try getting lookup from fragment - it has top prio
+			config = JSON.parse( fragmentParams.q );
+			updateHash = false;
+		} else {
+			//Get lookup configuration from pre-set variable
+			config = JSON.parse( mw.config.get( 'bsgLookupConfig' ) );
+		}
+
+		if ( $.isEmptyObject( config ) === false ) {
+			search.makeLookup( config );
+			//Update searchBar if page is loaded with query present
+			var query = search.getLookupObject().getQueryString();
+			if ( query) {
+				searchBar.setValue( query.query );
+			}
+			if ( updateHash ) {
+				search.updateQueryHash();
+			}
+
+			// Remove query string params passed once we set the hash
+			bs.extendedSearch.utils.removeQueryStringParams( ['q', 'raw_term', 'fulltext'] );
+		}
+
 		bs.extendedSearch.SearchCenter.execSearch();
+
+		$( window ).on( 'hashchange', function() {
+			bs.extendedSearch.SearchCenter.execSearch();
+		} );
 	} );
-
-
-	searchBar.on( 'valueChanged', function() {
-		search.getLookupObject().removeForceTerm();
-		search.getLookupObject().setQueryString( searchBar.value );
-		updateQueryHash();
-	} );
-
-	searchBar.on ( 'clearSearch', function() {
-		search.clearLookupObject();
-		bs.extendedSearch.utils.clearFragment();
-	} );
-
-	function updateQueryHash() {
-		bs.extendedSearch.utils.setFragment({
-			q: JSON.stringify(search.getLookupObject())
-		});
-	}
-
-	//Init lookup object - get lookup config any way possible
-	var fragmentParams = bs.extendedSearch.utils.getFragment();
-	var updateHash = true;
-	var config;
-
-	if( "q" in fragmentParams ) {
-		//Try getting lookup from fragment - it has top prio
-		config = JSON.parse( fragmentParams.q );
-		updateHash = false;
-	} else {
-		//Get lookup configuration from pre-set variable
-		config = JSON.parse( mw.config.get( 'bsgLookupConfig' ) );
-	}
-
-	if( $.isEmptyObject( config ) === false ) {
-		search.makeLookup( config );
-		//Update searchBar if page is loaded with query present
-		var query = search.getLookupObject().getQueryString();
-		if( query ) {
-			searchBar.setValue( query.query );
-		}
-		if( updateHash ) {
-			updateQueryHash();
-		}
-
-		// Remove query string params passed once we set the hash
-		bs.extendedSearch.utils.removeQueryStringParams( [ 'q', 'raw_term', 'fulltext' ] );
-	}
 
 } )( mediaWiki, jQuery, blueSpice, document );
-
-jQuery(window).on( 'hashchange', function() {
-	bs.extendedSearch.SearchCenter.execSearch();
-});
-
-jQuery( function() {
-	bs.extendedSearch.SearchCenter.execSearch();
-});
