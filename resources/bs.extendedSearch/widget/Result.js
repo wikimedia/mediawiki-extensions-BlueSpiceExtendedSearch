@@ -19,7 +19,8 @@
 
 		this.rightLinks = [];
 		// If we are in desktop mode, show right links
-		if( !this.mobile && this.secondaryInfos.top.items.length > 0 ) {
+
+		if( !this.mobile && this.secondaryInfos.hasOwnProperty( 'top' ) ) {
 			for( var i = 0; i < this.secondaryInfos.top.items.length; i++ ) {
 				if( this.secondaryInfos.top.items[ i ].showInRightLinks === true ) {
 					this.rightLinks.push( this.secondaryInfos.top.items[ i ] );
