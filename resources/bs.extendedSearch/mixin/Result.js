@@ -71,7 +71,8 @@
 	bs.extendedSearch.mixin.ResultSecondaryInfo.prototype.getSecondaryInfoItemMarkup = function( item ) {
 		var $label = null;
 		if( !item.nolabel ) {
-			var label = mw.message( item.labelKey ).plain();
+			var labelKey = item.labelKey || '';
+			var label = mw.message( labelKey ).plain();
 			$label = $( '<span>' )
 				.html( label );
 		}

@@ -77,7 +77,11 @@
 				.addClass( 'bs-extendedsearch-result-links-container' );
 
 			this.$dataContainer.addClass( 'short' );
-			for( var idx in this.rightLinks ) {
+			for( var idx = 0; idx < this.rightLinks.length; idx++ ) {
+				if ( this.rightLinks[idx].hasOwnProperty( 'labelKey' ) ) {
+					// Do not show the entry without any label
+					continue;
+				}
 				this.$innerContainer = $( '<div>' )
 					.addClass( 'bs-extendedsearch-result-links-inner' );
 
