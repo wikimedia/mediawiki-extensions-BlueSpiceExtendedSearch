@@ -210,7 +210,8 @@
 
 			label = this.valueLabel + labeledValues.join( ', ' );
 			if( hiddenCount > 0 ) {
-				label += mw.message( this.hasHiddenLabelKey, hiddenCount ).parse();
+				var countMessageKey = this.hasHiddenLabelKey || '';
+				label += mw.message( countMessageKey, hiddenCount ).parse();
 			}
 		}
 
