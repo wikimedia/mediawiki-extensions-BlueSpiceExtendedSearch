@@ -1,16 +1,12 @@
 <?php
 
-$IP = dirname(dirname(dirname(__DIR__)));
+require_once( "elasticScriptBase.php" );
 
-require_once( "$IP/maintenance/Maintenance.php" );
-
-class purgeIndexes extends Maintenance {
-	public function __construct() {
-		parent::__construct();
-		$this->requireExtension( "BlueSpiceExtendedSearch" );
-
-		$this->addOption( 'quick', 'Skip count down' );
-	}
+class purgeIndexes extends elasticScriptBase {
+	/**
+	 * @var string
+	 */
+	protected $sourcesOptionHelp = 'List of pipe separate source keys to be purged';
 
 	public function execute() {
 		if( !$this->hasOption( 'quick' ) ) {
@@ -18,9 +14,16 @@ class purgeIndexes extends Maintenance {
 			$this->countDown( 5 );
 		}
 
-		$backend = \BS\ExtendedSearch\Backend::instance();
-		$backend->deleteAllIndexes();
-		$this->output( "\nIndexes purged" );
+		$backend = BS\ExtendedSearch\Backend::instance();
+		$sources = $backend->getSources();
+		foreach( $sources as $source ) {
+			$sourceKey = $source->getTypeKey();
+			if ( !$this->sourceOnList( $sourceKey ) ) {
+				continue;
+			}
+			$backend->deleteIndex( $sourceKey );
+			$this->output( "\nIndex deleted: {$backend->getIndexByType( $sourceKey )->getName()}" );
+		}
 	}
 }
 

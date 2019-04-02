@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch;
 
 use BlueSpice\ExtensionAttributeBasedRegistry;
+use Elastica\Exception\ResponseException;
 use MediaWiki\MediaWikiServices;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 
@@ -138,47 +139,72 @@ class Backend {
 	}
 
 	/**
-	 * @throws Elastica\Exception\ResponseException
+	 * @throws ResponseException
 	 */
 	public function deleteIndexes() {
 		foreach( $this->sources as $source ) {
-			$sourceType = $source->getTypeKey();
-			$index = $this->getIndexByType( $sourceType );
-			if( $index->exists() ){
-				$index->delete();
-			}
+			$sourceKey = $source->getTypeKey();
+			$this->deleteIndex( $sourceKey );
 		}
 	}
 
 	/**
-	 * @throws Elastica\Exception\ResponseException
+	 * Deletes all indexes
+	 *
+	 * @param string $sourceKey
+	 * @throws ResponseException
+	 */
+	public function deleteIndex( $sourceKey ) {
+		$index = $this->getIndexByType( $sourceKey );
+		if( $index->exists() ){
+			$index->delete();
+		}
+	}
+
+	/**
+	 * Creates all indexes
+	 *
+	 * @throws \MWException
 	 */
 	public function createIndexes() {
-		foreach( $this->sources as $source ) {
-			$indexSettings = $source->getIndexSettings();
-
-			$index = $this->getIndexByType( $source->getTypeKey() );
-			$response = $index->create( $indexSettings );
-
-			$type = $index->getType( $source->getTypeKey() );
-
-			$mapping = new \Elastica\Type\Mapping();
-			$mapping->setType( $type );
-			$mappingProvider = $source->getMappingProvider();
-			$mapping->setProperties( $mappingProvider->getPropertyConfig() );
-
-			$sourceConfig = $mappingProvider->getSourceConfig();
-			if( !empty( $sourceConfig ) ) {
-				$mapping->setSource( $sourceConfig );
-			}
-
-			$response2 = $mapping->send( [
-				//Neccessary if more than one type has a 'attachment' field from 'mapper-attachments'
-				'update_all_types' => ''
-			] );
-
-			$source->runAdditionalSetupRequests( $this->getClient() );
+		foreach( $this->sources as $key => $source ) {
+			$this->createIndex( $key );
 		}
+	}
+
+	/**
+	 * @param string $sourceKey
+	 * @throws \MWException
+	 * @throws ResponseException
+	 */
+	public function createIndex( $sourceKey ) {
+		if ( !isset(  $this->sources[$sourceKey] ) ) {
+			throw new \MWException( "Source \"$sourceKey\" does not exist!" );
+		}
+		$source = $this->sources[$sourceKey];
+		$indexSettings = $source->getIndexSettings();
+
+		$index = $this->getIndexByType( $source->getTypeKey() );
+		$response = $index->create( $indexSettings );
+
+		$type = $index->getType( $source->getTypeKey() );
+
+		$mapping = new \Elastica\Type\Mapping();
+		$mapping->setType( $type );
+		$mappingProvider = $source->getMappingProvider();
+		$mapping->setProperties( $mappingProvider->getPropertyConfig() );
+
+		$sourceConfig = $mappingProvider->getSourceConfig();
+		if( !empty( $sourceConfig ) ) {
+			$mapping->setSource( $sourceConfig );
+		}
+
+		$response2 = $mapping->send( [
+			//Necessary if more than one type has a 'attachment' field from 'mapper-attachments'
+			'update_all_types' => ''
+		] );
+
+		$source->runAdditionalSetupRequests( $this->getClient() );
 	}
 
 	/**

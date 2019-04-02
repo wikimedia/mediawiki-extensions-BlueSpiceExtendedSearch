@@ -1,19 +1,16 @@
 <?php
 
-$IP = dirname(dirname(dirname(__DIR__)));
+require_once( "elasticScriptBase.php" );
 
-require_once( "$IP/maintenance/Maintenance.php" );
-
-class rebuildIndex extends Maintenance {
-
+class rebuildIndex extends elasticScriptBase {
+	/**
+	 * @var string
+	 */
+	protected $sourcesOptionHelp = 'List of pipe separate source keys to be rebuilt';
+	/**
+	 * @var array
+	 */
 	protected $oIndices = array();
-
-	public function __construct() {
-		parent::__construct();
-		$this->requireExtension( "BlueSpiceExtendedSearch" );
-		$this->addOption( 'quick', 'Skip count down' );
-		$this->addOption( 'sources', "Only these sources will be re-indexed.", false, true );
-	}
 
 	public function execute() {
 		if( !$this->hasOption( 'quick' ) ) {
@@ -39,18 +36,6 @@ class rebuildIndex extends Maintenance {
 		global $IP;
 		$this->output( "\n\nYou should now run 'php $IP/maintenance/runJobs.php'" );
 	}
-
-	protected function sourceOnList( $sourceKey ) {
-		if( empty( $this->getOption( 'sources', '' ) ) ) {
-			return true;
-		}
-		$onlySources = explode( '|', $this->getOption( 'sources', '' ) );
-		if( in_array( $sourceKey, $onlySources ) ) {
-			return true;
-		}
-		return false;
-	}
-
 }
 
 $maintClass = 'rebuildIndex';
