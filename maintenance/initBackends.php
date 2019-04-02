@@ -1,16 +1,12 @@
 <?php
 
-$IP = dirname(dirname(dirname(__DIR__)));
+require_once( "elasticScriptBase.php" );
 
-require_once( "$IP/maintenance/Maintenance.php" );
-
-class initBackends extends Maintenance {
-	public function __construct() {
-		parent::__construct();
-		$this->requireExtension( "BlueSpiceExtendedSearch" );
-
-		$this->addOption( 'quick', 'Skip count down' );
-	}
+class initBackends extends elasticScriptBase {
+	/**
+	 * @var string
+	 */
+	protected $sourcesOptionHelp = 'List of pipe separated source keys to be initiated';
 
 	public function execute() {
 		if( !$this->hasOption( 'quick' ) ) {
@@ -19,9 +15,16 @@ class initBackends extends Maintenance {
 		}
 
 		$backend = BS\ExtendedSearch\Backend::instance();
-		$backend->deleteIndexes();
-		$backend->createIndexes();
-		$this->output( "\nIndexes created" );
+		$sources = $backend->getSources();
+		foreach( $sources as $source ) {
+			$sourceKey = $source->getTypeKey();
+			if ( !$this->sourceOnList( $sourceKey ) ) {
+				continue;
+			}
+			$backend->deleteIndex( $sourceKey );
+			$backend->createIndex( $sourceKey );
+			$this->output( "\nIndex created: {$backend->getIndexByType( $sourceKey)->getName()}" );
+		}
 	}
 }
 
