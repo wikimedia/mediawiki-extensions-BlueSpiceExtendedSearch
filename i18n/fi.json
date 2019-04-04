@@ -1,9 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Nike"
+			"Nike",
+			"Pyscowicz"
 		]
 	},
+	"bs-extendedsearch-search-center-filter-namespace_text-label": "Nimiavaruus",
+	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Nimiavaruus:",
+	"bs-extendedsearch-search-center-result-namespace_text-label": "Nimiavaruus:",
+	"bs-extendedsearch-search-center-result-categories-label": "Luokka:",
+	"bs-extendedsearch-search-center-result-author-label": "Tekijä:",
+	"bs-extendedsearch-search-center-result-ctime-label": "Luotu:",
+	"bs-extendedsearch-search-center-result-mtime-label": "Muokattu:",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Peruuta",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Sivun kieli",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Sivun kieli:",
 	"bs-extendedsearch-wikipage-title-original": "(alkuperäinen sivunimi: $1)",

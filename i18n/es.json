@@ -63,6 +63,7 @@
 	"bs-extendedsearch-search-center-result-exception": "No se puede ejecutar la consulta; modifica el término de búsqueda.",
 	"bs-extendedsearch-autocomplete-create-page-link": "Crear la página «$1».",
 	"bs-extendedsearch-loadmore-label": "Cargar más resultados",
+	"bs-extendedsearch-loadmore-error": "No es posible recuperar más resultados",
 	"bs-extendedsearch-search-center-result-typetext-label": "Tipo:",
 	"bs-extendedsearch-source-type-wikipage-label": "Página del wiki",
 	"bs-extendedsearch-source-type-repofile-label": "Archivo local",
