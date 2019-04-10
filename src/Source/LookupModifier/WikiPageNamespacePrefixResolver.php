@@ -64,7 +64,14 @@ class WikiPageNamespacePrefixResolver extends Base {
 	}
 
 	protected function setTitle() {
-		$this->title = \Title::newFromText( $this->titleText );
+		$titleName = $this->titleText;
+		if ( substr( $titleName, -1 ) === ':' ) {
+			// If search term is ending in a ":", presume
+			// user wants to see all results from given NS
+			// - set query text to "*"
+			$titleName .= '*';
+		}
+		$this->title = \Title::newFromText( $titleName );
 	}
 
 	protected function doesNotApply() {
