@@ -205,7 +205,17 @@
 				return;
 			}
 
-			if( $.isEmptyObject( me.searchBar.namespace ) && response.suggestions.length > 0 ) {
+			var primary = getSuggestionsByRank( response.suggestions, 'primary' );
+			if( $.isEmptyObject( me.searchBar.namespace ) && primary.length > 0  ) {
+				// No need to retrieve "other namespaces" suggestions,
+				// and primary matches exist
+				return;
+			}
+
+			var secondary = getSuggestionsByRank( response.suggestions, 'secondary' );
+			if( secondary.length > 0 ) {
+				me.addSecondaryToPopup( secondary );
+				// There are secondary suggestions already in result set
 				return;
 			}
 
@@ -213,6 +223,17 @@
 				me.addSecondaryToPopup( response.suggestions );
 			} );
 		} );
+	}
+
+	function getSuggestionsByRank( suggestions, rank ) {
+		var res = [];
+		for( var i = 0; i < suggestions.length; i++ ) {
+			var suggestion = suggestions[i];
+			if ( suggestion['rank'] === rank ) {
+				res.push( suggestion );
+			}
+		}
+		return res;
 	}
 
 	/**

@@ -284,7 +284,7 @@ class Backend {
 	}
 
 	protected function formatSuggestions( $results, $searchData ) {
-		$lcSearchTerm = strtolower( $searchData['value'] );
+		$searchData['value'] = strtolower( $searchData['value'] );
 
 		foreach( $this->getSources() as $sourceKey => $source ) {
 			$source->getFormatter()->rankAutocompleteResults( $results, $searchData );
