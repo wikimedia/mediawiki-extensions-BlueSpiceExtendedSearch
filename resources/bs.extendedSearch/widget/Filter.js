@@ -173,7 +173,7 @@
 				filteredOptions.push( option );
 			}
 		}
-		this.$optionsContainer.children( '#' + this.optionsCheckboxWidgetID ).remove();
+		this.$optionsContainer.children( '.bs-extendedsearch-filter-options-checkbox-widget' ).remove();
 		this.addCheckboxWidget( filteredOptions );
 	}
 
