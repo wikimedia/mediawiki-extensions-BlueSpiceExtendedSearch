@@ -2,8 +2,10 @@
 
 namespace BS\ExtendedSearch;
 
+use BlueSpice\Services;
 use BS\ExtendedSearch\Backend as SearchBackend;
 use BS\ExtendedSearch\MediaWiki\Backend\BlueSpiceSearch;
+use SpecialPage;
 
 class Setup {
 	/**
@@ -43,6 +45,13 @@ class Setup {
 		return true;
 	}
 
+	/**
+	 * @param \Skin $skin
+	 * @param \SkinTemplate $template
+	 * @return bool
+	 * @throws \ConfigException
+	 * @throws \MWException
+	 */
 	public static function onSkinTemplateOutputPageBeforeExec( &$skin, &$template ) {
 		$template->set( 'bs_search_id', 'bs-extendedsearch-box' );
 		$template->set(
@@ -66,19 +75,19 @@ class Setup {
 			)
 		);
 
+		$template->set( 'bs_search_target', [
+			'page_name' => SpecialPage::getTitleFor( 'BSSearchCenter' )->getPrefixedDBkey()
+		] );
+
 		$template->set(
 			'bs_search_action',
-			\SpecialPage::getTitleFor( 'BSSearchCenter' )->getLocalURL()
-		);
-		$template->set(
-			'bs_search_target',
-			[]
+			$skin->getConfig()->get( 'Script' )
 		);
 		return true;
 	}
 
 	public static function getSearchEngineClass( \IDatabase $db ) {
-		$seFactory = \MediaWiki\MediaWikiServices::getInstance()->getSearchEngineFactory();
+		$seFactory = Services::getInstance()->getSearchEngineFactory();
 		return $seFactory::getSearchEngineClass( $db );
 	}
 }
