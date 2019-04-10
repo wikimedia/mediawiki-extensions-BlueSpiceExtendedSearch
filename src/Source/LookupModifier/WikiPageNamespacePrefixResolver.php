@@ -46,6 +46,10 @@ class WikiPageNamespacePrefixResolver extends Base {
 		$this->setNewNamespaceFilterAndQuery();
 	}
 
+	public function getPriority() {
+		return 10;
+	}
+
 	protected function setSimpleQS() {
 		$aQueryString = $this->oLookup->getQueryString();
 		if( !isset( $aQueryString['query'] ) ) {
@@ -64,14 +68,17 @@ class WikiPageNamespacePrefixResolver extends Base {
 	}
 
 	protected function setTitle() {
-		$titleName = $this->titleText;
+		$titleName = trim( $this->titleText );
+		$this->title = \Title::newFromText( $titleName );
 		if ( substr( $titleName, -1 ) === ':' ) {
 			// If search term is ending in a ":", presume
 			// user wants to see all results from given NS
 			// - set query text to "*"
-			$titleName .= '*';
+			$title = \Title::newFromText( "$titleName*" );
+			if ( $title->getNamespace() !== NS_MAIN ) {
+				$this->title = $title;
+			}
 		}
-		$this->title = \Title::newFromText( $titleName );
 	}
 
 	protected function doesNotApply() {

@@ -8,17 +8,38 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
  * results before they finish typing the whole word
  */
 class BaseWildcarder extends Base {
+	/**
+	 * @var array
+	 */
 	protected $operators = ['+', '|', '-', "\"", "*", "(", ")", "~"];
+	/**
+	 * @var array
+	 */
 	protected $queryString;
+	/**
+	 * @var string
+	 */
 	protected $originalQuery;
+	/**
+	 * @var string
+	 */
+	protected $wildcarded;
 
 	public function apply() {
 		$this->queryString = $this->oLookup->getQueryString();
 		$this->originalQuery = $this->queryString['query'];
+		$this->wildcarded = trim( $this->originalQuery );
 
-		if( $this->isSinglePlainWord() ) {
-			return $this->wildcardTerm();
+		if ( $this->containsOperators() ) {
+
+			return;
 		}
+
+		$this->escapeColons();
+		if( $this->isSinglePlainWord() ) {
+			$this->wildcardTerm();
+		}
+		$this->setWildcarded();
 	}
 
 	/**
@@ -28,11 +49,11 @@ class BaseWildcarder extends Base {
 	 * @return boolean
 	 */
 	protected function isSinglePlainWord() {
-		if( strlen( $this->originalQuery ) == 0 ) {
+		if( strlen( $this->wildcarded ) == 0 ) {
 			return false;
 		}
 
-		if( strpos( $this->originalQuery, ' ' ) === false && !$this->containsOperators() ) {
+		if( strpos( $this->wildcarded, ' ' ) === false ) {
 			return true;
 		}
 		return false;
@@ -52,8 +73,11 @@ class BaseWildcarder extends Base {
 	}
 
 	protected function wildcardTerm() {
-		$wildcarded = "*$this->originalQuery OR $this->originalQuery*";
-		$this->queryString['query'] = $wildcarded;
+		$this->wildcarded = "*{$this->wildcarded} OR {$this->wildcarded}*";
+	}
+
+	protected function setWildcarded() {
+		$this->queryString['query'] = $this->wildcarded;
 		$this->oLookup->setQueryString( $this->queryString );
 	}
 
@@ -65,5 +89,9 @@ class BaseWildcarder extends Base {
 
 	public function getPriority() {
 		return 90;
+	}
+
+	protected function escapeColons() {
+		$this->wildcarded = str_replace( ':', '\\:', $this->wildcarded );
 	}
 }
