@@ -155,7 +155,7 @@ class Base {
 
 			if( strtolower( $result['basename'] ) == strtolower( $searchData['value'] ) && $top['_id'] === $result['_id'] ) {
 				$result['rank'] = self::AC_RANK_TOP;
-			} else if( strpos( strtolower( $result['basename'] ), strtolower( $searchData['value'] ) ) !== false ) {
+			} else if( $this->matchTokenized( strtolower( $result['basename'] ), $searchData['value'] ) ) {
 				$result['rank'] = self::AC_RANK_NORMAL;
 			} else {
 				$result['rank'] = self::AC_RANK_SECONDARY;
@@ -166,7 +166,26 @@ class Base {
 	}
 
 	/**
-	 * Basic implementation. Checks if searhed term
+	 * Splits needle up in tokens and matches each token
+	 * with the result title. If one token does not match
+	 * whole matching is failed
+	 *
+	 * @param string $haystack
+	 * @param string $needle
+	 * @return bool
+	 */
+	protected function matchTokenized( $haystack, $needle ) {
+		$tokens = preg_split( "/(\s|,|\.|;)/", $needle );
+		foreach( $tokens as $token ) {
+			if ( strpos( $haystack, $token ) === false ) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Basic implementation. Checks if searched term
 	 * matches result exactly
 	 *
 	 * @param array $result
