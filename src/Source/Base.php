@@ -12,7 +12,6 @@ use BS\ExtendedSearch\Source\LookupModifier\BaseTitleSecurityTrimmings;
 use BS\ExtendedSearch\Source\LookupModifier\BaseUserRelevance;
 use BS\ExtendedSearch\Source\LookupModifier\BaseTypeSecurityTrimming;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
-use MediaWiki\MediaWikiServices;
 
 class Base {
 
@@ -177,7 +176,6 @@ class Base {
 	}
 
 	public function runAdditionalSetupRequests( \Elastica\Client $client ) {
-		return;
 	}
 
 	/**

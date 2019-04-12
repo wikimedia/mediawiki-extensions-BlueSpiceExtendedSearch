@@ -155,7 +155,7 @@ class Base {
 
 			if( strtolower( $result['basename'] ) == strtolower( $searchData['value'] ) && $top['_id'] === $result['_id'] ) {
 				$result['rank'] = self::AC_RANK_TOP;
-			} else if( $this->matchTokenized( strtolower( $result['basename'] ), $searchData['value'] ) ) {
+			} elseif( $this->matchTokenized( strtolower( $result['basename'] ), $searchData['value'] ) ) {
 				$result['rank'] = self::AC_RANK_NORMAL;
 			} else {
 				$result['rank'] = self::AC_RANK_SECONDARY;
@@ -215,7 +215,6 @@ class Base {
 	 * @param bool $fieldsWithANDEnabled
 	 */
 	public function formatFilters( &$aggs, &$filterCfg, $fieldsWithANDEnabled = false ) {
-		return;
 	}
 
 	protected function getACHighestScored( $results ) {

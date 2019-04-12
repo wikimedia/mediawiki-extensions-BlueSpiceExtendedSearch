@@ -94,7 +94,7 @@ abstract class ExternalIndex implements IExternalIndex {
 	 * @param string $action
 	 * @return mixed value
 	 */
-	protected function getMappedValue( $map, $default, $action  ) {
+	protected function getMappedValue( $map, $default, $action ) {
 		return isset( $this->document[$map] ) ? $this->document[$map] : $default;
 	}
 
