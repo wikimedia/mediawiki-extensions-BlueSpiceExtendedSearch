@@ -487,7 +487,7 @@ class Backend {
 			if( $percent < $spellCheckConfig['replaceThreshold'] ) {
 				//Replace term if there is much more hits for alternative
 				$replace = true;
-			} else if ( $percent < $spellCheckConfig['suggestThreshold'] ) {
+			} elseif ( $percent < $spellCheckConfig['suggestThreshold'] ) {
 				//If alternative has siginificatly more results, but not so much
 				//that we can definitely decide its a typo, just suggest the alternative
 				$spellcheckResult['action'] = static::SPELLCHECK_ACTION_SUGGEST;

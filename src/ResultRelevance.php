@@ -47,7 +47,7 @@ class ResultRelevance {
 	 * @return array
 	 */
 	public function getAllValuesForUser() {
-		$result = wfGetDB( DB_SLAVE )->select(
+		$result = wfGetDB( DB_REPLICA )->select(
 			'bs_extendedsearch_relevance',
 			[ 'esr_result', 'esr_value' ],
 			$this->queryConditions
@@ -73,7 +73,7 @@ class ResultRelevance {
 
 		$this->setConditions();
 
-		$result = wfGetDB( DB_SLAVE )->selectRow(
+		$result = wfGetDB( DB_REPLICA )->selectRow(
 			'bs_extendedsearch_relevance',
 			[ 'esr_value' ],
 			$this->queryConditions

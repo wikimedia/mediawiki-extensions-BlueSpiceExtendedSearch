@@ -2,7 +2,6 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
-
 class WikiPageWildcarder extends Base {
 	protected $queryString;
 	protected $originalQuery;

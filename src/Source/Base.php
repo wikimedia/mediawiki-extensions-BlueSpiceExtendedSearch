@@ -176,7 +176,6 @@ class Base {
 	}
 
 	public function runAdditionalSetupRequests( \Elastica\Client $client ) {
-		return;
 	}
 
 	/**

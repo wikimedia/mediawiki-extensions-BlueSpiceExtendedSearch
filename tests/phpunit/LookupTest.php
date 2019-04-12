@@ -425,7 +425,7 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	/*AGGREAGTION*/
-		public function testSetBucketTermsAggregation() {
+	public function testSetBucketTermsAggregation() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 		$oLookup->setBucketTermsAggregation( '_type/extension' );
 

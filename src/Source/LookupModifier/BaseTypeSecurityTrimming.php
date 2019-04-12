@@ -2,8 +2,6 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
-use BS\ExtendedSearch\ResultRelevance;
-
 class BaseTypeSecurityTrimming extends Base {
 	/**
 	 *

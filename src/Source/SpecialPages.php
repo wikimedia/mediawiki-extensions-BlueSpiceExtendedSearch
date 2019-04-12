@@ -30,7 +30,7 @@ class SpecialPages extends DecoratorBase {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public function getMappingProvider() {
 		return new MappingProvider\SpecialPage(

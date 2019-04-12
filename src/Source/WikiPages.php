@@ -11,7 +11,6 @@ use BS\ExtendedSearch\Source\LookupModifier\WikiPageRenderedContentHighlight;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageAutocompleteSourceFields;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageBoosters;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageAutocompleteRemoveUnwanted;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageSimpleQSFields;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageQSSourceFields;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageWildcarder;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageRemoveUnwanted;
