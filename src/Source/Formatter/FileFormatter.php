@@ -27,7 +27,7 @@ class FileFormatter extends Base {
 
 		$scriptPath = $this->getContext()->getConfig()->get( 'ScriptPath' );
 		if( isset( $fileIcons[$extension] ) ) {
-			return  $scriptPath . $fileIcons[$extension];
+			return $scriptPath . $fileIcons[$extension];
 		}
 		return $scriptPath . $fileIcons['default'];
 	}

@@ -1,6 +1,7 @@
 <?php
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
+
 use BS\ExtendedSearch\Lookup;
 
 class BaseSortByID extends Base {

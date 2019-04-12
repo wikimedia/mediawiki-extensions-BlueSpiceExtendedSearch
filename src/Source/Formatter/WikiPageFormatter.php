@@ -2,7 +2,6 @@
 
 namespace BS\ExtendedSearch\Source\Formatter;
 
-use BS\ExtendedSearch\Source\Formatter\Base;
 use BlueSpice\DynamicFileDispatcher\Params;
 use BlueSpice\DynamicFileDispatcher\ArticlePreviewImage;
 use MediaWiki\MediaWikiServices;
@@ -337,7 +336,7 @@ class WikiPageFormatter extends Base {
 
 			if( strtolower( $pageTitle ) == strtolower( $searchData['value'] ) && $top['_id'] === $result['_id'] ) {
 				$result['rank'] = self::AC_RANK_TOP;
-			} else if( $this->matchTokenized( strtolower( $result['basename'] ), $searchData['value'] ) ) {
+			} elseif( $this->matchTokenized( strtolower( $result['basename'] ), $searchData['value'] ) ) {
 				$result['rank'] = self::AC_RANK_NORMAL;
 			} else {
 				$result['rank'] = self::AC_RANK_SECONDARY;

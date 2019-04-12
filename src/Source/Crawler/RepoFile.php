@@ -6,7 +6,7 @@ class RepoFile extends File {
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateRepoFile';
 
 	public function crawl() {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select(
 			[ 'page' ],
 			[ 'page_id' ],

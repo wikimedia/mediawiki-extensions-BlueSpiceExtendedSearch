@@ -12,12 +12,11 @@ class AddRelevanceTable extends LoadExtensionSchemaUpdates {
 			'bs_extendedsearch_relevance',
 			"$dir/bs_extendedsearch_relevance.sql"
 		);
-		
+
 		$this->updater->modifyExtensionField( 'bs_extendedsearch_relevance', 'rel_user', "$dir/bs_extendedsearch_relevance.patch.user.sql" );
 		$this->updater->modifyExtensionField( 'bs_extendedsearch_relevance', 'rel_result', "$dir/bs_extendedsearch_relevance.patch.result.sql" );
 		$this->updater->modifyExtensionField( 'bs_extendedsearch_relevance', 'rel_value', "$dir/bs_extendedsearch_relevance.patch.value.sql" );
 		$this->updater->modifyExtensionField( 'bs_extendedsearch_relevance', 'rel_timestamp', "$dir/bs_extendedsearch_relevance.patch.timestamp.sql" );
-
 	}
 
 	protected function getExtensionPath() {

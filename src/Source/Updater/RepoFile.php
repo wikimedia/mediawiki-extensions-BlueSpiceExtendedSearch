@@ -2,8 +2,6 @@
 
 namespace BS\ExtendedSearch\Source\Updater;
 
-use BS\ExtendedSearch\Source\Job\UpdateTitleBase;
-
 class RepoFile extends Base {
 	public function init( &$aHooks ) {
 		$aHooks['FileUpload'][] = array( $this, 'onFileUpload' );

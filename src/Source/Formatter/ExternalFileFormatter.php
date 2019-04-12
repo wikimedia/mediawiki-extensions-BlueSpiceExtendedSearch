@@ -2,8 +2,6 @@
 
 namespace BS\ExtendedSearch\Source\Formatter;
 
-use BS\ExtendedSearch\Source\Formatter\FileFormatter;
-
 class ExternalFileFormatter extends FileFormatter {
 
 	/**
