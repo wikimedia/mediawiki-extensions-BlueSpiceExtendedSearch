@@ -120,5 +120,8 @@
 	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch - {{GENDER:$2|您}}将 $1 页标记为有相关搜索结果。",
 	"bs-extendedsearch-filter-add-button-label": "添加过滤器",
 	"bs-extendedsearch-options-button-label": "搜索选项",
-	"bs-extendedsearch-export-button-label": "导出搜索结果"
+	"bs-extendedsearch-export-button-label": "导出搜索结果",
+	"bs-extendedsearch-flyout-similar-pages-title": "相似页面",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "未找到相似页面",
+	"bs-extendedsearch-search-center-result-file-usage-label": "在多个页面上使用"
 }
