@@ -92,6 +92,9 @@
 						"structuremanager"
 					]
 				}
+			},
+			"TagRegistry": {
+				"bs-tagsearch": "BS\\ExtendedSearch\\Tag\\TagSearch"
 			}
 		},
 		"BlueSpiceArticleInfo": {
@@ -186,6 +189,11 @@
 			"Handlers": [
 				"\\BS\\ExtendedSearch\\Privacy\\Handler"
 			]
+		},
+		"VisualEditor": {
+			"PluginModules": [
+				"ext.bluespice.extendedsearch.tagsearch.visualEditor"
+			]
 		}
 	},
 	"MessagesDirs": {
@@ -214,7 +222,8 @@
 			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddRelevanceTable::callback",
 			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddHistoryTable::callback"
 		],
-		"GetPreferences": "BS\\ExtendedSearch\\Hook\\GetPreferences\\AddUserPreferredNamespaces::callback"
+		"GetPreferences": "BS\\ExtendedSearch\\Hook\\GetPreferences\\AddUserPreferredNamespaces::callback",
+		"BSInsertMagicAjaxGetData": "BS\\ExtendedSearch\\Hook\\BSInsertMagicAjaxGetData\\AddTagSearch::callback"
 	},
 	"SpecialPages": {
 		"BSSearchCenter": "BS\\ExtendedSearch\\MediaWiki\\Specials\\SearchCenter",
@@ -403,6 +412,42 @@
 			"dependencies": [
 				"ext.bluespice.extjs"
 			]
+		},
+		"ext.blueSpiceExtendedSearch.TagSearch.styles": {
+			"styles": [
+				"ext.blueSpiceExtendedSearch.TagSearch.less"
+			]
+		},
+		"ext.blueSpiceExtendedSearch.TagSearch": {
+			"scripts": "ext.blueSpiceExtendedSearch.TagSearch.js",
+			"dependencies": [
+				"ext.blueSpiceExtendedSearch.Autocomplete"
+			]
+		},
+		"ext.bluespice.tagsearch.visualEditor": {
+			"scripts": [
+				"ve/ve.ce.TagSearchNode.js",
+				"ve/ve.ce.BSTagSearchNode.js",
+				"ve/ve.dm.TagSearchNode.js",
+				"ve/ve.dm.BSTagSearchNode.js",
+				"ve/ve.ui.TagSearchInspector.js",
+				"ve/ve.ui.TagSearchInspectorTool.js"
+			],
+			"messages": [
+				"bs-extendedsearch-tagsearch-ve-tagsearch-title",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help"
+			],
+			"dependencies": [
+				"ext.visualEditor.mwcore"
+			]
 		}
 	},
 	"config_prefix": "bsg",
@@ -457,8 +502,13 @@
 				}
 			},
 			"public": false
+		},
+		"TagSearchSearchFieldTemplatePath": {
+			"value": "/resources/templates",
+			"path": true
 		}
 	},
+	"callback": "\\BS\\ExtendedSearch\\Setup::onRegistration",
 	"JobClasses": {
 		"updateWikiPageIndex": "BS\\ExtendedSearch\\Source\\Job\\UpdateWikiPage",
 		"updateSpecialPageIndex": "BS\\ExtendedSearch\\Source\\Job\\UpdateSpecialPage",

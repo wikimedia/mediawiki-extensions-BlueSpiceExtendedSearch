@@ -13,7 +13,7 @@ class Setup {
 	 */
 	public static function init() {
 		$sources = SearchBackend::instance()->getSources();
-		foreach( $sources as $source ) {
+		foreach ( $sources as $source ) {
 			$source->getUpdater()->init( $GLOBALS['wgHooks'] );
 		}
 
@@ -21,13 +21,13 @@ class Setup {
 		$GLOBALS['wgSearchType'] = BlueSpiceSearch::class;
 	}
 
-	//TODO: Move hooks to proper classes
+	// TODO: Move hooks to proper classes
 
 	/**
 	 * Register QUnit Tests with MediaWiki framework
 	 * @param array $testModules
 	 * @param \ResourceLoader $resourceLoader
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function onResourceLoaderTestModules( array &$testModules, \ResourceLoader &$resourceLoader ) {
 		$testModules['qunit']['ext.blueSpiceExtendedSearch.tests'] = [
@@ -56,11 +56,11 @@ class Setup {
 		$template->set( 'bs_search_id', 'bs-extendedsearch-box' );
 		$template->set(
 			'bs_search_input',
-			array(
+			[
 				'id' => 'bs-extendedsearch-input',
 				'type' => 'text',
 				'name' => 'raw_term'
-			)
+			]
 		);
 
 		$template->set( 'bs_search_method', 'GET' );
@@ -68,11 +68,11 @@ class Setup {
 		$template->set( 'bs_search_mobile_id', 'bs-extendedsearch-mobile-box' );
 		$template->set(
 			'bs_search_mobile_input',
-			array(
+			[
 				'id' => 'bs-extendedsearch-mobile-input',
 				'type' => 'text',
 				'name' => 'raw_term'
-			)
+			]
 		);
 
 		$template->set( 'bs_search_target', [
@@ -89,5 +89,15 @@ class Setup {
 	public static function getSearchEngineClass( \IDatabase $db ) {
 		$seFactory = Services::getInstance()->getSearchEngineFactory();
 		return $seFactory::getSearchEngineClass( $db );
+	}
+
+	/**
+	 * Add parser and definition to GLOBALS wgParamDefinitions
+	 */
+	public static function onRegistration() {
+		$GLOBALS['wgParamDefinitions']['searchresulttypelist'] = [
+			'definition' => 'BlueSpice\\ExtendedSearch\\Param\\Definition\\SearchResultTypeListParam',
+			'string-parser' => 'BlueSpice\\ExtendedSearch\\Param\\Parser\\SearchResultTypeParser'
+		];
 	}
 }
