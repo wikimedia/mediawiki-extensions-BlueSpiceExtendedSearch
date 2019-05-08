@@ -121,5 +121,18 @@
 	"bs-extendedsearch-export-button-label": "Export search results",
 	"bs-extendedsearch-flyout-similar-pages-title": "Similar pages",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "No similar pages found",
-	"bs-extendedsearch-search-center-result-file-usage-label": "Used on pages"
+	"bs-extendedsearch-search-center-result-file-usage-label": "Used on pages",
+	"bs-extendedsearch-tagsearch-extension-description": "Add a search form to {{GENDER:your}} content",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Type to search...",
+	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Invalid search result type: $1",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Namespace(s)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "List of valid namespace names or IDs separated by pipe (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Category(-ies)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "List of valid category names separated by pipe (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Placeholder",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Search operator",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Type",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "List of valid result types separated by pipe (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "This parameter is evaluated only in combination with \"category\" parameter. Setting AND will match only results that are in all of the given categories, while OR value will match results that have at least one of the given categories set"
 }
