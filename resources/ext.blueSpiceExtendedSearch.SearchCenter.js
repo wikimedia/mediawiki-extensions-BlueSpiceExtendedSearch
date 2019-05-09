@@ -298,6 +298,7 @@
 
 			if( response.total === 0 ) {
 				search.removeLoading();
+				$resultCnt.trigger( 'resultsReady' );
 				return $resultCnt.append( new bs.extendedSearch.ResultMessage( {
 					mode: 'noResults'
 				} ).$element );
