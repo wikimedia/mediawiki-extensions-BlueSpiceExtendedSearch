@@ -119,5 +119,18 @@
 	"bs-extendedsearch-export-button-label": "Exportar resultados da pesquisa",
 	"bs-extendedsearch-flyout-similar-pages-title": "Páginas similares",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Nenhuma página semelhante encontrada",
-	"bs-extendedsearch-search-center-result-file-usage-label": "Usado em páginas"
+	"bs-extendedsearch-search-center-result-file-usage-label": "Usado em páginas",
+	"bs-extendedsearch-tagsearch-extension-description": "Adicione um formulário de pesquisa para {{GENDER:your}} conteúdo",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Escreva para pesquisar...",
+	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Tipo de resultado de pesquisa inválido: $1",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Espaços nominais",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "Lista de nomes de espaço nominal válidos ou IDs separados por tubo (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Categoria(s)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "Lista de tipos de resultados válidos separados por tubo (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Posição",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Operador de pesquisa",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipo",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Lista de tipos de resultados válidos separados por tubo (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Este parâmetro é avaliado apenas em combinação com o parâmetro \"categoria\". A configuração AND corresponderá somente aos resultados que estão em todas as categorias fornecidas, enquanto o valor OR corresponderá aos resultados que tiverem pelo menos uma das categorias definidas"
 }

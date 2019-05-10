@@ -96,5 +96,7 @@
 	"bs-extendedsearch-filter-add-button-label": "필터 추가",
 	"bs-extendedsearch-options-button-label": "검색 옵션",
 	"bs-extendedsearch-export-button-label": "검색 결과 내보내기",
-	"bs-extendedsearch-flyout-similar-pages-title": "비슷한 문서"
+	"bs-extendedsearch-flyout-similar-pages-title": "비슷한 문서",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "이름공간",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "분류"
 }

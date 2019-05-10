@@ -120,5 +120,17 @@
 	"bs-extendedsearch-export-button-label": "تصدير نتائج البحث",
 	"bs-extendedsearch-flyout-similar-pages-title": "صفحات مماثلة",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "لا توجد صفحات مماثلة",
-	"bs-extendedsearch-search-center-result-file-usage-label": "مستخدم في الصفحات"
+	"bs-extendedsearch-search-center-result-file-usage-label": "مستخدم في الصفحات",
+	"bs-extendedsearch-tagsearch-extension-description": "أضف نموذج بحث إلى {{GENDER:محتواك}}",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "اكتب للبحث...",
+	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "نوع نتائج البحث غير صالح: $1",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "النطاق(ات)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "قائمة بأسماء النطاقات الصحيحة أو معرفات مفصولة بأنبوب (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "التصنيف(-ات)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "قائمة أسماء التصنيفات الصحيحة مفصولة بأنبوب (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "نائب",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "النوع",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "قائمة أنواع النتائج الصحيحة مفصولة بأنبوب (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "يتم تقييم هذا الوسيط فقط بالاقتران مع الوسيط \"التصنيف\"، إعداد AND سيطابق فقط النتائج الموجودة في جميع التصنيفات المحددة، بينما تطابق قيمة OR النتائج التي تحتوي على واحد على الأقل من التصنيفات المحددة"
 }
