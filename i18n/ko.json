@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ykhwong"
+			"Ykhwong",
+			"Maoue"
 		]
 	},
 	"bs-extsearch-desc": "일래스틱서치 검색 백엔드",
@@ -21,6 +22,7 @@
 	"bs-extendedsearch-admin-heading-backend": "로컬 백엔드",
 	"bs-extendedsearch-admin-label-error": "오류",
 	"bs-extendedsearch-admin-label-all-documents-count": "색인 대상 총 문서 수",
+	"bs-extendedsearch-admin-heading-sources": "출처",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "문서",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "필터 추가",
 	"bs-extendedsearch-search-center-filter-extension-label": "확장",

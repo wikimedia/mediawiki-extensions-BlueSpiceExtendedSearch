@@ -32,5 +32,7 @@
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Sprog på side:",
 	"bs-extendedsearch-search-center-create-page-link": "Opret siden \"$1\"",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Side $1: Tekst: $2",
-	"bs-extendedsearch-filter-add-button-label": "Tilføj et filter"
+	"bs-extendedsearch-filter-add-button-label": "Tilføj et filter",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Navnerum",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategori(er)"
 }
