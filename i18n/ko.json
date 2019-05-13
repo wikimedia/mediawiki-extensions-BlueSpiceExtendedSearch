@@ -99,6 +99,8 @@
 	"bs-extendedsearch-options-button-label": "검색 옵션",
 	"bs-extendedsearch-export-button-label": "검색 결과 내보내기",
 	"bs-extendedsearch-flyout-similar-pages-title": "비슷한 문서",
+	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "유효하지 않은 검색 결과 유형: $1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "이름공간",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "분류"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "분류",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "유형"
 }
