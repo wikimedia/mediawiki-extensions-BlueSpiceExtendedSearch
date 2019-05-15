@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"बिप्लब आनन्द"
+			"बिप्लब आनन्द",
+			"पर्वत सुबेदी"
 		]
 	},
-	"prefs-extendedsearch": "विस्तारित खोज"
+	"prefs-extendedsearch": "विस्तारित खोज",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "खोज्नका लागि केही प्रविष्ट गर्नुहोस्।"
 }
