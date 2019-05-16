@@ -119,5 +119,18 @@
 	"bs-extendedsearch-export-button-label": "Exportar resultados da pesquisa",
 	"bs-extendedsearch-flyout-similar-pages-title": "Páginas semelhantes",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Não foram encontradas páginas semelhantes",
-	"bs-extendedsearch-search-center-result-file-usage-label": "Usado nas páginas"
+	"bs-extendedsearch-search-center-result-file-usage-label": "Usado nas páginas",
+	"bs-extendedsearch-tagsearch-extension-description": "Adicionar um formulário de pesquisa ao {{GENDER:seu}} conteúdo",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Escreva texto a pesquisar...",
+	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Tipo de resultado de pesquisa inválido: $1",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Espaços nominais/domínios",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "Lista de nomes ou identificadores válidos de espaços nominais/domínios, separados por uma barra vertical (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Categorias",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "Lista de nomes de categoria válidos, separados por uma barra vertical (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Reserva de espaço",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Operador de pesquisa",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipo",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Lista de tipos de resultado válidos, separados por uma barra vertical (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Este parâmetro só é avaliado em combinação com o parâmetro \"categoria\". Escolher E causará a correspondência só com resultados que estejam em todas as categorias especificadas, enquanto OU causará a correspondência com resultados que tenham definida pelo menos uma das categorias especificadas"
 }
