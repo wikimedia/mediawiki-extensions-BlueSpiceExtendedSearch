@@ -444,6 +444,10 @@
 		"updateExternalFileIndex": "BS\\ExtendedSearch\\Source\\Job\\UpdateExternalFile",
 		"updateLinkedFileIndex": "BS\\ExtendedSearch\\Source\\Job\\UpdateLinkedFile"
 	},
+	"AutoloadNamespaces": {
+		"BS\\ExtendedSearch\\": "src/",
+		"BS\\ExtendedSearch\\Tests": "tests/phpunit/"
+	},
 	"load_composer_autoloader" : true,
 	"manifest_version": 2
 }
