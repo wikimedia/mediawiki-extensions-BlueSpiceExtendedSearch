@@ -4,6 +4,9 @@
 			"Joetaras"
 		]
 	},
+	"bs-extsearch-desc": "Recerche de backend ElasticSearch",
+	"bssearchadmin": "Amministratore d'a recerche",
+	"bssearchadmin-desc": "Dèje 'na gestione de l'inderfacce d'a recerche",
 	"apihelp-bs-extendedsearch-query-summary": "Cirche l'indice",
 	"apihelp-bs-extendedsearch-query-param-search-term": "Termine ca avène ausate pa recerche",
 	"bs-extendedsearch-search-input-placeholder": "Iacchie ...",

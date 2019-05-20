@@ -9,5 +9,6 @@
 	"bs-extendedsearch-search-center-result-help": "Geben Sie etwas in die Suchleiste oben ein....",
 	"bs-extendedsearch-search-center-result-exception": "Anfrage kann nicht ausgeführt werden, bitte ändern Sie den Suchbegriff.",
 	"bs-extendedsearch-search-center-hitcount-suggest": "Meinten Sie $1 ({{PLURAL:$2|Ein|$2}} Treffer)?",
-	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch – {{GENDER:$2|Sie}} haben {{PLURAL:$1|eine Seite|$1 Seiten}} als {{PLURAL:$1|relevantes Suchergebnis|relevante Suchergebnisse}} markiert"
+	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch – {{GENDER:$2|Sie}} haben {{PLURAL:$1|eine Seite|$1 Seiten}} als {{PLURAL:$1|relevantes Suchergebnis|relevante Suchergebnisse}} markiert",
+	"bs-extendedsearch-tagsearch-extension-description": "{{GENDER:|Ihrem}} Inhalt ein Suchformular hinzufügen"
 }

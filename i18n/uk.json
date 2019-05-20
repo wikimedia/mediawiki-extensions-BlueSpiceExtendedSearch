@@ -122,6 +122,7 @@
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Подібні сторінки не знайдено",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Використовується на сторінках",
 	"bs-extendedsearch-tagsearch-extension-description": "Додати форму пошуку до {{GENDER:Вашого}} контенту",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Введіть для пошуку...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип"
 }

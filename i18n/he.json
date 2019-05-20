@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Erelon"
+		]
+	},
+	"bs-extendedsearch-search-input-placeholder": "מצא...",
+	"bs-extendedsearch-source-label-repofile": "העלאת קובץ",
+	"bs-extendedsearch-source-label-user": "משתמש",
+	"bs-extendedsearch-admin-label-error": "שגיאה",
+	"bs-extendedsearch-admin-heading-sources": "מקורות",
+	"bs-extendedsearch-admin-heading-sources-documentscount": "מסמכים",
+	"bs-extendedsearch-search-center-addfilter-dialog-title": "הוספת מסנן",
+	"bs-extendedsearch-search-center-filter-categories-label": "קטגוריה",
+	"bs-extendedsearch-search-center-result-ctime-label": "נוצר:",
+	"bs-extendedsearch-search-center-sort-order-asc": "בסדר עולה",
+	"bs-extendedsearch-search-center-sort-order-desc": "בסדר יורד",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "ביטול",
+	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "החלה",
+	"bs-extendedsearch-search-center-options-sort-by": "מיון לפי",
+	"bs-extendedsearch-autocomplete-result-type": "סוג: $1",
+	"bs-extendedsearch-searchcenter-filter-or-label": "או",
+	"bs-extendedsearch-searchcenter-filter-and-label": "וגם",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "שם",
+	"bs-extendedsearch-searchcenter-sort-field-size": "גודל",
+	"bs-extendedsearch-search-center-result-typetext-label": "סוג:",
+	"bs-extendedsearch-source-type-wikipage-label": "דף ויקי",
+	"bs-extendedsearch-autocomplete-modified-time-label": "שונה לאחרונה: $1",
+	"bs-extendedsearch-wikipage-title-original": "(כותרת מקורית: $1)",
+	"bs-extendedsearch-filter-add-button-label": "הוספת מסנן",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "סוג"
+}

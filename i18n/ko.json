@@ -76,6 +76,7 @@
 	"bs-extendedsearch-result-relevance-relevant": "이 결과는 제게 중요합니다",
 	"bs-extendedsearch-result-relevance-not-relevant": "이 결과는 제게 중요하지 않습니다",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "전체 글 검색",
+	"prefs-extendedsearch": "확장된 검색",
 	"bs-extendedsearch-user-preferred-namespaces": "선호하는 이름공간",
 	"bs-extendedsearch-pref-external-file-paths": "외부 파일 경로",
 	"bs-extendedsearch-pref-external-file-paths-path": "물리적인 경로",
