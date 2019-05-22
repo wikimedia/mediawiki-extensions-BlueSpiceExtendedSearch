@@ -51,7 +51,9 @@ class WikiPageFormatter extends Base {
 		$result['redirects'] = $this->formatRedirectedFrom( $result );
 		$result['rendered_content_snippet'] = $this->getRenderedContentSnippet( $result['rendered_content'] );
 
-		$result['basename'] = $result['display_title'];
+		if ( $result['display_title'] !== '' ) {
+			$result['basename'] = $result['display_title'];
+		}
 		$result['original_title'] = $this->getOriginalTitleText( $result );
 
 		$result['file-usage'] = '';
