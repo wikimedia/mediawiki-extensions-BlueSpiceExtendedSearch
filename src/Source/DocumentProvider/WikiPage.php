@@ -206,7 +206,7 @@ class WikiPage extends DecoratorBase {
 
 	protected function getDisplayTitle( \Title $title ) {
 		$pageProps = $this->getPageProps( $title );
-		if( isset( $pageProps['displaytitle'] ) ) {
+		if( isset( $pageProps['displaytitle'] ) && $pageProps['displaytitle'] !== '' ) {
 			return $pageProps['displaytitle'];
 		}
 		return $title->getPrefixedText();
