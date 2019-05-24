@@ -4,7 +4,7 @@
  * Part of BlueSpice MediaWiki
  *
  * @author     Robert Vogel
-  * @package    BlueSpice_Extensions
+ * @package    BlueSpice_Extensions
  * @subpackage TagSearch
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v3
@@ -47,8 +47,24 @@
 		.btn::before {
 			font-family: 'entypo';
 			font-style: normal;
-			font-size: 16px;
+			font-size: 15px;
 			content: "\e9d9";
+		}
+		.bs-extendedsearch-searchbar-wrapper {
+			.bs-extendedsearch-searchbar-clear {
+				text-align: center;
+				padding: 0;
+				width: 28px;
+				line-height: 12px;
+			}
+		}
+		.bs-extendedsearch-autocomplete-popup {
+			&.compact {
+				top: 36px !important;
+				left: 5px;
+				/* search button width=28px */
+				width: calc(~"250px + 28px") !important;
+			}
 		}
 	}
 }
