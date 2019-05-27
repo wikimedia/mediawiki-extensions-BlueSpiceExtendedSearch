@@ -490,6 +490,14 @@
 			"public": true,
 			"value": false
 		},
+        "ESWildcardingOperators": {
+          "public": false,
+          "value": [ "+", "|", "*", "(", ")", "~" ]
+        },
+        "ESWildcardingSeparators": {
+          "public": false,
+          "value": [ ",", ".", ";", "-", "_" ]
+        },
 		"ESSourceConfig": {
 			"value": {
 				"wikipage": {

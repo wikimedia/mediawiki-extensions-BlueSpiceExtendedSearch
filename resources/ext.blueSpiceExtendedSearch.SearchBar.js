@@ -34,7 +34,8 @@
 		}
 
 		this.typingTimer = null;
-		this.typingDoneInterval = cfg.typingDoneInterval || 500;
+		this.typingDoneInterval = (typeof cfg.typingDoneInterval !== 'undefined' ) ?
+			cfg.typingDoneInterval : 200;
 
 		this.$searchContainer = $( '#' + cfg.cntId );
 		this.$searchForm = this.$searchContainer.find( 'form' );

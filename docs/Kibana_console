@@ -27,28 +27,65 @@ PUT /_ingest/pipeline/attachment
 
 GET _ingest/pipeline/attachment
 
-GET master/_search
+Sample queries
+
+# Fuzzy AC
+GET _search
 {
-    "_source": {
-        "excludes": [ "the_file", "rendered_content", "source_content" ]
-    },
-    "query" : {
-      "match": {
-        "_all" : "Steve"
-      }
-    },
-    "aggs": {
-      "all_types": {
-        "terms": {
-          "field": "_type"
-        },
-        "aggs": {
-          "all_extensions" : {
-            "terms": {
-              "field": "extension"
-            }
+  "_source": "prefixed_title",
+  "query": {
+    "bool": {
+      "must": {
+        "match": {
+          "ac_ngram": {
+            "query": "test AC",
+            "prefix_length": 2
           }
         }
-      }
+      },
+      "must_not": [
+        {
+          "terms": {
+            "namespace": [
+                1, 3, 5, 7, 9
+              ]
+          }
+        }
+      ]
     }
+  }
+}
+
+
+# Full-text
+GET _search
+{
+  "sort": [ {
+    "_score": {
+      "order": "desc"
+    }
+  } ],
+  "_source": [ "basename" ],
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "query_string": {
+            "default_operator": "AND",
+            "query": "test",
+            "fields": [
+              "attachment.content",
+              "basename^8",
+              "congregated",
+              "smwproperty",
+              "rendered_content",
+              "prefixed_title^19",
+              "display_title^200",
+              "entitydata.header^2"
+            ]
+          }
+        }
+      ]
+    }
+  }
 }

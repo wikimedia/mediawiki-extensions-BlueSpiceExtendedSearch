@@ -2,16 +2,9 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
-/**
- * This class wildcards single words, without operators.
- * Logic is that users when typing a single word, want to see
- * results before they finish typing the whole word
- */
+use BS\ExtendedSearch\Wildcarder;
+
 class BaseWildcarder extends Base {
-	/**
-	 * @var array
-	 */
-	protected $operators = ['+', '|', '-', "\"", "*", "(", ")", "~"];
 	/**
 	 * @var array
 	 */
@@ -20,64 +13,18 @@ class BaseWildcarder extends Base {
 	 * @var string
 	 */
 	protected $originalQuery;
-	/**
-	 * @var string
-	 */
-	protected $wildcarded;
 
 	public function apply() {
 		$this->queryString = $this->oLookup->getQueryString();
 		$this->originalQuery = $this->queryString['query'];
-		$this->wildcarded = trim( $this->originalQuery );
 
-		if ( $this->containsOperators() ) {
-
-			return;
-		}
-
-		$this->escapeColons();
-		if( $this->isSinglePlainWord() ) {
-			$this->wildcardTerm();
-		}
-		$this->setWildcarded();
+		$wildcarder = Wildcarder::factory( trim( $this->originalQuery ) );
+		$this->setWildcarded( $wildcarder->getWildcarded() );
 	}
 
-	/**
-	 * Returns true if search term has no spaces,
-	 * and no operators - meaning it should be wildcarded
-	 *
-	 * @return boolean
-	 */
-	protected function isSinglePlainWord() {
-		if( strlen( $this->wildcarded ) == 0 ) {
-			return false;
-		}
-
-		if( strpos( $this->wildcarded, ' ' ) === false ) {
-			return true;
-		}
-		return false;
-	}
-
-	protected function containsOperators() {
-		$pattern = [];
-		foreach( $this->operators as $op ) {
-			$pattern[] = "\\$op";
-		}
-		$pattern = "/" . implode( '|', $pattern ) . "/";
-
-		if( preg_match( $pattern, $this->originalQuery ) ) {
-			return true;
-		}
-		return false;
-	}
-
-	protected function wildcardTerm() {
-		$this->wildcarded = "*{$this->wildcarded} OR {$this->wildcarded}*";
-	}
-
-	protected function setWildcarded() {
-		$this->queryString['query'] = $this->wildcarded;
+	protected function setWildcarded( $wildcarded ) {
+		$this->queryString['query'] = $wildcarded;
+		$this->queryString['default_operator'] = 'OR';
 		$this->oLookup->setQueryString( $this->queryString );
 	}
 
@@ -89,9 +36,5 @@ class BaseWildcarder extends Base {
 
 	public function getPriority() {
 		return 90;
-	}
-
-	protected function escapeColons() {
-		$this->wildcarded = str_replace( ':', '\\:', $this->wildcarded );
 	}
 }
