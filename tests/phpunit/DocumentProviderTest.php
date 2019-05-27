@@ -3,14 +3,6 @@
 namespace BS\ExtendedSearch\Tests;
 
 class DocumentProviderTest extends \MediaWikiTestCase {
-	public function setUp() {
-		parent::setUp();
-		$this->insertPage( 'Help:WikiPageTest', 'Dummy content' );
-	}
-
-	public function tearDown() {
-		parent::tearDown();
-	}
 
 	public function testBaseDocumentProvider() {
 		$oDP = new \BS\ExtendedSearch\Source\DocumentProvider\Base();
@@ -27,7 +19,9 @@ class DocumentProviderTest extends \MediaWikiTestCase {
 			new \BS\ExtendedSearch\Source\DocumentProvider\Base()
 		);
 
-		$oWikiPage = \WikiPage::factory( \Title::newFromText( 'Help:WikiPageTest' ) );
+		$title = \Title::makeTitle( NS_HELP, 'Dummy title' );
+		$this->insertPage( $title, 'Dummy text' );
+		$oWikiPage = \WikiPage::factory( $title );
 		$sTestUri = $oWikiPage->getTitle()->getCanonicalURL();
 		$sTestUriMD5 = md5( $sTestUri );
 

@@ -437,7 +437,8 @@
 		//Init searchBar and wire it up
 		searchBar = new bs.extendedSearch.SearchBar( {
 			useNamespacePills: false,
-			useSubpagePills: false
+			useSubpagePills: false,
+			typingDoneInterval: 0
 		} );
 
 		searchBar.$searchForm.on( 'submit', function (e) {

@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch\Source;
 
+use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageNamespaceTextAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageCategoriesAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageUserPreferences;
@@ -16,11 +17,11 @@ use BS\ExtendedSearch\Source\LookupModifier\WikiPageWildcarder;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageRemoveUnwanted;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageLanguageAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageLanguageFilter;
-use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
+use BS\ExtendedSearch\Source\PostProcessor\WikiPage as WikiPagePostProcessor;
 
 class WikiPages extends DecoratorBase {
 	protected $lookupModifiers = [
-		LookupModifier::TYPE_SEARCH => [
+		Backend::QUERY_TYPE_SEARCH => [
 			'wikipage-namespacetextaggregation' => WikiPageNamespaceTextAggregation::class,
 			'wikipage-userpreferences' => WikiPageUserPreferences::class,
 			'wikipage-namespaceprefixresolver' => WikiPageNamespacePrefixResolver::class,
@@ -34,7 +35,7 @@ class WikiPages extends DecoratorBase {
 			'wikipage-pagelangaggregation' => WikiPageLanguageAggregation::class,
 			'wikipage-langfilter' => WikiPageLanguageFilter::class
 		],
-		LookupModifier::TYPE_AUTOCOMPLETE => [
+		Backend::QUERY_TYPE_AUTOCOMPLETE => [
 			'wikipage-securitytrimming' => WikiPageSecurityTrimming::class,
 			'wikipage-acsourcefields' => WikiPageAutocompleteSourceFields::class,
 			'wikipage-boosters' => WikiPageBoosters::class,
@@ -93,5 +94,12 @@ class WikiPages extends DecoratorBase {
 
 	public function getSearchPermission() {
 		return 'extendedsearch-search-wikipage';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public static function getPostProcessor( $base ) {
+		return WikiPagePostProcessor::factory( $base );
 	}
 }
