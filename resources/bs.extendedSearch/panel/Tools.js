@@ -51,20 +51,22 @@
 
 		this.optionsButton.$element.on( 'click', { options: this.searchOptionsConfig }, this.openOptionsDialog.bind( this ) );
 
-		this.exportButton = new OO.ui.ButtonWidget( {
-			framed: false,
-			label: ''
-		} );
-		this.exportButton.$element.addClass( 'bs-extendedsearch-export-button tools-button' );
-		this.exportButton.$element.attr( 'title', mw.message( "bs-extendedsearch-export-button-label" ).text() );
-		this.exportButton.$element.on( 'click', this.showExportSearchDialog.bind( this ) );
-
 		this.$filtersContainer = $( '<div>' ).attr( 'id', 'bs-es-tools-filters' );
 		this.$toolsContainer.append(
 			addFilterWidget.$element,
-			this.optionsButton.$element,
-			this.exportButton.$element
+			this.optionsButton.$element
 		);
+
+		if ( mw.config.get( 'bsgESUserCanExport' ) ) {
+			this.exportButton = new OO.ui.ButtonWidget( {
+				framed: false,
+				label: ''
+			} );
+			this.exportButton.$element.addClass( 'bs-extendedsearch-export-button tools-button' );
+			this.exportButton.$element.attr( 'title', mw.message( "bs-extendedsearch-export-button-label" ).text() );
+			this.exportButton.$element.on( 'click', this.showExportSearchDialog.bind( this ) );
+			this.$toolsContainer.append( this.exportButton.$element );
+		}
 
 		this.$element.append(
 			this.hitCounter.$element,
@@ -363,12 +365,16 @@
 			}
 		} );
 
-		var term = this.caller.getLookupObject().getQueryString().query;
-		var dialog = Ext.create( 'BS.dialog.PageExport', {
+		let term = this.caller.getLookupObject().getQueryString().query;
+		if ( this.dialog ) {
+			// Destroy previous instance to prevent double input rendering
+			this.dialog.destroy();
+		}
+		this.dialog = Ext.create( 'BS.dialog.PageExport', {
 			pages: pages,
 			defaultName: term
 		});
-		dialog.show();
+		this.dialog.show();
 	}
 
 } )( mediaWiki, jQuery, blueSpice, document );

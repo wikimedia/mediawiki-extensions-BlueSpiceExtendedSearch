@@ -2,21 +2,28 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Specials;
 
-class SearchCenter extends \SpecialPage {
+use BlueSpice\Services;
+use Title;
+use SpecialPage;
+use FormatJson;
+use BS\ExtendedSearch\Lookup;
+use BS\ExtendedSearch\Backend as SearchBackend;
 
-	public function __construct( $name = '', $restriction = '', $listed = true, $function = false, $file = '', $includable = false ) {
+class SearchCenter extends SpecialPage {
+
+	public function __construct() {
 		//SearchCenter should only be reached via searchBar
-		parent::__construct( 'BSSearchCenter', $restriction, false );
+		parent::__construct( 'BSSearchCenter', '', false );
 	}
 
 	public function execute( $subPage ) {
 		$this->setHeaders();
 
-		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsg' );
+		$config = Services::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
 
 		$returnTo = $this->getRequest()->getText( 'returnto' );
-		$title = \Title::newFromText( $returnTo );
-		if( $title instanceof \Title ) {
+		$title = Title::newFromText( $returnTo );
+		if( $title instanceof Title ) {
 			$this->getOutput()->addReturnTo( $title );
 		}
 
@@ -46,7 +53,7 @@ class SearchCenter extends \SpecialPage {
 		$out = $this->getOutput();
 		$out->addModules( "ext.blueSpiceExtendedSearch.SearchCenter" );
 
-		$localBackend = \BS\ExtendedSearch\Backend::instance();
+		$localBackend = SearchBackend::instance();
 		$defaultResultStructure = $localBackend->getDefaultResultStructure();
 
 		//Add _score manually, as its not a real field
@@ -89,7 +96,7 @@ class SearchCenter extends \SpecialPage {
 		$out->addHTML( \Html::element( 'div', [ 'id' => 'bs-es-results' ] ) );
 
 		if( $lookup ) {
-			$out->addJsConfigVars( 'bsgLookupConfig', \FormatJson::encode( $lookup ) );
+			$out->addJsConfigVars( 'bsgLookupConfig', FormatJson::encode( $lookup ) );
 		}
 
 		//Structure of the result displayed in UI, decorated by each source
@@ -100,6 +107,7 @@ class SearchCenter extends \SpecialPage {
 		$out->addJsConfigVars( 'bsgESAvailbleTypes', $availableTypes );
 		$out->addJsConfigVars( 'bsgESResultsPerPage', 25 );
 		$out->addJsConfigVars( 'ESSearchCenterDefaultFilters', $config->get( 'ESSearchCenterDefaultFilters' ) );
+		$out->addJsConfigVars( 'bsgESUserCanExport', $this->userCanExport() );
 	}
 
 	/**
@@ -107,18 +115,17 @@ class SearchCenter extends \SpecialPage {
 	 * otherwise returns empty Lookup
 	 *
 	 * @param string $query
-	 * @param boolean $queryIsLookup Is passed query a Lookup object
-	 * @return \BS\ExtendedSearch\Lookup
+	 * @return Lookup
 	 */
 	protected function lookupFromQuery( $query ) {
-		$lookup = new \BS\ExtendedSearch\Lookup();
+		$lookup = new Lookup();
 		if( !$query ) {
 			return $lookup;
 		}
 
-		$parseStatus = \FormatJson::parse( $query, \FormatJson::FORCE_ASSOC );
+		$parseStatus = FormatJson::parse( $query, FormatJson::FORCE_ASSOC );
 		if( $parseStatus->isOK() ) {
-			return new \BS\ExtendedSearch\Lookup( $parseStatus->getValue() );
+			return new Lookup( $parseStatus->getValue() );
 		}
 
 		if( is_string( $query ) == false ) {
@@ -131,5 +138,13 @@ class SearchCenter extends \SpecialPage {
 
 	protected function getGroupName() {
 		return 'bluespice';
+	}
+
+	private function userCanExport() {
+		$pageToTest = Title::makeTitle( NS_MEDIAWIKI, 'Dummy' );
+		if ( $pageToTest->userCan( 'edit', $this->getUser() ) ) {
+			return true;
+		}
+		return false;
 	}
 }
