@@ -6,7 +6,8 @@
 			"Gomoko",
 			"Wladek92",
 			"Alacabe",
-			"Eihel"
+			"Eihel",
+			"Urhixidur"
 		]
 	},
 	"bs-extsearch-desc": "Recherche Elasticsearch d'arrière-plan",
@@ -128,7 +129,7 @@
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Taper pour rechercher…",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Type de résultat de recherche non valide : $1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Espace(s) de nom",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Espace(s) de noms",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "Liste des noms ou IDs de l’espace de nom valides séparés par une barre verticale (|)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Catégorie(s)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "Liste des noms de catégorie valides séparés par des barres verticales (|)",

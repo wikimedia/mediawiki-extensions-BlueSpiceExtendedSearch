@@ -3,7 +3,8 @@
 		"authors": [
 			"Fitoschido",
 			"Vanbasten 23",
-			"Carlosmg.dg"
+			"Carlosmg.dg",
+			"Agusbou2015"
 		]
 	},
 	"apihelp-bs-extendedsearch-query-description": "Buscar en el índice",
@@ -91,5 +92,6 @@
 	"bs-extendedsearch-options-button-label": "Opciones de búsqueda",
 	"bs-extendedsearch-export-button-label": "Exportar resultados de búsqueda",
 	"bs-extendedsearch-flyout-similar-pages-title": "Páginas similares",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "No se encontró ninguna página similar"
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "No se encontró ninguna página similar",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Marcador de posición"
 }
