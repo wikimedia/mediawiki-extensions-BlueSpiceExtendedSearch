@@ -113,7 +113,7 @@
 
 		var popupWidth = this.popup.searchForm.width();
 		popupWidth = ( !this.popup.mobile && !this.popup.compact ) ? popupWidth / 2 : popupWidth;
-		var snippetLength = popupWidth > 0 ? popupWidth / 10 : 30;
+		var snippetLength = popupWidth > 0 ? popupWidth / 7 : 30;
 		snippetLength = this.popup.mobile ? snippetLength * 0.7 : snippetLength;
 		snippetLength = Math.round( snippetLength );
 		this.basename = this.getSnippet( this.basename, snippetLength, this.searchTerm );
