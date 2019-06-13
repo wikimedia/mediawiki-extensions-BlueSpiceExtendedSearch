@@ -3,7 +3,7 @@
 namespace BS\ExtendedSearch\Source;
 
 use BS\ExtendedSearch\Source\LookupModifier\FileContent;
-use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
+use BS\ExtendedSearch\Backend;
 
 class RepoFiles extends DecoratorBase {
 
@@ -16,10 +16,10 @@ class RepoFiles extends DecoratorBase {
 	}
 
 	protected $lookupModifiers = [
-		LookupModifier::TYPE_SEARCH => [
+		Backend::QUERY_TYPE_SEARCH => [
 			'file-content' => FileContent::class
 		],
-		LookupModifier::TYPE_AUTOCOMPLETE => [
+		Backend::QUERY_TYPE_AUTOCOMPLETE => [
 		]
 	];
 
