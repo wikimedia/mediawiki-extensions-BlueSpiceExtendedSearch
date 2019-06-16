@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Erelon"
+			"Erelon",
+			"Steeve815"
 		]
 	},
 	"bs-extendedsearch-search-input-placeholder": "מצא...",
@@ -11,6 +12,9 @@
 	"bs-extendedsearch-admin-heading-sources": "מקורות",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "מסמכים",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "הוספת מסנן",
+	"bs-extendedsearch-search-center-filter-extension-label": "הרחבה",
+	"bs-extendedsearch-search-center-filter-namespace_text-label": "מרחב שם",
+	"bs-extendedsearch-search-center-filter-tags-label": "תגית",
 	"bs-extendedsearch-search-center-filter-categories-label": "קטגוריה",
 	"bs-extendedsearch-search-center-result-ctime-label": "נוצר:",
 	"bs-extendedsearch-search-center-sort-order-asc": "בסדר עולה",
@@ -23,10 +27,16 @@
 	"bs-extendedsearch-searchcenter-filter-and-label": "וגם",
 	"bs-extendedsearch-searchcenter-sort-field-basename": "שם",
 	"bs-extendedsearch-searchcenter-sort-field-size": "גודל",
+	"bs-extendedsearch-autocomplete-create-page-link": "יצירת הדף \"$1\"",
 	"bs-extendedsearch-search-center-result-typetext-label": "סוג:",
 	"bs-extendedsearch-source-type-wikipage-label": "דף ויקי",
 	"bs-extendedsearch-autocomplete-modified-time-label": "שונה לאחרונה: $1",
+	"bs-extendedsearch-redirect-target-label": "הפניות ל:",
+	"bs-extendedsearch-search-center-filter-page_language-label": "שפת הדף",
 	"bs-extendedsearch-wikipage-title-original": "(כותרת מקורית: $1)",
 	"bs-extendedsearch-filter-add-button-label": "הוספת מסנן",
+	"bs-extendedsearch-flyout-similar-pages-title": "דפים דומים",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "לא נמצאו דפים דומים",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "נא להקליד לחיפוש...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "סוג"
 }
