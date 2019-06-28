@@ -20,7 +20,7 @@
 		"BlueSpiceFoundation": {
 			"Extensions": {
 				"BlueSpiceExtendedSearch": {
-					"className": "BS\\ExtendedSearch\\Setup",
+					"className": "BS\\ExtendedSearch\\Extension",
 					"configDefinitions": {
 						"ESExternalFilePaths": "BS\\ExtendedSearch\\ConfigDefinition\\ExternalFilePaths::getInstance",
 						"ESCompactAutocomplete": "BS\\ExtendedSearch\\ConfigDefinition\\CompactAutocomplete::getInstance",
