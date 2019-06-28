@@ -1,5 +1,7 @@
 <?php
 
+namespace BS\ExtendedSearch\Hook\BSInsertMagicAjaxGetData;
+
 use BlueSpice\InsertMagic\Hook\BSInsertMagicAjaxGetData;
 
 class AddTagSearch extends BSInsertMagicAjaxGetData {
