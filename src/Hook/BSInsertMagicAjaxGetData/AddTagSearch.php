@@ -19,7 +19,7 @@ class AddTagSearch extends BSInsertMagicAjaxGetData {
 		$oDescriptor->type = 'tag';
 		$oDescriptor->name = 'tagsearch';
 		$oDescriptor->desc = $this->msg( 'bs-extendedsearch-tagsearch-extension-description' )->text();
-		$oDescriptor->mwvecommand = 'tagSearchCommand';
+		$oDescriptor->mwvecommand = 'tagsearchCommand';
 		$oDescriptor->code = '<bs:tagsearch />';
 		$oDescriptor->previewable = false;
 		$oDescriptor->helplink = $extension->getUrl();
