@@ -129,13 +129,18 @@
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Placeholder text for the search field",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Error message text when given search result type is invalid. $1 - name of the given type",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "Title of VE inspector for TagSearch tag",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-desc": "Description of the purpose of TagSearch tag",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Field label for namespace field",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "Help text for field namespace",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "Placeholder text for namespace field",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Field label for category field",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "Help text for field category",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Placeholder text for category field",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Field label for placeholder field",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-help": "Help text for field\"placeholder\"",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Placeholder text for field\"placeholder\"",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Field label for operator field",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Help text for field \"operator\"",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Field label for \"type\" field",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Help text for field \"type\"",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Help text for field \"operator\""
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Help text for field \"type\""
 }

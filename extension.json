@@ -99,6 +99,12 @@
 			"TagRegistry": {
 				"bs-tagsearch": "BS\\ExtendedSearch\\Tag\\TagSearch"
 			}
+
+		},
+		"BlueSpiceVisualEditorConnector": {
+			"TagDefinitions": [
+				"ext.bluespice.tagsearch.visualEditor"
+			]
 		},
 		"BlueSpiceArticleInfo": {
 			"FlyoutModules": {
@@ -237,7 +243,8 @@
 		"bs-extendedsearch-stats": "BS\\ExtendedSearch\\MediaWiki\\Api\\Stats",
 		"bs-extendedsearch-triggerupdate": "BS\\ExtendedSearch\\MediaWiki\\Api\\TriggerUpdate",
 		"bs-extendedsearch-autocomplete": "BS\\ExtendedSearch\\MediaWiki\\Api\\Autocomplete",
-		"bs-extendedsearch-resultrelevance": "BS\\ExtendedSearch\\MediaWiki\\Api\\ResultRelevance"
+		"bs-extendedsearch-resultrelevance": "BS\\ExtendedSearch\\MediaWiki\\Api\\ResultRelevance",
+		"bs-extendedsearch-type-store": "BS\\ExtendedSearch\\MediaWiki\\Api\\TypeStore"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
@@ -429,20 +436,21 @@
 		},
 		"ext.bluespice.tagsearch.visualEditor": {
 			"scripts": [
-				"ve/ve.ce.TagSearchNode.js",
-				"ve/ve.ce.BSTagSearchNode.js",
-				"ve/ve.dm.TagSearchNode.js",
-				"ve/ve.dm.BSTagSearchNode.js",
-				"ve/ve.ui.TagSearchInspector.js",
-				"ve/ve.ui.TagSearchInspectorTool.js"
+				"bs.extnddsrc/ui/widget/SearchTypeInputWidget.js",
+				"bs.extnddsrc/util/tag/TagSearchDefinition.js"
 			],
 			"messages": [
 				"bs-extendedsearch-tagsearch-ve-tagsearch-title",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-desc",
 				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns",
 				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder",
 				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat",
 				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder",
 				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-help",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder",
 				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator",
 				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help",
 				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type",
