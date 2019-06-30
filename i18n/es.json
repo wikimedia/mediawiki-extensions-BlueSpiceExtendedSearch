@@ -93,6 +93,7 @@
 	"bs-extendedsearch-export-button-label": "Exportar resultados de búsqueda",
 	"bs-extendedsearch-flyout-similar-pages-title": "Páginas similares",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "No se encontró ninguna página similar",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Escribe para buscar…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Espacio(s) de nombres",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Categoría(s)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Marcador de posición",

@@ -4,5 +4,6 @@
 			"Fitoschido"
 		]
 	},
-	"bs-extendedsearch-search-center-result-exception": "No se puede ejecutar la consulta; modifique el término de búsqueda."
+	"bs-extendedsearch-search-center-result-exception": "No se puede ejecutar la consulta; modifique el término de búsqueda.",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Escriba para buscar…"
 }

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Erelon",
-			"Steeve815"
+			"Steeve815",
+			"Strayblues"
 		]
 	},
 	"bssearchadmin": "חיפוש מפעיל מערכת",
@@ -52,7 +53,7 @@
 	"bs-extendedsearch-searchcenter-sort-field-_score": "רלוונטיות",
 	"bs-extendedsearch-searchcenter-sort-field-basename": "שם",
 	"bs-extendedsearch-searchcenter-sort-field-mtime": "תאריך שינוי",
-	"bs-extendedsearch-searchcenter-sort-field-ctime": "תאריך ייצור",
+	"bs-extendedsearch-searchcenter-sort-field-ctime": "תאריך יצירה",
 	"bs-extendedsearch-searchcenter-sort-field-size": "גודל",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "מרחב שם",
 	"bs-extendedsearch-autocomplete-create-page-link": "יצירת הדף \"$1\"",
