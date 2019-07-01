@@ -62,7 +62,7 @@
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL voorvoegsel",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Laatste wijziging op: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... $1 meer",
-	"bs-extendedsearch-search-center-result-redirects-label": "Doorverwezen vanaf: $1",
+	"bs-extendedsearch-search-center-result-redirects-label": "Doorverwezen vanaf:",
 	"bs-extendedsearch-redirect-target-label": "Doorverwijzing naar:",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Paginataal",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Paginataal:",
