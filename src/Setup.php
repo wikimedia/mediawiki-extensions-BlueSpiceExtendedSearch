@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch;
 
+use Wikimedia\Rdbms\ILoadBalancer;
 use BlueSpice\Services;
 use BS\ExtendedSearch\Backend as SearchBackend;
 use BS\ExtendedSearch\MediaWiki\Backend\BlueSpiceSearch;
@@ -86,9 +87,9 @@ class Setup {
 		return true;
 	}
 
-	public static function getSearchEngineClass( \IDatabase $db ) {
+	public static function getSearchEngineClass( ILoadBalancer $lb ) {
 		$seFactory = Services::getInstance()->getSearchEngineFactory();
-		return $seFactory::getSearchEngineClass( $db );
+		return $seFactory::getSearchEngineClass( $lb );
 	}
 
 	/**

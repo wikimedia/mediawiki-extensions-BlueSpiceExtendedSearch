@@ -2,6 +2,7 @@
 namespace BS\ExtendedSearch\MediaWiki\Backend;
 
 use BS\ExtendedSearch\Lookup;
+use BlueSpice\Services;
 
 class BlueSpiceSearch extends \SearchEngine {
 	protected $fallbackSearchEngine = null;
@@ -135,9 +136,9 @@ class BlueSpiceSearch extends \SearchEngine {
 	 */
 	protected function getFallbackSearchEngine() {
 		if( $this->fallbackSearchEngine === null ) {
-			$db = wfGetDB( DB_REPLICA );
-			$class = \BS\ExtendedSearch\Setup::getSearchEngineClass( $db );
-			$this->fallbackSearchEngine = new $class( $db );
+			$lb = Services::getInstance()->getDBLoadBalancer();
+			$class = \BS\ExtendedSearch\Setup::getSearchEngineClass( $lb );
+			$this->fallbackSearchEngine = new $class( $lb );
 		}
 		return $this->fallbackSearchEngine;
 	}
