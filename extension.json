@@ -24,7 +24,8 @@
 					"configDefinitions": {
 						"ESExternalFilePaths": "BS\\ExtendedSearch\\ConfigDefinition\\ExternalFilePaths::getInstance",
 						"ESCompactAutocomplete": "BS\\ExtendedSearch\\ConfigDefinition\\CompactAutocomplete::getInstance",
-						"ESAutoSetLangFilter": "BS\\ExtendedSearch\\ConfigDefinition\\AutoSetLanguageFilter::getInstance"
+						"ESAutoSetLangFilter": "BS\\ExtendedSearch\\ConfigDefinition\\AutoSetLanguageFilter::getInstance",
+						"ExtendedSearchExternalFilePathsExcludes": "\\BS\\ExtendedSearch\\ConfigDefinition\\ExternalFilePathsExcludes::getInstance"
 					}
 				}
 			},
@@ -472,6 +473,11 @@
 		},
 		"ESExternalFilePaths": {
 			"descriptionmsg": "bs-extendedsearch-external-file-paths-desc",
+			"public": true,
+			"value": {}
+		},
+		"ExtendedSearchExternalFilePathsExcludes": {
+			"descriptionmsg": "bs-extendedsearch-pref-external-file-paths-excludes",
 			"public": true,
 			"value": {}
 		},
