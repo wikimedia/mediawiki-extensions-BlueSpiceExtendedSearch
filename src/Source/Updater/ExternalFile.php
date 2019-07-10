@@ -88,13 +88,27 @@ class ExternalFile extends RunJobsTriggerHandler {
 	protected function inPaths( $path ) {
 		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsg' );
 		$paths = $config->get( 'ESExternalFilePaths' );
+		$excludePatterns = (array)$config->get(
+			'ExtendedSearchExternalFilePathsExcludes'
+		);
 
 		foreach ( $paths as $configuredPath ) {
 			$filePathInfo = new \SplFileInfo( $configuredPath );
 			$file = new \SplFileInfo( $path );
-			if ( strpos( $file->getPathname(), $filePathInfo->getPathname() ) === 0 ) {
+			$pathExcludePatterns = empty( $excludePatterns[$configuredPath] )
+				? ''
+				: $excludePatterns[$configuredPath];
+
+			if ( strpos( $file->getPathname(), $filePathInfo->getPathname() ) !== 0 ) {
+				continue;
+			}
+			if ( empty( $pathExcludePatterns ) ) {
 				return true;
 			}
+			if ( preg_match( $pathExcludePatterns, $file->getRealPath() ) < 1 ) {
+				return true;
+			}
+			return false;
 		}
 
 		return false;
