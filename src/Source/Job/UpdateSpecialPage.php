@@ -20,8 +20,8 @@ class UpdateSpecialPage extends UpdateTitleBase {
 	}
 
 	public function doRun() {
-		//We need to override UpdateTitleBase::run because as SpecialPage
-		//title does never "exist" in the database
+		// We need to override UpdateTitleBase::run because as SpecialPage
+		// title does never "exist" in the database
 		$oDP = $this->getSource()->getDocumentProvider();
 		$aDC = $oDP->getDataConfig(
 			$this->getDocumentProviderUri(),

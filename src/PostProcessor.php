@@ -37,7 +37,7 @@ class PostProcessor {
 	public static function factory( $type, $backend ) {
 		$postProcessor = new static( $type, $backend );
 		$processors = [];
-		foreach( $backend->getSources() as $key => $source ) {
+		foreach ( $backend->getSources() as $key => $source ) {
 			$processors[$key] = $source->getPostProcessor( $postProcessor );
 		}
 		$postProcessor->addProcessors( $processors );
@@ -58,7 +58,7 @@ class PostProcessor {
 	 * @throws Exception
 	 */
 	public function addProcessors( array $processors ) {
-		foreach( $processors as $sourceKey => $processor ) {
+		foreach ( $processors as $sourceKey => $processor ) {
 			$this->addProcessor( $sourceKey, $processor );
 		}
 	}
@@ -103,7 +103,7 @@ class PostProcessor {
 		if ( empty( $results ) ) {
 			return;
 		}
-		foreach( $results as &$result ) {
+		foreach ( $results as &$result ) {
 			$type = $result->getType();
 			if ( isset( $this->processors[$type] ) ) {
 				$this->processors[$type]->process( $result, $lookup );
@@ -117,7 +117,7 @@ class PostProcessor {
 
 	private function doReSort( &$results, $lookup ) {
 		$sort = $lookup->getSort();
-		if( is_array( $sort ) && isset( $sort[0] ) ) {
+		if ( is_array( $sort ) && isset( $sort[0] ) ) {
 			$primarySort = $sort[0];
 			$field = array_keys( $primarySort )[0];
 			$order = $primarySort[$field]['order'];
@@ -131,7 +131,7 @@ class PostProcessor {
 	}
 
 	private function doSort( &$results, $field, $order ) {
-		usort( $results, function( $a, $b ) use ( $field, $order ) {
+		usort( $results, function ( $a, $b ) use ( $field, $order ) {
 			if ( $field === '_score' ) {
 				$fieldValueA = $a->getScore();
 				$fieldValueB = $b->getScore();

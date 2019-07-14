@@ -10,13 +10,13 @@ class AddUserPreferredNamespaces extends GetPreferences {
 		$namespaces = $this->getContext()->getLanguage()->getNamespaces();
 
 		$namespaceValues = [];
-		foreach( $namespaces as $namespaceId => $namespace ) {
+		foreach ( $namespaces as $namespaceId => $namespace ) {
 			$testTitle = \Title::makeTitle( $namespaceId, 'ESDummy' );
 
-			if( $namespaceId >= 0 && $testTitle->userCan( 'read' ) ) {
+			if ( $namespaceId >= 0 && $testTitle->userCan( 'read' ) ) {
 				$label = $testTitle->getNsText();
 
-				if( $namespaceId === NS_MAIN ) {
+				if ( $namespaceId === NS_MAIN ) {
 					$label = wfMessage( 'bs-ns_main' )->plain();
 				}
 
@@ -24,12 +24,12 @@ class AddUserPreferredNamespaces extends GetPreferences {
 			}
 		}
 
-		$this->preferences['searchNs'] = array(
+		$this->preferences['searchNs'] = [
 			'type' => 'multiselect',
 			'label' => wfMessage( 'bs-extendedsearch-user-preferred-namespaces' )->plain(),
 			'section' => 'extendedsearch',
 			'options' => $namespaceValues
-		);
+		];
 
 		return true;
 	}

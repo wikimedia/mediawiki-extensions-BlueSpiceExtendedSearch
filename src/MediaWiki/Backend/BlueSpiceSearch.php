@@ -17,7 +17,7 @@ class BlueSpiceSearch extends \SearchEngine {
 		$results = $this->runFullSearch( 'source_content', $term );
 
 		$searchResultSet = new SearchResultSet( $this->searchContainedSyntax( $term ) );
-		foreach( $results as $title ) {
+		foreach ( $results as $title ) {
 			$searchResultSet->add(
 				SearchResult::newFromTitle( $title, $searchResultSet )
 			);
@@ -30,7 +30,7 @@ class BlueSpiceSearch extends \SearchEngine {
 		$results = $this->runFullSearch( 'basename', $term );
 
 		$searchResultSet = new SearchResultSet( $this->searchContainedSyntax( $term ) );
-		foreach( $results as $title ) {
+		foreach ( $results as $title ) {
 			$searchResultSet->add(
 				SearchResult::newFromTitle( $title, $searchResultSet )
 			);
@@ -81,11 +81,11 @@ class BlueSpiceSearch extends \SearchEngine {
 		}
 
 		$lookup = new \BS\ExtendedSearch\Lookup();
-		$lookup->setQueryString([
+		$lookup->setQueryString( [
 			'query' => $search,
 			'default_operator' => 'AND',
 			'fields' => [ $field ]
-		]);
+		] );
 		$lookup->addTermsFilter( 'namespace', $this->namespaces );
 		$lookup->setSize( $this->limit );
 		$lookup->setFrom( $this->offset );
@@ -135,7 +135,7 @@ class BlueSpiceSearch extends \SearchEngine {
 	 * @return \SearchEngine
 	 */
 	protected function getFallbackSearchEngine() {
-		if( $this->fallbackSearchEngine === null ) {
+		if ( $this->fallbackSearchEngine === null ) {
 			$lb = Services::getInstance()->getDBLoadBalancer();
 			$class = \BS\ExtendedSearch\Setup::getSearchEngineClass( $lb );
 			$this->fallbackSearchEngine = new $class( $lb );

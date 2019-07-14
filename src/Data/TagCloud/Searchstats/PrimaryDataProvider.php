@@ -55,12 +55,12 @@ class PrimaryDataProvider implements IPrimaryDataProvider {
 				__METHOD__,
 				$this->makePreOptionConds( $params )
 			);
-		} catch( \Exception $e ) {
+		} catch ( \Exception $e ) {
 			wfDebugLog( 'BSExtendedSearch',  'Error in query: ' . $this->db->lastQuery() );
 		}
 
-		foreach( $res as $row ) {
-			if( count( $this->data ) >= $params->getLimit() ) {
+		foreach ( $res as $row ) {
+			if ( count( $this->data ) >= $params->getLimit() ) {
 				break;
 			}
 			$this->appendRowToData( $row );
@@ -79,20 +79,20 @@ class PrimaryDataProvider implements IPrimaryDataProvider {
 		$schema = new Schema();
 		$fields = array_values( $schema->getFilterableFields() );
 		$filterFinder = new FilterFinder( $params->getFilter() );
-		foreach( $fields as $fieldName ) {
+		foreach ( $fields as $fieldName ) {
 			$filter = $filterFinder->findByField( $fieldName );
-			if( !$filter instanceof Filter ) {
+			if ( !$filter instanceof Filter ) {
 				continue;
 			}
-			if( $filter instanceof ListValue ) {
+			if ( $filter instanceof ListValue ) {
 				$values = implode( "','", $filter->getValue() );
 				$name = $this->aliasToFieldName( $fieldName );
-				if( $filter->getComparison() === ListValue::COMPARISON_CONTAINS ) {
+				if ( $filter->getComparison() === ListValue::COMPARISON_CONTAINS ) {
 					$conds[$name] = $fieldName;
 					$filter->setApplied();
 					continue;
 				}
-				if( $filter->getComparison() === ListValue::COMPARISON_NOT_CONTAINS ) {
+				if ( $filter->getComparison() === ListValue::COMPARISON_NOT_CONTAINS ) {
 					$conds[] = "$name NOT IN ('$values')";
 					$filter->setApplied();
 					continue;
@@ -136,7 +136,7 @@ class PrimaryDataProvider implements IPrimaryDataProvider {
 	protected function makePreOptionConds( $params ) {
 		$conds = [
 			'GROUP BY' => 'esh_term',
-			//'LIMIT' => $params->getLimit(),
+			// 'LIMIT' => $params->getLimit(),
 			'ORDER BY' => 'esh_hits DESC'
 		];
 
@@ -144,7 +144,7 @@ class PrimaryDataProvider implements IPrimaryDataProvider {
 	}
 
 	protected function appendRowToData( $row ) {
-		$this->data[] = new Record( (object) [
+		$this->data[] = new Record( (object)[
 			Record::NAME => $this->normalizeTerm( $row->{Record::NAME} ),
 			Record::COUNT => (int)$row->{Record::COUNT},
 			Record::LINK => '',
@@ -152,20 +152,20 @@ class PrimaryDataProvider implements IPrimaryDataProvider {
 	}
 
 	protected function normalizeTerm( $term ) {
-		$term = preg_replace( "/(\\\)/", "", $term ); //'term\\.com' -> 'term.com'
-		$term = preg_replace( "/(\*)/", "", $term ); //'*term*' -> 'term'
-		$term = preg_replace( "/(~.*)/", "", $term ); //'term~0.5' -> 'term'
-		$term = preg_replace( "/(\"*)/", "", $term ); //'"term"' -> 'term'
-		$term = preg_replace( "/(\%20*)/", " ", $term); //'term1%20term2' -> 'term1 term2'
-		$term = preg_replace( "/(\%c3%b6*)/i", "ö", $term); //'sch%c3%b6n' -> 'schön'
-		$term = preg_replace( "/(\%c3%96*)/i", "Ö", $term); //'sch%c3%b6n' -> 'schön'
-		$term = preg_replace( "/(\%c3%bc*)/i", "ü", $term); //'t%c3%bcr' -> 'tür'
-		$term = preg_replace( "/(\%c3%9c*)/i", "Ü", $term); //'t%c3%bcr' -> 'tür'
-		$term = preg_replace( "/(\%c3%a4*)/i", "ä", $term); //'b%c3%a4r' -> 'bär'
-		$term = preg_replace( "/(\%c3%84*)/i", "Ä", $term); //'b%c3%a4r' -> 'bär'
-		$term = preg_replace( "/(\%c3%9F*)/i", "ß", $term); //'spa%c3%9F' -> 'spaß'
+		$term = preg_replace( "/(\\\)/", "", $term ); // 'term\\.com' -> 'term.com'
+		$term = preg_replace( "/(\*)/", "", $term ); // '*term*' -> 'term'
+		$term = preg_replace( "/(~.*)/", "", $term ); // 'term~0.5' -> 'term'
+		$term = preg_replace( "/(\"*)/", "", $term ); // '"term"' -> 'term'
+		$term = preg_replace( "/(\%20*)/", " ", $term ); // 'term1%20term2' -> 'term1 term2'
+		$term = preg_replace( "/(\%c3%b6*)/i", "ö", $term ); // 'sch%c3%b6n' -> 'schön'
+		$term = preg_replace( "/(\%c3%96*)/i", "Ö", $term ); // 'sch%c3%b6n' -> 'schön'
+		$term = preg_replace( "/(\%c3%bc*)/i", "ü", $term ); // 't%c3%bcr' -> 'tür'
+		$term = preg_replace( "/(\%c3%9c*)/i", "Ü", $term ); // 't%c3%bcr' -> 'tür'
+		$term = preg_replace( "/(\%c3%a4*)/i", "ä", $term ); // 'b%c3%a4r' -> 'bär'
+		$term = preg_replace( "/(\%c3%84*)/i", "Ä", $term ); // 'b%c3%a4r' -> 'bär'
+		$term = preg_replace( "/(\%c3%9F*)/i", "ß", $term ); // 'spa%c3%9F' -> 'spaß'
 
-		$term = trim( $term ); //' term  ' -> 'term'
+		$term = trim( $term ); // ' term  ' -> 'term'
 
 		return $term;
 	}

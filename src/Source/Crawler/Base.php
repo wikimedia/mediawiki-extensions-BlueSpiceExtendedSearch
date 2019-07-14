@@ -23,7 +23,7 @@ class Base {
 	}
 
 	public function crawl() {
-		//Needs to be implemented by sublasses; but not abstract as this may serve as a stub
+		// Needs to be implemented by sublasses; but not abstract as this may serve as a stub
 	}
 
 	/**
@@ -33,7 +33,7 @@ class Base {
 	 * @return \Job
 	 */
 	protected function addToJobQueue( $oTitle, $aParams = [] ) {
-		if( empty( $this->sJobClass ) ) {
+		if ( empty( $this->sJobClass ) ) {
 			return;
 		}
 
@@ -47,7 +47,7 @@ class Base {
 	 * @return int
 	 */
 	public function getNumberOfPendingJobs() {
-		if( empty( $this->sJobClass ) ) {
+		if ( empty( $this->sJobClass ) ) {
 			return -1;
 		}
 
@@ -64,10 +64,10 @@ class Base {
 
 	/**
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function clearPendingJobs() {
-		if( empty( $this->sJobClass ) ) {
+		if ( empty( $this->sJobClass ) ) {
 			return false;
 		}
 

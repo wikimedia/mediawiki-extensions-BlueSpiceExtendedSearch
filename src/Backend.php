@@ -46,7 +46,7 @@ class Backend {
 	protected $client = null;
 
 	public function __construct( $config ) {
-		if( !isset( $config['index'] ) ) {
+		if ( !isset( $config['index'] ) ) {
 			$config['index'] = strtolower( wfWikiID() );
 		}
 
@@ -84,7 +84,7 @@ class Backend {
 	 * @return SourceBase[]
 	 */
 	public function getSources() {
-		foreach( $this->config->get('sources') as $sourceKey ) {
+		foreach ( $this->config->get( 'sources' ) as $sourceKey ) {
 			$this->getSource( $sourceKey );
 		}
 		return $this->sources;
@@ -95,7 +95,7 @@ class Backend {
 	 * @return Client
 	 */
 	public function getClient() {
-		if( $this->client === null ) {
+		if ( $this->client === null ) {
 			$this->client = new Client(
 				$this->config->get( 'connection' )
 			);
@@ -115,7 +115,7 @@ class Backend {
 	 * @return Backend
 	 */
 	public static function instance() {
-		if( isset( self::$backend ) ) {
+		if ( isset( self::$backend ) ) {
 			return self::$backend;
 		}
 
@@ -158,7 +158,7 @@ class Backend {
 	 * @throws MWException
 	 */
 	public function deleteIndexes() {
-		foreach( $this->sources as $source ) {
+		foreach ( $this->sources as $source ) {
 			$sourceKey = $source->getTypeKey();
 			$this->deleteIndex( $sourceKey );
 		}
@@ -172,7 +172,7 @@ class Backend {
 	 */
 	public function deleteIndex( $sourceKey ) {
 		$index = $this->getIndexByType( $sourceKey );
-		if( $index->exists() ){
+		if ( $index->exists() ) {
 			$index->delete();
 		}
 	}
@@ -183,7 +183,7 @@ class Backend {
 	 * @throws MWException
 	 */
 	public function createIndexes() {
-		foreach( $this->sources as $key => $source ) {
+		foreach ( $this->sources as $key => $source ) {
 			$this->createIndex( $key );
 		}
 	}
@@ -194,7 +194,7 @@ class Backend {
 	 * @throws ResponseException
 	 */
 	public function createIndex( $sourceKey ) {
-		if ( !isset(  $this->sources[$sourceKey] ) ) {
+		if ( !isset( $this->sources[$sourceKey] ) ) {
 			throw new MWException( "Source \"$sourceKey\" does not exist!" );
 		}
 		$source = $this->sources[$sourceKey];
@@ -211,12 +211,12 @@ class Backend {
 		$mapping->setProperties( $mappingProvider->getPropertyConfig() );
 
 		$sourceConfig = $mappingProvider->getSourceConfig();
-		if( !empty( $sourceConfig ) ) {
+		if ( !empty( $sourceConfig ) ) {
 			$mapping->setSource( $sourceConfig );
 		}
 
 		$response2 = $mapping->send( [
-			//Necessary if more than one type has a 'attachment' field from 'mapper-attachments'
+			// Necessary if more than one type has a 'attachment' field from 'mapper-attachments'
 			'update_all_types' => ''
 		] );
 
@@ -248,11 +248,11 @@ class Backend {
 	 */
 	public function getLookupModifiers( $lookup, $type ) {
 		$lookupModifiers = [];
-		foreach( $this->sources as $sourceKey => $source ) {
+		foreach ( $this->sources as $sourceKey => $source ) {
 			$lookupModifiers += $source->getLookupModifiers( $lookup, $this->getContext(), $type );
 		}
 
-		uasort( $lookupModifiers, function( $a, $b ) {
+		uasort( $lookupModifiers, function ( $a, $b ) {
 			if ( $a->getPriority() === $b->getPriority() ) {
 				return 0;
 			}
@@ -273,7 +273,7 @@ class Backend {
 		$search->addIndex( $this->config->get( 'index' ) . '_*' );
 
 		$lookupModifiers = $this->getLookupModifiers( $lookup, static::QUERY_TYPE_AUTOCOMPLETE );
-		foreach( $lookupModifiers as $sLMKey => $lookupModifier ) {
+		foreach ( $lookupModifiers as $sLMKey => $lookupModifier ) {
 			$lookupModifier->apply();
 		}
 
@@ -298,14 +298,14 @@ class Backend {
 	protected function formatSuggestions( $results, $searchData ) {
 		$searchData['value'] = strtolower( $searchData['value'] );
 
-		foreach( $this->getSources() as $sourceKey => $source ) {
+		foreach ( $this->getSources() as $sourceKey => $source ) {
 			$source->getFormatter()->rankAutocompleteResults( $results, $searchData );
-			//when results are ranked based on original data, it can be modified
+			// when results are ranked based on original data, it can be modified
 			$source->getFormatter()->formatAutocompleteResults( $results, $searchData );
 		}
 
-		usort( $results, function( $e1, $e2 ) {
-			if( $e1['score'] == $e2['score'] ) {
+		usort( $results, function ( $e1, $e2 ) {
+			if ( $e1['score'] == $e2['score'] ) {
 				return 0;
 			}
 			return ( $e1['score'] < $e2['score'] ) ? 1 : -1;
@@ -316,7 +316,7 @@ class Backend {
 
 	protected function getQuerySuggestionList( $results ) {
 		$res = [];
-		foreach( $results->getResults() as $suggestion ) {
+		foreach ( $results->getResults() as $suggestion ) {
 			$item = [
 				"_id" => $suggestion->getId(),
 				"type" => $suggestion->getType(),
@@ -347,7 +347,7 @@ class Backend {
 		$origTerm = $origQS['query'];
 
 		$lookupModifiers = $this->getLookupModifiers( $lookup, static::QUERY_TYPE_SEARCH );
-		foreach( $lookupModifiers as $sLMKey => $lookupModifier ) {
+		foreach ( $lookupModifiers as $sLMKey => $lookupModifier ) {
 			$lookupModifier->apply();
 		}
 
@@ -360,22 +360,22 @@ class Backend {
 		try {
 			$spellcheck = $this->spellCheck( $lookup, $search, $origTerm );
 			$results = $search->search( $lookup->getQueryDSL() );
-		} catch( \RuntimeException $ex ) {
+		} catch ( \RuntimeException $ex ) {
 			wfDebugLog(
 				'BSExtendedSearch',
 				__METHOD__ . " error: {$ex->getMessage()}"
 			);
 
 			$ret = new \stdClass();
-			//we cannot return anything else other than just exception type,
-			//because any exception message may contain
-			//full query, and therefore, sensitive data
+			// we cannot return anything else other than just exception type,
+			// because any exception message may contain
+			// full query, and therefore, sensitive data
 			$ret->exception = true;
 			$ret->exceptionType = get_class( $ex );
 			return $ret;
 		}
 
-		foreach( $lookupModifiers as $sLMKey => $lookupModifier ) {
+		foreach ( $lookupModifiers as $sLMKey => $lookupModifier ) {
 			$lookupModifier->undo();
 		}
 
@@ -392,7 +392,7 @@ class Backend {
 		$formattedResultSet->spellcheck = $spellcheck;
 		$formattedResultSet->total_approximated = $totalApproximated ? 1 : 0;
 
-		if( $this->isHistoryTrackingEnabled() ) {
+		if ( $this->isHistoryTrackingEnabled() ) {
 			$searchHistoryInfo = [
 				'user' => $this->getContext()->getUser()->getId(),
 				'term' => $origTerm,
@@ -403,7 +403,7 @@ class Backend {
 				'autocorrected' => false
 			];
 
-			if( $spellcheck['action'] == static::SPELLCHECK_ACTION_REPLACED ) {
+			if ( $spellcheck['action'] == static::SPELLCHECK_ACTION_REPLACED ) {
 				$searchHistoryInfo['term'] = $spellcheck['alternative']['term'];
 				$searchHistoryInfo['autocorrected'] = true;
 			}
@@ -431,15 +431,15 @@ class Backend {
 			"action" => static::SPELLCHECK_ACTION_IGNORE
 		];
 
-		//Do not spellcheck regex
-		if( strpos( $origTerm, '/' ) === 0 && substr( $origTerm, -1 ) === '/' ) {
+		// Do not spellcheck regex
+		if ( strpos( $origTerm, '/' ) === 0 && substr( $origTerm, -1 ) === '/' ) {
 			return $spellcheckResult;
 		}
-		if( strpos( $origTerm, '*' ) !== false ) {
+		if ( strpos( $origTerm, '*' ) !== false ) {
 			return $spellcheckResult;
 		}
 
-		if( $lookup->getForceTerm() ) {
+		if ( $lookup->getForceTerm() ) {
 			$lookup->removeForceTerm();
 			return $spellcheckResult;
 		}
@@ -448,39 +448,39 @@ class Backend {
 		$origTermLookup = $lookup;
 		$origHitCount = $search->count( $origTermLookup->getQueryDSL() );
 
-		//What is our best alternative
+		// What is our best alternative
 		$suggestLookup = new Lookup();
 		$suggestLookup->addSuggest( $spellCheckConfig['suggestField'], $origTerm );
-		$suggestResults = $search->search( ['suggest' => $suggestLookup->getQueryDSL() ] );
+		$suggestResults = $search->search( [ 'suggest' => $suggestLookup->getQueryDSL() ] );
 
 		$suggestedTerm = [];
 		$suggestions = $suggestResults->getSuggests()[$spellCheckConfig['suggestField']];
 
-		foreach( $suggestions as $suggestion ) {
-			if( count( $suggestion['options'] ) == 0 ) {
-				//Word is already best it can be
+		foreach ( $suggestions as $suggestion ) {
+			if ( count( $suggestion['options'] ) == 0 ) {
+				// Word is already best it can be
 				$suggestedTerm[] = $suggestion['text'];
 			} else {
-				//Get first ( highest scored ) alternative
+				// Get first ( highest scored ) alternative
 				$suggestedTerm[] = $suggestion['options'][0]['text'];
 			}
 		}
 
 		$suggestedTerm = implode( ' ', $suggestedTerm );
-		if( $suggestedTerm == $origTerm ) {
+		if ( $suggestedTerm == $origTerm ) {
 			return $spellcheckResult;
 		}
 
-		//How many results would our best alternative yield
-		$suggestLookup = clone( $origTermLookup );
+		// How many results would our best alternative yield
+		$suggestLookup = clone $origTermLookup;
 		$suggestQueryString = $origTermLookup->getQueryString();
 		$escapedOrigTerm = str_replace( '/', '\/', $origTerm );
 		$suggestQueryString['query'] = preg_replace( '/' . $escapedOrigTerm . '/', $suggestedTerm, $suggestQueryString['query'] );
 		$suggestLookup->setQueryString( $suggestQueryString );
 		$suggestedHitCount = $search->count( $suggestLookup->getQueryDSL() );
 
-		//Decide if we will replace original term with suggested one
-		if( $suggestedHitCount <= $origHitCount ) {
+		// Decide if we will replace original term with suggested one
+		if ( $suggestedHitCount <= $origHitCount ) {
 			return $spellcheckResult;
 		}
 
@@ -495,22 +495,22 @@ class Backend {
 		];
 
 		$replace = false;
-		if( $origHitCount == 0 ) {
+		if ( $origHitCount == 0 ) {
 			$replace = true;
 		} else {
-			//How much more results we get using suggested term
+			// How much more results we get using suggested term
 			$percent = $origHitCount / $suggestedHitCount;
-			if( $percent < $spellCheckConfig['replaceThreshold'] ) {
-				//Replace term if there is much more hits for alternative
+			if ( $percent < $spellCheckConfig['replaceThreshold'] ) {
+				// Replace term if there is much more hits for alternative
 				$replace = true;
 			} elseif ( $percent < $spellCheckConfig['suggestThreshold'] ) {
-				//If alternative has siginificatly more results, but not so much
-				//that we can definitely decide its a typo, just suggest the alternative
+				// If alternative has siginificatly more results, but not so much
+				// that we can definitely decide its a typo, just suggest the alternative
 				$spellcheckResult['action'] = static::SPELLCHECK_ACTION_SUGGEST;
 			}
 		}
 
-		if( $replace ) {
+		if ( $replace ) {
 			$origQS['query'] = $suggestedTerm;
 			$lookup->setQueryString( $origQS );
 
@@ -519,6 +519,7 @@ class Backend {
 
 		return $spellcheckResult;
 	}
+
 	/**
 	 * Runs each result in result set through
 	 * each source's formatter
@@ -529,9 +530,9 @@ class Backend {
 	protected function formatResults( $results, $lookup ) {
 		$formattedResults = [];
 
-		foreach( $results as $resultObject ) {
+		foreach ( $results as $resultObject ) {
 			$result = $resultObject->getData();
-			foreach( $this->getSources() as $sourceKey => $source ) {
+			foreach ( $this->getSources() as $sourceKey => $source ) {
 				$formatter = $source->getFormatter();
 				$formatter->setLookup( $lookup );
 				$formatter->format( $result, $resultObject );
@@ -556,10 +557,10 @@ class Backend {
 	 * @param ResultSet $results
 	 */
 	protected function getFilterConfig( $results ) {
-		//Fields that have "AND/OR" option enabled. Would be better if this could
-		//be retrieved from mapping, but since ES assigns types dynamically, it's not possible.
-		//It could also be inferred from results, but we need filter cfg even when no
-		//results are retrieved. Basically, this are all the fields of type array
+		// Fields that have "AND/OR" option enabled. Would be better if this could
+		// be retrieved from mapping, but since ES assigns types dynamically, it's not possible.
+		// It could also be inferred from results, but we need filter cfg even when no
+		// results are retrieved. Basically, this are all the fields of type array
 		$fieldsWithANDEnabled = \ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchFieldsWithANDFilterEnabled' );
 
@@ -571,24 +572,24 @@ class Backend {
 
 		$filterCfg = [];
 
-		//Let sources modify the filters if needed
-		foreach( $this->getSources() as $sourceKey => $source ) {
+		// Let sources modify the filters if needed
+		foreach ( $this->getSources() as $sourceKey => $source ) {
 			$formatter = $source->getFormatter();
-			$formatter->formatFilters( $aggs,$filterCfg, $fieldsWithANDEnabled );
+			$formatter->formatFilters( $aggs, $filterCfg, $fieldsWithANDEnabled );
 		}
 
-		//Ultimately, the Base formatter should handle this, but for now its here
-		foreach( $aggs as $filterName => $agg ) {
+		// Ultimately, the Base formatter should handle this, but for now its here
+		foreach ( $aggs as $filterName => $agg ) {
 			$fieldName = substr( $filterName, 6 );
 			$filterCfg[$fieldName] = [
 				'buckets' => $agg['buckets'],
 				'isANDEnabled' => 0,
 				'multiSelect' => 1
 			];
-			if( in_array( $fieldName, $fieldsWithANDEnabled['fields'] ) ) {
+			if ( in_array( $fieldName, $fieldsWithANDEnabled['fields'] ) ) {
 				$filterCfg[$fieldName]['isANDEnabled'] = 1;
 			}
-			if( in_array( $fieldName, $singleSelectFitlers ) ) {
+			if ( in_array( $fieldName, $singleSelectFitlers ) ) {
 				$filterCfg[$fieldName]['multiSelect'] = 0;
 			}
 		}
@@ -599,7 +600,7 @@ class Backend {
 	/**
 	 * Gets predefined result structure from attribute
 	 *
-	 * @returns array
+	 * @return array
 	 */
 	public function getDefaultResultStructure() {
 		$defaultStructure = \ExtensionRegistry::getInstance()
@@ -611,7 +612,7 @@ class Backend {
 	/**
 	 * Gets settings for autocomplete
 	 *
-	 * @returns array
+	 * @return array
 	 */
 	public function getAutocompleteConfig() {
 		$autocompleteConfig = \ExtensionRegistry::getInstance()
@@ -635,7 +636,7 @@ class Backend {
 	 * @return Object|null
 	 */
 	public function getService( $name ) {
-		if( MediaWikiServices::getInstance()->hasService( $name ) ) {
+		if ( MediaWikiServices::getInstance()->hasService( $name ) ) {
 			return MediaWikiServices::getInstance()->getService( $name );
 		}
 		return null;
@@ -706,14 +707,14 @@ class Backend {
 
 		$results = $results->getResults();
 		$topScore = 0;
-		foreach( $results as $result ) {
-			if( $result->getScore() > $topScore ) {
+		foreach ( $results as $result ) {
+			if ( $result->getScore() > $topScore ) {
 				$topScore = $result->getScore();
 			}
 		}
 
 		$pages = [];
-		foreach( $results as $result ) {
+		foreach ( $results as $result ) {
 			$score = $result->getScore();
 			if ( $topScore > 0 ) {
 				$percentOfTopScore = $score * 100 / $topScore;
@@ -763,7 +764,7 @@ class Backend {
 			return null;
 		}
 
-		foreach( $results->getResults() as $result ) {
+		foreach ( $results->getResults() as $result ) {
 			return $result->getId();
 		}
 	}

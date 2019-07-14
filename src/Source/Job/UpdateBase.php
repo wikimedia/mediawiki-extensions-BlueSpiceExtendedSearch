@@ -71,13 +71,12 @@ abstract class UpdateBase extends \Job {
 		$this->getBackend()->destroySource( $this->getSourceKey() );
 	}
 
-
 	/**
 	 *
 	 * @return string
 	 */
 	protected function getBackendKey() {
-		if( isset( $this->params['backend'] ) ) {
+		if ( isset( $this->params['backend'] ) ) {
 			return $this->params['backend'];
 		}
 		return $this->sBackendKey;
@@ -88,7 +87,7 @@ abstract class UpdateBase extends \Job {
 	 * @return string
 	 */
 	protected function getSourceKey() {
-		if( isset( $this->params['source'] ) ) {
+		if ( isset( $this->params['source'] ) ) {
 			return $this->params['source'];
 		}
 		return $this->sSourceKey;
@@ -112,7 +111,7 @@ abstract class UpdateBase extends \Job {
 		$dC[IExternalIndex::FIELD_INDEX_NAME] = $this->getBackend()->getConfig()->get(
 			'index'
 		);
-		foreach( $this->getExternalIndexFactory()->getTypes() as $type ) {
+		foreach ( $this->getExternalIndexFactory()->getTypes() as $type ) {
 			try {
 				$externalIndex = $this->getExternalIndexFactory()->getExternalIndex( $type, $dC );
 				if ( !$externalIndex ) {
@@ -121,7 +120,7 @@ abstract class UpdateBase extends \Job {
 				$status->merge( $externalIndex->push(
 					$this->isDeletion() ? static::ACTION_DELETE : static::ACTION_UPDATE
 				) );
-			} catch( Exception $e ) {
+			} catch ( Exception $e ) {
 				$status->error( $e );
 			}
 		}

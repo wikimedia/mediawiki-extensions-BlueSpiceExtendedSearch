@@ -76,7 +76,7 @@ class Wildcarder {
 		$regex = implode( '|\\', $separators );
 		$tokens = preg_split( "/(\s|$regex)/", $this->original );
 		$separated = [];
-		foreach( $tokens as $token ) {
+		foreach ( $tokens as $token ) {
 			if ( $token === '' ) {
 				continue;
 			}
@@ -93,12 +93,11 @@ class Wildcarder {
 	 */
 	public function replaceSeparators( $replacement = '' ) {
 		$term = $this->original;
-		foreach( $this->wildcardingSeparators as $separator ) {
+		foreach ( $this->wildcardingSeparators as $separator ) {
 			$term = str_replace( $separator, $replacement, $term );
 		}
 		return $term;
 	}
-
 
 	/**
 	 * Checks if term contains operators
@@ -107,12 +106,12 @@ class Wildcarder {
 	 */
 	public function containsOperators() {
 		$pattern = [];
-		foreach( $this->wildcardingOperators  as $op ) {
+		foreach ( $this->wildcardingOperators  as $op ) {
 			$pattern[] = "\\$op";
 		}
 		$pattern = "/" . implode( '|', $pattern ) . "/";
 
-		if( preg_match( $pattern, $this->original ) ) {
+		if ( preg_match( $pattern, $this->original ) ) {
 			return true;
 		}
 		return false;
@@ -130,7 +129,6 @@ class Wildcarder {
 		$this->done = true;
 	}
 
-
 	protected function doWildcarding() {
 		$quoted = $this->getQuotedParts();
 		if ( empty( $quoted ) ) {
@@ -138,7 +136,7 @@ class Wildcarder {
 			return;
 		}
 		$progress = 0;
-		foreach( $quoted as $quotedSnippet ) {
+		foreach ( $quoted as $quotedSnippet ) {
 			$pos = strpos( $this->wildcarded, $quotedSnippet );
 			if ( $pos === false ) {
 				continue;
@@ -151,12 +149,12 @@ class Wildcarder {
 	}
 
 	private function doWildcardSnippet( $snippet ) {
-		foreach( $this->wildcardingSeparators as $sep ) {
+		foreach ( $this->wildcardingSeparators as $sep ) {
 			$snippet = str_replace( $sep, ' ', $snippet );
-			$snippet = preg_replace('/\s+/', ' ', $snippet);
+			$snippet = preg_replace( '/\s+/', ' ', $snippet );
 		}
 		$terms = explode( ' ', $snippet );
-		foreach( $terms as &$term ) {
+		foreach ( $terms as &$term ) {
 			if ( $term == '' ) {
 				continue;
 			}

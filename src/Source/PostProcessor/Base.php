@@ -62,7 +62,7 @@ class Base implements IPostProcessor {
 		}
 
 		$matchCount = 0;
-		foreach( $tokens as $token ) {
+		foreach ( $tokens as $token ) {
 			if ( $token == '' ) {
 				continue;
 			}
@@ -118,7 +118,7 @@ class Base implements IPostProcessor {
 	 */
 	protected function isScoreSorting( $lookup ) {
 		$sort = $lookup->getSort();
-		if( is_array( $sort ) && isset( $sort[0] ) ) {
+		if ( is_array( $sort ) && isset( $sort[0] ) ) {
 			$primarySort = $sort[0];
 			$field = array_keys( $primarySort )[0];
 			return $field === '_score';

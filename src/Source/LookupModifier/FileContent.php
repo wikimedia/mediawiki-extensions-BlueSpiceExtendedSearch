@@ -8,7 +8,7 @@ class FileContent extends Base {
 		// 1. - Add searching in file content field
 		$queryString = $this->oLookup->getQueryString();
 		$fields = [ 'attachment.content' ];
-		if( isset( $queryString['fields'] ) && is_array( $queryString['fields'] ) ) {
+		if ( isset( $queryString['fields'] ) && is_array( $queryString['fields'] ) ) {
 			$queryString['fields'] = array_merge( $queryString['fields'], $fields );
 		} else {
 			$queryString['fields'] = $fields;
@@ -23,8 +23,8 @@ class FileContent extends Base {
 	public function undo() {
 		$queryString = $this->oLookup->getQueryString();
 
-		if( isset( $queryString['fields'] ) && is_array( $queryString['fields'] ) ) {
-			$queryString['fields'] = array_diff( $queryString['fields'], ['attachment.content'] );
+		if ( isset( $queryString['fields'] ) && is_array( $queryString['fields'] ) ) {
+			$queryString['fields'] = array_diff( $queryString['fields'], [ 'attachment.content' ] );
 		}
 
 		$this->oLookup->setQueryString( $queryString );

@@ -1,13 +1,13 @@
 <?php
 
-$specialPageAliases = array();
+$specialPageAliases = [];
 
 /** English */
-$specialPageAliases['en'] = array(
-	'BSSearchCenter' => array( 'SearchCenter', 'Search Center' ),
-);
+$specialPageAliases['en'] = [
+	'BSSearchCenter' => [ 'SearchCenter', 'Search Center' ],
+];
 
 /** German (Deutsch) */
-$specialPageAliases['de'] = array(
-	'BSSearchCenter' => array( 'Such-Center' ),
-);
+$specialPageAliases['de'] = [
+	'BSSearchCenter' => [ 'Such-Center' ],
+];

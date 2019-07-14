@@ -55,7 +55,6 @@ class WikiPage extends DecoratorBase {
 			'used_files' => $this->getUserFiles( $oWikiPage )
 		] );
 
-
 		return $aDC;
 	}
 
@@ -73,7 +72,7 @@ class WikiPage extends DecoratorBase {
 	 * @param \WikiPage $oWikiPage
 	 */
 	protected function getNamespaceText( $oWikiPage ) {
-		if( $oWikiPage->getTitle()->getNamespace() === NS_MAIN ) {
+		if ( $oWikiPage->getTitle()->getNamespace() === NS_MAIN ) {
 			return wfMessage( 'bs-ns_main' )->plain();
 		}
 		return $oWikiPage->getTitle()->getNsText();
@@ -87,8 +86,8 @@ class WikiPage extends DecoratorBase {
 		$oCatTitles = $oWikiPage->getCategories();
 
 		$aCategories = [];
-		foreach( $oCatTitles as $oCatTitle ) {
-			if( $oCatTitle instanceof \Title ) {
+		foreach ( $oCatTitles as $oCatTitle ) {
+			if ( $oCatTitle instanceof \Title ) {
 				$aCategories[] = $oCatTitle->getText();
 			}
 		}
@@ -102,8 +101,8 @@ class WikiPage extends DecoratorBase {
 	 */
 	protected function getTextContent() {
 		$sText = '';
-		if( $this->content instanceof \Content ) {
-			//maybe ContentHandler::getContentText is better?
+		if ( $this->content instanceof \Content ) {
+			// maybe ContentHandler::getContentText is better?
 			$sText = $this->content->getTextForSearchIndex();
 		}
 		return $this->stripTags( $sText );
@@ -128,7 +127,7 @@ class WikiPage extends DecoratorBase {
 	protected function getSections() {
 		$aSections = [];
 		$aRawSections = $this->parserOutput->getSections();
-		foreach( $aRawSections as $aRawSection ) {
+		foreach ( $aRawSections as $aRawSection ) {
 			$aSections[] = $aRawSection['anchor'];
 		}
 		return $aSections;
@@ -152,8 +151,8 @@ class WikiPage extends DecoratorBase {
 
 		$registeredTags = \MediaWiki\MediaWikiServices::getInstance()->getParser()->getTags();
 		$pageTags = $this->parseWikipageForTags();
-		foreach( $pageTags as $pageTag ) {
-			if( in_array( $pageTag, $registeredTags ) ) {
+		foreach ( $pageTags as $pageTag ) {
+			if ( in_array( $pageTag, $registeredTags ) ) {
 				$res[] = $pageTag;
 			}
 		}
@@ -166,14 +165,14 @@ class WikiPage extends DecoratorBase {
 	 * @return array
 	 */
 	protected function parseWikipageForTags() {
-		if( $this->content instanceof \Content == false ) {
+		if ( $this->content instanceof \Content == false ) {
 			return [];
 		}
 		$text = $this->content->getNativeData();
 		$rawTags = [];
 		preg_match_all( '/<([^\/\s>]+)(\s|>|\/>)/', $text, $rawTags );
-		if( isset( $rawTags[1] ) ) {
-			if( is_array( $rawTags[1] ) == false ) {
+		if ( isset( $rawTags[1] ) ) {
+			if ( is_array( $rawTags[1] ) == false ) {
 				return [ $rawTags[1] ];
 			}
 
@@ -183,12 +182,12 @@ class WikiPage extends DecoratorBase {
 	}
 
 	protected function getRedirectsTo( \WikiPage $oWikiPage ) {
-		if( $oWikiPage->getTitle()->isRedirect() === false ) {
+		if ( $oWikiPage->getTitle()->isRedirect() === false ) {
 			return '';
 		}
 
 		$redirTitle = $oWikiPage->getRedirectTarget();
-		if( $redirTitle instanceof \Title ) {
+		if ( $redirTitle instanceof \Title ) {
 			return $this->getDisplayTitle( $redirTitle );
 		}
 		return '';
@@ -197,7 +196,7 @@ class WikiPage extends DecoratorBase {
 	protected function getRedirects( \WikiPage $oWikiPage ) {
 		$redirs = $oWikiPage->getTitle()->getRedirectsHere();
 		$indexable = [];
-		foreach( $redirs as $redirect ) {
+		foreach ( $redirs as $redirect ) {
 			$indexable[] = $redirect->getPrefixedText();
 		}
 
@@ -206,7 +205,7 @@ class WikiPage extends DecoratorBase {
 
 	protected function getDisplayTitle( \Title $title ) {
 		$pageProps = $this->getPageProps( $title );
-		if( isset( $pageProps['displaytitle'] ) && $pageProps['displaytitle'] !== '' ) {
+		if ( isset( $pageProps['displaytitle'] ) && $pageProps['displaytitle'] !== '' ) {
 			return $pageProps['displaytitle'];
 		}
 		return $title->getPrefixedText();
@@ -222,7 +221,7 @@ class WikiPage extends DecoratorBase {
 			[ 'pp_page' => $title->getArticleID() ]
 		);
 		$props = [];
-		foreach( $res as $row ) {
+		foreach ( $res as $row ) {
 			$props[$row->pp_propname] = $row->pp_value;
 		}
 		$db->freeResult( $res );

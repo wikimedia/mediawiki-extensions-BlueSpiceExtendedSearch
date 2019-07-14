@@ -82,7 +82,7 @@ class BaseTitleSecurityTrimmings extends Base {
 				break;
 			}
 
-			foreach( $results->getResults() as $resultObject ) {
+			foreach ( $results->getResults() as $resultObject ) {
 				$data = $resultObject->getData();
 
 				if ( isset( $data['namespace'] ) == false ) {
@@ -92,10 +92,9 @@ class BaseTitleSecurityTrimmings extends Base {
 					continue;
 				}
 
-				if( isset( $data['prefixed_title'] ) ) {
+				if ( isset( $data['prefixed_title'] ) ) {
 					$title = \Title::newFromText( $data['prefixed_title'] );
-				}
-				else {
+				} else {
 					$title = \Title::makeTitle( $data['namespace'], $data['basename'] );
 				}
 				if ( !$title instanceof \Title ) {

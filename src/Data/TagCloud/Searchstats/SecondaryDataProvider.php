@@ -31,14 +31,14 @@ class SecondaryDataProvider extends \BlueSpice\Data\SecondaryDataProvider {
 	 *
 	 * @param Record $dataSet
 	 */
-	protected function doExtend( &$dataSet ){
+	protected function doExtend( &$dataSet ) {
 		$rawData = $dataSet->getData();
 
 		$title = \SpecialPage::getTitleFor( 'BSSearchCenter' );
 		$rawData->{Record::RENDEREDLINK} = '';
 		$rawData->{Record::LINK} = $title->getLocalURL( [
 			'q' => $rawData->{Record::NAME}
-		]);
+		] );
 
 		$dataSet = new Record( $rawData );
 	}

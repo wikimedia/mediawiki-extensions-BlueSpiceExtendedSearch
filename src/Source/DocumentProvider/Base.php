@@ -17,5 +17,6 @@ class Base {
 		];
 	}
 
-	public function __destruct() {}
+	public function __destruct() {
+	}
 }

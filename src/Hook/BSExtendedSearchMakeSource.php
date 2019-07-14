@@ -21,7 +21,7 @@ abstract class BSExtendedSearchMakeSource extends Hook {
 	protected $decoratedSource;
 
 	/**
-	 * @param \BS\ExtendedSearch\Backend$backend
+	 * @param \BS\ExtendedSearch\Backend $backend
 	 * @param string $sourceKey
 	 * @param \BS\ExtendedSearch\Source\DecoratorBase $decoratedSource
 	 * @return mixed
@@ -42,7 +42,7 @@ abstract class BSExtendedSearchMakeSource extends Hook {
 	 * BSExtendedSearchMakeSource constructor.
 	 * @param \IContextSource $context
 	 * @param \IConfig $config
-	 * @param \BS\ExtendedSearch\Backend$backend
+	 * @param \BS\ExtendedSearch\Backend $backend
 	 * @param string $sourceKey
 	 * @param \BS\ExtendedSearch\Source\DecoratorBase $decoratedSource
 	 */
