@@ -13,7 +13,7 @@ class RepoFile extends File {
 			$this->makeQueryConditions()
 		);
 
-		foreach( $res as $row ) {
+		foreach ( $res as $row ) {
 			$title = \Title::newFromID( $row->page_id );
 			$file = wfFindFile( $title );
 			if ( $file instanceof \LocalFile === false ) {

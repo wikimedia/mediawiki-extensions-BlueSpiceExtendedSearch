@@ -68,7 +68,7 @@ class RepoFiles extends DecoratorBase {
 		$oElasticaIndex = $this->getBackend()->getIndexByType( $this->getTypeKey() );
 		$oType = $oElasticaIndex->getType( $this->getTypeKey() );
 		$aDocs = [];
-		foreach( $aDocumentConfigs as $aDC ) {
+		foreach ( $aDocumentConfigs as $aDC ) {
 			$document = new \Elastica\Document( $aDC['id'], $aDC );
 			$aDocs[] = $document;
 		}
@@ -79,7 +79,7 @@ class RepoFiles extends DecoratorBase {
 		$bulk->addDocuments( $aDocs );
 		$oResult = $bulk->send();
 
-		if( !$oResult->isOk() ) {
+		if ( !$oResult->isOk() ) {
 			wfDebugLog(
 				'BSExtendedSearch',
 				"Adding documents failed: {$oResult->getError()}"

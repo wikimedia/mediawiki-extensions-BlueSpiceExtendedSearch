@@ -7,7 +7,7 @@ class SpecialPage extends Base {
 
 	public function crawl() {
 		$aCanonicalNames = \SpecialPageFactory::getNames();
-		foreach( $aCanonicalNames as $sCanonicalName ) {
+		foreach ( $aCanonicalNames as $sCanonicalName ) {
 			$this->addToJobQueue( \SpecialPage::getTitleFor( $sCanonicalName ) );
 		}
 	}

@@ -1,6 +1,6 @@
 <?php
 
-require_once( "elasticScriptBase.php" );
+require_once "elasticScriptBase.php";
 
 class rebuildIndex extends elasticScriptBase {
 	/**
@@ -10,19 +10,19 @@ class rebuildIndex extends elasticScriptBase {
 	/**
 	 * @var array
 	 */
-	protected $oIndices = array();
+	protected $oIndices = [];
 
 	public function execute() {
-		if( !$this->hasOption( 'quick' ) ) {
-			$this->output('This will create update jobs for all indices! Starting in ... ');
-			$this->countDown(5 );
+		if ( !$this->hasOption( 'quick' ) ) {
+			$this->output( 'This will create update jobs for all indices! Starting in ... ' );
+			$this->countDown( 5 );
 		}
 
 		$backend = \BS\ExtendedSearch\Backend::instance();
 		$sources = $backend->getSources();
-		foreach( $sources as $source ) {
+		foreach ( $sources as $source ) {
 			$sourceKey = $source->getTypeKey();
-			if( !$this->sourceOnList( $sourceKey ) ) {
+			if ( !$this->sourceOnList( $sourceKey ) ) {
 				continue;
 			}
 
@@ -30,7 +30,7 @@ class rebuildIndex extends elasticScriptBase {
 			$crawler = $source->getCrawler();
 			$crawler->clearPendingJobs();
 			$crawler->crawl();
-			$this->output( " done: ". $crawler->getNumberOfPendingJobs() );
+			$this->output( " done: " . $crawler->getNumberOfPendingJobs() );
 		}
 
 		global $IP;

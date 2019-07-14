@@ -25,24 +25,24 @@ class BaseTypeSecurityTrimming extends Base {
 		$typesToBlock = [];
 
 		$backend = \BS\ExtendedSearch\Backend::instance();
-		foreach( $backend->getSources() as $key => $source ) {
+		foreach ( $backend->getSources() as $key => $source ) {
 			$searchPermission = $source->getSearchPermission();
-			if( !$searchPermission ) {
+			if ( !$searchPermission ) {
 				continue;
 			}
-			if( $this->user->isAllowed( $searchPermission ) == false ) {
+			if ( $this->user->isAllowed( $searchPermission ) == false ) {
 				$typesToBlock[] = $key;
 			}
 		}
 
-		if( !empty( $typesToBlock ) ) {
+		if ( !empty( $typesToBlock ) ) {
 			$this->oLookup->addBoolMustNotTerms( '_type', $typesToBlock );
 			$this->blockedTypes = $typesToBlock;
 		}
 	}
 
 	public function undo() {
-		if( !empty( $this->blockedTypes ) ) {
+		if ( !empty( $this->blockedTypes ) ) {
 			$this->oLookup->removeBoolMustNot( '_type' );
 		}
 	}

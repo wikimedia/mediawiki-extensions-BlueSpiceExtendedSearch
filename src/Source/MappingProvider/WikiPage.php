@@ -29,7 +29,7 @@ class WikiPage extends DecoratorBase {
 			'rendered_content' => [
 				'type' => 'text',
 				'copy_to' => 'congregated',
-				'store' => true //required to be able to retrieve highlights
+				'store' => true // required to be able to retrieve highlights
 			],
 			'namespace' => [
 				'type' => 'integer'

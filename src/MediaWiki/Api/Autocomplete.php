@@ -64,15 +64,15 @@ class Autocomplete extends \ApiBase {
 		$value = parent::getParameterFromSettings( $paramName, $paramSettings, $parseLimit );
 		if ( $paramName === 'q' ) {
 			$decodedValue = \FormatJson::decode( $value, true );
-			if( is_array( $decodedValue ) ) {
+			if ( is_array( $decodedValue ) ) {
 				return new \BS\ExtendedSearch\Lookup( $decodedValue );
 			}
 		}
-		if( $paramName === 'searchData' ) {
+		if ( $paramName === 'searchData' ) {
 			return \FormatJson::decode( $value, true );
 		}
 
-		if( $paramName === 'secondaryRequestData' ) {
+		if ( $paramName === 'secondaryRequestData' ) {
 			return \FormatJson::decode( $value, true );
 		}
 
@@ -87,13 +87,14 @@ class Autocomplete extends \ApiBase {
 	}
 
 	protected $pageCreateInfo;
+
 	protected function setPageCreatable() {
 		$pageName = $this->searchData['value'];
-		if( isset( $this->searchData[ 'mainpage' ] )&& $this->searchData[ 'mainpage' ] !== '' ) {
+		if ( isset( $this->searchData[ 'mainpage' ] ) && $this->searchData[ 'mainpage' ] !== '' ) {
 			$pageName = $this->searchData[ 'mainpage' ] . '/' . $pageName;
 		}
 
-		if( $this->getConfig()->get( 'CapitalLinks' ) ) {
+		if ( $this->getConfig()->get( 'CapitalLinks' ) ) {
 			$pageName = ucfirst( $pageName );
 		}
 
@@ -102,7 +103,7 @@ class Autocomplete extends \ApiBase {
 			$pageName
 		);
 
-		if( $title->exists() == false && $title->userCan( 'createpage' ) && $title->userCan( 'edit' ) ) {
+		if ( $title->exists() == false && $title->userCan( 'createpage' ) && $title->userCan( 'edit' ) ) {
 			$this->pageCreatable = true;
 
 			$linkRenderer = \MediaWiki\MediaWikiServices::getInstance()->getService( 'LinkRenderer' );
@@ -110,7 +111,7 @@ class Autocomplete extends \ApiBase {
 				'bs-extendedsearch-autocomplete-create-page-link',
 				$title->getFullText()
 			)->plain();
-			$anchor = $linkRenderer->makeLink( $title, $anchorText, [], ['action' => 'edit'] );
+			$anchor = $linkRenderer->makeLink( $title, $anchorText, [], [ 'action' => 'edit' ] );
 
 			$this->pageCreateInfo = [
 				'creatable' => 1,
@@ -128,9 +129,10 @@ class Autocomplete extends \ApiBase {
 	 * @var array $suggestions
 	 */
 	protected $suggestions;
+
 	protected function lookUpResults() {
 		$backend = \BS\ExtendedSearch\Backend::instance( $this->backend );
-		if( $this->secondaryRequestData ) {
+		if ( $this->secondaryRequestData ) {
 			$this->suggestions = $backend->runAutocompleteSecondaryLookup(
 				$this->lookup,
 				$this->searchData,
@@ -142,10 +144,11 @@ class Autocomplete extends \ApiBase {
 	}
 
 	protected $oResult;
+
 	protected function returnResults() {
 		$oResult = $this->getResult();
 
-		$oResult->addValue( null , 'suggestions', $this->suggestions );
+		$oResult->addValue( null, 'suggestions', $this->suggestions );
 		$oResult->addValue( null, 'page_create_info', $this->pageCreateInfo );
 	}
 }

@@ -12,7 +12,7 @@ class BaseUserRelevance extends Base {
 	public function __construct( &$lookup, $context ) {
 		parent::__construct( $lookup, $context );
 
-		if( $context->getUser()->isLoggedIn() == false ) {
+		if ( $context->getUser()->isLoggedIn() == false ) {
 			return;
 		}
 
@@ -23,32 +23,32 @@ class BaseUserRelevance extends Base {
 	}
 
 	public function apply() {
-		if( $this->relevanceValues == [] ) {
+		if ( $this->relevanceValues == [] ) {
 			return;
 		}
 
-		foreach( $this->relevanceValues as $resultId => $value ) {
-			if( $value == 0 ) {
+		foreach ( $this->relevanceValues as $resultId => $value ) {
+			if ( $value == 0 ) {
 				continue;
 			}
-			if( $value > 0 ) {
+			if ( $value > 0 ) {
 				$this->positiveBoosts[] = $resultId;
 			} else {
 				$this->negativeBoosts[] = $resultId;
 			}
 		}
 
-		if( !empty( $this->positiveBoosts ) ) {
+		if ( !empty( $this->positiveBoosts ) ) {
 			$this->oLookup->addShouldTerms( '_id', $this->positiveBoosts, 2, false );
 		}
 
-		if( !empty( $this->negativeBoosts ) ) {
+		if ( !empty( $this->negativeBoosts ) ) {
 			$this->oLookup->addShouldTerms( '_id', $this->negativeBoosts, -3, false );
 		}
 	}
 
 	public function undo() {
-		if( $this->relevanceValues == [] ) {
+		if ( $this->relevanceValues == [] ) {
 			return;
 		}
 

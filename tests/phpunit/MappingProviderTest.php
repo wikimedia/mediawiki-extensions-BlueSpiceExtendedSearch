@@ -20,7 +20,7 @@ class MappingProviderTest extends \MediaWikiTestCase {
 
 	public function testMappingProviderDecorators() {
 		$aClasses = [ 'WikiPage', 'SpecialPage', 'File' ];
-		foreach( $aClasses as $aBaseClassName ) {
+		foreach ( $aClasses as $aBaseClassName ) {
 			$sClassName = "\\BS\\ExtendedSearch\\Source\\MappingProvider\\$aBaseClassName";
 			$oDecMP = new $sClassName(
 				new \BS\ExtendedSearch\Source\MappingProvider\Base()

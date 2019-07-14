@@ -20,9 +20,9 @@ class AdminTool implements IAdminTool {
 	}
 
 	public function getClasses() {
-		$classes = array(
+		$classes = [
 			'bs-icon-magnifying-glass'
-		);
+		];
 
 		return $classes;
 	}
@@ -32,9 +32,9 @@ class AdminTool implements IAdminTool {
 	}
 
 	public function getPermissions() {
-		$permissions = array(
+		$permissions = [
 			'extendedsearchadmin-viewspecialpage'
-		);
+		];
 		return $permissions;
 	}
 

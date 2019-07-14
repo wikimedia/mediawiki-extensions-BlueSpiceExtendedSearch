@@ -25,19 +25,19 @@ class WikiPageSecurityTrimming extends Base {
 		$aNamespaceIds = $this->oContext->getLanguage()->getNamespaceIds();
 		$this->namespaceIdBlacklist = [];
 
-		foreach( $aNamespaceIds as $sNsText => $iNsId ) {
-			if( $this->userCanNotRead( $iNsId ) ) {
+		foreach ( $aNamespaceIds as $sNsText => $iNsId ) {
+			if ( $this->userCanNotRead( $iNsId ) ) {
 				$this->namespaceIdBlacklist[] = $iNsId;
 			}
 		}
 
-		if( !empty( $this->namespaceIdBlacklist ) ) {
+		if ( !empty( $this->namespaceIdBlacklist ) ) {
 			$this->oLookup->addBoolMustNotTerms( 'namespace', $this->namespaceIdBlacklist );
 		}
 	}
 
 	protected function userCanNotRead( $iNsId ) {
-		$oTitle = \Title::makeTitle( $iNsId, 'Dummy');
+		$oTitle = \Title::makeTitle( $iNsId, 'Dummy' );
 		return !$oTitle->userCan( 'read' );
 	}
 

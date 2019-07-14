@@ -13,7 +13,7 @@ class SearchAdmin extends \SpecialPage {
 
 		$derivRequest = new \DerivativeRequest(
 			$this->getRequest(),
-			[ 'action' => 'bs-extendedsearch-stats'	]
+			[ 'action' => 'bs-extendedsearch-stats' ]
 		);
 
 		$api = new \ApiMain( $derivRequest );
@@ -35,10 +35,9 @@ class SearchAdmin extends \SpecialPage {
 			[ 'class' => 'bs-es-admin-heading-backend' ],
 			$this->msg( 'bs-extendedsearch-admin-heading-backend' )->plain()
 		) );
-		if( isset( $stats['error'] ) ) {
+		if ( isset( $stats['error'] ) ) {
 			$this->renderError( $stats['error'] );
-		}
-		else {
+		} else {
 			$this->renderStats( $stats );
 		}
 	}
@@ -51,7 +50,7 @@ class SearchAdmin extends \SpecialPage {
 				'span',
 				[ 'class' => 'bs-es-admin-error-label' ],
 				$this->msg( 'bs-extendedsearch-admin-label-error' )->plain()
-			).
+			) .
 			\Html::element(
 				'span',
 				[ 'class' => 'bs-es-admin-error-message' ],
@@ -73,7 +72,7 @@ class SearchAdmin extends \SpecialPage {
 				'span',
 				[ 'class' => 'bs-es-admin-all-documents-count-label' ],
 				$this->msg( 'bs-extendedsearch-admin-label-all-documents-count' )->plain()
-			).
+			) .
 			\Html::element(
 				'span',
 				[ 'class' => 'bs-es-admin-all-documents-count-value' ],
@@ -107,38 +106,38 @@ class SearchAdmin extends \SpecialPage {
 			'th',
 			[],
 			$aSourceStats['label'] . " ($sSourceKey)"
- 		) );
+		) );
 
 		$this->getOutput()->addHTML( \Html::element(
 			'td',
 			[],
 			$aSourceStats['documents_count']
- 		) );
+		) );
 
 		$this->getOutput()->addHTML( \Html::element(
 			'td',
 			[],
 			$aSourceStats['pending_update_jobs']
- 		) );
+		) );
 
 		$this->getOutput()->addHTML( \Html::closeElement( 'tr' ) );
 	}
 
 	protected function renderSourceTableHeading() {
 		$this->getOutput()->addHTML( \Html::openElement( 'tr' ) );
-		$this->getOutput()->addHTML( \Html::element(	'th' ) );
+		$this->getOutput()->addHTML( \Html::element( 'th' ) );
 
 		$this->getOutput()->addHTML( \Html::element(
 			'th',
 			[],
 			$this->msg( 'bs-extendedsearch-admin-heading-sources-documentscount' )->plain()
- 		) );
+		) );
 
 		$this->getOutput()->addHTML( \Html::element(
 			'th',
 			[],
 			$this->msg( 'bs-extendedsearch-admin-heading-pendingupdatejobs' )->plain()
- 		) );
+		) );
 
 		$this->getOutput()->addHTML( \Html::closeElement( 'tr' ) );
 	}
