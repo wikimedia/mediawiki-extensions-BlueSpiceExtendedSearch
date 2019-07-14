@@ -18,12 +18,12 @@ class WikiPageLanguageFilter extends Base {
 		$filters = $this->oLookup->getFilters();
 		$config = \MediaWiki\MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
 		$autoSetLangFilter = $config->get( 'ESAutoSetLangFilter' );
-		if( !isset( $filters['terms']['page_language'] ) && !$autoSetLangFilter ) {
+		if ( !isset( $filters['terms']['page_language'] ) && !$autoSetLangFilter ) {
 			return;
 		}
 		$filterValue = $this->oLookup->getFilters()['terms']['page_language'];
-		if( count( $filterValue ) !== 1 ) {
-			if( $autoSetLangFilter ) {
+		if ( count( $filterValue ) !== 1 ) {
+			if ( $autoSetLangFilter ) {
 				$autoLangCode = $this->getAutoLangCode();
 				$this->oLookup->removeTermsFilter( 'page_language', $filterValue );
 				$this->oLookup->addTermsFilter( 'page_language', $autoLangCode );
@@ -36,7 +36,7 @@ class WikiPageLanguageFilter extends Base {
 			$this->filterValue = $filterValue[0];
 		}
 
-		if( !$this->filterValue ) {
+		if ( !$this->filterValue ) {
 			// Just to be sure
 			return;
 		}
@@ -76,7 +76,7 @@ class WikiPageLanguageFilter extends Base {
 	}
 
 	public function undo() {
-		if( !empty( $this->originalMust ) ) {
+		if ( !empty( $this->originalMust ) ) {
 			$this->oLookup['query']['bool']['must'] = $this->originalMust;
 			$this->oLookup->addTermsFilter( 'page_language', $this->filterValue );
 		}
@@ -84,7 +84,7 @@ class WikiPageLanguageFilter extends Base {
 
 	protected function getAutoLangCode() {
 		$user = $this->oContext->getUser();
-		if( $user->isAnon() ) {
+		if ( $user->isAnon() ) {
 			return $this->oContext->getLanguage()->getCode();
 		}
 		return $user->getOption( 'language' );

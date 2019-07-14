@@ -40,10 +40,9 @@ class Query extends \ApiBase {
 			$decodedValue = \FormatJson::decode( $value, true );
 
 			$oLookup = new \BS\ExtendedSearch\Lookup();
-			if( is_array( $decodedValue ) ) {
+			if ( is_array( $decodedValue ) ) {
 				$oLookup = new \BS\ExtendedSearch\Lookup( $decodedValue );
-			}
-			else {
+			} else {
 				$oLookup->setQueryString( $value );
 			}
 
@@ -70,50 +69,52 @@ class Query extends \ApiBase {
 	 * @var stdClass $resultSet
 	 */
 	protected $resultSet;
+
 	protected function lookUpResults() {
 		$oBackend = \BS\ExtendedSearch\Backend::instance( $this->sBackend );
 		$this->resultSet = $oBackend->runLookup( $this->oLookup );
 	}
 
 	protected $oResult;
+
 	protected function returnResults() {
 		$oResult = $this->getResult();
 
-		if( isset( $this->resultSet->exception ) ) {
-			//Search query caused an exception - usually malformed query
+		if ( isset( $this->resultSet->exception ) ) {
+			// Search query caused an exception - usually malformed query
 			$oResult->addValue( null, 'exception', 1 );
 			$oResult->addValue( null, 'exceptionType', $this->resultSet->exceptionType );
 			return;
 		}
 
-		$oResult->addValue( null , 'results', $this->resultSet->results );
-		$oResult->addValue( null , 'total', $this->resultSet->total );
-		$oResult->addValue( null , 'filters', $this->resultSet->filters );
-		$oResult->addValue( null , 'spellcheck', $this->resultSet->spellcheck );
-		$oResult->addValue( null , 'lookup', \FormatJson::encode( $this->oLookup ) );
-		$oResult->addValue( null , 'total_approximated', $this->resultSet->total_approximated );
-		if( !empty( $this->pageCreateData ) ) {
-			$oResult->addValue( null , 'page_create_data', $this->pageCreateData );
+		$oResult->addValue( null, 'results', $this->resultSet->results );
+		$oResult->addValue( null, 'total', $this->resultSet->total );
+		$oResult->addValue( null, 'filters', $this->resultSet->filters );
+		$oResult->addValue( null, 'spellcheck', $this->resultSet->spellcheck );
+		$oResult->addValue( null, 'lookup', \FormatJson::encode( $this->oLookup ) );
+		$oResult->addValue( null, 'total_approximated', $this->resultSet->total_approximated );
+		if ( !empty( $this->pageCreateData ) ) {
+			$oResult->addValue( null, 'page_create_data', $this->pageCreateData );
 		}
 	}
 
 	protected function setPageCreatable() {
-		if( !$this->searchTerm ) {
+		if ( !$this->searchTerm ) {
 			return;
 		}
 		$pageName = $this->searchTerm;
 
-		if( $this->getConfig()->get( 'CapitalLinks' ) ) {
+		if ( $this->getConfig()->get( 'CapitalLinks' ) ) {
 			$pageName = ucfirst( $pageName );
 		}
 
 		$title = \Title::newFromText( $pageName );
 
-		if( $title instanceof \Title === false ) {
+		if ( $title instanceof \Title === false ) {
 			return;
 		}
 
-		if( $title->exists() == false && $title->userCan( 'createpage' ) && $title->userCan( 'edit' ) ) {
+		if ( $title->exists() == false && $title->userCan( 'createpage' ) && $title->userCan( 'edit' ) ) {
 			$this->pageCreateData = [
 				'title' => $title->getPrefixedText(),
 				'url' => $title->getLocalURL( [ 'action' => 'edit' ] )

@@ -24,7 +24,7 @@ class InitBackend extends CommandDescriptionBase {
 	 * @return int
 	 */
 	public function getPosition() {
-		//Must be executed _before "rebuildIndex.php"
+		// Must be executed _before "rebuildIndex.php"
 		return 60;
 	}
 

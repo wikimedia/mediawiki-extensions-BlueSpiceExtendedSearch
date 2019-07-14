@@ -17,6 +17,7 @@ class ExternalFile extends RunJobsTriggerHandler {
 		$this->backend = \BS\ExtendedSearch\Backend::instance();
 		$this->index = $this->backend->getIndexByType( $this->sourceKey );
 	}
+
 	protected function doRun() {
 		// 1. - Run crawler to handle new files/paths and updates
 		$crawler = new \BS\ExtendedSearch\Source\Crawler\ExternalFile(
@@ -49,7 +50,7 @@ class ExternalFile extends RunJobsTriggerHandler {
 		$files = [];
 		$results = [];
 		$this->getResults( $search, $lookup, $results );
-		foreach( $results as $result ) {
+		foreach ( $results as $result ) {
 			$files[ $result->getId() ] = $result->__get( 'source_file_path' );
 		}
 
@@ -58,20 +59,20 @@ class ExternalFile extends RunJobsTriggerHandler {
 
 	protected function getResults( $search, $lookup, &$results ) {
 		$res = $search->search( $lookup->getQueryDSL() );
-		if( count( $res->getResults() ) == 0 ) {
+		if ( count( $res->getResults() ) == 0 ) {
 			return;
 		}
 		$results = array_merge( $results, $res->getResults() );
 		$size = $lookup->getSize();
 		$from = $lookup->getFrom();
-		$from = (int) $from + (int) $size;
+		$from = (int)$from + (int)$size;
 		$lookup->setFrom( $from );
 		$this->getResults( $search, $lookup, $results );
 	}
 
 	protected function filterOutExistingFilesInPaths() {
-		foreach( $this->indexedFiles as $id => $path ) {
-			if( file_exists( $path ) && $this->inPaths( $path ) ) {
+		foreach ( $this->indexedFiles as $id => $path ) {
+			if ( file_exists( $path ) && $this->inPaths( $path ) ) {
 				unset( $this->indexedFiles[ $id ] );
 			}
 		}
@@ -82,16 +83,16 @@ class ExternalFile extends RunJobsTriggerHandler {
 	 * to be indexed
 	 *
 	 * @param string $path
-	 * @return boolean
+	 * @return bool
 	 */
 	protected function inPaths( $path ) {
 		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsg' );
 		$paths = $config->get( 'ESExternalFilePaths' );
 
-		foreach( $paths as $configuredPath ) {
+		foreach ( $paths as $configuredPath ) {
 			$filePathInfo = new \SplFileInfo( $configuredPath );
 			$file = new \SplFileInfo( $path );
-			if( strpos( $file->getPathname(), $filePathInfo->getPathname() ) === 0 ) {
+			if ( strpos( $file->getPathname(), $filePathInfo->getPathname() ) === 0 ) {
 				return true;
 			}
 		}
@@ -104,7 +105,7 @@ class ExternalFile extends RunJobsTriggerHandler {
 	 */
 	protected function bulkDeleteFiles() {
 		$docs = [];
-		foreach( $this->indexedFiles as $id => $path ) {
+		foreach ( $this->indexedFiles as $id => $path ) {
 			$docs[] = new \Elastica\Document( $id );
 		}
 

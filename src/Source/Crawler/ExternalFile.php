@@ -11,7 +11,7 @@ class ExternalFile extends File {
 		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsg' );
 		$paths = $config->get( 'ESExternalFilePaths' );
 
-		foreach( $paths as $sourcePath => $uriPrefix ) {
+		foreach ( $paths as $sourcePath => $uriPrefix ) {
 			$sourceFileInfo = new \SplFileInfo( $sourcePath );
 
 			$files = new \RecursiveIteratorIterator(
@@ -21,9 +21,9 @@ class ExternalFile extends File {
 				\RecursiveIteratorIterator::SELF_FIRST
 			);
 
-			foreach( $files as $file ) {
+			foreach ( $files as $file ) {
 				$file instanceof \SplFileInfo;
-				if( $file->isDir() ) {
+				if ( $file->isDir() ) {
 					continue;
 				}
 

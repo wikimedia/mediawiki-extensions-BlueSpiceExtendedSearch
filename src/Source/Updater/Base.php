@@ -11,11 +11,11 @@ class Base {
 	 * @param \BS\ExtendedSearch\Source\Base $oSource
 	 */
 	public function __construct( $oSource ) {
-		//TODO: Proceed here
+		// TODO: Proceed here
 	}
 
 	public function init( &$aHooks ) {
-		$aHooks['BSExtendedSearchTriggerUpdate'][] = array( $this, 'onBSExtendedSearchTriggerUpdate' );
+		$aHooks['BSExtendedSearchTriggerUpdate'][] = [ $this, 'onBSExtendedSearchTriggerUpdate' ];
 	}
 
 	/**
@@ -25,8 +25,8 @@ class Base {
 	 * @return void
 	 */
 	public function addUpdateJob( $oTitle, $aParams = [] ) {
-		$oJob = $this->makeJob($oTitle, $aParams);
-		if( $oJob instanceof \Job === false ) {
+		$oJob = $this->makeJob( $oTitle, $aParams );
+		if ( $oJob instanceof \Job === false ) {
 			return;
 		}
 
@@ -39,7 +39,7 @@ class Base {
 	 * @return \BS\ExtendedSearch\Source\Updater\Base | null
 	 */
 	public function makeJob( $oTitle, $aParams = [] ) {
-		if( !is_subclass_of( $this->sUpdateJobClass, '\Job') ) {
+		if ( !is_subclass_of( $this->sUpdateJobClass, '\Job' ) ) {
 			$sCurrentClassName = get_class( $this );
 			wfDebugLog( 'BSExtendedSearch', "Updater '$sCurrentClassName has no valid JobClass" );
 			return null;
@@ -54,7 +54,7 @@ class Base {
 	 * @param string $sSourceKey
 	 * @param \Title $oTitle
 	 * @param array $aParams
-	 * @return boolean
+	 * @return bool
 	 */
 	public function onBSExtendedSearchTriggerUpdate( $sBackendKey, $sSourceKey, $oTitle, $aParams ) {
 		$this->addUpdateJob( $oTitle, $aParams );

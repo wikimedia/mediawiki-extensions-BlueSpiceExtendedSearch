@@ -1,13 +1,13 @@
 <?php
 
-$specialPageAliases = array();
+$specialPageAliases = [];
 
 /** English */
-$specialPageAliases['en'] = array(
-	'BSSearchAdmin' => array( 'SearchAdmin', 'Search Admin' ),
-);
+$specialPageAliases['en'] = [
+	'BSSearchAdmin' => [ 'SearchAdmin', 'Search Admin' ],
+];
 
 /** German (Deutsch) */
-$specialPageAliases['de'] = array(
-	'BSSearchAdmin' => array( 'Sucheinstellungen' ),
-);
+$specialPageAliases['de'] = [
+	'BSSearchAdmin' => [ 'Sucheinstellungen' ],
+];

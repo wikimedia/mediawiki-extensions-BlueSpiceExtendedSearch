@@ -37,7 +37,7 @@ class Base {
 	 */
 	public function __construct( $source ) {
 		$this->source = $source;
-		//Just for convinience, as many of the formatters would use it
+		// Just for convinience, as many of the formatters would use it
 		$this->linkRenderer = $this->source->getBackend()->getService( 'LinkRenderer' );
 	}
 
@@ -65,7 +65,7 @@ class Base {
 	 * It allows sources to modify default result structure
 	 *
 	 * @param array $defaultResultStructure
-	 * @returns array
+	 * @return array
 	 */
 	public function getResultStructure( $defaultResultStructure = [] ) {
 		return $defaultResultStructure;
@@ -79,30 +79,30 @@ class Base {
 	 * @param \Elastica\Result $resultObject
 	 */
 	public function format( &$result, $resultObject ) {
-		//Base class format must work with original values
-		//because it might be called multiple times
+		// Base class format must work with original values
+		// because it might be called multiple times
 		$originalValues = $resultObject->getData();
 		$result['type'] = $resultObject->getType();
 		$result['score'] = $resultObject->getScore();
 
-		//Experimental
+		// Experimental
 		$user = $this->getContext()->getUser();
-		if( $user->isLoggedIn() ) {
+		if ( $user->isLoggedIn() ) {
 			$resultRelevance = new \BS\ExtendedSearch\ResultRelevance( $user, $resultObject->getId() );
 			$result['user_relevance'] = $resultRelevance->getValue();
 		} else {
 			$result['user_relevance'] = 0;
 		}
-		//End Experimental
+		// End Experimental
 
 		$type = $result['type'];
 		$result['typetext'] = $this->getTypeText( $type );
 
-		if( $this->isFeatured( $result ) ) {
+		if ( $this->isFeatured( $result ) ) {
 			$result['featured'] = 1;
 		}
 
-		if( !isset( $originalValues['ctime'] ) || !isset( $originalValues['mtime'] ) ) {
+		if ( !isset( $originalValues['ctime'] ) || !isset( $originalValues['mtime'] ) ) {
 			// Not all types have these
 			return;
 		}
@@ -117,8 +117,8 @@ class Base {
 	 * @param array $searchData
 	 */
 	public function formatAutocompleteResults( &$results, $searchData ) {
-		foreach( $results as &$result ) {
-			if( !isset( $result['mtime'] ) || $result['rank'] !== 'top' ) {
+		foreach ( $results as &$result ) {
+			if ( !isset( $result['mtime'] ) || $result['rank'] !== 'top' ) {
 				continue;
 			}
 
@@ -129,8 +129,8 @@ class Base {
 
 	protected function getTypeText( $type ) {
 		$typeText = $type;
-		if(  wfMessage( "bs-extendedsearch-source-type-$type-label" )->exists() ) {
-			$typeText =  wfMessage( "bs-extendedsearch-source-type-$type-label" )->plain();
+		if ( wfMessage( "bs-extendedsearch-source-type-$type-label" )->exists() ) {
+			$typeText = wfMessage( "bs-extendedsearch-source-type-$type-label" )->plain();
 		}
 
 		return $typeText;
@@ -148,14 +148,14 @@ class Base {
 	 */
 	public function rankAutocompleteResults( &$results, $searchData ) {
 		$top = $this->getACHighestScored( $results );
-		foreach( $results as &$result ) {
-			if( $result['is_ranked'] == true ) {
+		foreach ( $results as &$result ) {
+			if ( $result['is_ranked'] == true ) {
 				return;
 			}
 
-			if( strtolower( $result['basename'] ) == strtolower( $searchData['value'] ) && $top['_id'] === $result['_id'] ) {
+			if ( strtolower( $result['basename'] ) == strtolower( $searchData['value'] ) && $top['_id'] === $result['_id'] ) {
 				$result['rank'] = self::AC_RANK_TOP;
-			} elseif( $this->matchTokenized( strtolower( $result['basename'] ), $searchData['value'] ) ) {
+			} elseif ( $this->matchTokenized( strtolower( $result['basename'] ), $searchData['value'] ) ) {
 				$result['rank'] = self::AC_RANK_NORMAL;
 			} else {
 				$result['rank'] = self::AC_RANK_SECONDARY;
@@ -176,7 +176,7 @@ class Base {
 	 */
 	protected function matchTokenized( $haystack, $needle ) {
 		$tokens = preg_split( "/(\s|,|\.|;)/", $needle );
-		foreach( $tokens as $token ) {
+		foreach ( $tokens as $token ) {
 			if ( strpos( $haystack, $token ) === false ) {
 				return false;
 			}
@@ -189,20 +189,20 @@ class Base {
 	 * matches result exactly
 	 *
 	 * @param array $result
-	 * @return boolean
+	 * @return bool
 	 */
 	protected function isFeatured( $result ) {
-		if( $this->lookup == null ) {
+		if ( $this->lookup == null ) {
 			return false;
 		}
 
 		$queryString = $this->lookup->getQueryString();
-		if( isset( $queryString['query'] ) == false ) {
+		if ( isset( $queryString['query'] ) == false ) {
 			return false;
 		}
 
 		$term = $queryString['query'];
-		if( strtolower( $term ) == strtolower( $result['basename'] ) ) {
+		if ( strtolower( $term ) == strtolower( $result['basename'] ) ) {
 			return true;
 		}
 	}
@@ -219,8 +219,8 @@ class Base {
 
 	protected function getACHighestScored( $results ) {
 		$highest = false;
-		foreach( $results as $result ) {
-			if( !$highest || ( $result['score'] > $highest['score'] ) ) {
+		foreach ( $results as $result ) {
+			if ( !$highest || ( $result['score'] > $highest['score'] ) ) {
 				$highest = $result;
 			}
 		}

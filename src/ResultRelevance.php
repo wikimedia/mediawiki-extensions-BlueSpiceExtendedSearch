@@ -54,7 +54,7 @@ class ResultRelevance {
 		);
 
 		$values = [];
-		foreach( $result as $row ) {
+		foreach ( $result as $row ) {
 			$values[$row->esr_result] = $row->esr_value;
 		}
 
@@ -64,10 +64,10 @@ class ResultRelevance {
 	/**
 	 * Gets relevance for set user and result ID
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function getValue() {
-		if( $this->resultId == '' ) {
+		if ( $this->resultId == '' ) {
 			return 0;
 		}
 
@@ -79,7 +79,7 @@ class ResultRelevance {
 			$this->queryConditions
 		);
 
-		if( $result == null ) {
+		if ( $result == null ) {
 			return 0;
 		}
 
@@ -89,23 +89,23 @@ class ResultRelevance {
 	/**
 	 * Saves current settings to DB
 	 *
-	 * @return boolean false on failure
+	 * @return bool false on failure
 	 */
 	public function save() {
-		if( $this->resultId == '' ) {
+		if ( $this->resultId == '' ) {
 			return false;
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
 		$this->setConditions();
 
-		if( $this->value == 0 ) {
+		if ( $this->value == 0 ) {
 			$result = $dbw->delete(
 				'bs_extendedsearch_relevance',
 				$this->queryConditions
 			);
 		} else {
-			if( $this->getValue() == 0 ) {
+			if ( $this->getValue() == 0 ) {
 				$result = $dbw->insert(
 					'bs_extendedsearch_relevance',
 					[
@@ -134,7 +134,7 @@ class ResultRelevance {
 		$this->queryConditions = [
 			'esr_user' => $this->user->getId()
 		];
-		if( $this->resultId ) {
+		if ( $this->resultId ) {
 			$this->queryConditions['esr_result'] = $this->resultId;
 		}
 	}

@@ -23,7 +23,7 @@ class ResultRelevance extends \ApiBase {
 		$value = parent::getParameterFromSettings( $paramName, $paramSettings, $parseLimit );
 		if ( $paramName === 'relevanceData' ) {
 			$decodedValue = \FormatJson::decode( $value, true );
-			if( is_array( $decodedValue ) ) {
+			if ( is_array( $decodedValue ) ) {
 				return $this->makeResultRelevanceFromArray( $decodedValue );
 			}
 		}
@@ -31,10 +31,10 @@ class ResultRelevance extends \ApiBase {
 	}
 
 	protected function makeResultRelevanceFromArray( $value ) {
-		if( $this->getUser()->isLoggedIn() == false ) {
+		if ( $this->getUser()->isLoggedIn() == false ) {
 			return false;
 		}
-		if( isset( $value['resultId'] ) && isset( $value['value'] ) ) {
+		if ( isset( $value['resultId'] ) && isset( $value['value'] ) ) {
 			return new \BS\ExtendedSearch\ResultRelevance(
 				$this->getUser(),
 				$value['resultId'],
@@ -44,6 +44,7 @@ class ResultRelevance extends \ApiBase {
 
 		return false;
 	}
+
 	/**
 	 *
 	 * @var \BS\ExtendedSearch\ResultRelevance
@@ -59,6 +60,7 @@ class ResultRelevance extends \ApiBase {
 	 * @var boolean $status
 	 */
 	protected $status;
+
 	protected function applyRelevanceChange() {
 		$status = $this->resultRelevance->save();
 		$this->status = $status ? 1 : 0;
@@ -66,6 +68,6 @@ class ResultRelevance extends \ApiBase {
 
 	protected function returnResults() {
 		$result = $this->getResult();
-		$result->addValue( null , 'status', $this->status );
+		$result->addValue( null, 'status', $this->status );
 	}
 }

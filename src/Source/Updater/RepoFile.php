@@ -4,11 +4,11 @@ namespace BS\ExtendedSearch\Source\Updater;
 
 class RepoFile extends Base {
 	public function init( &$aHooks ) {
-		$aHooks['FileUpload'][] = array( $this, 'onFileUpload' );
-		$aHooks['FileDeleteComplete'][] = array( $this, 'onFileDeleteComplete' );
-		$aHooks['FileUndeleteComplete'][] = array( $this, 'onFileUndeleteComplete' );
-		$aHooks['TitleMove'][] = array( $this, 'onTitleMove' );
-		$aHooks['TitleMoveComplete'][] = array( $this, 'onTitleMoveComplete' );
+		$aHooks['FileUpload'][] = [ $this, 'onFileUpload' ];
+		$aHooks['FileDeleteComplete'][] = [ $this, 'onFileDeleteComplete' ];
+		$aHooks['FileUndeleteComplete'][] = [ $this, 'onFileUndeleteComplete' ];
+		$aHooks['TitleMove'][] = [ $this, 'onTitleMove' ];
+		$aHooks['TitleMoveComplete'][] = [ $this, 'onTitleMoveComplete' ];
 
 		parent::init( $aHooks );
 	}
@@ -65,8 +65,8 @@ class RepoFile extends Base {
 	 */
 	protected $titleMoveOrigFile;
 
-	public function onTitleMove( $title, $newtitle, $user )  {
-		if( $title->getNamespace() !== NS_FILE ) {
+	public function onTitleMove( $title, $newtitle, $user ) {
+		if ( $title->getNamespace() !== NS_FILE ) {
 			return true;
 		}
 
@@ -84,7 +84,7 @@ class RepoFile extends Base {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onTitleMoveComplete( &$oTitle, &$oNewtitle, $oUser, $iOldID, $iNewID ) {
-		if( $oTitle->getNamespace() !== NS_FILE ) {
+		if ( $oTitle->getNamespace() !== NS_FILE ) {
 			return true;
 		}
 

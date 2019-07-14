@@ -4,10 +4,10 @@ namespace BS\ExtendedSearch\Source\Updater;
 
 class WikiPage extends Base {
 	public function init( &$aHooks ) {
-		$aHooks['PageContentSaveComplete'][] = array( $this, 'onPageContentSaveComplete' );
-		$aHooks['ArticleDeleteComplete'][] = array( $this, 'onArticleDeleteComplete' );
-		$aHooks['ArticleUndelete'][] = array( $this, 'onArticleUndelete' );
-		$aHooks['TitleMoveComplete'][] = array( $this, 'onTitleMoveComplete' );
+		$aHooks['PageContentSaveComplete'][] = [ $this, 'onPageContentSaveComplete' ];
+		$aHooks['ArticleDeleteComplete'][] = [ $this, 'onArticleDeleteComplete' ];
+		$aHooks['ArticleUndelete'][] = [ $this, 'onArticleUndelete' ];
+		$aHooks['TitleMoveComplete'][] = [ $this, 'onTitleMoveComplete' ];
 
 		parent::init( $aHooks );
 	}
@@ -19,15 +19,15 @@ class WikiPage extends Base {
 	 * @param \User $user
 	 * @param \Content $content
 	 * @param string $summary
-	 * @param boolean $isMinor
-	 * @param boolean $isWatch
+	 * @param bool $isMinor
+	 * @param bool $isWatch
 	 * @param int $section
 	 * @param int $flags
 	 * @param \Revision $revision
 	 * @param \Status $status
 	 * @param int $baseRevId
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function onPageContentSaveComplete( \WikiPage $wikiPage, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision, $status, $baseRevId ) {
 		\JobQueueGroup::singleton()->push(
@@ -42,9 +42,9 @@ class WikiPage extends Base {
 	 * @param \User $user
 	 * @param type $reason
 	 * @param type $id
-	 * @param \Content $content
+	 * @param \Content|null $content
 	 * @param \LogEntry $logEntry
-	 * @return boolean
+	 * @return bool
 	 */
 	public function onArticleDeleteComplete( &$article, \User &$user, $reason, $id, \Content $content = null, \LogEntry $logEntry ) {
 		\JobQueueGroup::singleton()->push(
@@ -56,10 +56,10 @@ class WikiPage extends Base {
 	/**
 	 * Update index on article undelete
 	 * @param Title $title
-	 * @param boolean $create
+	 * @param bool $create
 	 * @param string $comment
 	 * @param int $oldPageId
-	 * @return boolean
+	 * @return bool
 	 */
 	public function onArticleUndelete( \Title $title, $create, $comment, $oldPageId ) {
 		\JobQueueGroup::singleton()->push(
@@ -77,7 +77,7 @@ class WikiPage extends Base {
 	 * @param int $newid
 	 * @param string $reason
 	 * @param \Revision $revision
-	 * @return boolean
+	 * @return bool
 	 */
 	public function onTitleMoveComplete( \Title &$title, \Title &$newtitle, \User &$user, $oldid, $newid, $reason, \Revision $revision ) {
 		\JobQueueGroup::singleton()->push(

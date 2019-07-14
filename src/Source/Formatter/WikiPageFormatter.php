@@ -7,7 +7,7 @@ use BlueSpice\DynamicFileDispatcher\ArticlePreviewImage;
 use MediaWiki\MediaWikiServices;
 
 class WikiPageFormatter extends Base {
-	public function getResultStructure ( $defaultResultStructure = [] ) {
+	public function getResultStructure( $defaultResultStructure = [] ) {
 		$resultStructure = $defaultResultStructure;
 		$resultStructure['page_anchor'] = 'page_anchor';
 		$resultStructure['original_title'] = 'original_title';
@@ -27,7 +27,7 @@ class WikiPageFormatter extends Base {
 			"name" => "categories"
 		];
 
-		//$resultStructure['imageUri'] = "image_uri";
+		// $resultStructure['imageUri'] = "image_uri";
 
 		$resultStructure['featured']['highlight'] = "rendered_content_snippet";
 		$resultStructure['featured']['imageUri'] = "image_uri";
@@ -36,13 +36,13 @@ class WikiPageFormatter extends Base {
 	}
 
 	public function format( &$result, $resultObject ) {
-		if( $this->source->getTypeKey() != $resultObject->getType() ) {
+		if ( $this->source->getTypeKey() != $resultObject->getType() ) {
 			return;
 		}
 
 		parent::format( $result, $resultObject );
 
-		if( $result['is_redirect'] === true ) {
+		if ( $result['is_redirect'] === true ) {
 			return $this->formatRedirect( $result );
 		}
 		$result['categories'] = $this->formatCategories( $result['categories'] );
@@ -61,17 +61,16 @@ class WikiPageFormatter extends Base {
 			$result['file-usage'] = $this->getFileUsage( $result['prefixed_title'] );
 		}
 
-
 		$this->addAnchorAndImageUri( $result );
 	}
 
 	protected function isFeatured( $result ) {
-		if( $this->lookup == null ) {
+		if ( $this->lookup == null ) {
 			return false;
 		}
 
 		$queryString = $this->lookup->getQueryString();
-		if( isset( $queryString['query'] ) == false ) {
+		if ( isset( $queryString['query'] ) == false ) {
 			return false;
 		}
 
@@ -79,17 +78,17 @@ class WikiPageFormatter extends Base {
 
 		$filters = $this->lookup->getFilters();
 		$namespaceFilters = [];
-		if( isset( $filters['terms']['namespace_text'] ) ) {
+		if ( isset( $filters['terms']['namespace_text'] ) ) {
 			$namespaceFilters = $filters['terms']['namespace_text'];
 		}
 
 		$pageTitle = $result['prefixed_title'];
 
-		if( !empty( $namespaceFilters ) ) {
+		if ( !empty( $namespaceFilters ) ) {
 			$pageTitle = $this->removeNamespace( $pageTitle );
 		}
 
-		if( strtolower( $term ) == strtolower( $pageTitle ) ) {
+		if ( strtolower( $term ) == strtolower( $pageTitle ) ) {
 			return true;
 		}
 
@@ -98,23 +97,23 @@ class WikiPageFormatter extends Base {
 
 	protected function addAnchorAndImageUri( &$result ) {
 		$title = \Title::newFromText( $result['prefixed_title'] );
-		if( $title instanceof \Title && $title->getNamespace() == $result['namespace'] ) {
+		if ( $title instanceof \Title && $title->getNamespace() == $result['namespace'] ) {
 			$result['page_anchor'] = $this->getPageAnchor( $title, $result['display_title'] );
-			if( $title->exists() ) {
+			if ( $title->exists() ) {
 				$result['image_uri'] = $this->getImageUri( $result['prefixed_title'], 150 );
 			}
 		}
 	}
 
 	protected function formatCategories( $categories ) {
-		if( empty( $categories ) ) {
+		if ( empty( $categories ) ) {
 			return;
 		}
 
 		$moreCategories = false;
 		$formattedCategories = [];
-		foreach( $categories as $idx => $category ) {
-			if( $idx > 2 ) {
+		foreach ( $categories as $idx => $category ) {
+			if ( $idx > 2 ) {
 				$moreCategories = true;
 				break;
 			}
@@ -134,15 +133,15 @@ class WikiPageFormatter extends Base {
 		$highlightedTerm = $this->getHighlightedTerm( $result );
 		$sections = $result[ 'sections' ];
 
-		if( count( $sections ) === 0 || $highlightedTerm === '' ) {
+		if ( count( $sections ) === 0 || $highlightedTerm === '' ) {
 			return '';
 		}
 
 		$matchedSections = [];
-		foreach( $sections as $section ) {
+		foreach ( $sections as $section ) {
 			$lcTerm = strtolower( $highlightedTerm );
 			$lcSection = strtolower( $section );
-			if( strpos( $lcSection, $lcTerm ) !== false ) {
+			if ( strpos( $lcSection, $lcTerm ) !== false ) {
 				$matchedSections[] = $section;
 			}
 		}
@@ -151,13 +150,13 @@ class WikiPageFormatter extends Base {
 	}
 
 	protected function getHighlightedTerm( $result ) {
-		if( $result[ 'highlight' ] == '' ) {
+		if ( $result[ 'highlight' ] == '' ) {
 			return '';
 		}
 
 		$hightlightedTerm = [];
 		preg_match( '/<b>(.*?)<\/b>/', $result[ 'highlight' ], $hightlightedTerm );
-		if( !isset( $hightlightedTerm[ 1 ] ) ) {
+		if ( !isset( $hightlightedTerm[ 1 ] ) ) {
 			return '';
 		}
 		return strtolower( $hightlightedTerm[ 1 ] );
@@ -167,21 +166,21 @@ class WikiPageFormatter extends Base {
 		$title = \Title::newFromText( $result['prefixed_title'] );
 		$sections = [];
 		$moreSections = false;
-		foreach( $sectionsToAdd as $idx => $section ) {
-			if( $idx > 2 ) {
+		foreach ( $sectionsToAdd as $idx => $section ) {
+			if ( $idx > 2 ) {
 				$moreSections = true;
 				break;
 			}
 			$linkTarget = $title->createFragmentTarget( $section );
 			$displayText = str_replace( '_', ' ', $section );
-			if( strlen( $displayText ) > 25 ) {
+			if ( strlen( $displayText ) > 25 ) {
 				$displayText = substr( $displayText, 0, 25 ) . Base::MORE_VALUES_TEXT;
 			}
 			$sections[] = $this->linkRenderer->makeLink( $linkTarget, $displayText );
 		}
 
 		$sectionText = implode( Base::VALUE_SEPARATOR, $sections );
-		if( $moreSections ) {
+		if ( $moreSections ) {
 			$sectionText .=
 				wfMessage(
 					'bs-extendedseach-wikipage-section-more-text',
@@ -192,19 +191,19 @@ class WikiPageFormatter extends Base {
 	}
 
 	protected function formatRedirectedFrom( $result ) {
-		if( empty( $result[ 'redirected_from' ] ) ) {
+		if ( empty( $result[ 'redirected_from' ] ) ) {
 			return '';
 		}
 
 		$redirs = [];
-		foreach( $result[ 'redirected_from'] as $prefixedTitle ) {
+		foreach ( $result[ 'redirected_from'] as $prefixedTitle ) {
 			$redirTitle = \Title::newFromText( $prefixedTitle );
-			if( $redirTitle instanceof \Title === false ) {
+			if ( $redirTitle instanceof \Title === false ) {
 				continue;
 			}
 
 			$displayText = str_replace( '_', ' ', $prefixedTitle );
-			if( strlen( $displayText ) > 25 ) {
+			if ( strlen( $displayText ) > 25 ) {
 				$displayText = substr( $displayText, 0, 25 ) . Base::MORE_VALUES_TEXT;
 			}
 			$redirs[] = $this->linkRenderer->makeLink( $redirTitle, $displayText );
@@ -216,7 +215,7 @@ class WikiPageFormatter extends Base {
 	protected function getHighlight( $resultObject ) {
 		$highlights = $resultObject->getHighlights();
 		$highlightParts = [];
-		if( isset( $highlights['rendered_content'] ) ) {
+		if ( isset( $highlights['rendered_content'] ) ) {
 			return implode( ' ', $highlights['rendered_content'] );
 		}
 		return '';
@@ -242,7 +241,7 @@ class WikiPageFormatter extends Base {
 	 */
 	protected function getImageUri( $prefixedTitle, $width = 102 ) {
 		$title = \Title::newFromText( $prefixedTitle );
-		if( !( $title instanceof \Title ) || $title->exists() == false ) {
+		if ( !( $title instanceof \Title ) || $title->exists() == false ) {
 			return '';
 		}
 
@@ -254,7 +253,7 @@ class WikiPageFormatter extends Base {
 		$dfdUrlBuilder = $this->source->getBackend()->getService(
 			'BSDynamicFileDispatcherUrlBuilder'
 		);
-		if( null == $dfdUrlBuilder ) {
+		if ( null == $dfdUrlBuilder ) {
 			return '';
 		}
 
@@ -272,7 +271,7 @@ class WikiPageFormatter extends Base {
 	protected function formatRedirect( &$result ) {
 		$title = \Title::newFromText( $result['prefixed_title'] );
 		$redirTarget = \Title::newFromText( $result['redirects_to'] );
-		if( $redirTarget instanceof \Title === false ) {
+		if ( $redirTarget instanceof \Title === false ) {
 			return;
 		}
 		$result['is_redirect'] = 1;
@@ -283,7 +282,7 @@ class WikiPageFormatter extends Base {
 			->getAttribute( 'BlueSpiceExtendedSearchIcons' );
 
 		$scriptPath = $this->getContext()->getConfig()->get( 'ScriptPath' );
-		if( isset( $icons['redirect'] ) ) {
+		if ( isset( $icons['redirect'] ) ) {
 			$result['image_uri'] = $scriptPath . $icons['redirect'];
 		}
 	}
@@ -291,7 +290,7 @@ class WikiPageFormatter extends Base {
 	protected function getOriginalTitleText( $result ) {
 		$displayTitle = $result['display_title'];
 		$prefixedTitle = $result['prefixed_title'];
-		if( $displayTitle != $prefixedTitle ) {
+		if ( $displayTitle != $prefixedTitle ) {
 			return $prefixedTitle;
 		}
 		return '';
@@ -300,8 +299,8 @@ class WikiPageFormatter extends Base {
 	public function formatAutocompleteResults( &$results, $searchData ) {
 		parent::formatAutocompleteResults( $results, $searchData );
 
-		foreach( $results as &$result ) {
-			if( $result['type'] !== $this->source->getTypeKey() ) {
+		foreach ( $results as &$result ) {
+			if ( $result['type'] !== $this->source->getTypeKey() ) {
 				continue;
 			}
 
@@ -313,8 +312,8 @@ class WikiPageFormatter extends Base {
 
 	public function rankAutocompleteResults( &$results, $searchData ) {
 		$top = $this->getACHighestScored( $results );
-		foreach( $results as &$result ) {
-			if( $result['type'] !== $this->source->getTypeKey() ) {
+		foreach ( $results as &$result ) {
+			if ( $result['type'] !== $this->source->getTypeKey() ) {
 				continue;
 			}
 
@@ -322,23 +321,23 @@ class WikiPageFormatter extends Base {
 			// If there is a namespace filter set, all results coming here will
 			// already be in desired namespace, so we should match only non-namespace
 			// part of a title to determine match rank.
-			if( $searchData['namespace'] !== NS_MAIN ) {
+			if ( $searchData['namespace'] !== NS_MAIN ) {
 				$pageTitle = $this->removeNamespace( $pageTitle );
 			}
 
-			if( isset( $searchData['mainpage'] ) ) {
+			if ( isset( $searchData['mainpage'] ) ) {
 				// If we are querying subpages, we dont want base page
 				// as a result - kick it to secondary
-				if( strtolower( $pageTitle ) == strtolower( $searchData['mainpage'] ) ) {
+				if ( strtolower( $pageTitle ) == strtolower( $searchData['mainpage'] ) ) {
 					$result['rank'] = self::AC_RANK_SECONDARY;
 					$result['is_ranked'] = true;
 					continue;
 				}
 			}
 
-			if( strtolower( $pageTitle ) == strtolower( $searchData['value'] ) && $top['_id'] === $result['_id'] ) {
+			if ( strtolower( $pageTitle ) == strtolower( $searchData['value'] ) && $top['_id'] === $result['_id'] ) {
 				$result['rank'] = self::AC_RANK_TOP;
-			} elseif( $this->matchTokenized( strtolower( $result['basename'] ), $searchData['value'] ) ) {
+			} elseif ( $this->matchTokenized( strtolower( $result['basename'] ), $searchData['value'] ) ) {
 				$result['rank'] = self::AC_RANK_NORMAL;
 			} else {
 				$result['rank'] = self::AC_RANK_SECONDARY;
@@ -349,8 +348,8 @@ class WikiPageFormatter extends Base {
 	}
 
 	protected function removeNamespace( $prefixedTitle ) {
-		$bits = explode( ':',$prefixedTitle );
-		if( count( $bits ) == 2 ) {
+		$bits = explode( ':', $prefixedTitle );
+		if ( count( $bits ) == 2 ) {
 			return $bits[1];
 		} else {
 			return $prefixedTitle;
@@ -375,7 +374,7 @@ class WikiPageFormatter extends Base {
 		}
 
 		$usedInPages = [];
-		foreach( $res as $row ) {
+		foreach ( $res as $row ) {
 			$usedInPages[] = \Title::makeTitle(
 				$row->page_namespace,
 				$row->page_title
@@ -384,8 +383,8 @@ class WikiPageFormatter extends Base {
 
 		$morePages = false;
 		$formattedPages = [];
-		foreach( $usedInPages as $idx => $pageTitle ) {
-			if( $idx > 2 ) {
+		foreach ( $usedInPages as $idx => $pageTitle ) {
+			if ( $idx > 2 ) {
 				$morePages = true;
 				break;
 			}

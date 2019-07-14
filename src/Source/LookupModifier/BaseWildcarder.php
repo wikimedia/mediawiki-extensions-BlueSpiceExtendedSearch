@@ -11,7 +11,7 @@ class BaseWildcarder extends Base {
 	/**
 	 * @var array
 	 */
-	protected $operators = ['+', '|', '-', "\"", "*", "(", ")", "~"];
+	protected $operators = [ '+', '|', '-', "\"", "*", "(", ")", "~" ];
 	/**
 	 * @var array
 	 */
@@ -36,7 +36,7 @@ class BaseWildcarder extends Base {
 		}
 
 		$this->escapeColons();
-		if( $this->isSinglePlainWord() ) {
+		if ( $this->isSinglePlainWord() ) {
 			$this->wildcardTerm();
 		}
 		$this->setWildcarded();
@@ -46,14 +46,14 @@ class BaseWildcarder extends Base {
 	 * Returns true if search term has no spaces,
 	 * and no operators - meaning it should be wildcarded
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	protected function isSinglePlainWord() {
-		if( strlen( $this->wildcarded ) == 0 ) {
+		if ( strlen( $this->wildcarded ) == 0 ) {
 			return false;
 		}
 
-		if( strpos( $this->wildcarded, ' ' ) === false ) {
+		if ( strpos( $this->wildcarded, ' ' ) === false ) {
 			return true;
 		}
 		return false;
@@ -61,12 +61,12 @@ class BaseWildcarder extends Base {
 
 	protected function containsOperators() {
 		$pattern = [];
-		foreach( $this->operators as $op ) {
+		foreach ( $this->operators as $op ) {
 			$pattern[] = "\\$op";
 		}
 		$pattern = "/" . implode( '|', $pattern ) . "/";
 
-		if( preg_match( $pattern, $this->originalQuery ) ) {
+		if ( preg_match( $pattern, $this->originalQuery ) ) {
 			return true;
 		}
 		return false;

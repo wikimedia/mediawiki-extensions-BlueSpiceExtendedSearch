@@ -12,11 +12,11 @@ class UpdateRepoFile extends UpdateTitleBase {
 	 * @param array $params
 	 */
 	public function __construct( $title, $params = [] ) {
-		if( isset( $params['file'] ) ) {
+		if ( isset( $params['file'] ) ) {
 			$this->file = $params['file'];
 		}
 
-		if( isset( $params['action'] ) ) {
+		if ( isset( $params['action'] ) ) {
 			$this->action = $params['action'];
 		}
 
@@ -31,11 +31,11 @@ class UpdateRepoFile extends UpdateTitleBase {
 	protected function getDocumentProviderSource() {
 		$this->setFileRepoFile();
 		$fileBackend = $this->file->getRepo()->getBackend();
-		$fsFile = $fileBackend->getLocalReference([
+		$fsFile = $fileBackend->getLocalReference( [
 			'src' => $this->file->getPath()
-		]);
+		] );
 
-		if( $fsFile === null ) {
+		if ( $fsFile === null ) {
 			throw new \Exception( "File '{$this->getTitle()->getPrefixedDBkey()}' not found on filesystem!" );
 		}
 
@@ -47,12 +47,12 @@ class UpdateRepoFile extends UpdateTitleBase {
 	 * @throws \Exception
 	 */
 	protected function setFileRepoFile() {
-		if( $this->file instanceof \File ) {
+		if ( $this->file instanceof \File ) {
 			return;
 		}
 
 		$file = \RepoGroup::singleton()->findFile( $this->getTitle() );
-		if( $file === false ) {
+		if ( $file === false ) {
 			throw new \Exception( "File '{$this->getTitle()->getPrefixedDBkey()}' not found in any repo!" );
 		}
 		$this->file = $file;

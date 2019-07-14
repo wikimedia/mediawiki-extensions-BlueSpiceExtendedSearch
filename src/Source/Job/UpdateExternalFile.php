@@ -18,7 +18,7 @@ class UpdateExternalFile extends UpdateBase {
 		$this->dp = $this->getSource()->getDocumentProvider();
 		$oFile = new \SplFileInfo( $this->params['src'] );
 
-		if( $this->isDeletion() ) {
+		if ( $this->isDeletion() ) {
 			$this->getSource()->deleteDocumentsFromIndex(
 				[ $this->dp->getDocumentId( $this->params['dest'] ) ]
 			);

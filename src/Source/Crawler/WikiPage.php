@@ -18,13 +18,13 @@ class WikiPage extends Base {
 			[ 'page_props' => [ 'LEFT OUTER JOIN', [ 'page_id=pp_page' ] ] ]
 		);
 
-		foreach( $res as $row ) {
+		foreach ( $res as $row ) {
 			$title = \Title::newFromID( $row->page_id );
 
 			// Not ideal, but beats running page_props query for each page
 			$props = explode( '|', $row->prop_names );
 			$props = array_unique( $props );
-			if( in_array( 'noindex', $props ) ) {
+			if ( in_array( 'noindex', $props ) ) {
 				continue;
 			}
 			$this->addToJobQueue( $title );
@@ -34,7 +34,7 @@ class WikiPage extends Base {
 	protected function makeQueryConditions() {
 		$aConds = [];
 
-		if( $this->oConfig->has( 'skip_namespaces' ) ) {
+		if ( $this->oConfig->has( 'skip_namespaces' ) ) {
 			$aAllNamespaces = \RequestContext::getMain()->getLanguage()->getNamespaceIds();
 			$aOnlyIn = array_diff( $aAllNamespaces, $this->oConfig->get( 'skip_namespaces' ) );
 			$aConds['page_namespace'] = $aOnlyIn;

@@ -6,6 +6,6 @@ class BackendTest extends \MediaWikiTestCase {
 
 	public function testLocalBackend() {
 		$oBackend = \BS\ExtendedSearch\Backend::instance();
-		$this->assertInstanceOf( '\BS\ExtendedSearch\Backend' , $oBackend );
+		$this->assertInstanceOf( '\BS\ExtendedSearch\Backend', $oBackend );
 	}
 }

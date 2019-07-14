@@ -24,7 +24,7 @@ class RebuildIndex extends CommandDescriptionBase {
 	 * @return int
 	 */
 	public function getPosition() {
-		//Must be executed _after_ "initBackend.php"
+		// Must be executed _after_ "initBackend.php"
 		return 70;
 	}
 

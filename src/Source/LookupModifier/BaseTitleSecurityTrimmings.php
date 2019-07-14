@@ -9,7 +9,7 @@ class BaseTitleSecurityTrimmings extends Base {
 	public function __construct( &$lookup, \IContextSource $context ) {
 		parent::__construct( $lookup, $context );
 
-		//Should be injected
+		// Should be injected
 		$this->config = \BS\ExtendedSearch\Backend::instance( 'local' )->getConfig();
 		$this->setSearch();
 	}
@@ -44,7 +44,7 @@ class BaseTitleSecurityTrimmings extends Base {
 
 		$size = $this->oLookup->getSize();
 
-		//Prepare preprocessor query
+		// Prepare preprocessor query
 		$prepLookup->setSize( $size );
 		$prepLookup->clearSourceField();
 		$prepLookup->addSourceField( 'basename' );
@@ -55,11 +55,11 @@ class BaseTitleSecurityTrimmings extends Base {
 
 		$this->getExcludesForCurrentPage( $prepLookup, $size, $excludes );
 
-		if( empty( $excludes ) ) {
+		if ( empty( $excludes ) ) {
 			return;
 		}
 
-		//Add result _ids to exclude from the search
+		// Add result _ids to exclude from the search
 		$this->oLookup->addBoolMustNotTerms( '_id', $excludes );
 	}
 
@@ -74,44 +74,43 @@ class BaseTitleSecurityTrimmings extends Base {
 	protected function getExcludesForCurrentPage( $prepLookup, $size, &$excludes ) {
 		$validCount = 0;
 
-		while( $validCount < $size ) {
+		while ( $validCount < $size ) {
 			$results = $this->runPrepQuery( $prepLookup );
-			if( !$results ) {
-				//No (more) results can be retieved
+			if ( !$results ) {
+				// No (more) results can be retieved
 				break;
 			}
 
-			foreach( $results->getResults() as $resultObject ) {
+			foreach ( $results->getResults() as $resultObject ) {
 				$data = $resultObject->getData();
-				if( isset( $data['namespace'] ) == false ) {
-					//If result has no namespace set, \Title creation is N/A
-					//therefore we should allow user to see it
+				if ( isset( $data['namespace'] ) == false ) {
+					// If result has no namespace set, \Title creation is N/A
+					// therefore we should allow user to see it
 					$validCount++;
 					continue;
 				}
 
-				if( isset( $data['prefixed_title'] ) ) {
+				if ( isset( $data['prefixed_title'] ) ) {
 					$title = \Title::newFromText( $data['prefixed_title'] );
-				}
-				else {
+				} else {
 					$title = \Title::makeTitle( $data['namespace'], $data['basename'] );
 				}
-				if( !$title instanceof \Title ) {
-					if( $title->isContentPage() && $title->exists() == false ) {
-						//I cant think of a good reason to show non-existing title in the search
+				if ( !$title instanceof \Title ) {
+					if ( $title->isContentPage() && $title->exists() == false ) {
+						// I cant think of a good reason to show non-existing title in the search
 						$excludes[] = $resultObject->getId();
 						continue;
 					}
 				}
 
-				if( $title->userCan( 'read' ) == false ) {
+				if ( $title->userCan( 'read' ) == false ) {
 					$excludes[] = $resultObject->getId();
 				}
 
 				$validCount++;
 			}
 
-			//Get next page of results from preprocessor lookup
+			// Get next page of results from preprocessor lookup
 			$prepLookup->setFrom( $prepLookup->getFrom() + $prepLookup->getSize() );
 		}
 	}
@@ -126,20 +125,20 @@ class BaseTitleSecurityTrimmings extends Base {
 	protected function runPrepQuery( $lookup ) {
 		try {
 			$results = $this->search->search( $lookup->getQueryDSL() );
-		} catch( \RuntimeException $ex ) {
-			//If query is invalid, let main query run catch it
+		} catch ( \RuntimeException $ex ) {
+			// If query is invalid, let main query run catch it
 			return false;
 		}
 
 		$totalCount = $results->getTotalHits();
-		if( $totalCount == 0 ) {
-			//No results at all for this query
+		if ( $totalCount == 0 ) {
+			// No results at all for this query
 			return false;
 		}
 
 		$pageCount = count( $results->getResults() );
-		if( $pageCount == 0 ) {
-			//No results on page
+		if ( $pageCount == 0 ) {
+			// No results on page
 			return false;
 		}
 
