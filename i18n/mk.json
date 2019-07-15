@@ -14,6 +14,7 @@
 	"bs-extendedsearch-admin-label-error": "Грешка",
 	"bs-extendedsearch-admin-heading-sources": "Извори",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Документи",
+	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|погодок|погодоци}} за $2",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Додај филтер",
 	"bs-extendedsearch-search-center-filter-extension-label": "Додаток",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Именски простор",
