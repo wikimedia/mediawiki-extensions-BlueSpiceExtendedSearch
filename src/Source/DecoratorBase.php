@@ -71,7 +71,7 @@ class DecoratorBase extends Base {
 	 * @param \IContextSource $oContext
 	 * @return BS\ExtendedSearch\Source\QueryProcessor\Base[]
 	 */
-	public function getQueryProcessors( $oContext )  {
+	public function getQueryProcessors( $oContext ) {
 		return $this->oDecoratedSource->getQueryProcessors( $oContext );
 	}
 
@@ -99,7 +99,7 @@ class DecoratorBase extends Base {
 		return $this->oDecoratedSource->getUpdater();
 	}
 
-	public function getFormatter () {
+	public function getFormatter() {
 		return $this->oDecoratedSource->getFormatter();
 	}
 

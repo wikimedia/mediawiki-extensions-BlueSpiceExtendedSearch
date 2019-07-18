@@ -16,8 +16,8 @@ class Lookup extends \ArrayObject {
 	 * @param array $aConfig
 	 */
 	public function __construct( $aConfig = [] ) {
-		if( is_array( $aConfig ) ) {
-			foreach( $aConfig as $sKey => $mValue ) {
+		if ( is_array( $aConfig ) ) {
+			foreach ( $aConfig as $sKey => $mValue ) {
 				$this[$sKey] = $mValue;
 			}
 		}
@@ -27,14 +27,14 @@ class Lookup extends \ArrayObject {
 		$aPathParts = explode( '.', $sPath );
 
 		$current = $this;
-		foreach( $aPathParts as $sPathPart ) {
-			if( !isset( $current[$sPathPart] ) ) {
-				$current[$sPathPart] = array();
+		foreach ( $aPathParts as $sPathPart ) {
+			if ( !isset( $current[$sPathPart] ) ) {
+				$current[$sPathPart] = [];
 			}
 			$current = &$current[$sPathPart];
 		}
 
-		if( empty( $current )  ) {
+		if ( empty( $current ) ) {
 			$current = $mDefault;
 		}
 	}
@@ -49,17 +49,17 @@ class Lookup extends \ArrayObject {
 
 	/**
 	 * "query" : {
-     *   "bool": {
-     *     "must": {
-     *       "query_string": {
-     *         "query" : "Steve"
-     *       }
-     *     },
-     *     "filter": [{
-     *       "terms": { "_type": ["wikipage", "repofile"] }
-     *     }]
-     *   }
-     * }
+	 *   "bool": {
+	 *     "must": {
+	 *       "query_string": {
+	 *         "query" : "Steve"
+	 *       }
+	 *     },
+	 *     "filter": [{
+	 *       "terms": { "_type": ["wikipage", "repofile"] }
+	 *     }]
+	 *   }
+	 * }
 	 * @see https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html
 	 * @param string|array $mValue
 	 * @return Lookup
@@ -67,19 +67,19 @@ class Lookup extends \ArrayObject {
 	public function setQueryString( $mValue ) {
 		$this->ensurePropertyPath( 'query.bool.must', [] );
 
-		//There must not be more than on "query_string" in "must"
-		foreach( $this['query']['bool']['must'] as $iIndex => $aMust ) {
-			if( isset( $aMust['query_string'] ) ) {
+		// There must not be more than on "query_string" in "must"
+		foreach ( $this['query']['bool']['must'] as $iIndex => $aMust ) {
+			if ( isset( $aMust['query_string'] ) ) {
 				unset( $this['query']['bool']['must'][$iIndex] );
 			}
 		}
 
-		if( is_array( $mValue ) ) {
+		if ( is_array( $mValue ) ) {
 			$this['query']['bool']['must'][] = [
 				'query_string' => $mValue
 			];
 		}
-		if( is_string( $mValue ) ) {
+		if ( is_string( $mValue ) ) {
 			$this['query']['bool']['must'][] = [
 				'query_string' => [
 					'query' => $mValue,
@@ -99,8 +99,8 @@ class Lookup extends \ArrayObject {
 	 */
 	public function getQueryString() {
 		$this->ensurePropertyPath( 'query.bool.must', [] );
-		foreach( $this['query']['bool']['must'] as $iIndex => $aMust ) {
-			if( isset( $aMust['query_string'] ) ) {
+		foreach ( $this['query']['bool']['must'] as $iIndex => $aMust ) {
+			if ( isset( $aMust['query_string'] ) ) {
 				return $aMust['query_string'];
 			}
 		}
@@ -113,8 +113,8 @@ class Lookup extends \ArrayObject {
 	 */
 	public function clearQueryString() {
 		$this->ensurePropertyPath( 'query.bool.must', [] );
-		foreach( $this['query']['bool']['must'] as $iIndex => $aMust ) {
-			if( isset( $aMust['query_string'] ) ) {
+		foreach ( $this['query']['bool']['must'] as $iIndex => $aMust ) {
+			if ( isset( $aMust['query_string'] ) ) {
 				unset( $this['query']['bool']['must'][$iIndex] );
 			}
 		}
@@ -152,7 +152,7 @@ class Lookup extends \ArrayObject {
 	/**
 	 *
 	 * @param string $field
-	 * @param integer $fuzziness
+	 * @param int $fuzziness
 	 * @param array|null $options
 	 * @return Lookup
 	 */
@@ -197,12 +197,12 @@ class Lookup extends \ArrayObject {
 	public function addBoolMustNotTerms( $field, $value ) {
 		$this->ensurePropertyPath( 'query.bool.must_not', [] );
 
-		if( !is_array( $value ) ) {
-			$value = [$value];
+		if ( !is_array( $value ) ) {
+			$value = [ $value ];
 		}
 
-		foreach( $this['query']['bool']['must_not'] as &$terms ) {
-			if( isset( $terms['terms'][$field] ) ) {
+		foreach ( $this['query']['bool']['must_not'] as &$terms ) {
+			if ( isset( $terms['terms'][$field] ) ) {
 				$terms['terms'][$field] = array_merge(
 					$terms['terms'][$field],
 					$value
@@ -220,8 +220,8 @@ class Lookup extends \ArrayObject {
 
 	public function removeBoolMustNot( $field ) {
 		$this->ensurePropertyPath( 'query.bool.must_not', [] );
-		foreach( $this['query']['bool']['must_not'] as $idx => $terms ) {
-			if( isset( $terms['terms'][$field] ) ) {
+		foreach ( $this['query']['bool']['must_not'] as $idx => $terms ) {
+			if ( isset( $terms['terms'][$field] ) ) {
 				unset( $this['query']['bool']['must_not'][$idx] );
 			}
 		}
@@ -238,22 +238,22 @@ class Lookup extends \ArrayObject {
 	 */
 	public function clearFilter( $field ) {
 		$this->ensurePropertyPath( 'query.bool.filter', [] );
-		foreach( $this['query']['bool']['filter'] as $idx => $filter ) {
-			if( isset( $filter['terms'] ) && isset( $filter['terms'][$field] ) ) {
+		foreach ( $this['query']['bool']['filter'] as $idx => $filter ) {
+			if ( isset( $filter['terms'] ) && isset( $filter['terms'][$field] ) ) {
 				unset( $this['query']['bool']['filter'][$idx]['terms'][$field] );
-				if( empty(  $this['query']['bool']['filter'][$idx]['terms'] ) ) {
+				if ( empty( $this['query']['bool']['filter'][$idx]['terms'] ) ) {
 					unset( $this['query']['bool']['filter'][$idx] );
 				}
 			}
-			if( isset( $filter['term'] ) && isset( $filter['term'][$field] ) ) {
+			if ( isset( $filter['term'] ) && isset( $filter['term'][$field] ) ) {
 				unset( $this['query']['bool']['filter'][$idx] );
 			}
 		}
 
-		if( empty( $this['query']['bool']['filter'] ) ) {
+		if ( empty( $this['query']['bool']['filter'] ) ) {
 			unset( $this['query']['bool']['filter'] );
 		} else {
-			//reindex the array
+			// reindex the array
 			$this['query']['bool']['filter'] = array_values( $this['query']['bool']['filter'] );
 		}
 
@@ -280,27 +280,27 @@ class Lookup extends \ArrayObject {
 	public function addTermsFilter( $sFieldName, $mValue ) {
 		$this->ensurePropertyPath( 'query.bool.filter', [] );
 
-		if( !is_array( $mValue ) ) {
+		if ( !is_array( $mValue ) ) {
 			$mValue = [ $mValue ];
 		}
 
-		//HINT: "[terms] query does not support multiple fields" - Therefore we
-		//need to make a dedicated { "terms" } object for each field
+		// HINT: "[terms] query does not support multiple fields" - Therefore we
+		// need to make a dedicated { "terms" } object for each field
 		$bAppededExistingFilter = false;
-		for( $i = 0; $i < count( $this['query']['bool']['filter'] ); $i++ ) {
+		for ( $i = 0; $i < count( $this['query']['bool']['filter'] ); $i++ ) {
 			$aFilter = &$this['query']['bool']['filter'][$i];
 
-			//Append
-			if( isset( $aFilter['terms'] ) && isset( $aFilter['terms'][$sFieldName] ) ) {
+			// Append
+			if ( isset( $aFilter['terms'] ) && isset( $aFilter['terms'][$sFieldName] ) ) {
 				$aFilter['terms'][$sFieldName] = array_merge( $aFilter['terms'][$sFieldName],  $mValue );
 				$aFilter['terms'][$sFieldName] = array_unique( $aFilter['terms'][$sFieldName] );
-				$aFilter['terms'][$sFieldName] = array_values( $aFilter['terms'][$sFieldName] ); //reset indices
+				$aFilter['terms'][$sFieldName] = array_values( $aFilter['terms'][$sFieldName] ); // reset indices
 
 				$bAppededExistingFilter = true;
 			}
 		}
 
-		if( !$bAppededExistingFilter ) {
+		if ( !$bAppededExistingFilter ) {
 			$this['query']['bool']['filter'][] = [
 				'terms' => [
 					$sFieldName => $mValue
@@ -321,9 +321,9 @@ class Lookup extends \ArrayObject {
 	public function addTermFilter( $field, $value ) {
 		$this->ensurePropertyPath( 'query.bool.filter', [] );
 
-		foreach( $this['query']['bool']['filter'] as $filter ) {
-			if( isset( $filter['term'] ) && isset( $filter['term'][$field] ) && $filter['term'][$field] == $value ) {
-				//Filter already set - nothing to do
+		foreach ( $this['query']['bool']['filter'] as $filter ) {
+			if ( isset( $filter['term'] ) && isset( $filter['term'][$field] ) && $filter['term'][$field] == $value ) {
+				// Filter already set - nothing to do
 				return $this;
 			}
 		}
@@ -346,20 +346,20 @@ class Lookup extends \ArrayObject {
 	public function removeTermsFilter( $field, $value ) {
 		$this->ensurePropertyPath( 'query.bool.filter', [] );
 
-		if( !is_array( $value ) ) {
+		if ( !is_array( $value ) ) {
 			$value = [ $value ];
 		}
 
-		for( $i = 0; $i < count( $this['query']['bool']['filter'] ); $i++ ) {
+		for ( $i = 0; $i < count( $this['query']['bool']['filter'] ); $i++ ) {
 			$aFilter = &$this['query']['bool']['filter'][$i];
-			if( !isset( $aFilter['terms'][$field] ) ) {
+			if ( !isset( $aFilter['terms'][$field] ) ) {
 				continue;
 			}
 
 			$aFilter['terms'][$field] = array_diff( $aFilter['terms'][$field], $value );
 			$aFilter['terms'][$field] = array_values( $aFilter['terms'][$field] );
 
-			if( empty( $aFilter['terms'][$field] ) ) {
+			if ( empty( $aFilter['terms'][$field] ) ) {
 				unset( $this['query']['bool']['filter'][$i] );
 			}
 
@@ -379,13 +379,13 @@ class Lookup extends \ArrayObject {
 	public function removeTermFilter( $field, $value ) {
 		$this->ensurePropertyPath( 'query.bool.filter', [] );
 
-		foreach( $this['query']['bool']['filter'] as $key => $filter ) {
-			if( isset( $filter['term'] ) && isset( $filter['term'][$field] ) && $filter['term'][$field] == $value ) {
+		foreach ( $this['query']['bool']['filter'] as $key => $filter ) {
+			if ( isset( $filter['term'] ) && isset( $filter['term'][$field] ) && $filter['term'][$field] == $value ) {
 				unset( $this['query']['bool']['filter'][$key] );
 			}
 		}
 
-		if( empty( $this['query']['bool']['filter'] ) ) {
+		if ( empty( $this['query']['bool']['filter'] ) ) {
 			unset( $this['query']['bool']['filter'] );
 		} else {
 			$this['query']['bool']['filter'] = array_values( $this['query']['bool']['filter'] );
@@ -397,13 +397,13 @@ class Lookup extends \ArrayObject {
 	/**
 	 * Returns formatted list of all filters by type, in form:
 	 * [
-	 *		"type1" => [
-	 *			"field1" => [1,2],
-	 *			"field2" => ["Value"]
-	 *		],
-	 *		"type2" => [
-	 *			"field3" => [0,1]
-	 *		]
+	 * 		"type1" => [
+	 * 			"field1" => [1,2],
+	 * 			"field2" => ["Value"]
+	 * 		],
+	 * 		"type2" => [
+	 * 			"field3" => [0,1]
+	 * 		]
 	 * ]
 	 *
 	 * Types ATM are terms (for OR filters) and term (for AND filters)
@@ -413,16 +413,16 @@ class Lookup extends \ArrayObject {
 		$this->ensurePropertyPath( 'query.bool.filter', [] );
 
 		$filters = [];
-		foreach( $this['query']['bool']['filter'] as $idx => $filter ) {
-			foreach( $filter as $typeName => $typeField ) {
-				if( !isset( $filters[$typeName] ) ) {
+		foreach ( $this['query']['bool']['filter'] as $idx => $filter ) {
+			foreach ( $filter as $typeName => $typeField ) {
+				if ( !isset( $filters[$typeName] ) ) {
 					$filters[$typeName] = [];
 				}
-				foreach( $typeField as $fieldName => $fieldValue ) {
-					if( !isset( $filters[$typeName][$fieldName] ) ) {
+				foreach ( $typeField as $fieldName => $fieldValue ) {
+					if ( !isset( $filters[$typeName][$fieldName] ) ) {
 						$filters[$typeName][$fieldName] = [];
 					}
-					if( is_array( $fieldValue ) ) {
+					if ( is_array( $fieldValue ) ) {
 						$filters[$typeName][$fieldName] = array_merge(
 							$filters[$typeName][$fieldName],
 							$fieldValue
@@ -440,40 +440,40 @@ class Lookup extends \ArrayObject {
 	 * Example for complex sort
 	 *
 	 * "sort"  => [
-     *     [ "post_date"  => ["order"  => "asc"]],
-     *     "user",
-     *     [ "name"  => "desc" ],
-     *     [ "age"  => "desc" ],
-     *     "_score"
-     * ]
+	 *     [ "post_date"  => ["order"  => "asc"]],
+	 *     "user",
+	 *     [ "name"  => "desc" ],
+	 *     [ "age"  => "desc" ],
+	 *     "_score"
+	 * ]
 	 *
 	 * @see https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-request-sort.html
 	 * @param string $sFieldName
-	 * @param string|array $mOrder
+	 * @param string|array|null $mOrder
 	 * @return Lookup
 	 */
 	public function addSort( $sFieldName, $mOrder = null ) {
 		$this->ensurePropertyPath( 'sort', [] );
-		if( $mOrder === null ) {
+		if ( $mOrder === null ) {
 			$mOrder = self::SORT_ASC;
 		}
 
-		if( is_string( $mOrder ) ) {
+		if ( is_string( $mOrder ) ) {
 			$mOrder = [
 				"order" => $mOrder
 			];
 		}
 
 		$replacedExistingSort = false;
-		for( $i = 0; $i < count( $this['sort'] ); $i++ ) {
+		for ( $i = 0; $i < count( $this['sort'] ); $i++ ) {
 			$sorter = &$this['sort'][$i];
-			if( isset( $sorter[$sFieldName] ) ) {
+			if ( isset( $sorter[$sFieldName] ) ) {
 				$sorter[$sFieldName] = $mOrder;
 				$replacedExistingSort = true;
 			}
 		}
 
-		if( !$replacedExistingSort ) {
+		if ( !$replacedExistingSort ) {
 			$this['sort'][] = [
 				$sFieldName => $mOrder
 			];
@@ -490,15 +490,15 @@ class Lookup extends \ArrayObject {
 	public function removeSort( $sFieldName = false ) {
 		$this->ensurePropertyPath( 'sort', [] );
 
-		if( !$sFieldName ) {
+		if ( !$sFieldName ) {
 			$this['sort'] = [];
 			return $this;
 		}
 
 		$newSort = [];
-		for( $i = 0; $i < count( $this['sort'] ); $i++ ) {
+		for ( $i = 0; $i < count( $this['sort'] ); $i++ ) {
 			$sorter = $this['sort'][$i];
-			if( isset($sorter[$sFieldName]) ) {
+			if ( isset( $sorter[$sFieldName] ) ) {
 				continue;
 			}
 			$newSort[] = $sorter;
@@ -506,7 +506,7 @@ class Lookup extends \ArrayObject {
 
 		$this['sort'] = $newSort;
 
-		if( empty( $this['sort'] ) ) {
+		if ( empty( $this['sort'] ) ) {
 			unset( $this['sort'] );
 		}
 
@@ -530,8 +530,8 @@ class Lookup extends \ArrayObject {
 	public function setSearchAfter( $value ) {
 		$this->ensurePropertyPath( 'search_after', [] );
 
-		if( !is_array( $value ) ) {
-			$value = [$value];
+		if ( !is_array( $value ) ) {
+			$value = [ $value ];
 		}
 
 		unset( $this->from );
@@ -591,19 +591,19 @@ class Lookup extends \ArrayObject {
 	public function addShouldTerms( $field, $value, $boost = 1, $append = true ) {
 		$this->ensurePropertyPath( 'query.bool.should', [] );
 
-		if( !is_array( $value ) ) {
-			$value = [$value];
+		if ( !is_array( $value ) ) {
+			$value = [ $value ];
 		}
 
 		$appended = false;
-		if( $append ) {
-			foreach( $this['query']['bool']['should'] as $idx => &$should ) {
-				if( !isset( $should['terms'][$field] ) ) {
+		if ( $append ) {
+			foreach ( $this['query']['bool']['should'] as $idx => &$should ) {
+				if ( !isset( $should['terms'][$field] ) ) {
 					continue;
 				}
 				$value = array_diff( $value, $should['terms'][$field] );
-				if( empty( $value ) ) {
-					//Nothing new to add
+				if ( empty( $value ) ) {
+					// Nothing new to add
 					return $this;
 				}
 
@@ -612,7 +612,7 @@ class Lookup extends \ArrayObject {
 			}
 		}
 
-		if( !$appended ) {
+		if ( !$appended ) {
 			$this['query']['bool']['should'][] = [
 				"terms" => [
 					$field => $value,
@@ -627,8 +627,8 @@ class Lookup extends \ArrayObject {
 	public function addShouldMatch( $field, $value, $boost = 1 ) {
 		$this->ensurePropertyPath( 'query.bool.should', [] );
 
-		foreach( $this['query']['bool']['should'] as $idx => &$should ) {
-			if( !isset( $should['match'] ) || !isset( $should['match'][$field] ) ) {
+		foreach ( $this['query']['bool']['should'] as $idx => &$should ) {
+			if ( !isset( $should['match'] ) || !isset( $should['match'][$field] ) ) {
 				continue;
 			}
 			$should['match'][$field] = [
@@ -663,18 +663,18 @@ class Lookup extends \ArrayObject {
 	public function removeShouldTerms( $field, $value = [] ) {
 		$this->ensurePropertyPath( 'query.bool.should', [] );
 
-		if( !is_array( $value ) ) {
-			$value = [$value];
+		if ( !is_array( $value ) ) {
+			$value = [ $value ];
 		}
 
-		foreach( $this['query']['bool']['should'] as $idx => &$should ) {
-			if( !isset( $should['terms'][$field] ) ) {
+		foreach ( $this['query']['bool']['should'] as $idx => &$should ) {
+			if ( !isset( $should['terms'][$field] ) ) {
 				continue;
 			}
 
 			$oldValues = $should['terms'][$field];
 			$newValues = array_values( array_diff( $oldValues, $value ) );
-			if( empty( $newValues ) || empty( $value ) ) {
+			if ( empty( $newValues ) || empty( $value ) ) {
 				unset( $this['query']['bool']['should'][$idx] );
 				continue;
 			}
@@ -690,8 +690,8 @@ class Lookup extends \ArrayObject {
 		$this->ensurePropertyPath( 'query.bool.should', [] );
 
 		$newShoulds = [];
-		foreach( $this['query']['bool']['should'] as $idx => &$should ) {
-			if( !isset( $should['match'] ) || !isset( $should['match'][$field] ) ) {
+		foreach ( $this['query']['bool']['should'] as $idx => &$should ) {
+			if ( !isset( $should['match'] ) || !isset( $should['match'][$field] ) ) {
 				$newShoulds[] = $should;
 			}
 		}
@@ -712,24 +712,24 @@ class Lookup extends \ArrayObject {
 
 	/**
 	 * "aggs": {
-     *  "field__type": {
-     *    "terms": {
-     *      "field": "_type"
-     *    },
-     *    "aggs": {
-     *     "field_extension" : {
-     *       "terms": {
-     *         "field": "extension"
-     *       }
-     *     }
-     *   }
-     *  },
-     *  "field_extension" : {
-     *       "terms": {
-     *         "field": "extension"
-     *       }
-     *     }
-     * }
+	 *  "field__type": {
+	 *    "terms": {
+	 *      "field": "_type"
+	 *    },
+	 *    "aggs": {
+	 *     "field_extension" : {
+	 *       "terms": {
+	 *         "field": "extension"
+	 *       }
+	 *     }
+	 *   }
+	 *  },
+	 *  "field_extension" : {
+	 *       "terms": {
+	 *         "field": "extension"
+	 *       }
+	 *     }
+	 * }
 	 * @see https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html
 	 *
 	 * @param string $sFieldName e.g. "extension" or even "_type/extension" to build recursive
@@ -738,18 +738,18 @@ class Lookup extends \ArrayObject {
 	public function setBucketTermsAggregation( $sFieldName ) {
 		$aFieldNames = explode( '/', $sFieldName );
 		$aBase = $this;
-		foreach( $aFieldNames as $sFieldNamePart ) {
-			if( !isset( $aBase['aggs'] ) ) {
+		foreach ( $aFieldNames as $sFieldNamePart ) {
+			if ( !isset( $aBase['aggs'] ) ) {
 				$aBase['aggs'] = [];
 			}
 
-			$aBase['aggs']['field_'.$sFieldNamePart] = [
+			$aBase['aggs']['field_' . $sFieldNamePart] = [
 				'terms' => [
 					'field' => $sFieldNamePart
 				]
 			];
 
-			$aBase = &$aBase['aggs']['field_'.$sFieldNamePart];
+			$aBase = &$aBase['aggs']['field_' . $sFieldNamePart];
 		}
 
 		return $this;
@@ -766,20 +766,20 @@ class Lookup extends \ArrayObject {
 		$aBase = $this;
 		$aNode = [];
 		$sLeafFieldName = '';
-		foreach( $aFieldNames as $sFieldNamePart ) {
-			if( !isset( $aBase['aggs'] ) ) {
+		foreach ( $aFieldNames as $sFieldNamePart ) {
+			if ( !isset( $aBase['aggs'] ) ) {
 				continue;
 			}
 			$aNode = &$aBase;
 			$sLeafFieldName = $sFieldNamePart;
-			$aBase = &$aBase['aggs']['field_'.$sFieldNamePart];
+			$aBase = &$aBase['aggs']['field_' . $sFieldNamePart];
 		}
 
-		if( isset( $aNode['aggs']['field_'.$sLeafFieldName] ) ) {
-			unset( $aNode['aggs']['field_'.$sLeafFieldName] );
+		if ( isset( $aNode['aggs']['field_' . $sLeafFieldName] ) ) {
+			unset( $aNode['aggs']['field_' . $sLeafFieldName] );
 		}
 
-		if( empty( $aNode['aggs'] ) ) {
+		if ( empty( $aNode['aggs'] ) ) {
 			unset( $aNode['aggs'] );
 		}
 
@@ -795,11 +795,11 @@ class Lookup extends \ArrayObject {
 		$aFieldNames = explode( '/', $sFieldName );
 
 		$aBase = $this;
-		foreach( $aFieldNames as $sFieldNamePart ) {
-			if( !isset( $aBase['highlight'] ) ) {
+		foreach ( $aFieldNames as $sFieldNamePart ) {
+			if ( !isset( $aBase['highlight'] ) ) {
 				$aBase['highlight'] = [];
 			}
-			if( !isset( $aBase['highlight']['fields'] ) ) {
+			if ( !isset( $aBase['highlight']['fields'] ) ) {
 				$aBase['highlight']['fields'] = [];
 			}
 
@@ -822,10 +822,10 @@ class Lookup extends \ArrayObject {
 	 * @return Lookup
 	 */
 	public function removeHighlighter( $field ) {
-		if( isset( $this['highlight']['fields'][$field] ) ) {
+		if ( isset( $this['highlight']['fields'][$field] ) ) {
 			unset( $this['highlight']['fields'][$field] );
 		}
-		if( empty( $this['highlight']['fields'] ) ) {
+		if ( empty( $this['highlight']['fields'] ) ) {
 			unset( $this['highlight'] );
 		}
 
@@ -846,10 +846,10 @@ class Lookup extends \ArrayObject {
 
 	/**
 	 *
-	 * @return boolean|\BS\ExtendedSearch\Lookup
+	 * @return bool|\BS\ExtendedSearch\Lookup
 	 */
 	public function getSize() {
-		if( isset( $this['size'] ) ) {
+		if ( isset( $this['size'] ) ) {
 			return $this['size'];
 		}
 		return false;
@@ -865,8 +865,8 @@ class Lookup extends \ArrayObject {
 	public function addSourceField( $field ) {
 		$this->ensurePropertyPath( '_source', [] );
 
-		if( !is_array( $field ) ) {
-			$field = [$field];
+		if ( !is_array( $field ) ) {
+			$field = [ $field ];
 		}
 
 		$this['_source'] = array_merge( $this['_source'], $field );
@@ -883,19 +883,19 @@ class Lookup extends \ArrayObject {
 	public function removeSourceField( $field ) {
 		$this->ensurePropertyPath( '_source', [] );
 
-		if( !is_array( $field ) ) {
-			$field = [$field];
+		if ( !is_array( $field ) ) {
+			$field = [ $field ];
 		}
 
 		$newSource = [];
-		foreach( $this['_source'] as $sourceField ) {
-			if( in_array( $sourceField, $field ) ) {
+		foreach ( $this['_source'] as $sourceField ) {
+			if ( in_array( $sourceField, $field ) ) {
 				continue;
 			}
 			$newSource[] = $sourceField;
 		}
 
-		if( empty( $newSource ) ) {
+		if ( empty( $newSource ) ) {
 			unset( $this['_source'] );
 		} else {
 			$this['_source'] = $newSource;
@@ -931,10 +931,10 @@ class Lookup extends \ArrayObject {
 
 	/**
 	 *
-	 * @return boolean|\BS\ExtendedSearch\Lookup
+	 * @return bool|\BS\ExtendedSearch\Lookup
 	 */
 	public function getFrom() {
-		if( isset( $this['from'] ) ) {
+		if ( isset( $this['from'] ) ) {
 			return $this['from'];
 		}
 		return false;
@@ -958,7 +958,7 @@ class Lookup extends \ArrayObject {
 		$base = $this;
 		$base->ensurePropertyPath( 'suggest', [] );
 
-		if( isset( $base['suggest'][$field] ) ) {
+		if ( isset( $base['suggest'][$field] ) ) {
 			unset( $base['suggest'][$field] );
 		}
 
@@ -993,17 +993,17 @@ class Lookup extends \ArrayObject {
 	public function removeAutocompleteSuggest( $field ) {
 		$base = $this;
 
-		if( !isset( $base['suggest'] ) ) {
+		if ( !isset( $base['suggest'] ) ) {
 			return;
 		}
 
-		if( !isset( $base['suggest'][$field] ) ) {
+		if ( !isset( $base['suggest'][$field] ) ) {
 			return;
 		}
 
 		unset( $base['suggest'][$field] );
 
-		if( empty( $base['suggest'] ) ) {
+		if ( empty( $base['suggest'] ) ) {
 			unset( $base['suggest'] );
 		}
 
@@ -1033,11 +1033,11 @@ class Lookup extends \ArrayObject {
 
 		$base = $this;
 
-		if( !is_array( $value ) ) {
+		if ( !is_array( $value ) ) {
 			$value = [ $value ];
 		}
 
-		if( !isset( $base['suggest'][$acField] ) ) {
+		if ( !isset( $base['suggest'][$acField] ) ) {
 			return;
 		}
 
@@ -1059,14 +1059,14 @@ class Lookup extends \ArrayObject {
 
 		$base = $this;
 
-		if( !isset( $base['suggest'][$acField] ) ) {
+		if ( !isset( $base['suggest'][$acField] ) ) {
 			return;
 		}
 
 		$this->ensurePropertyPath( "suggest.$acField.completion.contexts.$contextField", [] );
 
 		unset( $base['suggest'][$acField]['completion']['contexts'][$contextField] );
-		if( empty( $base['suggest'][$acField]['completion']['contexts'] ) ) {
+		if ( empty( $base['suggest'][$acField]['completion']['contexts'] ) ) {
 			unset( $base['suggest'][$acField]['completion']['contexts'] );
 		}
 
@@ -1086,15 +1086,15 @@ class Lookup extends \ArrayObject {
 
 		$base = $this;
 
-		if( !isset( $base['suggest'][$acField] ) ) {
+		if ( !isset( $base['suggest'][$acField] ) ) {
 			return;
 		}
 
 		$this->ensurePropertyPath( "suggest.$acField.completion.contexts.$contextField", [] );
 
 		$newContextFields = [];
-		foreach( $base['suggest'][$acField]['completion']['contexts'][$contextField] as $field ) {
-			if( $field === $value ) {
+		foreach ( $base['suggest'][$acField]['completion']['contexts'][$contextField] as $field ) {
+			if ( $field === $value ) {
 				continue;
 			}
 			$newContextFields[] = $field;
@@ -1117,12 +1117,11 @@ class Lookup extends \ArrayObject {
 
 		$base = $this;
 
-		if( !isset( $base['suggest'][$acField] ) ) {
+		if ( !isset( $base['suggest'][$acField] ) ) {
 			return;
 		}
 
 		$this->ensurePropertyPath( "suggest.$acField.completion.fuzzy", [] );
-
 
 		$base['suggest'][$acField]['completion']['fuzzy'] = [
 			'fuzziness' => $fuzzinessLevel
@@ -1141,12 +1140,11 @@ class Lookup extends \ArrayObject {
 
 		$base = $this;
 
-		if( !isset( $base['suggest'][$acField] ) ) {
+		if ( !isset( $base['suggest'][$acField] ) ) {
 			return;
 		}
 
 		$this->ensurePropertyPath( "suggest.$acField.completion.fuzzy", [] );
-
 
 		unset( $base['suggest'][$acField]['completion']['fuzzy'] );
 
@@ -1165,12 +1163,11 @@ class Lookup extends \ArrayObject {
 
 		$base = $this;
 
-		if( !isset( $base['suggest'][$acField] ) ) {
+		if ( !isset( $base['suggest'][$acField] ) ) {
 			return;
 		}
 
 		$this->ensurePropertyPath( "suggest.$acField.completion", [] );
-
 
 		$base['suggest'][$acField]['completion']['size'] = $size;
 
@@ -1203,7 +1200,7 @@ class Lookup extends \ArrayObject {
 	}
 
 	public function getForceTerm() {
-		if( isset( $this['forceTerm'] ) ) {
+		if ( isset( $this['forceTerm'] ) ) {
 			return true;
 		}
 		return false;

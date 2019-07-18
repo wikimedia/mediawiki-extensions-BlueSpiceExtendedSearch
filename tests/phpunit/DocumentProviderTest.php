@@ -40,8 +40,8 @@ class DocumentProviderTest extends \MediaWikiTestCase {
 			new \BS\ExtendedSearch\Source\DocumentProvider\Base()
 		);
 
-		$oFile = new \SplFileInfo( __DIR__.'/data/Test.txt' );
-		$sTestUri = 'file:///'.$oFile->getPathname();
+		$oFile = new \SplFileInfo( __DIR__ . '/data/Test.txt' );
+		$sTestUri = 'file:///' . $oFile->getPathname();
 		$sTestUriMD5 = md5( $sTestUri );
 
 		$aDC = $oDP->getDataConfig( $sTestUri, $oFile );

@@ -4,7 +4,6 @@ namespace BS\ExtendedSearch\MediaWiki\Api;
 
 class TriggerUpdate extends \ApiBase {
 	public function execute() {
-
 		$sBackendKey = $this->getParameter( 'backend' );
 		$sSourceKey = $this->getParameter( 'source' );
 		$oTitle = \Title::newFromText( $this->getParameter( 'title' ) );

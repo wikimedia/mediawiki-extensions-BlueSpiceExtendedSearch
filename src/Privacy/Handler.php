@@ -66,7 +66,7 @@ class Handler implements IPrivacyHandler {
 		$index = $searchBackend->getIndexByType( 'wikipage' );
 		$search->addIndex( $index );
 		$results = $search->search( $lookup->getQueryDSL() );
-		foreach( $results->getResults() as $resultObject ) {
+		foreach ( $results->getResults() as $resultObject ) {
 			$prefixedTitle = $resultObject->getData()['prefixed_title'];
 			$title = \Title::newFromText( $prefixedTitle );
 			if ( $title instanceof \Title === false ) {
@@ -89,7 +89,7 @@ class Handler implements IPrivacyHandler {
 		}
 
 		$formatted = '';
-		foreach( $highlights['rendered_content'] as $highlight ) {
+		foreach ( $highlights['rendered_content'] as $highlight ) {
 			$highlight = preg_replace( "/<b>|<\/b>/", '', $highlight );
 			$formatted .= $highlight . "\n";
 		}
@@ -115,14 +115,14 @@ class Handler implements IPrivacyHandler {
 	protected function getSearchHistory( $user ) {
 		$res = $this->db->select(
 			'bs_extendedsearch_history',
-			['esh_term', 'COUNT( esh_term ) as freq'],
-			['esh_user' => $user->getId()],
+			[ 'esh_term', 'COUNT( esh_term ) as freq' ],
+			[ 'esh_user' => $user->getId() ],
 			__METHOD__,
-			['GROUP BY' => 'esh_term' ]
+			[ 'GROUP BY' => 'esh_term' ]
 		);
 
 		$terms = [];
-		foreach( $res as $row ) {
+		foreach ( $res as $row ) {
 			if ( empty( $row->esh_term ) ) {
 				continue;
 			}
@@ -133,7 +133,7 @@ class Handler implements IPrivacyHandler {
 			)->plain();
 		}
 
-		if ( empty( $terms  ) ) {
+		if ( empty( $terms ) ) {
 			return [];
 		}
 
@@ -150,13 +150,13 @@ class Handler implements IPrivacyHandler {
 		// because only hashed doc IDs are stored
 		$row = $this->db->selectRow(
 			'bs_extendedsearch_relevance',
-			[ 'COUNT( esr_user ) as relevant_pages'],
+			[ 'COUNT( esr_user ) as relevant_pages' ],
 			[
 				'esr_user' => $user->getId(),
 				'esr_value' => 1
 			],
 			__METHOD__,
-			['GROUP BY' => 'esr_user' ]
+			[ 'GROUP BY' => 'esr_user' ]
 		);
 
 		if ( !$row ) {

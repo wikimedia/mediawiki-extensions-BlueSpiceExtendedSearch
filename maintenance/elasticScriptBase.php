@@ -1,8 +1,8 @@
 <?php
 
-$IP = dirname(dirname(dirname(__DIR__)));
+$IP = dirname( dirname( dirname( __DIR__ ) ) );
 
-require_once( "$IP/maintenance/Maintenance.php" );
+require_once "$IP/maintenance/Maintenance.php";
 
 abstract class elasticScriptBase extends Maintenance {
 	/**
@@ -19,11 +19,11 @@ abstract class elasticScriptBase extends Maintenance {
 	}
 
 	protected function sourceOnList( $sourceKey ) {
-		if( empty( $this->getOption( 'sources', '' ) ) ) {
+		if ( empty( $this->getOption( 'sources', '' ) ) ) {
 			return true;
 		}
 		$onlySources = explode( '|', $this->getOption( 'sources', '' ) );
-		if( in_array( $sourceKey, $onlySources ) ) {
+		if ( in_array( $sourceKey, $onlySources ) ) {
 			return true;
 		}
 		return false;

@@ -25,7 +25,7 @@ class Stats extends \ApiBase {
 			];
 		}
 
-		$result->addValue( null , 'stats', $stats );
+		$result->addValue( null, 'stats', $stats );
 	}
 
 	protected function getAllowedParams() {
@@ -43,7 +43,7 @@ class Stats extends \ApiBase {
 		$value = parent::getParameterFromSettings( $paramName, $paramSettings, $parseLimit );
 		if ( $paramName === 'stats' ) {
 			$value = \FormatJson::decode( $value, true );
-			if( empty( $value ) ) {
+			if ( empty( $value ) ) {
 				return [];
 			}
 		}
@@ -61,14 +61,14 @@ class Stats extends \ApiBase {
 		];
 		$sources = $this->backend->getSources();
 
-		foreach( $sources as $source ) {
+		foreach ( $sources as $source ) {
 			$typeKey = $source->getTypeKey();
 			$stats['sources'][$typeKey] = [
-				//give grep a chance to find:
-				//bs-extendedsearch-source-label-wikipage
-				//bs-extendedsearch-source-label-specialpage
-				//bs-extendedsearch-source-label-external
-				//bs-extendedsearch-source-label-repofile
+				// give grep a chance to find:
+				// bs-extendedsearch-source-label-wikipage
+				// bs-extendedsearch-source-label-specialpage
+				// bs-extendedsearch-source-label-external
+				// bs-extendedsearch-source-label-repofile
 				'label' => wfMessage( 'bs-extendedsearch-source-label-' . $typeKey )->plain(),
 				'pending_update_jobs' => $source->getCrawler()->getNumberOfPendingJobs(),
 				'documents_count' => $this->backend->getIndexByType( $typeKey )->count()

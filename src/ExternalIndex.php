@@ -65,7 +65,7 @@ abstract class ExternalIndex implements IExternalIndex {
 			return Status::newGood();
 		}
 		$mappedFields = [];
-		foreach( $this->getMapping() as $map => $field ) {
+		foreach ( $this->getMapping() as $map => $field ) {
 			$value = $this->getMappedValue( $map, null, $action );
 			if ( $value === null && $this->skipNullValue( $action ) ) {
 				continue;

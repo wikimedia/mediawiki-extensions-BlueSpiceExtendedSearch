@@ -11,9 +11,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$aExpected = [
 			"query" => [
 				"bool" => [
-					"filter" => [[
+					"filter" => [ [
 						"terms" => [ "someField" => [ 'someValue' ] ]
-					]]
+					] ]
 				]
 			]
 		];
@@ -27,9 +27,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$aExpected = [
 			"query" => [
 				"bool" => [
-					"filter" => [[
+					"filter" => [ [
 						"terms" => [ "someField"  => [ 'someValue1', 'someValue2' ] ]
-					]]
+					] ]
 				]
 			]
 		];
@@ -44,9 +44,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$aExpected = [
 			"query" => [
 				"bool" => [
-					"filter" => [[
+					"filter" => [ [
 						"term" => [ "someField" => 'someValue' ]
-					]]
+					] ]
 				]
 			]
 		];
@@ -54,25 +54,24 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
-
 	public function testMergeMultipleTermsFilterValues() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
 				"bool" => [
-					"filter" => [[
+					"filter" => [ [
 						"terms" => [ "someField" => [ 'someValue1', 'someValue2' ] ]
-					]]
+					] ]
 				]
 			]
-		]);
+		] );
 
 		$oLookup->addTermsFilter( 'someField', [ 'someValue2', 'someValue3' ] );
 		$aExpected = [
 			"query" => [
 				"bool" => [
-					"filter" => [[
+					"filter" => [ [
 						"terms" => [ "someField" => [ 'someValue1', 'someValue2', 'someValue3' ] ]
-					]]
+					] ]
 				]
 			]
 		];
@@ -81,23 +80,23 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testRemoveSingleTermsFilterValue() {
-		$oLookup= new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
 				"bool" => [
-					"filter" => [[
+					"filter" => [ [
 						"terms" => [ "someField" => [ 'someValue1', 'someValue2' ] ]
-					]]
+					] ]
 				]
 			]
-		]);
+		] );
 
 		$oLookup->removeTermsFilter( 'someField', 'someValue2' );
 		$aExpected = [
 			"query" => [
 				"bool" => [
-					"filter" => [[
+					"filter" => [ [
 						"terms" => [ "someField" => [ 'someValue1' ] ]
-					]]
+					] ]
 				]
 			]
 		];
@@ -106,23 +105,23 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testRemoveMultiTermsFilterValues() {
-		$oLookup = new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
 				"bool" => [
-					"filter" => [[
+					"filter" => [ [
 						"terms" => [ "someField" => [ 'someValue1', 'someValue2', 'someValue3' ] ]
-					]]
+					] ]
 				]
 			]
-		]);
+		] );
 
 		$oLookup->removeTermsFilter( 'someField', [ 'someValue1', 'someValue2' ] );
 		$aExpected = [
 			"query" => [
 				"bool" => [
-					"filter" => [[
+					"filter" => [ [
 						"terms" => [ "someField" => [ 'someValue3' ] ]
-					]]
+					] ]
 				]
 			]
 		];
@@ -131,26 +130,26 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testRemoveTermFilterValue() {
-		$oLookup= new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
 				"bool" => [
-					"filter" => [[
+					"filter" => [ [
 						"term" => [ "someField" => 'someValue1' ]
 					],
 					[
 						"term" => [ "someField" => 'someValue2' ]
-					]]
+					] ]
 				]
 			]
-		]);
+		] );
 
 		$oLookup->removeTermFilter( 'someField', 'someValue1' );
 		$aExpected = [
 			"query" => [
 				"bool" => [
-					"filter" => [[
+					"filter" => [ [
 						"term" => [ "someField" => 'someValue2' ]
-					]]
+					] ]
 				]
 			]
 		];
@@ -159,20 +158,20 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testRemoveAllFilterValues() {
-		$oLookup = new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
 				"bool" => [
-					"filter" => [[
+					"filter" => [ [
 						"terms" => [ "someField" => [ 'someValue1', 'someValue2', 'someValue3' ] ]
 					],[
-						"terms" => [ "someOtherField" => [ 'someValue1' ], "anotherField" => ['someValue2', 'someValue3'] ]
+						"terms" => [ "someOtherField" => [ 'someValue1' ], "anotherField" => [ 'someValue2', 'someValue3' ] ]
 					],
 					[
 						"term" => [ "yetAnotherField" => 'someValue1' ]
-					]]
+					] ]
 				]
 			]
-		]);
+		] );
 
 		$oLookup->clearFilter( 'someField' );
 		$oLookup->clearFilter( 'anotherField' );
@@ -180,9 +179,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$aExpected = [
 			"query" => [
 				"bool" => [
-					"filter" => [[
+					"filter" => [ [
 						"terms" => [ "someOtherField" => [ 'someValue1' ] ]
-					]]
+					] ]
 				]
 			]
 		];
@@ -191,20 +190,20 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testGetFilters() {
-		$oLookup = new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
 				"bool" => [
-					"filter" => [[
+					"filter" => [ [
 						"terms" => [ "someField" => [ 'someValue1', 'someValue2', 'someValue3' ] ]
 					],[
-						"terms" => [ "someOtherField" => [ 'someValue1' ], "someField" => ['someValue4'] ]
+						"terms" => [ "someOtherField" => [ 'someValue1' ], "someField" => [ 'someValue4' ] ]
 					],
 					[
 						"term" => [ "yetAnotherField" => 'someValue1' ]
-					]]
+					] ]
 				]
 			]
-		]);
+		] );
 
 		$aExpected = [
 			"terms" => [
@@ -223,7 +222,7 @@ class LookupTest extends \MediaWikiTestCase {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
 		$oLookup->addSort( 'someField', \BS\ExtendedSearch\Lookup::SORT_DESC );
-		$aExpected= [
+		$aExpected = [
 			"sort" => [
 				[ "someField" => [ "order" => "desc" ] ]
 			]
@@ -233,12 +232,12 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testRemoveSort() {
-		$oLookup = new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"sort" => [
 				[ "someField" => [ "order" => "desc" ] ],
 				[ "someField2" => [ "order" => "asc" ] ]
 			]
-		]);
+		] );
 
 		$oLookup->removeSort( 'someField2' );
 		$aExpected = [
@@ -251,11 +250,11 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testClearSort() {
-		$oLookup = new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"sort" => [
-				[ "someField" => [ "order" => "desc"  ] ]
+				[ "someField" => [ "order" => "desc" ] ]
 			]
-		]);
+		] );
 
 		$oLookup->removeSort( 'someField' );
 
@@ -267,7 +266,7 @@ class LookupTest extends \MediaWikiTestCase {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
 		$oLookup->addShouldTerms( 'someField', [ "value1" ] );
-		$aExpected= [
+		$aExpected = [
 			"query" => [
 				"bool" => [
 					"should" => [
@@ -290,7 +289,7 @@ class LookupTest extends \MediaWikiTestCase {
 
 		$oLookup->addShouldTerms( 'someField', [ "value1", "value2" ], 2, false );
 		$oLookup->addShouldTerms( 'someField', [ "value3" ], 4, false );
-		$aExpected= [
+		$aExpected = [
 			"query" => [
 				"bool" => [
 					"should" => [
@@ -318,7 +317,7 @@ class LookupTest extends \MediaWikiTestCase {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
 		$oLookup->addShouldMatch( 'someField', "someValue", 4 );
-		$aExpected= [
+		$aExpected = [
 			"query" => [
 				"bool" => [
 					"should" => [
@@ -339,7 +338,7 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testRemoveShouldTerms() {
-		$oLookup = new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
 				"bool" => [
 					"should" => [
@@ -356,7 +355,7 @@ class LookupTest extends \MediaWikiTestCase {
 					]
 				]
 			]
-		]);
+		] );
 
 		$oLookup->removeShouldTerms( 'someField', "value1" );
 		$oLookup->removeShouldTerms( 'anotherField' );
@@ -378,7 +377,7 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testRemoveShouldMatch() {
-		$oLookup = new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
 				"bool" => [
 					"should" => [
@@ -401,7 +400,7 @@ class LookupTest extends \MediaWikiTestCase {
 					]
 				]
 			]
-		]);
+		] );
 
 		$oLookup->removeShouldMatch( 'someField' );
 		$aExpected = [
@@ -450,7 +449,7 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testRemoveTermAggregation() {
-		$oLookup = new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"aggs" => [
 				"field__type" => [
 					"terms" => [
@@ -470,7 +469,7 @@ class LookupTest extends \MediaWikiTestCase {
 					]
 				]
 			]
-		]);
+		] );
 		$oLookup->removeBucketTermsAggregation( '_type/extension' );
 
 		$aExpected = [
@@ -501,18 +500,18 @@ class LookupTest extends \MediaWikiTestCase {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
 		$oLookup->addHighlighter( 'someField/anotherField' );
-		$aExpected= [
+		$aExpected = [
 			"highlight" => [
 				"fields" => [
 					"someField" => [
-						"matched_fields" => ["someField"],
-						"pre_tags" => ['<b>'],
-						"post_tags" => ['</b>']
+						"matched_fields" => [ "someField" ],
+						"pre_tags" => [ '<b>' ],
+						"post_tags" => [ '</b>' ]
 						],
 					"anotherField" => [
 						"matched_fields" => [ "anotherField" ],
-						"pre_tags" => ['<b>'],
-						"post_tags" => ['</b>']
+						"pre_tags" => [ '<b>' ],
+						"post_tags" => [ '</b>' ]
 					]
 				]
 			]
@@ -522,14 +521,14 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testRemoveHighlighter() {
-		$oLookup = new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"highlight" => [
 				"fields" => [
 					"someField" => [ "matched_fields" => [ "someField" ] ],
 					"anotherField" => [ "matched_fields" => [ "anotherField" ] ]
 				]
 			]
-		]);
+		] );
 
 		$oLookup->removeHighlighter( "someField" );
 
@@ -549,7 +548,7 @@ class LookupTest extends \MediaWikiTestCase {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
 		$oLookup->addSourceField( [ 'test', 'anotherTest' ] );
-		$aExpected= [
+		$aExpected = [
 			"_source" => [
 				"test", "anotherTest"
 			]
@@ -559,11 +558,11 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testRemoveSourceField() {
-		$oLookup = new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"_source" => [
 				"test", "anotherTest"
 			]
-		]);
+		] );
 
 		$oLookup->removeSourceField( "test" );
 
@@ -581,7 +580,7 @@ class LookupTest extends \MediaWikiTestCase {
 	public function testAddBoolMustNotTerms() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
-		//Add single term
+		// Add single term
 		$oLookup->addBoolMustNotTerms( 'testField', 'testValue' );
 
 		$aExpected = [
@@ -596,7 +595,7 @@ class LookupTest extends \MediaWikiTestCase {
 
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 
-		//Add another term
+		// Add another term
 		$oLookup->addBoolMustNotTerms( 'testField', 'anotherValue' );
 
 		$aExpected = [
@@ -611,7 +610,7 @@ class LookupTest extends \MediaWikiTestCase {
 
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 
-		//Add different field
+		// Add different field
 		$oLookup->addBoolMustNotTerms( 'anotherField', [ "testValue", "anotherValue" ] );
 
 		$aExpected = [
@@ -629,7 +628,7 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testRemoveBoolMustNotTerms() {
-		$oLookup = new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
 				"bool" => [
 					"must_not" => [
@@ -638,7 +637,7 @@ class LookupTest extends \MediaWikiTestCase {
 					]
 				]
 			]
-		]);
+		] );
 
 		$oLookup->removeBoolMustNot( 'testField' );
 
@@ -660,7 +659,7 @@ class LookupTest extends \MediaWikiTestCase {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
 		$oLookup->addAutocompleteSuggest( "someField", "Test" );
-		$aExpected= [
+		$aExpected = [
 			"suggest" => [
 				"someField" => [
 					"prefix" => "Test",
@@ -673,7 +672,7 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testRemoveAutocompleteSuggest() {
-		$oLookup = new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"suggest" => [
 				"someField" => [
 					"prefix" => "Test",
@@ -684,7 +683,7 @@ class LookupTest extends \MediaWikiTestCase {
 					"completion" => [ "field" => "anotherField" ]
 				]
 			]
-		]);
+		] );
 
 		$oLookup->removeAutocompleteSuggest( "someField" );
 
@@ -705,14 +704,14 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testAddAutocompleteSuggestContext() {
-		$oLookup = new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"suggest" => [
 				"someField" => [
 					"prefix" => "Test",
 					"completion" => [ "field" => "someField" ]
 				]
 			]
-		]);
+		] );
 
 		$oLookup->addAutocompleteSuggestContext( "someField", "anotherField", "Value1" );
 
@@ -723,7 +722,7 @@ class LookupTest extends \MediaWikiTestCase {
 					"completion" => [
 						"field" => "someField",
 						"contexts" => [
-							"anotherField" => ["Value1"]
+							"anotherField" => [ "Value1" ]
 						]
 					]
 				]
@@ -734,19 +733,19 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testRemoveAutocompleteSuggestContext() {
-		$oLookup = new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"suggest" => [
 				"someField" => [
 					"prefix" => "Test",
 					"completion" => [
 						"field" => "someField",
 						"contexts" => [
-							"anotherField" => ["Value1"]
+							"anotherField" => [ "Value1" ]
 						]
 					]
 				]
 			]
-		]);
+		] );
 
 		$oLookup->removeAutocompleteSuggestContext( 'someField', 'anotherField' );
 
@@ -765,19 +764,19 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testRemoveAutocompleteSuggestContextValue() {
-		$oLookup = new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"suggest" => [
 				"someField" => [
 					"prefix" => "Test",
 					"completion" => [
 						"field" => "someField",
 						"contexts" => [
-							"anotherField" => ["Value1", "Value2"]
+							"anotherField" => [ "Value1", "Value2" ]
 						]
 					]
 				]
 			]
-		]);
+		] );
 
 		$oLookup->removeAutocompleteSuggestContextValue( 'someField', 'anotherField', "Value2" );
 
@@ -788,7 +787,7 @@ class LookupTest extends \MediaWikiTestCase {
 					"completion" => [
 						"field" => "someField",
 						"contexts" => [
-							"anotherField" => ["Value1"]
+							"anotherField" => [ "Value1" ]
 						]
 					]
 				]
@@ -799,7 +798,7 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testAddAutocompleteSuggestFuzziness() {
-		$oLookup = new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"suggest" => [
 				"someField" => [
 					"prefix" => "Test",
@@ -808,7 +807,7 @@ class LookupTest extends \MediaWikiTestCase {
 					]
 				]
 			]
-		]);
+		] );
 
 		$oLookup->addAutocompleteSuggestFuzziness( 'someField', 2 );
 
@@ -830,7 +829,7 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testRemoveAutocompleteSuggestFuzziness() {
-		$oLookup = new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"suggest" => [
 				"someField" => [
 					"prefix" => "Test",
@@ -851,7 +850,7 @@ class LookupTest extends \MediaWikiTestCase {
 					]
 				]
 			]
-		]);
+		] );
 
 		$oLookup->removeAutocompleteSuggestFuzziness( 'anotherField' );
 
@@ -879,7 +878,7 @@ class LookupTest extends \MediaWikiTestCase {
 	}
 
 	public function testSetAutocompleteSuggestSize() {
-		$oLookup = new \BS\ExtendedSearch\Lookup([
+		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"suggest" => [
 				"someField" => [
 					"prefix" => "Test",
@@ -897,7 +896,7 @@ class LookupTest extends \MediaWikiTestCase {
 					]
 				]
 			]
-		]);
+		] );
 
 		$oLookup->setAutocompleteSuggestSize( 'anotherField', 9 );
 
@@ -971,7 +970,7 @@ class LookupTest extends \MediaWikiTestCase {
 					]
 				]
 			]
-		]);
+		] );
 		$oLookup->clearQueryString();
 
 		$aExpected = [
@@ -1007,7 +1006,7 @@ class LookupTest extends \MediaWikiTestCase {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
 		$oLookup->setBoolMatchQueryString( 'someField', 'someValue' );
-		$oLookup->setBoolMatchQueryFuzziness( 'someField', 2, ["option" => 1] );
+		$oLookup->setBoolMatchQueryFuzziness( 'someField', 2, [ "option" => 1 ] );
 
 		$aExpected = [
 			"query" => [

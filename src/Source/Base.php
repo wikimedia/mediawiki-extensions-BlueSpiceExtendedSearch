@@ -122,7 +122,7 @@ class Base {
 	 * @return \BS\ExtendedSearch\Source\LookupModifier\Base[]
 	 */
 	public function getLookupModifiers( $oLookup, $oContext, $sType = LookupModifier::TYPE_SEARCH ) {
-		if( !isset( $this->lookupModifiers[$sType] ) ) {
+		if ( !isset( $this->lookupModifiers[$sType] ) ) {
 			return [];
 		}
 
@@ -139,7 +139,7 @@ class Base {
 		}
 
 		$lookupModifiers = [];
-		foreach( $lmClasses as $key => $class ) {
+		foreach ( $lmClasses as $key => $class ) {
 			$lookupModifiers[$key] = new $class( $oLookup, $oContext );
 		}
 
@@ -151,11 +151,11 @@ class Base {
 	 * @return array
 	 */
 	public function getIndexSettings() {
-		//This kind of tokenizing breaks words in 3-char parts,
-		//which makes it possible to match single words in compound words
+		// This kind of tokenizing breaks words in 3-char parts,
+		// which makes it possible to match single words in compound words
 		return [
 			"settings" => [
-				//"number_of_shards" => 1, //Only for testing purposes on small sample, remove or increase for production
+				// "number_of_shards" => 1, //Only for testing purposes on small sample, remove or increase for production
 				"analysis" => [
 					"filter" => [
 						"autocomplete_filter" => [
@@ -167,7 +167,7 @@ class Base {
 					"analyzer" => [
 						"autocomplete" => [
 							"type" => "custom",
-							"tokenizer" => "standard", //Change
+							"tokenizer" => "standard", // Change
 							"filter" => [
 								"lowercase",
 								"autocomplete_filter"
@@ -191,12 +191,12 @@ class Base {
 		$oElasticaIndex = $this->getBackend()->getIndexByType( $this->getTypeKey() );
 		$oType = $oElasticaIndex->getType( $this->getTypeKey() );
 		$aDocs = [];
-		foreach( $aDocumentConfigs as $aDC ) {
+		foreach ( $aDocumentConfigs as $aDC ) {
 			$aDocs[] = new \Elastica\Document( $aDC['id'], $aDC );
 		}
 
 		$oResult = $oType->addDocuments( $aDocs );
-		if( !$oResult->isOk() ) {
+		if ( !$oResult->isOk() ) {
 			wfDebugLog(
 				'BSExtendedSearch',
 				"Adding documents failed: {$oResult->getError()}"
@@ -228,7 +228,7 @@ class Base {
 
 		$oResult = $bulk->send();
 
-		if( !$oResult->isOk() ) {
+		if ( !$oResult->isOk() ) {
 			wfDebugLog(
 				'BSExtendedSearch',
 				"Adding documents failed: {$oResult->getError()}"
@@ -248,7 +248,6 @@ class Base {
 		// Default - no permission required
 		return '';
 	}
-
 
 	/**
 	 * @param PostProcessor $base
