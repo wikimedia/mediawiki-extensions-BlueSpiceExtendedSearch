@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Param\Definition;
 
 use BS\ExtendedSearch\Param\Validator\SearchResultTypeValidator;
+use BS\ExtendedSearch\Param\Parser\SearchResultTypeParser;
 
 class SearchResultTypeListParam extends \ParamProcessor\ParamDefinition {
 	protected $delimiter = '|';
@@ -19,5 +20,6 @@ class SearchResultTypeListParam extends \ParamProcessor\ParamDefinition {
 
 	protected function postConstruct() {
 		$this->validator = new SearchResultTypeValidator();
+		$this->parser = new SearchResultTypeParser();
 	}
 }

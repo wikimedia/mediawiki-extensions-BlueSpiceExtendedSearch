@@ -37,12 +37,10 @@ class SearchResultTypeValidator extends \ValueValidators\ValueValidatorObject {
 	 */
 	protected function getSourceTypeKeys() {
 		$sourceTypeKeys = [];
-		$backends = \BS\ExtendedSearch\Backend::factoryAll();
-		foreach ( $backends as $key => $backend ) {
-			$sources = $backend->getSources();
-			foreach ( $sources as $source ) {
-				$sourceTypeKeys[] = $source->getTypeKey();
-			}
+		$backend = \BS\ExtendedSearch\Backend::instance();
+		$sources = $backend->getSources();
+		foreach ( $sources as $source ) {
+			$sourceTypeKeys[] = $source->getTypeKey();
 		}
 
 		return $sourceTypeKeys;

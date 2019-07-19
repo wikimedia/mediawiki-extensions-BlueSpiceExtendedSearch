@@ -126,13 +126,18 @@
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Type to search...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Invalid search result type: $1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-desc": "Creates a search input field that searches in specified contexts",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Namespace(s)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "List of valid namespace names or IDs separated by pipe (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "Namespace1|Namespace2|...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Category(-ies)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "List of valid category names separated by pipe (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Category1|Category2|...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Placeholder",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-help": "Text to be displayed in the input field when nothing was entered yet",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Type to search...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Search operator",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "This parameter is evaluated only in combination with \"category\" parameter. Setting AND will match only results that are in all of the given categories, while OR value will match results that have at least one of the given categories set",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Type",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "List of valid result types separated by pipe (|)",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "This parameter is evaluated only in combination with \"category\" parameter. Setting AND will match only results that are in all of the given categories, while OR value will match results that have at least one of the given categories set"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "List of valid result types separated by pipe (|)"
 }
