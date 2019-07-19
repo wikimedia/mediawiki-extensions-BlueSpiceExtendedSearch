@@ -2,6 +2,10 @@
 
 namespace BS\ExtendedSearch\Source\Crawler;
 
+use RecursiveIteratorIterator;
+use RecursiveDirectoryIterator;
+use SplFileInfo;
+
 class ExternalFile extends File {
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateExternalFile';
 
@@ -10,24 +14,29 @@ class ExternalFile extends File {
 
 		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsg' );
 		$paths = $config->get( 'ESExternalFilePaths' );
+		$excludePatterns = (array)$config->get(
+			'ExtendedSearchExternalFilePathsExcludes'
+		);
 
 		foreach ( $paths as $sourcePath => $uriPrefix ) {
-			$sourceFileInfo = new \SplFileInfo( $sourcePath );
+			$sourceFileInfo = new SplFileInfo( $sourcePath );
 
-			$files = new \RecursiveIteratorIterator(
-				new \RecursiveDirectoryIterator( $sourceFileInfo->getPathname(),
-					\RecursiveDirectoryIterator::SKIP_DOTS
+			$files = new RecursiveIteratorIterator(
+				new RecursiveDirectoryIterator( $sourceFileInfo->getPathname(),
+					RecursiveDirectoryIterator::SKIP_DOTS
 				),
-				\RecursiveIteratorIterator::SELF_FIRST
+				RecursiveIteratorIterator::SELF_FIRST
 			);
 
 			foreach ( $files as $file ) {
-				$file instanceof \SplFileInfo;
 				if ( $file->isDir() ) {
 					continue;
 				}
+				$pathExcludePatterns = empty( $excludePatterns[$sourcePath] )
+					? ''
+					: $excludePatterns[$sourcePath];
 
-				if ( $this->shouldSkip( $file ) ) {
+				if ( $this->shouldSkip( $file, $pathExcludePatterns ) ) {
 					continue;
 				}
 
@@ -42,9 +51,28 @@ class ExternalFile extends File {
 
 	/**
 	 *
+	 * @param SplFileInfo $file
+	 * @param string $excludePatterns
+	 * @return bool
+	 */
+	protected function shouldSkip( $file, $excludePatterns = '' ) {
+		if ( parent::shouldSkip( $file ) ) {
+			return true;
+		}
+		if ( empty( $excludePatterns ) ) {
+			return false;
+		}
+		if ( preg_match( $excludePatterns, $file->getRealPath() ) > 0 ) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 *
 	 * @param string $sUriPrefix
-	 * @param \SplFileInfo $oFile
-	 * @param \SplFileInfo $oSourcePath
+	 * @param SplFileInfo $oFile
+	 * @param SplFileInfo $oSourcePath
 	 */
 	protected function makeDestFileName( $sUriPrefix, $oFile, $oSourcePath ) {
 		$sRelativePath = str_replace( $oSourcePath->getPathname(), '', $oFile->getPathname() );
