@@ -17,7 +17,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "Lista de nomines valide de categoria, separate per barras vertical (|)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Campo reservate",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Operator de recerca",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Iste parametro es evalutate solmente in combination con le parametro \"category\". Le operator AND producera solmente resultatos que es in tote le categorias date, ben que OR producera resultatos que se trova in al minus un del categorias date.",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Typo",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Lista de typos valide de resultatos, separate per barras vertical (|)",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Iste parametro es evalutate solmente in combination con le parametro \"category\". Le operator AND producera solmente resultatos que es in tote le categorias date, ben que OR producera resultatos que se trova in al minus un del categorias date."
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Lista de typos valide de resultatos, separate per barras vertical (|)"
 }

@@ -131,7 +131,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "Список дійсних назв категорій через вертикальну риску (|)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Заповнювач",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Оператор пошуку",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Цей параметр оцінюється лише в комбінації з параметром «категорія». Налаштування AND видасть лише результати, які є в усіх поданих категоріях, а значення OR покаже результати, які мають хоча б одну з поданого набору категорій",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Список дійсних типів результатів через вертикальну риску (|)",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Цей параметр оцінюється лише в комбінації з параметром «категорія». Налаштування AND видасть лише результати, які є в усіх поданих категоріях, а значення OR покаже результати, які мають хоча б одну з поданого набору категорій"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Список дійсних типів результатів через вертикальну риску (|)"
 }
