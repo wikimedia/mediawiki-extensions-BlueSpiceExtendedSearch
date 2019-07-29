@@ -109,7 +109,9 @@
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "검색하려면 입력하세요...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "유효하지 않은 검색 결과 유형: $1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "이름공간",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "이름공간1|이름공간2|...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "분류",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "분류1|분류2|...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "검색하려면 입력하세요...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "유형"
 }
