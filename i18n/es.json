@@ -13,6 +13,7 @@
 	"apihelp-bs-extendedsearch-query-param-params": "Parámetros adicionales para la consulta",
 	"apihelp-bs-extendedsearch-stats-param-stats": "Una lista de estadísticas que deben devolverse",
 	"apihelp-bs-extendedsearch-triggerupdate-summary": "Iniciar actualización de índice de búsquedas",
+	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Parámetros adicionales para la consulta",
 	"bs-extendedsearch-search-input-placeholder": "Encuentra ...",
 	"bs-extendedsearch-source-label-wikipage": "Página wiki",
 	"bs-extendedsearch-source-label-specialpage": "Página especial",
@@ -78,6 +79,7 @@
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Prefijo de URL",
 	"bs-extendedsearch-pref-external-file-paths-path-help": "Ubicación en el disco o disco montado",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Ubicación web capaz de despachar archivos de esta carpeta",
+	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Patrón de expresión regular no válido",
 	"bs-extendedsearch-external-file-paths-desc": "Matriz de carpetas externas que debe indizarse",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Última modificación: $1",
 	"bs-extendedsearch-search-center-result-redirects-label": "Redirigido desde:",
@@ -95,8 +97,11 @@
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "No se encontró ninguna página similar",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Escribe para buscar…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Espacio(s) de nombres",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "Espacio de nombres 1|Espacio de nombres 2|…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Categoría(s)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Categoría 1|Categoría 2|…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Marcador de posición",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Escribe para buscar…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Operador de búsqueda",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipo"
 }
