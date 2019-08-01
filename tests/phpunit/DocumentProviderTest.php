@@ -4,6 +4,9 @@ namespace BS\ExtendedSearch\Tests;
 
 class DocumentProviderTest extends \MediaWikiTestCase {
 
+	/**
+	 * @group Database
+	 */
 	public function testBaseDocumentProvider() {
 		$oDP = new \BS\ExtendedSearch\Source\DocumentProvider\Base();
 		$sTestUri = 'http://some.server.tld/with/a/file.html';
@@ -14,6 +17,9 @@ class DocumentProviderTest extends \MediaWikiTestCase {
 		$this->assertEquals( $sTestUriMD5, $aDC['id'] );
 	}
 
+	/**
+	 * @group Database
+	 */
 	public function testWikiPageDocumentProvider() {
 		$oDP = new \BS\ExtendedSearch\Source\DocumentProvider\WikiPage(
 			new \BS\ExtendedSearch\Source\DocumentProvider\Base()
@@ -35,6 +41,9 @@ class DocumentProviderTest extends \MediaWikiTestCase {
 		$this->assertEquals( $oWikiPage->getTitle()->getNsText(), $aDC['namespace_text'] );
 	}
 
+	/**
+	 * @group Database
+	 */
 	public function testFileDocumentProvider() {
 		$oDP = new \BS\ExtendedSearch\Source\DocumentProvider\File(
 			new \BS\ExtendedSearch\Source\DocumentProvider\Base()
