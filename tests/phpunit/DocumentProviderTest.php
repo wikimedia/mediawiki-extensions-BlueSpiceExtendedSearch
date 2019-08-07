@@ -2,7 +2,22 @@
 
 namespace BS\ExtendedSearch\Tests;
 
+/**
+ * @group Database
+ * @group BlueSpice
+ * @group BlueSpiceExtensions
+ * @group BlueSpiceExtendedSearch
+ */
 class DocumentProviderTest extends \MediaWikiTestCase {
+
+	/**
+	 * @return bool
+	 * @since 1.18
+	 */
+	public function needsDB() {
+		// If the test says it uses database tables, it needs the database
+		return true;
+	}
 
 	/**
 	 * @group Database
