@@ -2,8 +2,26 @@
 
 namespace BS\ExtendedSearch\Tests;
 
+/**
+ * @group Database
+ * @group BlueSpice
+ * @group BlueSpiceExtensions
+ * @group BlueSpiceExtendedSearch
+ */
 class DocumentProviderTest extends \MediaWikiTestCase {
 
+	/**
+	 * @return bool
+	 * @since 1.18
+	 */
+	public function needsDB() {
+		// If the test says it uses database tables, it needs the database
+		return true;
+	}
+
+	/**
+	 * @group Database
+	 */
 	public function testBaseDocumentProvider() {
 		$oDP = new \BS\ExtendedSearch\Source\DocumentProvider\Base();
 		$sTestUri = 'http://some.server.tld/with/a/file.html';
@@ -14,6 +32,9 @@ class DocumentProviderTest extends \MediaWikiTestCase {
 		$this->assertEquals( $sTestUriMD5, $aDC['id'] );
 	}
 
+	/**
+	 * @group Database
+	 */
 	public function testWikiPageDocumentProvider() {
 		$oDP = new \BS\ExtendedSearch\Source\DocumentProvider\WikiPage(
 			new \BS\ExtendedSearch\Source\DocumentProvider\Base()
@@ -35,6 +56,9 @@ class DocumentProviderTest extends \MediaWikiTestCase {
 		$this->assertEquals( $oWikiPage->getTitle()->getNsText(), $aDC['namespace_text'] );
 	}
 
+	/**
+	 * @group Database
+	 */
 	public function testFileDocumentProvider() {
 		$oDP = new \BS\ExtendedSearch\Source\DocumentProvider\File(
 			new \BS\ExtendedSearch\Source\DocumentProvider\Base()

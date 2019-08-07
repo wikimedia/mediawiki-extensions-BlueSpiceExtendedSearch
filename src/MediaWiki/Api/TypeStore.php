@@ -10,7 +10,6 @@ class TypeStore extends \BSApiExtJSStoreBase {
 	 * will be done by the base class
 	 */
 	protected function makeData( $sQuery = '' ) {
-
 		$aData = [];
 		$backend = \BS\ExtendedSearch\Backend::instance();
 		$sources = $backend->getSources();
