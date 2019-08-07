@@ -3,7 +3,8 @@
 		"authors": [
 			"ديفيد",
 			"Meno25",
-			"Kassem789"
+			"Kassem789",
+			"HitomiAkane"
 		]
 	},
 	"bs-extsearch-extensionname": "بحث بلو سبيس الممتد",
@@ -24,6 +25,12 @@
 	"apihelp-bs-extendedsearch-generic-param-backend": "مفتاح الواجهة الخلفية التي تمت تهيئتها التي يجب الاستعلام عنها",
 	"apihelp-bs-extendedsearch-generic-param-sources": "مصدر واحد أو أكثر داخل الخلفية المحددة مفصولة بواسطة أنبوب، إذا كان فارغا، سيتم الاستعلام عن جميع المصادر المتاحة.",
 	"apihelp-bs-extendedsearch-query-param-search-term": "المصطلح التي يتم إجراء البحث عنه",
+	"apihelp-bs-extendedsearch-autocomplete-summary": "يرجع نتائج الإكمال التلقائي من استعلام معين",
+	"apihelp-bs-extendedsearch-query-param-search-data": "سلسلة JSON لفك الشفرة التي تحتوي على معلومات إضافية عن سياق البحث",
+	"apihelp-bs-extendedsearch-query-param-secondary-request-data": "سلسلة JSON لفك الشفرة التي تحتوي على معلومات إضافية عن سياق البحث",
+	"apihelp-bs-extendedsearch-resultrelevance-summary": "يرجع صلة نتائج البحث",
+	"apihelp-bs-extendedsearch-query-param-relevance-data": "سلسلة JSON لفك الشفرة التي تحتوي على معلومات إضافية عن سياق البحث",
+	"apihelp-bs-extendedsearch-type-store-summary": "ترجع أنواع البحث المسجلة",
 	"bs-extendedsearch-search-input-placeholder": "إيجاد...",
 	"bs-extendedsearch-source-label-wikipage": "صفحة ويكي",
 	"bs-extendedsearch-source-label-specialpage": "صفحة خاصة",
