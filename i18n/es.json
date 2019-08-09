@@ -14,6 +14,8 @@
 	"apihelp-bs-extendedsearch-stats-param-stats": "Una lista de estadísticas que deben devolverse",
 	"apihelp-bs-extendedsearch-triggerupdate-summary": "Iniciar actualización de índice de búsquedas",
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Parámetros adicionales para la consulta",
+	"apihelp-bs-extendedsearch-query-param-search-data": "Cadena codificada en JSON que contiene información adicional del contexto de la búsqueda",
+	"apihelp-bs-extendedsearch-resultrelevance-summary": "Devuelve la relevancia de los resultados de la búsqueda",
 	"bs-extendedsearch-search-input-placeholder": "Encuentra ...",
 	"bs-extendedsearch-source-label-wikipage": "Página wiki",
 	"bs-extendedsearch-source-label-specialpage": "Página especial",
