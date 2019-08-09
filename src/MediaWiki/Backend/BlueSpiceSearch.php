@@ -136,8 +136,15 @@ class BlueSpiceSearch extends \SearchEngine {
 	 */
 	protected function getFallbackSearchEngine() {
 		if ( $this->fallbackSearchEngine === null ) {
-			$lb = Services::getInstance()->getDBLoadBalancer();
+			$services = Services::getInstance();
+			$lb = $services->getDBLoadBalancer();
 			$class = \BS\ExtendedSearch\Setup::getSearchEngineClass( $lb );
+			// in all unoffical branches tests will against master. This 'fixes' all tests
+			// from every extension, that reqires BlueSpiceExtendedSearch
+			$version = $services->getConfigFactory()->makeConfig( 'bsg' )->get( 'Version' );
+			if ( version_compare( $version, '1.33', '<' ) ) {
+				$lb = $lb->getConnection( DB_MASTER );
+			}
 			$this->fallbackSearchEngine = new $class( $lb );
 		}
 		return $this->fallbackSearchEngine;
