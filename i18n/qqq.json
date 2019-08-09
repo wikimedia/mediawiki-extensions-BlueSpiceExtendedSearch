@@ -3,7 +3,8 @@
 		"authors": [
 			"Robert Vogel <vogel@hallowelt.com>",
 			"Robby",
-			"Umherirrender"
+			"Umherirrender",
+			"Zoranzoki21"
 		]
 	},
 	"bs-extsearch-extensionname": "{{name}}",
@@ -133,7 +134,7 @@
 	"bs-extendedsearch-export-button-label": "Tooltip text for a button that opens a dialog to export the search results",
 	"bs-extendedsearch-flyout-similar-pages-title": "Title for the flyout section showing pages similar to the current page",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Text for the flyout section when there are no similar pages available",
-	"bs-extendedsearch-search-center-result-file-usage-label": " Only for pages in NS_FILE. Label for the field in the result showing links to pages that use this file.",
+	"bs-extendedsearch-search-center-result-file-usage-label": "Only for pages in NS_FILE. Label for the field in the result showing links to pages that use this file.",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Placeholder text for the search field",
 	"bs-extendedsearch-tagsearch-extension-description": "Description text for $oDescriptor",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Error message text when given search result type is invalid. $1 - name of the given type",

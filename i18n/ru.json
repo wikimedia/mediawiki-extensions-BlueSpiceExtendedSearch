@@ -3,7 +3,8 @@
 		"authors": [
 			"Okras",
 			"Vlad5250",
-			"Romanko Mikhail"
+			"Romanko Mikhail",
+			"1233qwer1234qwer4"
 		]
 	},
 	"bssearchadmin": "Поиск администратора",
@@ -76,5 +77,6 @@
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Страница $1: Текст: $2",
 	"bs-extendedsearch-filter-add-button-label": "Добавить фильтр",
 	"bs-extendedsearch-options-button-label": "Настройки поиска",
-	"bs-extendedsearch-export-button-label": "Экспортировать результаты поиска"
+	"bs-extendedsearch-export-button-label": "Экспортировать результаты поиска",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип"
 }

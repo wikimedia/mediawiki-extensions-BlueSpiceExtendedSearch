@@ -6,7 +6,9 @@
 			"Phenolla",
 			"A Chinese Wikipedian",
 			"Ff98sha",
-			"佛壁灯"
+			"佛壁灯",
+			"科劳",
+			"神樂坂秀吉"
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch搜索后端",
@@ -120,5 +122,20 @@
 	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch - {{GENDER:$2|您}}将 $1 页标记为有相关搜索结果。",
 	"bs-extendedsearch-filter-add-button-label": "添加过滤器",
 	"bs-extendedsearch-options-button-label": "搜索选项",
-	"bs-extendedsearch-export-button-label": "导出搜索结果"
+	"bs-extendedsearch-export-button-label": "导出搜索结果",
+	"bs-extendedsearch-flyout-similar-pages-title": "相似页面",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "未找到相似页面",
+	"bs-extendedsearch-search-center-result-file-usage-label": "在多个页面上使用",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "输入什么就能搜索了……",
+	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "无效的搜索结果类型：$1",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "名字空间",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "名字空间的有效名称或有效ID；用pipe (\"|\")分隔",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "分类",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "有效的分类名；用pipe (\"|\")分隔",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "占位符",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "搜索工具",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "此参数仅与“分类”参数同时生效；将此参数设为\"AND\"，将只得到同时包含在所有指定类别下的结果；将此参数设为\"OR\"，则得到的结果至少属于所有指定类别的某一个",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "类型",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "搜索结果的有效类型；用pipe (\"|\") 分隔"
 }

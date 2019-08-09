@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jopparn",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Mjälten"
 		]
 	},
 	"bssearchadmin": "Sök admin",
@@ -96,5 +97,13 @@
 	"bs-extendedsearch-search-center-create-page-link": "Skapa sidan \"$1\".",
 	"bs-extendedsearch-filter-add-button-label": "Lägg till ett filter",
 	"bs-extendedsearch-options-button-label": "Sökalternativ",
-	"bs-extendedsearch-export-button-label": "Exportera sökresultat"
+	"bs-extendedsearch-export-button-label": "Exportera sökresultat",
+	"bs-extendedsearch-admin-heading-backend": "Lokal bakända",
+	"bs-extendedsearch-autocomplete-result-top-match-label": "Toppresultat",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Sida $1: Text: $2",
+	"bs-extendedsearch-flyout-similar-pages-title": "Liknande sidor",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Inga liknande sidor hittades.",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Platshållare",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Sökoperator",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Typ"
 }

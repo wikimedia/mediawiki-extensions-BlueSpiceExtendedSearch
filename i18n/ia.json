@@ -7,5 +7,17 @@
 	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|visita|visitas}} pro $2",
 	"bs-extendedsearch-search-center-hitcount-widget-approximately": "circa $1 {{PLURAL:$1|visita|visitas}} pro $2",
 	"prefs-extendedsearch": "Recerca extendite",
-	"bs-extendedsearch-redirect-target-label": "Redirige verso:"
+	"bs-extendedsearch-redirect-target-label": "Redirige verso:",
+	"bs-extendedsearch-tagsearch-extension-description": "Adder un formulario de recerca a {{GENDER:tu}} contento",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Scribe pro cercar…",
+	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Typo de resultato de recerca non valide: $1",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Spatio(s) de nomines",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "Lista de nomines o IDs valide de spatio de nomines, separate per barras vertical (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Categoria(s)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "Lista de nomines valide de categoria, separate per barras vertical (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Campo reservate",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Operator de recerca",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Iste parametro es evalutate solmente in combination con le parametro \"category\". Le operator AND producera solmente resultatos que es in tote le categorias date, ben que OR producera resultatos que se trova in al minus un del categorias date.",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Typo",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Lista de typos valide de resultatos, separate per barras vertical (|)"
 }

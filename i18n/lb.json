@@ -38,5 +38,10 @@
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Sprooch vun der Säit:",
 	"bs-extendedsearch-wikipage-title-original": "(Originaltitel: $1)",
 	"bs-extendedsearch-search-center-create-page-link": "Säit \"$1\" uleeën",
-	"bs-extendedsearch-privacy-transparency-content-highlight": "Säit $1: Text: $2"
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Säit $1: Text: $2",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Tippe fir ze sichen...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Nummraum/Nummraim",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategorie(n)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Plazhalter",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Typ"
 }

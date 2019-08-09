@@ -3,7 +3,8 @@
 		"authors": [
 			"Fitoschido",
 			"Vanbasten 23",
-			"Carlosmg.dg"
+			"Carlosmg.dg",
+			"Agusbou2015"
 		]
 	},
 	"apihelp-bs-extendedsearch-query-description": "Buscar en el índice",
@@ -91,5 +92,16 @@
 	"bs-extendedsearch-options-button-label": "Opciones de búsqueda",
 	"bs-extendedsearch-export-button-label": "Exportar resultados de búsqueda",
 	"bs-extendedsearch-flyout-similar-pages-title": "Páginas similares",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "No se encontró ninguna página similar"
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "No se encontró ninguna página similar",
+	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Parámetros adicionales para la consulta",
+	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Patrón de expresión regular no válido",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Escribe para buscar…",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Espacio(s) de nombres",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "Espacio de nombres 1|Espacio de nombres 2|…",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Categoría(s)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Categoría 1|Categoría 2|…",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Marcador de posición",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Escribe para buscar…",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Operador de búsqueda",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipo"
 }

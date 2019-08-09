@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Veeven"
+		]
+	},
+	"bs-extendedsearch-source-label-user": "వాడుకరి",
+	"bs-extendedsearch-search-center-filter-categories-label": "వర్గం",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "వర్గం:",
+	"bs-extendedsearch-search-center-filter-type-with-values-label": "రకం:",
+	"bs-extendedsearch-search-center-result-namespace_text-label": "పేరుబరి:",
+	"bs-extendedsearch-search-center-result-categories-label": "వర్గం:",
+	"bs-extendedsearch-search-center-result-sections-label": "విభాగాలు:",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "పేరు",
+	"bs-extendedsearch-searchcenter-sort-field-size": "పరిమాణం",
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "పేరుబరి",
+	"bs-extendedsearch-search-center-result-typetext-label": "రకం:",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "రకం"
+}
