@@ -86,7 +86,7 @@ class Setup {
 		return true;
 	}
 
-	public static function getSearchEngineClass( \IDatabase $db ) {
+	public static function getSearchEngineClass( $db ) {
 		$seFactory = Services::getInstance()->getSearchEngineFactory();
 		return $seFactory::getSearchEngineClass( $db );
 	}

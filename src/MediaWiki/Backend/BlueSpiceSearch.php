@@ -1,6 +1,7 @@
 <?php
 namespace BS\ExtendedSearch\MediaWiki\Backend;
 
+use BlueSpice\Services;
 use BS\ExtendedSearch\Lookup;
 
 class BlueSpiceSearch extends \SearchEngine {
@@ -135,9 +136,16 @@ class BlueSpiceSearch extends \SearchEngine {
 	 */
 	protected function getFallbackSearchEngine() {
 		if ( $this->fallbackSearchEngine === null ) {
-			$db = wfGetDB( DB_REPLICA );
-			$class = \BS\ExtendedSearch\Setup::getSearchEngineClass( $db );
-			$this->fallbackSearchEngine = new $class( $db );
+			$services = Services::getInstance();
+			$lb = $services->getDBLoadBalancer();
+			// in all unoffical branches tests will against master. This 'fixes' all tests
+			// from every extension, that reqires BlueSpiceExtendedSearch
+			$version = $services->getConfigFactory()->makeConfig( 'bsg' )->get( 'Version' );
+			if ( version_compare( $version, '1.33', '<' ) ) {
+				$lb = $lb->getConnection( DB_REPLICA );
+			}
+			$class = \BS\ExtendedSearch\Setup::getSearchEngineClass( $lb );
+			$this->fallbackSearchEngine = new $class( $lb );
 		}
 		return $this->fallbackSearchEngine;
 	}
