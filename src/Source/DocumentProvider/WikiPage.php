@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\DocumentProvider;
 
+use BlueSpice\Services;
+
 class WikiPage extends DecoratorBase {
 	/**
 	 * @var \Content
@@ -212,20 +214,8 @@ class WikiPage extends DecoratorBase {
 	}
 
 	protected function getPageProps( \Title $title ) {
-		$lb = \MediaWiki\MediaWikiServices::getInstance()->getDBLoadBalancer();
-		$db = $lb->getConnection( DB_REPLICA );
-
-		$res = $db->select(
-			'page_props',
-			[ '*' ],
-			[ 'pp_page' => $title->getArticleID() ]
-		);
-		$props = [];
-		foreach ( $res as $row ) {
-			$props[$row->pp_propname] = $row->pp_value;
-		}
-		$db->freeResult( $res );
-		return $props;
+		return Services::getInstance()->getBSUtilityFactory()
+			->getPagePropHelper( $title )->getPageProps();
 	}
 
 	protected function getUserFiles( \WikiPage $wikiPage ) {
