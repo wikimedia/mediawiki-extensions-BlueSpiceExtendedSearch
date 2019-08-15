@@ -8,7 +8,8 @@
 			"Ff98sha",
 			"佛壁灯",
 			"科劳",
-			"神樂坂秀吉"
+			"神樂坂秀吉",
+			"Looong"
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch搜索后端",
@@ -28,6 +29,12 @@
 	"apihelp-bs-extendedsearch-generic-param-backend": "应查询的配置后端关键字",
 	"apihelp-bs-extendedsearch-generic-param-sources": "特定后端中的一个或多个资源，以竖线分隔。如果为空，所有可用资源都将查询。",
 	"apihelp-bs-extendedsearch-query-param-search-term": "进行搜索的术语",
+	"apihelp-bs-extendedsearch-autocomplete-summary": "从给予的查询中返回自动完成的结果",
+	"apihelp-bs-extendedsearch-query-param-search-data": "JSON解码包含检索上下文的附加信息的字符串",
+	"apihelp-bs-extendedsearch-query-param-secondary-request-data": "JSON解码包含检索上下文的附加次要信息的字符串",
+	"apihelp-bs-extendedsearch-resultrelevance-summary": "返回相关的检索结果",
+	"apihelp-bs-extendedsearch-query-param-relevance-data": "JSON解码含有检索到的上下文的附加信息的字符串",
+	"apihelp-bs-extendedsearch-type-store-summary": "返回被注册的检索类型",
 	"bs-extendedsearch-search-input-placeholder": "查找...",
 	"bs-extendedsearch-source-label-wikipage": "Wiki页面",
 	"bs-extendedsearch-source-label-specialpage": "特殊页面",
