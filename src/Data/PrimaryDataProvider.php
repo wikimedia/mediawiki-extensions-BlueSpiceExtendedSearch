@@ -178,6 +178,9 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 	 * @return array
 	 */
 	protected function makePreFilterConds( $params, $query ) {
+		if ( empty( (array)$this->schema ) ) {
+			return $query;
+		}
 		$filterFinder = new FilterFinder( $params->getFilter() );
 		foreach ( $this->schema->getFilterableFields() as $fieldname ) {
 			$filter = $filterFinder->findByField( $fieldname );
@@ -286,7 +289,11 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 		}
 		$mapping = $this->getValueTypeMapping();
 
-		$type = $this->schema[$sort->getProperty()][Schema::TYPE];
+		if ( empty( (array)$this->schema ) ) {
+			$type = "_id";
+		} else {
+			$type = $this->schema[$sort->getProperty()][Schema::TYPE];
+		}
 		if ( isset( $mapping[$type] ) ) {
 			$type = $mapping[$type];
 		}
@@ -295,11 +302,13 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 				"order" => $sort->getDirection(),
 				"unmapped_type" => $type,
 				// "missing" => "_last"
-			],
-			"_id" => [
-				"order" => "desc"
 			]
 		];
+		if ( $type !== "_id" ) {
+			$query['sort']["_id"] = [
+				"order" => "desc"
+			];
+		}
 		$query['size'] = $params->getLimit();
 		$query["from"] = $params->getStart();
 
