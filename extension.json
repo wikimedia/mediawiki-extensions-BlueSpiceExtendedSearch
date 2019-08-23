@@ -292,6 +292,7 @@
 			]
 		},
 		"ext.blueSpiceExtendedSearch.Autocomplete": {
+			"class": "\\BlueSpice\\ResourceModule\\LessVars",
 			"scripts": [
 				"bs.extendedSearch/mixin/Autocomplete.js",
 				"bs.extendedSearch/widget/autocomplete/Popup.js",
