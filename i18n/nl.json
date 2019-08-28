@@ -4,7 +4,9 @@
 			"Sjoerddebruin",
 			"Goefie",
 			"Mainframe98",
-			"Elroy"
+			"Elroy",
+			"Rots61",
+			"Siebrand"
 		]
 	},
 	"bs-extendedsearch-search-input-placeholder": "Zoeken...",
@@ -41,6 +43,7 @@
 	"bs-extendedsearch-search-center-options-page-size": "Items per pagina",
 	"bs-extendedsearch-search-center-options-sort-by": "Sorteren op",
 	"bs-extendedsearch-search-center-options-sort-order": "Sorteervolgorde",
+	"bs-extendedsearch-autocomplete-result-type": "Type: $1",
 	"bs-extendedsearch-searchcenter-filter-or-label": "of",
 	"bs-extendedsearch-searchcenter-filter-and-label": "en",
 	"bs-extendedsearch-searchcenter-sort-field-_score": "Relevantie",
@@ -72,6 +75,7 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "Vergelijkbare pagina's",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Geen vergelijkbare pagina's gevonden",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Gebruikt op pagina's",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Invoeren om te zoeken...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Naamruimte(n)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Categorie(ën)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "Lijst met geldige categorienamen gescheiden door een sluisteken (|)",
