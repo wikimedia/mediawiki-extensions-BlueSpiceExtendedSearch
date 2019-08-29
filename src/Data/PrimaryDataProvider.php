@@ -285,6 +285,12 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 	protected function makePreOptionConds( $params, $query ) {
 		$sort = $params->getSort();
 		if ( is_array( $sort ) ) {
+			if ( !isset( $sort[0] ) ) {
+				$query['sort']["_id"] = [
+					"order" => "desc"
+				];
+				return $query;
+			}
 			$sort = $sort[0];
 		}
 		$mapping = $this->getValueTypeMapping();
@@ -297,6 +303,7 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 		if ( isset( $mapping[$type] ) ) {
 			$type = $mapping[$type];
 		}
+
 		$query['sort'] = [
 			"{$this->getTypeName()}." . $sort->getProperty() => [
 				"order" => $sort->getDirection(),
