@@ -72,8 +72,8 @@ class Base {
 		}
 
 		$oDummyJob = new $this->sJobClass( \Title::newMainPage(), [] );
-		$dbr = wfGetDB( DB_REPLICA );
-		$res = $dbr->delete(
+		$dbw = wfGetDB( DB_MASTER );
+		$res = $dbw->delete(
 			'job',
 			[ 'job_cmd' => $oDummyJob->getType() ]
 		);
