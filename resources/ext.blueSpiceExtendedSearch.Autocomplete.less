@@ -63,7 +63,7 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 	}
 	.bs-extendedsearch-autocomplete-popup-primary {
 		width: 50%;
-		font-size: 1.2em;
+		font-size: 0.875rem;
 		vertical-align: top;
 		padding-bottom: 10px;
 		height: inherit;
@@ -81,6 +81,14 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 			}
 			&:hover {
 				background-color: @autocomplete-selected-background-color;
+			}
+			a {
+				color: @bs-color-link;
+				&:hover,
+				&:focus {
+					color: @bs-color-link-hover;
+					text-decoration: none;
+				}
 			}
 		}
 		.bs-extendedsearch-autocomplete-popup-primary-no-results {
@@ -113,6 +121,14 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 				vertical-align: top;
 				margin-left: 5px;
 				display: table-cell;
+				a.bs-extendedsearch-autocomplete-popup-primary-item-header {
+					color: @bs-color-link;
+					&:hover,
+					&:focus {
+						color: @bs-color-link-hover;
+						text-decoration: none;
+					}
+				}
 			}
 			.bs-extendedsearch-autocomplete-popup-item-modified-time{
 				display: block;
@@ -146,13 +162,21 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 			height: 40px;
 		}
 		.bs-extendedsearch-autocomplete-popup-secondary {
+			font-size: 0.875rem;
 			.bs-extendedsearch-autocomplete-popup-secondary-item {
 				position: relative;
 				padding-left: 20px;
-				font-size: 1.2em;
 				overflow-x: hidden;
 				&:hover {
 					background-color: @autocomplete-selected-background-color;
+				}
+				a {
+					color: @bs-color-link;
+					&:hover,
+					&:focus {
+						color: @bs-color-link-hover;
+						text-decoration: none;
+					}
 				}
 			}
 		}
@@ -165,14 +189,14 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 			background-color: @autocomplete-selected-background-color;
 		}
 		a {
-			color: @link-color-new;
-			padding: 11px 20px 0px 35px;
+			color: @bs-color-link-new;
+			padding: 10px 20px 0px 13px;
 			width: 100%;
 			height: 40px;
 			display: block;
 			text-align: left;
 			&:hover {
-				color: @link-color-new; //.new
+				color: @bs-color-link-hover;
 				text-decoration: none;
 			}
 			&::before {
@@ -189,13 +213,14 @@ div#bs-extendedsearch-box, div#bs-extendedsearch-mobile-box {
 		width: 100%;
 		padding: 0px;
 		height: 40px;
-		a.oo-ui-buttonElement-button {
+		&.oo-ui-buttonElement-framed.oo-ui-iconElement.oo-ui-labelElement > .oo-ui-buttonElement-button {
 			width: 100%;
 			height: 40px;
 			padding: 13px 13px 0px 13px;
 			text-align: left;
 			background-color: white;
 			border: none;
+			font-weight: normal;
 			&:hover {
 				background-color: @autocomplete-selected-background-color;
 			}
