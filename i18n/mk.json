@@ -65,6 +65,7 @@
 	"bs-extendedsearch-redirect-target-label": "Пренасочува кон:",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Јазик на страницата",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Јазик на страницата:",
+	"bs-extendedsearch-wikipage-title-original": "(изворен наслов: $1)",
 	"bs-extendedsearch-search-center-create-page-link": "Создади ја страницата „$1“",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Страница $1: Текст: $2",
 	"bs-extendedsearch-filter-add-button-label": "Додај филтер",
