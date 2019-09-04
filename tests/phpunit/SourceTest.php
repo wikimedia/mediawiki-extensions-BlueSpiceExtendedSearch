@@ -4,14 +4,9 @@ namespace BS\ExtendedSearch\Tests;
 
 class SourceTest extends \MediaWikiTestCase {
 	public function testBackendSources() {
-		$aBackends = \BS\ExtendedSearch\Backend::factoryAll();
-		foreach ( $aBackends as $sBackendKey => $oBackend ) {
-			$this->assertInstanceOf( '\BS\ExtendedSearch\Backend', $oBackend );
-
-			$aSources = $oBackend->getSources();
-			foreach ( $aSources as $sSourceKey => $oSource ) {
-				$this->assertInstanceOf( '\BS\ExtendedSearch\Source\Base', $oSource );
-			}
+		$backend = \BS\ExtendedSearch\Backend::instance();
+		foreach ( $backend->getSources() as $key => $source ) {
+			$this->assertInstanceOf( '\BS\ExtendedSearch\Source\Base', $source );
 		}
 	}
 }

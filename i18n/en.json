@@ -123,5 +123,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Add a filter",
 	"bs-extendedsearch-options-button-label": "Search options",
 	"bs-extendedsearch-export-button-label": "Export search results",
-	"bs-extendedsearch-search-center-result-file-usage-label": "Used on pages"
+	"bs-extendedsearch-search-center-result-file-usage-label": "Used on pages",
+	"apihelp-bs-extendedsearch-autocomplete-summary": "API endpoint for executing Autocomplete search",
+	"apihelp-bs-extendedsearch-resultrelevance-summary": "API endpoint for managing result relevance"
 }
