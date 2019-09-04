@@ -313,9 +313,12 @@
 				total_approximated: response.total_approximated,
 				mobile: bs.extendedSearch.utils.isMobile()
 			} );
+			resultPanel.on( 'resultsAdded', function( resultsAdded ) {
+				$resultCnt.trigger( 'resultsUpdated', [ resultPanel, resultsAdded ] );
+			} );
 			$resultCnt.append( resultPanel.$element );
 
-			$resultCnt.trigger( 'resultsReady' );
+			$resultCnt.trigger( 'resultsReady', [ resultPanel ] );
 			search.removeLoading();
 		}.bind( this ) );
 	}
@@ -325,7 +328,7 @@
 			return;
 		}
 
-		var pbWidget = new OO.ui.ProgressBarWidget({
+		var pbWidget = new OO.ui.ProgressBarWidget( {
 			progress: false
 		} );
 

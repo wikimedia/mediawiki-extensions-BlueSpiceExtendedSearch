@@ -70,6 +70,7 @@
 
 		this.$element = $( '<div>' )
 			.addClass( 'bs-extendedsearch-result-container' )
+			.attr( 'id', 'bs-es-result-' + this.getId() )
 			.append( this.$image, this.$dataContainer, this.$relevanceControl );
 
 		if( this.rightLinks.length > 0 ) {
@@ -102,7 +103,7 @@
 		if( this.mobile ) {
 			this.$element.addClass( 'bs-extendedsearch-result-mobile' );
 		}
-	}
+	};
 
 	OO.inheritClass( bs.extendedSearch.ResultWidget, OO.ui.Widget );
 	OO.mixinClass( bs.extendedSearch.ResultWidget, bs.extendedSearch.mixin.ResultImage );
