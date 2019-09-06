@@ -32,6 +32,7 @@
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "{{doc-apihelp-param|bs-extendedsearch-resultrelevance|relevanceData}}",
 	"apihelp-bs-extendedsearch-type-store-summary": "{{doc-apihelp-summary|bs-extendedsearch-type-store}}",
 	"bs-extendedsearch-search-input-placeholder": "Placeholder text within the search input field",
+	"bs-extendedsearch-search-input-aria-label":"Aria-label for search box for screenreader compatibility",
 	"bs-extendedsearch-source-label-wikipage": "Label for heading of a section that lists hits from the source 'wikipage'",
 	"bs-extendedsearch-source-label-specialpage": "Label for heading of a section that lists hits from the source 'specialpage'",
 	"bs-extendedsearch-source-label-repofile": "Label for heading of a section that lists hits from the source 'repofile'",
