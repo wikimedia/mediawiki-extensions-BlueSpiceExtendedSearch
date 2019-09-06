@@ -27,31 +27,64 @@ class Base implements IPostProcessor {
 		$this->base = $base;
 	}
 
+	/**
+	 * @param Result $result
+	 * @param Lookup $lookup
+	 */
 	public function process( Result &$result, Lookup $lookup ) {
 		// No need to do this in AC, since ngram is already tokenizes the term
 		if ( $this->base->getType() === Backend::QUERY_TYPE_SEARCH ) {
-			$this->percentageBoost( $result, $lookup );
-			$this->base->requestReSort();
+			if ( $this->fulltextPercentageBoost( $result, $lookup ) ) {
+				$this->base->requestReSort();
+			}
+		} elseif ( $this->base->getType() === Backend::QUERY_TYPE_AUTOCOMPLETE ) {
+			if ( $this->autocompletePercentageBoost( $result, $lookup ) ) {
+				$this->base->requestReSort();
+			}
 		}
 	}
 
-	public function percentageBoost( Result &$result, Lookup $lookup ) {
+	/**
+	 * Apply percent boost to autocomplete query
+	 *
+	 * @param Result $result
+	 * @param Lookup $lookup
+	 * @return bool false on fail/not-applicable
+	 */
+	protected function autocompletePercentageBoost( Result &$result, Lookup $lookup ) {
+		return $this->percentageBoost( $result, $lookup );
+	}
+
+	/**
+	 * Apply percent boost to fulltext query
+	 *
+	 * @param Result $result
+	 * @param Lookup $lookup
+	 * @return bool false on fail/not-applicable
+	 */
+	protected function fulltextPercentageBoost( Result &$result, Lookup $lookup ) {
 		if ( !$this->isScoreSorting( $lookup ) ) {
 			// If user sorts by something else by relevance
-			return;
+			return false;
 		}
 		if ( $this->isRegex( $lookup ) ) {
 			// We don't check match percentage on regex
-			return;
+			return false;
 		}
+		return $this->percentageBoost( $result, $lookup );
+	}
+
+	private function percentageBoost( Result &$result, Lookup $lookup ) {
 		$score = $result->getScore();
 		if ( !is_float( $score ) ) {
-			return;
+			return false;
 		}
 		$matchPercent = $this->getMatchPercent( $result, $lookup );
 		$factor = $matchPercent * 0.5;
 
 		$result->setParam( '_score', $score + ( $score * $factor ) );
+
+		return true;
 	}
 
 	private function getMatchPercent( $result, $lookup ) {
