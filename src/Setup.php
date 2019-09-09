@@ -59,7 +59,8 @@ class Setup {
 			[
 				'id' => 'bs-extendedsearch-input',
 				'type' => 'text',
-				'name' => 'raw_term'
+				'name' => 'raw_term',
+				'aria-label' => wfMessage( 'bs-extendedsearch-search-input-aria-label' )->plain()
 			]
 		);
 
@@ -71,7 +72,8 @@ class Setup {
 			[
 				'id' => 'bs-extendedsearch-mobile-input',
 				'type' => 'text',
-				'name' => 'raw_term'
+				'name' => 'raw_term',
+				'aria-label' => wfMessage( 'bs-extendedsearch-search-input-aria-label' )->plain()
 			]
 		);
 

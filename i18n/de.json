@@ -25,6 +25,7 @@
 	"apihelp-bs-extendedsearch-generic-param-sources": "Eine oder mehrere Quellen innerhalb des angegebenen Backends, getrennt durch eine Pipe. Wenn leer, werden alle verfügbaren Quellen abgefragt.",
 	"apihelp-bs-extendedsearch-query-param-search-term": "Begriff, für den die Suche ausgeführt wird.",
 	"bs-extendedsearch-search-input-placeholder": "Finde ...",
+	"bs-extendedsearch-search-input-aria-label": "Suchfeld",
 	"bs-extendedsearch-source-label-wikipage": "Wiki-Seite",
 	"bs-extendedsearch-source-label-specialpage": "Spezialseite",
 	"bs-extendedsearch-source-label-repofile": "Datei hochladen",

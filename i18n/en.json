@@ -29,6 +29,7 @@
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "JSON decoded string containing additional information of the context of the search",
 	"apihelp-bs-extendedsearch-type-store-summary": "Returns registered search types",
 	"bs-extendedsearch-search-input-placeholder": "Find ...",
+	"bs-extendedsearch-search-input-aria-label": "Search box",
 	"bs-extendedsearch-source-label-wikipage": "Wiki page",
 	"bs-extendedsearch-source-label-specialpage": "Special page",
 	"bs-extendedsearch-source-label-repofile": "Upload file",
