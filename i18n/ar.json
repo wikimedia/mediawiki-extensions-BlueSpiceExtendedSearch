@@ -32,6 +32,7 @@
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "سلسلة JSON لفك الشفرة التي تحتوي على معلومات إضافية عن سياق البحث",
 	"apihelp-bs-extendedsearch-type-store-summary": "ترجع أنواع البحث المسجلة",
 	"bs-extendedsearch-search-input-placeholder": "إيجاد...",
+	"bs-extendedsearch-search-input-aria-label": "صندوق البحث",
 	"bs-extendedsearch-source-label-wikipage": "صفحة ويكي",
 	"bs-extendedsearch-source-label-specialpage": "صفحة خاصة",
 	"bs-extendedsearch-source-label-repofile": "رفع ملف",
