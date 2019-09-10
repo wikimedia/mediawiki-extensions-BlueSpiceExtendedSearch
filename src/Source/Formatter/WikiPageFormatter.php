@@ -84,7 +84,7 @@ class WikiPageFormatter extends Base {
 
 		$pageTitle = $result['prefixed_title'];
 
-		if ( !empty( $namespaceFilters ) ) {
+		if ( empty( $namespaceFilters ) ) {
 			$pageTitle = $this->removeNamespace( $pageTitle );
 		}
 
