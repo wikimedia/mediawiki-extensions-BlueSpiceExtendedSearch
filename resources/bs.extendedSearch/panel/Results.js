@@ -44,6 +44,10 @@
 		this.$element.append( resultWidget.$element );
 	};
 
+	bs.extendedSearch.ResultsPanel.prototype.getDisplayedResults = function() {
+		return this.displayedResults;
+	};
+
 	bs.extendedSearch.ResultsPanel.prototype.addResultsInternally = function( results ) {
 		var me = this;
 
@@ -60,6 +64,8 @@
 			}
 			me.appendResult( resultWidget );
 		} );
+
+		this.emit( 'resultsAdded', results );
 	};
 
 	bs.extendedSearch.ResultsPanel.prototype.getLastShown = function() {

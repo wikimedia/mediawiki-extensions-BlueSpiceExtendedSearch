@@ -245,7 +245,6 @@
 			"messages": [
 				"bs-extendedsearch-autocomplete-result-primary-no-results-label",
 				"bs-extendedsearch-autocomplete-result-type",
-				"bs-extendedsearch-autocomplete-result-edit-label",
 				"bs-extendedsearch-autocomplete-result-top-match-label",
 				"bs-extendedsearch-autocomplete-result-secondary-results-label",
 				"bs-extendedsearch-autocomplete-result-visit-label"

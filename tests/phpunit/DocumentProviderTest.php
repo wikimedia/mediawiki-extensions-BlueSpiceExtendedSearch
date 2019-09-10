@@ -19,7 +19,9 @@ class DocumentProviderTest extends \MediaWikiTestCase {
 			new \BS\ExtendedSearch\Source\DocumentProvider\Base()
 		);
 
-		$oWikiPage = \WikiPage::factory( \Title::newMainPage() );
+		$title = \Title::makeTitle( NS_HELP, 'Dummy title' );
+		$this->insertPage( $title, 'Dummy text' );
+		$oWikiPage = \WikiPage::factory( $title );
 		$sTestUri = $oWikiPage->getTitle()->getCanonicalURL();
 		$sTestUriMD5 = md5( $sTestUri );
 
