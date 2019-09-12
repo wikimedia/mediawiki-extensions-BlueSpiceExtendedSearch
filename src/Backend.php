@@ -279,7 +279,11 @@ class Backend {
 
 		$results = $search->search( $lookup->getQueryDSL() );
 
-		$results = $this->formatQuerySuggestions( $results, $searchData );
+		$resultData = $results->getResults();
+		$postProcessor = $this->getPostProcessor( static::QUERY_TYPE_AUTOCOMPLETE );
+		$postProcessor->process( $resultData, $lookup );
+
+		$results = $this->formatQuerySuggestions( $resultData, $searchData );
 
 		return $results;
 	}
@@ -290,8 +294,8 @@ class Backend {
 		return $results;
 	}
 
-	protected function formatQuerySuggestions( $results, $searchData ) {
-		$results = array_values( $this->getQuerySuggestionList( $results ) );
+	protected function formatQuerySuggestions( $resultData, $searchData ) {
+		$results = array_values( $this->getQuerySuggestionList( $resultData ) );
 		return $this->formatSuggestions( $results, $searchData );
 	}
 
@@ -316,7 +320,7 @@ class Backend {
 
 	protected function getQuerySuggestionList( $results ) {
 		$res = [];
-		foreach ( $results->getResults() as $suggestion ) {
+		foreach ( $results as $suggestion ) {
 			$item = [
 				"_id" => $suggestion->getId(),
 				"type" => $suggestion->getType(),
