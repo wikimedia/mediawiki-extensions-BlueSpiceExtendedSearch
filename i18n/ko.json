@@ -15,6 +15,7 @@
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "쿼리의 추가 변수",
 	"apihelp-bs-extendedsearch-query-param-search-term": "검색을 수행할 대상이 되는 용어",
 	"bs-extendedsearch-search-input-placeholder": "찾기 ...",
+	"bs-extendedsearch-search-input-aria-label": "검색 상자",
 	"bs-extendedsearch-source-label-wikipage": "위키 페이지",
 	"bs-extendedsearch-source-label-specialpage": "특수 문서",
 	"bs-extendedsearch-source-label-repofile": "파일 업로드",

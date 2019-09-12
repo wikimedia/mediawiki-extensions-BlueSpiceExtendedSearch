@@ -18,6 +18,7 @@
 	"apihelp-bs-extendedsearch-triggerupdate-param-title": "Titeln på sidan som uppdateringen bör utlösa",
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Ytterligare parametrar för frågan",
 	"bs-extendedsearch-search-input-placeholder": "Hitta...",
+	"bs-extendedsearch-search-input-aria-label": "Sökfält",
 	"bs-extendedsearch-source-label-wikipage": "Wikisida",
 	"bs-extendedsearch-source-label-specialpage": "Specialsida",
 	"bs-extendedsearch-source-label-repofile": "Ladda upp fil",
