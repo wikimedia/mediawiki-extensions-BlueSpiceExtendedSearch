@@ -7,7 +7,8 @@
 			"Wladek92",
 			"Alacabe",
 			"Eihel",
-			"Urhixidur"
+			"Urhixidur",
+			"Thibaut120094"
 		]
 	},
 	"bs-extsearch-desc": "Recherche Elasticsearch d'arrière-plan",
@@ -83,7 +84,7 @@
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Espace de noms",
 	"bs-extendedsearch-search-center-filter-has-hidden": "…{{PLURAL:$1|et $1 de plus}}",
 	"bs-extendedsearch-search-center-result-exception": "La requête n’a pas pu être exécutée, veuillez modifier le terme de la recherche.",
-	"bs-extendedsearch-autocomplete-create-page-link": "Créer la page « $1 »",
+	"bs-extendedsearch-autocomplete-create-page-link": "Créer la page « $1 »",
 	"bs-extendedsearch-search-center-hitcount-replaced": "Affichage des résultats pour $1, rechercher pour $2 plutôt ({{PLURAL:$3|$3 résultat|$3 résultats}})",
 	"bs-extendedsearch-search-center-hitcount-suggest": "Voulez-vous dire $1 ({{PLURAL:$2|$2 résultat|$2 résultats}}) ?",
 	"bs-extendedsearch-loadmore-label": "Charger plus de résultats",
@@ -127,9 +128,9 @@
 	"bs-extendedsearch-search-center-result-file-usage-label": "Utilisé sur les pages",
 	"apihelp-bs-extendedsearch-autocomplete-summary": "Renvoie les résultats de complétion automatique pour la requête donnée",
 	"apihelp-bs-extendedsearch-query-param-search-data": "Chaîne JSON décodée contenant des informations supplémentaires sur le contexte de la recherche",
-	"apihelp-bs-extendedsearch-query-param-secondary-request-data": "Chaîne JSON décodée contenant les informations secondaires supplémentaires sur le contexte de la recherche",
+	"apihelp-bs-extendedsearch-query-param-secondary-request-data": "Chaîne JSON décodée contenant les informations secondaires supplémentaires du contexte de la recherche",
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "Renvoie la pertinence des résultats de recherche",
-	"apihelp-bs-extendedsearch-query-param-relevance-data": "Chaîne JSON décodée contenant des informations supplémentaires sur le contexte de la recherche",
+	"apihelp-bs-extendedsearch-query-param-relevance-data": "Chaîne JSON décodée contenant les informations supplémentaires du contexte de la recherche",
 	"apihelp-bs-extendedsearch-type-store-summary": "Renvoie les types de recherches enregistrés",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Exclure les motifs",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Motif d’expression régulière non valide",
@@ -150,7 +151,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-help": "Texte à afficher dans le champ de saisie quand rien n’a encore été saisi",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Taper pour rechercher…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Opérateur de recherche",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Ce paramètre est évalué seulement en lien avec le paramètre « catégorie ». Définir AND correspondra uniquement aux résultats qui sont dans toutes les catégories données, alors que la valeur OR correspondra aux résultats qui ont au moins une des catégories définies",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Ce paramètre est évalué seulement en lien avec le paramètre « catégorie ». Définir AND correspondra uniquement aux résultats qui sont dans toutes les catégories données, alors que la valeur OR correspondra aux résultats qui ont au moins une des catégories définies",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Type",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Liste des types de résultat valides séparés par des barres verticales (|)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Liste des types de résultat valides séparés par des barres verticales (|)",
+	"bs-extendedsearch-search-input-aria-label": "Boîte de recherche"
 }

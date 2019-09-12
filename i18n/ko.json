@@ -113,5 +113,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "분류",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "분류1|분류2|...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "검색하려면 입력하세요...",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "유형"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "유형",
+	"bs-extendedsearch-search-input-aria-label": "검색 상자"
 }

@@ -71,5 +71,7 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "Слични страници",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Не се пронајдени слични страници",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Искористена на страниците",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип",
+	"bs-extendedsearch-search-input-aria-label": "Кутија за пребарување",
+	"bs-extendedsearch-wikipage-title-original": "(изворен наслов: $1)"
 }

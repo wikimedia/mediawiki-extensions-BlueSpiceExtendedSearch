@@ -141,5 +141,12 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "搜尋操作",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "此參數僅與「category」參數結合時進行評估。設定成 AND，會儘有符合在所有指定分類的結果；當為 OR 時，結果會符合在指定分類集裡至少其中一項",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "類型",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "以豎線字元（|）分隔的有效結果類型清單"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "以豎線字元（|）分隔的有效結果類型清單",
+	"apihelp-bs-extendedsearch-autocomplete-summary": "回傳來自指定查詢的自動完成結果",
+	"apihelp-bs-extendedsearch-query-param-search-data": "JSON 解碼字串包含搜尋上下文的額外資訊",
+	"apihelp-bs-extendedsearch-query-param-secondary-request-data": "JSON 解碼字串包含搜尋上下文的額外次要資訊",
+	"apihelp-bs-extendedsearch-resultrelevance-summary": "回傳搜尋結果的關聯內容",
+	"apihelp-bs-extendedsearch-query-param-relevance-data": "JSON 解碼字串包含搜尋上下文的額外資訊",
+	"apihelp-bs-extendedsearch-type-store-summary": "回傳已註冊搜尋類型",
+	"bs-extendedsearch-search-input-aria-label": "搜尋框"
 }

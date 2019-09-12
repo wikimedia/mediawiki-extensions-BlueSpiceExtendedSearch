@@ -103,5 +103,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Marcador de posición",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Escribe para buscar…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Operador de búsqueda",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipo"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipo",
+	"apihelp-bs-extendedsearch-query-param-search-data": "Cadena codificada en JSON que contiene información adicional del contexto de la búsqueda",
+	"apihelp-bs-extendedsearch-resultrelevance-summary": "Devuelve la relevancia de los resultados de la búsqueda"
 }

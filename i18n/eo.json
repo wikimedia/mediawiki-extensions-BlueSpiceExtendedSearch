@@ -46,5 +46,14 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "Similaj paĝoj",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Nomspaco(j)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategorio(j)",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Kategorio1|Kategorio2|..."
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Kategorio1|Kategorio2|...",
+	"bs-extendedsearch-autocomplete-create-page-link": "Krei paĝon \"$1\"",
+	"bs-extendedsearch-loadmore-label": "Ŝargi pli da rezultoj",
+	"bs-extendedsearch-search-center-result-typetext-label": "Speco:",
+	"bs-extendedsearch-autocomplete-fulltext-search-button": "Serĉi plentekste",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Retadresa prefikso",
+	"bs-extendedsearch-search-center-create-page-link": "Krei paĝon \"$1\"",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Paĝo $1: Teksto: $2",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Entajpu por serĉi...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Speco"
 }

@@ -3,7 +3,8 @@
 		"authors": [
 			"Jopparn",
 			"WikiPhoenix",
-			"Mjälten"
+			"Mjälten",
+			"Josve05a"
 		]
 	},
 	"bssearchadmin": "Sök admin",
@@ -105,5 +106,13 @@
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Inga liknande sidor hittades.",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Platshållare",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Sökoperator",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Typ"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Typ",
+	"bs-extendedsearch-search-input-aria-label": "Sökfält",
+	"bs-extendedsearch-search-center-result-file-usage-label": "Används på sidor",
+	"bs-extendedsearch-tagsearch-extension-description": "Lägg till ett sökformulär till {{GENDER:ditt}} innehåll",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Skriv för att söka...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Namnrymd(er)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategori(er)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Kategori1|Kategori2|...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Skriv för att söka..."
 }

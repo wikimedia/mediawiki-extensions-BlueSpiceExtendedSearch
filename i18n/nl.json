@@ -4,7 +4,9 @@
 			"Sjoerddebruin",
 			"Goefie",
 			"Mainframe98",
-			"Elroy"
+			"Elroy",
+			"Rots61",
+			"Siebrand"
 		]
 	},
 	"bs-extendedsearch-search-input-placeholder": "Zoeken...",
@@ -75,5 +77,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Naamruimte(n)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Categorie(ën)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "Lijst met geldige categorienamen gescheiden door een sluisteken (|)",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Type"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Type",
+	"bs-extendedsearch-autocomplete-result-type": "Type: $1",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Invoeren om te zoeken..."
 }
