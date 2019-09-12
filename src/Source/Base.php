@@ -6,6 +6,7 @@ use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\IPostProcessor;
 use BS\ExtendedSearch\PostProcessor;
 use BS\ExtendedSearch\Source\LookupModifier\BaseExtensionAggregation;
+use BS\ExtendedSearch\Source\LookupModifier\BaseMTimeBoost;
 use BS\ExtendedSearch\Source\LookupModifier\BaseTagsAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\BaseAutocompleteSourceFields;
 use BS\ExtendedSearch\Source\LookupModifier\BaseSimpleQSFields;
@@ -29,11 +30,13 @@ class Base {
 			'base-userrelevance' => BaseUserRelevance::class,
 			'base-typesecuritytrimmings' => BaseTypeSecurityTrimming::class,
 			'base-titlesecuritytrimmings' => BaseTitleSecurityTrimmings::class,
+			'base-mtimeboost' => BaseMTimeBoost::class,
 		],
 		Backend::QUERY_TYPE_AUTOCOMPLETE => [
 			'base-acsourcefields' => BaseAutocompleteSourceFields::class,
 			'base-typesecuritytrimmings' => BaseTypeSecurityTrimming::class,
 			'base-titlesecuritytrimmings' => BaseTitleSecurityTrimmings::class,
+			'mtimeboost' => BaseMTimeBoost::class,
 		]
 	];
 

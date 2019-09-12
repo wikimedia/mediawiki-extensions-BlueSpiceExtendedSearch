@@ -32,7 +32,6 @@ class Base implements IPostProcessor {
 	 * @param Lookup $lookup
 	 */
 	public function process( Result &$result, Lookup $lookup ) {
-		// No need to do this in AC, since ngram is already tokenizes the term
 		if ( $this->base->getType() === Backend::QUERY_TYPE_SEARCH ) {
 			if ( $this->fulltextPercentageBoost( $result, $lookup ) ) {
 				$this->base->requestReSort();
@@ -131,6 +130,10 @@ class Base implements IPostProcessor {
 				return $qs[ 'query' ];
 			}
 			return $qs;
+		}
+		if ( $this->base->getType() === Backend::QUERY_TYPE_AUTOCOMPLETE ) {
+			return isset( $lookup['query']['bool']['must']['match']['ac_ngram']['query'] ) ?
+				$lookup['query']['bool']['must']['match']['ac_ngram']['query'] : '';
 		}
 		return '';
 	}
