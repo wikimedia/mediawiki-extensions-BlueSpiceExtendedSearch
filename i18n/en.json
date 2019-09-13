@@ -41,7 +41,7 @@
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Documents",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Pending update jobs",
 	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|hit|hits}} for $2",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "about $1 {{PLURAL:$1|hit|hits}} for $2",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "About $1 {{PLURAL:$1|hit|hits}} for $2",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Add Filter",
 	"bs-extendedsearch-search-center-filter-extension-label": "Extension",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Namespace",
