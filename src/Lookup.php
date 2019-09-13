@@ -846,11 +846,11 @@ class Lookup extends \ArrayObject {
 
 	/**
 	 *
-	 * @return bool|\BS\ExtendedSearch\Lookup
+	 * @return bool|int
 	 */
 	public function getSize() {
 		if ( isset( $this['size'] ) ) {
-			return $this['size'];
+			return (int)$this['size'];
 		}
 		return false;
 	}
