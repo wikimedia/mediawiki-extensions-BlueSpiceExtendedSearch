@@ -37,6 +37,7 @@
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "JSON解码含有检索到的上下文的附加信息的字符串",
 	"apihelp-bs-extendedsearch-type-store-summary": "返回被注册的检索类型",
 	"bs-extendedsearch-search-input-placeholder": "查找...",
+	"bs-extendedsearch-search-input-aria-label": "搜索栏",
 	"bs-extendedsearch-source-label-wikipage": "Wiki页面",
 	"bs-extendedsearch-source-label-specialpage": "特殊页面",
 	"bs-extendedsearch-source-label-repofile": "上传文件",
