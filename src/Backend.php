@@ -359,6 +359,7 @@ class Backend {
 			// because any exception message may contain
 			// full query, and therefore, sensitive data
 			$ret->exception = true;
+
 			$ret->exceptionType = get_class( $ex );
 			return $ret;
 		}
