@@ -1,17 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chrumps"
+			"Chrumps",
+			"Rail"
 		]
 	},
 	"apihelp-bs-extendedsearch-query-param-params": "Dodatkowe parametry dla zapytania",
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Dodatkowe parametry dla zapytania",
+	"bs-extendedsearch-search-input-aria-label": "Pole wyszukiwania",
 	"bs-extendedsearch-source-label-wikipage": "Strona wiki",
 	"bs-extendedsearch-source-label-specialpage": "Strona specjalna",
 	"bs-extendedsearch-source-label-user": "Użytkownik",
 	"bs-extendedsearch-admin-label-error": "Błąd",
 	"bs-extendedsearch-admin-heading-sources": "Źródła",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Dokumenty",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Około $1 {{PLURAL:$1|wynik|wyniki|wyników}} dla „$2”",
 	"bs-extendedsearch-search-center-filter-extension-label": "Rozszerzenie",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Przestrzeń nazw",
 	"bs-extendedsearch-search-center-filter-tags-label": "Znacznik",

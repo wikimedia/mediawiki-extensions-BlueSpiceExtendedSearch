@@ -41,7 +41,7 @@
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Documentos",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Tarefas de atualização pendentes",
 	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|correspondência|correspondências}} para $2",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "cerca de $1 {{PLURAL:$1|correspondência|correspondências}} para $2",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Cerca de $1 {{PLURAL:$1|correspondência|correspondências}} para $2",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Adicionar filtro",
 	"bs-extendedsearch-search-center-filter-extension-label": "Extensão",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Espaço nominal",

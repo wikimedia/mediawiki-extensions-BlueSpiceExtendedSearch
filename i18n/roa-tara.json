@@ -40,7 +40,7 @@
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Documinde",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Fatìe de aggiornamende appise",
 	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|cazzamende|cazzaminde}} pe $2",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "sus a $1 {{PLURAL:$1|corrispondenze}} pe $2",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Sus a $1 {{PLURAL:$1|corrispondenze}} pe $2",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Aggiunge 'nu filtre",
 	"bs-extendedsearch-search-center-filter-extension-label": "Estenzione",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Namespace",
