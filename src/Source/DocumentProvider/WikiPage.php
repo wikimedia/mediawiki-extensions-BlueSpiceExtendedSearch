@@ -64,8 +64,8 @@ class WikiPage extends DecoratorBase {
 		parent::__destruct();
 		$this->parserOutput = null;
 		$this->content = null;
-		if ( \MediaWiki\MediaWikiServices::getInstance()->getParser()->getOptions() instanceof \ParserOptions ) {
-			\MediaWiki\MediaWikiServices::getInstance()->getParser()->clearState();
+		if ( Services::getInstance()->getParser()->getOptions() instanceof \ParserOptions ) {
+			Services::getInstance()->getParser()->clearState();
 		}
 	}
 
@@ -151,7 +151,7 @@ class WikiPage extends DecoratorBase {
 	protected function getTags() {
 		$res = [];
 
-		$registeredTags = \MediaWiki\MediaWikiServices::getInstance()->getParser()->getTags();
+		$registeredTags = Services::getInstance()->getParser()->getTags();
 		$pageTags = $this->parseWikipageForTags();
 		foreach ( $pageTags as $pageTag ) {
 			if ( in_array( $pageTag, $registeredTags ) ) {

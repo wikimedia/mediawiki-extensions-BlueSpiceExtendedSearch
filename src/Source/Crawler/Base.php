@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\Crawler;
 
-use MediaWiki\MediaWikiServices;
+use BlueSpice\Services;
 
 class Base {
 
@@ -52,7 +52,7 @@ class Base {
 		}
 
 		$oDummyJob = new $this->sJobClass( \Title::newMainPage(), [] );
-		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
+		$dbr = Services::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$res = $dbr->selectRow(
 			'job',
 			'COUNT(*) AS count',
