@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
+use BlueSpice\Services;
+
 /**
  * Page language filter is special because not all indexed docs have
  * a page_language fields, since its not applicable to all.
@@ -16,7 +18,7 @@ class WikiPageLanguageFilter extends Base {
 
 	public function apply() {
 		$filters = $this->oLookup->getFilters();
-		$config = \MediaWiki\MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
+		$config = Services::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
 		$autoSetLangFilter = $config->get( 'ESAutoSetLangFilter' );
 		if ( !isset( $filters['terms']['page_language'] ) && !$autoSetLangFilter ) {
 			return;

@@ -2,13 +2,13 @@
 
 namespace BS\ExtendedSearch\Source\Crawler;
 
-use MediaWiki\MediaWikiServices;
+use BlueSpice\Services;
 
 class WikiPage extends Base {
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateWikiPage';
 
 	public function crawl() {
-		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
+		$dbr = Services::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$res = $dbr->select(
 			[ 'page', 'page_props' ],
 			[ 'page_id', "GROUP_CONCAT( pp_propname SEPARATOR '|' ) as prop_names" ],
