@@ -10,7 +10,7 @@
 	"bs-extendedsearch-source-label-user": "Utente",
 	"bs-extendedsearch-admin-label-error": "Errore",
 	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|corrispondenza|corrispondenze}} per $2",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "circa $1 {{PLURAL:$1|corrispondenza|corrispondenze}} per $2",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Circa $1 {{PLURAL:$1|corrispondenza|corrispondenze}} per $2",
 	"bs-extendedsearch-search-center-filter-extension-label": "Estensione",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Namespace",
 	"bs-extendedsearch-search-center-filter-tags-label": "Etichetta",
