@@ -146,5 +146,6 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "返回相关的检索结果",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "JSON解码含有检索到的上下文的附加信息的字符串",
 	"apihelp-bs-extendedsearch-type-store-summary": "返回被注册的检索类型",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "输入什么就能搜索了……"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "输入什么就能搜索了……",
+	"bs-extendedsearch-search-input-aria-label": "搜索栏"
 }

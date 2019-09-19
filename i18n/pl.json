@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chrumps"
+			"Chrumps",
+			"Rail"
 		]
 	},
 	"apihelp-bs-extendedsearch-query-param-params": "Dodatkowe parametry dla zapytania",
@@ -62,5 +63,7 @@
 	"bs-extendedsearch-wikipage-title-original": "(tytuł oryginalny: $1)",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Strona $1: Tekst: $2",
 	"bs-extendedsearch-filter-add-button-label": "Dodaj filtr",
-	"bs-extendedsearch-options-button-label": "Opcje wyszukiwania"
+	"bs-extendedsearch-options-button-label": "Opcje wyszukiwania",
+	"bs-extendedsearch-search-input-aria-label": "Pole wyszukiwania",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Około $1 {{PLURAL:$1|wynik|wyniki|wyników}} dla „$2”"
 }

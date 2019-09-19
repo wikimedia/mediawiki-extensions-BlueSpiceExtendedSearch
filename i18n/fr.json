@@ -8,7 +8,8 @@
 			"Alacabe",
 			"Eihel",
 			"Urhixidur",
-			"Thibaut120094"
+			"Thibaut120094",
+			"Crochet.david"
 		]
 	},
 	"bs-extsearch-desc": "Recherche Elasticsearch d'arrière-plan",
@@ -40,7 +41,7 @@
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Documents",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Tâches de mise à jour en attente",
 	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|résultat|résultats}} pour $2",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "environ $1 {{PLURAL:$1|résultat|résultats}} pour $2",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Environ $1 {{PLURAL:$1|résultat|résultats}} pour $2",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Ajouter un filtre",
 	"bs-extendedsearch-search-center-filter-extension-label": "Extension",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Espace de noms",
