@@ -10,6 +10,7 @@
 		]
 	},
 	"bs-extendedsearch-search-input-placeholder": "Zoeken...",
+	"bs-extendedsearch-search-input-aria-label": "Zoekvak",
 	"bs-extendedsearch-source-label-wikipage": "Wikipagina",
 	"bs-extendedsearch-source-label-specialpage": "Bijzondere bladzijde",
 	"bs-extendedsearch-source-label-repofile": "Bestand uploaden",

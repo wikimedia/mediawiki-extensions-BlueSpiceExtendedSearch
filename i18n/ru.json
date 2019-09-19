@@ -60,8 +60,11 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Вики-страница",
 	"bs-extendedsearch-source-type-repofile-label": "Локальный файл",
 	"bs-extendedsearch-source-type-specialpage-label": "Служебная страница",
+	"bs-extendedsearch-result-relevance-relevant": "Этот результат важен для меня",
+	"bs-extendedsearch-result-relevance-not-relevant": "Этот результат не важен для меня",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "Полнотекстовый поиск",
 	"prefs-extendedsearch": "Расширенный поиск",
+	"bs-extendedsearch-user-preferred-namespaces": "Предпочитаемые пространство имён",
 	"bs-extendedsearch-pref-external-file-paths": "Внешние пути файлов",
 	"bs-extendedsearch-pref-external-file-paths-path": "Физический путь",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL-префикс",
@@ -78,5 +81,10 @@
 	"bs-extendedsearch-filter-add-button-label": "Добавить фильтр",
 	"bs-extendedsearch-options-button-label": "Настройки поиска",
 	"bs-extendedsearch-export-button-label": "Экспортировать результаты поиска",
+	"bs-extendedsearch-flyout-similar-pages-title": "Похожие страницы",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Похожие страницы не найдены",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Пространства имён",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Категрии",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Категория1|Категория2|…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип"
 }

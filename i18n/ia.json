@@ -5,7 +5,7 @@
 		]
 	},
 	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|visita|visitas}} pro $2",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "circa $1 {{PLURAL:$1|visita|visitas}} pro $2",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Circa $1 {{PLURAL:$1|visita|visitas}} pro $2",
 	"prefs-extendedsearch": "Recerca extendite",
 	"bs-extendedsearch-redirect-target-label": "Redirige verso:",
 	"bs-extendedsearch-tagsearch-extension-description": "Adder un formulario de recerca a {{GENDER:tu}} contento",
