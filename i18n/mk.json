@@ -54,6 +54,7 @@
 	"bs-extendedsearch-autocomplete-create-page-link": "Создади ја страницата „$1“",
 	"bs-extendedsearch-search-center-result-typetext-label": "Тип:",
 	"bs-extendedsearch-source-type-wikipage-label": "Викистраница",
+	"bs-extendedsearch-source-type-repofile-label": "Локална податотека",
 	"bs-extendedsearch-source-type-specialpage-label": "Службена страница",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "По цел текст",
 	"prefs-extendedsearch": "Напредно пребарување",
@@ -73,5 +74,9 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "Слични страници",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Не се пронајдени слични страници",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Искористена на страниците",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Именски простор(и)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "Именски простор1|Именски простор2|...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Категорија1|Категорија2|...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Оператор на пребарување",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип"
 }

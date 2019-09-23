@@ -15,6 +15,7 @@
 	"bs-extendedsearch-admin-heading-sources": "Źródła",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Dokumenty",
 	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Około $1 {{PLURAL:$1|wynik|wyniki|wyników}} dla „$2”",
+	"bs-extendedsearch-search-center-addfilter-dialog-title": "Dodaj filtr",
 	"bs-extendedsearch-search-center-filter-extension-label": "Rozszerzenie",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Przestrzeń nazw",
 	"bs-extendedsearch-search-center-filter-tags-label": "Znacznik",
@@ -37,6 +38,7 @@
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Anuluj",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Zastosuj",
 	"bs-extendedsearch-search-center-options-page-size": "Rozmiar strony",
+	"bs-extendedsearch-search-center-options-sort-by": "Sortuj według",
 	"bs-extendedsearch-search-center-options-sort-order": "Kolejność sortowania",
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Brak poprawnych dopasowań dla Twojego zapytania",
 	"bs-extendedsearch-autocomplete-result-type": "Typ: $1",
@@ -65,5 +67,7 @@
 	"bs-extendedsearch-wikipage-title-original": "(tytuł oryginalny: $1)",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Strona $1: Tekst: $2",
 	"bs-extendedsearch-filter-add-button-label": "Dodaj filtr",
-	"bs-extendedsearch-options-button-label": "Opcje wyszukiwania"
+	"bs-extendedsearch-options-button-label": "Opcje wyszukiwania",
+	"bs-extendedsearch-flyout-similar-pages-title": "Podobne strony",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Kategoria1|Kategoria2|..."
 }

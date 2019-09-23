@@ -4,7 +4,8 @@
 			"Okras",
 			"Vlad5250",
 			"Romanko Mikhail",
-			"1233qwer1234qwer4"
+			"1233qwer1234qwer4",
+			"Katunchik"
 		]
 	},
 	"bssearchadmin": "Поиск администратора",
@@ -12,6 +13,7 @@
 	"apihelp-bs-extendedsearch-query-description": "Поиск по индексу",
 	"apihelp-bs-extendedsearch-query-summary": "Поиск по индексу",
 	"bs-extendedsearch-search-input-placeholder": "Найти ...",
+	"bs-extendedsearch-search-input-aria-label": "Строка поиска",
 	"bs-extendedsearch-source-label-wikipage": "Вики-страница",
 	"bs-extendedsearch-source-label-specialpage": "Служебная страница",
 	"bs-extendedsearch-source-label-repofile": "Загрузить файл",
@@ -19,6 +21,7 @@
 	"bs-extendedsearch-admin-label-error": "Ошибка",
 	"bs-extendedsearch-admin-heading-sources": "Источники",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Документы",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Примерно $1 {{PLURAL:$1|результат|результатов}} для $2",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Добавить фильтр",
 	"bs-extendedsearch-search-center-filter-extension-label": "Расширение",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Пространство имён",
