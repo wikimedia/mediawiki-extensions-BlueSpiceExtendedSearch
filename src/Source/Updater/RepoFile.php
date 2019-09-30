@@ -2,6 +2,13 @@
 
 namespace BS\ExtendedSearch\Source\Updater;
 
+use File;
+use Article;
+use Title;
+use User;
+use BS\ExtendedSearch\Source\Job\UpdateRepoFile;
+use JobQueueGroup;
+
 class RepoFile extends Base {
 	public function init( &$aHooks ) {
 		$aHooks['FileUpload'][] = [ $this, 'onFileUpload' ];
@@ -9,6 +16,7 @@ class RepoFile extends Base {
 		$aHooks['FileUndeleteComplete'][] = [ $this, 'onFileUndeleteComplete' ];
 		$aHooks['TitleMove'][] = [ $this, 'onTitleMove' ];
 		$aHooks['TitleMoveComplete'][] = [ $this, 'onTitleMoveComplete' ];
+		$aHooks['WebDAVPublishToWikiDone'][] = [ $this, 'onWebDAVPublishToWikiDone' ];
 
 		parent::init( $aHooks );
 	}
@@ -21,8 +29,8 @@ class RepoFile extends Base {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onFileUpload( $oFile, $bReupload = false, $bHasDescription = false ) {
-		\JobQueueGroup::singleton()->push(
-			new \BS\ExtendedSearch\Source\Job\UpdateRepoFile( $oFile->getTitle() )
+		JobQueueGroup::singleton()->push(
+			new UpdateRepoFile( $oFile->getTitle() )
 		);
 		return true;
 	}
@@ -37,8 +45,8 @@ class RepoFile extends Base {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onFileDeleteComplete( $oFile, $oOldimage, $oArticle, $oUser, $sReason ) {
-		\JobQueueGroup::singleton()->push(
-			new \BS\ExtendedSearch\Source\Job\UpdateRepoFile( $oFile->getTitle(), [ 'file' => $oFile ] )
+		JobQueueGroup::singleton()->push(
+			new UpdateRepoFile( $oFile->getTitle(), [ 'file' => $oFile ] )
 		);
 		return true;
 	}
@@ -52,8 +60,8 @@ class RepoFile extends Base {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onFileUndeleteComplete( $oTitle, $aFileVersions, $oUser, $sReason ) {
-		\JobQueueGroup::singleton()->push(
-			new \BS\ExtendedSearch\Source\Job\UpdateRepoFile( $oTitle )
+		JobQueueGroup::singleton()->push(
+			new \UpdateRepoFile( $oTitle )
 		);
 		return true;
 	}
@@ -89,19 +97,32 @@ class RepoFile extends Base {
 		}
 
 		$oldFile = new \LocalFile( $oTitle, \RepoGroup::singleton()->getLocalRepo() );
-		\JobQueueGroup::singleton()->push(
+		JobQueueGroup::singleton()->push(
 			new \BS\ExtendedSearch\Source\Job\UpdateRepoFile(
 				$oTitle,
 				[
 					'file' => $this->titleMoveOrigFile,
-					'action' => \BS\ExtendedSearch\Source\Job\UpdateRepoFile::ACTION_DELETE
+					'action' => UpdateRepoFile::ACTION_DELETE
 				]
 			)
 		);
 
-		\JobQueueGroup::singleton()->push(
-			new \BS\ExtendedSearch\Source\Job\UpdateRepoFile( $oNewtitle )
+		JobQueueGroup::singleton()->push(
+			new UpdateRepoFile( $oNewtitle )
 		);
 		return true;
+	}
+
+	/**
+	 * @param File $repoFile
+	 * @param string $sourceFilePath
+	 */
+	public function onWebDAVPublishToWikiDone( $repoFile, $sourceFilePath ) {
+		if ( $repoFile->getTitle() instanceof Title ) {
+			JobQueueGroup::singleton()->push(
+				new UpdateRepoFile( $repoFile->getTitle() )
+			);
+		}
+
 	}
 }
