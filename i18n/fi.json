@@ -2,9 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Nike",
-			"Pyscowicz"
+			"Pyscowicz",
+			"Silvonen"
 		]
 	},
+	"bs-extendedsearch-source-label-user": "Käyttäjä",
+	"bs-extendedsearch-admin-label-error": "Virhe",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Nimiavaruus",
 	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Nimiavaruus:",
 	"bs-extendedsearch-search-center-result-namespace_text-label": "Nimiavaruus:",
@@ -13,6 +16,11 @@
 	"bs-extendedsearch-search-center-result-ctime-label": "Luotu:",
 	"bs-extendedsearch-search-center-result-mtime-label": "Muokattu:",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Peruuta",
+	"bs-extendedsearch-searchcenter-filter-or-label": "tai",
+	"bs-extendedsearch-searchcenter-filter-and-label": "ja",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "Nimi",
+	"bs-extendedsearch-searchcenter-sort-field-size": "Koko",
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nimiavaruus",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Sivun kieli",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Sivun kieli:",
 	"bs-extendedsearch-wikipage-title-original": "(alkuperäinen sivunimi: $1)",
