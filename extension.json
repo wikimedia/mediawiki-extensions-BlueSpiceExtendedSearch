@@ -99,8 +99,15 @@
 			},
 			"TagRegistry": {
 				"bs-tagsearch": "BS\\ExtendedSearch\\Tag\\TagSearch"
+			},
+			"EntityRegistry": {
+				"searchhistory": "\\BS\\ExtendedSearch\\EntityConfig\\Collection\\SearchHistory"
 			}
-
+		},
+		"BlueSpiceExtendedStatistics": {
+			"SnapshotDataCollectorRegistry": {
+				"searchhistory": "\\BS\\ExtendedSearch\\DataCollector\\StoreSourced\\SearchHistory::factory"
+			}
 		},
 		"BlueSpiceVisualEditorConnector": {
 			"TagDefinitions": [
@@ -458,6 +465,13 @@
 			],
 			"dependencies": [
 				"ext.visualEditor.mwcore"
+			]
+		},
+		"ext.bluespice.extendedsearch.collection.searchhistory": {
+			"messages": [
+				"bs-extendedsearch-collection-type-searchhistory",
+				"bs-extendedsearch-collection-var-searchterm",
+				"bs-extendedsearch-collection-var-numbersearched"
 			]
 		}
 	},
