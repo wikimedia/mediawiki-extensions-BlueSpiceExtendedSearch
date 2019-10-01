@@ -153,5 +153,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Field label for operator field",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Help text for field \"operator\"",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Field label for \"type\" field",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Help text for field \"type\""
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Help text for field \"type\"",
+	"bs-extendedsearch-collection-type-searchhistory": "Label for source type \"searchhistory\" in entry field \"type\"\n{{Identical|Search history}}",
+	"bs-extendedsearch-collection-var-searchterm": "Label for entry field \"searchterm\"\n{{Identical|Term}}",
+	"bs-extendedsearch-collection-var-numbersearched": "Label for entry field \"numbersearched\"\n{{Identical|Searches}}"
 }

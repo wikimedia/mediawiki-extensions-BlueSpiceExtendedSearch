@@ -150,5 +150,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Search operator",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "This parameter is evaluated only in combination with \"category\" parameter. Setting AND will match only results that are in all of the given categories, while OR value will match results that have at least one of the given categories set",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Type",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "List of valid result types separated by pipe (|)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "List of valid result types separated by pipe (|)",
+	"bs-extendedsearch-collection-type-searchhistory": "Search history",
+	"bs-extendedsearch-collection-var-searchterm": "Term",
+	"bs-extendedsearch-collection-var-numbersearched": "Searches"
 }
