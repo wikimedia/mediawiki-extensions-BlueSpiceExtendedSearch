@@ -100,8 +100,8 @@ class Setup {
 	 */
 	public static function onRegistration() {
 		$GLOBALS['wgParamDefinitions']['searchresulttypelist'] = [
-			'definition' => 'BlueSpice\\ExtendedSearch\\Param\\Definition\\SearchResultTypeListParam',
-			'string-parser' => 'BlueSpice\\ExtendedSearch\\Param\\Parser\\SearchResultTypeParser'
+			'definition' => "\\BS\\ExtendedSearch\\Param\\Definition\\SearchResultTypeListParam",
+			'string-parser' => "\\BS\\ExtendedSearch\\Param\\Parser\\SearchResultTypeParser"
 		];
 	}
 }
