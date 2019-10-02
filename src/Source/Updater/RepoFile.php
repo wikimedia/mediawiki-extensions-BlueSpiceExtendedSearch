@@ -123,6 +123,5 @@ class RepoFile extends Base {
 				new UpdateRepoFile( $repoFile->getTitle() )
 			);
 		}
-
 	}
 }
