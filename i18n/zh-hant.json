@@ -149,5 +149,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "搜尋操作",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "此參數僅與「category」參數結合時進行評估。設定成 AND，會儘有符合在所有指定分類的結果；當為 OR 時，結果會符合在指定分類集裡至少其中一項",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "類型",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "以豎線字元（|）分隔的有效結果類型清單"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "以豎線字元（|）分隔的有效結果類型清單",
+	"bs-extendedsearch-collection-type-searchhistory": "搜尋歷史",
+	"bs-extendedsearch-collection-var-searchterm": "項",
+	"bs-extendedsearch-collection-var-numbersearched": "搜尋"
 }
