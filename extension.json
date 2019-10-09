@@ -101,7 +101,7 @@
 				"bs-tagsearch": "BS\\ExtendedSearch\\Tag\\TagSearch"
 			},
 			"EntityRegistry": {
-				"searchhistory": "\\BS\\ExtendedSearch\\EntityConfig\\Collection\\SearchHistory"
+				"searchhistory": "\\BS\\ExtendedSearch\\EntityConfig\\Collection\\SearchHistory::factory"
 			}
 		},
 		"BlueSpiceExtendedStatistics": {
