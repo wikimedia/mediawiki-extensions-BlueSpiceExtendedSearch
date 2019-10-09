@@ -1026,4 +1026,31 @@ class LookupTest extends \MediaWikiTestCase {
 
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
+
+	public function testSetMLTQuery() {
+		$oLookup = new \BS\ExtendedSearch\Lookup();
+
+		$oLookup->setMLTQuery( 'test0000', [ 'someField' ], [
+			"min_term_freq" => 1,
+			"max_query_terms" => 10,
+			"dummy_option" => true
+		], 'dummyIndex' );
+
+		$aExpected = [
+			"query" => [
+				"more_like_this" => [
+					"fields" => [ "someField" ],
+					"like" => [
+						"_id" => "test0000",
+						"_index" => "dummyIndex"
+					],
+					"min_term_freq" => 1,
+					"max_query_terms" => 10,
+					"dummy_option" => true
+				]
+			]
+		];
+
+		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
+	}
 }

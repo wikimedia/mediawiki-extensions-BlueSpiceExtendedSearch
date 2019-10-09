@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chrumps"
+			"Chrumps",
+			"Rail"
 		]
 	},
 	"apihelp-bs-extendedsearch-query-param-params": "Dodatkowe parametry dla zapytania",
@@ -28,6 +29,8 @@
 	"bs-extendedsearch-search-center-result-author-label": "Autor:",
 	"bs-extendedsearch-search-center-result-sections-label": "Sekcje:",
 	"bs-extendedsearch-search-center-pagesize-dialog-title": "Wyników na stronie",
+	"bs-extendedsearch-search-center-sort-order-asc": "Rosnąco",
+	"bs-extendedsearch-search-center-sort-order-desc": "Malejąco",
 	"bs-extendedsearch-search-center-options-dialog-title": "Opcje wyszukiwania",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Anuluj",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Zastosuj",
@@ -58,5 +61,9 @@
 	"bs-extendedsearch-search-center-filter-page_language-label": "Język strony",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Język strony:",
 	"bs-extendedsearch-wikipage-title-original": "(tytuł oryginalny: $1)",
-	"bs-extendedsearch-privacy-transparency-content-highlight": "Strona $1: Tekst: $2"
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Strona $1: Tekst: $2",
+	"bs-extendedsearch-filter-add-button-label": "Dodaj filtr",
+	"bs-extendedsearch-options-button-label": "Opcje wyszukiwania",
+	"bs-extendedsearch-search-input-aria-label": "Pole wyszukiwania",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Około $1 {{PLURAL:$1|wynik|wyniki|wyników}} dla „$2”"
 }

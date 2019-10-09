@@ -32,12 +32,9 @@ div#bs-es-alt-search {
 div.bs-es-tools {
 	height: auto;
 	min-height: 43px;
-	border-top: 2px solid @tools-base-color;
 	border-bottom: 2px solid @tools-base-color;
 	clear: both;
 	position: relative;
-	padding-left:4px;
-	padding-right:4px;
 	.bs-extendedsearch-search-center-hitcount {
 		margin-top: 5px;
 		font-size: 1.4em;
@@ -45,11 +42,13 @@ div.bs-es-tools {
 		width: 70%;
 	}
 	div#bs-es-tools-tools {
-		padding: 5px;
+		padding: 5px 0px 5px 5px;
 		height: 43px;
-		display: inline-block;
+		position: absolute;
+		bottom: 0;
+		right: 0;
 		min-width: 200px;
-		width: 30%;
+		width: 20%;
 		text-align: right;
 		.tools-button {
 			background: @tools-base-color !important;
@@ -94,22 +93,20 @@ div.bs-es-tools {
 	}
 
 	div#bs-es-tools-filters {
-		padding: 5px;
-		padding-bottom: 0px;
-		width: 100%;
+		padding: 5px 0px 5px 0px;
+		width: 80%;
+		min-height: 43px;
 		.bs-extendedsearch-filter-button-widget {
-			margin-right: 10px;
-			margin-bottom: 5px;
+			margin: 4px 10px 4px 0;
 			.bs-extendedsearch-filter-button-button {
 				border-radius: 5px 0 0 5px !important;
 				font-weight: normal;
 				background-color: @tools-base-color;
 				color: @tools-text-color;
-				padding: 0px 10px 0px 10px;
+				padding: 3px 10px 0px 10px;
 				height: 24px;
 				border: none;
 				span.oo-ui-labelElement-label {
-					padding-top: 2px;
 					vertical-align: middle;
 					color: @tools-text-color;
 				}
@@ -127,6 +124,7 @@ div.bs-es-tools {
 					right: 8px;
 					background: none;
 					&:before {
+						line-height: 23px;
 						content: '\ea0f';
 						font-family: icomoon !important;
 						color: @tools-text-color;
@@ -176,22 +174,27 @@ div.bs-es-tools {
 			text-align: center;
 		}
 		div#bs-es-tools-tools {
+			position: relative;
+			display: inline-block;
 			padding: 5px;
 			height: 43px;
 			display: block;
 			width: 100%;
 			text-align: center;
 		}
-		.bs-extendedsearch-filter-button-widget {
+		div#bs-es-tools-filters {
 			width: 100%;
-			display: table;
-			.bs-extendedsearch-filter-button-button {
-				display: table-cell;
-				text-align: left;
-				width: 90%;
-			}
-			.bs-extendedsearch-filter-button-remove {
-				display: table-cell;
+			.bs-extendedsearch-filter-button-widget {
+				width: 100%;
+				display: table;
+				.bs-extendedsearch-filter-button-button {
+					display: table-cell;
+					text-align: left;
+					width: 100%;
+				}
+				.bs-extendedsearch-filter-button-remove {
+					display: table-cell;
+				}
 			}
 		}
 	}
@@ -317,7 +320,9 @@ div.bs-es-tools {
 	}
 	.bs-extendedsearch-result-links-container {
 		width: 180px;
-		overflow-x: hidden;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
 		margin-left: 20px;
 		.bs-extendedsearch-result-links-inner,
 		.bs-extendedsearch-result-redirects-container{
@@ -334,7 +339,7 @@ div.bs-es-tools {
 	}
 	.bs-extendedsearch-result-relevance-cnt {
 		position:absolute;
-		right: 40px;
+		right: 25px;
 	}
 }
 

@@ -11,13 +11,16 @@
 	"namemsg": "bs-extsearch-extensionname",
 	"type": "bluespice",
 	"requires": {
-		"MediaWiki": ">= 1.29.0"
+		"MediaWiki": "~1.31",
+		"extensions": {
+			"BlueSpiceFoundation": "~3.1"
+		}
 	},
 	"attributes": {
 		"BlueSpiceFoundation": {
 			"Extensions": {
 				"BlueSpiceExtendedSearch": {
-					"className": "BS\\ExtendedSearch\\Setup",
+					"className": "BS\\ExtendedSearch\\Extension",
 					"configDefinitions": {
 						"ESExternalFilePaths": "BS\\ExtendedSearch\\ConfigDefinition\\ExternalFilePaths::getInstance",
 						"ESCompactAutocomplete": "BS\\ExtendedSearch\\ConfigDefinition\\CompactAutocomplete::getInstance",
@@ -92,6 +95,23 @@
 						"reviewer",
 						"structuremanager"
 					]
+				}
+			},
+			"TagRegistry": {
+				"bs-tagsearch": "BS\\ExtendedSearch\\Tag\\TagSearch"
+			}
+
+		},
+		"BlueSpiceVisualEditorConnector": {
+			"TagDefinitions": [
+				"ext.bluespice.tagsearch.visualEditor"
+			]
+		},
+		"BlueSpiceArticleInfo": {
+			"FlyoutModules": {
+				"similar-pages": {
+					"module": "ext.blueSpiceExtendedSearch.similarpages.flyout",
+					"make-items-callback": "bs.extendedsearch.flyout.makeSimilarPages"
 				}
 			}
 		},
@@ -179,6 +199,11 @@
 			"Handlers": [
 				"\\BS\\ExtendedSearch\\Privacy\\Handler"
 			]
+		},
+		"VisualEditor": {
+			"PluginModules": [
+				"ext.bluespice.extendedsearch.tagsearch.visualEditor"
+			]
 		}
 	},
 	"MessagesDirs": {
@@ -199,12 +224,16 @@
 	"Hooks": {
 		"ResourceLoaderTestModules": "BS\\ExtendedSearch\\Setup::onResourceLoaderTestModules",
 		"SkinTemplateOutputPageBeforeExec": "BS\\ExtendedSearch\\Setup::onSkinTemplateOutputPageBeforeExec",
-		"BeforePageDisplay": "BS\\ExtendedSearch\\Hook\\BeforePageDisplay\\AddResources::callback",
+		"BeforePageDisplay": [
+			"BS\\ExtendedSearch\\Hook\\BeforePageDisplay\\AddResources::callback",
+			"BS\\ExtendedSearch\\Hook\\BeforePageDisplay\\AddSimilarPages::callback"
+		],
 		"LoadExtensionSchemaUpdates":  [
 			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddRelevanceTable::callback",
 			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddHistoryTable::callback"
 		],
-		"GetPreferences": "BS\\ExtendedSearch\\Hook\\GetPreferences\\AddUserPreferredNamespaces::callback"
+		"GetPreferences": "BS\\ExtendedSearch\\Hook\\GetPreferences\\AddUserPreferredNamespaces::callback",
+		"BSInsertMagicAjaxGetData": "BS\\ExtendedSearch\\Hook\\BSInsertMagicAjaxGetData\\AddTagSearch::callback"
 	},
 	"SpecialPages": {
 		"BSSearchCenter": "BS\\ExtendedSearch\\MediaWiki\\Specials\\SearchCenter",
@@ -215,7 +244,8 @@
 		"bs-extendedsearch-stats": "BS\\ExtendedSearch\\MediaWiki\\Api\\Stats",
 		"bs-extendedsearch-triggerupdate": "BS\\ExtendedSearch\\MediaWiki\\Api\\TriggerUpdate",
 		"bs-extendedsearch-autocomplete": "BS\\ExtendedSearch\\MediaWiki\\Api\\Autocomplete",
-		"bs-extendedsearch-resultrelevance": "BS\\ExtendedSearch\\MediaWiki\\Api\\ResultRelevance"
+		"bs-extendedsearch-resultrelevance": "BS\\ExtendedSearch\\MediaWiki\\Api\\ResultRelevance",
+		"bs-extendedsearch-type-store": "BS\\ExtendedSearch\\MediaWiki\\Api\\TypeStore"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
@@ -246,8 +276,7 @@
 				"bs-extendedsearch-autocomplete-result-primary-no-results-label",
 				"bs-extendedsearch-autocomplete-result-type",
 				"bs-extendedsearch-autocomplete-result-top-match-label",
-				"bs-extendedsearch-autocomplete-result-secondary-results-label",
-				"bs-extendedsearch-autocomplete-result-visit-label"
+				"bs-extendedsearch-autocomplete-result-secondary-results-label"
 			],
 			"dependencies": [
 				"oojs-ui-core",
@@ -263,6 +292,7 @@
 			]
 		},
 		"ext.blueSpiceExtendedSearch.Autocomplete": {
+			"class": "\\BlueSpice\\ResourceModule\\LessVars",
 			"scripts": [
 				"bs.extendedSearch/mixin/Autocomplete.js",
 				"bs.extendedSearch/widget/autocomplete/Popup.js",
@@ -366,7 +396,6 @@
 				"bs-extendedsearch-search-center-filter-page_language-with-values-label",
 				"bs-extendedsearch-wikipage-title-original",
 				"bs-extendedsearch-search-center-create-page-link",
-				"bs-extendedsearch-search-center-create-page-link",
 				"bs-extendedsearch-filter-add-button-label",
 				"bs-extendedsearch-options-button-label",
 				"bs-extendedsearch-export-button-label",
@@ -380,6 +409,55 @@
 		"ext.blueSpiceExtendedSearch.SearchAdmin.styles": {
 			"styles": [
 				"ext.blueSpiceExtendedSearch.SearchAdmin.less"
+			]
+		},
+		"ext.blueSpiceExtendedSearch.similarpages.flyout": {
+			"scripts": [
+				"ext.blueSpiceExtendedSearch.similarpages.flyout.js"
+			],
+			"messages": [
+				"bs-extendedsearch-flyout-similar-pages-title",
+				"bs-extendedsearch-flyout-similar-pages-emptytext"
+			],
+			"dependencies": [
+				"ext.bluespice.extjs"
+			]
+		},
+		"ext.blueSpiceExtendedSearch.TagSearch.styles": {
+			"styles": [
+				"ext.blueSpiceExtendedSearch.TagSearch.less"
+			]
+		},
+		"ext.blueSpiceExtendedSearch.TagSearch": {
+			"scripts": "ext.blueSpiceExtendedSearch.TagSearch.js",
+			"dependencies": [
+				"ext.blueSpiceExtendedSearch.Autocomplete"
+			]
+		},
+		"ext.bluespice.tagsearch.visualEditor": {
+			"scripts": [
+				"bs.extnddsrc/ui/widget/SearchTypeInputWidget.js",
+				"bs.extnddsrc/util/tag/TagSearchDefinition.js"
+			],
+			"messages": [
+				"bs-extendedsearch-tagsearch-ve-tagsearch-title",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-desc",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-help",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type",
+				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help"
+			],
+			"dependencies": [
+				"ext.visualEditor.mwcore"
 			]
 		}
 	},
@@ -448,8 +526,13 @@
 				}
 			},
 			"public": false
+		},
+		"TagSearchSearchFieldTemplatePath": {
+			"value": "/resources/templates",
+			"path": true
 		}
 	},
+	"callback": "\\BS\\ExtendedSearch\\Setup::onRegistration",
 	"JobClasses": {
 		"updateWikiPageIndex": "BS\\ExtendedSearch\\Source\\Job\\UpdateWikiPage",
 		"updateSpecialPageIndex": "BS\\ExtendedSearch\\Source\\Job\\UpdateSpecialPage",

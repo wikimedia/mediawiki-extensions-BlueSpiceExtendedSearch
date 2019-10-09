@@ -3,7 +3,8 @@
 		"authors": [
 			"Robert Vogel <vogel@hallowelt.com>",
 			"Robby",
-			"Umherirrender"
+			"Umherirrender",
+			"Zoranzoki21"
 		]
 	},
 	"bs-extsearch-extensionname": "{{name}}",
@@ -24,7 +25,14 @@
 	"apihelp-bs-extendedsearch-generic-param-backend": "{{doc-apihelp-param|bs-extendedsearch-generic|backend}}",
 	"apihelp-bs-extendedsearch-generic-param-sources": "{{doc-apihelp-param|bs-extendedsearch-generic|sources}}",
 	"apihelp-bs-extendedsearch-query-param-search-term": "{{doc-apihelp-param|bs-extendedsearch-query|search-term}}",
+	"apihelp-bs-extendedsearch-autocomplete-summary": "{{doc-apihelp-summary|bs-extendedsearch-autocomplete}}",
+	"apihelp-bs-extendedsearch-query-param-search-data": "{{doc-apihelp-param|bs-extendedsearch-autocomplete|searchData}}",
+	"apihelp-bs-extendedsearch-query-param-secondary-request-data": "{{doc-apihelp-param|bs-extendedsearch-autocomplete|secondaryRequestData }}",
+	"apihelp-bs-extendedsearch-resultrelevance-summary": "{{doc-apihelp-summary|bs-extendedsearch-resultrelevance}}",
+	"apihelp-bs-extendedsearch-query-param-relevance-data": "{{doc-apihelp-param|bs-extendedsearch-resultrelevance|relevanceData}}",
+	"apihelp-bs-extendedsearch-type-store-summary": "{{doc-apihelp-summary|bs-extendedsearch-type-store}}",
 	"bs-extendedsearch-search-input-placeholder": "Placeholder text within the search input field",
+	"bs-extendedsearch-search-input-aria-label": "Aria-label for search box for screenreader compatibility",
 	"bs-extendedsearch-source-label-wikipage": "Label for heading of a section that lists hits from the source 'wikipage'",
 	"bs-extendedsearch-source-label-specialpage": "Label for heading of a section that lists hits from the source 'specialpage'",
 	"bs-extendedsearch-source-label-repofile": "Label for heading of a section that lists hits from the source 'repofile'",
@@ -125,7 +133,25 @@
 	"bs-extendedsearch-filter-add-button-label": "Tooltip text for a button that add a new filter to the search",
 	"bs-extendedsearch-options-button-label": "Tooltip text for a button that opens search options dialog",
 	"bs-extendedsearch-export-button-label": "Tooltip text for a button that opens a dialog to export the search results",
-	"bs-extendedsearch-search-center-result-file-usage-label": " Only for pages in NS_FILE. Label for the field in the result showing links to pages that use this file.",
-	"apihelp-bs-extendedsearch-autocomplete-summary": "{{doc-apihelp-summary|bs-extendedsearch-autocomplete}}",
-	"apihelp-bs-extendedsearch-resultrelevance-summary": "{{doc-apihelp-summary|bs-extendedsearch-resultrelevance}}"
+	"bs-extendedsearch-flyout-similar-pages-title": "Title for the flyout section showing pages similar to the current page",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Text for the flyout section when there are no similar pages available",
+	"bs-extendedsearch-search-center-result-file-usage-label": "Only for pages in NS_FILE. Label for the field in the result showing links to pages that use this file.",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Placeholder text for the search field",
+	"bs-extendedsearch-tagsearch-extension-description": "Description text for $oDescriptor",
+	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Error message text when given search result type is invalid. $1 - name of the given type",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "Title of VE inspector for TagSearch tag",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-desc": "Description of the purpose of TagSearch tag",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Field label for namespace field",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "Help text for field namespace",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "Placeholder text for namespace field",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Field label for category field",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "Help text for field category",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Placeholder text for category field",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Field label for placeholder field",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-help": "Help text for field\"placeholder\"",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Placeholder text for field\"placeholder\"",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Field label for operator field",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Help text for field \"operator\"",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Field label for \"type\" field",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Help text for field \"type\""
 }

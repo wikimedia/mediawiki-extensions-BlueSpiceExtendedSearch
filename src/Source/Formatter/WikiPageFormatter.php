@@ -304,7 +304,11 @@ class WikiPageFormatter extends Base {
 				continue;
 			}
 
-			$result['display_text'] = $result['display_title'];
+			if ( $result['display_title'] !== '' ) {
+				$result['display_text'] = $result['display_title'];
+			} else {
+				$result['display_text'] = $result['prefixed_title'];
+			}
 
 			$this->addAnchorAndImageUri( $result );
 		}
@@ -335,9 +339,11 @@ class WikiPageFormatter extends Base {
 				}
 			}
 
-			if ( strtolower( $pageTitle ) == strtolower( $searchData['value'] ) && $top['_id'] === $result['_id'] ) {
+			$lcTitle = strtolower( $pageTitle );
+			$lcSearchTerm = strtolower( $searchData['value'] );
+			if ( strpos( $lcTitle, $lcSearchTerm ) === 0 && $top['_id'] === $result['_id'] ) {
 				$result['rank'] = self::AC_RANK_TOP;
-			} elseif ( $this->matchTokenized( strtolower( $result['basename'] ), $searchData['value'] ) ) {
+			} elseif ( $this->matchTokenized( $lcTitle, $searchData['value'] ) ) {
 				$result['rank'] = self::AC_RANK_NORMAL;
 			} else {
 				$result['rank'] = self::AC_RANK_SECONDARY;

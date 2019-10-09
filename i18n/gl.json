@@ -1,8 +1,25 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elisardojm"
+			"Elisardojm",
+			"Navhy",
+			"Iváns"
 		]
 	},
-	"prefs-extendedsearch": "Procura extendida"
+	"prefs-extendedsearch": "Procura extendida",
+	"bs-extendedsearch-search-center-pagesize-dialog-title": "Resultados por páxina",
+	"bs-extendedsearch-search-center-sort-order-asc": "Ascendente",
+	"bs-extendedsearch-search-center-sort-order-desc": "Descendente",
+	"bs-extendedsearch-search-center-options-dialog-title": "Opcións de procura",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Desbotar",
+	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Aplicar",
+	"bs-extendedsearch-searchcenter-filter-or-label": "ou",
+	"bs-extendedsearch-searchcenter-filter-and-label": "e",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "Nome",
+	"bs-extendedseach-wikipage-section-more-text": " ... $1 máis",
+	"bs-extendedsearch-pref-compact-ac-paths": "Empregue o autocompletado sinxelo",
+	"bs-extendedsearch-search-center-filter-page_language-label": "Lingua da páxina",
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Lingua da páxina:",
+	"bs-extendedsearch-wikipage-title-original": "(título orixinal: $1)",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Escribe para procurar..."
 }

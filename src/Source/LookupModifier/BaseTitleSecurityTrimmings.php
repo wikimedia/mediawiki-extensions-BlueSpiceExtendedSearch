@@ -73,16 +73,18 @@ class BaseTitleSecurityTrimmings extends Base {
 	 */
 	protected function getExcludesForCurrentPage( $prepLookup, $size, &$excludes ) {
 		$validCount = 0;
+		$user = \RequestContext::getMain()->getUser();
 
 		while ( $validCount < $size ) {
 			$results = $this->runPrepQuery( $prepLookup );
 			if ( !$results ) {
-				// No (more) results can be retieved
+				// No (more) results can be retrieved
 				break;
 			}
 
 			foreach ( $results->getResults() as $resultObject ) {
 				$data = $resultObject->getData();
+
 				if ( isset( $data['namespace'] ) == false ) {
 					// If result has no namespace set, \Title creation is N/A
 					// therefore we should allow user to see it
@@ -98,6 +100,14 @@ class BaseTitleSecurityTrimmings extends Base {
 				if ( !$title instanceof \Title ) {
 					if ( $title->isContentPage() && $title->exists() == false ) {
 						// I cant think of a good reason to show non-existing title in the search
+						$excludes[] = $resultObject->getId();
+						continue;
+					}
+				}
+
+				if ( $title->isSpecialPage() ) {
+					$sp = \SpecialPageFactory::getPage( $title->getDBkey() );
+					if ( !$sp instanceof \SpecialPage || !$user->isAllowed( $sp->getRestriction() ) ) {
 						$excludes[] = $resultObject->getId();
 						continue;
 					}

@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joao Xavier"
+		]
+	},
+	"bs-extendedsearch-search-center-options-sort-by": "Ordenar segun",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Pri $1 {{PLURAL:$1|rezulto|rezulti}} pri $2"
+}

@@ -59,7 +59,9 @@ class Setup {
 			[
 				'id' => 'bs-extendedsearch-input',
 				'type' => 'text',
-				'name' => 'raw_term'
+				'name' => 'raw_term',
+				'placeholder' => wfMessage( 'bs-extendedsearch-search-input-placeholder' )->plain(),
+				'aria-label' => wfMessage( 'bs-extendedsearch-search-input-aria-label' )->plain()
 			]
 		);
 
@@ -71,7 +73,9 @@ class Setup {
 			[
 				'id' => 'bs-extendedsearch-mobile-input',
 				'type' => 'text',
-				'name' => 'raw_term'
+				'name' => 'raw_term',
+				'placeholder' => wfMessage( 'bs-extendedsearch-search-input-placeholder' )->plain(),
+				'aria-label' => wfMessage( 'bs-extendedsearch-search-input-aria-label' )->plain()
 			]
 		);
 
@@ -86,8 +90,18 @@ class Setup {
 		return true;
 	}
 
-	public static function getSearchEngineClass( \IDatabase $db ) {
+	public static function getSearchEngineClass( $db ) {
 		$seFactory = Services::getInstance()->getSearchEngineFactory();
 		return $seFactory::getSearchEngineClass( $db );
+	}
+
+	/**
+	 * Add parser and definition to GLOBALS wgParamDefinitions
+	 */
+	public static function onRegistration() {
+		$GLOBALS['wgParamDefinitions']['searchresulttypelist'] = [
+			'definition' => 'BlueSpice\\ExtendedSearch\\Param\\Definition\\SearchResultTypeListParam',
+			'string-parser' => 'BlueSpice\\ExtendedSearch\\Param\\Parser\\SearchResultTypeParser'
+		];
 	}
 }

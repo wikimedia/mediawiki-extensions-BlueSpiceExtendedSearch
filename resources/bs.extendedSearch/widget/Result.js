@@ -79,7 +79,7 @@
 
 			this.$dataContainer.addClass( 'short' );
 			for( var idx = 0; idx < this.rightLinks.length; idx++ ) {
-				if ( this.rightLinks[idx].hasOwnProperty( 'labelKey' ) ) {
+				if ( !this.rightLinks[idx].hasOwnProperty( 'labelKey' ) ) {
 					// Do not show the entry without any label
 					continue;
 				}

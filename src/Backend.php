@@ -2,15 +2,30 @@
 
 namespace BS\ExtendedSearch;
 
+use RequestContext;
+use Hooks;
+use Exception;
+use MWException;
+use stdClass;
+use FormatJson;
 use BlueSpice\ExtensionAttributeBasedRegistry;
+use BS\ExtendedSearch\Source\WikiPages;
 use Elastica\Exception\ResponseException;
 use MediaWiki\MediaWikiServices;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
+use BS\ExtendedSearch\Source\Base as SourceBase;
+use Elastica\Client;
+use Elastica\Search;
+use Elastica\Index;
+use Elastica\ResultSet;
 
 class Backend {
 	const SPELLCHECK_ACTION_IGNORE = 'ignore';
 	const SPELLCHECK_ACTION_SUGGEST = 'suggest';
 	const SPELLCHECK_ACTION_REPLACED = 'replaced';
+
+	const QUERY_TYPE_SEARCH = 'search';
+	const QUERY_TYPE_AUTOCOMPLETE = 'autocomplete';
 
 	/**
 	 *
@@ -20,13 +35,13 @@ class Backend {
 
 	/**
 	 *
-	 * @var Source\Base[]
+	 * @var SourceBase[]
 	 */
 	protected $sources = [];
 
 	/**
 	 *
-	 * @var \Elastica\Client
+	 * @var Client
 	 */
 	protected $client = null;
 
@@ -41,14 +56,16 @@ class Backend {
 	/**
 	 *
 	 * @param string $sourceKey
-	 * @return Source\Base
-	 * @throws \Exception
+	 * @return SourceBase
+	 * @throws Exception
 	 */
 	public function getSource( $sourceKey ) {
 		$sourceFactory = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchSourceFactory' );
 		$source = $sourceFactory->makeSource( $sourceKey );
 
-		\Hooks::run( 'BSExtendedSearchMakeSource', [ $this, $sourceKey, &$source ] );
+		Hooks::run( 'BSExtendedSearchMakeSource', [ $this, $sourceKey, &$source ] );
+
+		$this->sources[$sourceKey] = $source;
 
 		$this->sources[$sourceKey] = $source;
 		return $this->sources[$sourceKey];
@@ -65,7 +82,7 @@ class Backend {
 
 	/**
 	 *
-	 * @return Source\Base[]
+	 * @return SourceBase[]
 	 */
 	public function getSources() {
 		foreach ( $this->config->get( 'sources' ) as $sourceKey ) {
@@ -76,11 +93,11 @@ class Backend {
 
 	/**
 	 *
-	 * @return \Elastica\Client
+	 * @return Client
 	 */
 	public function getClient() {
 		if ( $this->client === null ) {
-			$this->client = new \Elastica\Client(
+			$this->client = new Client(
 				$this->config->get( 'connection' )
 			);
 		}
@@ -139,7 +156,7 @@ class Backend {
 	}
 
 	/**
-	 * @throws ResponseException
+	 * @throws MWException
 	 */
 	public function deleteIndexes() {
 		foreach ( $this->sources as $source ) {
@@ -164,7 +181,7 @@ class Backend {
 	/**
 	 * Creates all indexes
 	 *
-	 * @throws \MWException
+	 * @throws MWException
 	 */
 	public function createIndexes() {
 		foreach ( $this->sources as $key => $source ) {
@@ -174,12 +191,12 @@ class Backend {
 
 	/**
 	 * @param string $sourceKey
-	 * @throws \MWException
+	 * @throws MWException
 	 * @throws ResponseException
 	 */
 	public function createIndex( $sourceKey ) {
 		if ( !isset( $this->sources[$sourceKey] ) ) {
-			throw new \MWException( "Source \"$sourceKey\" does not exist!" );
+			throw new MWException( "Source \"$sourceKey\" does not exist!" );
 		}
 		$source = $this->sources[$sourceKey];
 		$indexSettings = $source->getIndexSettings();
@@ -209,14 +226,14 @@ class Backend {
 
 	/**
 	 *
-	 * @return \Elastica\Index
+	 * @return Index
 	 */
 	public function getIndexByType( $type ) {
 		return $this->getClient()->getIndex( $this->config->get( 'index' ) . '_' . $type );
 	}
 
 	public function getContext() {
-		return \RequestContext::getMain();
+		return RequestContext::getMain();
 	}
 
 	public function getConfig() {
@@ -226,7 +243,7 @@ class Backend {
 	/**
 	 * Collects all the lookup modifiers for particular search type
 	 *
-	 * @param \BS\ExtendedSearch\Lookup $lookup
+	 * @param Lookup $lookup
 	 * @param string $type
 	 * @return array|LookupModifier[]
 	 */
@@ -249,25 +266,25 @@ class Backend {
 	/**
 	 * Runs quick query agains ElasticSearch
 	 *
-	 * @param \BS\ExtendedSearch\Lookup $lookup
+	 * @param Lookup $lookup
 	 * @return array
 	 */
 	public function runAutocompleteLookup( Lookup $lookup, $searchData ) {
-		$acConfig = $this->getAutocompleteConfig();
-
-		$search = new \Elastica\Search( $this->getClient() );
+		$search = new Search( $this->getClient() );
 		$search->addIndex( $this->config->get( 'index' ) . '_*' );
 
-		$results = [];
-
-		$lookupModifiers = $this->getLookupModifiers( $lookup, LookupModifier::TYPE_AUTOCOMPLETE );
+		$lookupModifiers = $this->getLookupModifiers( $lookup, static::QUERY_TYPE_AUTOCOMPLETE );
 		foreach ( $lookupModifiers as $sLMKey => $lookupModifier ) {
 			$lookupModifier->apply();
 		}
 
 		$results = $search->search( $lookup->getQueryDSL() );
 
-		$results = $this->formatQuerySuggestions( $results, $searchData );
+		$resultData = $results->getResults();
+		$postProcessor = $this->getPostProcessor( static::QUERY_TYPE_AUTOCOMPLETE );
+		$postProcessor->process( $resultData, $lookup );
+
+		$results = $this->formatQuerySuggestions( $resultData, $searchData );
 
 		return $results;
 	}
@@ -278,8 +295,8 @@ class Backend {
 		return $results;
 	}
 
-	protected function formatQuerySuggestions( $results, $searchData ) {
-		$results = array_values( $this->getQuerySuggestionList( $results ) );
+	protected function formatQuerySuggestions( $resultData, $searchData ) {
+		$results = array_values( $this->getQuerySuggestionList( $resultData ) );
 		return $this->formatSuggestions( $results, $searchData );
 	}
 
@@ -304,7 +321,7 @@ class Backend {
 
 	protected function getQuerySuggestionList( $results ) {
 		$res = [];
-		foreach ( $results->getResults() as $suggestion ) {
+		foreach ( $results as $suggestion ) {
 			$item = [
 				"_id" => $suggestion->getId(),
 				"type" => $suggestion->getType(),
@@ -325,16 +342,16 @@ class Backend {
 	 * Runs query against ElasticSearch and formats returned values
 	 *
 	 * @param Lookup $lookup
-	 * @return \stdClass[]
+	 * @return stdClass
 	 */
 	public function runLookup( $lookup ) {
-		$search = new \Elastica\Search( $this->getClient() );
+		$search = new Search( $this->getClient() );
 		$search->addIndex( $this->config->get( 'index' ) . '_*' );
 
 		$origQS = $lookup->getQueryString();
 		$origTerm = $origQS['query'];
 
-		$lookupModifiers = $this->getLookupModifiers( $lookup, LookupModifier::TYPE_SEARCH );
+		$lookupModifiers = $this->getLookupModifiers( $lookup, static::QUERY_TYPE_SEARCH );
 		foreach ( $lookupModifiers as $sLMKey => $lookupModifier ) {
 			$lookupModifier->apply();
 		}
@@ -342,7 +359,7 @@ class Backend {
 		wfDebugLog(
 			'BSExtendedSearch',
 			'Query by ' . $this->getContext()->getUser()->getName() . ': '
-				. \FormatJson::encode( $lookup, true )
+				. FormatJson::encode( $lookup, true )
 		);
 
 		try {
@@ -370,8 +387,12 @@ class Backend {
 
 		$totalApproximated = $lookup->getSize() > $this->getTotal( $results ) ? false : true;
 
-		$formattedResultSet = new \stdClass();
-		$formattedResultSet->results = $this->formatResults( $results, $lookup );
+		$resultData = $results->getResults();
+		$postProcessor = $this->getPostProcessor( static::QUERY_TYPE_SEARCH );
+		$postProcessor->process( $resultData, $lookup );
+
+		$formattedResultSet = new stdClass();
+		$formattedResultSet->results = $this->formatResults( $resultData, $lookup );
 		$formattedResultSet->total = $this->getTotal( $results );
 		$formattedResultSet->filters = $this->getFilterConfig( $results );
 		$formattedResultSet->spellcheck = $spellcheck;
@@ -407,7 +428,7 @@ class Backend {
 	 * TODO: Implement multi-field suggestions
 	 *
 	 * @param Lookup $lookup
-	 * @param \Elastica\Search $search
+	 * @param Search $search
 	 * @param string $origTerm
 	 * @return array
 	 */
@@ -509,13 +530,13 @@ class Backend {
 	 * Runs each result in result set through
 	 * each source's formatter
 	 *
-	 * @param \Elastica\ResultSet $results
-	 * @param \BS\ExtendedSearch\Lookup $lookup
+	 * @param ResultSet $results
+	 * @param Lookup $lookup
 	 */
 	protected function formatResults( $results, $lookup ) {
 		$formattedResults = [];
 
-		foreach ( $results->getResults() as $resultObject ) {
+		foreach ( $results as $resultObject ) {
 			$result = $resultObject->getData();
 			foreach ( $this->getSources() as $sourceKey => $source ) {
 				$formatter = $source->getFormatter();
@@ -531,7 +552,7 @@ class Backend {
 
 	/**
 	 *
-	 * @param \Elastica\ResultSet $results
+	 * @param ResultSet $results
 	 */
 	protected function getTotal( $results ) {
 		return $results->getTotalHits();
@@ -539,12 +560,12 @@ class Backend {
 
 	/**
 	 *
-	 * @param \Elastica\ResultSet $results
+	 * @param ResultSet $results
 	 */
 	protected function getFilterConfig( $results ) {
 		// Fields that have "AND/OR" option enabled. Would be better if this could
-		// be retrieved from mapping, but since ES assigns types dinamically, not possible.
-		// It could also be infered from results, but we need filter cfg even when no
+		// be retrieved from mapping, but since ES assigns types dynamically, it's not possible.
+		// It could also be inferred from results, but we need filter cfg even when no
 		// results are retrieved. Basically, this are all the fields of type array
 		$fieldsWithANDEnabled = \ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchFieldsWithANDFilterEnabled' );
@@ -648,5 +669,114 @@ class Backend {
 				'esh_lookup' => serialize( $data['lookup'] )
 			]
 		);
+	}
+
+	/**
+	 * Gets pages similar to given page
+	 *
+	 * TODO: Whether hard-coded values here should go to configs
+	 * depends on fine-tuning, then we will know if it makes sense
+	 *
+	 * @param \Title $title
+	 * @return array
+	 */
+	public function getSimilarPages( \Title $title ) {
+		$wikipageSource = $this->getSource( 'wikipage' );
+		if ( $wikipageSource instanceof WikiPages === false ) {
+			return [];
+		}
+
+		// Searching "like" certain _id showed to yield best results
+		$docId = $this->getDocIdForTitle( $title );
+		if ( $docId === null ) {
+			return [];
+		}
+
+		$index = $this->getIndexByType( $wikipageSource->getTypeKey() );
+		$lookup = new Lookup();
+		$lookup->setMLTQuery(
+			$docId,
+			[ 'prefixed_title', 'source_content' ],
+			[
+				// This is very important config. It is the minimal number of docs that need to be similar.
+				// If it cannot find enough similar docs, it will return basically random results.
+				"min_doc_freq" => 1
+			],
+			$index->getName()
+		);
+		$lookup->addSourceField( 'prefixed_title' );
+		$lookup->setSize( 10 );
+
+		$search = new \Elastica\Search( $this->getClient() );
+		$search->addIndex( $index );
+		$results = $search->search( $lookup->getQueryDSL() );
+
+		$results = $results->getResults();
+		$topScore = 0;
+		foreach ( $results as $result ) {
+			if ( $result->getScore() > $topScore ) {
+				$topScore = $result->getScore();
+			}
+		}
+
+		$pages = [];
+		foreach ( $results as $result ) {
+			$score = $result->getScore();
+			if ( $topScore > 0 ) {
+				$percentOfTopScore = $score * 100 / $topScore;
+				if ( $percentOfTopScore < 50 ) {
+					// Results that score less than 50% of top score
+					// are usually useless
+					continue;
+				}
+			}
+
+			$data = $result->getData();
+			$title = \Title::newFromText( $data['prefixed_title'] );
+			if ( $title instanceof \Title === false || $title->exists() === false ) {
+				continue;
+			}
+			$pages[$title->getPrefixedText()] = $title;
+		}
+
+		return $pages;
+	}
+
+	/**
+	 * Get indexed _id of the given Title
+	 *
+	 * @param \Title $title
+	 * @return string|null if page not indexed
+	 */
+	protected function getDocIdForTitle( \Title $title ) {
+		$wikipageSource = $this->getSource( 'wikipage' );
+
+		$search = new \Elastica\Search( $this->getClient() );
+		$search->addIndex( $this->getIndexByType( $wikipageSource->getTypeKey() ) );
+
+		$lookup = new Lookup( [
+			"query" => [
+				"term" => [
+					"prefixed_title_exact" => $title->getPrefixedText()
+				]
+			]
+		] );
+		$lookup->setSize( 1 );
+		$lookup->addSourceField( "prefixed_title" );
+
+		$results = $search->search( $lookup->getQueryDSL() );
+
+		if ( $results->count() === 0 ) {
+			return null;
+		}
+
+		foreach ( $results->getResults() as $result ) {
+			return $result->getId();
+		}
+	}
+
+	private function getPostProcessor( $searchType ) {
+		$backend = $this;
+		return PostProcessor::factory( $searchType, $backend );
 	}
 }

@@ -6,7 +6,7 @@
 			"Hwboehm"
 		]
 	},
-	"bs-extsearch-extensionname": "BlueSpice ExtendedSearch",
+	"bs-extsearch-extensionname": "BlueSpiceExtendedSearch",
 	"bs-extsearch-desc": "Elasticsearch Suche Backend",
 	"bssearchadmin": "Suche Administration",
 	"bssearchadmin-desc": "Bietet eine Verwaltungsoberfläche für die Suche.",
@@ -25,6 +25,7 @@
 	"apihelp-bs-extendedsearch-generic-param-sources": "Eine oder mehrere Quellen innerhalb des angegebenen Backends, getrennt durch eine Pipe. Wenn leer, werden alle verfügbaren Quellen abgefragt.",
 	"apihelp-bs-extendedsearch-query-param-search-term": "Begriff, für den die Suche ausgeführt wird.",
 	"bs-extendedsearch-search-input-placeholder": "Finde ...",
+	"bs-extendedsearch-search-input-aria-label": "Suchfeld",
 	"bs-extendedsearch-source-label-wikipage": "Wiki-Seite",
 	"bs-extendedsearch-source-label-specialpage": "Spezialseite",
 	"bs-extendedsearch-source-label-repofile": "Datei hochladen",
@@ -68,7 +69,7 @@
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Keine gültigen Übereinstimmungen für deine Anfrage",
 	"bs-extendedsearch-autocomplete-result-type": "Typ: $1",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "Beste Treffer",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Vielleicht bist du auch auf der Suche nach...",
+	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Vielleicht suchst du auch nach...",
 	"bs-extendedsearch-search-center-result-help": "Gib etwas in die Suchleiste oben ein....",
 	"bs-extendedsearch-searchcenter-filter-or-label": "oder",
 	"bs-extendedsearch-searchcenter-filter-and-label": "und",
@@ -119,5 +120,21 @@
 	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch – {{GENDER:$2|Du}} hast {{PLURAL:$1|eine Seite|$1 Seiten}} als {{PLURAL:$1|relevantes Suchergebnis|relevante Suchergebnisse}} markiert",
 	"bs-extendedsearch-filter-add-button-label": "Einen Filter hinzufügen",
 	"bs-extendedsearch-options-button-label": "Suchoptionen",
-	"bs-extendedsearch-export-button-label": "Suchergebnisse exportieren"
+	"bs-extendedsearch-export-button-label": "Suchergebnisse exportieren",
+	"bs-extendedsearch-flyout-similar-pages-title": "Ähnliche Seiten",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Keine ähnlichen Seiten gefunden",
+	"bs-extendedsearch-search-center-result-file-usage-label": "Verwendet auf den Seiten",
+	"bs-extendedsearch-tagsearch-extension-description": "{{GENDER:|Deinem}} Inhalt ein Suchformular hinzufügen",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Zum Suchen tippen …",
+	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Ungültiger Suchergebnistyp: $1",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Namensraum/Namensräume",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "Liste der gültigen Namensraumnamen oder -kennungen, getrennt durch senkrechte Striche (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategorie(n)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "Liste der gültigen Kategorienamen, getrennt durch senkrechte Striche (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Platzhalter",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Suchoperator",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Dieser Parameter wird nur in Kombination mit dem Parameter „category“ evaluiert. Die Einstellung AND findet nur Ergebnisse, die in allen der angegebenen Kategorien sind, während der Wert OR Ergebnisse findet, die mindestens eine der angegebenen Kategorien festgelegt haben.",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Typ",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Liste der gültigen Ergebnistypen, getrennt durch senkrechte Striche (|)"
 }

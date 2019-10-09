@@ -2,6 +2,10 @@
 
 namespace BS\ExtendedSearch\Source\Formatter;
 
+use BS\ExtendedSearch\Wildcarder;
+use MWException;
+use ConfigException;
+
 class Base {
 	/**
 	 * Used to separate multiple values in arrays
@@ -153,7 +157,9 @@ class Base {
 				return;
 			}
 
-			if ( strtolower( $result['basename'] ) == strtolower( $searchData['value'] ) && $top['_id'] === $result['_id'] ) {
+			$lcBasename = strtolower( $result['basename'] );
+			$lcSearchTerm = strtolower( $searchData['value'] );
+			if ( strpos( $lcBasename, $lcSearchTerm ) === 0 && $top['_id'] === $result['_id'] ) {
 				$result['rank'] = self::AC_RANK_TOP;
 			} elseif ( $this->matchTokenized( strtolower( $result['basename'] ), $searchData['value'] ) ) {
 				$result['rank'] = self::AC_RANK_NORMAL;
@@ -173,11 +179,13 @@ class Base {
 	 * @param string $haystack
 	 * @param string $needle
 	 * @return bool
+	 * @throws MWException
+	 * @throws ConfigException
 	 */
 	protected function matchTokenized( $haystack, $needle ) {
-		$tokens = preg_split( "/(\s|,|\.|;)/", $needle );
-		foreach ( $tokens as $token ) {
-			if ( strpos( $haystack, $token ) === false ) {
+		$separated = Wildcarder::factory( $needle )->getSeparated( [ '\s' ] );
+		foreach ( $separated as $bit ) {
+			if ( strpos( $haystack, $bit ) === false ) {
 				return false;
 			}
 		}

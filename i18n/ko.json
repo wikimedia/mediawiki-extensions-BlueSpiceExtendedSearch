@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ykhwong"
+			"Ykhwong",
+			"Maoue"
 		]
 	},
 	"bs-extsearch-desc": "일래스틱서치 검색 백엔드",
@@ -92,5 +93,26 @@
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "문서 언어:",
 	"bs-extendedsearch-wikipage-title-original": "(원래 제목: $1)",
 	"bs-extendedsearch-pref-auto-set-lang-filter": "자동으로 언어 필터 설정",
-	"bs-extendedsearch-search-center-create-page-link": "\"$1\" 문서 만들기"
+	"bs-extendedsearch-search-center-create-page-link": "\"$1\" 문서 만들기",
+	"bs-extendedsearch-filter-add-button-label": "필터 추가",
+	"bs-extendedsearch-options-button-label": "검색 옵션",
+	"bs-extendedsearch-export-button-label": "검색 결과 내보내기",
+	"bs-extendedsearch-flyout-similar-pages-title": "비슷한 문서",
+	"bs-extendedsearch-admin-heading-sources": "출처",
+	"prefs-extendedsearch": "확장된 검색",
+	"bs-extendedsearch-pref-external-file-paths-excludes": "패턴 제외",
+	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "잘못된 정규 표현식 패턴",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "정규 표현식 패턴 제외",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "물리적 파일 경로에 대한 정규 표현식 패턴 제외",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "문서 $1: 텍스트: $2",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "비슷한 문서가 없습니다",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "검색하려면 입력하세요...",
+	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "유효하지 않은 검색 결과 유형: $1",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "이름공간",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "이름공간1|이름공간2|...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "분류",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "분류1|분류2|...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "검색하려면 입력하세요...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "유형",
+	"bs-extendedsearch-search-input-aria-label": "검색 상자"
 }

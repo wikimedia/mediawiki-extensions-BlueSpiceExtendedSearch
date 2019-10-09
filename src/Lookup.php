@@ -846,11 +846,11 @@ class Lookup extends \ArrayObject {
 
 	/**
 	 *
-	 * @return bool|\BS\ExtendedSearch\Lookup
+	 * @return bool|int
 	 */
 	public function getSize() {
 		if ( isset( $this['size'] ) ) {
-			return $this['size'];
+			return (int)$this['size'];
 		}
 		return false;
 	}
@@ -1204,5 +1204,37 @@ class Lookup extends \ArrayObject {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * Sets the query for "more like this" search
+	 * MLT query will replace all content previously set to the Lookup
+	 *
+	 * @param string $docId
+	 * @param array $fields
+	 * @param array $options
+	 * @param string $indexName
+	 * @return Lookup
+	 */
+	public function setMLTQuery( $docId, $fields, $options = [], $indexName = '' ) {
+		$options = array_merge( [
+			"min_term_freq" => 3,
+			"max_query_terms" => 50
+		], $options );
+
+		$this['query'] = [
+			"more_like_this" => array_merge( [
+				"fields" => $fields,
+				"like" => [
+					"_id" => $docId
+				]
+			], $options )
+		];
+
+		if ( $indexName !== '' ) {
+			$this['query']['more_like_this']['like']['_index'] = $indexName;
+		}
+
+		return $this;
 	}
 }

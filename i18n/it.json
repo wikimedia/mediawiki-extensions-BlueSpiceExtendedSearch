@@ -10,7 +10,7 @@
 	"bs-extendedsearch-source-label-user": "Utente",
 	"bs-extendedsearch-admin-label-error": "Errore",
 	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|corrispondenza|corrispondenze}} per $2",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "circa $1 {{PLURAL:$1|corrispondenza|corrispondenze}} per $2",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Circa $1 {{PLURAL:$1|corrispondenza|corrispondenze}} per $2",
 	"bs-extendedsearch-search-center-filter-extension-label": "Estensione",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Namespace",
 	"bs-extendedsearch-search-center-filter-tags-label": "Etichetta",
@@ -47,5 +47,11 @@
 	"bs-extendedsearch-wikipage-title-original": "(titolo originale: $1)",
 	"bs-extendedsearch-pref-auto-set-lang-filter": "Imposta automaticamente il filtro della lingua",
 	"bs-extendedsearch-search-center-create-page-link": "Crea pagina \"$1\"",
-	"bs-extendedsearch-privacy-transparency-content-highlight": "Pagina $1: Testo: $2"
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Pagina $1: Testo: $2",
+	"bs-extendedsearch-flyout-similar-pages-title": "Pagine simili",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Nessuna pagine simile trovata",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Namespace",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Categoria/e",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Segnaposto",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipo"
 }

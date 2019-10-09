@@ -7,8 +7,11 @@
 		]
 	},
 	"apihelp-bs-extendedsearch-query-param-q": "検索語句",
+	"bs-extendedsearch-admin-label-error": "エラー",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "名前空間",
+	"bs-extendedsearch-search-center-filter-tags-label": "タグ",
 	"bs-extendedsearch-search-center-filter-categories-label": "カテゴリ",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "カテゴリ:",
 	"bs-extendedsearch-search-center-result-namespace_text-label": "名前空間:",
 	"bs-extendedsearch-search-center-result-categories-label": "カテゴリ:",
 	"prefs-extendedsearch": "拡張検索",

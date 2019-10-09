@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Emem.calist"
+			"Emem.calist",
+			"Brazal.dang"
 		]
 	},
 	"bs-extendedsearch-admin-label-error": "Ay naku! Mali pa.",
@@ -21,5 +22,7 @@
 	"bs-extendedsearch-search-center-result-typetext-label": "Uri (ng mga resulta):",
 	"bs-extendedsearch-result-relevance-relevant": "Importante sa'ken ang resultang ito",
 	"bs-extendedsearch-result-relevance-not-relevant": "'Di na imporante ang resulta",
-	"bs-extendedsearch-pref-external-file-paths-path": "Pisikal na pinagdaanan"
+	"bs-extendedsearch-pref-external-file-paths-path": "Pisikal na pinagdaanan",
+	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Hindi wastong regular na ekspresyon",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Kategorya1|Kategorya2|..."
 }

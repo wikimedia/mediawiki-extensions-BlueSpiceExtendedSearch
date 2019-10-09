@@ -2,13 +2,11 @@
 
 namespace BS\ExtendedSearch\Source\Crawler;
 
-use MediaWiki\MediaWikiServices;
-
 class RepoFile extends File {
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateRepoFile';
 
 	public function crawl() {
-		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
+		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select(
 			[ 'page' ],
 			[ 'page_id' ],
@@ -21,6 +19,7 @@ class RepoFile extends File {
 			if ( $file instanceof \LocalFile === false ) {
 				continue;
 			}
+
 			if ( $this->shouldSkip( $file ) ) {
 				continue;
 			}
