@@ -53,5 +53,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Namespace",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Categoria/e",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Segnaposto",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipo"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipo",
+	"bs-extendedsearch-collection-type-searchhistory": "Cerca nella cronologia",
+	"bs-extendedsearch-collection-var-searchterm": "Termine"
 }
