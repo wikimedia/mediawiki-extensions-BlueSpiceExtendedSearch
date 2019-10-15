@@ -2,7 +2,11 @@
 
 namespace BS\ExtendedSearch\Source;
 
-class ExternalFiles extends DecoratorBase {
+use BS\ExtendedSearch\Source\Crawler\ExternalFile as ExternalFileCrawler;
+use BS\ExtendedSearch\Source\DocumentProvider\File as FileDocumentProvider;
+use BS\ExtendedSearch\Source\Formatter\ExternalFileFormatter;
+
+class ExternalFiles extends Files {
 
 	/**
 	 * @param Base $base
@@ -14,67 +18,32 @@ class ExternalFiles extends DecoratorBase {
 
 	/**
 	 *
-	 * @return \BS\ExtendedSearch\Source\Crawler\ExternalFile
+	 * @return ExternalFileCrawler
 	 */
 	public function getCrawler() {
-		return new Crawler\ExternalFile( $this->getConfig() );
+		return new ExternalFileCrawler( $this->getConfig() );
 	}
 
 	/**
 	 *
-	 * @return \BS\ExtendedSearch\Source\DocumentProvider\File
+	 * @return FileDocumentProvider
 	 */
 	public function getDocumentProvider() {
-		return new DocumentProvider\File(
+		return new FileDocumentProvider(
 			$this->oDecoratedSource->getDocumentProvider()
 		);
 	}
 
 	/**
-	 *
-	 * @return \BS\ExtendedSearch\Source\MappingProvider\File
+	 * @return ExternalFileFormatter
 	 */
-	public function getMappingProvider() {
-		return new MappingProvider\File(
-			$this->oDecoratedSource->getMappingProvider()
-		);
-	}
-
 	public function getFormatter() {
-		return new Formatter\ExternalFileFormatter( $this );
+		return new ExternalFileFormatter( $this );
 	}
 
 	/**
-	 *
-	 * @param array $aDocumentConfigs
-	 * @return \Elastica\Bulk\ResponseSet
+	 * @return string
 	 */
-	public function addDocumentsToIndex( $aDocumentConfigs ) {
-		$oElasticaIndex = $this->getBackend()->getIndexByType( $this->getTypeKey() );
-		$oType = $oElasticaIndex->getType( $this->getTypeKey() );
-		$aDocs = [];
-		foreach ( $aDocumentConfigs as $aDC ) {
-			$document = new \Elastica\Document( $aDC['id'], $aDC );
-			$aDocs[] = $document;
-		}
-
-		$bulk = new \Elastica\Bulk( $oElasticaIndex->getClient() );
-		$bulk->setType( $oType );
-		$bulk->setRequestParam( 'pipeline', 'file_data' );
-		$bulk->addDocuments( $aDocs );
-		$oResult = $bulk->send();
-
-		if ( !$oResult->isOk() ) {
-			wfDebugLog(
-				'BSExtendedSearch',
-				"Adding documents failed: {$oResult->getError()}"
-			);
-		}
-		$oElasticaIndex->refresh();
-
-		return $oResult;
-	}
-
 	public function getSearchPermission() {
 		return 'extendedsearch-search-externalfile';
 	}

@@ -4,16 +4,12 @@ namespace BS\ExtendedSearch\Source;
 
 use BS\ExtendedSearch\Source\LookupModifier\FileContent;
 use BS\ExtendedSearch\Backend;
+use BS\ExtendedSearch\Source\Crawler\RepoFile as RepoFileCrawler;
+use BS\ExtendedSearch\Source\DocumentProvider\File as FileDocumentProvider;
+use BS\ExtendedSearch\Source\Updater\RepoFile as RepoFileUpdater;
+use BS\ExtendedSearch\Source\Formatter\FileFormatter;
 
-class RepoFiles extends DecoratorBase {
-
-	/**
-	 * @param Base $base
-	 * @return RepoFiles
-	 */
-	public static function create( $base ) {
-		return new self( $base );
-	}
+class RepoFiles extends Files {
 
 	protected $lookupModifiers = [
 		Backend::QUERY_TYPE_SEARCH => [
@@ -25,7 +21,7 @@ class RepoFiles extends DecoratorBase {
 
 	/**
 	 *
-	 * @return \BS\ExtendedSearch\Source\Crawler\RepoFile
+	 * @return RepoFileCrawler
 	 */
 	public function getCrawler() {
 		return new Crawler\RepoFile( $this->getConfig() );
@@ -33,7 +29,7 @@ class RepoFiles extends DecoratorBase {
 
 	/**
 	 *
-	 * @return \BS\ExtendedSearch\Source\DocumentProvider\File
+	 * @return FileDocumentProvider
 	 */
 	public function getDocumentProvider() {
 		return new DocumentProvider\File(
@@ -41,70 +37,23 @@ class RepoFiles extends DecoratorBase {
 		);
 	}
 
+	/**
+	 * @return RepoFileUpdater
+	 */
 	public function getUpdater() {
-		return new Updater\RepoFile( $this );
+		return new RepoFileUpdater( $this );
 	}
 
 	/**
-	 *
-	 * @return \BS\ExtendedSearch\Source\MappingProvider\File
+	 * @return FileFormatter
 	 */
-	public function getMappingProvider() {
-		return new MappingProvider\File(
-			$this->oDecoratedSource->getMappingProvider()
-		);
-	}
-
 	public function getFormatter() {
-		return new Formatter\FileFormatter( $this );
+		return new FileFormatter( $this );
 	}
 
 	/**
-	 *
-	 * @param array $aDocumentConfigs
-	 * @return \Elastica\Bulk\ResponseSet
+	 * @return string
 	 */
-	public function addDocumentsToIndex( $aDocumentConfigs ) {
-		$oElasticaIndex = $this->getBackend()->getIndexByType( $this->getTypeKey() );
-		$oType = $oElasticaIndex->getType( $this->getTypeKey() );
-		$aDocs = [];
-		foreach ( $aDocumentConfigs as $aDC ) {
-			$document = new \Elastica\Document( $aDC['id'], $aDC );
-			$aDocs[] = $document;
-		}
-
-		$bulk = new \Elastica\Bulk( $oElasticaIndex->getClient() );
-		$bulk->setType( $oType );
-		$bulk->setRequestParam( 'pipeline', 'file_data' );
-		$bulk->addDocuments( $aDocs );
-		$oResult = $bulk->send();
-
-		if ( !$oResult->isOk() ) {
-			wfDebugLog(
-				'BSExtendedSearch',
-				"Adding documents failed: {$oResult->getError()}"
-			);
-		}
-		$oElasticaIndex->refresh();
-
-		return $oResult;
-	}
-
-	public function runAdditionalSetupRequests( \Elastica\Client $client ) {
-		$client->request(
-			"_ingest/pipeline/file_data",
-			\Elastica\Request::PUT,
-			[
-				"description" => "Extract file information",
-				"processors" => [ [
-					"attachment" => [
-						"field" => "the_file"
-					]
-				] ]
-			]
-		);
-	}
-
 	public function getSearchPermission() {
 		return 'extendedsearch-search-repofile';
 	}
