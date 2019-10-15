@@ -81,19 +81,27 @@
 		}
 	};
 
+	bs.extendedSearch.SearchBar.prototype.resetValue = function() {
+		this.removeNamespacePill( true );
+		this.removeSubpagePill( true );
+		this.value = '';
+	};
+
 	bs.extendedSearch.SearchBar.prototype.detectSubpage = function( value ) {
+		if ( this.mainpage ) {
+			value = [ this.mainpage, value ].join( '/' );
+		}
 		var parts = value.split( '/' );
 		if( parts.length === 1 ) {
 			this.mainpage = this.mainpage || '';
 			return value;
 		}
-		if( parts.length === 2 && parts[1] === '' ) {
-			this.mainpage = '';
+		if( parts.length > 1 && parts[parts.length - 1] === '' ) {
 			return '';
 		}
 
-		this.mainpage = parts.shift();
-		value = parts.shift();
+		value = parts.pop();
+		this.mainpage = parts.join( '/' );
 		this.generateSubpagePill( value );
 		return value;
 	};
@@ -113,7 +121,7 @@
 		}
 
 		if( nsText.toLowerCase() in this.namespaces ) {
-			newNamespace = {
+			var newNamespace = {
 				id: this.namespaces[nsText.toLowerCase()],
 				text: nsText,
 				values: bs.extendedSearch.utils.getNamespaceNames( this.namespaces, this.namespaces[nsText.toLowerCase()] )
@@ -146,12 +154,19 @@
 		value = value || this.value;
 		this.removeSubpagePill();
 
-		var sbW = this.$searchBox.outerWidth();
-
 		this.$pill = $( '<span>' )
-			.addClass( 'bs-extendedsearch-searchbar-pill subpage-pill' )
-			.html( this.mainpage + '/' );
+			.addClass( 'bs-extendedsearch-searchbar-pill subpage-pill' );
+
+		var mainpageBits = this.mainpage.split( '/' );
+		if ( mainpageBits.length > 1 && this.mainpage.length > 30 ) {
+			this.$pill.attr( 'title', this.mainpage );
+			this.$pill.html( '.../' + mainpageBits.pop() + '/' );
+		} else {
+			this.$pill.html( this.mainpage + '/' );
+		}
+
 		this.$searchBox.before( this.$pill );
+		var sbW = this.$searchBox.outerWidth();
 		this.setSearchBoxWidthInline( sbW - this.$pill.outerWidth() );
 		this.$searchBox.val( value );
 	}
@@ -316,6 +331,7 @@
 	bs.extendedSearch.SearchBar.prototype.setValue = function( value ) {
 		this.$searchBox.val( value );
 		if( this.useNamespacePills ) {
+
 			value = this.detectNamespace( value );
 		}
 		if( this.useSubpagePills ) {

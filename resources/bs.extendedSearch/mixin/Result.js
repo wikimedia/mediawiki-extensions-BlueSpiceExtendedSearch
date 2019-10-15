@@ -19,7 +19,7 @@
 				.addClass( 'bs-extendedsearch-result-image-inner' )
 				.attr( 'style', "background-image: url(" + this.imageUri + ")" )
 			);
-	}
+	};
 
 	OO.initClass( bs.extendedSearch.mixin.ResultImage );
 
@@ -36,17 +36,17 @@
 
 		this.setTopSecondaryInfo( this.topSecondaryInfo.items );
 		this.setBottomSecondaryInfo( this.bottomSecondaryInfo.items );
-	}
+	};
 
 	OO.initClass( bs.extendedSearch.mixin.ResultSecondaryInfo );
 
 	bs.extendedSearch.mixin.ResultSecondaryInfo.prototype.setTopSecondaryInfo = function( items ) {
 		this.$topSecondaryInfo = this.getSecondaryInfoMarkup( items );
-	}
+	};
 
 	bs.extendedSearch.mixin.ResultSecondaryInfo.prototype.setBottomSecondaryInfo = function( items ) {
 		this.$bottomSecondaryInfo = this.getSecondaryInfoMarkup( items );
-	}
+	};
 
 	bs.extendedSearch.mixin.ResultSecondaryInfo.prototype.getSecondaryInfoMarkup = function( items ) {
 		var container = $( '<div>' )
@@ -66,7 +66,7 @@
 		});
 
 		return container;
-	}
+	};
 
 	bs.extendedSearch.mixin.ResultSecondaryInfo.prototype.getSecondaryInfoItemMarkup = function( item ) {
 		var $label = null;
@@ -77,13 +77,13 @@
 				.html( label );
 		}
 
-		$value = $( '<span>' )
+		var $value = $( '<span>' )
 			.html( item.value );
 
 		return $( '<div>' )
 			.addClass( 'bs-extendedsearch-secondaryinfo-item' )
 			.append( $label, $value );
-	}
+	};
 
 	/**
 	 * Experimental
@@ -119,7 +119,7 @@
 		this.notRelevantButton.$element.on( 'click', this.onNotRelevant.bind( this ) );*/
 
 		this.$relevanceControl.append( this.relevantButton.$element /*, this.notRelevantButton.$element*/ );
-	}
+	};
 
 	OO.initClass( bs.extendedSearch.mixin.ResultRelevanceControl );
 
@@ -137,7 +137,7 @@
 		this.$originalTitle
 			.addClass( 'bs-extendedsearch-result-original-title' )
 			.append( new OO.ui.LabelWidget( { label: originalTitleText } ).$element );
-	}
+	};
 
 	OO.initClass( bs.extendedSearch.mixin.ResultOriginalTitle );
 } )( mediaWiki, jQuery, blueSpice, document );
