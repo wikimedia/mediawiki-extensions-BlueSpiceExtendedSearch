@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Source;
 
-class LinkedFiles extends DecoratorBase {
+class LinkedFiles extends Files {
 
 	public function getTypeKey() {
 		return 'linkedfile';
