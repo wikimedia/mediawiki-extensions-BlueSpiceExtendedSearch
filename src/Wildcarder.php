@@ -62,6 +62,7 @@ class Wildcarder {
 		if ( !$this->done || $redo ) {
 			$this->process();
 		}
+
 		return $this->wildcarded;
 	}
 
@@ -112,6 +113,11 @@ class Wildcarder {
 		$pattern = "/" . implode( '|', $pattern ) . "/";
 
 		if ( preg_match( $pattern, $this->original ) ) {
+			return true;
+		}
+
+		// Special operators should not be removable by config
+		if ( strpos( $this->original, 'AND' ) || strpos( $this->original, 'OR' ) ) {
 			return true;
 		}
 		return false;
