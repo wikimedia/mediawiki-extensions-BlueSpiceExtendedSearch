@@ -530,6 +530,9 @@
 		"TagSearchSearchFieldTemplatePath": {
 			"value": "/resources/templates",
 			"path": true
+		},
+		"ESAllowIndexingDocumentsWithoutContent": {
+			"value": true
 		}
 	},
 	"callback": "\\BS\\ExtendedSearch\\Setup::onRegistration",
