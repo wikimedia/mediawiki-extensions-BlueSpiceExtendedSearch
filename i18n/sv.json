@@ -114,5 +114,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Platshållare",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Skriv för att söka...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Sökoperator",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Typ"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Typ",
+	"bs-extendedsearch-collection-type-searchhistory": "Sökhistorik",
+	"bs-extendedsearch-collection-var-searchterm": "Term",
+	"bs-extendedsearch-collection-var-numbersearched": "Sökningar"
 }

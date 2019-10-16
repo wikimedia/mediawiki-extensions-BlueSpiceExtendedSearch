@@ -89,5 +89,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Пространства имён",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Категрии",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Категория1|Категория2|…",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип",
+	"bs-extendedsearch-collection-type-searchhistory": "История поиска",
+	"bs-extendedsearch-collection-var-numbersearched": "Поиски"
 }
