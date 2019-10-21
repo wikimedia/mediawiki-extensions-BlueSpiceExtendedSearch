@@ -34,5 +34,6 @@
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Side $1: Tekst: $2",
 	"bs-extendedsearch-filter-add-button-label": "Tilføj et filter",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Navnerum",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategori(er)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategori(er)",
+	"bs-extendedsearch-collection-var-numbersearched": "Søgninger"
 }
