@@ -33,7 +33,7 @@
 		if( !this.mobile && !this.compact ) {
 			this.$element.append( this.$specialResults );
 		}
-	}
+	};
 
 	OO.inheritClass( bs.extendedSearch.AutocompletePopup, OO.ui.Widget );
 	OO.mixinClass( bs.extendedSearch.AutocompletePopup, bs.extendedSearch.mixin.AutocompleteResults );
@@ -77,8 +77,8 @@
 			this.toggleColumn();
 		}
 
-		this.selectCurrent();
-	}
+		return this.selectCurrent();
+	};
 
 	bs.extendedSearch.AutocompletePopup.prototype.getGrid = function() {
 		var leftColumn = [];
@@ -97,7 +97,7 @@
 		} );
 
 		this.popupGrid = [ leftColumn, rightColumn ];
-	}
+	};
 
 	bs.extendedSearch.AutocompletePopup.prototype.toggleColumn = function() {
 		if( this.currentColumn === 1 ) {
@@ -111,7 +111,7 @@
 		if( this.popupGrid[this.currentColumn].length <= this.currentIndex ) {
 			this.currentIndex = 0;
 		}
-	}
+	};
 
 	/**
 	 * Sets "selected" class on currently seleted item
@@ -119,15 +119,15 @@
 	bs.extendedSearch.AutocompletePopup.prototype.selectCurrent = function() {
 		var selectedItem = this.popupGrid[this.currentColumn][this.currentIndex];
 		$( selectedItem ).addClass( 'bs-autocomplete-result-selected' );
-		return;
-	}
+		return selectedItem;
+	};
 
 	bs.extendedSearch.AutocompletePopup.prototype.clearSelected = function() {
 		if( typeof this.currentColumn !== 'undefined' && typeof this.currentIndex !== 'undefined' ) {
 			var selected = this.popupGrid[this.currentColumn][this.currentIndex];
 			$( selected ).removeClass( 'bs-autocomplete-result-selected' );
 		}
-	}
+	};
 
 	/**
 	 * Returns uri of currently selected item (if any).
@@ -146,7 +146,7 @@
 				return $anchor.attr( 'href' );
 			}
 		}
-	}
+	};
 
 	//Fills secondary results after the popup was created and displayed,
 	//as they are retrieved in async request
@@ -161,10 +161,10 @@
 		if( this.$secondaryResults.children().length > 0 ) {
 			this.$specialResults.append( this.$secondaryResultsLabel, this.$secondaryResults );
 		}
-	}
+	};
 
 	bs.extendedSearch.AutocompletePopup.prototype.onFullTextClick = function( e ) {
 		this.searchForm.submit();
-	}
+	};
 
 } )( mediaWiki, jQuery, blueSpice, document );

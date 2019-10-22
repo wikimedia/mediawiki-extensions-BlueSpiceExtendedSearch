@@ -77,7 +77,7 @@
 		this.$secondaryResultsLabel = $( '<span>' )
 			.addClass( 'bs-extendedsearch-autocomplete-popup-special-item-label' )
 			.html( mw.message( 'bs-extendedsearch-autocomplete-result-secondary-results-label' ).plain() );
-	}
+	};
 
 	bs.extendedSearch.mixin.AutocompleteResults.prototype.fillSecondaryResults = function( suggestions ) {
 		//Fuzzy results when no NS is selected and hits in other NSs when it is
@@ -97,7 +97,7 @@
 				this.displayedResults.secondary.push( suggestion );
 			}
 		}
-	}
+	};
 
 	OO.initClass( bs.extendedSearch.mixin.AutocompleteResults );
 
@@ -128,8 +128,9 @@
 				.attr( 'href', this.uri )
 				.html( this.basename );
 		}
+
 		this.$header.addClass( 'bs-extendedsearch-autocomplete-popup-primary-item-header' );
-	}
+	};
 
 	OO.initClass( bs.extendedSearch.mixin.AutocompleteHeader );
 
@@ -160,13 +161,13 @@
 			}
 			return text.substring( 0, restAfterMustContainLen - 3 ) + hasMoreText + mustContain + hasMoreText + text.slice( -3 );
 		}
-	}
+	};
 
 	//Bolds out search term in the result title
 	bs.extendedSearch.mixin.AutocompleteHeader.prototype.boldSearchTerm = function() {
 		var re = new RegExp( "(" + this.searchTerm + ")", "gi" );
 		this.basename = this.basename.replace( re, "<b>$1</b>" );
-	}
+	};
 
 	bs.extendedSearch.mixin.AutocompleteModifiedTime = function( cfg ) {
 		this.mtime = cfg.modified_time;
@@ -174,14 +175,14 @@
 		this.$modifiedTime = $( '<span>' )
 			.addClass( 'bs-extendedsearch-autocomplete-popup-item-modified-time' )
 			.html( mw.message( 'bs-extendedsearch-autocomplete-modified-time-label', this.mtime ).plain() );
-	}
+	};
 
 	OO.initClass( bs.extendedSearch.mixin.AutocompleteModifiedTime );
 
 	bs.extendedSearch.mixin.AutocompleteCreatePageLink = function( cfg ) {
 		cfg = cfg || {};
 
-		if( cfg.creatable == 0 ) {
+		if( cfg.creatable === 0 ) {
 			return;
 		}
 
@@ -197,7 +198,7 @@
 		cnt.append(
 			this.$createPageLink
 		);
-	}
+	};
 
 	OO.initClass( bs.extendedSearch.mixin.AutocompleteCreatePageLink );
 
@@ -218,7 +219,7 @@
 		cnt.append(
 			this.fullTextSearchButton.$element
 		);
-	}
+	};
 
 	OO.initClass( bs.extendedSearch.mixin.FullTextSearchButton );
 } )( mediaWiki, jQuery, blueSpice, document );
