@@ -274,7 +274,7 @@
 	function _runLookup( lookup, data ) {
 		data = data || {};
 
-		queryData = $.extend( {
+		var queryData = $.extend( {
 			q: JSON.stringify( lookup ),
 			searchData: JSON.stringify( {
 				namespace: this.searchBar.namespace.id || 0,
@@ -305,7 +305,15 @@
 		if( !this.popup || this.searchBar.mobile ) {
 			return;
 		}
-		this.popup.changeCurrent( direction );
+		var result = this.popup.changeCurrent( direction );
+		var $result = $( result );
+		if ( $result.length === 1 ) {
+			var title = $result.find( 'a' ).attr( 'data-bs-title' );
+			if ( title ) {
+				this.searchBar.resetValue();
+				this.searchBar.setValue( title );
+			}
+		}
 	}
 
 	function _navigateToResultPage() {
@@ -323,7 +331,7 @@
 	}
 
 	function _addSecondaryToPopup( suggestions ) {
-		if( suggestions.length == 0 ) {
+		if( suggestions.length === 0 ) {
 			return;
 		}
 
