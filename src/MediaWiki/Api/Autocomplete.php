@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
+use BlueSpice\Services;
+
 class Autocomplete extends \ApiBase {
 	/**
 	 *
@@ -106,7 +108,7 @@ class Autocomplete extends \ApiBase {
 		if ( $title->exists() == false && $title->userCan( 'createpage' ) && $title->userCan( 'edit' ) ) {
 			$this->pageCreatable = true;
 
-			$linkRenderer = \MediaWiki\MediaWikiServices::getInstance()->getService( 'LinkRenderer' );
+			$linkRenderer = Services::getInstance()->getService( 'LinkRenderer' );
 			$anchorText = wfMessage(
 				'bs-extendedsearch-autocomplete-create-page-link',
 				$title->getFullText()
