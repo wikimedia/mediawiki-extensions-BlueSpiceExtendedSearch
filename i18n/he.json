@@ -12,6 +12,7 @@
 	"apihelp-bs-extendedsearch-query-summary": "חיפוש באינדקס",
 	"apihelp-bs-extendedsearch-query-param-params": "פרמטרים נוספים לשאילתה",
 	"bs-extendedsearch-search-input-placeholder": "מצא...",
+	"bs-extendedsearch-search-input-aria-label": "תיבת חיפוש",
 	"bs-extendedsearch-source-label-wikipage": "דף ויקי",
 	"bs-extendedsearch-source-label-specialpage": "דף מיוחד",
 	"bs-extendedsearch-source-label-repofile": "העלאת קובץ",
