@@ -2,9 +2,11 @@
 
 namespace BS\ExtendedSearch\Source\Crawler;
 
+use BlueSpice\Services;
 use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
 use SplFileInfo;
+use UnexpectedValueException;
 
 class ExternalFile extends File {
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateExternalFile';
@@ -12,7 +14,7 @@ class ExternalFile extends File {
 	public function crawl() {
 		$dummyTitle = \Title::makeTitle( NS_SPECIAL, 'Dummy title for external file' );
 
-		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsg' );
+		$config = Services::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
 		$paths = $config->get( 'ESExternalFilePaths' );
 		$excludePatterns = (array)$config->get(
 			'ExtendedSearchExternalFilePathsExcludes'
@@ -21,12 +23,20 @@ class ExternalFile extends File {
 		foreach ( $paths as $sourcePath => $uriPrefix ) {
 			$sourceFileInfo = new SplFileInfo( $sourcePath );
 
-			$files = new RecursiveIteratorIterator(
-				new RecursiveDirectoryIterator( $sourceFileInfo->getPathname(),
-					RecursiveDirectoryIterator::SKIP_DOTS
-				),
-				RecursiveIteratorIterator::SELF_FIRST
-			);
+			try {
+				$files = new RecursiveIteratorIterator(
+					new RecursiveDirectoryIterator( $sourceFileInfo->getPathname(),
+						RecursiveDirectoryIterator::SKIP_DOTS
+					),
+					RecursiveIteratorIterator::SELF_FIRST
+				);
+			} catch ( UnexpectedValueException $ex ) {
+				wfDebugLog(
+					'BSExtendedSearch',
+					'Crawling external file failed: ' . $ex->getMessage()
+				);
+				continue;
+			}
 
 			foreach ( $files as $file ) {
 				if ( $file->isDir() ) {
