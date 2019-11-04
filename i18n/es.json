@@ -8,6 +8,7 @@
 			"Madamebiblio"
 		]
 	},
+	"bs-extsearch-desc": "Motor de búsquedas Elasticsearch",
 	"apihelp-bs-extendedsearch-query-description": "Buscar en el índice",
 	"apihelp-bs-extendedsearch-query-summary": "Buscar en el índice",
 	"apihelp-bs-extendedsearch-query-param-q": "El término de consulta",
@@ -107,5 +108,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Marcador de posición",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Escribe para buscar…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Operador de búsqueda",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipo"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipo",
+	"bs-extendedsearch-collection-var-searchterm": "Término",
+	"bs-extendedsearch-collection-var-numbersearched": "Búsquedas"
 }
