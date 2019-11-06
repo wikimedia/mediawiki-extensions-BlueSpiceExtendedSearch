@@ -4,7 +4,8 @@
 			"Okras",
 			"Vlad5250",
 			"Romanko Mikhail",
-			"1233qwer1234qwer4"
+			"1233qwer1234qwer4",
+			"Katunchik"
 		]
 	},
 	"bssearchadmin": "Поиск администратора",
@@ -78,5 +79,20 @@
 	"bs-extendedsearch-filter-add-button-label": "Добавить фильтр",
 	"bs-extendedsearch-options-button-label": "Настройки поиска",
 	"bs-extendedsearch-export-button-label": "Экспортировать результаты поиска",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип",
+	"bs-extendedsearch-search-input-aria-label": "Строка поиска",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Примерно $1 {{PLURAL:$1|результат|результатов}} для $2",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "Имя",
+	"bs-extendedsearch-search-center-filter-has-hidden": "...{{PLURAL:$1|и $1 других}}",
+	"bs-extendedsearch-result-relevance-relevant": "Этот результат важен для меня",
+	"bs-extendedsearch-result-relevance-not-relevant": "Этот результат не важен для меня",
+	"bs-extendedsearch-user-preferred-namespaces": "Предпочитаемые пространство имён",
+	"bs-extendedsearch-flyout-similar-pages-title": "Похожие страницы",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Похожие страницы не найдены",
+	"bs-extendedsearch-search-center-result-file-usage-label": "Используется на страницах",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Пространства имён",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Категрии",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Категория1|Категория2|…",
+	"bs-extendedsearch-collection-type-searchhistory": "История поиска",
+	"bs-extendedsearch-collection-var-numbersearched": "Поиски"
 }

@@ -3,7 +3,8 @@
 		"authors": [
 			"Peter Böhm <boehm@hallowelt.com>",
 			"Metalhead64",
-			"Hwboehm"
+			"Hwboehm",
+			"Mglaser"
 		]
 	},
 	"bs-extsearch-extensionname": "BlueSpiceExtendedSearch",
@@ -136,5 +137,20 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Suchoperator",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Dieser Parameter wird nur in Kombination mit dem Parameter „category“ evaluiert. Die Einstellung AND findet nur Ergebnisse, die in allen der angegebenen Kategorien sind, während der Wert OR Ergebnisse findet, die mindestens eine der angegebenen Kategorien festgelegt haben.",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Typ",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Liste der gültigen Ergebnistypen, getrennt durch senkrechte Striche (|)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Liste der gültigen Ergebnistypen, getrennt durch senkrechte Striche (|)",
+	"apihelp-bs-extendedsearch-autocomplete-summary": "Gibt die Ergebnisse der Autovervollständigung für eine gegebene Anfrage zurück",
+	"apihelp-bs-extendedsearch-query-param-search-data": "JSON dekodierter String, der zusätzliche Informationen über den Kontext der Suche enthält",
+	"apihelp-bs-extendedsearch-query-param-secondary-request-data": "JSON dekodierter String, der zusätzliche sekundäre Informationen über den Kontext der Suche enthält",
+	"apihelp-bs-extendedsearch-resultrelevance-summary": "Gibt die Relevanz der Suchergebnisse zurück",
+	"apihelp-bs-extendedsearch-query-param-relevance-data": "JSON dekodierter String, der zusätzliche Informationen über den Kontext der Suche enthält",
+	"apihelp-bs-extendedsearch-type-store-summary": "Gibt die registrierten Suchtypen zurück",
+	"bs-extendedsearch-pref-external-file-paths-excludes": "Muster für Ausnahmen",
+	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Ungültiger regulärer Ausdruck",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "Regulärer Ausdruck für Ausnahmen",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Regulärer Ausdruck für den Ausschluss physischer Dateipfade",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-desc": "Erzeugt ein Suchfeld das in definierten Kontexten sucht",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "Namensraum1|Namensraum2|...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Kategorie1|Kategorie2|...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-help": "Text, der im Eingabefeld angezeigt wird, wenn noch nichts eingegeben wurde",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Zum Suchen tippen..."
 }

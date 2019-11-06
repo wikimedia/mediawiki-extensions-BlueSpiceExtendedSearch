@@ -87,5 +87,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "מרחב(י) שם",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "קטגוריה/יות",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "ממלא מקום",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "סוג"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "סוג",
+	"bs-extendedsearch-search-input-aria-label": "תיבת חיפוש"
 }

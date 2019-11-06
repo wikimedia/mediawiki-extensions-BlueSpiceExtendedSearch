@@ -79,5 +79,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "Lijst met geldige categorienamen gescheiden door een sluisteken (|)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Type",
 	"bs-extendedsearch-autocomplete-result-type": "Type: $1",
-	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Invoeren om te zoeken..."
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Invoeren om te zoeken...",
+	"bs-extendedsearch-search-input-aria-label": "Zoekvak"
 }

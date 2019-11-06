@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Cwlin0416",
-			"Kly"
+			"Kly",
+			"Xiplus"
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch 搜尋後端",
@@ -34,7 +35,7 @@
 	"bs-extendedsearch-admin-heading-sources-documentscount": "文件",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "待更新任務",
 	"bs-extendedsearch-search-center-hitcount-widget": "$1 次{{PLURAL:$1|觸發}}$2",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "約 $1 次{{PLURAL:$1|觸發}}$2",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "約$1次{{PLURAL:$1|觸發}}$2",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "添加篩選",
 	"bs-extendedsearch-search-center-filter-extension-label": "額外",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "命名空間",
@@ -148,5 +149,8 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "回傳搜尋結果的關聯內容",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "JSON 解碼字串包含搜尋上下文的額外資訊",
 	"apihelp-bs-extendedsearch-type-store-summary": "回傳已註冊搜尋類型",
-	"bs-extendedsearch-search-input-aria-label": "搜尋框"
+	"bs-extendedsearch-search-input-aria-label": "搜尋框",
+	"bs-extendedsearch-collection-type-searchhistory": "搜尋歷史",
+	"bs-extendedsearch-collection-var-searchterm": "項",
+	"bs-extendedsearch-collection-var-numbersearched": "搜尋"
 }
