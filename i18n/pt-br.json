@@ -148,5 +148,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Este parâmetro é avaliado apenas em combinação com o parâmetro \"categoria\". A configuração AND corresponderá somente aos resultados que estão em todas as categorias fornecidas, enquanto o valor OR corresponderá aos resultados que tiverem pelo menos uma das categorias definidas",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipo",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Lista de tipos de resultados válidos separados por tubo (|)",
-	"bs-extendedsearch-search-input-aria-label": "Caixa de pesquisa"
+	"bs-extendedsearch-search-input-aria-label": "Caixa de pesquisa",
+	"bs-extendedsearch-collection-type-searchhistory": "Histórico de pesquisa",
+	"bs-extendedsearch-collection-var-searchterm": "Prazo",
+	"bs-extendedsearch-collection-var-numbersearched": "Pesquisas"
 }

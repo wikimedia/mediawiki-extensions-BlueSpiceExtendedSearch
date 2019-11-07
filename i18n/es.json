@@ -4,7 +4,8 @@
 			"Fitoschido",
 			"Vanbasten 23",
 			"Carlosmg.dg",
-			"Agusbou2015"
+			"Agusbou2015",
+			"Madamebiblio"
 		]
 	},
 	"apihelp-bs-extendedsearch-query-description": "Buscar en el índice",
@@ -105,5 +106,9 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Operador de búsqueda",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipo",
 	"apihelp-bs-extendedsearch-query-param-search-data": "Cadena codificada en JSON que contiene información adicional del contexto de la búsqueda",
-	"apihelp-bs-extendedsearch-resultrelevance-summary": "Devuelve la relevancia de los resultados de la búsqueda"
+	"apihelp-bs-extendedsearch-resultrelevance-summary": "Devuelve la relevancia de los resultados de la búsqueda",
+	"bs-extsearch-desc": "Motor de búsquedas Elasticsearch",
+	"bs-extendedsearch-search-input-aria-label": "Cuadro de búsqueda",
+	"bs-extendedsearch-collection-var-searchterm": "Término",
+	"bs-extendedsearch-collection-var-numbersearched": "Búsquedas"
 }

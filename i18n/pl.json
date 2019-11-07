@@ -65,5 +65,11 @@
 	"bs-extendedsearch-filter-add-button-label": "Dodaj filtr",
 	"bs-extendedsearch-options-button-label": "Opcje wyszukiwania",
 	"bs-extendedsearch-search-input-aria-label": "Pole wyszukiwania",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Około $1 {{PLURAL:$1|wynik|wyniki|wyników}} dla „$2”"
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Około $1 {{PLURAL:$1|wynik|wyniki|wyników}} dla „$2”",
+	"bs-extendedsearch-search-center-addfilter-dialog-title": "Dodaj filtr",
+	"bs-extendedsearch-search-center-options-sort-by": "Sortuj według",
+	"bs-extendedsearch-flyout-similar-pages-title": "Podobne strony",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Kategoria1|Kategoria2|...",
+	"bs-extendedsearch-collection-type-searchhistory": "Historia wyszukiwania",
+	"bs-extendedsearch-collection-var-searchterm": "Słowo klucz"
 }

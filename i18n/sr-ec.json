@@ -24,7 +24,7 @@
 	"bs-extendedsearch-admin-heading-sources": "Извори",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Документи",
 	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|погодак|поготка|погодака}} за термин „$2”",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "око $1 {{PLURAL:$1|погодак|поготка|погодака}} за термин „$2”",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Око $1 {{PLURAL:$1|погодак|поготка|погодака}} за термин „$2”",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Додавање филтера",
 	"bs-extendedsearch-search-center-filter-extension-label": "Додатак",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Именски простор",
@@ -95,5 +95,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Именски простор(и)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Категорија/Категорије",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Оператор претраге",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип",
+	"bs-extendedsearch-collection-type-searchhistory": "Историја претраге",
+	"bs-extendedsearch-collection-var-searchterm": "Појам",
+	"bs-extendedsearch-collection-var-numbersearched": "Претраге"
 }

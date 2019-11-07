@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Nike",
-			"Pyscowicz"
+			"Pyscowicz",
+			"Silvonen"
 		]
 	},
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Nimiavaruus",
@@ -16,5 +17,12 @@
 	"bs-extendedsearch-search-center-filter-page_language-label": "Sivun kieli",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Sivun kieli:",
 	"bs-extendedsearch-wikipage-title-original": "(alkuperäinen sivunimi: $1)",
-	"bs-extendedsearch-pref-auto-set-lang-filter": "Aseta kielisuodatin automaattisesti"
+	"bs-extendedsearch-pref-auto-set-lang-filter": "Aseta kielisuodatin automaattisesti",
+	"bs-extendedsearch-source-label-user": "Käyttäjä",
+	"bs-extendedsearch-admin-label-error": "Virhe",
+	"bs-extendedsearch-searchcenter-filter-or-label": "tai",
+	"bs-extendedsearch-searchcenter-filter-and-label": "ja",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "Nimi",
+	"bs-extendedsearch-searchcenter-sort-field-size": "Koko",
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nimiavaruus"
 }

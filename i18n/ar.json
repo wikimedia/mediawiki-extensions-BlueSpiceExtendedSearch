@@ -151,5 +151,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "يتم تقييم هذا الوسيط فقط بالاقتران مع الوسيط \"التصنيف\"، إعداد AND سيطابق فقط النتائج الموجودة في جميع التصنيفات المحددة، بينما تطابق قيمة OR النتائج التي تحتوي على واحد على الأقل من التصنيفات المحددة",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "النوع",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "قائمة أنواع النتائج الصحيحة مفصولة بأنبوب (|)",
-	"bs-extendedsearch-search-input-aria-label": "صندوق البحث"
+	"bs-extendedsearch-search-input-aria-label": "صندوق البحث",
+	"bs-extendedsearch-collection-type-searchhistory": "البحث في التاريخ",
+	"bs-extendedsearch-collection-var-searchterm": "المصطلح",
+	"bs-extendedsearch-collection-var-numbersearched": "عمليات البحث"
 }

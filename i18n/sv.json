@@ -114,5 +114,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Namnrymd(er)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategori(er)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Kategori1|Kategori2|...",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Skriv för att söka..."
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Skriv för att söka...",
+	"bs-extendedsearch-collection-type-searchhistory": "Sökhistorik",
+	"bs-extendedsearch-collection-var-searchterm": "Term",
+	"bs-extendedsearch-collection-var-numbersearched": "Sökningar"
 }

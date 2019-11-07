@@ -147,5 +147,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Stu parametre jè sulamende valutate in combinazione cu 'u parametre \"category\". 'Mbostanne AND avènene cercate sulamende le resultate ca stonne jndr'à tutte le categorije scacchiate, invece OR dèje le resultate ca stonne ninde ninde jndr'à 'na categorije 'mbrà chidde scacchiate",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipe",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Elenghe de le tipe de resultate separate da 'a barre (|)",
-	"bs-extendedsearch-search-input-aria-label": "Buatte de recerche"
+	"bs-extendedsearch-search-input-aria-label": "Buatte de recerche",
+	"bs-extendedsearch-collection-type-searchhistory": "Cunde d'a recerche",
+	"bs-extendedsearch-collection-var-searchterm": "Termine",
+	"bs-extendedsearch-collection-var-numbersearched": "Recerche"
 }
