@@ -150,5 +150,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "此参数仅与“分类”参数同时生效；将此参数设为\"AND\"，将只得到同时包含在所有指定类别下的结果；将此参数设为\"OR\"，则得到的结果至少属于所有指定类别的某一个",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "类型",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "搜索结果的有效类型；用pipe (\"|\") 分隔",
-	"bs-extendedsearch-collection-type-searchhistory": "搜索历史"
+	"bs-extendedsearch-collection-type-searchhistory": "搜索历史",
+	"bs-extendedsearch-collection-var-numbersearched": "搜索"
 }
