@@ -2,10 +2,12 @@
 
 namespace BS\ExtendedSearch;
 
+use BlueSpice\Services;
 use BS\ExtendedSearch\Source\Base as SourceBase;
 use Elastica\Result;
 use Exception;
 use MWException;
+use Config;
 
 class PostProcessor {
 
@@ -30,12 +32,19 @@ class PostProcessor {
 	protected $reSort = false;
 
 	/**
+	 * @var Config
+	 */
+	protected $config;
+
+	/**
 	 * @param string $type
 	 * @param Backend $backend
 	 * @return PostProcessor
 	 */
 	public static function factory( $type, $backend ) {
-		$postProcessor = new static( $type, $backend );
+		$postProcessor = new static(
+			$type, $backend, Services::getInstance()->getConfigFactory()->makeConfig( 'bsg' )
+		);
 		$processors = [];
 		foreach ( $backend->getSources() as $key => $source ) {
 			$processors[$key] = $source->getPostProcessor( $postProcessor );
@@ -48,9 +57,17 @@ class PostProcessor {
 	 * @param string $type
 	 * @param Backend $backend
 	 */
-	protected function __construct( $type, $backend ) {
+	protected function __construct( $type, $backend, $config ) {
 		$this->searchType = $type;
 		$this->backend = $backend;
+		$this->config = $config;
+	}
+
+	/**
+	 * @return Config
+	 */
+	public function getConfig() {
+		return $this->config;
 	}
 
 	/**

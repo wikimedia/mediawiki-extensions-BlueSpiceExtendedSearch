@@ -31,21 +31,27 @@ class WikiPage extends Base {
 		if ( $result->getType() !== 'wikipage' ) {
 			return false;
 		}
-		$portionOfScore = $this->base->getType() === Backend::QUERY_TYPE_SEARCH ? 1 : 0.3;
+		$portionOfScore = ( $this->base->getType() === Backend::QUERY_TYPE_SEARCH ) ? 1 : 0.3;
 		$mTime = $result->getData()['mtime'];
 		$mTime = wfTimestamp( TS_UNIX, $mTime );
 		$now = wfTimestamp();
 		$diff = (int)( $now - $mTime ) / 60;
-		if ( $diff === 0 ) {
-			// Impossible, but just to be safe
-			return false;
+		if ( $diff > 43800 ) {
+			// Disregard all pages that were modified more than a month ago (43800 min)
+			// Those are probably not useful anyway, and they will produce incorrect boost curve
+			return true;
 		}
-		// Get normalized relevance - nearly 1 for very recent pages and nearly 0 for very old ones
-		$relevance = 100 / $diff;
+		// Get normalized relevance - nearly 1 for very recent pages and nearly 0 for pages near a month old
+		$relevance = 1 - ( round( ( $diff - 0 ) / ( 43801 - 0 ), 3 ) );
 		// Portion of score controls how much of the score can be boosted
 		// This is different for AC and fulltext due to how scoring is determined
-		// If $portionOfScore is 1, it means that very recent pages can almost double the score
-		$boostValue = round( ( $result->getScore() * $portionOfScore ) * $relevance, 2 );
+		$boostFactor = (float)$this->base->getConfig()->get( 'ESRecentBoostFactor' );
+		if ( $boostFactor === 0 ) {
+			// Would produce 0 score
+			return true;
+		}
+		$boostValue = round( ( $result->getScore() * $portionOfScore ) * ( $relevance * $boostFactor ), 2 );
+
 		$result->setParam( '_score', $result->getScore() + $boostValue );
 		return true;
 	}
