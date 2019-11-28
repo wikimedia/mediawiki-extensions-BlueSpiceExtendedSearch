@@ -4,6 +4,10 @@ namespace BS\ExtendedSearch\Source\Job;
 
 class UpdateTitleBase extends UpdateBase {
 
+	/**
+	 *
+	 * @return string
+	 */
 	protected function getDocumentProviderUri() {
 		return $this->getTitle()->getCanonicalURL();
 	}
@@ -26,6 +30,10 @@ class UpdateTitleBase extends UpdateBase {
 		return $aDC;
 	}
 
+	/**
+	 *
+	 * @return bool
+	 */
 	protected function isDeletion() {
 		return !$this->getTitle()->exists() || $this->action == static::ACTION_DELETE;
 	}

@@ -72,6 +72,7 @@ class WikiPage extends DecoratorBase {
 	/**
 	 *
 	 * @param \WikiPage $oWikiPage
+	 * @return string
 	 */
 	protected function getNamespaceText( $oWikiPage ) {
 		if ( $oWikiPage->getTitle()->getNamespace() === NS_MAIN ) {
@@ -83,6 +84,7 @@ class WikiPage extends DecoratorBase {
 	/**
 	 *
 	 * @param \WikiPage $oWikiPage
+	 * @return array
 	 */
 	protected function getCategories( $oWikiPage ) {
 		$oCatTitles = $oWikiPage->getCategories();
@@ -135,6 +137,11 @@ class WikiPage extends DecoratorBase {
 		return $aSections;
 	}
 
+	/**
+	 *
+	 * @param string $sText
+	 * @return string
+	 */
 	protected function stripTags( $sText ) {
 		$sText = strip_tags( $sText );
 		$sText = preg_replace( '/<!--(.|\s)*?-->/', '', $sText );
@@ -145,7 +152,6 @@ class WikiPage extends DecoratorBase {
 	 * Collects all tags that are present on page,
 	 * and are also registered with Parser
 	 *
-	 * @param type $oWikiPage
 	 * @return array
 	 */
 	protected function getTags() {
@@ -163,7 +169,6 @@ class WikiPage extends DecoratorBase {
 
 	/**
 	 *
-	 * @param type $oWikiPage
 	 * @return array
 	 */
 	protected function parseWikipageForTags() {
@@ -183,6 +188,11 @@ class WikiPage extends DecoratorBase {
 		return [];
 	}
 
+	/**
+	 *
+	 * @param \WikiPage $oWikiPage
+	 * @return string
+	 */
 	protected function getRedirectsTo( \WikiPage $oWikiPage ) {
 		if ( $oWikiPage->getTitle()->isRedirect() === false ) {
 			return '';
@@ -195,6 +205,11 @@ class WikiPage extends DecoratorBase {
 		return '';
 	}
 
+	/**
+	 *
+	 * @param \WikiPage $oWikiPage
+	 * @return string[]
+	 */
 	protected function getRedirects( \WikiPage $oWikiPage ) {
 		$redirs = $oWikiPage->getTitle()->getRedirectsHere();
 		$indexable = [];
@@ -205,6 +220,11 @@ class WikiPage extends DecoratorBase {
 		return $indexable;
 	}
 
+	/**
+	 *
+	 * @param \Title $title
+	 * @return string
+	 */
 	protected function getDisplayTitle( \Title $title ) {
 		$pageProps = $this->getPageProps( $title );
 		if ( isset( $pageProps['displaytitle'] ) && $pageProps['displaytitle'] !== '' ) {
@@ -213,11 +233,21 @@ class WikiPage extends DecoratorBase {
 		return $title->getPrefixedText();
 	}
 
+	/**
+	 *
+	 * @param \Title $title
+	 * @return array
+	 */
 	protected function getPageProps( \Title $title ) {
 		return Services::getInstance()->getBSUtilityFactory()
 			->getPagePropHelper( $title )->getPageProps();
 	}
 
+	/**
+	 *
+	 * @param \WikiPage $wikiPage
+	 * @return array
+	 */
 	protected function getUserFiles( \WikiPage $wikiPage ) {
 		$parserOutput = $wikiPage->getContent()->getParserOutput( $wikiPage->getTitle() );
 		$files = $parserOutput->getImages();

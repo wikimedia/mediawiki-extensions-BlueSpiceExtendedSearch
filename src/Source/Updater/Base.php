@@ -14,6 +14,10 @@ class Base {
 		// TODO: Proceed here
 	}
 
+	/**
+	 *
+	 * @param array &$aHooks
+	 */
 	public function init( &$aHooks ) {
 		$aHooks['BSExtendedSearchTriggerUpdate'][] = [ $this, 'onBSExtendedSearchTriggerUpdate' ];
 	}

@@ -15,6 +15,10 @@ class UpdateSpecialPage extends UpdateTitleBase {
 		parent::__construct( 'updateSpecialPageIndex', $title, $params );
 	}
 
+	/**
+	 *
+	 * @return \SpecialPage
+	 */
 	protected function getDocumentProviderSource() {
 		return \SpecialPageFactory::getPage( $this->getTitle()->getText() );
 	}
@@ -31,6 +35,10 @@ class UpdateSpecialPage extends UpdateTitleBase {
 		return $aDC;
 	}
 
+	/**
+	 *
+	 * @return bool
+	 */
 	protected function isDeletion() {
 		return false;
 	}

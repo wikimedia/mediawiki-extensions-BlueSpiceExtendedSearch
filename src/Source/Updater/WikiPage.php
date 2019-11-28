@@ -3,6 +3,10 @@
 namespace BS\ExtendedSearch\Source\Updater;
 
 class WikiPage extends Base {
+	/**
+	 *
+	 * @param array &$aHooks
+	 */
 	public function init( &$aHooks ) {
 		$aHooks['PageContentSaveComplete'][] = [ $this, 'onPageContentSaveComplete' ];
 		$aHooks['ArticleDeleteComplete'][] = [ $this, 'onArticleDeleteComplete' ];
@@ -38,8 +42,8 @@ class WikiPage extends Base {
 
 	/**
 	 * Delete search index entry on article deletion
-	 * @param \WikiPage $article
-	 * @param \User $user
+	 * @param \WikiPage &$article
+	 * @param \User &$user
 	 * @param type $reason
 	 * @param type $id
 	 * @param \Content|null $content
@@ -70,9 +74,9 @@ class WikiPage extends Base {
 
 	/**
 	 * Update search index when an article is moved.
-	 * @param \Title $title
-	 * @param \Title $newtitle
-	 * @param \User $user
+	 * @param \Title &$title
+	 * @param \Title &$newtitle
+	 * @param \User &$user
 	 * @param int $oldid
 	 * @param int $newid
 	 * @param string $reason

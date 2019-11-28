@@ -2,6 +2,10 @@
 namespace BS\ExtendedSearch\Source\Updater;
 
 class SpecialPage extends Base {
+	/**
+	 *
+	 * @param array &$aHooks
+	 */
 	public function init( &$aHooks ) {
 		$aHooks['LoadExtensionSchemaUpdates'][] = [ $this, 'onLoadExtensionSchemaUpdates' ];
 
@@ -10,7 +14,7 @@ class SpecialPage extends Base {
 
 	/**
 	 * Update index if new extensions are being installed
-	 * @param object §updater Updater
+	 * @param \DatabaseUpdater $updater Updater
 	 * @return bool Always true
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater ) {

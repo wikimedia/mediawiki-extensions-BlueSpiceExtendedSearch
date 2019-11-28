@@ -3,6 +3,13 @@
 namespace BS\ExtendedSearch\Source\Formatter;
 
 class FileFormatter extends Base {
+
+	/**
+	 *
+	 * @param array &$result
+	 * @param \Elastica\Result $resultObject
+	 * @return null
+	 */
 	public function format( &$result, $resultObject ) {
 		if ( $this->source->getTypeKey() != $resultObject->getType() ) {
 			return;
@@ -14,6 +21,11 @@ class FileFormatter extends Base {
 		$result['highlight'] = $this->getHighlight( $resultObject );
 	}
 
+	/**
+	 *
+	 * @param array $result
+	 * @return string
+	 */
 	protected function getImage( $result ) {
 		$mimeType = $result['mime_type'];
 		if ( strpos( $mimeType, 'image' ) === 0 ) {
@@ -32,6 +44,11 @@ class FileFormatter extends Base {
 		return $scriptPath . $fileIcons['default'];
 	}
 
+	/**
+	 *
+	 * @param array $defaultResultStructure
+	 * @return string
+	 */
 	public function getResultStructure( $defaultResultStructure = [] ) {
 		$resultStructure = $defaultResultStructure;
 		$resultStructure['imageUri'] = "image_uri";
@@ -46,6 +63,11 @@ class FileFormatter extends Base {
 		return $resultStructure;
 	}
 
+	/**
+	 *
+	 * @param \Elastica\Result $resultObject
+	 * @return string
+	 */
 	protected function getHighlight( $resultObject ) {
 		$highlights = $resultObject->getHighlights();
 		if ( isset( $highlights['attachment.content'] ) ) {

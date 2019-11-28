@@ -28,6 +28,10 @@ class Stats extends \ApiBase {
 		$result->addValue( null, 'stats', $stats );
 	}
 
+	/**
+	 *
+	 * @return array
+	 */
 	protected function getAllowedParams() {
 		return [
 			'stats' => [
@@ -39,6 +43,14 @@ class Stats extends \ApiBase {
 		];
 	}
 
+	/**
+	 *
+	 * @param string $paramName Parameter name
+	 * @param array|mixed $paramSettings Default value or an array of settings
+	 *  using PARAM_* constants.
+	 * @param bool $parseLimit Whether to parse and validate 'limit' parameters
+	 * @return mixed Parameter value
+	 */
 	protected function getParameterFromSettings( $paramName, $paramSettings, $parseLimit ) {
 		$value = parent::getParameterFromSettings( $paramName, $paramSettings, $parseLimit );
 		if ( $paramName === 'stats' ) {
@@ -52,6 +64,7 @@ class Stats extends \ApiBase {
 
 	/**
 	 *
+	 * @param \BS\ExtendedSearch\Backend $bac
 	 * @return array The stats
 	 */
 	protected function makeBackendStats( $bac ) {

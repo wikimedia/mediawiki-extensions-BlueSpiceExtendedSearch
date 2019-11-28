@@ -35,6 +35,7 @@ class PrimaryDataProvider implements IPrimaryDataProvider {
 	/**
 	 *
 	 * @param \Wikimedia\Rdbms\IDatabase $db
+	 * @param Context $context
 	 */
 	public function __construct( $db, Context $context ) {
 		$this->db = $db;
@@ -44,6 +45,7 @@ class PrimaryDataProvider implements IPrimaryDataProvider {
 	/**
 	 *
 	 * @param \BlueSpice\Data\ReaderParams $params
+	 * @return array
 	 */
 	public function makeData( $params ) {
 		$this->data = [];
@@ -143,6 +145,10 @@ class PrimaryDataProvider implements IPrimaryDataProvider {
 		return $conds;
 	}
 
+	/**
+	 *
+	 * @param \stdClass $row
+	 */
 	protected function appendRowToData( $row ) {
 		$this->data[] = new Record( (object)[
 			Record::NAME => $this->normalizeTerm( $row->{Record::NAME} ),
@@ -151,28 +157,47 @@ class PrimaryDataProvider implements IPrimaryDataProvider {
 		] );
 	}
 
+	/**
+	 *
+	 * @param string $term
+	 * @return string
+	 */
 	protected function normalizeTerm( $term ) {
-		$term = preg_replace( "/(\\\)/", "", $term ); // 'term\\.com' -> 'term.com'
-		$term = preg_replace( "/(\*)/", "", $term ); // '*term*' -> 'term'
-		$term = preg_replace( "/(~.*)/", "", $term ); // 'term~0.5' -> 'term'
-		$term = preg_replace( "/(\"*)/", "", $term ); // '"term"' -> 'term'
-		$term = preg_replace( "/(\%20*)/", " ", $term ); // 'term1%20term2' -> 'term1 term2'
-		$term = preg_replace( "/(\%c3%b6*)/i", "ö", $term ); // 'sch%c3%b6n' -> 'schön'
-		$term = preg_replace( "/(\%c3%96*)/i", "Ö", $term ); // 'sch%c3%b6n' -> 'schön'
-		$term = preg_replace( "/(\%c3%bc*)/i", "ü", $term ); // 't%c3%bcr' -> 'tür'
-		$term = preg_replace( "/(\%c3%9c*)/i", "Ü", $term ); // 't%c3%bcr' -> 'tür'
-		$term = preg_replace( "/(\%c3%a4*)/i", "ä", $term ); // 'b%c3%a4r' -> 'bär'
-		$term = preg_replace( "/(\%c3%84*)/i", "Ä", $term ); // 'b%c3%a4r' -> 'bär'
-		$term = preg_replace( "/(\%c3%9F*)/i", "ß", $term ); // 'spa%c3%9F' -> 'spaß'
+		// 'term\\.com' -> 'term.com'
+		$term = preg_replace( "/(\\\)/", "", $term );
+		// '*term*' -> 'term'
+		$term = preg_replace( "/(\*)/", "", $term );
+		// 'term~0.5' -> 'term'
+		$term = preg_replace( "/(~.*)/", "", $term );
+		// '"term"' -> 'term'
+		$term = preg_replace( "/(\"*)/", "", $term );
+		// 'term1%20term2' -> 'term1 term2'
+		$term = preg_replace( "/(\%20*)/", " ", $term );
+		// 'sch%c3%b6n' -> 'schön'
+		$term = preg_replace( "/(\%c3%b6*)/i", "ö", $term );
+		// 'sch%c3%b6n' -> 'schön'
+		$term = preg_replace( "/(\%c3%96*)/i", "Ö", $term );
+		// 't%c3%bcr' -> 'tür'
+		$term = preg_replace( "/(\%c3%bc*)/i", "ü", $term );
+		// 't%c3%bcr' -> 'tür'
+		$term = preg_replace( "/(\%c3%9c*)/i", "Ü", $term );
+		// 'b%c3%a4r' -> 'bär'
+		$term = preg_replace( "/(\%c3%a4*)/i", "ä", $term );
+		// 'b%c3%a4r' -> 'bär'
+		$term = preg_replace( "/(\%c3%84*)/i", "Ä", $term );
+		// 'spa%c3%9F' -> 'spaß'
+		$term = preg_replace( "/(\%c3%9F*)/i", "ß", $term );
 
-		$term = trim( $term ); // ' term  ' -> 'term'
+		// ' term  ' -> 'term'
+		$term = trim( $term );
 
 		return $term;
 	}
 
 	/**
 	 * cause of mysql alias resons -.-
-	 * @param type $alias
+	 * @param string $alias
+	 * @return string
 	 */
 	protected function aliasToFieldName( $alias ) {
 		switch ( $alias ) {

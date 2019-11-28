@@ -6,6 +6,11 @@ class BaseTitleSecurityTrimmings extends Base {
 	protected $config;
 	protected $search;
 
+	/**
+	 *
+	 * @param \BS\ExtendedSearch\Lookup &$lookup
+	 * @param \IContextSource $context
+	 */
 	public function __construct( &$lookup, \IContextSource $context ) {
 		parent::__construct( $lookup, $context );
 
@@ -24,6 +29,10 @@ class BaseTitleSecurityTrimmings extends Base {
 		$this->search = $search;
 	}
 
+	/**
+	 *
+	 * @return int
+	 */
 	public function getPriority() {
 		return 100;
 	}
@@ -35,9 +44,6 @@ class BaseTitleSecurityTrimmings extends Base {
 	 *
 	 * Logically this is LookupModifier, but since it runs query, and needs
 	 * resources unavaialable to LookupModifier, its implemented here
-	 *
-	 * @param Lookup $lookup
-	 * @param \Elastica\Search $search
 	 */
 	public function apply() {
 		$prepLookup = clone $this->oLookup;
@@ -67,9 +73,9 @@ class BaseTitleSecurityTrimmings extends Base {
 	 * Runs page-sized queries until there are enought allowed results
 	 * to fill a page, or until there are no more results to go over
 	 *
-	 * @param type $prepLookup
-	 * @param type $search
-	 * @param type $excludes
+	 * @param Lookup $prepLookup
+	 * @param int $size
+	 * @param array &$excludes
 	 */
 	protected function getExcludesForCurrentPage( $prepLookup, $size, &$excludes ) {
 		$validCount = 0;
@@ -129,7 +135,6 @@ class BaseTitleSecurityTrimmings extends Base {
 	 * Runs preprocessor query
 	 *
 	 * @param Lookup $lookup
-	 * @param \Elastica\Search $search
 	 * @return array|false if no results are retrieved
 	 */
 	protected function runPrepQuery( $lookup ) {

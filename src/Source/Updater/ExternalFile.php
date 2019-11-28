@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\Updater;
 
+use BlueSpice\INotifier;
 use BlueSpice\RunJobsTriggerHandler;
 
 class ExternalFile extends RunJobsTriggerHandler {
@@ -11,6 +12,12 @@ class ExternalFile extends RunJobsTriggerHandler {
 
 	protected $indexedFiles = [];
 
+	/**
+	 *
+	 * @param \Config $config
+	 * @param \Wikimedia\Rdbms\LoadBalancer $loadBalancer
+	 * @param INotifier $notifier
+	 */
 	public function __construct( $config, $loadBalancer, $notifier ) {
 		parent::__construct( $config, $loadBalancer, $notifier );
 
@@ -37,6 +44,9 @@ class ExternalFile extends RunJobsTriggerHandler {
 		$this->bulkDeleteFiles();
 	}
 
+	/**
+	 *
+	 */
 	protected function getIndexedExternalFiles() {
 		$search = new \Elastica\Search( $this->backend->getClient() );
 		$search->addIndex( $this->index->getName() );
@@ -57,6 +67,13 @@ class ExternalFile extends RunJobsTriggerHandler {
 		$this->indexedFiles = $files;
 	}
 
+	/**
+	 *
+	 * @param \Elastica\Search $search
+	 * @param \BS\ExtendedSearch\Lookup $lookup
+	 * @param array &$results
+	 * @return null
+	 */
 	protected function getResults( $search, $lookup, &$results ) {
 		$res = $search->search( $lookup->getQueryDSL() );
 		if ( count( $res->getResults() ) == 0 ) {

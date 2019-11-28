@@ -83,6 +83,7 @@ class ExternalFile extends File {
 	 * @param string $sUriPrefix
 	 * @param SplFileInfo $oFile
 	 * @param SplFileInfo $oSourcePath
+	 * @return string
 	 */
 	protected function makeDestFileName( $sUriPrefix, $oFile, $oSourcePath ) {
 		$sRelativePath = str_replace( $oSourcePath->getPathname() . '/', '', $oFile->getPathname() );

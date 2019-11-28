@@ -9,6 +9,11 @@ use ConfigException;
 
 class WikiPage extends Base {
 
+	/**
+	 *
+	 * @param Result &$result
+	 * @param Lookup $lookup
+	 */
 	public function process( Result &$result, Lookup $lookup ) {
 		parent::process( $result, $lookup );
 		if ( $this->mTimeBoost( $result, $lookup ) ) {

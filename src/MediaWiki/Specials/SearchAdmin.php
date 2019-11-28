@@ -4,10 +4,23 @@ namespace BS\ExtendedSearch\MediaWiki\Specials;
 
 class SearchAdmin extends \SpecialPage {
 
+	/**
+	 *
+	 * @param string $name
+	 * @param string $restriction
+	 * @param bool $listed
+	 * @param bool $function
+	 * @param string $file
+	 * @param bool $includable
+	 */
 	public function __construct( $name = '', $restriction = '', $listed = true, $function = false, $file = '', $includable = false ) {
 		parent::__construct( 'BSSearchAdmin', 'extendedsearchadmin-viewspecialpage' );
 	}
 
+	/**
+	 *
+	 * @param string $subPage
+	 */
 	public function execute( $subPage ) {
 		$this->setHeaders();
 
@@ -24,10 +37,18 @@ class SearchAdmin extends \SpecialPage {
 		$this->renderOverview( $data );
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	protected function getGroupName() {
 		return 'bluespice';
 	}
 
+	/**
+	 *
+	 * @param array $data
+	 */
 	protected function renderOverview( $data ) {
 		$stats = $data['stats'];
 		$this->getOutput()->addHTML( \Html::rawElement(
@@ -42,6 +63,10 @@ class SearchAdmin extends \SpecialPage {
 		}
 	}
 
+	/**
+	 *
+	 * @param array $sErrorMessage
+	 */
 	public function renderError( $sErrorMessage ) {
 		$this->getOutput()->addHTML( \Html::rawElement(
 			'div',
@@ -59,11 +84,19 @@ class SearchAdmin extends \SpecialPage {
 		) );
 	}
 
+	/**
+	 *
+	 * @param array $aBackedStats
+	 */
 	protected function renderStats( $aBackedStats ) {
 		$this->renderAllDocumentsCount( $aBackedStats['all_documents_count'] );
 		$this->renderSources( $aBackedStats['sources'] );
 	}
 
+	/**
+	 *
+	 * @param int $iAllDocumentsCount
+	 */
 	protected function renderAllDocumentsCount( $iAllDocumentsCount ) {
 		$this->getOutput()->addHTML( \Html::rawElement(
 			'div',
@@ -81,6 +114,10 @@ class SearchAdmin extends \SpecialPage {
 		) );
 	}
 
+	/**
+	 *
+	 * @param array $aSources
+	 */
 	protected function renderSources( $aSources ) {
 		$this->getOutput()->addHTML( \Html::rawElement(
 			'h3',
@@ -100,6 +137,11 @@ class SearchAdmin extends \SpecialPage {
 		$this->getOutput()->addHTML( \Html::closeElement( 'table' ) );
 	}
 
+	/**
+	 *
+	 * @param string $sSourceKey
+	 * @param array $aSourceStats
+	 */
 	protected function renderSourceTableRow( $sSourceKey, $aSourceStats ) {
 		$this->getOutput()->addHTML( \Html::openElement( 'tr' ) );
 		$this->getOutput()->addHTML( \Html::element(

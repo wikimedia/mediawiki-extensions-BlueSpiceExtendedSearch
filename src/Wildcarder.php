@@ -46,6 +46,12 @@ class Wildcarder {
 		);
 	}
 
+	/**
+	 *
+	 * @param string $original
+	 * @param array $wildcardingOperators
+	 * @param array $wildcardingSeparators
+	 */
 	protected function __construct( $original, $wildcardingOperators, $wildcardingSeparators ) {
 		$this->original = $original;
 		$this->wildcardingOperators = $wildcardingOperators;
@@ -169,6 +175,10 @@ class Wildcarder {
 		return implode( ' ', $terms );
 	}
 
+	/**
+	 *
+	 * @return array
+	 */
 	protected function getQuotedParts() {
 		$quoted = [];
 		preg_match_all( '/"([^"]*)"/', $this->wildcarded, $quoted );

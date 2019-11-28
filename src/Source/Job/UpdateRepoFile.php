@@ -23,11 +23,20 @@ class UpdateRepoFile extends UpdateTitleBase {
 		parent::__construct( 'updateRepoFileIndex', $title, $params );
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	protected function getDocumentProviderUri() {
 		$this->setFileRepoFile();
 		return $this->file->getCanonicalUrl();
 	}
 
+	/**
+	 *
+	 * @return \SplFileInfo
+	 * @throws \Exception
+	 */
 	protected function getDocumentProviderSource() {
 		$this->setFileRepoFile();
 		$fileBackend = $this->file->getRepo()->getBackend();
@@ -58,6 +67,10 @@ class UpdateRepoFile extends UpdateTitleBase {
 		$this->file = $file;
 	}
 
+	/**
+	 *
+	 * @return bool
+	 */
 	protected function isDeletion() {
 		return false;
 	}

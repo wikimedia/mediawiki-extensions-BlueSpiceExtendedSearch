@@ -54,7 +54,7 @@ class Base {
 
 	/**
 	 *
-	 * @param \BS\ExtendedSearch\Backend
+	 * @param \BS\ExtendedSearch\Backend $oBackend
 	 * @param array $aConfig
 	 */
 	public function __construct( $oBackend, $aConfig ) {
@@ -119,9 +119,9 @@ class Base {
 
 	/**
 	 *
-	 * @param \BS\ExtendedSearch\Lookup
+	 * @param \BS\ExtendedSearch\Lookup $oLookup
 	 * @param \IContextSource $oContext
-	 * @param string
+	 * @param string $sType
 	 * @return \BS\ExtendedSearch\Source\LookupModifier\Base[]
 	 */
 	public function getLookupModifiers( $oLookup, $oContext, $sType = LookupModifier::TYPE_SEARCH ) {
@@ -158,7 +158,8 @@ class Base {
 		// which makes it possible to match single words in compound words
 		return [
 			"settings" => [
-				// "number_of_shards" => 1, //Only for testing purposes on small sample, remove or increase for production
+				// Only for testing purposes on small sample, remove or increase for production
+				// "number_of_shards" => 1,
 				"analysis" => [
 					"filter" => [
 						"autocomplete_filter" => [
@@ -170,7 +171,8 @@ class Base {
 					"analyzer" => [
 						"autocomplete" => [
 							"type" => "custom",
-							"tokenizer" => "standard", // Change
+							// Change
+							"tokenizer" => "standard",
 							"filter" => [
 								"lowercase",
 								"autocomplete_filter"
@@ -182,6 +184,10 @@ class Base {
 		];
 	}
 
+	/**
+	 *
+	 * @param \Elastica\Client $client
+	 */
 	public function runAdditionalSetupRequests( \Elastica\Client $client ) {
 	}
 
@@ -243,10 +249,18 @@ class Base {
 		return $oResult;
 	}
 
+	/**
+	 *
+	 * @return Formatter\Base
+	 */
 	public function getFormatter() {
 		return new Formatter\Base( $this );
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	public function getSearchPermission() {
 		// Default - no permission required
 		return '';
