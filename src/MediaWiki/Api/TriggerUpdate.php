@@ -12,6 +12,10 @@ class TriggerUpdate extends \ApiBase {
 		\Hooks::run( 'BSExtendedSearchTriggerUpdate', [ $sBackendKey, $sSourceKey, $oTitle, $aParams ] );
 	}
 
+	/**
+	 *
+	 * @return array
+	 */
 	protected function getAllowedParams() {
 		return [
 			'backend' => [

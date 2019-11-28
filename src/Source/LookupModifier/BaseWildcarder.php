@@ -22,6 +22,10 @@ class BaseWildcarder extends Base {
 		$this->setWildcarded( $wildcarder->getWildcarded() );
 	}
 
+	/**
+	 *
+	 * @param string $wildcarded
+	 */
 	protected function setWildcarded( $wildcarded ) {
 		$this->queryString['query'] = $wildcarded;
 		$this->queryString['default_operator'] = 'OR';
@@ -34,6 +38,10 @@ class BaseWildcarder extends Base {
 		$this->oLookup->setQueryString( $this->queryString );
 	}
 
+	/**
+	 *
+	 * @return int
+	 */
 	public function getPriority() {
 		return 90;
 	}

@@ -27,8 +27,8 @@ class Setup {
 
 	/**
 	 * Register QUnit Tests with MediaWiki framework
-	 * @param array $testModules
-	 * @param \ResourceLoader $resourceLoader
+	 * @param array &$testModules
+	 * @param \ResourceLoader &$resourceLoader
 	 * @return bool
 	 */
 	public static function onResourceLoaderTestModules( array &$testModules, \ResourceLoader &$resourceLoader ) {
@@ -48,8 +48,8 @@ class Setup {
 	}
 
 	/**
-	 * @param \Skin $skin
-	 * @param QuickTemplate $template
+	 * @param \Skin &$skin
+	 * @param QuickTemplate &$template
 	 * @return bool
 	 * @throws \ConfigException
 	 * @throws \MWException
@@ -92,6 +92,11 @@ class Setup {
 		return true;
 	}
 
+	/**
+	 *
+	 * @param ILoadBalancer $lb
+	 * @return \SearchEngine
+	 */
 	public static function getSearchEngineClass( ILoadBalancer $lb ) {
 		$seFactory = Services::getInstance()->getSearchEngineFactory();
 		return $seFactory::getSearchEngineClass( $lb );

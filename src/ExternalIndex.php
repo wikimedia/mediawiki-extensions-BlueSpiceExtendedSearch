@@ -34,6 +34,12 @@ abstract class ExternalIndex implements IExternalIndex {
 	 */
 	protected $document = null;
 
+	/**
+	 *
+	 * @param Services $services
+	 * @param Config $config
+	 * @param array $document
+	 */
 	protected function __construct(
 		Services $services, Config $config, array $document
 	) {

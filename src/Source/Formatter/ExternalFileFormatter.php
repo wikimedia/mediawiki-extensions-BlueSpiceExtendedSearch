@@ -10,6 +10,7 @@ class ExternalFileFormatter extends FileFormatter {
 	 * it may work if URL prefix is set to a webserver
 	 *
 	 * @param array $result
+	 * @return string
 	 */
 	protected function getImage( $result ) {
 		$extension = $result['extension'];

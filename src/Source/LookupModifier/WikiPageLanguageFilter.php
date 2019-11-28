@@ -84,6 +84,10 @@ class WikiPageLanguageFilter extends Base {
 		}
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	protected function getAutoLangCode() {
 		$user = $this->oContext->getUser();
 		if ( $user->isAnon() ) {

@@ -28,7 +28,8 @@ class Base {
 			'basename' => [
 				'type' => 'text',
 				'copy_to' => [ 'congregated', 'ac_ngram' ],
-				'fielddata' => true // required in order to be sortable
+				// required in order to be sortable
+				'fielddata' => true
 			],
 			'basename_exact' => [
 				'type' => 'keyword'

@@ -49,6 +49,12 @@ class SourceFactory {
 		$this->config = $config;
 	}
 
+	/**
+	 *
+	 * @param string $sourceKey
+	 * @return Base
+	 * @throws \UnexpectedValueException
+	 */
 	public function makeSource( $sourceKey ) {
 		if ( isset( $this->sources[$sourceKey] ) ) {
 			return $this->sources[$sourceKey];
@@ -70,6 +76,10 @@ class SourceFactory {
 		return $this->sources[$sourceKey];
 	}
 
+	/**
+	 *
+	 * @param string $sourceKey
+	 */
 	public function destroySource( $sourceKey ) {
 		if ( isset( $this->sources[$sourceKey] ) ) {
 			unset( $this->sources[$sourceKey] );
@@ -111,7 +121,7 @@ class SourceFactory {
 	}
 
 	/**
-	 * @param $sourceKey
+	 * @param string $sourceKey
 	 * @throws \ConfigException
 	 */
 	protected function assertSourceConfig( $sourceKey ) {

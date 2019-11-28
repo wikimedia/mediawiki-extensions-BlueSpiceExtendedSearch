@@ -15,6 +15,10 @@ class UpdateWikiPage extends UpdateTitleBase {
 		parent::__construct( 'updateWikiPageIndex', $title, $params );
 	}
 
+	/**
+	 *
+	 * @return bool
+	 */
 	protected function skipProcessing() {
 		return in_array(
 			$this->getTitle()->getNamespace(),
@@ -22,6 +26,10 @@ class UpdateWikiPage extends UpdateTitleBase {
 		);
 	}
 
+	/**
+	 *
+	 * @return \Wikipage
+	 */
 	protected function getDocumentProviderSource() {
 		return \WikiPage::factory( $this->getTitle() );
 	}

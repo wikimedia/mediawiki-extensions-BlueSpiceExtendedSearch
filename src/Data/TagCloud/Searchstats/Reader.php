@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Data\TagCloud\Searchstats;
 
 use BlueSpice\Services;
+use BlueSpice\Data\ReaderParams;
 use BlueSpice\Data\DatabaseReader;
 use BlueSpice\TagCloud\Data\TagCloud\Schema;
 
@@ -16,10 +17,19 @@ class Reader extends DatabaseReader {
 		parent::__construct( $loadBalancer, $context, $context->getConfig() );
 	}
 
+	/**
+	 *
+	 * @param ReaderParams $params
+	 * @return PrimaryDataProvider
+	 */
 	protected function makePrimaryDataProvider( $params ) {
 		return new PrimaryDataProvider( $this->db, $this->context );
 	}
 
+	/**
+	 *
+	 * @return SecondaryDataProvider
+	 */
 	protected function makeSecondaryDataProvider() {
 		return new SecondaryDataProvider(
 			Services::getInstance()->getLinkRenderer(),
@@ -27,6 +37,10 @@ class Reader extends DatabaseReader {
 		);
 	}
 
+	/**
+	 *
+	 * @return Schema
+	 */
 	public function getSchema() {
 		return new Schema();
 	}

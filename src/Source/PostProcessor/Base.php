@@ -16,6 +16,11 @@ class Base implements IPostProcessor {
 	 */
 	protected $base;
 
+	/**
+	 *
+	 * @param PostProcessor $base
+	 * @return IPostProcessor
+	 */
 	public static function factory( PostProcessor $base ) {
 		return new static( $base );
 	}
@@ -29,7 +34,7 @@ class Base implements IPostProcessor {
 	}
 
 	/**
-	 * @param Result $result
+	 * @param Result &$result
 	 * @param Lookup $lookup
 	 */
 	public function process( Result &$result, Lookup $lookup ) {
@@ -47,7 +52,7 @@ class Base implements IPostProcessor {
 	/**
 	 * Apply percent boost to autocomplete query
 	 *
-	 * @param Result $result
+	 * @param Result &$result
 	 * @param Lookup $lookup
 	 * @return bool false on fail/not-applicable
 	 */
@@ -58,7 +63,7 @@ class Base implements IPostProcessor {
 	/**
 	 * Apply percent boost to fulltext query
 	 *
-	 * @param Result $result
+	 * @param Result &$result
 	 * @param Lookup $lookup
 	 * @return bool false on fail/not-applicable
 	 */

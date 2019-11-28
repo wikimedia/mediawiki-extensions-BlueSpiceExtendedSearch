@@ -21,6 +21,10 @@ class File extends DecoratorBase {
 		return $aSC;
 	}
 
+	/**
+	 *
+	 * @return array
+	 */
 	public function getPropertyConfig() {
 		$aPC = $this->oDecoratedMP->getPropertyConfig();
 		$aPC = array_merge( $aPC, [

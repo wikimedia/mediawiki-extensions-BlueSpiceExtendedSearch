@@ -58,6 +58,7 @@ class Store implements IStore {
 	/**
 	 *
 	 * @param array $params
+	 * @return ReaderParams
 	 */
 	public function makeReaderParams( array $params = [] ) {
 		return new ReaderParams( $params );

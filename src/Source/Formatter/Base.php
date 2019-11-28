@@ -79,7 +79,7 @@ class Base {
 	 * Allows sources to modify data returned by ES,
 	 * before it goes to the client-side
 	 *
-	 * @param array $result
+	 * @param array &$result
 	 * @param \Elastica\Result $resultObject
 	 */
 	public function format( &$result, $resultObject ) {
@@ -117,7 +117,7 @@ class Base {
 	/**
 	 * Allows sources to modify results of autocomplete query
 	 *
-	 * @param array $results
+	 * @param array &$results
 	 * @param array $searchData
 	 */
 	public function formatAutocompleteResults( &$results, $searchData ) {
@@ -131,6 +131,11 @@ class Base {
 		}
 	}
 
+	/**
+	 *
+	 * @param string $type
+	 * @return string
+	 */
 	protected function getTypeText( $type ) {
 		$typeText = $type;
 		if ( wfMessage( "bs-extendedsearch-source-type-$type-label" )->exists() ) {
@@ -147,8 +152,8 @@ class Base {
 	 *
 	 * Ranking controls where result will be shown( which part of AC popup )
 	 *
-	 * @param type $results
-	 * @param type $searchData
+	 * @param array &$results
+	 * @param array $searchData
 	 */
 	public function rankAutocompleteResults( &$results, $searchData ) {
 		$top = $this->getACHighestScored( $results );
@@ -218,13 +223,18 @@ class Base {
 	/**
 	 * Allows sources to modify filterCfg if needed
 	 *
-	 * @param array $aggs
-	 * @param array $filterCfg
+	 * @param array &$aggs
+	 * @param array &$filterCfg
 	 * @param bool $fieldsWithANDEnabled
 	 */
 	public function formatFilters( &$aggs, &$filterCfg, $fieldsWithANDEnabled = false ) {
 	}
 
+	/**
+	 *
+	 * @param array $results
+	 * @return array|false
+	 */
 	protected function getACHighestScored( $results ) {
 		$highest = false;
 		foreach ( $results as $result ) {

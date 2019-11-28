@@ -9,6 +9,10 @@ class ResultRelevance extends \ApiBase {
 		$this->returnResults();
 	}
 
+	/**
+	 *
+	 * @return array
+	 */
 	protected function getAllowedParams() {
 		return [
 			'relevanceData' => [
@@ -19,6 +23,14 @@ class ResultRelevance extends \ApiBase {
 		];
 	}
 
+	/**
+	 *
+	 * @param string $paramName Parameter name
+	 * @param array|mixed $paramSettings Default value or an array of settings
+	 *  using PARAM_* constants.
+	 * @param bool $parseLimit Whether to parse and validate 'limit' parameters
+	 * @return mixed Parameter value
+	 */
 	protected function getParameterFromSettings( $paramName, $paramSettings, $parseLimit ) {
 		$value = parent::getParameterFromSettings( $paramName, $paramSettings, $parseLimit );
 		if ( $paramName === 'relevanceData' ) {
@@ -30,6 +42,11 @@ class ResultRelevance extends \ApiBase {
 		return $value;
 	}
 
+	/**
+	 *
+	 * @param array $value
+	 * @return \BS\ExtendedSearch\ResultRelevance|false
+	 */
 	protected function makeResultRelevanceFromArray( $value ) {
 		if ( $this->getUser()->isLoggedIn() == false ) {
 			return false;

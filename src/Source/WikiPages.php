@@ -88,10 +88,18 @@ class WikiPages extends DecoratorBase {
 		return new Updater\WikiPage( $this->oDecoratedSource );
 	}
 
+	/**
+	 *
+	 * @return Formatter\WikiPageFormatter
+	 */
 	public function getFormatter() {
 		return new Formatter\WikiPageFormatter( $this );
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	public function getSearchPermission() {
 		return 'extendedsearch-search-wikipage';
 	}

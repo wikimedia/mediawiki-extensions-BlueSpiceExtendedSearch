@@ -20,7 +20,7 @@ abstract class Base {
 
 	/**
 	 *
-	 * @param \BS\ExtendedSearch\Lookup $oLookup
+	 * @param \BS\ExtendedSearch\Lookup &$oLookup
 	 * @param \IContextSource $oContext
 	 */
 	public function __construct( &$oLookup, $oContext ) {

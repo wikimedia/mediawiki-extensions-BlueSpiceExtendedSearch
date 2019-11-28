@@ -19,6 +19,10 @@ class AddRelevanceTable extends LoadExtensionSchemaUpdates {
 		$this->updater->modifyExtensionField( 'bs_extendedsearch_relevance', 'rel_timestamp', "$dir/bs_extendedsearch_relevance.patch.timestamp.sql" );
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	protected function getExtensionPath() {
 		return dirname( dirname( dirname( __DIR__ ) ) );
 	}

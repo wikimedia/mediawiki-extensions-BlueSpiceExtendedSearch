@@ -23,7 +23,7 @@ abstract class BSExtendedSearchMakeSource extends Hook {
 	/**
 	 * @param \BS\ExtendedSearch\Backend $backend
 	 * @param string $sourceKey
-	 * @param \BS\ExtendedSearch\Source\DecoratorBase $decoratedSource
+	 * @param \BS\ExtendedSearch\Source\DecoratorBase &$decoratedSource
 	 * @return mixed
 	 */
 	public static function callback( $backend, $sourceKey, &$decoratedSource ) {
@@ -44,7 +44,7 @@ abstract class BSExtendedSearchMakeSource extends Hook {
 	 * @param \IConfig $config
 	 * @param \BS\ExtendedSearch\Backend $backend
 	 * @param string $sourceKey
-	 * @param \BS\ExtendedSearch\Source\DecoratorBase $decoratedSource
+	 * @param \BS\ExtendedSearch\Source\DecoratorBase &$decoratedSource
 	 */
 	public function __construct( $context, $config, $backend, $sourceKey, &$decoratedSource ) {
 		parent::__construct( $context, $config );

@@ -11,6 +11,9 @@ class MappingProviderTest extends \MediaWikiTestCase {
 		parent::tearDown();
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Source\MappingProvider\Base::getPropertyConfig
+	 */
 	public function testBaseMappingProvider() {
 		$oMP = new \BS\ExtendedSearch\Source\MappingProvider\Base();
 		$aPC = $oMP->getPropertyConfig();
@@ -18,6 +21,9 @@ class MappingProviderTest extends \MediaWikiTestCase {
 		$this->assetBaseMappingProviderKeysArePresent( $aPC );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Source\MappingProvider\Base::getPropertyConfig
+	 */
 	public function testMappingProviderDecorators() {
 		$aClasses = [ 'WikiPage', 'SpecialPage', 'File' ];
 		foreach ( $aClasses as $aBaseClassName ) {

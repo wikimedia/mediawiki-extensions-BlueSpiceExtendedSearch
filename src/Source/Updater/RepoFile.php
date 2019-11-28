@@ -10,6 +10,10 @@ use BS\ExtendedSearch\Source\Job\UpdateRepoFile;
 use JobQueueGroup;
 
 class RepoFile extends Base {
+	/**
+	 *
+	 * @param array &$aHooks
+	 */
 	public function init( &$aHooks ) {
 		$aHooks['FileUpload'][] = [ $this, 'onFileUpload' ];
 		$aHooks['FileDeleteComplete'][] = [ $this, 'onFileDeleteComplete' ];
@@ -73,6 +77,13 @@ class RepoFile extends Base {
 	 */
 	protected $titleMoveOrigFile;
 
+	/**
+	 *
+	 * @param Title $title
+	 * @param Title $newtitle
+	 * @param User $user
+	 * @return bool
+	 */
 	public function onTitleMove( $title, $newtitle, $user ) {
 		if ( $title->getNamespace() !== NS_FILE ) {
 			return true;
@@ -80,12 +91,13 @@ class RepoFile extends Base {
 
 		$file = \RepoGroup::singleton()->findFile( $title );
 		$this->titleMoveOrigFile = $file;
+		return true;
 	}
 
 	/**
 	 * Update search index when a file is moved.
-	 * @param Title $oTitle Old title of the moved article.
-	 * @param Title $oNewtitle New title of the moved article.
+	 * @param Title &$oTitle Old title of the moved article.
+	 * @param Title &$oNewtitle New title of the moved article.
 	 * @param User $oUser User that moved the article.
 	 * @param int $iOldID ID of the page that has been moved.
 	 * @param int $iNewID ID of the newly created redirect.

@@ -16,6 +16,10 @@ class SearchCenter extends SpecialPage {
 		parent::__construct( 'BSSearchCenter', '', false );
 	}
 
+	/**
+	 *
+	 * @param string $subPage
+	 */
 	public function execute( $subPage ) {
 		$this->setHeaders();
 
@@ -136,10 +140,18 @@ class SearchCenter extends SpecialPage {
 		return $lookup;
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	protected function getGroupName() {
 		return 'bluespice';
 	}
 
+	/**
+	 *
+	 * @return bool
+	 */
 	private function userCanExport() {
 		$pageToTest = Title::makeTitle( NS_MEDIAWIKI, 'Dummy' );
 		if ( $pageToTest->userCan( 'edit', $this->getUser() ) ) {

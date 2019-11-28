@@ -56,6 +56,7 @@ class PostProcessor {
 	/**
 	 * @param string $type
 	 * @param Backend $backend
+	 * @param Config $config
 	 */
 	protected function __construct( $type, $backend, $config ) {
 		$this->searchType = $type;
@@ -113,7 +114,7 @@ class PostProcessor {
 	}
 
 	/**
-	 * @param Result[] $results
+	 * @param Result[] &$results
 	 * @param Lookup $lookup
 	 */
 	public function process( &$results, $lookup ) {
