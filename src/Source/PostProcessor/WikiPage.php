@@ -8,6 +8,11 @@ use Elastica\Result;
 
 class WikiPage extends Base {
 
+	/**
+	 *
+	 * @param Result &$result
+	 * @param Lookup $lookup
+	 */
 	public function process( Result &$result, Lookup $lookup ) {
 		parent::process( $result, $lookup );
 		if ( $this->mTimeBoost( $result, $lookup ) ) {
@@ -27,6 +32,11 @@ class WikiPage extends Base {
 		return $data['prefixed_title'];
 	}
 
+	/**
+	 * @param Result $result
+	 * @param Lookup $lookup
+	 * @return bool
+	 */
 	protected function mTimeBoost( Result $result, Lookup $lookup ) {
 		if ( $result->getType() !== 'wikipage' ) {
 			return false;

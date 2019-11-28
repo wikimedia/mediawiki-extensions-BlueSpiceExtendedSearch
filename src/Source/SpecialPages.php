@@ -32,6 +32,7 @@ class SpecialPages extends DecoratorBase {
 
 	/**
 	 *
+	 * @return MappingProvider\SpecialPage
 	 */
 	public function getMappingProvider() {
 		return new MappingProvider\SpecialPage(
@@ -39,10 +40,18 @@ class SpecialPages extends DecoratorBase {
 		);
 	}
 
+	/**
+	 *
+	 * @return Formatter\SpecialPageFormatter
+	 */
 	public function getFormatter() {
 		return new Formatter\SpecialPageFormatter( $this );
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	public function getSearchPermission() {
 		return 'extendedsearch-search-specialpage';
 	}

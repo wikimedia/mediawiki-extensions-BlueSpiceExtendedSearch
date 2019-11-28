@@ -6,6 +6,11 @@ class File extends Base {
 	public function crawl() {
 	}
 
+	/**
+	 *
+	 * @param \SplFileInfo $file
+	 * @return bool
+	 */
 	protected function shouldSkip( $file ) {
 		if ( $this->oConfig->has( 'extension_blacklist' ) ) {
 			$lcExt = strtolower( $file->getExtension() );

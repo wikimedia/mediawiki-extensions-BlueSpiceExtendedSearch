@@ -23,6 +23,12 @@ class Lookup extends \ArrayObject {
 		}
 	}
 
+	/**
+	 *
+	 * @param string $sPath
+	 * @param mixed $mDefault
+	 * @param null &$aBase - deprecated
+	 */
 	protected function ensurePropertyPath( $sPath, $mDefault, &$aBase = null ) {
 		$aPathParts = explode( '.', $sPath );
 
@@ -218,6 +224,11 @@ class Lookup extends \ArrayObject {
 		return $this;
 	}
 
+	/**
+	 *
+	 * @param string $field
+	 * @return Lookup
+	 */
 	public function removeBoolMustNot( $field ) {
 		$this->ensurePropertyPath( 'query.bool.must_not', [] );
 		foreach ( $this['query']['bool']['must_not'] as $idx => $terms ) {
@@ -234,6 +245,7 @@ class Lookup extends \ArrayObject {
 	/**
 	 * Removes all values for a filter field regardless of the value
 	 *
+	 * @param string $field
 	 * @return Lookup
 	 */
 	public function clearFilter( $field ) {
@@ -294,7 +306,8 @@ class Lookup extends \ArrayObject {
 			if ( isset( $aFilter['terms'] ) && isset( $aFilter['terms'][$sFieldName] ) ) {
 				$aFilter['terms'][$sFieldName] = array_merge( $aFilter['terms'][$sFieldName],  $mValue );
 				$aFilter['terms'][$sFieldName] = array_unique( $aFilter['terms'][$sFieldName] );
-				$aFilter['terms'][$sFieldName] = array_values( $aFilter['terms'][$sFieldName] ); // reset indices
+				// reset indices
+				$aFilter['terms'][$sFieldName] = array_values( $aFilter['terms'][$sFieldName] );
 
 				$bAppededExistingFilter = true;
 			}
@@ -316,7 +329,8 @@ class Lookup extends \ArrayObject {
 	 * new filter for each field and value
 	 *
 	 * @param string $field
-	 * @param mixed $value
+	 * @param string $value
+	 * @return Lookup
 	 */
 	public function addTermFilter( $field, $value ) {
 		$this->ensurePropertyPath( 'query.bool.filter', [] );
@@ -588,6 +602,14 @@ class Lookup extends \ArrayObject {
 		return $this->addShouldTerms( $field, $value );
 	}
 
+	/**
+	 *
+	 * @param string $field
+	 * @param string $value
+	 * @param int $boost
+	 * @param bool $append
+	 * @return Lookup
+	 */
 	public function addShouldTerms( $field, $value, $boost = 1, $append = true ) {
 		$this->ensurePropertyPath( 'query.bool.should', [] );
 
@@ -624,6 +646,13 @@ class Lookup extends \ArrayObject {
 		return $this;
 	}
 
+	/**
+	 *
+	 * @param string $field
+	 * @param string $value
+	 * @param bínt $boost
+	 * @return Lookup
+	 */
 	public function addShouldMatch( $field, $value, $boost = 1 ) {
 		$this->ensurePropertyPath( 'query.bool.should', [] );
 
@@ -650,6 +679,12 @@ class Lookup extends \ArrayObject {
 		return $this;
 	}
 
+	/**
+	 *
+	 * @param string $field
+	 * @param string $value
+	 * @return Lookup
+	 */
 	public function removeShould( $field, $value = [] ) {
 		return $this->removeShouldTerms( $field, $value );
 	}
@@ -686,6 +721,11 @@ class Lookup extends \ArrayObject {
 		return $this;
 	}
 
+	/**
+	 *
+	 * @param string $field
+	 * @return Lookup
+	 */
 	public function removeShouldMatch( $field ) {
 		$this->ensurePropertyPath( 'query.bool.should', [] );
 
@@ -940,6 +980,12 @@ class Lookup extends \ArrayObject {
 		return false;
 	}
 
+	/**
+	 *
+	 * @param string $field
+	 * @param string $value
+	 * @return Lookup
+	 */
 	public function addSuggest( $field, $value ) {
 		$base = $this;
 		$base->ensurePropertyPath( 'suggest', [] );
@@ -954,6 +1000,11 @@ class Lookup extends \ArrayObject {
 		return $this;
 	}
 
+	/**
+	 *
+	 * @param string $field
+	 * @return Lookup
+	 */
 	public function removeSuggest( $field ) {
 		$base = $this;
 		$base->ensurePropertyPath( 'suggest', [] );
@@ -1187,11 +1238,19 @@ class Lookup extends \ArrayObject {
 		];
 	}
 
+	/**
+	 *
+	 * @return Lookup
+	 */
 	public function setForceTerm() {
 		$this->ensurePropertyPath( 'forceTerm', true );
 		return $this;
 	}
 
+	/**
+	 *
+	 * @return Lookup
+	 */
 	public function removeForceTerm() {
 		$this->ensurePropertyPath( 'forceTerm', true );
 		unset( $this['forceTerm'] );
@@ -1199,6 +1258,10 @@ class Lookup extends \ArrayObject {
 		return $this;
 	}
 
+	/**
+	 *
+	 * @return bool
+	 */
 	public function getForceTerm() {
 		if ( isset( $this['forceTerm'] ) ) {
 			return true;

@@ -35,6 +35,12 @@ class ResultRelevance {
 	 */
 	protected $queryConditions;
 
+	/**
+	 *
+	 * @param \User $user
+	 * @param string $resultId
+	 * @param int $value
+	 */
 	public function __construct( \User $user, $resultId = '', $value = 0 ) {
 		$this->user = $user;
 		$this->resultId = $resultId;

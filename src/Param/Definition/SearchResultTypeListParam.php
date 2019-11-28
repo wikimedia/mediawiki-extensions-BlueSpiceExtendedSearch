@@ -11,8 +11,8 @@ class SearchResultTypeListParam extends \ParamProcessor\ParamDefinition {
 
 	/**
 	 * SearchResultTypeListParam constructor.
-	 * @param $name
-	 * @param null $message
+	 * @param string $name
+	 * @param string|null $message
 	 */
 	public function __construct( $name, $message = null ) {
 		parent::__construct( 'searchresulttypelist', $name, [], $message, true );

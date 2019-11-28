@@ -99,6 +99,10 @@ class DecoratorBase extends Base {
 		return $this->oDecoratedSource->getUpdater();
 	}
 
+	/**
+	 *
+	 * @return Formatter\Base
+	 */
 	public function getFormatter() {
 		return $this->oDecoratedSource->getFormatter();
 	}

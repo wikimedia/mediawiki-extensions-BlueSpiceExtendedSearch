@@ -3,7 +3,10 @@
 namespace BS\ExtendedSearch\Tests;
 
 class LookupTest extends \MediaWikiTestCase {
-	/*FILTERS*/
+
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testAddSingleTermsFilterValue() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 		$oLookup->addTermsFilter( 'someField', 'someValue' );
@@ -21,6 +24,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testAddMultipleTermsFilterValues() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 		$oLookup->addTermsFilter( 'someField', [ 'someValue1', 'someValue2' ] );
@@ -37,6 +43,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testAddTermFilterValue() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 		$oLookup->addTermFilter( 'someField', 'someValue' );
@@ -54,6 +63,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testMergeMultipleTermsFilterValues() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
@@ -79,6 +91,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testRemoveSingleTermsFilterValue() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
@@ -104,6 +119,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testRemoveMultiTermsFilterValues() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
@@ -129,6 +147,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testRemoveTermFilterValue() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
@@ -157,6 +178,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testRemoveAllFilterValues() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
@@ -189,6 +213,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testGetFilters() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
@@ -217,7 +244,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getFilters() );
 	}
 
-	/*SORTING*/
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testAddSort() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
@@ -231,6 +260,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testRemoveSort() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"sort" => [
@@ -249,6 +281,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testClearSort() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"sort" => [
@@ -261,7 +296,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( [], $oLookup->getQueryDSL() );
 	}
 
-	/*SHOULD*/
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testAddShouldTerms() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
@@ -284,6 +321,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testMultipleAddShouldTerms() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
@@ -313,6 +353,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testAddShouldMatch() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
@@ -337,6 +380,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testRemoveShouldTerms() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
@@ -376,6 +422,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testRemoveShouldMatch() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
@@ -423,7 +472,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
-	/*AGGREAGTION*/
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testSetBucketTermsAggregation() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 		$oLookup->setBucketTermsAggregation( '_type/extension' );
@@ -448,6 +499,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testRemoveTermAggregation() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"aggs" => [
@@ -495,7 +549,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( [], $oLookup->getQueryDSL(), 'No aggregations should have remained' );
 	}
 
-	/*HIGHLIGHTER*/
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testAddHighlighter() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
@@ -520,6 +576,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testRemoveHighlighter() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"highlight" => [
@@ -543,7 +602,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
-	/*SOURCE FIELD*/
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testAddSourceField() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
@@ -557,6 +618,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testRemoveSourceField() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"_source" => [
@@ -577,6 +641,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( [], $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testAddBoolMustNotTerms() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
@@ -627,6 +694,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testRemoveBoolMustNotTerms() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
@@ -654,7 +724,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
-	/*AUTOCOMPLETE*/
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testAddAutocompleteSuggest() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
@@ -671,6 +743,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testRemoveAutocompleteSuggest() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"suggest" => [
@@ -703,6 +778,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( [], $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testAddAutocompleteSuggestContext() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"suggest" => [
@@ -732,6 +810,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testRemoveAutocompleteSuggestContext() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"suggest" => [
@@ -763,6 +844,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testRemoveAutocompleteSuggestContextValue() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"suggest" => [
@@ -797,6 +881,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testAddAutocompleteSuggestFuzziness() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"suggest" => [
@@ -828,6 +915,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testRemoveAutocompleteSuggestFuzziness() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"suggest" => [
@@ -877,6 +967,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testSetAutocompleteSuggestSize() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"suggest" => [
@@ -924,7 +1017,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
-	/*SIMPLE QUERY STRING*/
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testXQueryString() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 		$oLookup->setQueryString( '"fried eggs" +(eggplant | potato) -frittata' );
@@ -957,6 +1052,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $aDSL['query']['bool']['must'][0]['query_string'] );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testClearQueryString() {
 		$oLookup = new \BS\ExtendedSearch\Lookup( [
 			"query" => [
@@ -984,6 +1082,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testSetMatchQueryString() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
@@ -1002,6 +1103,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testSetBoolMatchQueryFuzziness() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 
@@ -1027,6 +1131,9 @@ class LookupTest extends \MediaWikiTestCase {
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 	}
 
+	/**
+	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL
+	 */
 	public function testSetMLTQuery() {
 		$oLookup = new \BS\ExtendedSearch\Lookup();
 

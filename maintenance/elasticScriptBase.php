@@ -18,6 +18,11 @@ abstract class elasticScriptBase extends Maintenance {
 		$this->addOption( 'sources', $this->sourcesOptionHelp, false, true );
 	}
 
+	/**
+	 *
+	 * @param string $sourceKey
+	 * @return bool
+	 */
 	protected function sourceOnList( $sourceKey ) {
 		if ( empty( $this->getOption( 'sources', '' ) ) ) {
 			return true;

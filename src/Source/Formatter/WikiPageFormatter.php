@@ -7,6 +7,12 @@ use BlueSpice\DynamicFileDispatcher\ArticlePreviewImage;
 use MediaWiki\MediaWikiServices;
 
 class WikiPageFormatter extends Base {
+
+	/**
+	 *
+	 * @param array $defaultResultStructure
+	 * @return array
+	 */
 	public function getResultStructure( $defaultResultStructure = [] ) {
 		$resultStructure = $defaultResultStructure;
 		$resultStructure['page_anchor'] = 'page_anchor';
@@ -35,6 +41,12 @@ class WikiPageFormatter extends Base {
 		return $resultStructure;
 	}
 
+	/**
+	 *
+	 * @param array &$result
+	 * @param \Elastica\Result $resultObject
+	 * @return null
+	 */
 	public function format( &$result, $resultObject ) {
 		if ( $this->source->getTypeKey() != $resultObject->getType() ) {
 			return;
@@ -43,7 +55,8 @@ class WikiPageFormatter extends Base {
 		parent::format( $result, $resultObject );
 
 		if ( $result['is_redirect'] === true ) {
-			return $this->formatRedirect( $result );
+			$this->formatRedirect( $result );
+			return;
 		}
 		$result['categories'] = $this->formatCategories( $result['categories'] );
 		$result['highlight'] = $this->getHighlight( $resultObject );
@@ -64,6 +77,11 @@ class WikiPageFormatter extends Base {
 		$this->addAnchorAndImageUri( $result );
 	}
 
+	/**
+	 *
+	 * @param array $result
+	 * @return bool
+	 */
 	protected function isFeatured( $result ) {
 		if ( $this->lookup == null ) {
 			return false;
@@ -95,6 +113,10 @@ class WikiPageFormatter extends Base {
 		return false;
 	}
 
+	/**
+	 *
+	 * @param array &$result
+	 */
 	protected function addAnchorAndImageUri( &$result ) {
 		$title = \Title::newFromText( $result['prefixed_title'] );
 		if ( $title instanceof \Title && $title->getNamespace() == $result['namespace'] ) {
@@ -105,6 +127,11 @@ class WikiPageFormatter extends Base {
 		}
 	}
 
+	/**
+	 *
+	 * @param array $categories
+	 * @return string|null
+	 */
 	protected function formatCategories( $categories ) {
 		if ( empty( $categories ) ) {
 			return;
@@ -149,6 +176,11 @@ class WikiPageFormatter extends Base {
 		return $this->formatSections( $result, $matchedSections );
 	}
 
+	/**
+	 *
+	 * @param array $result
+	 * @return string
+	 */
 	protected function getHighlightedTerm( $result ) {
 		if ( $result[ 'highlight' ] == '' ) {
 			return '';
@@ -162,6 +194,12 @@ class WikiPageFormatter extends Base {
 		return strtolower( $hightlightedTerm[ 1 ] );
 	}
 
+	/**
+	 *
+	 * @param array $result
+	 * @param array $sectionsToAdd
+	 * @return string
+	 */
 	protected function formatSections( $result, $sectionsToAdd ) {
 		$title = \Title::newFromText( $result['prefixed_title'] );
 		$sections = [];
@@ -190,6 +228,11 @@ class WikiPageFormatter extends Base {
 		return $sectionText;
 	}
 
+	/**
+	 *
+	 * @param array $result
+	 * @return string
+	 */
 	protected function formatRedirectedFrom( $result ) {
 		if ( empty( $result[ 'redirected_from' ] ) ) {
 			return '';
@@ -212,6 +255,11 @@ class WikiPageFormatter extends Base {
 		return implode( Base::VALUE_SEPARATOR, $redirs );
 	}
 
+	/**
+	 *
+	 * @param \Elastica\Result $resultObject
+	 * @return string
+	 */
 	protected function getHighlight( $resultObject ) {
 		$highlights = $resultObject->getHighlights();
 		$highlightParts = [];
@@ -236,7 +284,7 @@ class WikiPageFormatter extends Base {
 	 * Gets the URL for the article preview image
 	 *
 	 * @param string $prefixedTitle
-	 * @param string $ns
+	 * @param int $width
 	 * @return string
 	 */
 	protected function getImageUri( $prefixedTitle, $width = 102 ) {
@@ -264,10 +312,21 @@ class WikiPageFormatter extends Base {
 		return $url;
 	}
 
+	/**
+	 *
+	 * @param \Title $title
+	 * @param string $text
+	 * @return string
+	 */
 	protected function getPageAnchor( $title, $text ) {
 		return $this->linkRenderer->makeLink( $title, $text );
 	}
 
+	/**
+	 *
+	 * @param array &$result
+	 * @return null
+	 */
 	protected function formatRedirect( &$result ) {
 		$title = \Title::newFromText( $result['prefixed_title'] );
 		$redirTarget = \Title::newFromText( $result['redirects_to'] );
@@ -287,6 +346,11 @@ class WikiPageFormatter extends Base {
 		}
 	}
 
+	/**
+	 *
+	 * @param array $result
+	 * @return string
+	 */
 	protected function getOriginalTitleText( $result ) {
 		$displayTitle = $result['display_title'];
 		$prefixedTitle = $result['prefixed_title'];
@@ -296,6 +360,11 @@ class WikiPageFormatter extends Base {
 		return '';
 	}
 
+	/**
+	 *
+	 * @param array &$results
+	 * @param array $searchData
+	 */
 	public function formatAutocompleteResults( &$results, $searchData ) {
 		parent::formatAutocompleteResults( $results, $searchData );
 
@@ -314,6 +383,11 @@ class WikiPageFormatter extends Base {
 		}
 	}
 
+	/**
+	 *
+	 * @param array &$results
+	 * @param array $searchData
+	 */
 	public function rankAutocompleteResults( &$results, $searchData ) {
 		$top = $this->getACHighestScored( $results );
 		foreach ( $results as &$result ) {
@@ -353,6 +427,11 @@ class WikiPageFormatter extends Base {
 		}
 	}
 
+	/**
+	 *
+	 * @param string $prefixedTitle
+	 * @return string
+	 */
 	protected function removeNamespace( $prefixedTitle ) {
 		$bits = explode( ':', $prefixedTitle );
 		if ( count( $bits ) == 2 ) {
@@ -362,6 +441,11 @@ class WikiPageFormatter extends Base {
 		}
 	}
 
+	/**
+	 *
+	 * @param \Title $title
+	 * @return string
+	 */
 	protected function getFileUsage( $title ) {
 		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()
 			->getConnection( DB_REPLICA );

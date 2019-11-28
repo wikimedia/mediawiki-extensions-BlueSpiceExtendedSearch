@@ -46,6 +46,10 @@ class WikiPageNamespacePrefixResolver extends Base {
 		$this->setNewNamespaceFilterAndQuery();
 	}
 
+	/**
+	 *
+	 * @return int
+	 */
 	public function getPriority() {
 		return 10;
 	}

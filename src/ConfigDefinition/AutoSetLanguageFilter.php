@@ -5,6 +5,10 @@ namespace BS\ExtendedSearch\ConfigDefinition;
 class AutoSetLanguageFilter extends \BlueSpice\ConfigDefinition\BooleanSetting {
 	const EXTENSION_EXTENDED_SEARCH = 'BlueSpiceExtendedSearch';
 
+	/**
+	 *
+	 * @return string[]
+	 */
 	public function getPaths() {
 		return [
 			static::MAIN_PATH_FEATURE . '/' . static::FEATURE_SEARCH . '/' . static::EXTENSION_EXTENDED_SEARCH,
@@ -13,6 +17,10 @@ class AutoSetLanguageFilter extends \BlueSpice\ConfigDefinition\BooleanSetting {
 		];
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	public function getLabelMessageKey() {
 		return 'bs-extendedsearch-pref-auto-set-lang-filter';
 	}

@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch;
 
+use QuickTemplate;
 use BlueSpice\Services;
 use BS\ExtendedSearch\Backend as SearchBackend;
 use BS\ExtendedSearch\MediaWiki\Backend\BlueSpiceSearch;
@@ -25,8 +26,8 @@ class Setup {
 
 	/**
 	 * Register QUnit Tests with MediaWiki framework
-	 * @param array $testModules
-	 * @param \ResourceLoader $resourceLoader
+	 * @param array &$testModules
+	 * @param \ResourceLoader &$resourceLoader
 	 * @return bool
 	 */
 	public static function onResourceLoaderTestModules( array &$testModules, \ResourceLoader &$resourceLoader ) {
@@ -46,8 +47,8 @@ class Setup {
 	}
 
 	/**
-	 * @param \Skin $skin
-	 * @param \SkinTemplate $template
+	 * @param \Skin &$skin
+	 * @param QuickTemplate &$template
 	 * @return bool
 	 * @throws \ConfigException
 	 * @throws \MWException
@@ -90,6 +91,11 @@ class Setup {
 		return true;
 	}
 
+	/**
+	 *
+	 * @param DatabaseBase $db
+	 * @return \SearchEngine
+	 */
 	public static function getSearchEngineClass( $db ) {
 		$seFactory = Services::getInstance()->getSearchEngineFactory();
 		return $seFactory::getSearchEngineClass( $db );

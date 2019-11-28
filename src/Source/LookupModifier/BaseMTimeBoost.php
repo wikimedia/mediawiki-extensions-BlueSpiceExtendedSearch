@@ -23,6 +23,11 @@ class BaseMTimeBoost extends Base {
 	 */
 	protected $search;
 
+	/**
+	 *
+	 * @param \BS\ExtendedSearch\Lookup &$lookup
+	 * @param \IContextSource $context
+	 */
 	public function __construct( &$lookup, \IContextSource $context ) {
 		parent::__construct( $lookup, $context );
 
@@ -40,6 +45,10 @@ class BaseMTimeBoost extends Base {
 		$this->search = $search;
 	}
 
+	/**
+	 *
+	 * @return int
+	 */
 	public function getPriority() {
 		return 100;
 	}

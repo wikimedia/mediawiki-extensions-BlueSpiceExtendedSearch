@@ -13,7 +13,7 @@ interface IPostProcessor {
 	public static function factory( PostProcessor $base );
 
 	/**
-	 * @param Result $result
+	 * @param Result &$result
 	 * @param Lookup $lookup
 	 * @return void
 	 */

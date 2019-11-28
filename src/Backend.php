@@ -45,6 +45,10 @@ class Backend {
 	 */
 	protected $client = null;
 
+	/**
+	 *
+	 * @param array $config
+	 */
 	public function __construct( $config ) {
 		if ( !isset( $config['index'] ) ) {
 			$config['index'] = strtolower( wfWikiID() );
@@ -71,7 +75,7 @@ class Backend {
 	}
 
 	/**
-	 * @param $sourceKey
+	 * @param string $sourceKey
 	 */
 	public function destroySource( $sourceKey ) {
 		unset( $this->sources[$sourceKey] );
@@ -225,16 +229,25 @@ class Backend {
 
 	/**
 	 *
+	 * @param string $type
 	 * @return Index
 	 */
 	public function getIndexByType( $type ) {
 		return $this->getClient()->getIndex( $this->config->get( 'index' ) . '_' . $type );
 	}
 
+	/**
+	 *
+	 * @return \IContextSource
+	 */
 	public function getContext() {
 		return RequestContext::getMain();
 	}
 
+	/**
+	 *
+	 * @return \Config
+	 */
 	public function getConfig() {
 		return $this->config;
 	}
@@ -266,6 +279,7 @@ class Backend {
 	 * Runs quick query agains ElasticSearch
 	 *
 	 * @param Lookup $lookup
+	 * @param array $searchData
 	 * @return array
 	 */
 	public function runAutocompleteLookup( Lookup $lookup, $searchData ) {
@@ -288,17 +302,36 @@ class Backend {
 		return $results;
 	}
 
+	/**
+	 *
+	 * @param \BS\ExtendedSearch\Lookup $lookup
+	 * @param array $searchData
+	 * @param array $secondaryRequestData
+	 * @return array
+	 */
 	public function runAutocompleteSecondaryLookup( Lookup $lookup, $searchData, $secondaryRequestData ) {
 		$results = $this->runAutocompleteLookup( $lookup, $searchData );
 		// TODO: Implement smart way of deciding when secondary results are relevant
 		return $results;
 	}
 
+	/**
+	 *
+	 * @param array $resultData
+	 * @param array $searchData
+	 * @return array
+	 */
 	protected function formatQuerySuggestions( $resultData, $searchData ) {
 		$results = array_values( $this->getQuerySuggestionList( $resultData ) );
 		return $this->formatSuggestions( $results, $searchData );
 	}
 
+	/**
+	 *
+	 * @param array $results
+	 * @param array $searchData
+	 * @return array
+	 */
 	protected function formatSuggestions( $results, $searchData ) {
 		$searchData['value'] = strtolower( $searchData['value'] );
 
@@ -318,6 +351,11 @@ class Backend {
 		return $results;
 	}
 
+	/**
+	 *
+	 * @param array $results
+	 * @return array
+	 */
 	protected function getQuerySuggestionList( $results ) {
 		$res = [];
 		foreach ( $results as $suggestion ) {
@@ -530,6 +568,7 @@ class Backend {
 	 *
 	 * @param ResultSet $results
 	 * @param Lookup $lookup
+	 * @return array
 	 */
 	protected function formatResults( $results, $lookup ) {
 		$formattedResults = [];
@@ -551,6 +590,7 @@ class Backend {
 	/**
 	 *
 	 * @param ResultSet $results
+	 * @return int
 	 */
 	protected function getTotal( $results ) {
 		return $results->getTotalHits();
@@ -559,6 +599,7 @@ class Backend {
 	/**
 	 *
 	 * @param ResultSet $results
+	 * @return array
 	 */
 	protected function getFilterConfig( $results ) {
 		// Fields that have "AND/OR" option enabled. Would be better if this could
@@ -625,6 +666,10 @@ class Backend {
 		return $autocompleteConfig;
 	}
 
+	/**
+	 *
+	 * @return array
+	 */
 	public function getSpellCheckConfig() {
 		$spellCheckConfig = \ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchSpellCheck' );
@@ -646,11 +691,19 @@ class Backend {
 		return null;
 	}
 
+	/**
+	 *
+	 * @return bool
+	 */
 	protected function isHistoryTrackingEnabled() {
 		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsg' );
 		return $config->get( 'ESEnableSearchHistoryTracking' );
 	}
 
+	/**
+	 *
+	 * @param array $data
+	 */
 	protected function logSearchHistory( $data ) {
 		$loadBalancer = MediaWikiServices::getInstance()->getDBLoadBalancer();
 		$dbw = $loadBalancer->getConnection( DB_MASTER );

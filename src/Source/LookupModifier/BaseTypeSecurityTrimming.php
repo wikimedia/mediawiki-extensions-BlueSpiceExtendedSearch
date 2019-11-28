@@ -15,6 +15,11 @@ class BaseTypeSecurityTrimming extends Base {
 	 */
 	protected $blockedTypes;
 
+	/**
+	 *
+	 * @param \BS\ExtendedSearch\Lookup &$lookup
+	 * @param \IContextSource $context
+	 */
 	public function __construct( &$lookup, $context ) {
 		parent::__construct( $lookup, $context );
 

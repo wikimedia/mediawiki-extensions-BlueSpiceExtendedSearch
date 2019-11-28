@@ -9,6 +9,12 @@ class BaseUserRelevance extends Base {
 	protected $positiveBoosts = [];
 	protected $negativeBoosts = [];
 
+	/**
+	 *
+	 * @param \BS\ExtendedSearch\Lookup &$lookup
+	 * @param \IContextSource $context
+	 * @return BaseUserRelevance
+	 */
 	public function __construct( &$lookup, $context ) {
 		parent::__construct( $lookup, $context );
 

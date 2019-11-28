@@ -10,15 +10,31 @@ use BS\ExtendedSearch\Lookup;
 class Handler implements IPrivacyHandler {
 	protected $db;
 
+	/**
+	 *
+	 * @param \Database $db
+	 */
 	public function __construct( \Database $db ) {
 		$this->db = $db;
 	}
 
+	/**
+	 *
+	 * @param string $oldUsername
+	 * @param string $newUsername
+	 * @return \Status
+	 */
 	public function anonymize( $oldUsername, $newUsername ) {
 		// Nothing to handle
 		return \Status::newGood();
 	}
 
+	/**
+	 *
+	 * @param \User $userToDelete
+	 * @param \User $deletedUser
+	 * @return \Status
+	 */
 	public function delete( \User $userToDelete, \User $deletedUser ) {
 		$this->db->update(
 			'bs_extendedsearch_history',
@@ -34,6 +50,13 @@ class Handler implements IPrivacyHandler {
 		return \Status::newGood();
 	}
 
+	/**
+	 *
+	 * @param array $types
+	 * @param string $format
+	 * @param \User $user
+	 * @return \Status
+	 */
 	public function exportData( array $types, $format, \User $user ) {
 		$data = [];
 		if ( in_array( Transparency::DATA_TYPE_CONTENT, $types ) ) {
@@ -46,6 +69,11 @@ class Handler implements IPrivacyHandler {
 		return \Status::newGood( $data );
 	}
 
+	/**
+	 *
+	 * @param \User $user
+	 * @return array
+	 */
 	protected function getContentData( $user ) {
 		$data = [];
 
@@ -83,6 +111,11 @@ class Handler implements IPrivacyHandler {
 		return $data;
 	}
 
+	/**
+	 *
+	 * @param array $highlights
+	 * @return string
+	 */
 	protected function getFormattedHighlights( $highlights ) {
 		if ( !isset( $highlights['rendered_content' ] ) ) {
 			return '';
@@ -97,6 +130,11 @@ class Handler implements IPrivacyHandler {
 		return $formatted;
 	}
 
+	/**
+	 *
+	 * @param \User $user
+	 * @return array
+	 */
 	protected function getWorkingData( $user ) {
 		$searchHistory = $this->getSearchHistory( $user );
 		$searchRelevance = $this->getSearchRelevance( $user );
@@ -112,6 +150,11 @@ class Handler implements IPrivacyHandler {
 		return $data;
 	}
 
+	/**
+	 *
+	 * @param \User $user
+	 * @return \Message[]
+	 */
 	protected function getSearchHistory( $user ) {
 		$res = $this->db->select(
 			'bs_extendedsearch_history',
@@ -145,6 +188,11 @@ class Handler implements IPrivacyHandler {
 		];
 	}
 
+	/**
+	 *
+	 * @param \User $user
+	 * @return \Message[]
+	 */
 	protected function getSearchRelevance( $user ) {
 		// We can only show the number of relevant pages user has,
 		// because only hashed doc IDs are stored

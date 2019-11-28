@@ -21,6 +21,7 @@ class DocumentProviderTest extends \MediaWikiTestCase {
 
 	/**
 	 * @group Database
+	 * @covers \BS\ExtendedSearch\Source\DocumentProvider\Base::getDataConfig
 	 */
 	public function testBaseDocumentProvider() {
 		$oDP = new \BS\ExtendedSearch\Source\DocumentProvider\Base();
@@ -34,6 +35,7 @@ class DocumentProviderTest extends \MediaWikiTestCase {
 
 	/**
 	 * @group Database
+	 * @covers \BS\ExtendedSearch\Source\DocumentProvider\WikiPage::getDataConfig
 	 */
 	public function testWikiPageDocumentProvider() {
 		$oDP = new \BS\ExtendedSearch\Source\DocumentProvider\WikiPage(
@@ -58,6 +60,7 @@ class DocumentProviderTest extends \MediaWikiTestCase {
 
 	/**
 	 * @group Database
+	 * @covers \BS\ExtendedSearch\Source\DocumentProvider\File::getDataConfig
 	 */
 	public function testFileDocumentProvider() {
 		$oDP = new \BS\ExtendedSearch\Source\DocumentProvider\File(

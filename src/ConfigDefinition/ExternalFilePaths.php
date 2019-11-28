@@ -5,6 +5,10 @@ namespace BS\ExtendedSearch\ConfigDefinition;
 class ExternalFilePaths extends \BlueSpice\ConfigDefinition {
 	const EXTENSION_EXTENDED_SEARCH = 'BlueSpiceExtendedSearch';
 
+	/**
+	 *
+	 * @return string[]
+	 */
 	public function getPaths() {
 		return [
 			static::MAIN_PATH_FEATURE . '/' . static::FEATURE_SEARCH . '/' . static::EXTENSION_EXTENDED_SEARCH,
@@ -13,18 +17,34 @@ class ExternalFilePaths extends \BlueSpice\ConfigDefinition {
 		];
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	public function getLabelMessageKey() {
 		return 'bs-extendedsearch-pref-external-file-paths';
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	public function getVariableName() {
 		return 'bsg' . $this->getName();
 	}
 
+	/**
+	 *
+	 * @return \BlueSpice\Html\FormField\KeyValueField
+	 */
 	public function getHtmlFormField() {
 		return new \BlueSpice\Html\FormField\KeyValueField( $this->makeFormFieldParams() );
 	}
 
+	/**
+	 *
+	 * @return array
+	 */
 	protected function makeFormFieldParams() {
 		return array_merge( parent::makeFormFieldParams(), [
 			'allowAdditions' => true,

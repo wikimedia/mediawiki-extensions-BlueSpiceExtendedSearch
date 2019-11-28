@@ -3,6 +3,13 @@
 namespace BS\ExtendedSearch\Source\Formatter;
 
 class SpecialPageFormatter extends Base {
+
+	/**
+	 *
+	 * @param array &$result
+	 * @param \Elastica\Result $resultObject
+	 * @return null
+	 */
 	public function format( &$result, $resultObject ) {
 		if ( $this->source->getTypeKey() != $resultObject->getType() ) {
 			return;
@@ -12,6 +19,11 @@ class SpecialPageFormatter extends Base {
 		$result['basename'] = $result['prefixed_title'];
 	}
 
+	/**
+	 *
+	 * @param array $result
+	 * @return bool
+	 */
 	protected function isFeatured( $result ) {
 		$filters = $this->lookup->getFilters();
 		if ( isset( $filters['terms']['namespace_text'] ) ) {
@@ -24,6 +36,11 @@ class SpecialPageFormatter extends Base {
 		return false;
 	}
 
+	/**
+	 *
+	 * @param array &$results
+	 * @param array $searchData
+	 */
 	public function formatAutocompleteResults( &$results, $searchData ) {
 		parent::formatAutocompleteResults( $results, $searchData );
 

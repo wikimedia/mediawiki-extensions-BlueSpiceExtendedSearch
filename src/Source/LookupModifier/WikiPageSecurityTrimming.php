@@ -36,6 +36,11 @@ class WikiPageSecurityTrimming extends Base {
 		}
 	}
 
+	/**
+	 *
+	 * @param int $iNsId
+	 * @return bool
+	 */
 	protected function userCanNotRead( $iNsId ) {
 		$oTitle = \Title::makeTitle( $iNsId, 'Dummy' );
 		return !$oTitle->userCan( 'read' );

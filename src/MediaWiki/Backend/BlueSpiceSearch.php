@@ -12,6 +12,11 @@ class BlueSpiceSearch extends \SearchEngine {
 		$this->backend = \BS\ExtendedSearch\Backend::instance();
 	}
 
+	/**
+	 *
+	 * @param string $term
+	 * @return \BS\ExtendedSearch\MediaWiki\Backend\SearchResultSet
+	 */
 	public function searchText( $term ) {
 		$term = trim( $term );
 		$results = $this->runFullSearch( 'source_content', $term );
@@ -25,6 +30,11 @@ class BlueSpiceSearch extends \SearchEngine {
 		return $searchResultSet;
 	}
 
+	/**
+	 *
+	 * @param string $term
+	 * @return \BS\ExtendedSearch\MediaWiki\Backend\SearchResultSet
+	 */
 	public function searchTitle( $term ) {
 		$term = trim( $term );
 		$results = $this->runFullSearch( 'basename', $term );
@@ -38,11 +48,21 @@ class BlueSpiceSearch extends \SearchEngine {
 		return $searchResultSet;
 	}
 
+	/**
+	 *
+	 * @param string $search
+	 * @return \SearchSuggestionSet
+	 */
 	protected function completionSearchBackend( $search ) {
 		$results = $this->runNGramSearch( trim( $search ) );
 		return \SearchSuggestionSet::fromTitles( $results );
 	}
 
+	/**
+	 *
+	 * @param string $search
+	 * @return \Title[]
+	 */
 	protected function runNGramSearch( $search ) {
 		if ( $search === '' ) {
 			return [];
@@ -75,6 +95,12 @@ class BlueSpiceSearch extends \SearchEngine {
 		return $titles;
 	}
 
+	/**
+	 *
+	 * @param string $field
+	 * @param string $search
+	 * @return \Title[]
+	 */
 	protected function runFullSearch( $field, $search ) {
 		if ( $search === '' ) {
 			return [];
@@ -113,18 +139,39 @@ class BlueSpiceSearch extends \SearchEngine {
 		return $titles;
 	}
 
+	/**
+	 *
+	 * @param string $term
+	 * @return bool
+	 */
 	protected function searchContainedSyntax( $term ) {
 		return false;
 	}
 
+	/**
+	 *
+	 * @param int $id
+	 * @param string $title
+	 * @param string $text
+	 */
 	public function update( $id, $title, $text ) {
 		$this->getFallbackSearchEngine()->update( $id, $title, $text );
 	}
 
+	/**
+	 *
+	 * @param int $id
+	 * @param string $title
+	 */
 	public function updateTitle( $id, $title ) {
 		$this->getFallbackSearchEngine()->updateTitle( $id, $title );
 	}
 
+	/**
+	 *
+	 * @param int $id
+	 * @param string $title
+	 */
 	public function delete( $id, $title ) {
 		$this->getFallbackSearchEngine()->delete( $id, $title );
 	}
