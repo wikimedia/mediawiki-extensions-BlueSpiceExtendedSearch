@@ -9,6 +9,7 @@
 		]
 	},
 	"bs-extsearch-desc": "Motor de búsquedas Elasticsearch",
+	"bssearchcenter": "Centro de búsquedas",
 	"apihelp-bs-extendedsearch-query-description": "Buscar en el índice",
 	"apihelp-bs-extendedsearch-query-summary": "Buscar en el índice",
 	"apihelp-bs-extendedsearch-query-param-q": "El término de consulta",
