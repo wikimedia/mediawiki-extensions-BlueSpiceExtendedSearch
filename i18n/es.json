@@ -110,5 +110,6 @@
 	"bs-extsearch-desc": "Motor de búsquedas Elasticsearch",
 	"bs-extendedsearch-search-input-aria-label": "Cuadro de búsqueda",
 	"bs-extendedsearch-collection-var-searchterm": "Término",
-	"bs-extendedsearch-collection-var-numbersearched": "Búsquedas"
+	"bs-extendedsearch-collection-var-numbersearched": "Búsquedas",
+	"bssearchcenter": "Centro de búsquedas"
 }
