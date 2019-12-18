@@ -8,6 +8,7 @@ use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\PostProcessor;
 use BS\ExtendedSearch\Wildcarder;
 use Elastica\Result;
+use ConfigException;
 
 class Base implements IPostProcessor {
 	/**
@@ -79,7 +80,8 @@ class Base implements IPostProcessor {
 			return false;
 		}
 		$matchPercent = $this->getMatchPercent( $result, $lookup );
-		$factor = $matchPercent * 0.5;
+		$boostFactor = (float)$this->base->getConfig()->get( 'ESMatchPercentBoostFactor' );
+		$factor = $matchPercent * $boostFactor;
 
 		$result->setParam( '_score', $score + ( $score * $factor ) );
 
@@ -87,7 +89,7 @@ class Base implements IPostProcessor {
 	}
 
 	private function getMatchPercent( $result, $lookup ) {
-		$title = strtolower( $this->getTitleField( $result ) );
+		$title = strtolower( $this->getTitleFieldValue( $result ) );
 		$tokens = $this->getSearchTermTokens( $lookup );
 		if ( empty( $tokens ) ) {
 			return 0;
@@ -108,6 +110,7 @@ class Base implements IPostProcessor {
 		if ( $matchCount === 0 ) {
 			return 0;
 		}
+
 		return $matchCount / strlen( $title );
 	}
 
@@ -139,11 +142,24 @@ class Base implements IPostProcessor {
 	}
 
 	/**
+	 * Name of the field on which to base match percent boost
+	 *
 	 * @param Result $result
 	 * @return string
 	 */
-	protected function getTitleField( $result ) {
-		return $result->getData()['basename'];
+	protected function getTitleFieldName( $result ) {
+		return 'basename';
+	}
+
+	/**
+	 * @param Result $result
+	 * @return string
+	 * @throws ConfigException
+	 */
+	protected function getTitleFieldValue( $result ) {
+		$configField = $this->base->getConfig()->get( 'ESMatchPercentTitleField' );
+		$fieldName = $configField ? $configField : $this->getTitleFieldName( $result );
+		return $result->getData()[$fieldName];
 	}
 
 	/**

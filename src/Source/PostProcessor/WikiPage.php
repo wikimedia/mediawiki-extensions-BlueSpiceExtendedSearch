@@ -5,6 +5,7 @@ namespace BS\ExtendedSearch\Source\PostProcessor;
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
 use Elastica\Result;
+use ConfigException;
 
 class WikiPage extends Base {
 
@@ -19,14 +20,23 @@ class WikiPage extends Base {
 	 * @param Result $result
 	 * @return string
 	 */
-	protected function getTitleField( $result ) {
+	protected function getTitleFieldName( $result ) {
 		$data = $result->getData();
 		if ( $data['display_title'] !== '' ) {
-			return $data['display_title'];
+			return 'display_title';
 		}
-		return $data['prefixed_title'];
+		return 'prefixed_title';
 	}
 
+	/**
+	 * Boost the result based on its modification time.
+	 * More recent results get more boost.
+	 *
+	 * @param Result $result
+	 * @param Lookup $lookup
+	 * @return bool
+	 * @throws ConfigException
+	 */
 	protected function mTimeBoost( Result $result, Lookup $lookup ) {
 		if ( $result->getType() !== 'wikipage' ) {
 			return false;
