@@ -530,6 +530,16 @@
 			"public": false,
 			"value": "0.5"
 		},
+		"ESMatchPercentBoostFactor": {
+			"description": "How much to boost the result based on the percent of its title taken up by the search term. Set to 0 to disable",
+			"public": false,
+			"value": "0.5"
+		},
+		"ESMatchPercentTitleField": {
+			"description": "Field on which to base the match percent boosting. If empty, default title field of the source will be used",
+			"public": false,
+			"value": ""
+		},
 		"ESSourceConfig": {
 			"value": {
 				"wikipage": {
