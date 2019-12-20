@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch;
 
+use QuickTemplate;
 use Wikimedia\Rdbms\ILoadBalancer;
 use BlueSpice\Services;
 use BS\ExtendedSearch\Backend as SearchBackend;
@@ -48,7 +49,7 @@ class Setup {
 
 	/**
 	 * @param \Skin $skin
-	 * @param \SkinTemplate $template
+	 * @param QuickTemplate $template
 	 * @return bool
 	 * @throws \ConfigException
 	 * @throws \MWException
