@@ -3,8 +3,8 @@
 namespace BS\ExtendedSearch\Source\Crawler;
 
 use BlueSpice\Services;
-use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 use SplFileInfo;
 use UnexpectedValueException;
 

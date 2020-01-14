@@ -2,22 +2,22 @@
 
 namespace BS\ExtendedSearch;
 
-use RequestContext;
-use Hooks;
-use Exception;
-use MWException;
-use stdClass;
-use FormatJson;
 use BlueSpice\ExtensionAttributeBasedRegistry;
-use BS\ExtendedSearch\Source\WikiPages;
-use Elastica\Exception\ResponseException;
 use BlueSpice\Services;
-use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 use BS\ExtendedSearch\Source\Base as SourceBase;
+use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
+use BS\ExtendedSearch\Source\WikiPages;
 use Elastica\Client;
-use Elastica\Search;
+use Elastica\Exception\ResponseException;
 use Elastica\Index;
 use Elastica\ResultSet;
+use Elastica\Search;
+use Exception;
+use FormatJson;
+use Hooks;
+use MWException;
+use RequestContext;
+use stdClass;
 
 class Backend {
 	const SPELLCHECK_ACTION_IGNORE = 'ignore';

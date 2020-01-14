@@ -2,12 +2,12 @@
 
 namespace BS\ExtendedSearch\Source\Updater;
 
-use File;
 use Article;
+use BS\ExtendedSearch\Source\Job\UpdateRepoFile;
+use File;
+use JobQueueGroup;
 use Title;
 use User;
-use BS\ExtendedSearch\Source\Job\UpdateRepoFile;
-use JobQueueGroup;
 
 class RepoFile extends Base {
 	/**

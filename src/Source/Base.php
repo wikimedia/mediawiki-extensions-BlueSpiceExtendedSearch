@@ -5,17 +5,17 @@ namespace BS\ExtendedSearch\Source;
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\IPostProcessor;
 use BS\ExtendedSearch\PostProcessor;
+use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
+use BS\ExtendedSearch\Source\LookupModifier\BaseAutocompleteSourceFields;
 use BS\ExtendedSearch\Source\LookupModifier\BaseExtensionAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\BaseMTimeBoost;
-use BS\ExtendedSearch\Source\LookupModifier\BaseTagsAggregation;
-use BS\ExtendedSearch\Source\LookupModifier\BaseAutocompleteSourceFields;
 use BS\ExtendedSearch\Source\LookupModifier\BaseSimpleQSFields;
-use BS\ExtendedSearch\Source\LookupModifier\BaseWildcarder;
 use BS\ExtendedSearch\Source\LookupModifier\BaseSortByID;
+use BS\ExtendedSearch\Source\LookupModifier\BaseTagsAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\BaseTitleSecurityTrimmings;
-use BS\ExtendedSearch\Source\LookupModifier\BaseUserRelevance;
 use BS\ExtendedSearch\Source\LookupModifier\BaseTypeSecurityTrimming;
-use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
+use BS\ExtendedSearch\Source\LookupModifier\BaseUserRelevance;
+use BS\ExtendedSearch\Source\LookupModifier\BaseWildcarder;
 use BS\ExtendedSearch\Source\PostProcessor\Base as PostProcessorBase;
 
 class Base {

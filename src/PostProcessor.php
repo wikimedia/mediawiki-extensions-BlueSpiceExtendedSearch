@@ -4,10 +4,10 @@ namespace BS\ExtendedSearch;
 
 use BlueSpice\Services;
 use BS\ExtendedSearch\Source\Base as SourceBase;
+use Config;
 use Elastica\Result;
 use Exception;
 use MWException;
-use Config;
 
 class PostProcessor {
 

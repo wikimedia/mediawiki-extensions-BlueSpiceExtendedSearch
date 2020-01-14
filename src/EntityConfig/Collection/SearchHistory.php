@@ -2,13 +2,13 @@
 
 namespace BS\ExtendedSearch\EntityConfig\Collection;
 
-use Config;
-use BlueSpice\Services;
-use BlueSpice\ExtendedStatistics\Data\Entity\Collection\Schema;
 use BlueSpice\Data\FieldType;
 use BlueSpice\EntityConfig;
+use BlueSpice\ExtendedStatistics\Data\Entity\Collection\Schema;
 use BlueSpice\ExtendedStatistics\EntityConfig\Collection;
+use BlueSpice\Services;
 use BS\ExtendedSearch\Entity\Collection\SearchHistory as Entity;
+use Config;
 
 class SearchHistory extends EntityConfig {
 

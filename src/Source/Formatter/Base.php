@@ -3,8 +3,8 @@
 namespace BS\ExtendedSearch\Source\Formatter;
 
 use BS\ExtendedSearch\Wildcarder;
-use MWException;
 use ConfigException;
+use MWException;
 
 class Base {
 	/**

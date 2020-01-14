@@ -2,10 +2,10 @@
 
 namespace BS\ExtendedSearch;
 
-use Status;
-use Config;
 use BlueSpice\Services;
 use BS\ExtendedSearch\Source\Job\UpdateBase;
+use Config;
+use Status;
 
 interface IExternalIndex {
 

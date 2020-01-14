@@ -2,12 +2,12 @@
 
 namespace BS\ExtendedSearch;
 
-use QuickTemplate;
-use Wikimedia\Rdbms\ILoadBalancer;
 use BlueSpice\Services;
 use BS\ExtendedSearch\Backend as SearchBackend;
 use BS\ExtendedSearch\MediaWiki\Backend\BlueSpiceSearch;
+use QuickTemplate;
 use SpecialPage;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 class Setup {
 	/**

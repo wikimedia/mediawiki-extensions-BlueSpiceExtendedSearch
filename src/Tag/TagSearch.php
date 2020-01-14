@@ -2,9 +2,9 @@
 
 namespace BS\ExtendedSearch\Tag;
 
-use BlueSpice\Tag\Tag;
-use BlueSpice\ParamProcessor\ParamType;
 use BlueSpice\ParamProcessor\ParamDefinition;
+use BlueSpice\ParamProcessor\ParamType;
+use BlueSpice\Tag\Tag;
 use BS\ExtendedSearch\Param\Definition\SearchResultTypeListParam;
 
 class TagSearch extends Tag {

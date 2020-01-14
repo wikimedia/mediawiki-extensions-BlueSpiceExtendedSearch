@@ -3,13 +3,12 @@
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Backend;
-
 use BS\ExtendedSearch\Lookup;
+use Config;
 use Elastica\Client;
 use Elastica\Result;
 use Elastica\ResultSet;
 use Elastica\Search;
-use Config;
 
 class BaseMTimeBoost extends Base {
 

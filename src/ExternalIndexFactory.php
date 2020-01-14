@@ -2,9 +2,9 @@
 
 namespace BS\ExtendedSearch;
 
-use Config;
 use BlueSpice\ExtensionAttributeBasedRegistry;
 use BlueSpice\Services;
+use Config;
 
 class ExternalIndexFactory {
 	/**

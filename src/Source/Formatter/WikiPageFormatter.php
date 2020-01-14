@@ -2,8 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\Formatter;
 
-use BlueSpice\DynamicFileDispatcher\Params;
 use BlueSpice\DynamicFileDispatcher\ArticlePreviewImage;
+use BlueSpice\DynamicFileDispatcher\Params;
 use BlueSpice\Services;
 
 class WikiPageFormatter extends Base {

@@ -3,20 +3,20 @@
 namespace BS\ExtendedSearch\Source;
 
 use BS\ExtendedSearch\Backend;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageNamespaceTextAggregation;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageCategoriesAggregation;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageUserPreferences;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageNamespacePrefixResolver;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageSecurityTrimming;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageRenderedContentHighlight;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageAutocompleteRemoveUnwanted;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageAutocompleteSourceFields;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageBoosters;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageAutocompleteRemoveUnwanted;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageQSSourceFields;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageWildcarder;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageRemoveUnwanted;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageCategoriesAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageLanguageAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageLanguageFilter;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageNamespacePrefixResolver;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageNamespaceTextAggregation;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageQSSourceFields;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageRemoveUnwanted;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageRenderedContentHighlight;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageSecurityTrimming;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageUserPreferences;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageWildcarder;
 use BS\ExtendedSearch\Source\PostProcessor\WikiPage as WikiPagePostProcessor;
 
 class WikiPages extends DecoratorBase {

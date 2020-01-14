@@ -2,12 +2,12 @@
 
 namespace BS\ExtendedSearch\Data;
 
-use IContextSource;
-use Config;
-use BS\ExtendedSearch\Backend;
+use BlueSpice\Data\ISecondaryDataProvider;
 use BlueSpice\Data\ReaderParams;
 use BlueSpice\Data\ResultSet;
-use BlueSpice\Data\ISecondaryDataProvider;
+use BS\ExtendedSearch\Backend;
+use Config;
+use IContextSource;
 
 abstract class Reader extends \BlueSpice\Data\Reader {
 

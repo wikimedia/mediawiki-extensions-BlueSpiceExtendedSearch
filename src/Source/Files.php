@@ -3,13 +3,13 @@
 namespace BS\ExtendedSearch\Source;
 
 use BS\ExtendedSearch\Source\MappingProvider\File as FileMappingProvider;
-use Elastica\Document;
-use Elastica\Bulk\ResponseSet;
 use Elastica\Bulk;
+use Elastica\Bulk\ResponseSet;
+use Elastica\Client as ElasticaClient;
+use Elastica\Document;
 use Elastica\Exception\Bulk\ResponseException;
 use Elastica\Index;
 use Elastica\Request as ElasticaRequest;
-use Elastica\Client as ElasticaClient;
 
 class Files extends DecoratorBase {
 

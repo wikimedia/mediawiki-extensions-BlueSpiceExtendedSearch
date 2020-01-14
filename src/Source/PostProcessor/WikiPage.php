@@ -4,8 +4,8 @@ namespace BS\ExtendedSearch\Source\PostProcessor;
 
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
-use Elastica\Result;
 use ConfigException;
+use Elastica\Result;
 
 class WikiPage extends Base {
 

@@ -2,22 +2,22 @@
 
 namespace BS\ExtendedSearch\DataCollector\StoreSourced;
 
-use Config;
-use BlueSpice\Services;
-use BlueSpice\Timestamp;
-use BlueSpice\Data\IRecord;
-use BlueSpice\Data\IStore;
+use BlueSpice\Data\FieldType;
 use BlueSpice\Data\Filter;
 use BlueSpice\Data\Filter\Date;
+use BlueSpice\Data\IRecord;
+use BlueSpice\Data\IStore;
 use BlueSpice\Data\Sort;
-use BlueSpice\Data\FieldType;
 use BlueSpice\EntityFactory;
-use BlueSpice\ExtendedStatistics\Util\SnapshotRange\Daily;
-use BlueSpice\ExtendedStatistics\Entity\Snapshot;
 use BlueSpice\ExtendedStatistics\DataCollector\StoreSourced;
-use BS\ExtendedSearch\Data\SearchHistory\Store;
+use BlueSpice\ExtendedStatistics\Entity\Snapshot;
+use BlueSpice\ExtendedStatistics\Util\SnapshotRange\Daily;
+use BlueSpice\Services;
+use BlueSpice\Timestamp;
 use BS\ExtendedSearch\Data\SearchHistory\Record;
+use BS\ExtendedSearch\Data\SearchHistory\Store;
 use BS\ExtendedSearch\Entity\Collection\SearchHistory as Collection;
+use Config;
 
 class SearchHistory extends StoreSourced {
 

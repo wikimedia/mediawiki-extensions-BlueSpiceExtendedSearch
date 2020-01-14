@@ -7,8 +7,8 @@ use BS\ExtendedSearch\IPostProcessor;
 use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\PostProcessor;
 use BS\ExtendedSearch\Wildcarder;
-use Elastica\Result;
 use ConfigException;
+use Elastica\Result;
 
 class Base implements IPostProcessor {
 	/**

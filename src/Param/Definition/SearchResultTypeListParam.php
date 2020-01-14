@@ -2,8 +2,8 @@
 
 namespace BS\ExtendedSearch\Param\Definition;
 
-use BS\ExtendedSearch\Param\Validator\SearchResultTypeValidator;
 use BS\ExtendedSearch\Param\Parser\SearchResultTypeParser;
+use BS\ExtendedSearch\Param\Validator\SearchResultTypeValidator;
 
 class SearchResultTypeListParam extends \ParamProcessor\ParamDefinition {
 	protected $delimiter = '|';

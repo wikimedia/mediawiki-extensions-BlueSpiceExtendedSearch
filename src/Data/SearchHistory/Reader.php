@@ -2,10 +2,10 @@
 
 namespace BS\ExtendedSearch\Data\SearchHistory;
 
+use BlueSpice\Data\DatabaseReader;
+use BlueSpice\Data\ReaderParams;
 use IContextSource;
 use Wikimedia\Rdbms\ILoadBalancer;
-use BlueSpice\Data\ReaderParams;
-use BlueSpice\Data\DatabaseReader;
 
 class Reader extends DatabaseReader {
 	/**

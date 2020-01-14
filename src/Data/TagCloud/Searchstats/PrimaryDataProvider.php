@@ -3,14 +3,14 @@
 namespace BS\ExtendedSearch\Data\TagCloud\Searchstats;
 
 use \BlueSpice\Data\IPrimaryDataProvider;
-use BlueSpice\Data\FilterFinder;
 use BlueSpice\Data\Filter;
-use BlueSpice\Data\Filter\StringValue;
 use BlueSpice\Data\Filter\ListValue;
 use BlueSpice\Data\Filter\Numeric;
-use BlueSpice\TagCloud\Data\TagCloud\Schema;
-use BlueSpice\TagCloud\Data\TagCloud\Record;
+use BlueSpice\Data\Filter\StringValue;
+use BlueSpice\Data\FilterFinder;
 use BlueSpice\TagCloud\Context;
+use BlueSpice\TagCloud\Data\TagCloud\Record;
+use BlueSpice\TagCloud\Data\TagCloud\Schema;
 
 class PrimaryDataProvider implements IPrimaryDataProvider {
 

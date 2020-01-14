@@ -2,9 +2,9 @@
 
 namespace BS\ExtendedSearch\Data\TagCloud\Searchstats;
 
-use BlueSpice\Services;
-use BlueSpice\Data\ReaderParams;
 use BlueSpice\Data\DatabaseReader;
+use BlueSpice\Data\ReaderParams;
+use BlueSpice\Services;
 use BlueSpice\TagCloud\Data\TagCloud\Schema;
 
 class Reader extends DatabaseReader {

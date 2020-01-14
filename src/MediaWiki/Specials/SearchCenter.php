@@ -3,11 +3,11 @@
 namespace BS\ExtendedSearch\MediaWiki\Specials;
 
 use BlueSpice\Services;
-use Title;
-use SpecialPage;
-use FormatJson;
-use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\Backend as SearchBackend;
+use BS\ExtendedSearch\Lookup;
+use FormatJson;
+use SpecialPage;
+use Title;
 
 class SearchCenter extends SpecialPage {
 

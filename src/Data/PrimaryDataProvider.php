@@ -2,22 +2,22 @@
 
 namespace BS\ExtendedSearch\Data;
 
-use Exception;
-use FormatJson;
+use BlueSpice\Data\FieldType;
+use BlueSpice\Data\Filter\Boolean;
+use BlueSpice\Data\Filter\Date;
+use BlueSpice\Data\Filter\ListValue;
+use BlueSpice\Data\Filter\Numeric;
+use BlueSpice\Data\FilterFinder;
+use BlueSpice\Data\IPrimaryDataProvider;
+use BlueSpice\Data\ReaderParams;
+use BlueSpice\Data\Record;
+use BlueSpice\Data\Schema;
+use BS\ExtendedSearch\Backend;
 use Elastica\Client;
 use Elastica\Index;
 use Elastica\Search;
-use BS\ExtendedSearch\Backend;
-use BlueSpice\Data\Schema;
-use BlueSpice\Data\Record;
-use BlueSpice\Data\FieldType;
-use BlueSpice\Data\IPrimaryDataProvider;
-use BlueSpice\Data\FilterFinder;
-use BlueSpice\Data\ReaderParams;
-use BlueSpice\Data\Filter\ListValue;
-use BlueSpice\Data\Filter\Boolean;
-use BlueSpice\Data\Filter\Numeric;
-use BlueSpice\Data\Filter\Date;
+use Exception;
+use FormatJson;
 
 abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 	const TYPE = 'type';

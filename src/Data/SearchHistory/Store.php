@@ -2,12 +2,12 @@
 
 namespace BS\ExtendedSearch\Data\SearchHistory;
 
-use IContextSource;
-use RequestContext;
-use Wikimedia\Rdbms\ILoadBalancer;
 use BlueSpice\Data\IStore;
 use BlueSpice\Data\ReaderParams;
 use BlueSpice\Services;
+use IContextSource;
+use RequestContext;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 class Store implements IStore {
 

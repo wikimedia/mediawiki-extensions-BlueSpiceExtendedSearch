@@ -100,7 +100,7 @@ class WikiPage extends DecoratorBase {
 	}
 
 	/**
-
+	 *
 	 * @return string
 	 */
 	protected function getTextContent() {

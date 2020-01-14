@@ -8,11 +8,11 @@
 
 namespace BS\ExtendedSearch;
 
-use Exception;
-use Status;
-use Config;
 use BlueSpice\Services;
 use BS\ExtendedSearch\Source\Job\UpdateBase;
+use Config;
+use Exception;
+use Status;
 
 abstract class ExternalIndex implements IExternalIndex {
 

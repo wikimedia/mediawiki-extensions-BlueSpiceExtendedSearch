@@ -2,10 +2,10 @@
 
 namespace BS\ExtendedSearch\Data\TagCloud\Searchstats;
 
-use BlueSpice\TagCloud\Data\TagCloud\IStore as ITagCloudStore;
-use BlueSpice\TagCloud\Context;
-use BlueSpice\TagCloud\Data\TagCloud\ReaderParams;
 use BlueSpice\Services;
+use BlueSpice\TagCloud\Context;
+use BlueSpice\TagCloud\Data\TagCloud\IStore as ITagCloudStore;
+use BlueSpice\TagCloud\Data\TagCloud\ReaderParams;
 
 class Store implements ITagCloudStore {
 

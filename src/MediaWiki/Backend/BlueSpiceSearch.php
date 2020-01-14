@@ -1,8 +1,8 @@
 <?php
 namespace BS\ExtendedSearch\MediaWiki\Backend;
 
-use BS\ExtendedSearch\Lookup;
 use BlueSpice\Services;
+use BS\ExtendedSearch\Lookup;
 
 class BlueSpiceSearch extends \SearchEngine {
 	protected $fallbackSearchEngine = null;

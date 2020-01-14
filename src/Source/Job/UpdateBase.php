@@ -2,13 +2,13 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
-use Exception;
-use Status;
 use BlueSpice\Services;
 use BS\ExtendedSearch\Backend;
-use BS\ExtendedSearch\Source\Base;
 use BS\ExtendedSearch\ExternalIndexFactory;
 use BS\ExtendedSearch\IExternalIndex;
+use BS\ExtendedSearch\Source\Base;
+use Exception;
+use Status;
 
 abstract class UpdateBase extends \Job {
 	const ACTION_DELETE = 'delete';
