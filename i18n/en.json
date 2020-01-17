@@ -153,5 +153,13 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "List of valid result types separated by pipe (|)",
 	"bs-extendedsearch-collection-type-searchhistory": "Search history",
 	"bs-extendedsearch-collection-var-searchterm": "Term",
-	"bs-extendedsearch-collection-var-numbersearched": "Searches"
+	"bs-extendedsearch-collection-var-numbersearched": "Searches",
+	"right-extendedsearch-search-specialpage": "Search for special pages",
+	"right-extendedsearch-search-wikipage": "Search for pages",
+	"right-extendedsearch-search-repofile": "Search for files",
+	"right-extendedsearch-search-externalfile": "Search for external files",
+	"action-extendedsearch-search-specialpage": "search for special pages",
+	"action-extendedsearch-search-wikipage": "search for pages",
+	"action-extendedsearch-search-repofile": "search for files",
+	"action-extendedsearch-search-externalfile": "search for external files"
 }

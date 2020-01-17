@@ -213,6 +213,32 @@
 			]
 		}
 	},
+	"GroupPermissions": {
+		"*": {
+			"extendedsearch-search-specialpage": true,
+			"extendedsearch-search-wikipage": true,
+			"extendedsearch-search-repofile": true,
+			"extendedsearch-search-externalfile": true
+		},
+		"user": {
+			"extendedsearch-search-specialpage": true,
+			"extendedsearch-search-wikipage": true,
+			"extendedsearch-search-repofile": true,
+			"extendedsearch-search-externalfile": true
+		},
+		"sysop": {
+			"extendedsearch-search-specialpage": true,
+			"extendedsearch-search-wikipage": true,
+			"extendedsearch-search-repofile": true,
+			"extendedsearch-search-externalfile": true
+		}
+	},
+	"AvailableRights": [
+		"extendedsearch-search-specialpage",
+		"extendedsearch-search-wikipage",
+		"extendedsearch-search-repofile",
+		"extendedsearch-search-externalfile"
+	],
 	"MessagesDirs": {
 		"BlueSpiceExtendedSearch": [
 			"i18n"
