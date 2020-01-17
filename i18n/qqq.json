@@ -156,5 +156,13 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Help text for field \"type\"",
 	"bs-extendedsearch-collection-type-searchhistory": "Label for source type \"searchhistory\" in entry field \"type\"\n{{Identical|Search history}}",
 	"bs-extendedsearch-collection-var-searchterm": "Label for entry field \"searchterm\"\n{{Identical|Term}}",
-	"bs-extendedsearch-collection-var-numbersearched": "Label for entry field \"numbersearched\"\n{{Identical|Searches}}"
+	"bs-extendedsearch-collection-var-numbersearched": "Label for entry field \"numbersearched\"\n{{Identical|Searches}}",
+	"right-extendedsearch-search-specialpage": "{{doc-right|extendedsearch-search-specialpage}}",
+	"right-extendedsearch-search-wikipage": "{{doc-right|extendedsearch-search-wikipage}}",
+	"right-extendedsearch-search-repofile": "{{doc-right|extendedsearch-search-repofile}}",
+	"right-extendedsearch-search-externalfile": "{{doc-right|extendedsearch-search-externalfile}}",
+	"action-extendedsearch-search-specialpage": "{{doc-action|extendedsearch-search-specialpage}}",
+	"action-extendedsearch-search-wikipage": "{{doc-action|extendedsearch-search-wikipage}}",
+	"action-extendedsearch-search-repofile": "{{doc-action|extendedsearch-search-repofile}}",
+	"action-extendedsearch-search-externalfile": "{{doc-action|extendedsearch-search-externalfile}}"
 }
