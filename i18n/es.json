@@ -5,7 +5,8 @@
 			"Vanbasten 23",
 			"Carlosmg.dg",
 			"Agusbou2015",
-			"Madamebiblio"
+			"Madamebiblio",
+			"Joanmp17"
 		]
 	},
 	"bs-extsearch-desc": "Motor de búsquedas Elasticsearch",
@@ -58,6 +59,7 @@
 	"bs-extendedsearch-search-center-options-page-size": "Entradas por página",
 	"bs-extendedsearch-search-center-options-sort-by": "Ordenar por",
 	"bs-extendedsearch-autocomplete-result-type": "Tipo: $1",
+	"bs-extendedsearch-autocomplete-result-top-match-label": "Mejores resultados",
 	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Podrías estar buscando también por...",
 	"bs-extendedsearch-searchcenter-filter-or-label": "o",
 	"bs-extendedsearch-searchcenter-filter-and-label": "y",
@@ -88,6 +90,7 @@
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Patrón de expresión regular no válido",
 	"bs-extendedsearch-external-file-paths-desc": "Matriz de carpetas externas que debe indizarse",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Última modificación: $1",
+	"bs-extendedseach-wikipage-section-more-text": "... $1 más",
 	"bs-extendedsearch-search-center-result-redirects-label": "Redirigido desde:",
 	"bs-extendedsearch-default-filters-desc": "Matriz de filtros que establecer de manera predeterminada",
 	"bs-extendedsearch-redirect-target-label": "Redirige a:",
