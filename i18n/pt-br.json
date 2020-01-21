@@ -151,5 +151,13 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Lista de tipos de resultados válidos separados por tubo (|)",
 	"bs-extendedsearch-collection-type-searchhistory": "Histórico de pesquisa",
 	"bs-extendedsearch-collection-var-searchterm": "Prazo",
-	"bs-extendedsearch-collection-var-numbersearched": "Pesquisas"
+	"bs-extendedsearch-collection-var-numbersearched": "Pesquisas",
+	"right-extendedsearch-search-specialpage": "Procurar por páginas especiais",
+	"right-extendedsearch-search-wikipage": "Pesquisar por páginas",
+	"right-extendedsearch-search-repofile": "Pesquisar arquivos",
+	"right-extendedsearch-search-externalfile": "Procurar por arquivos externos",
+	"action-extendedsearch-search-specialpage": "procurar páginas especiais",
+	"action-extendedsearch-search-wikipage": "procurar páginas",
+	"action-extendedsearch-search-repofile": "Pesquisar por arquivos",
+	"action-extendedsearch-search-externalfile": "procurar arquivos externos"
 }

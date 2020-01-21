@@ -12,7 +12,8 @@
 			"Looong",
 			"予弦",
 			"A Retired User",
-			"沈澄心"
+			"沈澄心",
+			"VulpesVulpes825"
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch搜索后端",
@@ -151,5 +152,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "类型",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "搜索结果的有效类型；用pipe (\"|\") 分隔",
 	"bs-extendedsearch-collection-type-searchhistory": "搜索历史",
-	"bs-extendedsearch-collection-var-numbersearched": "搜索"
+	"bs-extendedsearch-collection-var-numbersearched": "搜索",
+	"right-extendedsearch-search-wikipage": "搜索页面"
 }
