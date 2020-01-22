@@ -35,5 +35,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Tilføj et filter",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Navnerum",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategori(er)",
-	"bs-extendedsearch-collection-var-numbersearched": "Søgninger"
+	"bs-extendedsearch-collection-var-numbersearched": "Søgninger",
+	"right-extendedsearch-search-wikipage": "Søg efter sider",
+	"action-extendedsearch-search-repofile": "søg efter filer"
 }

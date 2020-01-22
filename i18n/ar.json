@@ -4,7 +4,8 @@
 			"ديفيد",
 			"Meno25",
 			"Kassem789",
-			"HitomiAkane"
+			"HitomiAkane",
+			"محمد أحمد عبد الفتاح"
 		]
 	},
 	"bs-extsearch-extensionname": "بحث بلو سبيس الممتد",
@@ -154,5 +155,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "قائمة أنواع النتائج الصحيحة مفصولة بأنبوب (|)",
 	"bs-extendedsearch-collection-type-searchhistory": "البحث في التاريخ",
 	"bs-extendedsearch-collection-var-searchterm": "المصطلح",
-	"bs-extendedsearch-collection-var-numbersearched": "عمليات البحث"
+	"bs-extendedsearch-collection-var-numbersearched": "عمليات البحث",
+	"right-extendedsearch-search-specialpage": "البحث عن الصفحات الخاصة",
+	"right-extendedsearch-search-repofile": "البحث عن ملفات"
 }
