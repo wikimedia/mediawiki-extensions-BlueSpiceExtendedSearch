@@ -68,6 +68,9 @@ class SearchCenter extends SpecialPage {
 		$resultStructures = [];
 
 		foreach ( $localBackend->getSources() as $sourceKey => $source ) {
+			if ( !$source->isSortable() ) {
+				continue;
+			}
 			foreach ( $source->getMappingProvider()->getPropertyConfig() as $fieldName => $fieldConfig ) {
 				if ( in_array( $fieldName, $sortableFields ) ) {
 					continue;
@@ -79,7 +82,7 @@ class SearchCenter extends SpecialPage {
 				}
 
 				if ( $fieldConfig['type'] == 'text' ) {
-					if ( isset( $fieldConfig['fielddate'] ) && $fieldConfig['fielddata'] == true ) {
+					if ( isset( $fieldConfig['fielddata'] ) && $fieldConfig['fielddata'] == true ) {
 						$sortableFields[] = $fieldName;
 					}
 				}
