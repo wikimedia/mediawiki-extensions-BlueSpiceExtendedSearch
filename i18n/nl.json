@@ -80,5 +80,13 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Naamruimte(n)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Categorie(ën)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "Lijst met geldige categorienamen gescheiden door een sluisteken (|)",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Type"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Type",
+	"right-extendedsearch-search-specialpage": "Naar speciale pagina's mogen zoeken",
+	"right-extendedsearch-search-wikipage": "Naar pagina's mogen zoeken",
+	"right-extendedsearch-search-repofile": "Naar bestanden mogen zoeken",
+	"right-extendedsearch-search-externalfile": "Naar externe bestanden mogen zoeken",
+	"action-extendedsearch-search-specialpage": "naar speciale pagina's te mogen zoeken",
+	"action-extendedsearch-search-wikipage": "naar pagina's te mogen zoeken",
+	"action-extendedsearch-search-repofile": "naar bestanden te mogen zoeken",
+	"action-extendedsearch-search-externalfile": "naar externe bestanden te mogen zoeken"
 }
