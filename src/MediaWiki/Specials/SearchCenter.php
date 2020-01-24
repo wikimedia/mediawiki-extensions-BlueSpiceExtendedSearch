@@ -40,15 +40,11 @@ class SearchCenter extends SpecialPage {
 		// If user has submitted the form too fast, before
 		// Lookup object had time to init/update on client side,
 		// we must use raw_term to set the lookup
-		if ( $rawTerm != '' ) {
-			$queryStringBits = explode( '/', $queryString[ 'query' ] );
-			$rawTermIsSubpage = false;
-			if ( !empty( $queryStringBits ) &&
-				$queryStringBits[ count( $queryStringBits ) - 1 ] == $rawTerm ) {
-				$rawTermIsSubpage = true;
-			}
+		if ( $rawTerm !== '' ) {
+			// If raw term is contained in the query string, it means lookup did have time to update
+			$rawTermIsPartial = $this->isRawTermPartial( $queryString['query'], $rawTerm );
 
-			if ( $queryString['query'] == '' || ( $queryString['query'] != $rawTerm && !$rawTermIsSubpage ) ) {
+			if ( $queryString['query'] === '' || ( $queryString['query'] !== $rawTerm && !$rawTermIsPartial ) ) {
 				$queryString['query'] = $rawTerm;
 				$lookup->setQueryString( $queryString );
 			}
@@ -158,5 +154,17 @@ class SearchCenter extends SpecialPage {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * Determine if raw term is a part of the query string
+	 * This is true if search term is namespaced or contains a subpage syntax
+	 *
+	 * @param string $query
+	 * @param string $raw
+	 * @return bool
+	 */
+	private function isRawTermPartial( $query, $raw ) {
+		return strpos( strtolower( $query ), strtolower( $raw ) ) !== false;
 	}
 }
