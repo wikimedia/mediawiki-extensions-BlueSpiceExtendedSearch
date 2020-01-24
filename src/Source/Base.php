@@ -273,4 +273,13 @@ class Base {
 	public static function getPostProcessor( $base ) {
 		return PostProcessorBase::factory( $base );
 	}
+
+	/**
+	 * Can fields in this source be used for sorting
+	 *
+	 * @return bool
+	 */
+	public function isSortable() {
+		return true;
+	}
 }
