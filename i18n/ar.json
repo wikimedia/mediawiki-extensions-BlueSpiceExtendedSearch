@@ -157,5 +157,7 @@
 	"bs-extendedsearch-collection-var-searchterm": "المصطلح",
 	"bs-extendedsearch-collection-var-numbersearched": "عمليات البحث",
 	"right-extendedsearch-search-specialpage": "البحث عن الصفحات الخاصة",
-	"right-extendedsearch-search-repofile": "البحث عن ملفات"
+	"right-extendedsearch-search-wikipage": "البحث عن الصفحات",
+	"right-extendedsearch-search-repofile": "البحث عن ملفات",
+	"right-extendedsearch-search-externalfile": "البحث عن الملفات الخارجية"
 }
