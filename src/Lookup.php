@@ -225,6 +225,26 @@ class Lookup extends \ArrayObject {
 	}
 
 	/**
+	 * Remove items from must_not terms by field and value
+	 *
+	 * @param string $field
+	 * @param string|array $value
+	 * @return Lookup
+	 */
+	public function removeBoolMustNotTerms( $field, $value ) {
+		return $this->removeTerms( 'must_not', $field, $value );
+	}
+
+	/**
+	 * Get unified array of must_not values
+	 *
+	 * @return array
+	 */
+	public function getMustNots() {
+		return $this->getCompounded( 'must_not' );
+	}
+
+	/**
 	 *
 	 * @param string $field
 	 * @return Lookup
@@ -358,28 +378,38 @@ class Lookup extends \ArrayObject {
 	 * @return Lookup
 	 */
 	public function removeTermsFilter( $field, $value ) {
-		$this->ensurePropertyPath( 'query.bool.filter', [] );
+		return $this->removeTerms( 'filter', $field, $value );
+	}
+
+	/**
+	 * @param string $prop
+	 * @param string $field
+	 * @param string|array $value
+	 * @return Lookup
+	 */
+	public function removeTerms( $prop, $field, $value ) {
+		$this->ensurePropertyPath( "query.bool.$prop", [] );
 
 		if ( !is_array( $value ) ) {
 			$value = [ $value ];
 		}
 
-		for ( $i = 0; $i < count( $this['query']['bool']['filter'] ); $i++ ) {
-			$aFilter = &$this['query']['bool']['filter'][$i];
-			if ( !isset( $aFilter['terms'][$field] ) ) {
+		for ( $i = 0; $i < count( $this['query']['bool'][$prop] ); $i++ ) {
+			$item = &$this['query']['bool'][$prop][$i];
+			if ( !isset( $item['terms'][$field] ) ) {
 				continue;
 			}
 
-			$aFilter['terms'][$field] = array_diff( $aFilter['terms'][$field], $value );
-			$aFilter['terms'][$field] = array_values( $aFilter['terms'][$field] );
+			$item['terms'][$field] = array_diff( $item['terms'][$field], $value );
+			$item['terms'][$field] = array_values( $item['terms'][$field] );
 
-			if ( empty( $aFilter['terms'][$field] ) ) {
-				unset( $this['query']['bool']['filter'][$i] );
+			if ( empty( $item['terms'][$field] ) ) {
+				unset( $this['query']['bool'][$prop][$i] );
 			}
 
 		}
 
-		$this['query']['bool']['filter'] = array_values( $this['query']['bool']['filter'] );
+		$this['query']['bool'][$prop] = array_values( $this['query']['bool'][$prop] );
 
 		return $this;
 	}
@@ -424,30 +454,40 @@ class Lookup extends \ArrayObject {
 	 * @return array
 	 */
 	public function getFilters() {
-		$this->ensurePropertyPath( 'query.bool.filter', [] );
+		return $this->getCompounded( 'filter' );
+	}
 
-		$filters = [];
-		foreach ( $this['query']['bool']['filter'] as $idx => $filter ) {
-			foreach ( $filter as $typeName => $typeField ) {
-				if ( !isset( $filters[$typeName] ) ) {
-					$filters[$typeName] = [];
+	/**
+	 * Get unified array of values for given property
+	 *
+	 * @param string $prop
+	 * @return array
+	 */
+	public function getCompounded( $prop ) {
+		$this->ensurePropertyPath( "query.bool.$prop", [] );
+
+		$items = [];
+		foreach ( $this['query']['bool'][$prop] as $idx => $item ) {
+			foreach ( $item as $typeName => $typeField ) {
+				if ( !isset( $items[$typeName] ) ) {
+					$items[$typeName] = [];
 				}
 				foreach ( $typeField as $fieldName => $fieldValue ) {
-					if ( !isset( $filters[$typeName][$fieldName] ) ) {
-						$filters[$typeName][$fieldName] = [];
+					if ( !isset( $items[$typeName][$fieldName] ) ) {
+						$items[$typeName][$fieldName] = [];
 					}
 					if ( is_array( $fieldValue ) ) {
-						$filters[$typeName][$fieldName] = array_merge(
-							$filters[$typeName][$fieldName],
+						$items[$typeName][$fieldName] = array_merge(
+							$items[$typeName][$fieldName],
 							$fieldValue
 						);
 					} else {
-						$filters[$typeName][$fieldName][] = $fieldValue;
+						$items[$typeName][$fieldName][] = $fieldValue;
 					}
 				}
 			}
 		}
-		return $filters;
+		return $items;
 	}
 
 	/**
