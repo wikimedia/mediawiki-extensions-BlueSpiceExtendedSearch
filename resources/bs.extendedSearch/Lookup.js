@@ -200,6 +200,10 @@ bs.extendedSearch.Lookup.prototype.addBoolMustNotTerms = function( field, value 
 	return this;
 }
 
+bs.extendedSearch.Lookup.prototype.removeBoolMustNotTerms = function( field, value ) {
+	return this.removeTerms( 'must_not', field, value );
+}
+
 /**
  * Removes field from must_not clause
  *
@@ -222,7 +226,7 @@ bs.extendedSearch.Lookup.prototype.removeBoolMustNot = function( field ) {
 		}
 	}
 
-	if( newMustNots.length == 0 ) {
+	if( newMustNots.length === 0 ) {
 		delete( this.query.bool.must_not );
 	} else {
 		this.query.bool.must_not = newMustNots;
@@ -230,6 +234,53 @@ bs.extendedSearch.Lookup.prototype.removeBoolMustNot = function( field ) {
 
 	return this;
 }
+
+
+/**
+ * @returns Object
+ */
+bs.extendedSearch.Lookup.prototype.getMustNots = function () {
+	return this.getCompounded( 'must_not' );
+};
+
+/**
+ *
+ * @param string prop
+ * @returns Object
+ */
+bs.extendedSearch.Lookup.prototype.getCompounded = function ( prop ) {
+	this.ensurePropertyPath( 'query.bool.' + prop, [] );
+
+	var values = {};
+	for( var i = 0; i < this.query.bool[prop].length; i++ ) {
+		var value = this.query.bool[prop][i];
+
+		for( var typeName in value ) {
+			if ( !value.hasOwnProperty( typeName ) ) {
+				continue;
+			}
+			if( !values[typeName] ) {
+				values[typeName] = {};
+			}
+			for( var fieldName in value[typeName] ) {
+				if ( !value[typeName].hasOwnProperty( fieldName ) ) {
+					continue;
+				}
+				if( !values[typeName].hasOwnProperty( fieldName ) ) {
+					values[typeName][fieldName] = [];
+				}
+				var filterValue = value[typeName][fieldName];
+				if( $.isArray( filterValue ) ) {
+					$.merge( values[typeName][fieldName], filterValue );
+				} else {
+					values[typeName][fieldName].push( filterValue );
+				}
+			}
+		}
+	}
+
+	return values;
+};
 
 /**
  * Removes filter completely regardless of value
@@ -241,7 +292,7 @@ bs.extendedSearch.Lookup.prototype.clearFilter = function ( field ) {
 
 	var newFilters = [];
 	for( var i = 0; i < this.query.bool.filter.length; i++ ) {
-		var filter = this.query.bool.filter[i]
+		var filter = this.query.bool.filter[i];
 		if( filter.terms && field in this.query.bool.filter[i].terms ) {
 			continue;
 		}
@@ -274,37 +325,7 @@ bs.extendedSearch.Lookup.prototype.clearFilter = function ( field ) {
  * @returns Object
  */
 bs.extendedSearch.Lookup.prototype.getFilters = function () {
-	this.ensurePropertyPath( 'query.bool.filter', [] );
-
-	var filters = {};
-	for( var i = 0; i < this.query.bool.filter.length; i++ ) {
-		var filter = this.query.bool.filter[i];
-
-		for( var typeName in filter ) {
-			if ( !filter.hasOwnProperty( typeName ) ) {
-				continue;
-			}
-			if( !filters[typeName] ) {
-				filters[typeName] = {};
-			}
-			for( var fieldName in filter[typeName] ) {
-				if ( !filter[typeName].hasOwnProperty( fieldName ) ) {
-					continue;
-				}
-				if( !filters[typeName][fieldName] ) {
-					filters[typeName][fieldName] = [];
-				}
-				var filterValue = filter[typeName][fieldName];
-				if( $.isArray( filterValue ) ) {
-					$.merge( filters[typeName][fieldName], filterValue );
-				} else {
-					filters[typeName][fieldName].push( filterValue );
-				}
-			}
-		}
-	}
-
-	return filters;
+	return this.getCompounded( 'filter' );
 };
 
 /**
@@ -416,25 +437,29 @@ bs.extendedSearch.Lookup.prototype.removeFilter = function( field, value ) {
  * @returns bs.extendedSearch.Lookup
  */
 bs.extendedSearch.Lookup.prototype.removeTermsFilter = function( fieldName, value ) {
-	this.ensurePropertyPath( 'query.bool.filter', [] );
+	return this.removeTerms( 'filter', fieldName, value );
+};
+
+bs.extendedSearch.Lookup.prototype.removeTerms = function( prop, fieldName, value ) {
+	this.ensurePropertyPath( 'query.bool.' + prop, [] );
 
 	if( !$.isArray( value ) ) {
 		value = [ value ];
 	}
 
-	var newFilters = [];
-	for( var i = 0; i < this.query.bool.filter.length; i++ ) {
-		var filter = this.query.bool.filter[i];
+	var newValues = [];
+	for( var i = 0; i < this.query.bool[prop].length; i++ ) {
+		var item = this.query.bool[prop][i];
 		var diffValues = [];
 
 		//Not a terms filter - dont touch
-		if( !filter.terms ) {
-			newFilters.push( filter );
+		if( !item.terms ) {
+			newValues.push( item );
 			continue;
 		}
 
-		if( fieldName in filter.terms ) {
-			var oldValues = filter.terms[fieldName];
+		if( fieldName in item.terms ) {
+			var oldValues = item.terms[fieldName];
 			$.grep( oldValues, function( el ) {
 				if ( $.inArray( el, value ) === -1 ) {
 					diffValues.push( el );
@@ -445,13 +470,13 @@ bs.extendedSearch.Lookup.prototype.removeTermsFilter = function( fieldName, valu
 				continue;
 			}
 
-			filter.terms[fieldName] = diffValues;
+			item.terms[fieldName] = diffValues;
 		}
 
-		newFilters.push( filter );
+		newValues.push( item );
 	}
 
-	this.query.bool.filter = newFilters;
+	this.query.bool[prop] = newValues;
 
 	return this;
 };
