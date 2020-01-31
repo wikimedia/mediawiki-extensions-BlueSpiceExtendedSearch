@@ -5,7 +5,8 @@
 			"Metalhead64",
 			"Hwboehm",
 			"Mglaser",
-			"Ferdinand0101"
+			"Ferdinand0101",
+			"Tiin"
 		]
 	},
 	"bs-extsearch-extensionname": "BlueSpiceExtendedSearch",
@@ -154,5 +155,15 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Dieser Parameter wird nur in Kombination mit dem Parameter „category“ evaluiert. Die Einstellung AND findet nur Ergebnisse, die in allen der angegebenen Kategorien sind, während der Wert OR Ergebnisse findet, die mindestens eine der angegebenen Kategorien festgelegt haben.",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Typ",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Liste der gültigen Ergebnistypen, getrennt durch senkrechte Striche (|)",
-	"right-extendedsearch-search-wikipage": "Nach Seiten suchen"
+	"bs-extendedsearch-collection-type-searchhistory": "Suchverlauf",
+	"bs-extendedsearch-collection-var-searchterm": "Begriff",
+	"bs-extendedsearch-collection-var-numbersearched": "Suchen",
+	"right-extendedsearch-search-specialpage": "Nach Spezialseiten suchen",
+	"right-extendedsearch-search-wikipage": "Nach Seiten suchen",
+	"right-extendedsearch-search-repofile": "Nach Dateien suchen",
+	"right-extendedsearch-search-externalfile": "Nach externen Dateien suchen",
+	"action-extendedsearch-search-specialpage": "nach Spezialseiten zu suchen",
+	"action-extendedsearch-search-wikipage": "nach Seiten zu suchen",
+	"action-extendedsearch-search-repofile": "nach Dateien zu suchen",
+	"action-extendedsearch-search-externalfile": "nach externen Dateien zu suchen"
 }
