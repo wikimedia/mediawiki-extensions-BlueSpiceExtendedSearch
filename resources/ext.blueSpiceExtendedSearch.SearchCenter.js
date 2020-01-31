@@ -388,6 +388,7 @@
 		if( this.lookup.getSort().length === 0 ) {
 			this.lookup.addSort( '_score', bs.extendedSearch.Lookup.SORT_DESC );
 		}
+		mw.hook( 'bs.extendedSearch.makeLookup' ).fire( this.lookup );
 	}
 
 	function _clearLookupObject() {
@@ -410,9 +411,10 @@
 		updateQueryHash();
 	}
 
-	function updateQueryHash() {
+	function updateQueryHash( lookup ) {
+		lookup = lookup || search.getLookupObject();
 		bs.extendedSearch.utils.setFragment({
-			q: JSON.stringify(search.getLookupObject())
+			q: JSON.stringify( lookup )
 		});
 	}
 
