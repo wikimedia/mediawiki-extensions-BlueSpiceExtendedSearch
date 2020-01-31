@@ -481,7 +481,7 @@
 			search.makeLookup( config );
 			//Update searchBar if page is loaded with query present
 			var query = search.getLookupObject().getQueryString();
-			if ( query) {
+			if ( query ) {
 				searchBar.setValue( query.query );
 			}
 			if ( updateHash ) {
