@@ -41,6 +41,9 @@
 		if( this.searchBar.mainpage ) {
 			queryString = this.searchBar.mainpage + '/' + queryString;
 		}
+		if( this.searchBar.namespace ) {
+			queryString = this.searchBar.namespace.text + ':' + queryString;
+		}
 
 		lookup.setQueryString( queryString );
 		if( this.searchBar.namespace.id ) {
