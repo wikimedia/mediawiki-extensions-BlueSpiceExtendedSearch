@@ -152,5 +152,13 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Boru (|) ile ayrılmış geçerli sonuç türlerinin listesi",
 	"bs-extendedsearch-collection-type-searchhistory": "Arama geçmişi",
 	"bs-extendedsearch-collection-var-searchterm": "Terim",
-	"bs-extendedsearch-collection-var-numbersearched": "Aramalar"
+	"bs-extendedsearch-collection-var-numbersearched": "Aramalar",
+	"right-extendedsearch-search-specialpage": "Özel sayfalar arayın",
+	"right-extendedsearch-search-wikipage": "Sayfaları ara",
+	"right-extendedsearch-search-repofile": "Dosyaları ara",
+	"right-extendedsearch-search-externalfile": "Harici dosyaları ara",
+	"action-extendedsearch-search-specialpage": "özel sayfalar ara",
+	"action-extendedsearch-search-wikipage": "sayfaları ara",
+	"action-extendedsearch-search-repofile": "dosyaları ara",
+	"action-extendedsearch-search-externalfile": "harici dosyaları ara"
 }

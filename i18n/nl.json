@@ -9,6 +9,7 @@
 			"Siebrand"
 		]
 	},
+	"bssearchcenter": "Zoekcentrum",
 	"bs-extendedsearch-search-input-placeholder": "Zoeken...",
 	"bs-extendedsearch-search-input-aria-label": "Zoekvak",
 	"bs-extendedsearch-source-label-wikipage": "Wikipagina",
@@ -72,6 +73,7 @@
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Paginataal:",
 	"bs-extendedsearch-wikipage-title-original": "(oorspronkelijke titel: $1)",
 	"bs-extendedsearch-search-center-create-page-link": "Maak de pagina \"$1\" aan",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Pagina $1: Tekst: $2",
 	"bs-extendedsearch-filter-add-button-label": "Een filter toevoegen",
 	"bs-extendedsearch-flyout-similar-pages-title": "Vergelijkbare pagina's",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Geen vergelijkbare pagina's gevonden",
@@ -81,6 +83,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Categorie(ën)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "Lijst met geldige categorienamen gescheiden door een sluisteken (|)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Type",
+	"bs-extendedsearch-collection-type-searchhistory": "Zoekgeschiedenis",
 	"right-extendedsearch-search-specialpage": "Naar speciale pagina's mogen zoeken",
 	"right-extendedsearch-search-wikipage": "Naar pagina's mogen zoeken",
 	"right-extendedsearch-search-repofile": "Naar bestanden mogen zoeken",
