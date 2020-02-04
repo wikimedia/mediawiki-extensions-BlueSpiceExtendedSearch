@@ -11,7 +11,9 @@
 			"神樂坂秀吉",
 			"Looong",
 			"予弦",
-			"A Retired User"
+			"A Retired User",
+			"沈澄心",
+			"VulpesVulpes825"
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch搜索后端",
@@ -148,5 +150,8 @@
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "JSON解码含有检索到的上下文的附加信息的字符串",
 	"apihelp-bs-extendedsearch-type-store-summary": "返回被注册的检索类型",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "输入什么就能搜索了……",
-	"bs-extendedsearch-search-input-aria-label": "搜索栏"
+	"bs-extendedsearch-search-input-aria-label": "搜索栏",
+	"bs-extendedsearch-collection-type-searchhistory": "搜索历史",
+	"bs-extendedsearch-collection-var-numbersearched": "搜索",
+	"right-extendedsearch-search-wikipage": "搜索页面"
 }

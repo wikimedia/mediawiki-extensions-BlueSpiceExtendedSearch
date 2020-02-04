@@ -117,5 +117,12 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Skriv för att söka...",
 	"bs-extendedsearch-collection-type-searchhistory": "Sökhistorik",
 	"bs-extendedsearch-collection-var-searchterm": "Term",
-	"bs-extendedsearch-collection-var-numbersearched": "Sökningar"
+	"bs-extendedsearch-collection-var-numbersearched": "Sökningar",
+	"right-extendedsearch-search-specialpage": "Sök efter specialsidor",
+	"right-extendedsearch-search-wikipage": "Sök efter sidor",
+	"right-extendedsearch-search-repofile": "Sök efter filer",
+	"right-extendedsearch-search-externalfile": "Sök efter externa filer",
+	"action-extendedsearch-search-wikipage": "sök efter sidor",
+	"action-extendedsearch-search-repofile": "sök efter filer",
+	"action-extendedsearch-search-externalfile": "sök efter externa filer"
 }

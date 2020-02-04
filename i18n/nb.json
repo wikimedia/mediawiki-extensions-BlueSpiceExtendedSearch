@@ -150,5 +150,13 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Liste over gyldige resultattyper atskilt av vertikalstrek (|)",
 	"bs-extendedsearch-collection-type-searchhistory": "Søkehistorikk",
 	"bs-extendedsearch-collection-var-searchterm": "Begrep",
-	"bs-extendedsearch-collection-var-numbersearched": "Søk"
+	"bs-extendedsearch-collection-var-numbersearched": "Søk",
+	"right-extendedsearch-search-specialpage": "Søke etter spesialsider",
+	"right-extendedsearch-search-wikipage": "Søke etter sider",
+	"right-extendedsearch-search-repofile": "Søke etter filer",
+	"right-extendedsearch-search-externalfile": "Søke etter eksterne filer",
+	"action-extendedsearch-search-specialpage": "søke etter spesialsider",
+	"action-extendedsearch-search-wikipage": "søke etter sider",
+	"action-extendedsearch-search-repofile": "søke etter filer",
+	"action-extendedsearch-search-externalfile": "søke etter eksterne filer"
 }

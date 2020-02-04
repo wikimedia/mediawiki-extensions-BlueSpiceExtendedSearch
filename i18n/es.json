@@ -5,7 +5,8 @@
 			"Vanbasten 23",
 			"Carlosmg.dg",
 			"Agusbou2015",
-			"Madamebiblio"
+			"Madamebiblio",
+			"Joanmp17"
 		]
 	},
 	"apihelp-bs-extendedsearch-query-description": "Buscar en el índice",
@@ -110,5 +111,14 @@
 	"bs-extsearch-desc": "Motor de búsquedas Elasticsearch",
 	"bs-extendedsearch-search-input-aria-label": "Cuadro de búsqueda",
 	"bs-extendedsearch-collection-var-searchterm": "Término",
-	"bs-extendedsearch-collection-var-numbersearched": "Búsquedas"
+	"bs-extendedsearch-collection-var-numbersearched": "Búsquedas",
+	"bssearchcenter": "Centro de búsquedas",
+	"bs-extendedsearch-autocomplete-result-top-match-label": "Mejores resultados",
+	"bs-extendedseach-wikipage-section-more-text": "... $1 más",
+	"right-extendedsearch-search-wikipage": "Buscar páginas",
+	"right-extendedsearch-search-externalfile": "Buscar archivos externos",
+	"action-extendedsearch-search-specialpage": "buscar páginas especiales",
+	"action-extendedsearch-search-wikipage": "buscar páginas",
+	"action-extendedsearch-search-repofile": "buscar archivos",
+	"action-extendedsearch-search-externalfile": "buscar archivos externos"
 }

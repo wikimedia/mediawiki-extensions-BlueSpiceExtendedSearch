@@ -152,5 +152,13 @@
 	"bs-extendedsearch-search-input-aria-label": "搜尋框",
 	"bs-extendedsearch-collection-type-searchhistory": "搜尋歷史",
 	"bs-extendedsearch-collection-var-searchterm": "項",
-	"bs-extendedsearch-collection-var-numbersearched": "搜尋"
+	"bs-extendedsearch-collection-var-numbersearched": "搜尋",
+	"right-extendedsearch-search-specialpage": "搜尋特殊頁面",
+	"right-extendedsearch-search-wikipage": "搜尋頁面",
+	"right-extendedsearch-search-repofile": "搜尋檔案",
+	"right-extendedsearch-search-externalfile": "搜尋外部檔案",
+	"action-extendedsearch-search-specialpage": "搜尋特殊頁面",
+	"action-extendedsearch-search-wikipage": "搜尋頁面",
+	"action-extendedsearch-search-repofile": "搜尋檔案",
+	"action-extendedsearch-search-externalfile": "搜尋外部檔案"
 }
