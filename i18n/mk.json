@@ -6,8 +6,8 @@
 		]
 	},
 	"prefs-extendedsearch": "Напредно пребарување",
-	"apihelp-bs-extendedsearch-query-description": "Пребарување на индексот",
-	"apihelp-bs-extendedsearch-query-summary": "Пребарување на индексот",
+	"apihelp-bs-extendedsearch-query-description": "Пребарување по показателот",
+	"apihelp-bs-extendedsearch-query-summary": "Пребарување по показателот",
 	"bs-extendedsearch-source-label-wikipage": "Викистраница",
 	"bs-extendedsearch-source-label-specialpage": "Службена страница",
 	"bs-extendedsearch-source-label-repofile": "Подигни податотека",

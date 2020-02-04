@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Dansita"
 		]
 	},
 	"apihelp-bs-extendedsearch-query-param-search-term": "Termine per il quale viene condotta la ricerca",
@@ -55,5 +56,32 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Segnaposto",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipo",
 	"bs-extendedsearch-collection-type-searchhistory": "Cerca nella cronologia",
-	"bs-extendedsearch-collection-var-searchterm": "Termine"
+	"bs-extendedsearch-collection-var-searchterm": "Termine",
+	"bssearchcenter": "Centro ricerca",
+	"apihelp-bs-extendedsearch-query-description": "Cerca nell'indice",
+	"apihelp-bs-extendedsearch-query-summary": "Cerca nell'indice",
+	"apihelp-bs-extendedsearch-query-param-q": "Il termine di ricerca",
+	"apihelp-bs-extendedsearch-query-param-params": "Parametri aggiuntivi per la ricerca",
+	"bs-extendedsearch-search-input-placeholder": "Trova ...",
+	"bs-extendedsearch-search-input-aria-label": "Casella di ricerca",
+	"bs-extendedsearch-source-label-specialpage": "Pagina speciale",
+	"bs-extendedsearch-admin-heading-sources-documentscount": "Documenti",
+	"bs-extendedsearch-search-center-addfilter-dialog-title": "Aggiungi filtro",
+	"bs-extendedsearch-search-center-filter-extension-with-values-label": "Estensione:",
+	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Tag:",
+	"bs-extendedsearch-search-center-result-mtime-label": "Modificato:",
+	"bs-extendedsearch-search-center-sort-order-asc": "Crescente",
+	"bs-extendedsearch-searchcenter-sort-field-mtime": "Ora di modifica",
+	"bs-extendedsearch-searchcenter-sort-field-ctime": "Ora di creazione",
+	"bs-extendedsearch-searchcenter-sort-field-size": "Dimensione",
+	"bs-extendedsearch-autocomplete-create-page-link": "Crea pagina \"$1\"",
+	"bs-extendedsearch-loadmore-label": "Carica altri risultati",
+	"bs-extendedsearch-loadmore-error": "Non è possibile recuperare altri risultati",
+	"bs-extendedsearch-source-type-wikipage-label": "Pagina wiki",
+	"bs-extendedsearch-source-type-repofile-label": "File locale",
+	"bs-extendedsearch-options-button-label": "Opzioni di ricerca",
+	"bs-extendedsearch-export-button-label": "Esporta risultati di ricerca",
+	"bs-extendedsearch-search-center-result-file-usage-label": "Usato nelle pagine",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Operatore di ricerca",
+	"bs-extendedsearch-collection-var-numbersearched": "Ricerche"
 }

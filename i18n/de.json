@@ -4,7 +4,9 @@
 			"Peter Böhm <boehm@hallowelt.com>",
 			"Metalhead64",
 			"Hwboehm",
-			"Mglaser"
+			"Mglaser",
+			"Ferdinand0101",
+			"Tiin"
 		]
 	},
 	"bs-extsearch-extensionname": "BlueSpiceExtendedSearch",
@@ -152,5 +154,16 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "Namensraum1|Namensraum2|...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Kategorie1|Kategorie2|...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-help": "Text, der im Eingabefeld angezeigt wird, wenn noch nichts eingegeben wurde",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Zum Suchen tippen..."
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Zum Suchen tippen...",
+	"bs-extendedsearch-collection-type-searchhistory": "Suchverlauf",
+	"bs-extendedsearch-collection-var-searchterm": "Begriff",
+	"bs-extendedsearch-collection-var-numbersearched": "Suchen",
+	"right-extendedsearch-search-specialpage": "Nach Spezialseiten suchen",
+	"right-extendedsearch-search-wikipage": "Nach Seiten suchen",
+	"right-extendedsearch-search-repofile": "Nach Dateien suchen",
+	"right-extendedsearch-search-externalfile": "Nach externen Dateien suchen",
+	"action-extendedsearch-search-specialpage": "nach Spezialseiten zu suchen",
+	"action-extendedsearch-search-wikipage": "nach Seiten zu suchen",
+	"action-extendedsearch-search-repofile": "nach Dateien zu suchen",
+	"action-extendedsearch-search-externalfile": "nach externen Dateien zu suchen"
 }

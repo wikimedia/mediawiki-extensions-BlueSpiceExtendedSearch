@@ -80,5 +80,16 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Type",
 	"bs-extendedsearch-autocomplete-result-type": "Type: $1",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Invoeren om te zoeken...",
-	"bs-extendedsearch-search-input-aria-label": "Zoekvak"
+	"bs-extendedsearch-search-input-aria-label": "Zoekvak",
+	"bssearchcenter": "Zoekcentrum",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Pagina $1: Tekst: $2",
+	"bs-extendedsearch-collection-type-searchhistory": "Zoekgeschiedenis",
+	"right-extendedsearch-search-specialpage": "Naar speciale pagina's mogen zoeken",
+	"right-extendedsearch-search-wikipage": "Naar pagina's mogen zoeken",
+	"right-extendedsearch-search-repofile": "Naar bestanden mogen zoeken",
+	"right-extendedsearch-search-externalfile": "Naar externe bestanden mogen zoeken",
+	"action-extendedsearch-search-specialpage": "naar speciale pagina's te mogen zoeken",
+	"action-extendedsearch-search-wikipage": "naar pagina's te mogen zoeken",
+	"action-extendedsearch-search-repofile": "naar bestanden te mogen zoeken",
+	"action-extendedsearch-search-externalfile": "naar externe bestanden te mogen zoeken"
 }

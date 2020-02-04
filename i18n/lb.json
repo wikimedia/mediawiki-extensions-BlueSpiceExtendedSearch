@@ -44,5 +44,13 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategorie(n)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Plazhalter",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Typ",
-	"bs-extendedsearch-search-input-aria-label": "Sich-Këscht"
+	"bs-extendedsearch-search-input-aria-label": "Sich-Këscht",
+	"right-extendedsearch-search-specialpage": "No Spezialsäite sichen",
+	"right-extendedsearch-search-wikipage": "No Säite sichen",
+	"right-extendedsearch-search-repofile": "No Fichiere sichen",
+	"right-extendedsearch-search-externalfile": "No externe Fichiere sichen",
+	"action-extendedsearch-search-specialpage": "no Spezialsäite sichen",
+	"action-extendedsearch-search-wikipage": "no Säite sichen",
+	"action-extendedsearch-search-repofile": "no Fichiere sichen",
+	"action-extendedsearch-search-externalfile": "no externe Fichiere sichen"
 }

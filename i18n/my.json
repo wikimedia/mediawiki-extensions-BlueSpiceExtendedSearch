@@ -41,5 +41,11 @@
 	"bs-extendedsearch-source-type-wikipage-label": "ဝီကီစာမျက်နှာ",
 	"bs-extendedsearch-source-type-specialpage-label": "အထူး စာမျက်နှာ",
 	"bs-extendedsearch-autocomplete-modified-time-label": "နောက်ဆုံး ပြုပြင်မှု : $1",
-	"bs-extendedseach-wikipage-section-more-text": " ... $1 ပို၍"
+	"bs-extendedseach-wikipage-section-more-text": " ... $1 ပို၍",
+	"right-extendedsearch-search-specialpage": "အထူးစာမျက်နှာများအတွက် ရှာဖွေရန်",
+	"right-extendedsearch-search-wikipage": "စာမျက်နှာများအတွက် ရှာဖွေရန်",
+	"right-extendedsearch-search-repofile": "ဖိုင်များကို ရှာရန်",
+	"right-extendedsearch-search-externalfile": "ပြင်ပဖိုင်များအတွက် ရှာဖွေရန်",
+	"action-extendedsearch-search-specialpage": "အထူးစာမျက်နှာများအတွက် ရှာဖွေရန်",
+	"action-extendedsearch-search-wikipage": "စာမျက်နှာများအတွက် ရှာဖွေရန်"
 }
