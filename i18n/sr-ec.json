@@ -98,5 +98,13 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип",
 	"bs-extendedsearch-collection-type-searchhistory": "Историја претраге",
 	"bs-extendedsearch-collection-var-searchterm": "Појам",
-	"bs-extendedsearch-collection-var-numbersearched": "Претраге"
+	"bs-extendedsearch-collection-var-numbersearched": "Претраге",
+	"right-extendedsearch-search-specialpage": "претрага посебних страница",
+	"right-extendedsearch-search-wikipage": "претрага страница",
+	"right-extendedsearch-search-repofile": "претрага датотека",
+	"right-extendedsearch-search-externalfile": "претрага спољашњих датотека",
+	"action-extendedsearch-search-specialpage": "претражујете посебне странице",
+	"action-extendedsearch-search-wikipage": "претражујете странице",
+	"action-extendedsearch-search-repofile": "претражујете датотеке",
+	"action-extendedsearch-search-externalfile": "претражујете спољашње датотеке"
 }
