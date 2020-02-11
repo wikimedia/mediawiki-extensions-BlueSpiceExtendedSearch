@@ -41,14 +41,12 @@
 		if( this.searchBar.mainpage ) {
 			queryString = this.searchBar.mainpage + '/' + queryString;
 		}
-		if( this.searchBar.namespace ) {
+		if( _hasNamespaceSet( this.searchBar ) ) {
 			queryString = this.searchBar.namespace.text + ':' + queryString;
+			lookup.addTermsFilter( 'namespace_text', this.searchBar.namespace.text );
 		}
 
 		lookup.setQueryString( queryString );
-		if( this.searchBar.namespace.id ) {
-			lookup.addTermsFilter( 'namespace_text', this.searchBar.namespace.text );
-		}
 
 		//Create new hidden input and set its value to the lookup
 		var $lookupField = $( '<input>' ).attr( 'type', 'hidden' ).attr( 'name', 'q' );
@@ -56,6 +54,13 @@
 
 		//Add the field to the form to be submitted
 		this.searchBar.$searchForm.append( $lookupField );
+	}
+
+	function _hasNamespaceSet( searchBar ) {
+		return searchBar.namespace &&
+			searchBar.namespace.constructor === Object &&
+			searchBar.namespace.hasOwnProperty( 'id' ) &&
+			searchBar.namespace.hasOwnProperty( 'text' );
 	}
 
 	function _beforeValueChanged( e, shouldAbort ) {
