@@ -462,8 +462,8 @@
 		},
 		"ext.bluespice.tagsearch.visualEditor": {
 			"scripts": [
-				"bs.extnddsrc/ui/widget/SearchTypeInputWidget.js",
-				"bs.extnddsrc/util/tag/TagSearchDefinition.js"
+				"bs.extendedSearch/vec/ui/SearchTypeInputWidget.js",
+				"bs.extendedSearch/vec/tag/TagSearchDefinition.js"
 			],
 			"messages": [
 				"bs-extendedsearch-tagsearch-ve-tagsearch-title",

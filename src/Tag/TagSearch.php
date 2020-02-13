@@ -2,10 +2,18 @@
 
 namespace BS\ExtendedSearch\Tag;
 
-use BlueSpice\Tag\Tag;
-use BlueSpice\ParamProcessor\ParamType;
+use BlueSpice\ParamProcessor\IParamDefinition;
 use BlueSpice\ParamProcessor\ParamDefinition;
+use BlueSpice\ParamProcessor\ParamType;
+use BlueSpice\Services;
+use BlueSpice\Tag\IHandler;
+use BlueSpice\Tag\Tag;
 use BS\ExtendedSearch\Param\Definition\SearchResultTypeListParam;
+use BSCategoryListParam;
+use BSNamespaceListParam;
+use ConfigException;
+use Parser;
+use PPFrame;
 
 class TagSearch extends Tag {
 	const PARAM_NAMESPACE = 'ns';
@@ -19,18 +27,18 @@ class TagSearch extends Tag {
 	/**
 	 * @param mixed $processedInput
 	 * @param array $processedArgs
-	 * @param \Parser $parser
-	 * @param \PPFrame $frame
-	 * @return \BlueSpice\Tag\IHandler|TagSearchHandler
-	 * @throws \ConfigException
+	 * @param Parser $parser
+	 * @param PPFrame $frame
+	 * @return IHandler
+	 * @throws ConfigException
 	 */
 	public function getHandler(
 		$processedInput,
 		array $processedArgs,
-		\Parser $parser,
-		\PPFrame $frame
+		Parser $parser,
+		PPFrame $frame
 	) {
-		$config = \BlueSpice\Services::getInstance()
+		$config = Services::getInstance()
 			->getConfigFactory()
 			->makeConfig( 'bsg' );
 		$this->tagCounter ++;
@@ -53,10 +61,10 @@ class TagSearch extends Tag {
 	}
 
 	/**
-	 * @return array|\BlueSpice\ParamProcessor\IParamDefinition[]
+	 * @return IParamDefinition[]
 	 */
 	public function getArgsDefinitions() {
-		$namespaceListParam = new \BSNamespaceListParam(
+		$namespaceListParam = new BSNamespaceListParam(
 			ParamType::NAMESPACE_LIST,
 			static::PARAM_NAMESPACE,
 			[]
@@ -68,7 +76,7 @@ class TagSearch extends Tag {
 				static::PARAM_TYPE
 			),
 			$namespaceListParam,
-			new \BSCategoryListParam(
+			new BSCategoryListParam(
 				ParamType::CATEGORY_LIST,
 				static::PARAM_CATEGORY,
 				[]
