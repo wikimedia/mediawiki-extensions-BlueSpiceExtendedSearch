@@ -1,12 +1,12 @@
-bs.util.registerNamespace( 'bs.extnddsrc.util.tag' );
-bs.extnddsrc.util.tag.TagSearchDefinition = function BsExtnddSrcUtilTagTagSearchDefinition() {
-	bs.extnddsrc.util.tag.TagSearchDefinition.super.call( this );
+bs.util.registerNamespace( 'bs.extendedSearch.vec.util.tag' );
+bs.extendedSearch.vec.util.tag.TagSearchDefinition = function () {
+	bs.extendedSearch.vec.util.tag.TagSearchDefinition.super.call( this );
 };
 
-OO.inheritClass( bs.extnddsrc.util.tag.TagSearchDefinition, bs.vec.util.tag.Definition );
+OO.inheritClass( bs.extendedSearch.vec.util.tag.TagSearchDefinition, bs.vec.util.tag.Definition );
 
-bs.extnddsrc.util.tag.TagSearchDefinition.prototype.getCfg = function() {
-	var cfg = bs.extnddsrc.util.tag.TagSearchDefinition.super.prototype.getCfg.call( this );
+bs.extendedSearch.vec.util.tag.TagSearchDefinition.prototype.getCfg = function() {
+	var cfg = bs.extendedSearch.vec.util.tag.TagSearchDefinition.parent.prototype.getCfg.call( this );
 	return $.extend( cfg, {
 		classname : 'TagSearch',
 		name: 'tagsearch',
@@ -27,7 +27,7 @@ bs.extnddsrc.util.tag.TagSearchDefinition.prototype.getCfg = function() {
 			helpMsg: 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help',
 			type: 'custom',
 			default: 'wikipage',
-			widgetClass: bs.extnddsrc.ui.SearchTypeInputWidget
+			widgetClass: bs.extendedSearch.vec.ui.SearchTypeInputWidget
 		},{
 			name: 'namespace',
 			labelMsg: 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns',
@@ -60,5 +60,5 @@ bs.extnddsrc.util.tag.TagSearchDefinition.prototype.getCfg = function() {
 };
 
 bs.vec.registerTagDefinition(
-	new bs.extnddsrc.util.tag.TagSearchDefinition()
+	new bs.extendedSearch.vec.util.tag.TagSearchDefinition()
 );
