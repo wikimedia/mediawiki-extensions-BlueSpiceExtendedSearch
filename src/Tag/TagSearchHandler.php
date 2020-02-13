@@ -3,6 +3,11 @@
 namespace BS\ExtendedSearch\Tag;
 
 use BlueSpice\Tag\Handler;
+use Config;
+use ConfigException;
+use MWException;
+use Parser;
+use PPFrame;
 
 class TagSearchHandler extends Handler {
 	const OPERATOR_OR = 'OR';
@@ -15,17 +20,17 @@ class TagSearchHandler extends Handler {
 	 * TagSearchHandler constructor.
 	 * @param string $processedInput
 	 * @param array $processedArgs
-	 * @param \Parser $parser
-	 * @param \PPFrame $frame
-	 * @param \Config $config
+	 * @param Parser $parser
+	 * @param PPFrame $frame
+	 * @param Config $config
 	 * @param int $tagIdNumber
 	 */
 	public function __construct(
 		$processedInput,
 		array $processedArgs,
 		$parser,
-		\PPFrame $frame,
-		\Config $config,
+		PPFrame $frame,
+		Config $config,
 		$tagIdNumber
 	) {
 		parent::__construct( $processedInput, $processedArgs, $parser, $frame );
@@ -36,10 +41,11 @@ class TagSearchHandler extends Handler {
 
 	/**
 	 * @return string
-	 * @throws \ConfigException
-	 * @throws \MWException
+	 * @throws ConfigException
+	 * @throws MWException
 	 */
 	public function handle() {
+		error_log( __METHOD__ );
 		$this->parser->getOutput()->addModuleStyles( 'ext.blueSpiceExtendedSearch.TagSearch.styles' );
 		$this->parser->getOutput()->addModules( 'ext.blueSpiceExtendedSearch.TagSearch' );
 
@@ -78,7 +84,7 @@ class TagSearchHandler extends Handler {
 		$params = [
 			"placeholder" => $this->processedArgs[TagSearch::PARAM_PLACEHOLDER],
 			"action" => \SpecialPage::getTitleFor( 'SearchCenter' )->getLocalURL(),
-			"lookup" => $lookup,
+			"lookup_object" => $lookup,
 			"id_number" => $this->tagIdNumber
 		];
 
@@ -87,20 +93,18 @@ class TagSearchHandler extends Handler {
 			$params['returnto'] = $title->getPrefixedDBkey();
 		}
 
-		$html = $templateParser->processTemplate(
-			'SearchField',
+		return $templateParser->processTemplate(
+			'TagSearchField',
 			$params
 		);
-
-		return $html;
 	}
 
 	/**
 	 * Converts NS IDs to names, so that namespace filter
 	 * can be shown on SearchCenter
 	 *
-	 * @param type $namespaceIds
-	 * @return type
+	 * @param array $namespaceIds
+	 * @return array
 	 */
 	protected function getNamespaceNamesFromIds( $namespaceIds ) {
 		$namespaceNames = [];
