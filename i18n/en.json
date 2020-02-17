@@ -161,5 +161,6 @@
 	"action-extendedsearch-search-specialpage": "search for special pages",
 	"action-extendedsearch-search-wikipage": "search for pages",
 	"action-extendedsearch-search-repofile": "search for files",
-	"action-extendedsearch-search-externalfile": "search for external files"
+	"action-extendedsearch-search-externalfile": "search for external files",
+	"bs-extendedsearch-pref-externalfilepaths-help": "External locations to scan for files and index files from. These locations are entered in key/value pairs."
 }

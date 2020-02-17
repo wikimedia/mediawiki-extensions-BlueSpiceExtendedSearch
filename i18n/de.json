@@ -165,5 +165,6 @@
 	"action-extendedsearch-search-specialpage": "nach Spezialseiten zu suchen",
 	"action-extendedsearch-search-wikipage": "nach Seiten zu suchen",
 	"action-extendedsearch-search-repofile": "nach Dateien zu suchen",
-	"action-extendedsearch-search-externalfile": "nach externen Dateien zu suchen"
+	"action-extendedsearch-search-externalfile": "nach externen Dateien zu suchen",
+	"bs-extendedsearch-pref-externalfilepaths-help": "Externe Speicherorte, die gescannt und indiziert werden. Diese Orte werden als Schlüssel/Wert-Paare eingegeben."
 }
