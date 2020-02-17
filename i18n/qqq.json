@@ -164,5 +164,6 @@
 	"action-extendedsearch-search-specialpage": "{{doc-action|extendedsearch-search-specialpage}}",
 	"action-extendedsearch-search-wikipage": "{{doc-action|extendedsearch-search-wikipage}}",
 	"action-extendedsearch-search-repofile": "{{doc-action|extendedsearch-search-repofile}}",
-	"action-extendedsearch-search-externalfile": "{{doc-action|extendedsearch-search-externalfile}}"
+	"action-extendedsearch-search-externalfile": "{{doc-action|extendedsearch-search-externalfile}}",
+	"bs-extendedsearch-pref-externalfilepaths-help": "Description for config variable \"ESExternalFilePaths\""
 }
