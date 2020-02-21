@@ -114,6 +114,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Escribe para buscar…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Operador de búsqueda",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipo",
+	"bs-extendedsearch-collection-type-searchhistory": "Historial de búsquedas",
 	"bs-extendedsearch-collection-var-searchterm": "Término",
 	"bs-extendedsearch-collection-var-numbersearched": "Búsquedas",
 	"right-extendedsearch-search-specialpage": "Buscar páginas especiales",
