@@ -56,4 +56,12 @@ class ExternalFilePaths extends \BlueSpice\ConfigDefinition {
 			'valueHelp' => wfMessage( 'bs-extendedsearch-pref-external-file-paths-url-help' )->plain()
 		] );
 	}
+
+	/**
+	 *
+	 * @return string
+	 */
+	public function getHelpMessageKey() {
+		return 'bs-extendedsearch-pref-externalfilepaths-help';
+	}
 }
