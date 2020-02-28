@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Source\Formatter;
 
 use BS\ExtendedSearch\Wildcarder;
+use MediaWiki\Linker\LinkRenderer;
 use MWException;
 use ConfigException;
 
@@ -14,7 +15,7 @@ class Base {
 	const VALUE_SEPARATOR = ', ';
 
 	/**
-	 * Used to indicate there are more valus than
+	 * Used to indicate there are more values than
 	 * can be displayed
 	 */
 	const MORE_VALUES_TEXT = '...';
@@ -36,12 +37,17 @@ class Base {
 	protected $lookup;
 
 	/**
+	 * @var LinkRenderer
+	 */
+	protected $linkRenderer;
+
+	/**
 	 *
 	 * @param \BS\ExtendedSearch\Source\Base $source
 	 */
 	public function __construct( $source ) {
 		$this->source = $source;
-		// Just for convinience, as many of the formatters would use it
+		// Just for convenience, as many of the formatters would use it
 		$this->linkRenderer = $this->source->getBackend()->getService( 'LinkRenderer' );
 	}
 

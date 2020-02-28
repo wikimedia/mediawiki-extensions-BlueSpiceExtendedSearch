@@ -64,22 +64,21 @@ class SearchCenter extends SpecialPage {
 		$resultStructures = [];
 
 		foreach ( $localBackend->getSources() as $sourceKey => $source ) {
-			if ( !$source->isSortable() ) {
-				continue;
-			}
-			foreach ( $source->getMappingProvider()->getPropertyConfig() as $fieldName => $fieldConfig ) {
-				if ( in_array( $fieldName, $sortableFields ) ) {
-					continue;
-				}
+			if ( $source->isSortable() ) {
+				foreach ( $source->getMappingProvider()->getPropertyConfig() as $fieldName => $fieldConfig ) {
+					if ( in_array( $fieldName, $sortableFields ) ) {
+						continue;
+					}
 
-				if ( in_array( $fieldConfig['type'], $allowedSortableFieldTypes ) ) {
-					$sortableFields[] = $fieldName;
-					continue;
-				}
-
-				if ( $fieldConfig['type'] == 'text' ) {
-					if ( isset( $fieldConfig['fielddata'] ) && $fieldConfig['fielddata'] == true ) {
+					if ( in_array( $fieldConfig['type'], $allowedSortableFieldTypes ) ) {
 						$sortableFields[] = $fieldName;
+						continue;
+					}
+
+					if ( $fieldConfig['type'] == 'text' ) {
+						if ( isset( $fieldConfig['fielddata'] ) && $fieldConfig['fielddata'] == true ) {
+							$sortableFields[] = $fieldName;
+						}
 					}
 				}
 			}
