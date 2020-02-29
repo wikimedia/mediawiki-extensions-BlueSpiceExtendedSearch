@@ -6,7 +6,9 @@ class SpecialPage extends Base {
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateSpecialPage';
 
 	public function crawl() {
-		$aCanonicalNames = \SpecialPageFactory::getNames();
+		$aCanonicalNames = \MediaWiki\MediaWikiServices::getInstance()
+			->getSpecialPageFactory()
+			->getNames();
 		foreach ( $aCanonicalNames as $sCanonicalName ) {
 			$this->addToJobQueue( \SpecialPage::getTitleFor( $sCanonicalName ) );
 		}
