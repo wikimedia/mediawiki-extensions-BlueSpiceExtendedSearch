@@ -9,6 +9,7 @@ use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Source\Base;
 use BS\ExtendedSearch\ExternalIndexFactory;
 use BS\ExtendedSearch\IExternalIndex;
+use Hooks;
 
 abstract class UpdateBase extends \Job {
 	const ACTION_DELETE = 'delete';
@@ -29,7 +30,7 @@ abstract class UpdateBase extends \Job {
 	 * @return bool Success
 	 */
 	public function run() {
-		if ( $this->skipProcessing() ) {
+		if ( $this->shouldSkipProcessing() ) {
 			return true;
 		}
 		$dC = $this->doRun();
@@ -136,6 +137,17 @@ abstract class UpdateBase extends \Job {
 		return Services::getInstance()->getService(
 			'BSExtendedSearchExternalIndexFactory'
 		);
+	}
+
+	protected function shouldSkipProcessing() {
+		$job = $this;
+		$skip = $this->skipProcessing();
+		Hooks::run( 'BSExtendedSearchIndexDocumentSkip', [
+			$job,
+			&$skip
+		] );
+
+		return $skip;
 	}
 
 	/**
