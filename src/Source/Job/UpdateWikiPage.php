@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
+use Title;
+
 class UpdateWikiPage extends UpdateTitleBase {
 
 	protected $sSourceKey = 'wikipage';
@@ -13,6 +15,19 @@ class UpdateWikiPage extends UpdateTitleBase {
 	 */
 	public function __construct( $title, $params = [] ) {
 		parent::__construct( 'updateWikiPageIndex', $title, $params );
+	}
+
+	protected function doRun() {
+		$this->dp = $this->getSource()->getDocumentProvider();
+		if ( $this->isNoIndex() ) {
+			$this->getSource()->deleteDocumentsFromIndex(
+				[ $this->dp->getDocumentId( $this->getDocumentProviderUri() ) ]
+			);
+			$id = $this->dp->getDocumentId( $this->getDocumentProviderUri() );
+			return [ 'id' => $id ];
+		}
+
+		return parent::doRun();
 	}
 
 	/**
@@ -34,4 +49,9 @@ class UpdateWikiPage extends UpdateTitleBase {
 		return \WikiPage::factory( $this->getTitle() );
 	}
 
+	protected function isNoIndex() {
+		$dp = $this->getSource()->getDocumentProvider();
+		$pageProps = $dp->getPageProps( $this->getTitle() );
+		return isset( $pageProps['noindex'] );
+	}
 }

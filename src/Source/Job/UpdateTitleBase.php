@@ -37,5 +37,4 @@ class UpdateTitleBase extends UpdateBase {
 	protected function isDeletion() {
 		return !$this->getTitle()->exists() || $this->action == static::ACTION_DELETE;
 	}
-
 }

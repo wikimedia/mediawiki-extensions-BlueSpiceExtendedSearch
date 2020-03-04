@@ -2,7 +2,9 @@
 
 namespace BS\ExtendedSearch\Source\DocumentProvider;
 
-use BlueSpice\Services;
+use MediaWiki\MediaWikiServices;
+use ParserOptions;
+use Title;
 
 class WikiPage extends DecoratorBase {
 	/**
@@ -60,12 +62,15 @@ class WikiPage extends DecoratorBase {
 		return $aDC;
 	}
 
+	/**
+	 * Destroy variables used while getting the document values
+	 */
 	public function __destruct() {
 		parent::__destruct();
 		$this->parserOutput = null;
 		$this->content = null;
-		if ( Services::getInstance()->getParser()->getOptions() instanceof \ParserOptions ) {
-			Services::getInstance()->getParser()->clearState();
+		if ( MediaWikiServices::getInstance()->getParser()->getOptions() instanceof ParserOptions ) {
+			MediaWikiServices::getInstance()->getParser()->clearState();
 		}
 	}
 
@@ -91,7 +96,7 @@ class WikiPage extends DecoratorBase {
 
 		$aCategories = [];
 		foreach ( $oCatTitles as $oCatTitle ) {
-			if ( $oCatTitle instanceof \Title ) {
+			if ( $oCatTitle instanceof Title ) {
 				$aCategories[] = $oCatTitle->getText();
 			}
 		}
@@ -157,7 +162,7 @@ class WikiPage extends DecoratorBase {
 	protected function getTags() {
 		$res = [];
 
-		$registeredTags = Services::getInstance()->getParser()->getTags();
+		$registeredTags = MediaWikiServices::getInstance()->getParser()->getTags();
 		$pageTags = $this->parseWikipageForTags();
 		foreach ( $pageTags as $pageTag ) {
 			if ( in_array( $pageTag, $registeredTags ) ) {
@@ -199,7 +204,7 @@ class WikiPage extends DecoratorBase {
 		}
 
 		$redirTitle = $oWikiPage->getRedirectTarget();
-		if ( $redirTitle instanceof \Title ) {
+		if ( $redirTitle instanceof Title ) {
 			return $this->getDisplayTitle( $redirTitle );
 		}
 		return '';
@@ -222,10 +227,10 @@ class WikiPage extends DecoratorBase {
 
 	/**
 	 *
-	 * @param \Title $title
+	 * @param Title $title
 	 * @return string
 	 */
-	protected function getDisplayTitle( \Title $title ) {
+	protected function getDisplayTitle( Title $title ) {
 		$pageProps = $this->getPageProps( $title );
 		if ( isset( $pageProps['displaytitle'] ) && $pageProps['displaytitle'] !== '' ) {
 			return $pageProps['displaytitle'];
@@ -235,11 +240,11 @@ class WikiPage extends DecoratorBase {
 
 	/**
 	 *
-	 * @param \Title $title
+	 * @param Title $title
 	 * @return array
 	 */
-	protected function getPageProps( \Title $title ) {
-		return Services::getInstance()->getService( 'BSUtilityFactory' )
+	protected function getPageProps( Title $title ) {
+		return MediaWikiServices::getInstance()->getService( 'BSUtilityFactory' )
 			->getPagePropHelper( $title )->getPageProps();
 	}
 
