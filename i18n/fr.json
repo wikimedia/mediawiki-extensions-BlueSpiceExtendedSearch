@@ -10,7 +10,8 @@
 			"Urhixidur",
 			"Thibaut120094",
 			"Crochet.david",
-			"Verdy p"
+			"Verdy p",
+			"Eneelk"
 		]
 	},
 	"bs-extsearch-desc": "Plateforme de recherche Elasticsearch",
@@ -167,5 +168,6 @@
 	"action-extendedsearch-search-specialpage": "rechercher des pages spéciales",
 	"action-extendedsearch-search-wikipage": "rechercher des pages",
 	"action-extendedsearch-search-repofile": "rechercher des fichiers",
-	"action-extendedsearch-search-externalfile": "rechercher des fichiers externes"
+	"action-extendedsearch-search-externalfile": "rechercher des fichiers externes",
+	"bs-extendedsearch-pref-externalfilepaths-help": "Emplacements externes à parcourir pour la recherche de fichiers et de fichiers d’indexation. Ces emplacements sont entrés dans des paires clé/valeur."
 }

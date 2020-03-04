@@ -160,5 +160,6 @@
 	"action-extendedsearch-search-specialpage": "özel sayfalar ara",
 	"action-extendedsearch-search-wikipage": "sayfaları ara",
 	"action-extendedsearch-search-repofile": "dosyaları ara",
-	"action-extendedsearch-search-externalfile": "harici dosyaları ara"
+	"action-extendedsearch-search-externalfile": "harici dosyaları ara",
+	"bs-extendedsearch-pref-externalfilepaths-help": "Dosyaları taramak ve dosyaları dizinlemek için harici konumlar. Bu konumlar anahtar/değer çiftlerine girilir."
 }

@@ -120,5 +120,9 @@
 	"action-extendedsearch-search-specialpage": "buscar páginas especiales",
 	"action-extendedsearch-search-wikipage": "buscar páginas",
 	"action-extendedsearch-search-repofile": "buscar archivos",
-	"action-extendedsearch-search-externalfile": "buscar archivos externos"
+	"action-extendedsearch-search-externalfile": "buscar archivos externos",
+	"bs-extendedsearch-search-center-options-sort-order": "Orden de clasificación",
+	"bs-extendedsearch-collection-type-searchhistory": "Historial de búsquedas",
+	"right-extendedsearch-search-specialpage": "Buscar páginas especiales",
+	"right-extendedsearch-search-repofile": "Buscar archivos"
 }

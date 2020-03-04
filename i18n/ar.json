@@ -159,5 +159,6 @@
 	"right-extendedsearch-search-specialpage": "البحث عن الصفحات الخاصة",
 	"right-extendedsearch-search-wikipage": "البحث عن الصفحات",
 	"right-extendedsearch-search-repofile": "البحث عن ملفات",
-	"right-extendedsearch-search-externalfile": "البحث عن الملفات الخارجية"
+	"right-extendedsearch-search-externalfile": "البحث عن الملفات الخارجية",
+	"action-extendedsearch-search-repofile": "البحث عن ملفات"
 }
