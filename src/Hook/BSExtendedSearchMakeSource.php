@@ -41,7 +41,7 @@ abstract class BSExtendedSearchMakeSource extends Hook {
 	/**
 	 * BSExtendedSearchMakeSource constructor.
 	 * @param \IContextSource $context
-	 * @param \IConfig $config
+	 * @param \Config $config
 	 * @param \BS\ExtendedSearch\Backend $backend
 	 * @param string $sourceKey
 	 * @param \BS\ExtendedSearch\Source\DecoratorBase &$decoratedSource
@@ -51,6 +51,6 @@ abstract class BSExtendedSearchMakeSource extends Hook {
 
 		$this->backend = $backend;
 		$this->sourceKey = $sourceKey;
-		$this->decoratedSource &= $decoratedSource;
+		$this->decoratedSource =& $decoratedSource;
 	}
 }
