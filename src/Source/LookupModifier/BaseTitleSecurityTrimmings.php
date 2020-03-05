@@ -112,7 +112,9 @@ class BaseTitleSecurityTrimmings extends Base {
 				}
 
 				if ( $title->isSpecialPage() ) {
-					$sp = \SpecialPageFactory::getPage( $title->getDBkey() );
+					$sp = \MediaWiki\MediaWikiServices::getInstance()
+						->getSpecialPageFactory()
+						->getPage( $title->getDBkey() );
 					if ( !$sp instanceof \SpecialPage || !$user->isAllowed( $sp->getRestriction() ) ) {
 						$excludes[] = $resultObject->getId();
 						continue;

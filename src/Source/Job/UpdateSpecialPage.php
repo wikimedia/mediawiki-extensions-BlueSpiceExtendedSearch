@@ -20,7 +20,9 @@ class UpdateSpecialPage extends UpdateTitleBase {
 	 * @return \SpecialPage
 	 */
 	protected function getDocumentProviderSource() {
-		return \SpecialPageFactory::getPage( $this->getTitle()->getText() );
+		return \MediaWiki\MediaWikiServices::getInstance()
+			->getSpecialPageFactory()
+			->getPage( $this->getTitle()->getText() );
 	}
 
 	public function doRun() {
