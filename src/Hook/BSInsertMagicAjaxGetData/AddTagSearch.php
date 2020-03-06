@@ -11,7 +11,7 @@ class AddTagSearch extends BSInsertMagicAjaxGetData {
 
 	protected function doProcess() {
 		$extension = $this->getServices()
-			->getBSExtensionFactory()
+			->getService( 'BSExtensionFactory' )
 			->getExtension( 'BlueSpiceExtendedSearch' );
 
 		$oDescriptor = new \stdClass();
