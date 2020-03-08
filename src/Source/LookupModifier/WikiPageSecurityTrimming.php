@@ -43,7 +43,9 @@ class WikiPageSecurityTrimming extends Base {
 	 */
 	protected function userCanNotRead( $iNsId ) {
 		$oTitle = \Title::makeTitle( $iNsId, 'Dummy' );
-		return !$oTitle->userCan( 'read' );
+		return !\MediaWiki\MediaWikiServices::getInstance()
+			->getPermissionManager()
+			->userCan( 'read', $this->oContext->getUser(), $oTitle );
 	}
 
 	public function undo() {

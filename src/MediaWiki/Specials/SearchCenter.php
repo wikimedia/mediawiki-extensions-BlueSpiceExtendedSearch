@@ -152,7 +152,10 @@ class SearchCenter extends SpecialPage {
 	 */
 	private function userCanExport() {
 		$pageToTest = Title::makeTitle( NS_MEDIAWIKI, 'Dummy' );
-		if ( $pageToTest->userCan( 'edit', $this->getUser() ) ) {
+		if ( \MediaWiki\MediaWikiServices::getInstance()
+			->getPermissionManager()
+			->userCan( 'edit', $this->getUser(), $pageToTest )
+		) {
 			return true;
 		}
 		return false;
