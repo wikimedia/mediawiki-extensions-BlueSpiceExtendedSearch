@@ -80,6 +80,9 @@ class BaseTitleSecurityTrimmings extends Base {
 	protected function getExcludesForCurrentPage( $prepLookup, $size, &$excludes ) {
 		$validCount = 0;
 		$user = \RequestContext::getMain()->getUser();
+		$services = \MediaWiki\MediaWikiServices::getInstance();
+		$spFactory = $services->getSpecialPageFactory();
+		$permManager = $services->getPermissionManager();
 
 		while ( $validCount < $size ) {
 			$results = $this->runPrepQuery( $prepLookup );
@@ -112,16 +115,14 @@ class BaseTitleSecurityTrimmings extends Base {
 				}
 
 				if ( $title->isSpecialPage() ) {
-					$sp = \MediaWiki\MediaWikiServices::getInstance()
-						->getSpecialPageFactory()
-						->getPage( $title->getDBkey() );
+					$sp = $spFactory->getPage( $title->getDBkey() );
 					if ( !$sp instanceof \SpecialPage || !$user->isAllowed( $sp->getRestriction() ) ) {
 						$excludes[] = $resultObject->getId();
 						continue;
 					}
 				}
 
-				if ( $title->userCan( 'read' ) == false ) {
+				if ( $permManager->userCan( 'read', $user, $title ) == false ) {
 					$excludes[] = $resultObject->getId();
 				}
 

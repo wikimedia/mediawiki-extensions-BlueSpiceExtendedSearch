@@ -116,8 +116,13 @@ class Autocomplete extends \ApiBase {
 			$this->searchData['namespace'],
 			$pageName
 		);
+		$user = $this->getUser();
+		$pm = \MediaWiki\MediaWikiServices::getInstance()->getPermissionManager();
 
-		if ( $title->exists() == false && $title->userCan( 'createpage' ) && $title->userCan( 'edit' ) ) {
+		if ( $title->exists() == false &&
+			$pm->userCan( 'createpage', $user, $title ) &&
+			$pm->userCan( 'edit', $user, $title )
+		) {
 			$this->pageCreatable = true;
 
 			$linkRenderer = Services::getInstance()->getService( 'LinkRenderer' );

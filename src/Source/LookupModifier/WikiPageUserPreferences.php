@@ -6,7 +6,9 @@ class WikiPageUserPreferences extends Base {
 	protected $namespacesToBoost;
 
 	public function apply() {
-		$options = $this->oContext->getUser()->getOptions();
+		$user = $this->oContext->getUser();
+		$options = $user->getOptions();
+		$permManager = \MediaWiki\MediaWikiServices::getInstance()->getPermissionManager();
 
 		$namespacesToBoost = [];
 		foreach ( $options as $optionName => $optionValue ) {
@@ -21,7 +23,7 @@ class WikiPageUserPreferences extends Base {
 
 			$nsId = (int)substr( $optionName, strlen( 'searchNs' ) );
 			$oTitle = \Title::makeTitle( $nsId, 'Dummy' );
-			if ( $oTitle->userCan( 'read' ) ) {
+			if ( $permManager->userCan( 'read', $user, $oTitle ) ) {
 				$namespacesToBoost[] = $nsId;
 			}
 		}
