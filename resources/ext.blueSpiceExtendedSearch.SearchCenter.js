@@ -254,6 +254,7 @@
 		queryData.searchTerm = searchBar.$searchBox.val();
 
 		var searchPromise = this.runApiCall( queryData );
+
 		$( d ).trigger( 'BSExtendedSearchSearchCenterExecSearch', [ queryData, search ] );
 
 		searchPromise.done( function( response ) {

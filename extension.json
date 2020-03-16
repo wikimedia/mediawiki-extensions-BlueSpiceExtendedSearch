@@ -100,6 +100,12 @@
 			"TagRegistry": {
 				"bs-tagsearch": "BS\\ExtendedSearch\\Tag\\TagSearch"
 			},
+			"JSConfigVars": {
+				"AutocompleteConfig": "\\BS\\ExtendedSearch\\JSConfigVariable\\AutocompleteConfig::factory",
+				"SourceIcons": "\\BS\\ExtendedSearch\\JSConfigVariable\\SourceIcons::factory",
+				"UseCompactAutocomplete": "\\BS\\ExtendedSearch\\JSConfigVariable\\UseCompactAutocomplete::factory",
+				"ESSimilarPages": "\\BS\\ExtendedSearch\\JSConfigVariable\\ESSimilarPages::factory"
+			},
 			"EntityRegistry": {
 				"searchhistory": "\\BS\\ExtendedSearch\\EntityConfig\\Collection\\SearchHistory::factory"
 			}
@@ -261,8 +267,7 @@
 		"ResourceLoaderTestModules": "BS\\ExtendedSearch\\Setup::onResourceLoaderTestModules",
 		"SkinTemplateOutputPageBeforeExec": "BS\\ExtendedSearch\\Setup::onSkinTemplateOutputPageBeforeExec",
 		"BeforePageDisplay": [
-			"BS\\ExtendedSearch\\Hook\\BeforePageDisplay\\AddResources::callback",
-			"BS\\ExtendedSearch\\Hook\\BeforePageDisplay\\AddSimilarPages::callback"
+			"BS\\ExtendedSearch\\Hook\\BeforePageDisplay\\AddResources::callback"
 		],
 		"LoadExtensionSchemaUpdates":  [
 			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddRelevanceTable::callback",
