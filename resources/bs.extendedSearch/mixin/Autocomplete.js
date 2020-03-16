@@ -31,7 +31,8 @@
 					topResultElements.push(
 						new bs.extendedSearch.AutocompleteTopMatch( {
 							suggestion: suggestion,
-							popup: this
+							popup: this,
+							autocomplete: this.autocomplete
 						} ).$element
 					);
 					this.displayedResults.top.push( suggestion );

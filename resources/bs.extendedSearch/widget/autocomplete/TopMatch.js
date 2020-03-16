@@ -6,8 +6,9 @@
 
 		this.basename = cfg.suggestion.basename;
 		this.type = cfg.suggestion.type;
+		this.autocomplete = cfg.autocomplete;
 		this.imageUri = cfg.suggestion.image_uri ||
-				bs.extendedSearch.Autocomplete.prototype.getIconPath( this.type );
+			this.autocomplete.getIconPath( this.type );
 
 		this.$element = $( '<div>' );
 

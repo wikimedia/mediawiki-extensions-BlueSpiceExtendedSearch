@@ -1,31 +1,25 @@
 <?php
 
-namespace BS\ExtendedSearch\Hook\BeforePageDisplay;
+namespace BS\ExtendedSearch\JSConfigVariable;
 
+use BlueSpice\JSConfigVariable;
 use BS\ExtendedSearch\Backend;
 use Exception;
+use FormatJson;
 use MediaWiki\MediaWikiServices;
 
-class AddSimilarPages extends \BlueSpice\Hook\BeforePageDisplay {
-	protected function skipProcessing() {
-		$title = $this->out->getTitle();
-		if ( $title->isSpecialPage() ) {
-			return true;
-		}
+class ESSimilarPages extends JSConfigVariable {
 
-		if ( $this->getContext()->getRequest()->getVal( 'action', 'view' ) !== 'view' ) {
-			return true;
-		}
-
-		return false;
-	}
-
-	protected function doProcess() {
+	/**
+	 * @inheritDoc
+	 */
+	public function getValue() {
 		try {
+			$title = $this->getContext()->getTitle();
 			// Execution time for entire code here,
 			// on ~1000 pages index => 102ms
 			$similarPages = Backend::instance()->getSimilarPages(
-				$this->out->getTitle()
+				$title
 			);
 
 			$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
@@ -41,13 +35,12 @@ class AddSimilarPages extends \BlueSpice\Hook\BeforePageDisplay {
 				];
 			}
 
-			$pageLinks = \FormatJson::encode( $pageLinks );
-
-			$this->out->addJsConfigVars( 'bsgESSimilarPages', $pageLinks );
+			return FormatJson::encode( $pageLinks );
 		}
 		catch ( Exception $e ) {
 			wfDebugLog( 'BSExtendedSearch', "AddSimilarPages: {$e->getMessage()}" );
+
+			return null;
 		}
 	}
-
 }

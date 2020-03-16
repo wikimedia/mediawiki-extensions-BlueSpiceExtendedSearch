@@ -4,9 +4,8 @@
 		this.searchBar = cfg.searchBar;
 		this.compact = cfg.compact || false;
 		this.lookupConfig = cfg.lookupConfig || {};
-
-		this.autocompleteConfig = mw.config.get( 'bsgESAutocompleteConfig' );
-
+		this.autocompleteConfig = cfg.autocompleteConfig;
+		this.sourceIcons = cfg.sourceIcons;
 		this.api = new mw.Api();
 
 		this.mainpage = '';
@@ -151,7 +150,8 @@
 			displayLimits: this.autocompleteConfig["DisplayLimits"],
 			mobile: this.searchBar.mobile,
 			pageCreateInfo: pageCreateInfo,
-			compact: this.compact
+			compact: this.compact,
+			autocomplete: this
 		};
 
 		this.popup = new bs.extendedSearch.AutocompletePopup( popupCfg );
@@ -302,11 +302,10 @@
 
 	function _getIconPath( type ) {
 		var scriptPath = mw.config.get( 'wgScriptPath' );
-		var icons = mw.config.get( 'bsgESSourceIcons' );
-		if( type in icons ) {
-			return scriptPath + '/' + icons[type];
+		if( type in this.sourceIcons ) {
+			return scriptPath + '/' + this.sourceIcons[type];
 		}
-		return scriptPath + '/' + icons['default'];
+		return scriptPath + '/' + this.sourceIcons['default'];
 	}
 
 	function _navigateThroughResults( direction ) {

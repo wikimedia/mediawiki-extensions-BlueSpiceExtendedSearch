@@ -4,6 +4,7 @@
 	bs.extendedSearch.AutocompletePopup = function( cfg ) {
 		cfg = cfg || {};
 
+		this.autocomplete = cfg.autocomplete;
 		this.suggestions = cfg.data || [];
 		this.searchTerm = cfg.searchTerm || '';
 		this.namespaceId = cfg.namespaceId || 0;

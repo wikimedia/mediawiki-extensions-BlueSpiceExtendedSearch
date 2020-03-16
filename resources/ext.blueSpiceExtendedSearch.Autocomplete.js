@@ -1,12 +1,21 @@
 ( function( mw, $, bs, d, undefined ){
 	$( function() {
-		//Create new autocomplete and searchBar instance and bind them together
-		var autocomplete = new bs.extendedSearch.Autocomplete();
-		var searchBar = new bs.extendedSearch.SearchBar( {
-			useSubpagePills: mw.config.get( 'ESUseSubpagePillsAutocomplete' )
+		bs.config.getDeferred( [
+			'UseCompactAutocomplete',
+			'AutocompleteConfig',
+			'SourceIcons'
+		] ).done( function( response ) {
+			//Create new autocomplete and searchBar instance and bind them together
+			var autocomplete = new bs.extendedSearch.Autocomplete();
+			var searchBar = new bs.extendedSearch.SearchBar( {
+				useSubpagePills: mw.config.get( 'ESUseSubpagePillsAutocomplete' )
+			} );
+			autocomplete.init( {
+				searchBar: searchBar,
+				compact: response.UseCompactAutocomplete,
+				autocompleteConfig: response.AutocompleteConfig,
+				sourceIcons: response.SourceIcons
+			} );
 		} );
-
-		var useCompact = mw.config.get( 'ESUseCompactAutocomplete' );
-		autocomplete.init( {searchBar: searchBar, compact: useCompact} );
 	} );
 } )( mediaWiki, jQuery, blueSpice, document );
