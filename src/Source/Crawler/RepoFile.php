@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\Crawler;
 
+use MediaWiki\MediaWikiServices;
+
 class RepoFile extends File {
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateRepoFile';
 
@@ -13,9 +15,10 @@ class RepoFile extends File {
 			$this->makeQueryConditions()
 		);
 
+		$repoGroup = MediaWikiServices::getInstance()->getRepoGroup();
 		foreach ( $res as $row ) {
 			$title = \Title::newFromID( $row->page_id );
-			$file = wfFindFile( $title );
+			$file = $repoGroup->findFile( $title );
 			if ( $file instanceof \LocalFile === false ) {
 				continue;
 			}

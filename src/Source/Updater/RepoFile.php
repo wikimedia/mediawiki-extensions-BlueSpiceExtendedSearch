@@ -6,6 +6,7 @@ use Article;
 use BS\ExtendedSearch\Source\Job\UpdateRepoFile;
 use File;
 use JobQueueGroup;
+use MediaWiki\MediaWikiServices;
 use Title;
 use User;
 
@@ -89,7 +90,7 @@ class RepoFile extends Base {
 			return true;
 		}
 
-		$file = \RepoGroup::singleton()->findFile( $title );
+		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
 		$this->titleMoveOrigFile = $file;
 		return true;
 	}
@@ -108,7 +109,10 @@ class RepoFile extends Base {
 			return true;
 		}
 
-		$oldFile = new \LocalFile( $oTitle, \RepoGroup::singleton()->getLocalRepo() );
+		$oldFile = new \LocalFile(
+			$oTitle,
+			MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo()
+		);
 		JobQueueGroup::singleton()->push(
 			new \BS\ExtendedSearch\Source\Job\UpdateRepoFile(
 				$oTitle,
