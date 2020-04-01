@@ -24,5 +24,6 @@
 	"bs-extendedsearch-searchcenter-filter-and-label": "ja",
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Nimi",
 	"bs-extendedsearch-searchcenter-sort-field-size": "Koko",
-	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nimiavaruus"
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nimiavaruus",
+	"bs-extendedsearch-search-center-filter-tags-label": "Merkkaus"
 }

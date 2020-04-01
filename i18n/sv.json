@@ -4,7 +4,8 @@
 			"Jopparn",
 			"WikiPhoenix",
 			"Mjälten",
-			"Josve05a"
+			"Josve05a",
+			"Technic2"
 		]
 	},
 	"bssearchadmin": "Sök admin",
@@ -28,7 +29,7 @@
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Dokument",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Väntande uppdateringsjobb",
 	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|träff|träffar}} för $2",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "omkring $1 {{PLURAL:$1|träff|träffar}} för $2",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Omkring $1 {{PLURAL:$1|träff|träffar}} för $2",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Lägg till filter",
 	"bs-extendedsearch-search-center-filter-extension-label": "Tillägg",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Namnrymd",
