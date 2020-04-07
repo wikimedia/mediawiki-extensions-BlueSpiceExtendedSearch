@@ -1,17 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fany",
-			"Zarisi",
-			"Gomoko",
-			"Wladek92",
 			"Alacabe",
-			"Eihel",
-			"Urhixidur",
-			"Thibaut120094",
 			"Crochet.david",
+			"Eihel",
+			"Eneelk",
+			"Fany",
+			"Gomoko",
+			"Thibaut120094",
+			"Urhixidur",
 			"Verdy p",
-			"Eneelk"
+			"Wladek92",
+			"Zarisi"
 		]
 	},
 	"bs-extsearch-desc": "Plateforme de recherche Elasticsearch",
