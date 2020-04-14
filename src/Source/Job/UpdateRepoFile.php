@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
+use MediaWiki\MediaWikiServices;
+
 class UpdateRepoFile extends UpdateTitleBase {
 	protected $sSourceKey = 'repofile';
 	protected $file = null;
@@ -60,7 +62,7 @@ class UpdateRepoFile extends UpdateTitleBase {
 			return;
 		}
 
-		$file = \RepoGroup::singleton()->findFile( $this->getTitle() );
+		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $this->getTitle() );
 		if ( $file === false ) {
 			throw new \Exception( "File '{$this->getTitle()->getPrefixedDBkey()}' not found in any repo!" );
 		}
