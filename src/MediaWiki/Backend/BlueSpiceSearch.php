@@ -71,13 +71,8 @@ class BlueSpiceSearch extends \SearchEngine {
 		$acConfig = $this->backend->getAutocompleteConfig();
 		$suggestField = $acConfig['SuggestField'];
 
-		$lookup = new \BS\ExtendedSearch\Lookup();
+		$lookup = $this->getLookup();
 		$lookup->setBoolMatchQueryString( $suggestField, $search );
-		$lookup->addTermsFilter( 'namespace', $this->namespaces );
-		$lookup->addSourceField( 'prefixed_title' );
-		$lookup->setSize( $this->limit );
-		$lookup->setFrom( $this->offset );
-		$lookup->addSort( '_score', Lookup::SORT_DESC );
 
 		$search = new \Elastica\Search( $this->backend->getClient() );
 		$search->addIndex( $this->backend->getConfig()->get( 'index' ) . '_wikipage' );
@@ -106,17 +101,12 @@ class BlueSpiceSearch extends \SearchEngine {
 			return [];
 		}
 
-		$lookup = new \BS\ExtendedSearch\Lookup();
+		$lookup = $this->getLookup();
 		$lookup->setQueryString( [
 			'query' => $search,
 			'default_operator' => 'AND',
 			'fields' => [ $field ]
 		] );
-		$lookup->addTermsFilter( 'namespace', $this->namespaces );
-		$lookup->setSize( $this->limit );
-		$lookup->setFrom( $this->offset );
-		$lookup->addSort( '_score', Lookup::SORT_DESC );
-		$lookup->addSort( 'mtime', Lookup::SORT_DESC );
 
 		$resultSet = $this->backend->runLookup( $lookup );
 
@@ -188,5 +178,21 @@ class BlueSpiceSearch extends \SearchEngine {
 			$this->fallbackSearchEngine = new $class( $lb );
 		}
 		return $this->fallbackSearchEngine;
+	}
+
+	/**
+	 * @return Lookup
+	 */
+	protected function getLookup() {
+		$lookup = new \BS\ExtendedSearch\Lookup();
+		if ( !empty( $this->namespaces ) ) {
+			$lookup->addTermsFilter( 'namespace', $this->namespaces );
+		}
+		$lookup->addSourceField( 'prefixed_title' );
+		$lookup->setSize( $this->limit );
+		$lookup->setFrom( $this->offset );
+		$lookup->addSort( '_score', Lookup::SORT_DESC );
+
+		return $lookup;
 	}
 }
