@@ -64,4 +64,18 @@ class Base {
 	public function getSourceConfig() {
 		return [];
 	}
+
+	/**
+	 * Get fields to be sorted on
+	 *
+	 * @return array
+	 */
+	final public function getSortableFields() {
+		return [
+			'basename',
+			'mtime',
+			'ctime',
+			'size'
+		];
+	}
 }
