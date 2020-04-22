@@ -34,7 +34,7 @@ class WikiPage extends DecoratorBase {
 			'mime_type' => 'text/x-wiki',
 			'mtime' => wfTimestamp(
 				TS_ISO_8601,
-				$oWikiPage->getRevision()->getTimestamp()
+				$oWikiPage->getRevisionRecord()->getTimestamp()
 			),
 			'ctime' => wfTimestamp(
 				TS_ISO_8601,
