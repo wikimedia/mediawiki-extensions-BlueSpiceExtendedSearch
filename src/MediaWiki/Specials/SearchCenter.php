@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\MediaWiki\Specials;
 
 use BlueSpice\Services;
+use BS\ExtendedSearch\Source\Base;
 use Title;
 use SpecialPage;
 use FormatJson;
@@ -56,33 +57,15 @@ class SearchCenter extends SpecialPage {
 		$localBackend = SearchBackend::instance();
 		$defaultResultStructure = $localBackend->getDefaultResultStructure();
 
+		$base = new Base( $localBackend, [] );
+		$sortableFields = $base->getMappingProvider()->getSortableFields();
 		// Add _score manually, as its not a real field
-		$sortableFields = [ '_score' ];
-		$allowedSortableFieldTypes = [ 'date', 'time', 'integer' ];
+		array_unshift( $sortableFields, '_score' );
 
 		$availableTypes = [];
 		$resultStructures = [];
 
 		foreach ( $localBackend->getSources() as $sourceKey => $source ) {
-			if ( $source->isSortable() ) {
-				foreach ( $source->getMappingProvider()->getPropertyConfig() as $fieldName => $fieldConfig ) {
-					if ( in_array( $fieldName, $sortableFields ) ) {
-						continue;
-					}
-
-					if ( in_array( $fieldConfig['type'], $allowedSortableFieldTypes ) ) {
-						$sortableFields[] = $fieldName;
-						continue;
-					}
-
-					if ( $fieldConfig['type'] == 'text' ) {
-						if ( isset( $fieldConfig['fielddata'] ) && $fieldConfig['fielddata'] == true ) {
-							$sortableFields[] = $fieldName;
-						}
-					}
-				}
-			}
-
 			$resultStructure = $source->getFormatter()->getResultStructure( $defaultResultStructure );
 			$resultStructures[$source->getTypeKey()] = $resultStructure;
 
