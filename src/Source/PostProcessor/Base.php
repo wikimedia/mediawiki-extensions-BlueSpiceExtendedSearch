@@ -38,6 +38,10 @@ class Base implements IPostProcessor {
 	 * @param Lookup $lookup
 	 */
 	public function process( Result &$result, Lookup $lookup ) {
+		if ( !$this->isScoreSorting( $lookup ) ) {
+			// If user sorts by something else by relevance
+			return;
+		}
 		if ( $this->base->getType() === Backend::QUERY_TYPE_SEARCH ) {
 			if ( $this->fulltextPercentageBoost( $result, $lookup ) ) {
 				$this->base->requestReSort();
@@ -68,10 +72,6 @@ class Base implements IPostProcessor {
 	 * @return bool false on fail/not-applicable
 	 */
 	protected function fulltextPercentageBoost( Result &$result, Lookup $lookup ) {
-		if ( !$this->isScoreSorting( $lookup ) ) {
-			// If user sorts by something else by relevance
-			return false;
-		}
 		if ( $this->isRegex( $lookup ) ) {
 			// We don't check match percentage on regex
 			return false;

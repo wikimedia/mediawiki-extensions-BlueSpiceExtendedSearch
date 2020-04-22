@@ -16,6 +16,11 @@ class WikiPage extends Base {
 	 */
 	public function process( Result &$result, Lookup $lookup ) {
 		parent::process( $result, $lookup );
+
+		if ( !$this->isScoreSorting( $lookup ) ) {
+			// If user sorts by something else by relevance
+			return;
+		}
 		if ( $this->mTimeBoost( $result, $lookup ) ) {
 			$this->base->requestReSort();
 		}
