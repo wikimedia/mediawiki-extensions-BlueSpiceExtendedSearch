@@ -31,7 +31,7 @@ class PrimaryDataProvider extends PrimaryDatabaseDataProvider {
 	 *
 	 * @param \stdClass $row
 	 */
-	protected function appendRowToData( $row ) {
+	protected function appendRowToData( \stdClass $row ) {
 		$this->data[] = new Record( (object)[
 			Record::ID => (int)$row->{Record::ID},
 			Record::USER_ID => (int)$row->{Record::USER_ID},
