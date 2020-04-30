@@ -45,7 +45,6 @@ class TagSearchHandler extends Handler {
 	 * @throws MWException
 	 */
 	public function handle() {
-		error_log( __METHOD__ );
 		$this->parser->getOutput()->addModuleStyles( 'ext.blueSpiceExtendedSearch.TagSearch.styles' );
 		$this->parser->getOutput()->addModules( 'ext.blueSpiceExtendedSearch.TagSearch' );
 
