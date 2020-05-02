@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Source\DocumentProvider;
 
 use BlueSpice\Services;
+use MediaWiki\MediaWikiServices;
 
 class WikiPage extends DecoratorBase {
 	/**
@@ -27,6 +28,8 @@ class WikiPage extends DecoratorBase {
 		$this->content = $oWikiPage->getContent();
 		$this->parserOutput = $this->content->getParserOutput( $oWikiPage->getTitle() );
 
+		$revStore = MediaWikiServices::getInstance()->getRevisionStore();
+
 		$aDC = array_merge( $aDC, [
 			'basename' => $oWikiPage->getTitle()->getBaseText(),
 			'basename_exact' => $oWikiPage->getTitle()->getBaseText(),
@@ -38,7 +41,7 @@ class WikiPage extends DecoratorBase {
 			),
 			'ctime' => wfTimestamp(
 				TS_ISO_8601,
-				$oWikiPage->getOldestRevision()->getTimestamp()
+				$revStore->getFirstRevision( $oWikiPage->getTitle() )->getTimestamp()
 			),
 			'size' => $oWikiPage->getTitle()->getLength(),
 			'categories' => $this->getCategories( $oWikiPage ),
