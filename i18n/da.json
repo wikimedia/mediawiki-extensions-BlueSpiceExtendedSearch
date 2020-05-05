@@ -30,6 +30,8 @@
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Navn",
 	"bs-extendedsearch-searchcenter-sort-field-size": "Størrelse",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Navnerum",
+	"bs-extendedsearch-loadmore-label": "Indlæs flere resultater",
+	"bs-extendedsearch-loadmore-error": "Der kunne ikke hentes flere resultater",
 	"bs-extendedsearch-source-type-wikipage-label": "Wikiside",
 	"bs-extendedsearch-source-type-repofile-label": "Lokal fil",
 	"bs-extendedsearch-source-type-specialpage-label": "Specialside",
