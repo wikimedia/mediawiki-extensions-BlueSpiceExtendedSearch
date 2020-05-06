@@ -242,7 +242,7 @@ class WikiPage extends DecoratorBase {
 	 * @return array
 	 */
 	protected function getPageProps( \Title $title ) {
-		return Services::getInstance()->getBSUtilityFactory()
+		return Services::getInstance()->getService( 'BSUtilityFactory' )
 			->getPagePropHelper( $title )->getPageProps();
 	}
 
