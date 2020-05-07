@@ -6,13 +6,14 @@
 	},
 	"bs-extendedsearch-source-label-specialpage": "ፍሉይ ገጽ",
 	"bs-extendedsearch-source-label-user": "ተጠቃሚ",
-	"bs-extendedsearch-search-center-filter-categories-label": "ምድብ",
-	"bs-extendedsearch-search-center-filter-categories-with-values-label": "ምድብ፥",
+	"bs-extendedsearch-search-center-filter-categories-label": "መደብ",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "መደብ፥",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "ኣትርፍ",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "ኣተግብር",
 	"bs-extendedsearch-search-center-options-sort-by": "ጎጅል ብ",
 	"bs-extendedseach-wikipage-section-more-text": "... $1 ተወሳኺ",
 	"bs-extendedsearch-search-center-create-page-link": "ገጽ \"$1\" ፈጠረ",
 	"bs-extendedsearch-search-center-result-ctime-label": "ዝተፈጥረ፥",
-	"bs-extendedsearch-autocomplete-create-page-link": "ገጽ \"$1\" ፈጠረ"
+	"bs-extendedsearch-autocomplete-create-page-link": "ገጽ \"$1\" ፈጠረ",
+	"bs-extendedsearch-source-label-repofile": "ፋይል ጸዓነ"
 }

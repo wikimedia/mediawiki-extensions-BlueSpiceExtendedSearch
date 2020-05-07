@@ -7,5 +7,7 @@
 	"bs-extendedsearch-searchcenter-filter-or-label": "я",
 	"bs-extendedsearch-searchcenter-filter-and-label": ",",
 	"bs-extendedsearch-search-center-options-sort-order": "Къепе листар",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "ЦӀерийн меттиг"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "ЦӀерийн меттиг",
+	"bs-extendedsearch-search-center-filter-type-with-values-label": "Тайпа:",
+	"bs-extendedsearch-autocomplete-result-type": "Тайпа: $1"
 }

@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki",
 			"2nd-player",
-			"Otokoume"
+			"Otokoume",
+			"Shirayuki"
 		]
 	},
 	"apihelp-bs-extendedsearch-query-param-q": "検索語句",

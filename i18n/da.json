@@ -37,5 +37,17 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategori(er)",
 	"bs-extendedsearch-collection-var-numbersearched": "Søgninger",
 	"right-extendedsearch-search-wikipage": "Søg efter sider",
-	"action-extendedsearch-search-repofile": "søg efter filer"
+	"action-extendedsearch-search-repofile": "søg efter filer",
+	"bs-extendedsearch-source-label-wikipage": "Wikiside",
+	"bs-extendedsearch-source-label-specialpage": "Specialside",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Annullér",
+	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Anvend",
+	"bs-extendedsearch-loadmore-label": "Indlæs flere resultater",
+	"bs-extendedsearch-loadmore-error": "Der kunne ikke hentes flere resultater",
+	"bs-extendedsearch-source-type-wikipage-label": "Wikiside",
+	"bs-extendedsearch-result-relevance-relevant": "Dette resultat er vigtigt for mig",
+	"bs-extendedsearch-result-relevance-not-relevant": "Dette resultat er ikke vigtigt for mig",
+	"bs-extendedsearch-flyout-similar-pages-title": "Lignende sider",
+	"right-extendedsearch-search-repofile": "Søg efter filer",
+	"right-extendedsearch-search-externalfile": "Søg efter eksterne filer"
 }
