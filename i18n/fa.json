@@ -14,6 +14,7 @@
 	"apihelp-bs-extendedsearch-query-param-params": "پارامترهای بیشتر برای پرسمان",
 	"apihelp-bs-extendedsearch-stats-param-stats": "فهرستی از آمارهایی که ارائه می‌شود",
 	"bs-extendedsearch-search-input-placeholder": "یافتن…",
+	"bs-extendedsearch-search-input-aria-label": "جعبهٔ جستجو",
 	"bs-extendedsearch-source-label-wikipage": "صفحه ویکی",
 	"bs-extendedsearch-source-label-specialpage": "صفحهٔ ویژه",
 	"bs-extendedsearch-source-label-repofile": "بارگذاری پرونده",
@@ -85,5 +86,14 @@
 	"bs-extendedsearch-tagsearch-extension-description": "افزودن فرم جستجو به محتوای {{GENDER:خودتان}}",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "فضا(ها)ی نام",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "رده(ها)",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "نوع"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "نوع",
+	"bs-extendedsearch-collection-type-searchhistory": "تاریخچهٔ جستجو",
+	"bs-extendedsearch-collection-var-searchterm": "عبارت",
+	"bs-extendedsearch-collection-var-numbersearched": "جستجوها",
+	"right-extendedsearch-search-specialpage": "جستجوی صفحه‌هایی خاص",
+	"right-extendedsearch-search-wikipage": "جستجوی صفحه‌ها",
+	"right-extendedsearch-search-repofile": "جستجوی پرونده‌ها",
+	"action-extendedsearch-search-specialpage": "جستجوی صفحه‌هایی خاص",
+	"action-extendedsearch-search-wikipage": "جستجوی صفحه‌ها",
+	"action-extendedsearch-search-repofile": "جستجوی پرونده‌ها"
 }
