@@ -284,7 +284,7 @@ class Backend {
 	 */
 	public function runAutocompleteLookup( Lookup $lookup, $searchData ) {
 		$search = new Search( $this->getClient() );
-		$search->addIndex( $this->config->get( 'index' ) . '_*' );
+		$this->addAllIndexesForQuery( $search );
 
 		$lookupModifiers = $this->getLookupModifiers( $lookup, static::QUERY_TYPE_AUTOCOMPLETE );
 		foreach ( $lookupModifiers as $sLMKey => $lookupModifier ) {
@@ -383,7 +383,7 @@ class Backend {
 	 */
 	public function runLookup( $lookup ) {
 		$search = new Search( $this->getClient() );
-		$search->addIndex( $this->config->get( 'index' ) . '_*' );
+		$this->addAllIndexesForQuery( $search );
 
 		$origQS = $lookup->getQueryString();
 		$origTerm = $origQS['query'];
@@ -829,5 +829,17 @@ class Backend {
 	private function getPostProcessor( $searchType ) {
 		$backend = $this;
 		return PostProcessor::factory( $searchType, $backend );
+	}
+
+	/**
+	 * Add index for each source
+	 *
+	 * @param Search &$search
+	 * @throws \ConfigException
+	 */
+	protected function addAllIndexesForQuery( Search &$search ) {
+		foreach ( $this->getSources() as $key => $source ) {
+			$search->addIndex( $this->config->get( 'index' ) . '_' . $key );
+		}
 	}
 }
