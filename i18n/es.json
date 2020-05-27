@@ -98,6 +98,7 @@
 	"bs-extendedsearch-search-center-filter-page_language-label": "Idioma de la página",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Idioma de la página:",
 	"bs-extendedsearch-wikipage-title-original": "(título original: $1)",
+	"bs-extendedsearch-pref-auto-set-lang-filter": "Establecer filtro de idioma automáticamente",
 	"bs-extendedsearch-search-center-create-page-link": "Crear la página «$1»",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Página $1: Texto: $2",
 	"bs-extendedsearch-filter-add-button-label": "Añadir un filtro",
