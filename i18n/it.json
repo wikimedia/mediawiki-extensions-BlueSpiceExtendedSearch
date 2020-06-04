@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
-			"Dansita"
+			"Dansita",
+			"ValeJappo"
 		]
 	},
+	"bssearchadmin": "Cerca amministratore",
 	"bssearchcenter": "Centro ricerca",
 	"apihelp-bs-extendedsearch-query-description": "Cerca nell'indice",
 	"apihelp-bs-extendedsearch-query-summary": "Cerca nell'indice",
@@ -33,6 +35,7 @@
 	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Categoria:",
 	"bs-extendedsearch-search-center-filter-type-with-values-label": "Tipo:",
 	"bs-extendedsearch-search-center-filter-no-options-label": "Nessun valore disponibile",
+	"bs-extendedsearch-search-center-result-namespace_text-label": "Namespace:",
 	"bs-extendedsearch-search-center-result-categories-label": "Categoria:",
 	"bs-extendedsearch-search-center-result-author-label": "Autore:",
 	"bs-extendedsearch-search-center-result-sections-label": "Sezioni:",
@@ -71,6 +74,7 @@
 	"bs-extendedsearch-pref-auto-set-lang-filter": "Imposta automaticamente il filtro della lingua",
 	"bs-extendedsearch-search-center-create-page-link": "Crea pagina \"$1\"",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Pagina $1: Testo: $2",
+	"bs-extendedsearch-filter-add-button-label": "Aggiungi filtro",
 	"bs-extendedsearch-options-button-label": "Opzioni di ricerca",
 	"bs-extendedsearch-export-button-label": "Esporta risultati di ricerca",
 	"bs-extendedsearch-flyout-similar-pages-title": "Pagine simili",
