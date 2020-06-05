@@ -124,5 +124,6 @@
 	"bs-extendedsearch-search-center-options-sort-order": "Orden de clasificación",
 	"bs-extendedsearch-collection-type-searchhistory": "Historial de búsquedas",
 	"right-extendedsearch-search-specialpage": "Buscar páginas especiales",
-	"right-extendedsearch-search-repofile": "Buscar archivos"
+	"right-extendedsearch-search-repofile": "Buscar archivos",
+	"bs-extendedsearch-pref-auto-set-lang-filter": "Establecer filtro de idioma automáticamente"
 }

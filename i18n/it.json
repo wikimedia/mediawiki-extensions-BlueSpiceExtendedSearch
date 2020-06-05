@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
-			"Dansita"
+			"Dansita",
+			"ValeJappo"
 		]
 	},
 	"apihelp-bs-extendedsearch-query-param-search-term": "Termine per il quale viene condotta la ricerca",
@@ -83,5 +84,8 @@
 	"bs-extendedsearch-export-button-label": "Esporta risultati di ricerca",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Usato nelle pagine",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Operatore di ricerca",
-	"bs-extendedsearch-collection-var-numbersearched": "Ricerche"
+	"bs-extendedsearch-collection-var-numbersearched": "Ricerche",
+	"bssearchadmin": "Cerca amministratore",
+	"bs-extendedsearch-search-center-result-namespace_text-label": "Namespace:",
+	"bs-extendedsearch-filter-add-button-label": "Aggiungi filtro"
 }

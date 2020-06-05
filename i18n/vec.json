@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fierodelveneto"
+		]
+	},
+	"bs-extendedsearch-search-center-filter-namespace_text-label": "Spasio-nome",
+	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Spasio-nome:",
+	"bs-extendedsearch-search-center-result-namespace_text-label": "Spasio-nome:",
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "Spasio-nome"
+}
