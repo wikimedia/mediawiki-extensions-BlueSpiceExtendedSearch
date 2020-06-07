@@ -3,14 +3,6 @@
 namespace BS\ExtendedSearch\Tests;
 
 class MappingProviderTest extends \MediaWikiTestCase {
-	protected function setUp() : void {
-		parent::setUp();
-	}
-
-	protected function tearDown() : void {
-		parent::tearDown();
-	}
-
 	/**
 	 * @covers \BS\ExtendedSearch\Source\MappingProvider\Base::getPropertyConfig
 	 */
