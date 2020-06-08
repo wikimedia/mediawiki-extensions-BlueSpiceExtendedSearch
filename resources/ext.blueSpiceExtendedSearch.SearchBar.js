@@ -69,14 +69,14 @@
 			return '';
 		}
 
-		var newNamespace = parts.shift();
+		var newNamespace = parts.shift().replace( '_', ' ' );
 
 		if( !this.setNamespaceFromValue( newNamespace ) ) {
 			this.namespace = {};
 			return value;
 		} else {
 			value = parts.shift();
-			this.generateNamespacePill( value );
+			this.generateNamespacePill( newNamespace );
 			return value;
 		}
 	};
@@ -99,10 +99,6 @@
 	};
 
 	bs.extendedSearch.SearchBar.prototype.setNamespaceFromValue = function( nsText ) {
-		if( !this.namespaces ) {
-			this.namespaces = bs.extendedSearch.utils.getNamespacesList();
-		}
-
 		if( nsText === '' ) {
 			// Explicitly main
 			this.namespace = {
@@ -112,21 +108,35 @@
 			return true;
 		}
 
-		if( nsText.toLowerCase() in this.namespaces ) {
-			newNamespace = {
-				id: this.namespaces[nsText.toLowerCase()],
+		var namespaceId = this.findNamespace( bs.extendedSearch.utils.normalizeNamespaceName( nsText ) );
+		if ( namespaceId !== null ) {
+			this.namespace = {
+				id: namespaceId,
 				text: nsText,
-				values: bs.extendedSearch.utils.getNamespaceNames( this.namespaces, this.namespaces[nsText.toLowerCase()] )
-			};
-
-			if( newNamespace.id !== this.namespace.id ) {
-				this.namespace = newNamespace;
+				values: bs.extendedSearch.utils.getNamespaceNames( this.namespaces, namespaceId )
 			}
 			return true;
 		}
 
 		//NS cannot be set
 		return false;
+	};
+
+	bs.extendedSearch.SearchBar.prototype.findNamespace = function( nsText ) {
+		if( !this.namespaces ) {
+			this.namespaces = bs.extendedSearch.utils.getNamespacesList();
+		}
+		nsText = bs.extendedSearch.utils.normalizeNamespaceName( nsText );
+		for ( var nsName in this.namespaces ) {
+			if ( !this.namespaces.hasOwnProperty( nsName ) ) {
+				continue;
+			}
+			if ( nsName.toLowerCase() === nsText) {
+				return this.namespaces[nsName];
+			}
+		}
+
+		return null;
 	};
 
 	bs.extendedSearch.SearchBar.prototype.generateNamespacePill = function( value ) {
