@@ -106,7 +106,9 @@
 			}
 			var nsId = namespaces[namespaceName];
 			if( nsId === id ) {
-				names.push( namespaceName.charAt(0).toUpperCase() + namespaceName.slice(1) );
+				var name = namespaceName.charAt(0).toUpperCase() + namespaceName.slice(1);
+				name = name.replace( '_', ' ' );
+				names.push( name );
 			}
 		}
 		return names;
@@ -123,6 +125,10 @@
 		return false;
 	}
 
+	function _normalizeNamespaceName( nsText ) {
+		return nsText.toLowerCase().trim().replace( ' ', '_' );
+	}
+
 	bs.extendedSearch.utils = {
 		getFragment: _getFragment,
 		setFragment: _setFragment,
@@ -132,6 +138,7 @@
 		getNamespaceNames: _getNamespaceNames,
 		removeQueryStringParams: _removeQueryStringParams,
 		pushHistory: _pushHistory,
-		isMobile: _isMobile
+		isMobile: _isMobile,
+		normalizeNamespaceName: _normalizeNamespaceName
 	};
 })( mediaWiki, jQuery, blueSpice, document );
