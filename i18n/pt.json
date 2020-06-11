@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Hamilton Abreu",
+			"Mansil alfalb",
 			"Vitorvicentevalente"
 		]
 	},
@@ -151,5 +152,13 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Lista de tipos de resultado válidos, separados por uma barra vertical (|)",
 	"bs-extendedsearch-collection-type-searchhistory": "Historial de pesquisas",
 	"bs-extendedsearch-collection-var-searchterm": "Termo",
-	"bs-extendedsearch-collection-var-numbersearched": "Pesquisas"
+	"bs-extendedsearch-collection-var-numbersearched": "Pesquisas",
+	"right-extendedsearch-search-specialpage": "Procurar por páginas especiais",
+	"right-extendedsearch-search-wikipage": "Procurar por páginas",
+	"right-extendedsearch-search-repofile": "Procurar por ficheiros",
+	"right-extendedsearch-search-externalfile": "Procurar por ficheiros externos",
+	"action-extendedsearch-search-specialpage": "procurar por páginas especiais",
+	"action-extendedsearch-search-wikipage": "procurar por páginas",
+	"action-extendedsearch-search-repofile": "procurar por ficheiros",
+	"action-extendedsearch-search-externalfile": "procurar por ficheiros externos"
 }
