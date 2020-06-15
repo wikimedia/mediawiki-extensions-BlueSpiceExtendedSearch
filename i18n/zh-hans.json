@@ -13,7 +13,8 @@
 			"夢蝶葬花",
 			"沈澄心",
 			"神樂坂秀吉",
-			"科劳"
+			"科劳",
+			"铁桶"
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch搜索后端",
@@ -143,8 +144,10 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "名字空间",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "名字空间的有效名称或有效ID；用pipe (\"|\")分隔",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "名字空间1|名字空间2|...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "分类",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "有效的分类名；用pipe (\"|\")分隔",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "分类1|分类2|...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "占位符",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "输入什么就能搜索了……",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "搜索工具",
