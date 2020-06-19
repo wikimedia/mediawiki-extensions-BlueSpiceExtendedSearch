@@ -3,7 +3,7 @@ namespace BS\ExtendedSearch\MediaWiki\Backend;
 
 class SearchResultSet extends \SearchResultSet {
 	public $index = -1;
-	private $results = [];
+	protected $results = [];
 
 	/**
 	 *
