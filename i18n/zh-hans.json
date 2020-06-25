@@ -156,5 +156,12 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "搜索结果的有效类型；用pipe (\"|\") 分隔",
 	"bs-extendedsearch-collection-type-searchhistory": "搜索历史",
 	"bs-extendedsearch-collection-var-numbersearched": "搜索",
-	"right-extendedsearch-search-wikipage": "搜索页面"
+	"right-extendedsearch-search-specialpage": "搜索特殊页面",
+	"right-extendedsearch-search-wikipage": "搜索页面",
+	"right-extendedsearch-search-repofile": "搜索文件",
+	"right-extendedsearch-search-externalfile": "搜索外部文件",
+	"action-extendedsearch-search-specialpage": "搜索特殊页面",
+	"action-extendedsearch-search-wikipage": "搜索页面",
+	"action-extendedsearch-search-repofile": "搜索文件",
+	"action-extendedsearch-search-externalfile": "搜索外部文件"
 }
