@@ -565,6 +565,9 @@
 		},
 		"ESAllowIndexingDocumentsWithoutContent": {
 			"value": true
+		},
+		"ESUseSubpagePillsAutocomplete": {
+			"value": true
 		}
 	},
 	"callback": "\\BS\\ExtendedSearch\\Setup::onRegistration",
