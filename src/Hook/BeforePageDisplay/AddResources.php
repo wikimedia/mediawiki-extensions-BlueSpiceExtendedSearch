@@ -11,6 +11,10 @@ class AddResources extends \BlueSpice\Hook\BeforePageDisplay {
 				"ESUseCompactAutocomplete",
 				$this->getConfig()->get( 'ESCompactAutocomplete' )
 			);
+			$this->out->addJsConfigVars(
+				'ESUseSubpagePillsAutocomplete',
+				$this->getConfig()->get( 'ESUseSubpagePillsAutocomplete' )
+			);
 
 			$this->out->addModules( "ext.blueSpiceExtendedSearch.SearchFieldAutocomplete" );
 		}

@@ -2,7 +2,9 @@
 	$( function() {
 		//Create new autocomplete and searchBar instance and bind them together
 		var autocomplete = new bs.extendedSearch.Autocomplete();
-		var searchBar = new bs.extendedSearch.SearchBar();
+		var searchBar = new bs.extendedSearch.SearchBar( {
+			useSubpagePills: mw.config.get( 'ESUseSubpagePillsAutocomplete' )
+		} );
 
 		var useCompact = mw.config.get( 'ESUseCompactAutocomplete' );
 		autocomplete.init( {searchBar: searchBar, compact: useCompact} );
