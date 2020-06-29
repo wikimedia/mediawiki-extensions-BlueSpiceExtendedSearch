@@ -76,7 +76,7 @@
 			return value;
 		} else {
 			value = parts.shift();
-			this.generateNamespacePill( newNamespace );
+			this.generateNamespacePill( value );
 			return value;
 		}
 	};
@@ -122,7 +122,7 @@
 				id: namespaceId,
 				text: nsText,
 				values: bs.extendedSearch.utils.getNamespaceNames( this.namespaces, namespaceId )
-			}
+			};
 			return true;
 		}
 
@@ -157,6 +157,7 @@
 			.html( this.namespace.text + ':' );
 		this.$searchBox.before( this.$pill );
 		this.setSearchBoxWidthInline( sbW - this.$pill.outerWidth() );
+
 		this.$searchBox.val( value );
 	};
 
@@ -179,7 +180,7 @@
 		var sbW = this.$searchBox.outerWidth();
 		this.setSearchBoxWidthInline( sbW - this.$pill.outerWidth() );
 		this.$searchBox.val( value );
-	}
+	};
 
 	bs.extendedSearch.SearchBar.prototype.removeNamespacePill = function( clearNamespace ) {
 		clearNamespace = clearNamespace || false;
