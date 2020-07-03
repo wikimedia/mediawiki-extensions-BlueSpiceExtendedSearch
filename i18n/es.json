@@ -125,5 +125,6 @@
 	"bs-extendedsearch-collection-type-searchhistory": "Historial de búsquedas",
 	"right-extendedsearch-search-specialpage": "Buscar páginas especiales",
 	"right-extendedsearch-search-repofile": "Buscar archivos",
-	"bs-extendedsearch-pref-auto-set-lang-filter": "Establecer filtro de idioma automáticamente"
+	"bs-extendedsearch-pref-auto-set-lang-filter": "Establecer filtro de idioma automáticamente",
+	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "El tipo de resultado de búsqueda no es válido: $1"
 }
