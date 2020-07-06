@@ -263,7 +263,8 @@
 		],
 		"GetPreferences": "BS\\ExtendedSearch\\Hook\\GetPreferences\\AddUserPreferredNamespaces::callback",
 		"BSInsertMagicAjaxGetData": "BS\\ExtendedSearch\\Hook\\BSInsertMagicAjaxGetData\\AddTagSearch::callback",
-		"BSUEModulePDFBeforeCreatePDF": "\\BS\\ExtendedSearch\\Hook\\BSUEModulePDFBeforeCreatePDF\\RemoveTagSearch::callback"
+		"BSUEModulePDFBeforeCreatePDF": "\\BS\\ExtendedSearch\\Hook\\BSUEModulePDFBeforeCreatePDF\\RemoveTagSearch::callback",
+		"NamespaceManager::editNamespace": "\\BS\\ExtendedSearch\\Hook\\NamespaceManagerEditNamespace\\ReindexNamespace::callback"
 	},
 	"SpecialPages": {
 		"BSSearchCenter": "BS\\ExtendedSearch\\MediaWiki\\Specials\\SearchCenter",

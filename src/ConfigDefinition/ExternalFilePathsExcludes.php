@@ -76,5 +76,4 @@ class ExternalFilePathsExcludes extends ConfigDefinition {
 			},
 		] );
 	}
-
 }
