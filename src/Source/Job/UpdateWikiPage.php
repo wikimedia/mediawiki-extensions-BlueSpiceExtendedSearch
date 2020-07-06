@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
+use PageProps;
 use Title;
 
 class UpdateWikiPage extends UpdateTitleBase {
@@ -35,6 +36,11 @@ class UpdateWikiPage extends UpdateTitleBase {
 	 * @return bool
 	 */
 	protected function skipProcessing() {
+		$noindex = (bool)PageProps::getInstance()
+			->getProperties( $this->title, 'noindex' );
+		if ( $noindex ) {
+			return true;
+		}
 		return in_array(
 			$this->getTitle()->getNamespace(),
 			$this->getSource()->getConfig()->get( 'skip_namespaces' )

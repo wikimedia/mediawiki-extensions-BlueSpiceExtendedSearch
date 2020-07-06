@@ -9,6 +9,9 @@ class UpdateTitleBase extends UpdateBase {
 	 * @return string
 	 */
 	protected function getDocumentProviderUri() {
+		if ( isset( $this->params['canonicalUrl'] ) ) {
+			return $this->params['canonicalUrl'];
+		}
 		return $this->getTitle()->getCanonicalURL();
 	}
 
@@ -35,6 +38,8 @@ class UpdateTitleBase extends UpdateBase {
 	 * @return bool
 	 */
 	protected function isDeletion() {
-		return !$this->getTitle()->exists() || $this->action == static::ACTION_DELETE;
+		$force = isset( $this->params['forceDelete'] ) && $this->params['forceDelete'] === true;
+		return $force ||
+			( !$this->getTitle()->exists() || $this->action == static::ACTION_DELETE );
 	}
 }
