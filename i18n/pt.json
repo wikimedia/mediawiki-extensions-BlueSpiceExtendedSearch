@@ -160,5 +160,6 @@
 	"action-extendedsearch-search-specialpage": "procurar páginas especiais",
 	"action-extendedsearch-search-wikipage": "procurar páginas",
 	"action-extendedsearch-search-repofile": "procurar ficheiros",
-	"action-extendedsearch-search-externalfile": "procurar ficheiros externos"
+	"action-extendedsearch-search-externalfile": "procurar ficheiros externos",
+	"bs-extendedsearch-pref-externalfilepaths-help": "Localizações externas onde procurar ficheiros e cujos ficheiros indexar. Estas localizações são inseridas em pares de chave e valor."
 }
