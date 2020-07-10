@@ -2,13 +2,18 @@
 
 namespace BS\ExtendedSearch\Source\Updater;
 
+use MediaWiki\Revision\RevisionStoreRecord;
+use MediaWiki\Storage\EditResult;
+use User;
+use WikiPage as MWWikiPage;
+
 class WikiPage extends Base {
 	/**
 	 *
 	 * @param array &$aHooks
 	 */
 	public function init( &$aHooks ) {
-		$aHooks['PageContentSaveComplete'][] = [ $this, 'onPageContentSaveComplete' ];
+		$aHooks['PageSaveComplete'][] = [ $this, 'onPageSaveComplete' ];
 		$aHooks['ArticleDeleteComplete'][] = [ $this, 'onArticleDeleteComplete' ];
 		$aHooks['ArticleUndelete'][] = [ $this, 'onArticleUndelete' ];
 		$aHooks['TitleMoveComplete'][] = [ $this, 'onTitleMoveComplete' ];
@@ -19,21 +24,16 @@ class WikiPage extends Base {
 	/**
 	 * Update index on article change.
 	 *
-	 * @param \WikiPage $wikiPage
-	 * @param \User $user
-	 * @param \Content $content
+	 * @param MWWikiPage $wikiPage
+	 * @param User $user
 	 * @param string $summary
-	 * @param bool $isMinor
-	 * @param bool $isWatch
-	 * @param int $section
 	 * @param int $flags
-	 * @param \Revision $revision
-	 * @param \Status $status
-	 * @param int $baseRevId
-	 *
+	 * @param RevisionStoreRecord $revisionRecord
+	 * @param EditResult $editResult
 	 * @return bool
 	 */
-	public function onPageContentSaveComplete( \WikiPage $wikiPage, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision, $status, $baseRevId ) {
+	public function onPageSaveComplete( MWWikiPage $wikiPage, User $user, string $summary,
+		int $flags, RevisionStoreRecord $revisionRecord, EditResult $editResult ) {
 		\JobQueueGroup::singleton()->push(
 			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage( $wikiPage->getTitle() )
 		);
