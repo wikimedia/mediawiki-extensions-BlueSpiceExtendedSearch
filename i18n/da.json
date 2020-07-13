@@ -11,6 +11,7 @@
 	"bs-extendedsearch-admin-label-error": "Fejl",
 	"bs-extendedsearch-admin-heading-sources": "Kilder",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Dokumenter",
+	"bs-extendedsearch-search-center-addfilter-dialog-title": "Tilføj filter",
 	"bs-extendedsearch-search-center-filter-extension-label": "Udvidelse",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Navnerum",
 	"bs-extendedsearch-search-center-filter-categories-label": "Kategori",
@@ -52,9 +53,12 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Type",
 	"bs-extendedsearch-collection-type-searchhistory": "Søgehistorik",
 	"bs-extendedsearch-collection-var-numbersearched": "Søgninger",
+	"right-extendedsearch-search-specialpage": "Søg efter specialsider",
 	"right-extendedsearch-search-wikipage": "Søg efter sider",
 	"right-extendedsearch-search-repofile": "Søg efter filer",
 	"right-extendedsearch-search-externalfile": "Søg efter eksterne filer",
+	"action-extendedsearch-search-specialpage": "søg efter specialsider",
 	"action-extendedsearch-search-wikipage": "søg efter sider",
-	"action-extendedsearch-search-repofile": "søg efter filer"
+	"action-extendedsearch-search-repofile": "søg efter filer",
+	"action-extendedsearch-search-externalfile": "søg efter eksterne filer"
 }
