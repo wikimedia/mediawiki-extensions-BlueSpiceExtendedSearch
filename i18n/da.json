@@ -33,6 +33,7 @@
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Navn",
 	"bs-extendedsearch-searchcenter-sort-field-size": "Størrelse",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Navnerum",
+	"bs-extendedsearch-autocomplete-create-page-link": "Opret siden \"$1\"",
 	"bs-extendedsearch-loadmore-label": "Indlæs flere resultater",
 	"bs-extendedsearch-loadmore-error": "Der kunne ikke hentes flere resultater",
 	"bs-extendedsearch-search-center-result-typetext-label": "Type:",
