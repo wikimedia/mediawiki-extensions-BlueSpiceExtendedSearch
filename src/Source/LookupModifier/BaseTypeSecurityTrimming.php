@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
+use MediaWiki\MediaWikiServices;
+
 class BaseTypeSecurityTrimming extends Base {
 	/**
 	 *
@@ -35,9 +37,14 @@ class BaseTypeSecurityTrimming extends Base {
 			if ( !$searchPermission ) {
 				continue;
 			}
-			if ( $this->user->isAllowed( $searchPermission ) == false ) {
-				$typesToBlock[] = $key;
+			$isAllowed = MediaWikiServices::getInstance()->getPermissionManager()->userHasRight(
+				$this->user,
+				$searchPermission
+			);
+			if ( !$isAllowed ) {
+				continue;
 			}
+			$typesToBlock[] = $key;
 		}
 
 		if ( !empty( $typesToBlock ) ) {
