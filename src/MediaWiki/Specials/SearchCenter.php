@@ -7,6 +7,7 @@ use BS\ExtendedSearch\Backend as SearchBackend;
 use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\Source\Base;
 use FormatJson;
+use MediaWiki\MediaWikiServices;
 use SpecialPage;
 use Title;
 
@@ -25,6 +26,7 @@ class SearchCenter extends SpecialPage {
 		$this->setHeaders();
 
 		$config = Services::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
+		$pm = MediaWikiServices::getInstance()->getPermissionManager();
 
 		$returnTo = $this->getRequest()->getText( 'returnto' );
 		$title = Title::newFromText( $returnTo );
@@ -70,7 +72,7 @@ class SearchCenter extends SpecialPage {
 			$resultStructures[$source->getTypeKey()] = $resultStructure;
 
 			$searchPermission = $source->getSearchPermission();
-			if ( !$searchPermission || $this->getUser()->isAllowed( $searchPermission ) ) {
+			if ( !$searchPermission || $pm->userHasRight( $this->getUser(), $searchPermission ) ) {
 				$availableTypes[] = $source->getTypeKey();
 			}
 		}
