@@ -256,7 +256,7 @@
 	],
 	"Hooks": {
 		"ResourceLoaderTestModules": "BS\\ExtendedSearch\\Setup::onResourceLoaderTestModules",
-		"SkinTemplateOutputPageBeforeExec": "BS\\ExtendedSearch\\Setup::onSkinTemplateOutputPageBeforeExec",
+		"ChameleonSkinTemplateOutputPageBeforeExec": "BS\\ExtendedSearch\\Setup::onSkinTemplateOutputPageBeforeExec",
 		"BeforePageDisplay": [
 			"BS\\ExtendedSearch\\Hook\\BeforePageDisplay\\AddResources::callback",
 			"BS\\ExtendedSearch\\Hook\\BeforePageDisplay\\AddSimilarPages::callback"
