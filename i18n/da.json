@@ -11,6 +11,7 @@
 	"bs-extendedsearch-admin-label-error": "Fejl",
 	"bs-extendedsearch-admin-heading-sources": "Kilder",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Dokumenter",
+	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Ventende opdateringsjobs",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Tilføj filter",
 	"bs-extendedsearch-search-center-filter-extension-label": "Udvidelse",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Navnerum",
