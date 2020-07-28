@@ -116,7 +116,15 @@ class BaseTitleSecurityTrimmings extends Base {
 
 				if ( $title->isSpecialPage() ) {
 					$sp = $spFactory->getPage( $title->getDBkey() );
-					if ( !$sp instanceof \SpecialPage || !$user->isAllowed( $sp->getRestriction() ) ) {
+					if ( !$sp instanceof \SpecialPage ) {
+						$excludes[] = $resultObject->getId();
+						continue;
+					}
+					$isAllowed = $services->getPermissionManager()->userHasRight(
+						$user,
+						$sp->getRestriction()
+					);
+					if ( !$isAllowed ) {
 						$excludes[] = $resultObject->getId();
 						continue;
 					}
