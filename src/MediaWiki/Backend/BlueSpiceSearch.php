@@ -3,6 +3,7 @@ namespace BS\ExtendedSearch\MediaWiki\Backend;
 
 use BlueSpice\Services;
 use BS\ExtendedSearch\Lookup;
+use SearchResult;
 
 class BlueSpiceSearch extends \SearchEngine {
 	protected $fallbackSearchEngine = null;
@@ -15,29 +16,28 @@ class BlueSpiceSearch extends \SearchEngine {
 	/**
 	 *
 	 * @param string $term
-	 * @return \BS\ExtendedSearch\MediaWiki\Backend\SearchResultSet
+	 * @return SearchResultSet
 	 */
 	public function searchText( $term ) {
-		$term = trim( $term );
-		$results = $this->runFullSearch( 'source_content', $term );
-
-		$searchResultSet = new SearchResultSet( $this->searchContainedSyntax( $term ) );
-		foreach ( $results as $title ) {
-			$searchResultSet->add(
-				SearchResult::newFromTitle( $title, $searchResultSet )
-			);
-		}
-		return $searchResultSet;
+		return $this->fullSearchWrapper( $term );
 	}
 
 	/**
 	 *
 	 * @param string $term
-	 * @return \BS\ExtendedSearch\MediaWiki\Backend\SearchResultSet
+	 * @return SearchResultSet
 	 */
 	public function searchTitle( $term ) {
+		return $this->fullSearchWrapper( $term );
+	}
+
+	/**
+	 * @param string $term
+	 * @return SearchResultSet
+	 */
+	protected function fullSearchWrapper( $term ) {
 		$term = trim( $term );
-		$results = $this->runFullSearch( 'basename', $term );
+		$results = $this->runFullSearch( $term );
 
 		$searchResultSet = new SearchResultSet( $this->searchContainedSyntax( $term ) );
 		foreach ( $results as $title ) {
@@ -45,6 +45,7 @@ class BlueSpiceSearch extends \SearchEngine {
 				SearchResult::newFromTitle( $title, $searchResultSet )
 			);
 		}
+
 		return $searchResultSet;
 	}
 
@@ -91,12 +92,10 @@ class BlueSpiceSearch extends \SearchEngine {
 	}
 
 	/**
-	 *
-	 * @param string $field
 	 * @param string $search
 	 * @return \Title[]
 	 */
-	protected function runFullSearch( $field, $search ) {
+	protected function runFullSearch( $search ) {
 		if ( $search === '' ) {
 			return [];
 		}
@@ -105,7 +104,6 @@ class BlueSpiceSearch extends \SearchEngine {
 		$lookup->setQueryString( [
 			'query' => $search,
 			'default_operator' => 'AND',
-			'fields' => [ $field ]
 		] );
 
 		$resultSet = $this->backend->runLookup( $lookup );
@@ -116,11 +114,12 @@ class BlueSpiceSearch extends \SearchEngine {
 
 		$titles = [];
 		foreach ( $resultSet->results as $item ) {
-			if ( !isset( $item['prefixed_title'] ) ) {
+			if ( !isset( $item['prefixed_title'] ) || !isset( $item['namespace' ] ) ) {
 				continue;
 			}
 
 			$title = \Title::newFromText( $item['prefixed_title'] );
+
 			if ( $title instanceof \Title ) {
 				$titles[] = $title;
 			}
@@ -188,7 +187,7 @@ class BlueSpiceSearch extends \SearchEngine {
 		if ( !empty( $this->namespaces ) ) {
 			$lookup->addTermsFilter( 'namespace', $this->namespaces );
 		}
-		$lookup->addSourceField( 'prefixed_title' );
+
 		$lookup->setSize( $this->limit );
 		$lookup->setFrom( $this->offset );
 		$lookup->addSort( '_score', Lookup::SORT_DESC );
