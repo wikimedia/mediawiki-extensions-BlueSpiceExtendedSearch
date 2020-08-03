@@ -166,12 +166,10 @@ class WikiPageFormatter extends Base {
 
 		$matchedSections = [];
 		foreach ( $sections as $section ) {
-			$sectionText = urldecode( str_replace( '.', '%', $section ) );
-			$sectionText = str_replace( '%', '.', $sectionText );
 			$lcTerm = strtolower( $highlightedTerm );
-			$lcSection = strtolower( $sectionText );
+			$lcSection = strtolower( $section );
 			if ( strpos( $lcSection, $lcTerm ) !== false ) {
-				$matchedSections[] = $sectionText;
+				$matchedSections[] = $section;
 			}
 		}
 
