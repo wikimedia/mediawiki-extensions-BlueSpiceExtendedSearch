@@ -17,6 +17,7 @@ use BS\ExtendedSearch\Source\LookupModifier\BaseUserRelevance;
 use BS\ExtendedSearch\Source\LookupModifier\BaseTypeSecurityTrimming;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 use BS\ExtendedSearch\Source\PostProcessor\Base as PostProcessorBase;
+use MediaWiki\MediaWikiServices;
 
 class Base {
 
@@ -59,7 +60,10 @@ class Base {
 	 */
 	public function __construct( $oBackend, $aConfig ) {
 		$this->oBackend = $oBackend;
-		$this->oConfig = new \HashConfig( $aConfig );
+		$this->oConfig = new \MultiConfig( [
+			MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' ),
+			new \HashConfig( $aConfig )
+		] );
 	}
 
 	/**
