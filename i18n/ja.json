@@ -15,5 +15,7 @@
 	"bs-extendedsearch-search-center-result-namespace_text-label": "名前空間:",
 	"bs-extendedsearch-search-center-result-categories-label": "カテゴリ:",
 	"prefs-extendedsearch": "拡張検索",
-	"bs-extendedsearch-search-center-result-redirects-label": "転送元:"
+	"bs-extendedsearch-search-center-result-redirects-label": "転送元:",
+	"right-extendedsearch-search-wikipage": "ページを検索",
+	"action-extendedsearch-search-wikipage": "ページの検索"
 }

@@ -56,5 +56,11 @@
 	"bs-extendedsearch-pref-external-file-paths-path": "Fysisk sti",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Type",
 	"bs-extendedsearch-collection-type-searchhistory": "Søgehistorik",
-	"action-extendedsearch-search-wikipage": "søg efter sider"
+	"action-extendedsearch-search-wikipage": "søg efter sider",
+	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Ventende opdateringsjobs",
+	"bs-extendedsearch-search-center-addfilter-dialog-title": "Tilføj filter",
+	"bs-extendedsearch-autocomplete-create-page-link": "Opret siden \"$1\"",
+	"right-extendedsearch-search-specialpage": "Søg efter specialsider",
+	"action-extendedsearch-search-specialpage": "søg efter specialsider",
+	"action-extendedsearch-search-externalfile": "søg efter eksterne filer"
 }
