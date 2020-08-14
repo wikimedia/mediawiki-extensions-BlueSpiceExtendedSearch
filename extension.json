@@ -603,7 +603,9 @@
 		"updateLinkedFileIndex": "BS\\ExtendedSearch\\Source\\Job\\UpdateLinkedFile"
 	},
 	"AutoloadNamespaces": {
-		"BS\\ExtendedSearch\\": "src/",
+		"BS\\ExtendedSearch\\": "src/"
+	},
+	"TestAutoloadNamespaces": {
 		"BS\\ExtendedSearch\\Tests\\": "tests/phpunit/"
 	},
 	"load_composer_autoloader" : true,
