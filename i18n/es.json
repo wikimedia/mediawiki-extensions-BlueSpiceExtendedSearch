@@ -81,6 +81,7 @@
 	"bs-extendedsearch-source-type-specialpage-label": "Página especial",
 	"bs-extendedsearch-result-relevance-relevant": "Este resultado es importante para mí",
 	"bs-extendedsearch-result-relevance-not-relevant": "Este resultado no es importante para mí",
+	"bs-extendedsearch-autocomplete-fulltext-search-button": "Búsqueda de texto completo",
 	"prefs-extendedsearch": "Búsqueda extendida",
 	"bs-extendedsearch-user-preferred-namespaces": "Espacios de nombres preferidos",
 	"bs-extendedsearch-pref-external-file-paths": "Rutas del archivo externo",
