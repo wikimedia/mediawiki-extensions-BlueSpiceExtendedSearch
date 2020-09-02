@@ -26,28 +26,6 @@ class Setup {
 	// TODO: Move hooks to proper classes
 
 	/**
-	 * Register QUnit Tests with MediaWiki framework
-	 * @param array &$testModules
-	 * @param \ResourceLoader &$resourceLoader
-	 * @return bool
-	 */
-	public static function onResourceLoaderTestModules( array &$testModules, \ResourceLoader &$resourceLoader ) {
-		$testModules['qunit']['ext.blueSpiceExtendedSearch.tests'] = [
-			'scripts' => [
-				'tests/qunit/ext.blueSpiceExtendedSearch.utils.test.js',
-				'tests/qunit/bs.extendedSearch.Lookup.test.js'
-			],
-			'dependencies' => [
-				'ext.blueSpiceExtendedSearch'
-			],
-			'localBasePath' => dirname( __DIR__ ),
-			'remoteExtPath' => 'BlueSpiceExtendedSearch',
-		];
-
-		return true;
-	}
-
-	/**
 	 * @param \Skin &$skin
 	 * @param QuickTemplate &$template
 	 * @return bool

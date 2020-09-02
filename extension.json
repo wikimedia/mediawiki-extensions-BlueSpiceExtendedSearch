@@ -258,7 +258,6 @@
 		"BS\\ExtendedSearch\\Setup::init"
 	],
 	"Hooks": {
-		"ResourceLoaderTestModules": "BS\\ExtendedSearch\\Setup::onResourceLoaderTestModules",
 		"ChameleonSkinTemplateOutputPageBeforeExec": "BS\\ExtendedSearch\\Setup::onSkinTemplateOutputPageBeforeExec",
 		"BeforePageDisplay": [
 			"BS\\ExtendedSearch\\Hook\\BeforePageDisplay\\AddResources::callback",
@@ -503,6 +502,17 @@
 				"bs-extendedsearch-collection-var-searchterm",
 				"bs-extendedsearch-collection-var-numbersearched"
 			]
+		},
+		"test.BlueSpiceExtendedSearch": {
+			"scripts": [
+				"tests/qunit/ext.blueSpiceExtendedSearch.utils.test.js",
+				"tests/qunit/bs.extendedSearch.Lookup.test.js"
+			],
+			"dependencies": [
+				"ext.blueSpiceExtendedSearch"
+			],
+			"localBasePath": "",
+			"remoteExtPath": "BlueSpiceExtendedSearch"
 		}
 	},
 	"config_prefix": "bsg",
