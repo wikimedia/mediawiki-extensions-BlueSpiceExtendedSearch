@@ -595,6 +595,9 @@
 		},
 		"ESUseSubpagePillsAutocomplete": {
 			"value": true
+		},
+		"ESSearchInRawWikitext": {
+			"value": true
 		}
 	},
 	"callback": "\\BS\\ExtendedSearch\\Setup::onRegistration",
