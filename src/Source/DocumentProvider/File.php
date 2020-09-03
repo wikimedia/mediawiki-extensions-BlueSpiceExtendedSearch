@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\DocumentProvider;
 
-use BlueSpice\Services;
+use MediaWiki\MediaWikiServices;
 
 class File extends DecoratorBase {
 
@@ -19,7 +19,7 @@ class File extends DecoratorBase {
 		$contents = base64_encode( $contents );
 
 		$aDC = $this->oDecoratedDP->getDataConfig( $sUri, $oFile );
-		$magic = Services::getInstance()->getMimeAnalyzer();
+		$magic = MediaWikiServices::getInstance()->getMimeAnalyzer();
 		$aDC = array_merge( $aDC, [
 			'basename' => $oFile->getBasename(),
 			'basename_exact' => $oFile->getBasename(),

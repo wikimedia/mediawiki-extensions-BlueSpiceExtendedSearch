@@ -4,8 +4,8 @@ namespace BS\ExtendedSearch\Data\TagCloud\Searchstats;
 
 use BlueSpice\Data\DatabaseReader;
 use BlueSpice\Data\ReaderParams;
-use BlueSpice\Services;
 use BlueSpice\TagCloud\Data\TagCloud\Schema;
+use MediaWiki\MediaWikiServices;
 
 class Reader extends DatabaseReader {
 	/**
@@ -32,7 +32,7 @@ class Reader extends DatabaseReader {
 	 */
 	protected function makeSecondaryDataProvider() {
 		return new SecondaryDataProvider(
-			Services::getInstance()->getLinkRenderer(),
+			MediaWikiServices::getInstance()->getLinkRenderer(),
 			$this->context
 		);
 	}

@@ -2,13 +2,13 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
-use BlueSpice\Services;
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\ExternalIndexFactory;
 use BS\ExtendedSearch\IExternalIndex;
 use BS\ExtendedSearch\Source\Base;
 use Exception;
 use Hooks;
+use MediaWiki\MediaWikiServices;
 use Status;
 
 abstract class UpdateBase extends \Job {
@@ -134,7 +134,7 @@ abstract class UpdateBase extends \Job {
 	 * @return ExternalIndexFactory
 	 */
 	protected function getExternalIndexFactory() {
-		return Services::getInstance()->getService(
+		return MediaWikiServices::getInstance()->getService(
 			'BSExtendedSearchExternalIndexFactory'
 		);
 	}

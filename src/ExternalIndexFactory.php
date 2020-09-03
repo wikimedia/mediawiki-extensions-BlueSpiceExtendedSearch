@@ -3,8 +3,8 @@
 namespace BS\ExtendedSearch;
 
 use BlueSpice\ExtensionAttributeBasedRegistry;
-use BlueSpice\Services;
 use Config;
+use MediaWiki\MediaWikiServices;
 
 class ExternalIndexFactory {
 	/**
@@ -49,7 +49,7 @@ class ExternalIndexFactory {
 			return null;
 		}
 		return call_user_func_array( $callback, [
-			Services::getInstance(),
+			MediaWikiServices::getInstance(),
 			$this->config,
 			$document
 		] );

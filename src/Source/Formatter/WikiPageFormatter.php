@@ -4,7 +4,7 @@ namespace BS\ExtendedSearch\Source\Formatter;
 
 use BlueSpice\DynamicFileDispatcher\ArticlePreviewImage;
 use BlueSpice\DynamicFileDispatcher\Params;
-use BlueSpice\Services;
+use MediaWiki\MediaWikiServices;
 
 class WikiPageFormatter extends Base {
 
@@ -449,7 +449,7 @@ class WikiPageFormatter extends Base {
 	 * @return string
 	 */
 	protected function getFileUsage( $title ) {
-		$dbr = Services::getInstance()->getDBLoadBalancer()
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()
 			->getConnection( DB_REPLICA );
 
 		// Would be nice to get this info from the index w/o running another query
