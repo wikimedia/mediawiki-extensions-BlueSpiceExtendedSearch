@@ -6,9 +6,9 @@ use BlueSpice\Data\FieldType;
 use BlueSpice\EntityConfig;
 use BlueSpice\ExtendedStatistics\Data\Entity\Collection\Schema;
 use BlueSpice\ExtendedStatistics\EntityConfig\Collection;
-use BlueSpice\Services;
 use BS\ExtendedSearch\Entity\Collection\SearchHistory as Entity;
 use Config;
+use MediaWiki\MediaWikiServices;
 
 class SearchHistory extends EntityConfig {
 
@@ -16,7 +16,7 @@ class SearchHistory extends EntityConfig {
 	 *
 	 * @param Config $config
 	 * @param string $key
-	 * @param Services $services
+	 * @param MediaWikiServices $services
 	 * @return EntityConfig
 	 */
 	public static function factory( $config, $key, $services ) {

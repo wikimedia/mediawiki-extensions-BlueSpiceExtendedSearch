@@ -12,26 +12,26 @@ use BlueSpice\EntityFactory;
 use BlueSpice\ExtendedStatistics\DataCollector\StoreSourced;
 use BlueSpice\ExtendedStatistics\Entity\Snapshot;
 use BlueSpice\ExtendedStatistics\Util\SnapshotRange\Daily;
-use BlueSpice\Services;
 use BlueSpice\Timestamp;
 use BS\ExtendedSearch\Data\SearchHistory\Record;
 use BS\ExtendedSearch\Data\SearchHistory\Store;
 use BS\ExtendedSearch\Entity\Collection\SearchHistory as Collection;
 use Config;
+use MediaWiki\MediaWikiServices;
 
 class SearchHistory extends StoreSourced {
 
 	/**
 	 *
 	 * @param string $type
-	 * @param Services $services
+	 * @param MediaWikiServices $services
 	 * @param Snapshot $snapshot
 	 * @param Config|null $config
 	 * @param EntityFactory|null $factory
 	 * @param IStore|null $store
 	 * @return DataCollector
 	 */
-	public static function factory( $type, Services $services, Snapshot $snapshot,
+	public static function factory( $type, MediaWikiServices $services, Snapshot $snapshot,
 		Config $config = null, EntityFactory $factory = null, IStore $store = null ) {
 		if ( !$config ) {
 			$config = $snapshot->getConfig();

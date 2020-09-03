@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
-use BlueSpice\Services;
+use MediaWiki\MediaWikiServices;
 
 /**
  * Page language filter is special because not all indexed docs have
@@ -18,7 +18,7 @@ class WikiPageLanguageFilter extends Base {
 
 	public function apply() {
 		$filters = $this->oLookup->getFilters();
-		$config = Services::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
 		$autoSetLangFilter = $config->get( 'ESAutoSetLangFilter' );
 		if ( !isset( $filters['terms']['page_language'] ) && !$autoSetLangFilter ) {
 			return;
