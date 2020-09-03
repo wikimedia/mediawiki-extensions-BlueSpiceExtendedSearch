@@ -15,7 +15,7 @@ class BaseTitleSecurityTrimmings extends Base {
 		parent::__construct( $lookup, $context );
 
 		// Should be injected
-		$this->config = \BS\ExtendedSearch\Backend::instance( 'local' )->getConfig();
+		$this->config = \BS\ExtendedSearch\Backend::instance()->getConfig();
 		$this->setSearch();
 	}
 

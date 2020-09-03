@@ -443,7 +443,7 @@
 		searchBar = new bs.extendedSearch.SearchBar( {
 			useNamespacePills: false,
 			useSubpagePills: false,
-			typingDoneInterval: 0
+			typingDoneInterval: 1000
 		} );
 
 		searchBar.$searchForm.on( 'submit', function (e) {
