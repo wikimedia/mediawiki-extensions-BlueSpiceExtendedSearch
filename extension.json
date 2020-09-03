@@ -193,6 +193,9 @@
 			"PostInstanceCreationCommandFactories": {
 				"initbackend": "BS\\ExtendedSearch\\SimpleFarmer\\CommandDescription\\InitBackend::factory",
 				"rebuildindex": "BS\\ExtendedSearch\\SimpleFarmer\\CommandDescription\\RebuildIndex::factory"
+			},
+			"PreInstanceDeletionCommandFactories": {
+				"deleteindices": "BS\\ExtendedSearch\\SimpleFarmer\\CommandDescription\\DeleteIndices::factory"
 			}
 		},
 		"BlueSpicePrivacy": {
