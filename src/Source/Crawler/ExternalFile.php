@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\Crawler;
 
-use BlueSpice\Services;
+use MediaWiki\MediaWikiServices;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use SplFileInfo;
@@ -14,7 +14,7 @@ class ExternalFile extends File {
 	public function crawl() {
 		$dummyTitle = \Title::makeTitle( NS_SPECIAL, 'Dummy title for external file' );
 
-		$config = Services::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
 		$paths = $config->get( 'ESExternalFilePaths' );
 		$excludePatterns = (array)$config->get(
 			'ExtendedSearchExternalFilePathsExcludes'

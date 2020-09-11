@@ -2,11 +2,11 @@
 
 namespace BS\ExtendedSearch;
 
-use BlueSpice\Services;
 use BS\ExtendedSearch\Source\Base as SourceBase;
 use Config;
 use Elastica\Result;
 use Exception;
+use MediaWiki\MediaWikiServices;
 use MWException;
 
 class PostProcessor {
@@ -43,7 +43,9 @@ class PostProcessor {
 	 */
 	public static function factory( $type, $backend ) {
 		$postProcessor = new static(
-			$type, $backend, Services::getInstance()->getConfigFactory()->makeConfig( 'bsg' )
+			$type,
+			$backend,
+			MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' )
 		);
 		$processors = [];
 		foreach ( $backend->getSources() as $key => $source ) {

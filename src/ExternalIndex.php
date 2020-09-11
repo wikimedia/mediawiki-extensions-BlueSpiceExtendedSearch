@@ -8,17 +8,17 @@
 
 namespace BS\ExtendedSearch;
 
-use BlueSpice\Services;
 use BS\ExtendedSearch\Source\Job\UpdateBase;
 use Config;
 use Exception;
+use MediaWiki\MediaWikiServices;
 use Status;
 
 abstract class ExternalIndex implements IExternalIndex {
 
 	/**
 	 *
-	 * @var Services
+	 * @var MediaWikiServices
 	 */
 	protected $services = null;
 
@@ -36,12 +36,12 @@ abstract class ExternalIndex implements IExternalIndex {
 
 	/**
 	 *
-	 * @param Services $services
+	 * @param MediaWikiServices $services
 	 * @param Config $config
 	 * @param array $document
 	 */
 	protected function __construct(
-		Services $services, Config $config, array $document
+		MediaWikiServices $services, Config $config, array $document
 	) {
 		$this->services = $services;
 		$this->config = $config;
@@ -50,13 +50,13 @@ abstract class ExternalIndex implements IExternalIndex {
 
 	/**
 	 *
-	 * @param Services $services
+	 * @param MediaWikiServices $services
 	 * @param Config $config
 	 * @param array $document
 	 * @return IExternalIndex
 	 */
 	public static function factory(
-		Services $services, Config $config, array $document
+		MediaWikiServices $services, Config $config, array $document
 	) {
 		return new static( $services, $config, $document );
 	}

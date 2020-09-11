@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
-use BlueSpice\Services;
+use MediaWiki\MediaWikiServices;
 
 class Autocomplete extends \ApiBase {
 	/**
@@ -117,7 +117,7 @@ class Autocomplete extends \ApiBase {
 			$pageName
 		);
 		$user = $this->getUser();
-		$pm = \MediaWiki\MediaWikiServices::getInstance()->getPermissionManager();
+		$pm = MediaWikiServices::getInstance()->getPermissionManager();
 
 		if ( $title->exists() == false &&
 			$pm->userCan( 'createpage', $user, $title ) &&
@@ -125,7 +125,7 @@ class Autocomplete extends \ApiBase {
 		) {
 			$this->pageCreatable = true;
 
-			$linkRenderer = Services::getInstance()->getService( 'LinkRenderer' );
+			$linkRenderer = MediaWikiServices::getInstance()->getService( 'LinkRenderer' );
 			$anchorText = wfMessage(
 				'bs-extendedsearch-autocomplete-create-page-link',
 				$title->getFullText()

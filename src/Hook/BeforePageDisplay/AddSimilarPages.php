@@ -2,9 +2,9 @@
 
 namespace BS\ExtendedSearch\Hook\BeforePageDisplay;
 
-use BlueSpice\Services;
 use BS\ExtendedSearch\Backend;
 use Exception;
+use MediaWiki\MediaWikiServices;
 
 class AddSimilarPages extends \BlueSpice\Hook\BeforePageDisplay {
 	protected function skipProcessing() {
@@ -28,7 +28,7 @@ class AddSimilarPages extends \BlueSpice\Hook\BeforePageDisplay {
 				$this->out->getTitle()
 			);
 
-			$linkRenderer = Services::getInstance()->getLinkRenderer();
+			$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
 
 			$pageLinks = [];
 			foreach ( $similarPages as $title ) {

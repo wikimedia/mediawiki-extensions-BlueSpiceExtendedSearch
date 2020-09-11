@@ -5,13 +5,13 @@ namespace BS\ExtendedSearch\Tag;
 use BlueSpice\ParamProcessor\IParamDefinition;
 use BlueSpice\ParamProcessor\ParamDefinition;
 use BlueSpice\ParamProcessor\ParamType;
-use BlueSpice\Services;
 use BlueSpice\Tag\IHandler;
 use BlueSpice\Tag\Tag;
 use BS\ExtendedSearch\Param\Definition\SearchResultTypeListParam;
 use BSCategoryListParam;
 use BSNamespaceListParam;
 use ConfigException;
+use MediaWiki\MediaWikiServices;
 use Parser;
 use PPFrame;
 
@@ -38,7 +38,7 @@ class TagSearch extends Tag {
 		Parser $parser,
 		PPFrame $frame
 	) {
-		$config = Services::getInstance()
+		$config = MediaWikiServices::getInstance()
 			->getConfigFactory()
 			->makeConfig( 'bsg' );
 		$this->tagCounter ++;

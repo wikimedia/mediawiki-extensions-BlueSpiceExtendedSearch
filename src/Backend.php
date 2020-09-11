@@ -3,7 +3,6 @@
 namespace BS\ExtendedSearch;
 
 use BlueSpice\ExtensionAttributeBasedRegistry;
-use BlueSpice\Services;
 use BS\ExtendedSearch\Source\Base as SourceBase;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 use BS\ExtendedSearch\Source\WikiPages;
@@ -15,6 +14,7 @@ use Elastica\Search;
 use Exception;
 use FormatJson;
 use Hooks;
+use MediaWiki\MediaWikiServices;
 use MWException;
 use RequestContext;
 use stdClass;
@@ -64,7 +64,9 @@ class Backend {
 	 * @throws Exception
 	 */
 	public function getSource( $sourceKey ) {
-		$sourceFactory = Services::getInstance()->getService( 'BSExtendedSearchSourceFactory' );
+		$sourceFactory = MediaWikiServices::getInstance()->getService(
+			'BSExtendedSearchSourceFactory'
+		);
 		$source = $sourceFactory->makeSource( $sourceKey );
 
 		Hooks::run( 'BSExtendedSearchMakeSource', [ $this, $sourceKey, &$source ] );
@@ -79,7 +81,7 @@ class Backend {
 	 */
 	public function destroySource( $sourceKey ) {
 		unset( $this->sources[$sourceKey] );
-		$sourceFactory = Services::getInstance()->getService( 'BSExtendedSearchSourceFactory' );
+		$sourceFactory = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchSourceFactory' );
 		$sourceFactory->destroySource( $sourceKey );
 	}
 
@@ -128,7 +130,7 @@ class Backend {
 	}
 
 	protected static function newInstance() {
-		$config = Services::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
 
 		$backendClass = $config->get( 'ESBackendClass' );
 		$backendHost = $config->get( 'ESBackendHost' );
@@ -685,8 +687,8 @@ class Backend {
 	 * @return Object|null
 	 */
 	public function getService( $name ) {
-		if ( Services::getInstance()->hasService( $name ) ) {
-			return Services::getInstance()->getService( $name );
+		if ( MediaWikiServices::getInstance()->hasService( $name ) ) {
+			return MediaWikiServices::getInstance()->getService( $name );
 		}
 		return null;
 	}
@@ -705,7 +707,7 @@ class Backend {
 	 * @param array $data
 	 */
 	protected function logSearchHistory( $data ) {
-		$loadBalancer = Services::getInstance()->getDBLoadBalancer();
+		$loadBalancer = MediaWikiServices::getInstance()->getDBLoadBalancer();
 		$dbw = $loadBalancer->getConnection( DB_MASTER );
 
 		$dbw->insert(

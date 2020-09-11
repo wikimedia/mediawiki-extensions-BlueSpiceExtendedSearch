@@ -2,9 +2,9 @@
 
 namespace BS\ExtendedSearch;
 
-use BlueSpice\Services;
 use BS\ExtendedSearch\Source\Job\UpdateBase;
 use Config;
+use MediaWiki\MediaWikiServices;
 use Status;
 
 interface IExternalIndex {
@@ -22,13 +22,13 @@ interface IExternalIndex {
 
 	/**
 	 *
-	 * @param Services $services
+	 * @param MediaWikiServices $services
 	 * @param Config $config
 	 * @param array $document
 	 * @return IExternalIndex
 	 */
 	public static function factory(
-		Services $services, Config $config, array $document
+		MediaWikiServices $services, Config $config, array $document
 	);
 
 	/**

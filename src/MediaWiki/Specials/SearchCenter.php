@@ -2,7 +2,6 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Specials;
 
-use BlueSpice\Services;
 use BS\ExtendedSearch\Backend as SearchBackend;
 use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\Source\Base;
@@ -25,7 +24,7 @@ class SearchCenter extends SpecialPage {
 	public function execute( $subPage ) {
 		$this->setHeaders();
 
-		$config = Services::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
 		$pm = MediaWikiServices::getInstance()->getPermissionManager();
 
 		$returnTo = $this->getRequest()->getText( 'returnto' );
@@ -137,7 +136,7 @@ class SearchCenter extends SpecialPage {
 	 */
 	private function userCanExport() {
 		$pageToTest = Title::makeTitle( NS_MEDIAWIKI, 'Dummy' );
-		if ( \MediaWiki\MediaWikiServices::getInstance()
+		if ( MediaWikiServices::getInstance()
 			->getPermissionManager()
 			->userCan( 'edit', $this->getUser(), $pageToTest )
 		) {

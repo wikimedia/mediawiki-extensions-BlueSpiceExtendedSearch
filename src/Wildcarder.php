@@ -2,8 +2,8 @@
 
 namespace BS\ExtendedSearch;
 
-use BlueSpice\Services;
 use ConfigException;
+use MediaWiki\MediaWikiServices;
 
 class Wildcarder {
 
@@ -38,7 +38,7 @@ class Wildcarder {
 	 * @throws ConfigException
 	 */
 	public static function factory( $original ) {
-		$config = Services::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
 		return new static(
 			$original,
 			$config->get( 'ESWildcardingOperators' ),
