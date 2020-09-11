@@ -41,7 +41,7 @@ class BaseTypeSecurityTrimming extends Base {
 				$this->user,
 				$searchPermission
 			);
-			if ( !$isAllowed ) {
+			if ( $isAllowed ) {
 				continue;
 			}
 			$typesToBlock[] = $key;
