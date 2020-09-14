@@ -24,7 +24,6 @@ class WikiPage extends DecoratorBase {
 			],
 			'source_content' => [
 				'type' => 'text',
-				'copy_to' => 'congregated'
 			],
 			'rendered_content' => [
 				'type' => 'text',
