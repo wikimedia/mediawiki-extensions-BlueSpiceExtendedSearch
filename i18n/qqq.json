@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Kizule",
+			"MuratTheTurkish",
 			"Robby",
 			"Robert Vogel <vogel@hallowelt.com>",
 			"Umherirrender",
@@ -71,7 +72,7 @@
 	"bs-extendedsearch-search-center-options-dialog-title": "Title for search options dialog",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Label for dialog button with action cancel\n{{Identical|Cancel}}",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Label for confirmation button in search options dialog with apply changes action",
-	"bs-extendedsearch-search-center-options-page-size": "Label for the page size option in search options dialog. This options sets how many results will be displayed per page.\n{{Identical|Entries per page}}",
+	"bs-extendedsearch-search-center-options-page-size": "Label for the page size option in search options dialog. This options sets how many results will be displayed per page.",
 	"bs-extendedsearch-search-center-options-sort-by": "Label for the sort by option in search options dialog. This options sets the field results are sorted by",
 	"bs-extendedsearch-search-center-options-sort-order": "Label for the sort order option in search options dialog. This options sets the order of sorting - asc or desc",
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Message displaying in autocomplete popup when search yielded no direct results. Fuzzy matches still may exist",
