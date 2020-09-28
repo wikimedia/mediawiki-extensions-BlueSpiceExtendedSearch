@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ioe2015",
 			"Leduyquang753",
 			"Nhatminh01"
 		]
 	},
+	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Dạng mẫu biểu thức chính quy không hợp lệ.",
 	"bs-extendedsearch-redirect-target-label": "Đổi hướng đến:",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Trang $1: Văn bản: $2"
 }
