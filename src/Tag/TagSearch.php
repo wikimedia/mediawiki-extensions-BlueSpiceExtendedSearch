@@ -18,6 +18,7 @@ use PPFrame;
 class TagSearch extends Tag {
 	const PARAM_NAMESPACE = 'ns';
 	const PARAM_CATEGORY = 'cat';
+	const PARAM_CATEGORY_FULLNAME = 'category';
 	const PARAM_PLACEHOLDER = 'placeholder';
 	const PARAM_OPERATOR = 'operator';
 	const PARAM_TYPE = 'type';
@@ -79,6 +80,11 @@ class TagSearch extends Tag {
 			new BSCategoryListParam(
 				ParamType::CATEGORY_LIST,
 				static::PARAM_CATEGORY,
+				[]
+			),
+			new BSCategoryListParam(
+				ParamType::CATEGORY_LIST,
+				static::PARAM_CATEGORY_FULLNAME,
 				[]
 			),
 			new ParamDefinition(
