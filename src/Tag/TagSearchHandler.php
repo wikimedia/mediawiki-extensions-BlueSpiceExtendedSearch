@@ -58,21 +58,8 @@ class TagSearchHandler extends Handler {
 			$lookup->addTermsFilter( 'namespace_text', $namespaceNames );
 		}
 
-		// Category supports "AND" operator
-		if ( count( $this->processedArgs[TagSearch::PARAM_CATEGORY] ) > 0 ) {
-			// Should we only consider categories that actually have members?
-			$categories = [];
-			foreach ( $this->processedArgs[TagSearch::PARAM_CATEGORY] as $cat ) {
-				$categories[] = $cat->getDBKey();
-				if ( $this->processedArgs[TagSearch::PARAM_OPERATOR] == static::OPERATOR_AND ) {
-					$lookup->addTermFilter( 'categories', $cat->getDBKey() );
-				}
-			}
-
-			if ( $this->processedArgs[TagSearch::PARAM_OPERATOR] == static::OPERATOR_OR ) {
-				$lookup->addTermsFilter( 'categories', $categories );
-			}
-		}
+		$this->handleCategories( $lookup, TagSearch::PARAM_CATEGORY );
+		$this->handleCategories( $lookup, TagSearch::PARAM_CATEGORY_FULLNAME );
 
 		if ( count( $this->processedArgs[TagSearch::PARAM_TYPE] ) > 0 ) {
 			$lookup->addTermsFilter( '_type', $this->processedArgs[TagSearch::PARAM_TYPE] );
@@ -96,6 +83,28 @@ class TagSearchHandler extends Handler {
 			'TagSearchField',
 			$params
 		);
+	}
+
+	/**
+	 * @param BS\ExtendedSearch\Lookup $lookup
+	 * @param string $argName
+	 */
+	protected function handleCategories( $lookup, $argName ) {
+		// Category supports "AND" operator
+		if ( count( $this->processedArgs[$argName] ) > 0 ) {
+			// Should we only consider categories that actually have members?
+			$categories = [];
+			foreach ( $this->processedArgs[$argName] as $cat ) {
+				$categories[] = $cat->getText();
+				if ( $this->processedArgs[TagSearch::PARAM_OPERATOR] == static::OPERATOR_AND ) {
+					$lookup->addTermFilter( 'categories', $cat->getText() );
+				}
+			}
+
+			if ( $this->processedArgs[TagSearch::PARAM_OPERATOR] == static::OPERATOR_OR ) {
+				$lookup->addTermsFilter( 'categories', $categories );
+			}
+		}
 	}
 
 	/**
