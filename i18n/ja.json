@@ -4,7 +4,8 @@
 			"2nd-player",
 			"A2y4",
 			"Otokoume",
-			"Shirayuki"
+			"Shirayuki",
+			"Waki285"
 		]
 	},
 	"apihelp-bs-extendedsearch-query-param-q": "検索語句",
@@ -45,7 +46,7 @@
 	"bs-extendedsearch-filter-add-button-label": "フィルターを追加",
 	"bs-extendedsearch-options-button-label": "検索オプション",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "名前空間",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "カテゴリ",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "カテゴリ(-ies)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "カテゴリ1|カテゴリ2|...",
 	"bs-extendedsearch-collection-type-searchhistory": "検索履歴",
 	"right-extendedsearch-search-wikipage": "ページを検索",
