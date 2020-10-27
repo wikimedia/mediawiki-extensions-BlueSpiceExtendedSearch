@@ -7,6 +7,8 @@ use MediaWiki\MediaWikiServices;
 class UpdateRepoFile extends UpdateTitleBase {
 	protected $sSourceKey = 'repofile';
 	protected $file = null;
+	/** @var array */
+	protected $fileData = [];
 
 	/**
 	 *
@@ -14,8 +16,8 @@ class UpdateRepoFile extends UpdateTitleBase {
 	 * @param array $params
 	 */
 	public function __construct( $title, $params = [] ) {
-		if ( isset( $params['file'] ) ) {
-			$this->file = $params['file'];
+		if ( isset( $params['filedata'] ) ) {
+			$this->fileData = $params['filedata'];
 		}
 
 		if ( isset( $params['action'] ) ) {
@@ -31,7 +33,7 @@ class UpdateRepoFile extends UpdateTitleBase {
 	 */
 	protected function getDocumentProviderUri() {
 		$this->setFileRepoFile();
-		return $this->file->getCanonicalUrl();
+		return $this->fileData['canonicalUrl'] ?? $this->file->getCanonicalUrl();
 	}
 
 	/**
@@ -40,17 +42,27 @@ class UpdateRepoFile extends UpdateTitleBase {
 	 * @throws \Exception
 	 */
 	protected function getDocumentProviderSource() {
-		$this->setFileRepoFile();
-		$fileBackend = $this->file->getRepo()->getBackend();
-		$fsFile = $fileBackend->getLocalReference( [
-			'src' => $this->file->getPath()
-		] );
+		if ( isset( $this->fileData['fsFile'] ) ) {
+			$fsFile = $this->fileData['fsFile'];
+		} elseif ( $this->file ) {
+			$this->setFileRepoFile();
+			$fileBackend = $this->file->getRepo()->getBackend();
+			$fsFile = $fileBackend->getLocalReference( [
+				'src' => $this->file->getPath()
+			] );
 
-		if ( $fsFile === null ) {
-			throw new \Exception( "File '{$this->getTitle()->getPrefixedDBkey()}' not found on filesystem!" );
+			if ( $fsFile === null ) {
+				throw new \Exception(
+					"File '{$this->getTitle()->getPrefixedDBkey()}' not found on filesystem!"
+				);
+			}
 		}
 
-		return new \SplFileInfo( $fsFile->getPath() );
+		if ( $fsFile instanceof \FSFile ) {
+			return new \SplFileInfo( $fsFile->getPath() );
+		}
+
+		throw new \Exception( "FSFile cannot be created" );
 	}
 
 	/**
@@ -58,13 +70,18 @@ class UpdateRepoFile extends UpdateTitleBase {
 	 * @throws \Exception
 	 */
 	protected function setFileRepoFile() {
+		if ( !empty( $this->fileData ) ) {
+			return;
+		}
 		if ( $this->file instanceof \File ) {
 			return;
 		}
 
 		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $this->getTitle() );
 		if ( $file === false ) {
-			throw new \Exception( "File '{$this->getTitle()->getPrefixedDBkey()}' not found in any repo!" );
+			throw new \Exception(
+				"File '{$this->getTitle()->getPrefixedDBkey()}' not found in any repo!"
+			);
 		}
 		$this->file = $file;
 	}
@@ -74,11 +91,12 @@ class UpdateRepoFile extends UpdateTitleBase {
 	 * @return bool
 	 */
 	protected function isDeletion() {
-		return false;
+		return !empty( $this->fileData );
 	}
 
 	public function __destruct() {
 		$this->file = null;
+		$this->fileData = [];
 		unset( $this->file );
 	}
 }
