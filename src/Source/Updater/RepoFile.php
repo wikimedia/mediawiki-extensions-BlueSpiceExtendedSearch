@@ -51,7 +51,9 @@ class RepoFile extends Base {
 	 */
 	public function onFileDeleteComplete( $oFile, $oOldimage, $oArticle, $oUser, $sReason ) {
 		JobQueueGroup::singleton()->push(
-			new UpdateRepoFile( $oFile->getTitle(), [ 'file' => $oFile ] )
+			new UpdateRepoFile( $oFile->getTitle(), [
+				'filedata' => $this->getFileData( $oFile )
+			] )
 		);
 		return true;
 	}
@@ -117,7 +119,7 @@ class RepoFile extends Base {
 			new \BS\ExtendedSearch\Source\Job\UpdateRepoFile(
 				$oTitle,
 				[
-					'file' => $this->titleMoveOrigFile,
+					'filedata' => $this->getFileData( $this->titleMoveOrigFile ),
 					'action' => UpdateRepoFile::ACTION_DELETE
 				]
 			)
@@ -139,5 +141,19 @@ class RepoFile extends Base {
 				new UpdateRepoFile( $repoFile->getTitle() )
 			);
 		}
+	}
+
+	/**
+	 * @param File $oFile
+	 * @return array
+	 */
+	protected function getFileData( File $oFile ) {
+		$fileBackend = $oFile->getRepo()->getBackend();
+		return [
+			'canonicalUrl' => $oFile->getCanonicalUrl(),
+			'fsFile' => $fileBackend->getLocalReference( [
+				'src' => $oFile->getPath()
+			] )
+		];
 	}
 }
