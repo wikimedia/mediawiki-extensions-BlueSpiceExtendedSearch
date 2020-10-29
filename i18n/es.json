@@ -126,5 +126,6 @@
 	"action-extendedsearch-search-specialpage": "buscar páginas especiales",
 	"action-extendedsearch-search-wikipage": "buscar páginas",
 	"action-extendedsearch-search-repofile": "buscar archivos",
-	"action-extendedsearch-search-externalfile": "buscar archivos externos"
+	"action-extendedsearch-search-externalfile": "buscar archivos externos",
+	"bs-extendedsearch-autocomplete-fulltext-search-button": "Búsqueda de texto completo"
 }
