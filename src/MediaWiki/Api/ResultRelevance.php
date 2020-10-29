@@ -74,7 +74,7 @@ class ResultRelevance extends \ApiBase {
 
 	/**
 	 *
-	 * @var boolean $status
+	 * @var bool
 	 */
 	protected $status;
 

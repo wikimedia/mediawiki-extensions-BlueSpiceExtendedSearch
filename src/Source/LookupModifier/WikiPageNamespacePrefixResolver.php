@@ -27,7 +27,7 @@ class WikiPageNamespacePrefixResolver extends Base {
 
 	/**
 	 *
-	 * @var boolean
+	 * @var bool
 	 */
 	protected $explicitlyMain = false;
 

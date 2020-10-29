@@ -78,7 +78,7 @@ class Query extends \ApiBase {
 
 	/**
 	 *
-	 * @var stdClass $resultSet
+	 * @var stdClass
 	 */
 	protected $resultSet;
 

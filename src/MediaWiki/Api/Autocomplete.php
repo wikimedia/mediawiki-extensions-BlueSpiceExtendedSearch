@@ -145,7 +145,7 @@ class Autocomplete extends \ApiBase {
 
 	/**
 	 *
-	 * @var array $suggestions
+	 * @var array
 	 */
 	protected $suggestions;
 

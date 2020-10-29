@@ -25,7 +25,7 @@ class ResultRelevance {
 	 * This var is int to allow for multi-grading
 	 * of relevance in the future
 	 *
-	 * @var integer
+	 * @var int
 	 */
 	protected $value;
 
