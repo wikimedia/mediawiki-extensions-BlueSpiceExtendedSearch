@@ -110,6 +110,8 @@
 			this.$pageAnchor = $( this.pageAnchor );
 			this.basename = this.$pageAnchor.html();
 		}
+		// Decode HTML entities
+		this.basename = $( "<textarea/>" ).html( this.basename ).text();
 
 		var popupWidth = this.popup.searchForm.width();
 		popupWidth = ( !this.popup.mobile && !this.popup.compact ) ? popupWidth / 2 : popupWidth;
