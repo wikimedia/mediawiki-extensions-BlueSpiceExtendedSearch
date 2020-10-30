@@ -2,8 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
-use PageProps;
 use Title;
+use WikiPage;
 
 class UpdateWikiPage extends UpdateTitleBase {
 
@@ -25,6 +25,7 @@ class UpdateWikiPage extends UpdateTitleBase {
 				[ $this->dp->getDocumentId( $this->getDocumentProviderUri() ) ]
 			);
 			$id = $this->dp->getDocumentId( $this->getDocumentProviderUri() );
+
 			return [ 'id' => $id ];
 		}
 
@@ -36,9 +37,7 @@ class UpdateWikiPage extends UpdateTitleBase {
 	 * @return bool
 	 */
 	protected function skipProcessing() {
-		$noindex = (bool)PageProps::getInstance()
-			->getProperties( $this->title, 'noindex' );
-		if ( $noindex ) {
+		if ( $this->isNoIndex() ) {
 			return true;
 		}
 		return in_array(
@@ -49,15 +48,20 @@ class UpdateWikiPage extends UpdateTitleBase {
 
 	/**
 	 *
-	 * @return \Wikipage
+	 * @return WikiPage|null
 	 */
 	protected function getDocumentProviderSource() {
-		return \WikiPage::factory( $this->getTitle() );
+		return WikiPage::factory( $this->getTitle() );
 	}
 
+	/**
+	 * @return bool
+	 * @throws \Exception
+	 */
 	protected function isNoIndex() {
 		$dp = $this->getSource()->getDocumentProvider();
 		$pageProps = $dp->getPageProps( $this->getTitle() );
+
 		return isset( $pageProps['noindex'] );
 	}
 }
