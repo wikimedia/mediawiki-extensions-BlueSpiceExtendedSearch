@@ -5,6 +5,8 @@ namespace BS\ExtendedSearch\Source\Job;
 class UpdateTitleBase extends UpdateBase {
 
 	/**
+	 * TODO: In order to be able to index multiple versions of the page,
+	 * this needs to go to the document provider
 	 *
 	 * @return string
 	 */
@@ -25,9 +27,13 @@ class UpdateTitleBase extends UpdateBase {
 			return [ 'id' => $id ];
 		}
 
+		$providerSource = $this->getDocumentProviderSource();
+		if ( !$providerSource ) {
+			return null;
+		}
 		$aDC = $this->dp->getDataConfig(
 			$this->getDocumentProviderUri(),
-			$this->getDocumentProviderSource()
+			$providerSource
 		);
 		$this->getSource()->addDocumentsToIndex( [ $aDC ] );
 		return $aDC;
