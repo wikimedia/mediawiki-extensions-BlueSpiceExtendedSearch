@@ -2,63 +2,87 @@
 
 namespace BS\ExtendedSearch\Source\DocumentProvider;
 
+use Content;
+use FatalError;
+use Hooks;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Storage\RevisionRecord;
+use MWException;
 use ParserOptions;
+use ParserOutput;
 use Title;
+use WikiPage as WikiPageObject;
 
 class WikiPage extends DecoratorBase {
-	/**
-	 * @var \Content
-	 */
+	/** @var WikiPageObject */
+	protected $wikipage;
+	/** @var Content */
 	protected $content;
-
-	/**
-	 * @var \ParserOutput
-	 */
+	/** @var ParserOutput */
 	protected $parserOutput;
+	/** @var Title */
+	protected $title;
+	/** @var RevisionRecord */
+	protected $revision;
+	/** @var array */
+	protected $pageProps = null;
 
 	/**
 	 *
 	 * @param string $sUri
-	 * @param \WikiPage $oWikiPage
-	 * @return array
+	 * @param WikiPageObject|null $wikiPage
+	 * @return array|null
 	 */
-	public function getDataConfig( $sUri, $oWikiPage ) {
-		$aDC = $this->oDecoratedDP->getDataConfig( $sUri, $oWikiPage );
+	public function getDataConfig( $sUri, $wikiPage ) {
+		$aDC = $this->oDecoratedDP->getDataConfig( $sUri, null );
+		if ( !$wikiPage instanceof WikiPageObject ) {
+			return null;
+		}
 
-		$this->content = $oWikiPage->getContent();
-		$this->parserOutput = $this->content->getParserOutput( $oWikiPage->getTitle() );
+		$this->wikipage = $wikiPage;
+		$this->title = $this->wikipage->getTitle();
+		$this->revision = $this->getRevision();
+		if ( !$this->revision ) {
+			return null;
+		}
+		$this->content = $this->revision->getContent( 'main' );
+		$this->parserOutput = $this->content->getParserOutput( $this->title );
 
-		$revStore = MediaWikiServices::getInstance()->getRevisionStore();
+		$firstRev = MediaWikiServices::getInstance()
+			->getRevisionLookup()
+			->getFirstRevision( $this->title );
+		if ( $firstRev === null ) {
+			return $aDC;
+		}
 
 		$aDC = array_merge( $aDC, [
-			'basename' => $oWikiPage->getTitle()->getBaseText(),
-			'basename_exact' => $oWikiPage->getTitle()->getBaseText(),
+			'basename' => $this->title->getBaseText(),
+			'basename_exact' => $this->title->getBaseText(),
 			'extension' => 'wiki',
 			'mime_type' => 'text/x-wiki',
 			'mtime' => wfTimestamp(
 				TS_ISO_8601,
-				$oWikiPage->getRevisionRecord()->getTimestamp()
+				$this->revision->getTimestamp()
 			),
 			'ctime' => wfTimestamp(
 				TS_ISO_8601,
-				$revStore->getFirstRevision( $oWikiPage->getTitle() )->getTimestamp()
+				$firstRev->getTimestamp()
 			),
-			'size' => $oWikiPage->getTitle()->getLength(),
-			'categories' => $this->getCategories( $oWikiPage ),
-			'prefixed_title' => $oWikiPage->getTitle()->getPrefixedText(),
+			'size' => $this->title->getLength(),
+			'categories' => $this->getCategories(),
+			'prefixed_title' => $this->title->getPrefixedText(),
 			'sections' => $this->getSections(),
 			'source_content' => $this->getTextContent(),
 			'rendered_content' => $this->getHTMLContent(),
-			'namespace' => $oWikiPage->getTitle()->getNamespace(),
-			'namespace_text' => $this->getNamespaceText( $oWikiPage ),
+			'namespace' => $this->title->getNamespace(),
+			'namespace_text' => $this->getNamespaceText(),
 			'tags' => $this->getTags(),
-			'is_redirect' => $oWikiPage->getTitle()->isRedirect(),
-			'redirects_to' => $this->getRedirectsTo( $oWikiPage ),
-			'redirected_from' => $this->getRedirects( $oWikiPage ),
-			'page_language' => $oWikiPage->getTitle()->getPageLanguage()->getCode(),
-			'display_title' => $this->getDisplayTitle( $oWikiPage->getTitle() ),
-			'used_files' => $this->getUserFiles( $oWikiPage )
+			'is_redirect' => $this->title->isRedirect(),
+			'redirects_to' => $this->getRedirectsTo(),
+			'redirected_from' => $this->getRedirects(),
+			'page_language' => $this->title->getPageLanguage()->getCode(),
+			'display_title' => $this->getDisplayTitle(),
+			'used_files' => $this->getUsedFiles()
 		] );
 
 		return $aDC;
@@ -78,32 +102,55 @@ class WikiPage extends DecoratorBase {
 
 	/**
 	 *
-	 * @param \WikiPage $oWikiPage
-	 * @return string
+	 * @param Title $title
+	 * @param string|null $prop
+	 * @param mixed|null $default
+	 * @return array|mixed
 	 */
-	protected function getNamespaceText( $oWikiPage ) {
-		if ( $oWikiPage->getTitle()->getNamespace() === NS_MAIN ) {
-			return wfMessage( 'bs-ns_main' )->plain();
+	public function getPageProps( Title $title, $prop = null, $default = null ) {
+		if ( $this->pageProps === null ) {
+			$this->pageProps = MediaWikiServices::getInstance()->getService(
+				'BSUtilityFactory'
+			)->getPagePropHelper( $title )->getPageProps();
 		}
-		return $oWikiPage->getTitle()->getNsText();
+
+		if ( $prop !== null ) {
+			return isset( $this->pageProps[$prop] ) ? $this->pageProps[$prop] : $default;
+		}
+
+		return $this->pageProps;
 	}
 
 	/**
 	 *
-	 * @param \WikiPage $oWikiPage
+	 * @return string
+	 */
+	protected function getNamespaceText() {
+		if ( $this->title->getNamespace() === NS_MAIN ) {
+			return wfMessage( 'bs-ns_main' )->plain();
+		}
+		return $this->title->getNsText();
+	}
+
+	/**
+	 *
 	 * @return array
 	 */
-	protected function getCategories( $oWikiPage ) {
-		$oCatTitles = $oWikiPage->getCategories();
+	protected function getCategories() {
+		if ( !$this->isLatestRevision() ) {
+			// Not supported in older revisions
+			return [];
+		}
+		$catTitles = $this->wikipage->getCategories();
 
-		$aCategories = [];
-		foreach ( $oCatTitles as $oCatTitle ) {
-			if ( $oCatTitle instanceof Title ) {
-				$aCategories[] = $oCatTitle->getText();
+		$categories = [];
+		foreach ( $catTitles as $catTitle ) {
+			if ( $catTitle instanceof Title ) {
+				$categories[] = $catTitle->getText();
 			}
 		}
 
-		return $aCategories;
+		return $categories;
 	}
 
 	/**
@@ -112,7 +159,7 @@ class WikiPage extends DecoratorBase {
 	 */
 	protected function getTextContent() {
 		$sText = '';
-		if ( $this->content instanceof \Content ) {
+		if ( $this->content instanceof Content ) {
 			// maybe ContentHandler::getContentText is better?
 			$sText = $this->content->getTextForSearchIndex();
 		}
@@ -179,7 +226,7 @@ class WikiPage extends DecoratorBase {
 	 * @return array
 	 */
 	protected function parseWikipageForTags() {
-		if ( $this->content instanceof \Content == false ) {
+		if ( $this->content instanceof Content == false ) {
 			return [];
 		}
 		$text = $this->content->getNativeData();
@@ -197,15 +244,14 @@ class WikiPage extends DecoratorBase {
 
 	/**
 	 *
-	 * @param \WikiPage $oWikiPage
 	 * @return string
 	 */
-	protected function getRedirectsTo( \WikiPage $oWikiPage ) {
-		if ( $oWikiPage->getTitle()->isRedirect() === false ) {
+	protected function getRedirectsTo() {
+		if ( !$this->isLatestRevision() || !$this->title->isRedirect() ) {
 			return '';
 		}
 
-		$redirTitle = $oWikiPage->getRedirectTarget();
+		$redirTitle = $this->wikipage->getRedirectTarget();
 		if ( $redirTitle instanceof Title ) {
 			return $this->getDisplayTitle( $redirTitle );
 		}
@@ -214,11 +260,10 @@ class WikiPage extends DecoratorBase {
 
 	/**
 	 *
-	 * @param \WikiPage $oWikiPage
 	 * @return string[]
 	 */
-	protected function getRedirects( \WikiPage $oWikiPage ) {
-		$redirs = $oWikiPage->getTitle()->getRedirectsHere();
+	protected function getRedirects() {
+		$redirs = $this->title->getRedirectsHere();
 		$indexable = [];
 		foreach ( $redirs as $redirect ) {
 			$indexable[] = $redirect->getPrefixedText();
@@ -229,36 +274,48 @@ class WikiPage extends DecoratorBase {
 
 	/**
 	 *
-	 * @param Title $title
 	 * @return string
 	 */
-	protected function getDisplayTitle( Title $title ) {
-		$pageProps = $this->getPageProps( $title );
-		if ( isset( $pageProps['displaytitle'] ) && $pageProps['displaytitle'] !== '' ) {
-			return $pageProps['displaytitle'];
+	protected function getDisplayTitle() {
+		if ( !$this->isLatestRevision() ) {
+			return $this->title->getPrefixedText();
 		}
-		return $title->getPrefixedText();
+		$displayTitle = $this->getPageProps( $this->title, 'displaytitle' );
+		if ( $displayTitle ) {
+			return $displayTitle;
+		}
+		return $this->title->getPrefixedText();
 	}
 
 	/**
 	 *
-	 * @param Title $title
 	 * @return array
 	 */
-	public function getPageProps( Title $title ) {
-		return MediaWikiServices::getInstance()->getService( 'BSUtilityFactory' )
-			->getPagePropHelper( $title )->getPageProps();
+	protected function getUsedFiles() {
+		return array_keys( $this->parserOutput->getImages() );
 	}
 
 	/**
-	 *
-	 * @param \WikiPage $wikiPage
-	 * @return array
+	 * @return RevisionRecord|null
+	 * @throws FatalError
+	 * @throws MWException
 	 */
-	protected function getUserFiles( \WikiPage $wikiPage ) {
-		$parserOutput = $wikiPage->getContent()->getParserOutput( $wikiPage->getTitle() );
-		$files = $parserOutput->getImages();
+	protected function getRevision() {
+		$revision = MediaWikiServices::getInstance()->getRevisionStore()->getRevisionByTitle(
+			$this->title
+		);
+		Hooks::run( 'BSExtendedSearchWikipageFetchRevision', [
+			$this->title,
+			&$revision
+		] );
 
-		return array_keys( $files );
+		return $revision;
+	}
+
+	/**
+	 * @return bool
+	 */
+	protected function isLatestRevision() {
+		return $this->revision->getId() === $this->title->getLatestRevID();
 	}
 }
