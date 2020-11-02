@@ -13,7 +13,6 @@ use Elastica\ResultSet;
 use Elastica\Search;
 use Exception;
 use FormatJson;
-use Hooks;
 use MediaWiki\MediaWikiServices;
 use MWException;
 use RequestContext;
@@ -69,7 +68,14 @@ class Backend {
 		);
 		$source = $sourceFactory->makeSource( $sourceKey );
 
-		Hooks::run( 'BSExtendedSearchMakeSource', [ $this, $sourceKey, &$source ] );
+		MediaWikiServices::getInstance()->getHookContainer()->run(
+			'BSExtendedSearchMakeSource',
+			[
+				$this,
+				$sourceKey,
+				&$source
+			]
+		);
 
 		$this->sources[$sourceKey] = $source;
 
