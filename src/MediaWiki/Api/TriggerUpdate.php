@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
+use MediaWiki\MediaWikiServices;
+
 class TriggerUpdate extends \ApiBase {
 	public function execute() {
 		$sBackendKey = $this->getParameter( 'backend' );
@@ -9,7 +11,15 @@ class TriggerUpdate extends \ApiBase {
 		$oTitle = \Title::newFromText( $this->getParameter( 'title' ) );
 		$aParams = $this->getParameter( 'params' );
 
-		\Hooks::run( 'BSExtendedSearchTriggerUpdate', [ $sBackendKey, $sSourceKey, $oTitle, $aParams ] );
+		MediaWikiServices::getInstance()->getHookContainer()->run(
+			'BSExtendedSearchTriggerUpdate',
+			[
+				$sBackendKey,
+				$sSourceKey,
+				$oTitle,
+				$aParams
+			]
+		);
 	}
 
 	/**
