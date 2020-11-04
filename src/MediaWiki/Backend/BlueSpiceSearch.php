@@ -28,16 +28,17 @@ class BlueSpiceSearch extends \SearchEngine {
 	 * @return SearchResultSet
 	 */
 	public function searchTitle( $term ) {
-		return $this->fullSearchWrapper( $term );
+		return $this->fullSearchWrapper( $term, [ 'basename' ] );
 	}
 
 	/**
 	 * @param string $term
+	 * @param array|null $sourceFields
 	 * @return SearchResultSet
 	 */
-	protected function fullSearchWrapper( $term ) {
+	protected function fullSearchWrapper( $term, $sourceFields = [] ) {
 		$term = trim( $term );
-		$results = $this->runFullSearch( $term );
+		$results = $this->runFullSearch( $term, $sourceFields );
 
 		$searchResultSet = new SearchResultSet( $this->searchContainedSyntax( $term ) );
 		foreach ( $results as $title ) {
@@ -93,21 +94,25 @@ class BlueSpiceSearch extends \SearchEngine {
 
 	/**
 	 * @param string $search
+	 * @param array|null $sourceFields
 	 * @return \Title[]
 	 */
-	protected function runFullSearch( $search ) {
+	protected function runFullSearch( $search, $sourceFields = [] ) {
 		if ( $search === '' ) {
 			return [];
 		}
 
 		$lookup = $this->getLookup();
-		$lookup->setQueryString( [
+		$qs = [
 			'query' => $search,
 			'default_operator' => 'AND',
-		] );
+		];
+		if ( is_array( $sourceFields ) && !empty( $sourceFields ) ) {
+			$qs['fields'] = $sourceFields;
+		}
+		$lookup->setQueryString( $qs );
 
 		$resultSet = $this->backend->runLookup( $lookup );
-
 		if ( property_exists( $resultSet, 'exception' ) ) {
 			return [];
 		}
@@ -117,8 +122,10 @@ class BlueSpiceSearch extends \SearchEngine {
 			if ( !isset( $item['prefixed_title'] ) || !isset( $item['namespace' ] ) ) {
 				continue;
 			}
-
 			$title = \Title::newFromText( $item['prefixed_title'] );
+			if ( strpos( strtolower( $title->getText() ), strtolower( $search ) ) === false ) {
+				continue;
+			}
 
 			if ( $title instanceof \Title ) {
 				$titles[] = $title;
@@ -190,6 +197,7 @@ class BlueSpiceSearch extends \SearchEngine {
 
 		$lookup->setSize( $this->limit );
 		$lookup->setFrom( $this->offset );
+		$lookup->addTermFilter( '_type', 'wikipage' );
 		$lookup->addSort( '_score', Lookup::SORT_DESC );
 
 		return $lookup;
