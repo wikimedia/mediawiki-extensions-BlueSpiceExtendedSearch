@@ -3,10 +3,12 @@
 		"authors": [
 			"Ioe2015",
 			"Leduyquang753",
+			"Minh Nguyen",
 			"Nhatminh01"
 		]
 	},
 	"bs-extendedsearch-redirect-target-label": "Đổi hướng đến:",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Trang $1: Văn bản: $2",
-	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Dạng mẫu biểu thức chính quy không hợp lệ."
+	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Dạng mẫu biểu thức chính quy không hợp lệ.",
+	"bs-extendedsearch-searchcenter-sort-field-_score": "Độ phù hợp"
 }

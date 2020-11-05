@@ -4,5 +4,9 @@
 			"Yupik"
 		]
 	},
-	"bs-extendedsearch-admin-label-error": "Vââʹǩǩ"
+	"bs-extendedsearch-admin-label-error": "Vââʹǩǩ",
+	"bs-extendedsearch-search-center-filter-categories-label": "Kategoria",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Kategoria:",
+	"bs-extendedsearch-search-center-result-categories-label": "Kategoria:",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategoria"
 }

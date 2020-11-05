@@ -2,8 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"2nd-player",
+			"A2y4",
 			"Otokoume",
-			"Shirayuki"
+			"Shirayuki",
+			"Waki285"
 		]
 	},
 	"apihelp-bs-extendedsearch-query-param-q": "検索語句",
@@ -17,5 +19,36 @@
 	"prefs-extendedsearch": "拡張検索",
 	"bs-extendedsearch-search-center-result-redirects-label": "転送元:",
 	"right-extendedsearch-search-wikipage": "ページを検索",
-	"action-extendedsearch-search-wikipage": "ページの検索"
+	"action-extendedsearch-search-wikipage": "ページの検索",
+	"bs-extendedsearch-search-input-placeholder": "探す ...",
+	"bs-extendedsearch-search-input-aria-label": "検索ボックス",
+	"bs-extendedsearch-source-label-wikipage": "ウィキページ",
+	"bs-extendedsearch-source-label-specialpage": "特別ページ",
+	"bs-extendedsearch-source-label-repofile": "ファイルをアップロード",
+	"bs-extendedsearch-source-label-user": "利用者",
+	"bs-extendedsearch-admin-heading-sources-documentscount": "ドキュメント",
+	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "名前空間:",
+	"bs-extendedsearch-search-center-filter-tags-with-values-label": "タグ:",
+	"bs-extendedsearch-search-center-filter-type-with-values-label": "種類:",
+	"bs-extendedsearch-search-center-result-author-label": "作者:",
+	"bs-extendedsearch-search-center-options-dialog-title": "検索オプション",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "キャンセル",
+	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "適用",
+	"bs-extendedsearch-search-center-options-sort-by": "並び順",
+	"bs-extendedsearch-search-center-options-sort-order": "並び順",
+	"bs-extendedsearch-autocomplete-result-type": "種類: $1",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "名前",
+	"bs-extendedsearch-searchcenter-sort-field-size": "サイズ",
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "名前空間",
+	"bs-extendedsearch-source-type-wikipage-label": "ウィキページ",
+	"bs-extendedsearch-source-type-specialpage-label": "特別ページ",
+	"bs-extendedsearch-autocomplete-modified-time-label": "最終更新: $1",
+	"bs-extendedsearch-search-center-filter-page_language-label": "ページの変更",
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "ページの言語:",
+	"bs-extendedsearch-filter-add-button-label": "フィルターを追加",
+	"bs-extendedsearch-options-button-label": "検索オプション",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "名前空間",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "カテゴリ(-ies)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "カテゴリ1|カテゴリ2|...",
+	"bs-extendedsearch-collection-type-searchhistory": "検索履歴"
 }

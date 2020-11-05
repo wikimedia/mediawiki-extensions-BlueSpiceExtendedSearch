@@ -15,5 +15,6 @@
 	"bs-extendedsearch-search-center-create-page-link": "ገጽ «$1» ፍጠር",
 	"bs-extendedsearch-search-center-result-ctime-label": "ተፈጢሩ፦",
 	"bs-extendedsearch-autocomplete-create-page-link": "ገጽ «$1» ፍጠር",
-	"bs-extendedsearch-source-label-repofile": "ፋይል ጸዓን"
+	"bs-extendedsearch-source-label-repofile": "ፋይል ጸዓን",
+	"bs-extendedsearch-search-center-result-author-label": "ደራሲ፦"
 }
