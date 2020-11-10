@@ -33,5 +33,4 @@ abstract class elasticScriptBase extends Maintenance {
 		}
 		return false;
 	}
-
 }
