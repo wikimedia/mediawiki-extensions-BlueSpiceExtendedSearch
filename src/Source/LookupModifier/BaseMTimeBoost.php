@@ -97,4 +97,13 @@ class BaseMTimeBoost extends Base {
 		$this->oLookup->removeShouldTerms( '_id' );
 	}
 
+	/**
+	 * @return string[]
+	 */
+	public function getSearchTypes() {
+		return [
+			Backend::QUERY_TYPE_AUTOCOMPLETE,
+			Backend::QUERY_TYPE_SEARCH
+		];
+	}
 }

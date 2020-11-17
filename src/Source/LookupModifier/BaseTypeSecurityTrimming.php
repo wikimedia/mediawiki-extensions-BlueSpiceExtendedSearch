@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
+use BS\ExtendedSearch\Backend;
 use MediaWiki\MediaWikiServices;
 
 class BaseTypeSecurityTrimming extends Base {
@@ -57,5 +58,15 @@ class BaseTypeSecurityTrimming extends Base {
 		if ( !empty( $this->blockedTypes ) ) {
 			$this->oLookup->removeBoolMustNot( '_type' );
 		}
+	}
+
+	/**
+	 * @return string[]
+	 */
+	public function getSearchTypes() {
+		return [
+			Backend::QUERY_TYPE_AUTOCOMPLETE,
+			Backend::QUERY_TYPE_SEARCH
+		];
 	}
 }

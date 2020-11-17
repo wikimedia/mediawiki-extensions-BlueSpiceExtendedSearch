@@ -2,7 +2,6 @@
 
 namespace BS\ExtendedSearch;
 
-use BlueSpice\ExtensionAttributeBasedRegistry;
 use BS\ExtendedSearch\Source\Base as SourceBase;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 use BS\ExtendedSearch\Source\WikiPages;
@@ -34,6 +33,30 @@ class Backend {
 
 	/**
 	 *
+	 * @var \Wikimedia\Rdbms\LoadBalancer
+	 */
+	protected $lb = null;
+
+	/**
+	 *
+	 * @var Config
+	 */
+	protected $legacyConfig = null;
+
+	/**
+	 *
+	 * @var SourceFactory
+	 */
+	protected $sourceFactory = null;
+
+	/**
+	 *
+	 * @var LookupModifierFactory
+	 */
+	protected $lookupModifierFactory = null;
+
+	/**
+	 *
 	 * @var SourceBase[]
 	 */
 	protected $sources = [];
@@ -45,15 +68,23 @@ class Backend {
 	protected $client = null;
 
 	/**
-	 *
-	 * @param array $config
+	 * @param Config $config
+	 * @param \Wikimedia\Rdbms\LoadBalancer $lb
+	 * @param SourceFactory $sourceFactory
+	 * @param LookupModifierFactory $lookupModifierFactory
+	 * @param array $legacyConfig
 	 */
-	public function __construct( $config ) {
-		if ( !isset( $config['index'] ) ) {
-			$config['index'] = strtolower( wfWikiID() );
+	public function __construct( $config, $lb, $sourceFactory, $lookupModifierFactory,
+		array $legacyConfig = [] ) {
+		if ( !isset( $legacyConfig['index'] ) ) {
+			$legacyConfig['index'] = strtolower( wfWikiID() );
 		}
 
-		$this->config = new \HashConfig( $config );
+		$this->legacyConfig = new \HashConfig( $legacyConfig );
+		$this->config = new \MultiConfig( [ $config, $this->legacyConfig ] );
+		$this->lb = $lb;
+		$this->sourceFactory = $sourceFactory;
+		$this->lookupModifierFactory = $lookupModifierFactory;
 	}
 
 	/**
@@ -63,11 +94,7 @@ class Backend {
 	 * @throws Exception
 	 */
 	public function getSource( $sourceKey ) {
-		$sourceFactory = MediaWikiServices::getInstance()->getService(
-			'BSExtendedSearchSourceFactory'
-		);
-		$source = $sourceFactory->makeSource( $sourceKey );
-
+		$source = $this->sourceFactory->makeSource( $sourceKey, $this );
 		MediaWikiServices::getInstance()->getHookContainer()->run(
 			'BSExtendedSearchMakeSource',
 			[
@@ -87,8 +114,7 @@ class Backend {
 	 */
 	public function destroySource( $sourceKey ) {
 		unset( $this->sources[$sourceKey] );
-		$sourceFactory = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchSourceFactory' );
-		$sourceFactory->destroySource( $sourceKey );
+		$this->sourceFactory->destroySource( $sourceKey );
 	}
 
 	/**
@@ -96,63 +122,38 @@ class Backend {
 	 * @return SourceBase[]
 	 */
 	public function getSources() {
-		foreach ( $this->config->get( 'sources' ) as $sourceKey ) {
+		foreach ( $this->legacyConfig->get( 'sources' ) as $sourceKey ) {
 			$this->getSource( $sourceKey );
 		}
 		return $this->sources;
 	}
 
 	/**
-	 *
+	 * TODO: ClientFactory!
 	 * @return Client
 	 */
 	public function getClient() {
 		if ( $this->client === null ) {
-			$this->client = new Client(
-				$this->config->get( 'connection' )
-			);
+			$backendHost = $this->getConfig()->get( 'ESBackendHost' );
+			$backendPort = $this->getConfig()->get( 'ESBackendPort' );
+			$backendTransport = $this->getConfig()->get( 'ESBackendTransport' );
+			$this->client = new Client( [
+				'host' => $backendHost,
+				'port' => $backendPort,
+				'transport' => $backendTransport
+			] );
 		}
 
 		return $this->client;
 	}
 
 	/**
-	 *
-	 * @var Backend
-	 */
-	protected static $backend;
-
-	/**
-	 *
+	 * @deprecated since version 3.1.13 - use service BSExtendedSearchBackend instead
 	 * @return Backend
 	 */
 	public static function instance() {
-		if ( isset( self::$backend ) ) {
-			return self::$backend;
-		}
-
-		self::$backend = self::newInstance();
-		return self::$backend;
-	}
-
-	protected static function newInstance() {
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
-
-		$backendClass = $config->get( 'ESBackendClass' );
-		$backendHost = $config->get( 'ESBackendHost' );
-		$backendPort = $config->get( 'ESBackendPort' );
-		$backendTransport = $config->get( 'ESBackendTransport' );
-		$sourceRegistry = new ExtensionAttributeBasedRegistry( 'BlueSpiceExtendedSearchSources' );
-		$sources = $sourceRegistry->getAllKeys();
-
-		return new $backendClass ( [
-			'connection' => [
-				'host' => $backendHost,
-				'port' => $backendPort,
-				'transport' => $backendTransport
-			],
-			'sources' => $sources
-		] );
+		wfDebugLog( 'bluespice-deprecations', __METHOD__, 'private' );
+		return MediaWikiServices::getInstance()->getService( 'BSExtendedSearchBackend' );
 	}
 
 	/**
@@ -241,7 +242,7 @@ class Backend {
 	 * @return Index
 	 */
 	public function getIndexByType( $type ) {
-		return $this->getClient()->getIndex( $this->config->get( 'index' ) . '_' . $type );
+		return $this->getClient()->getIndex( $this->getConfig()->get( 'index' ) . '_' . $type );
 	}
 
 	/**
@@ -268,10 +269,15 @@ class Backend {
 	 * @return array|LookupModifier[]
 	 */
 	public function getLookupModifiers( $lookup, $type ) {
-		$lookupModifiers = [];
-		foreach ( $this->sources as $sourceKey => $source ) {
-			$lookupModifiers += $source->getLookupModifiers( $lookup, $this->getContext(), $type );
-		}
+		$lookupModifiers = $this->lookupModifierFactory->getLookupModifiersForQueryType(
+			$type,
+			$lookup,
+			$this->getContext()
+		);
+		$lookupModifiers = array_merge(
+			$lookupModifiers,
+			$this->getLegacyLookupModifiers( $lookup, $type )
+		);
 
 		uasort( $lookupModifiers, function ( $a, $b ) {
 			if ( $a->getPriority() === $b->getPriority() ) {
@@ -280,6 +286,26 @@ class Backend {
 			return ( $a->getPriority() > $b->getPriority() ) ? 1 : -1;
 		} );
 
+		return $lookupModifiers;
+	}
+
+	/**
+	 * @deprecated since version 3.1.13 - Use registry instead and implement
+	 * ILookupModifier.
+	 * @param Lookup $lookup
+	 * @param string $type
+	 * @return LookupModifier[]
+	 */
+	private function getLegacyLookupModifiers( $lookup, $type ) {
+		wfDebugLog( 'bluespice-deprecations', __METHOD__, 'private' );
+		$lookupModifiers = [];
+		foreach ( $this->sources as $sourceKey => $source ) {
+			$lookupModifiers += $source->getLookupModifiers(
+				$lookup,
+				$this->getContext(),
+				$type
+			);
+		}
 		return $lookupModifiers;
 	}
 
@@ -713,8 +739,7 @@ class Backend {
 	 * @param array $data
 	 */
 	protected function logSearchHistory( $data ) {
-		$loadBalancer = MediaWikiServices::getInstance()->getDBLoadBalancer();
-		$dbw = $loadBalancer->getConnection( DB_MASTER );
+		$dbw = $this->lb->getConnection( DB_MASTER );
 
 		$dbw->insert(
 			'bs_extendedsearch_history',
@@ -847,7 +872,7 @@ class Backend {
 	 */
 	protected function addAllIndexesForQuery( Search &$search ) {
 		foreach ( $this->getSources() as $key => $source ) {
-			$search->addIndex( $this->config->get( 'index' ) . '_' . $key );
+			$search->addIndex( $this->getConfig()->get( 'index' ) . '_' . $key );
 		}
 	}
 }
