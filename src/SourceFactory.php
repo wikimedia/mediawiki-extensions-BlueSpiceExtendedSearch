@@ -7,10 +7,6 @@ use BlueSpice\IRegistry;
 use BS\ExtendedSearch\Source\Base;
 
 class SourceFactory {
-	/**
-	 * @var Backend
-	 */
-	protected $backend;
 
 	/**
 	 * @var \Config
@@ -41,21 +37,21 @@ class SourceFactory {
 
 	/**
 	 * SourceFactory constructor.
-	 * @param Backend $backend
+	 * @param null $backend - deprecated since version 3.1.13
 	 * @param \Config $config
 	 */
 	public function __construct( $backend, $config ) {
-		$this->backend = $backend;
 		$this->config = $config;
 	}
 
 	/**
 	 *
 	 * @param string $sourceKey
+	 * @param Backend $backend
 	 * @return Base
 	 * @throws \UnexpectedValueException
 	 */
-	public function makeSource( $sourceKey ) {
+	public function makeSource( $sourceKey, $backend ) {
 		if ( isset( $this->sources[$sourceKey] ) ) {
 			return $this->sources[$sourceKey];
 		}
@@ -63,7 +59,7 @@ class SourceFactory {
 		$this->assertSourceFactoryFunction( $sourceKey );
 		$this->assertSourceConfig( $sourceKey );
 
-		$base = new Base( $this->backend, $this->configs[$sourceKey] );
+		$base = new Base( $backend, $this->configs[$sourceKey] );
 
 		$source = call_user_func( $this->factoryFunction[$sourceKey], $base );
 

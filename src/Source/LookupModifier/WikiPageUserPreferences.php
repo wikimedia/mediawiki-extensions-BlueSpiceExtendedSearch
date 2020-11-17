@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
+use BS\ExtendedSearch\Backend;
+
 class WikiPageUserPreferences extends Base {
 	protected $namespacesToBoost;
 
@@ -36,5 +38,15 @@ class WikiPageUserPreferences extends Base {
 
 	public function undo() {
 		$this->oLookup->removeShouldTerms( 'namespace', $this->namespacesToBoost );
+	}
+
+	/**
+	 * @return string[]
+	 */
+	public function getSearchTypes() {
+		return [
+			Backend::QUERY_TYPE_AUTOCOMPLETE,
+			Backend::QUERY_TYPE_SEARCH
+		];
 	}
 }

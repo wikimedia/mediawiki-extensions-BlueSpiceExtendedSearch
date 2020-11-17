@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
+use BS\ExtendedSearch\Backend;
+
 class BaseTitleSecurityTrimmings extends Base {
 	protected $config;
 	protected $search;
@@ -15,7 +17,7 @@ class BaseTitleSecurityTrimmings extends Base {
 		parent::__construct( $lookup, $context );
 
 		// Should be injected
-		$this->config = \BS\ExtendedSearch\Backend::instance()->getConfig();
+		$this->config = Backend::instance()->getConfig();
 		$this->setSearch();
 	}
 
@@ -175,4 +177,13 @@ class BaseTitleSecurityTrimmings extends Base {
 		$this->oLookup->removeBoolMustNot( '_id' );
 	}
 
+	/**
+	 * @return string[]
+	 */
+	public function getSearchTypes() {
+		return [
+			Backend::QUERY_TYPE_AUTOCOMPLETE,
+			Backend::QUERY_TYPE_SEARCH
+		];
+	}
 }

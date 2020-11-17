@@ -2,30 +2,45 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
-abstract class Base {
-	const TYPE_SEARCH = 'search';
-	const TYPE_AUTOCOMPLETE = 'autocomplete';
+use BS\ExtendedSearch\Backend;
+use BS\ExtendedSearch\ILookupModifier;
+use BS\ExtendedSearch\Lookup;
+use IContextSource;
+use MediaWiki\MediaWikiServices;
+
+abstract class Base implements ILookupModifier {
 
 	/**
 	 *
-	 * @var \BS\ExtendedSearch\Lookup
+	 * @var Lookup
 	 */
 	protected $oLookup = null;
 
 	/**
 	 *
-	 * @var \IContextSource
+	 * @var IContextSource
 	 */
 	protected $oContext = null;
 
 	/**
 	 *
-	 * @param \BS\ExtendedSearch\Lookup &$oLookup
-	 * @param \IContextSource $oContext
+	 * @param Lookup $oLookup
+	 * @param IContextSource $oContext
 	 */
-	public function __construct( &$oLookup, $oContext ) {
+	public function __construct( $oLookup, $oContext ) {
 		$this->oLookup = $oLookup;
 		$this->oContext = $oContext;
+	}
+
+	/**
+	 * @param MediaWikiServices $services
+	 * @param Lookup $lookup
+	 * @param IContextSource $context
+	 * @return Base
+	 */
+	public static function factory( MediaWikiServices $services, Lookup $lookup,
+		IContextSource $context ) {
+		return new static( $lookup, $context );
 	}
 
 	/**
@@ -39,11 +54,10 @@ abstract class Base {
 		return 1;
 	}
 
-	abstract public function apply();
-
 	/**
-	 * Remove any sensitive Lookup parts previously added
-	 * by this modifier, in case they should not be sent to client
+	 * @return string[]
 	 */
-	abstract public function undo();
+	public function getSearchTypes() {
+		return [ Backend::QUERY_TYPE_SEARCH ];
+	}
 }
