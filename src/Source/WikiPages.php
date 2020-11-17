@@ -2,47 +2,9 @@
 
 namespace BS\ExtendedSearch\Source;
 
-use BS\ExtendedSearch\Backend;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageNamespaceTextAggregation;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageCategoriesAggregation;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageUserPreferences;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageNamespacePrefixResolver;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageSecurityTrimming;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageRenderedContentHighlight;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageAutocompleteSourceFields;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageBoosters;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageAutocompleteRemoveUnwanted;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageQSSourceFields;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageWildcarder;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageRemoveUnwanted;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageLanguageAggregation;
-use BS\ExtendedSearch\Source\LookupModifier\WikiPageLanguageFilter;
 use BS\ExtendedSearch\Source\PostProcessor\WikiPage as WikiPagePostProcessor;
 
 class WikiPages extends DecoratorBase {
-	protected $lookupModifiers = [
-		Backend::QUERY_TYPE_SEARCH => [
-			'wikipage-namespacetextaggregation' => WikiPageNamespaceTextAggregation::class,
-			'wikipage-userpreferences' => WikiPageUserPreferences::class,
-			'wikipage-namespaceprefixresolver' => WikiPageNamespacePrefixResolver::class,
-			'wikipage-securitytrimming' => WikiPageSecurityTrimming::class,
-			'wikipage-categoriesaggregation' => WikiPageCategoriesAggregation::class,
-			'wikipage-renderedcontenthighlight' => WikiPageRenderedContentHighlight::class,
-			'wikipage-qssourcefields' => WikiPageQSSourceFields::class,
-			'wikipage-boosters' => WikiPageBoosters::class,
-			'wikipage-wildcarder' => WikiPageWildcarder::class,
-			'wikipage-unwanted' => WikiPageRemoveUnwanted::class,
-			'wikipage-pagelangaggregation' => WikiPageLanguageAggregation::class,
-			'wikipage-langfilter' => WikiPageLanguageFilter::class
-		],
-		Backend::QUERY_TYPE_AUTOCOMPLETE => [
-			'wikipage-securitytrimming' => WikiPageSecurityTrimming::class,
-			'wikipage-acsourcefields' => WikiPageAutocompleteSourceFields::class,
-			'wikipage-boosters' => WikiPageBoosters::class,
-			'wikipage-acunwanted' => WikiPageAutocompleteRemoveUnwanted::class,
-			'wikipage-userpreferences' => WikiPageUserPreferences::class
-		]
-	];
 
 	/**
 	 * @param Base $base

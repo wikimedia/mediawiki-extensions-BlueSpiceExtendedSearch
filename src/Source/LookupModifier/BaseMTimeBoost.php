@@ -3,7 +3,6 @@
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Backend;
-
 use BS\ExtendedSearch\Lookup;
 use Elastica\Client;
 use Elastica\Result;
@@ -98,4 +97,13 @@ class BaseMTimeBoost extends Base {
 		$this->oLookup->removeShouldTerms( '_id' );
 	}
 
+	/**
+	 * @return string[]
+	 */
+	public function getSearchTypes() {
+		return [
+			Backend::QUERY_TYPE_AUTOCOMPLETE,
+			Backend::QUERY_TYPE_SEARCH
+		];
+	}
 }
