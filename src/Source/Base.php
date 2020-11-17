@@ -3,42 +3,23 @@
 namespace BS\ExtendedSearch\Source;
 
 use BS\ExtendedSearch\Backend;
+use BS\ExtendedSearch\ILookupModifier;
 use BS\ExtendedSearch\IPostProcessor;
 use BS\ExtendedSearch\PostProcessor;
-use BS\ExtendedSearch\Source\LookupModifier\BaseExtensionAggregation;
-use BS\ExtendedSearch\Source\LookupModifier\BaseMTimeBoost;
-use BS\ExtendedSearch\Source\LookupModifier\BaseTagsAggregation;
-use BS\ExtendedSearch\Source\LookupModifier\BaseAutocompleteSourceFields;
-use BS\ExtendedSearch\Source\LookupModifier\BaseSimpleQSFields;
-use BS\ExtendedSearch\Source\LookupModifier\BaseWildcarder;
-use BS\ExtendedSearch\Source\LookupModifier\BaseSortByID;
-use BS\ExtendedSearch\Source\LookupModifier\BaseTitleSecurityTrimmings;
-use BS\ExtendedSearch\Source\LookupModifier\BaseUserRelevance;
-use BS\ExtendedSearch\Source\LookupModifier\BaseTypeSecurityTrimming;
-use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 use BS\ExtendedSearch\Source\PostProcessor\Base as PostProcessorBase;
 use MediaWiki\MediaWikiServices;
 
 class Base {
 
+	/**
+	 * @deprecated since version 3.1.13 instead of using $this->lookupModifiers
+	 * to register the modifiers, use static::getAvailableLookupModifiers to
+	 * add/substract/move your modifiers
+	 * @var array
+	 */
 	protected $lookupModifiers = [
-		Backend::QUERY_TYPE_SEARCH => [
-			'base-extensionaggregation' => BaseExtensionAggregation::class,
-			'base-tagsaggregation' => BaseTagsAggregation::class,
-			'base-simpleqsfields' => BaseSimpleQSFields::class,
-			'base-wildcarder' => BaseWildcarder::class,
-			'base-idsort' => BaseSortByID::class,
-			'base-userrelevance' => BaseUserRelevance::class,
-			'base-typesecuritytrimmings' => BaseTypeSecurityTrimming::class,
-			'base-titlesecuritytrimmings' => BaseTitleSecurityTrimmings::class,
-			'base-mtimeboost' => BaseMTimeBoost::class,
-		],
-		Backend::QUERY_TYPE_AUTOCOMPLETE => [
-			'base-acsourcefields' => BaseAutocompleteSourceFields::class,
-			'base-typesecuritytrimmings' => BaseTypeSecurityTrimming::class,
-			'base-titlesecuritytrimmings' => BaseTitleSecurityTrimmings::class,
-			'mtimeboost' => BaseMTimeBoost::class,
-		]
+		Backend::QUERY_TYPE_SEARCH => [],
+		Backend::QUERY_TYPE_AUTOCOMPLETE => []
 	];
 
 	/**
@@ -122,34 +103,62 @@ class Base {
 	}
 
 	/**
-	 *
+	 * @deprecated since version 3.1.13 instead of using $this->lookupModifiers
+	 * to register the modifiers, use static::getAvailableLookupModifiers to
+	 * add/substract/move your modifiers
+	 * @return array [ 'type' => [ 'modifierName1', 'modifierName2' ] ]
+	 */
+	private function getLegacyAvailableLookupModifiers() {
+		wfDebugLog( 'bluespice-deprecations', __METHOD__, 'private' );
+		$modifiers = [];
+		if ( !empty( $this->lookupModifiers ) ) {
+			foreach ( $this->lookupModifiers as $type => $legacyModifiers ) {
+				if ( !isset( $modifiers[$type] ) ) {
+					$modifiers[$type] = [];
+				}
+				foreach ( $legacyModifiers as $key => $legacyModifier ) {
+					$modifiers[$type][] = is_string( $key ) ? $key : $legacyModifier;
+				}
+			}
+		}
+		return $modifiers;
+	}
+
+	/**
+	 * @deprecated since version 3.1.13 - Use registry instead and implement
+	 * ILookupModifier
 	 * @param \BS\ExtendedSearch\Lookup $oLookup
 	 * @param \IContextSource $oContext
 	 * @param string $sType
-	 * @return \BS\ExtendedSearch\Source\LookupModifier\Base[]
+	 * @return ILookupModifier[]
 	 */
-	public function getLookupModifiers( $oLookup, $oContext, $sType = LookupModifier::TYPE_SEARCH ) {
-		if ( !isset( $this->lookupModifiers[$sType] ) ) {
+	public function getLookupModifiers( $oLookup, $oContext,
+		$sType = Backend::QUERY_TYPE_SEARCH ) {
+		if ( !isset( $this->getLegacyAvailableLookupModifiers()[$sType] ) ) {
 			return [];
 		}
-
-		$additionalLookupModifiers = \ExtensionRegistry::getInstance()
-			->getAttribute( 'BlueSpiceExtendedSearchAdditionalLookupModifiers' );
-
-		$lmClasses = $this->lookupModifiers[$sType];
-		if ( isset( $additionalLookupModifiers[$this->getTypeKey()] ) &&
-			isset( $additionalLookupModifiers[$this->getTypeKey()][$sType] ) ) {
-			$lmClasses = array_merge(
-				$lmClasses,
-				$additionalLookupModifiers[$this->getTypeKey()][$sType]
-			);
-		}
-
+		// deprecated since version 3.1.13
+		wfDebugLog( 'bluespice-deprecations', __METHOD__, 'private' );
+		$factory = MediaWikiServices::getInstance()->getService(
+			'BSExtendedSearchLookupModifierFactory'
+		);
 		$lookupModifiers = [];
-		foreach ( $lmClasses as $key => $class ) {
-			$lookupModifiers[$key] = new $class( $oLookup, $oContext );
+		foreach ( $this->getLegacyAvailableLookupModifiers()[$sType] as $name ) {
+			$lookupModifier = $factory->newFromName( $name, $oLookup, $oContext );
+			if ( !$lookupModifier ) {
+				if ( !isset( $this->lookupModifiers[$sType][$name] ) ) {
+					continue;
+				}
+				if ( !class_exists( $this->lookupModifiers[$sType][$name] ) ) {
+					continue;
+				}
+				$lookupModifier = new $this->lookupModifiers[$sType][$name](
+					$oLookup,
+					$oContext
+				);
+			}
+			$lookupModifiers[] = $lookupModifier;
 		}
-
 		return $lookupModifiers;
 	}
 

@@ -2,22 +2,12 @@
 
 namespace BS\ExtendedSearch\Source;
 
-use BS\ExtendedSearch\Source\LookupModifier\FileContent;
-use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Source\Crawler\RepoFile as RepoFileCrawler;
 use BS\ExtendedSearch\Source\DocumentProvider\File as FileDocumentProvider;
 use BS\ExtendedSearch\Source\Updater\RepoFile as RepoFileUpdater;
 use BS\ExtendedSearch\Source\Formatter\FileFormatter;
 
 class RepoFiles extends Files {
-
-	protected $lookupModifiers = [
-		Backend::QUERY_TYPE_SEARCH => [
-			'file-content' => FileContent::class
-		],
-		Backend::QUERY_TYPE_AUTOCOMPLETE => [
-		]
-	];
 
 	/**
 	 *
@@ -56,5 +46,14 @@ class RepoFiles extends Files {
 	 */
 	public function getSearchPermission() {
 		return 'extendedsearch-search-repofile';
+	}
+
+	/**
+	 * @return array [ 'type' => [ 'modifierName1', 'modifierName2' ] ]
+	 */
+	protected function getAvailableLookupModifiers() {
+		$modifiers = parent::getAvailableLookupModifiers();
+		$modifiers[Backend::QUERY_TYPE_SEARCH][] = 'file-content';
+		return $modifiers;
 	}
 }
