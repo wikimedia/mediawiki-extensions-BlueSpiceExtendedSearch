@@ -2,9 +2,16 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
+use File;
+use Hooks;
+
 class UpdateRepoFile extends UpdateTitleBase {
+	/** @var string  */
 	protected $sSourceKey = 'repofile';
+	/** @var File|null  */
 	protected $file = null;
+	/** @var string|null  */
+	protected $canonicalURL = null;
 
 	/**
 	 *
@@ -14,6 +21,7 @@ class UpdateRepoFile extends UpdateTitleBase {
 	public function __construct( $title, $params = [] ) {
 		if ( isset( $params['file'] ) ) {
 			$this->file = $params['file'];
+			$this->canonicalURL = $this->file->getCanonicalUrl();
 		}
 
 		if ( isset( $params['action'] ) ) {
@@ -29,7 +37,7 @@ class UpdateRepoFile extends UpdateTitleBase {
 	 */
 	protected function getDocumentProviderUri() {
 		$this->setFileRepoFile();
-		return $this->file->getCanonicalUrl();
+		return $this->canonicalURL;
 	}
 
 	/**
@@ -39,11 +47,13 @@ class UpdateRepoFile extends UpdateTitleBase {
 	 */
 	protected function getDocumentProviderSource() {
 		$this->setFileRepoFile();
+		if ( !$this->file ) {
+			return null;
+		}
 		$fileBackend = $this->file->getRepo()->getBackend();
 		$fsFile = $fileBackend->getLocalReference( [
 			'src' => $this->file->getPath()
 		] );
-
 		if ( $fsFile === null ) {
 			throw new \Exception( "File '{$this->getTitle()->getPrefixedDBkey()}' not found on filesystem!" );
 		}
@@ -64,6 +74,11 @@ class UpdateRepoFile extends UpdateTitleBase {
 		if ( $file === false ) {
 			throw new \Exception( "File '{$this->getTitle()->getPrefixedDBkey()}' not found in any repo!" );
 		}
+		$this->canonicalURL = $file->getCanonicalURL();
+		Hooks::run( 'BSExtendedSearchRepoFileGetRepoFile', [
+			&$file
+		] );
+
 		$this->file = $file;
 	}
 
