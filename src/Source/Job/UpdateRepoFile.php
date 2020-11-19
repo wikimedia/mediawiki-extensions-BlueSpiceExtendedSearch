@@ -2,13 +2,19 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
+use File;
+use Hooks;
 use MediaWiki\MediaWikiServices;
 
 class UpdateRepoFile extends UpdateTitleBase {
+	/** @var string */
 	protected $sSourceKey = 'repofile';
+	/** @var File|null */
 	protected $file = null;
 	/** @var array */
 	protected $fileData = [];
+	/** @var string|null */
+	protected $canonicalURL = null;
 
 	/**
 	 *
@@ -33,7 +39,7 @@ class UpdateRepoFile extends UpdateTitleBase {
 	 */
 	protected function getDocumentProviderUri() {
 		$this->setFileRepoFile();
-		return $this->fileData['canonicalUrl'] ?? $this->file->getCanonicalUrl();
+		return $this->fileData['canonicalUrl'] ?? $this->canonicalURL;
 	}
 
 	/**
@@ -42,6 +48,7 @@ class UpdateRepoFile extends UpdateTitleBase {
 	 * @throws \Exception
 	 */
 	protected function getDocumentProviderSource() {
+		$this->setFileRepoFile();
 		if ( isset( $this->fileData['fsFile'] ) ) {
 			$fsFile = $this->fileData['fsFile'];
 		} elseif ( $this->file ) {
@@ -83,6 +90,11 @@ class UpdateRepoFile extends UpdateTitleBase {
 				"File '{$this->getTitle()->getPrefixedDBkey()}' not found in any repo!"
 			);
 		}
+		$this->canonicalURL = $file->getCanonicalURL();
+		Hooks::run( 'BSExtendedSearchRepoFileGetRepoFile', [
+			&$file
+		] );
+
 		$this->file = $file;
 	}
 
