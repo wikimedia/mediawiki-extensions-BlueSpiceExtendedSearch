@@ -8,16 +8,14 @@ class FileFormatter extends Base {
 	 *
 	 * @param array &$result
 	 * @param \Elastica\Result $resultObject
-	 * @return null
 	 */
 	public function format( &$result, $resultObject ) {
 		if ( $this->source->getTypeKey() != $resultObject->getType() ) {
 			return;
 		}
 
-		parent::format( $result, $resultObject );
-
 		$result['image_uri'] = $this->getImage( $result );
+		parent::format( $result, $resultObject );
 		$result['highlight'] = $this->getHighlight( $resultObject );
 	}
 
@@ -30,7 +28,7 @@ class FileFormatter extends Base {
 		$mimeType = $result['mime_type'];
 		if ( strpos( $mimeType, 'image' ) === 0 ) {
 			// Show actual image
-			return $result['uri'];
+			return $this->getActualImageUrl( $result );
 		}
 
 		$extension = $result['extension'];
@@ -42,6 +40,14 @@ class FileFormatter extends Base {
 			return $scriptPath . $fileIcons[$extension];
 		}
 		return $scriptPath . $fileIcons['default'];
+	}
+
+	/**
+	 * @param array $result
+	 * @return string
+	 */
+	protected function getActualImageUrl( $result ) {
+		return $result['uri'];
 	}
 
 	/**

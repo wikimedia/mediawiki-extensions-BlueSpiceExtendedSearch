@@ -20,9 +20,10 @@ class File extends DecoratorBase {
 
 		$aDC = $this->oDecoratedDP->getDataConfig( $sUri, $oFile );
 		$magic = Services::getInstance()->getMimeAnalyzer();
+		$name = $this->removeArchiveName( $oFile->getBasename() );
 		$aDC = array_merge( $aDC, [
-			'basename' => $oFile->getBasename(),
-			'basename_exact' => $oFile->getBasename(),
+			'basename' => $name,
+			'basename_exact' => $name,
 			'extension' => $oFile->getExtension(),
 			'mime_type' => $magic->guessMimeType( $oFile->getPathname() ),
 			'mtime' => $oFile->getMTime(),
@@ -36,5 +37,16 @@ class File extends DecoratorBase {
 		unset( $contents );
 
 		return $aDC;
+	}
+
+	/**
+	 * Make sure that the archive name for local files is stripped
+	 *
+	 * @param string $name
+	 * @return string
+	 */
+	private function removeArchiveName( $name ) {
+		$bits = explode( '!', $name );
+		return array_pop( $bits );
 	}
 }
