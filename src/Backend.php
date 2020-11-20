@@ -712,8 +712,8 @@ class Backend {
 	 * @return Object|null
 	 */
 	public function getService( $name ) {
-		if ( Services::getInstance()->hasService( $name ) ) {
-			return Services::getInstance()->getService( $name );
+		if ( MediaWikiServices::getInstance()->hasService( $name ) ) {
+			return MediaWikiServices::getInstance()->getService( $name );
 		}
 		return null;
 	}
