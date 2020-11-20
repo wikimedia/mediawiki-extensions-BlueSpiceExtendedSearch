@@ -101,7 +101,7 @@ class Lookup extends \ArrayObject {
 
 	/**
 	 *
-	 * @return string|null
+	 * @return string|array
 	 */
 	public function getQueryString() {
 		$this->ensurePropertyPath( 'query.bool.must', [] );
