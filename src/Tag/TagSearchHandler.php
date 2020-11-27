@@ -95,9 +95,9 @@ class TagSearchHandler extends Handler {
 			// Should we only consider categories that actually have members?
 			$categories = [];
 			foreach ( $this->processedArgs[$argName] as $cat ) {
-				$categories[] = $cat->getText();
+				$categories[] = $cat->getDBkey();
 				if ( $this->processedArgs[TagSearch::PARAM_OPERATOR] == static::OPERATOR_AND ) {
-					$lookup->addTermFilter( 'categories', $cat->getText() );
+					$lookup->addTermFilter( 'categories', $cat->getDBkey() );
 				}
 			}
 
