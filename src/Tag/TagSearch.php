@@ -72,21 +72,21 @@ class TagSearch extends Tag {
 		);
 		$namespaceListParam->setArrayValues( [ 'hastoexist' => true ] );
 
+		$categoryParam  = new BSCategoryListParam(
+			ParamType::CATEGORY_LIST, static::PARAM_CATEGORY_FULLNAME, []
+		);
+		$catParam  = new BSCategoryListParam(
+			ParamType::CATEGORY_LIST, static::PARAM_CATEGORY, []
+		);
+		$categoryParam->setArrayValues( [ 'hastoexist' => false ] );
+		$catParam->setArrayValues( [ 'hastoexist' => false ] );
 		return [
 			new SearchResultTypeListParam(
 				static::PARAM_TYPE
 			),
 			$namespaceListParam,
-			new BSCategoryListParam(
-				ParamType::CATEGORY_LIST,
-				static::PARAM_CATEGORY,
-				[]
-			),
-			new BSCategoryListParam(
-				ParamType::CATEGORY_LIST,
-				static::PARAM_CATEGORY_FULLNAME,
-				[]
-			),
+			$catParam,
+			$categoryParam,
 			new ParamDefinition(
 				ParamType::STRING,
 				static::PARAM_PLACEHOLDER,
