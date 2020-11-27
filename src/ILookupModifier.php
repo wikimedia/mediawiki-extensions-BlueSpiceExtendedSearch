@@ -24,6 +24,11 @@ interface ILookupModifier {
 	 */
 	public function getPriority();
 
+	/**
+	 * Modify the lookup object
+	 *
+	 * @return void
+	 */
 	public function apply();
 
 	/**

@@ -13,7 +13,7 @@ class AddResources extends \BlueSpice\Hook\BeforePageDisplay {
 			);
 			$this->out->addJsConfigVars(
 				'ESUseSubpagePillsAutocomplete',
-				$this->getConfig()->get( 'ESUseSubpagePillsAutocomplete' )
+				$this->useSubpagePills()
 			);
 
 			$this->out->addModules( "ext.blueSpiceExtendedSearch.SearchFieldAutocomplete" );
@@ -28,4 +28,17 @@ class AddResources extends \BlueSpice\Hook\BeforePageDisplay {
 		$this->out->addJsConfigVars( 'bsgESSourceIcons', $sourceIcons );
 	}
 
+	private function useSubpagePills() {
+		if ( !$this->getConfig()->get( 'ESAutoRecognizeSubpages' ) ) {
+			return false;
+		}
+		if (
+			$this->getConfig()->has( 'ESUseSubpagePillsAutocomplete' ) &&
+			!$this->getConfig()->get( 'ESUseSubpagePillsAutocomplete' )
+		) {
+			return false;
+		}
+
+		return true;
+	}
 }
