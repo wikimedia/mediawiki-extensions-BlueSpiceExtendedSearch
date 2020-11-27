@@ -154,7 +154,7 @@
 				"wikipage-renderedcontenthighlight": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageRenderedContentHighlight::factory",
 				"wikipage-qssourcefields": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageQSSourceFields::factory",
 				"wikipage-boosters": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageBoosters::factory",
-				"wikipage-wildcarder": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageWildcarder::factory",
+				"wikipage-subpagefilter": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageSubpageFilter::factory",
 				"wikipage-unwanted": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageRemoveUnwanted::factory",
 				"wikipage-pagelangaggregation": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageLanguageAggregation::factory",
 				"wikipage-langfilter": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageLanguageFilter::factory",
@@ -627,7 +627,8 @@
 		"ESAllowIndexingDocumentsWithoutContent": {
 			"value": true
 		},
-		"ESUseSubpagePillsAutocomplete": {
+		"ESAutoRecognizeSubpages": {
+			"description": "If true, search for subpages will automatically be recognized and filters adjusted",
 			"value": true
 		},
 		"ESSearchInRawWikitext": {
