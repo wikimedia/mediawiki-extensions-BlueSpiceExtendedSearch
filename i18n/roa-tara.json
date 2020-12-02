@@ -150,5 +150,14 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Elenghe de le tipe de resultate separate da 'a barre (|)",
 	"bs-extendedsearch-collection-type-searchhistory": "Cunde d'a recerche",
 	"bs-extendedsearch-collection-var-searchterm": "Termine",
-	"bs-extendedsearch-collection-var-numbersearched": "Recerche"
+	"bs-extendedsearch-collection-var-numbersearched": "Recerche",
+	"right-extendedsearch-search-specialpage": "Cirche le pàggene speciale",
+	"right-extendedsearch-search-wikipage": "Cirche le pàggene",
+	"right-extendedsearch-search-repofile": "Cirche le fail",
+	"right-extendedsearch-search-externalfile": "Cirche le fail de fore",
+	"action-extendedsearch-search-specialpage": "cirche le pàggene speciale",
+	"action-extendedsearch-search-wikipage": "cirche le pàggene",
+	"action-extendedsearch-search-repofile": "cirche le fail",
+	"action-extendedsearch-search-externalfile": "cirche le fail de fore",
+	"bs-extendedsearch-pref-externalfilepaths-help": "Luèche de fore pe scansionà le fail e le fail de indice. Ste luèche so sckaffate jndr'à coppie chiave/valore."
 }
