@@ -123,7 +123,10 @@ class BlueSpiceSearch extends \SearchEngine {
 				continue;
 			}
 			$title = \Title::newFromText( $item['prefixed_title'] );
-			if ( strpos( strtolower( $title->getText() ), strtolower( $search ) ) === false ) {
+			if (
+				$search !== '*' &&
+				strpos( strtolower( $title->getText() ), strtolower( $search ) ) === false
+			) {
 				continue;
 			}
 
