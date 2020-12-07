@@ -3,6 +3,7 @@
 		"authors": [
 			"Beta16",
 			"Dansita",
+			"TheRukk",
 			"ValeJappo"
 		]
 	},
@@ -87,5 +88,17 @@
 	"bs-extendedsearch-collection-var-numbersearched": "Ricerche",
 	"bssearchadmin": "Cerca amministratore",
 	"bs-extendedsearch-search-center-result-namespace_text-label": "Namespace:",
-	"bs-extendedsearch-filter-add-button-label": "Aggiungi filtro"
+	"bs-extendedsearch-filter-add-button-label": "Aggiungi un filtro",
+	"bs-extendedsearch-admin-heading-backend": "Backend locale",
+	"bs-extendedsearch-admin-heading-sources": "Fonti",
+	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Attività di aggiornamento in attesa",
+	"bs-extendedsearch-search-center-result-no-results": "Non ci sono risultati per il termine fornito",
+	"bs-extendedsearch-search-center-pagesize-dialog-title": "Risultati per pagina",
+	"bs-extendedsearch-search-center-sort-order-desc": "Decrescente",
+	"bs-extendedsearch-search-center-options-sort-order": "Ordinamento",
+	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Non ci sono risultati per la query attuale",
+	"bs-extendedsearch-autocomplete-result-top-match-label": "Migliori risultati",
+	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Potresti stare cercando...",
+	"bs-extendedsearch-search-center-result-help": "Scrivi qualcosa nella barra di ricerca sopra",
+	"bs-extendedsearch-searchcenter-sort-field-_score": "Rilevanza"
 }
