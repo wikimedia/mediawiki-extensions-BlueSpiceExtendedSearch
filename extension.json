@@ -396,6 +396,7 @@
 				"bs.extendedSearch/widget/ResultRedirect.js",
 				"bs.extendedSearch/widget/HitCount.js",
 				"bs.extendedSearch/widget/Spellcheck.js",
+				"bs.extendedSearch/widget/OperatorSuggest.js",
 				"bs.extendedSearch/widget/Filter.js",
 				"bs.extendedSearch/widget/LoadMoreButton.js",
 				"bs.extendedSearch/dialog/AddFilter.js",
@@ -469,10 +470,11 @@
 				"bs-extendedsearch-filter-add-button-label",
 				"bs-extendedsearch-options-button-label",
 				"bs-extendedsearch-export-button-label",
-				"bs-extendedsearch-search-center-result-file-usage-label"
+				"bs-extendedsearch-search-center-result-file-usage-label",
+				"bs-extendedsearch-suggest-operator"
 			],
 			"dependencies" : [
-				"ext.bluespice.extjs",
+				"ext.bluespice",
 				"ext.blueSpiceExtendedSearch.SearchBar"
 			]
 		},
@@ -745,6 +747,9 @@
 				"[0-9]{2}\\.[0-9]{2}",
 				"[0-9]{2}\\\\[0-9]{2}"
 			]
+		},
+		"ESOfferOperatorSuggestion": {
+			"value": true
 		}
 	},
 	"callback": "\\BS\\ExtendedSearch\\Setup::onRegistration",
