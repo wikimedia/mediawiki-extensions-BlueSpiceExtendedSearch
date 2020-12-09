@@ -282,6 +282,12 @@
 			}
 			$altSearchCnt.append( spellCheck.$element );
 
+			var suggestOperator = new bs.extendedSearch.OperatorSuggest( {
+				lookup: search.getLookupObject(),
+				searchBar: searchBar
+			} );
+			$altSearchCnt.append( suggestOperator.$element );
+
 			var toolsPanel = new bs.extendedSearch.ToolsPanel( {
 				lookup: search.getLookupObject(),
 				filterData: $.merge(
