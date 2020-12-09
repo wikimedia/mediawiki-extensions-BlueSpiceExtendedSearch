@@ -44,7 +44,7 @@
 			);
 			this.$element.find( '#bs-suggest' ).replaceWith( $alternativeTermAnchor );
 		}
-	}
+	};
 
 	OO.inheritClass( bs.extendedSearch.SpellcheckWidget, OO.ui.Widget );
 
@@ -53,6 +53,6 @@
 			term: e.data.term,
 			force: true
 		} );
-	}
+	};
 
 } )( mediaWiki, jQuery, blueSpice, document );

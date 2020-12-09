@@ -28,7 +28,6 @@ class BaseWildcarder extends Base {
 	 */
 	protected function setWildcarded( $wildcarded ) {
 		$this->queryString['query'] = $wildcarded;
-		$this->queryString['default_operator'] = 'OR';
 		$this->oLookup->setQueryString( $this->queryString );
 	}
 
