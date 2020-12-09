@@ -509,6 +509,10 @@ class Backend {
 		if ( strpos( $origTerm, '*' ) !== false ) {
 			return $spellcheckResult;
 		}
+		// Do not spellcheck quoted terms
+		if ( preg_match( '/\".*?\"/', $origTerm ) ) {
+			return $spellcheckResult;
+		}
 
 		if ( $lookup->getForceTerm() ) {
 			$lookup->removeForceTerm();

@@ -91,8 +91,13 @@ class SearchCenter extends SpecialPage {
 		// Array of each source's types.
 		$out->addJsConfigVars( 'bsgESAvailbleTypes', $availableTypes );
 		$out->addJsConfigVars( 'bsgESResultsPerPage', 25 );
-		$out->addJsConfigVars( 'ESSearchCenterDefaultFilters', $config->get( 'ESSearchCenterDefaultFilters' ) );
+		$out->addJsConfigVars(
+			'ESSearchCenterDefaultFilters', $config->get( 'ESSearchCenterDefaultFilters' )
+		);
 		$out->addJsConfigVars( 'bsgESUserCanExport', $this->userCanExport() );
+		$out->addJsConfigVars(
+			'bsgESOfferOperatorSuggestion', $config->get( 'ESOfferOperatorSuggestion' )
+		);
 	}
 
 	/**
