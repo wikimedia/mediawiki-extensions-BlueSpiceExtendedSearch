@@ -497,6 +497,8 @@
 		$( window ).on( 'hashchange', function() {
 			bs.extendedSearch.SearchCenter.execSearch();
 		} );
+
+		$( d ).trigger( 'BSExtendedSearchInit', [ search, searchBar ] );
 	} );
 
 } )( mediaWiki, jQuery, blueSpice, document );
