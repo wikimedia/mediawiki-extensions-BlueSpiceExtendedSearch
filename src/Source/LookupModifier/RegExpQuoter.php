@@ -80,6 +80,16 @@ class RegExpQuoter extends Base {
 		$replaceCounter = 0;
 		$mapping = [];
 
+		$query = preg_replace_callback(
+			'#"(.*?)"#',
+			function ( $matches ) use ( &$replaceCounter, &$mapping ) {
+				$placeholder = "###Q$replaceCounter###";
+				$mapping[$placeholder] = $matches[1];
+				return $placeholder;
+			},
+			$query
+		);
+
 		foreach ( $pcrePatterns as $singlePattern ) {
 
 			if ( preg_match_all( "/$singlePattern/", $query, $m1 ) ) {
