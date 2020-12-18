@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Javiero",
 			"Mirin"
 		]
 	},
@@ -55,5 +56,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Nomspaco(j)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategorio(j)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Kategorio1|Kategorio2|...",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Speco"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Speco",
+	"bs-extendedsearch-suggest-operator": "Ĉu vi celis serĉi <b>$1</b>?"
 }
