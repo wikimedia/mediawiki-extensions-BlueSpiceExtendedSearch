@@ -109,5 +109,6 @@
 	"action-extendedsearch-search-specialpage": "חיפוש אחר דפים מיוחדים",
 	"action-extendedsearch-search-wikipage": "חיפוש אחר דפים",
 	"action-extendedsearch-search-repofile": "חיפוש אחר קבצים",
-	"action-extendedsearch-search-externalfile": "חיפוש אחר קבצים חיצוניים"
+	"action-extendedsearch-search-externalfile": "חיפוש אחר קבצים חיצוניים",
+	"bs-extendedsearch-suggest-operator": "התכוונת לחפש אחר <b>$1</b>?"
 }
