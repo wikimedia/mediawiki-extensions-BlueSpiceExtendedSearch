@@ -98,6 +98,7 @@ class SearchCenter extends SpecialPage {
 		$out->addJsConfigVars(
 			'bsgESOfferOperatorSuggestion', $config->get( 'ESOfferOperatorSuggestion' )
 		);
+		$out->addJsConfigVars( 'bsgESEnableTypeFilter', $config->get( 'ESEnableTypeFilter' ) );
 	}
 
 	/**

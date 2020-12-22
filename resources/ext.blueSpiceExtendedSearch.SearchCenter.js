@@ -7,6 +7,9 @@
 	 * @returns {Array}
 	 */
 	function _getTypeFilter() {
+		if ( !mw.config.get( 'bsgESEnableTypeFilter' ) ) {
+			return [];
+		}
 		var availableTypes = mw.config.get( 'bsgESAvailbleTypes' );
 
 		if( availableTypes.length === 0 ) {
