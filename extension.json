@@ -740,6 +740,9 @@
 		},
 		"ESOfferOperatorSuggestion": {
 			"value": true
+		},
+		"ESEnableTypeFilter": {
+			"value": true
 		}
 	},
 	"callback": "\\BS\\ExtendedSearch\\Setup::onRegistration",
