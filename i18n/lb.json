@@ -52,5 +52,6 @@
 	"action-extendedsearch-search-specialpage": "no Spezialsäite sichen",
 	"action-extendedsearch-search-wikipage": "no Säite sichen",
 	"action-extendedsearch-search-repofile": "no Fichiere sichen",
-	"action-extendedsearch-search-externalfile": "no externe Fichiere sichen"
+	"action-extendedsearch-search-externalfile": "no externe Fichiere sichen",
+	"bs-extendedsearch-suggest-operator": "Wollt Dir no <b>$1</b> sichen?"
 }
