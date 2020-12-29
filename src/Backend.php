@@ -720,6 +720,7 @@ class Backend {
 	 * or null if service does not exist or is disabled
 	 *
 	 * @param string $name
+	 * @phpcs:ignore MediaWiki.Commenting.FunctionComment.ObjectTypeHintReturn
 	 * @return object|null
 	 */
 	public function getService( $name ) {
