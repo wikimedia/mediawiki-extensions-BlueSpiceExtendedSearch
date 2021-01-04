@@ -116,5 +116,14 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "검색하려면 입력하세요...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "유형",
 	"bs-extendedsearch-collection-type-searchhistory": "검색 역사",
-	"bs-extendedsearch-collection-var-numbersearched": "검색"
+	"bs-extendedsearch-collection-var-numbersearched": "검색",
+	"right-extendedsearch-search-specialpage": "특수 문서 검색",
+	"right-extendedsearch-search-wikipage": "문서 검색",
+	"right-extendedsearch-search-repofile": "파일 검색",
+	"right-extendedsearch-search-externalfile": "외부 파일 검색",
+	"action-extendedsearch-search-specialpage": "특수 문서 검색",
+	"action-extendedsearch-search-wikipage": "문서 검색",
+	"action-extendedsearch-search-repofile": "파일 검색",
+	"action-extendedsearch-search-externalfile": "외부 파일 검색",
+	"bs-extendedsearch-suggest-operator": "찾으시려는 항목이 <b>$1</b>입니까?"
 }

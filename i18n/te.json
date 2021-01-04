@@ -29,5 +29,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "వర్గము(లు)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "వర్గం1|వర్గం2|...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "రకం",
-	"bs-extendedsearch-collection-type-searchhistory": "వెతుకుడు చరిత్ర"
+	"bs-extendedsearch-collection-type-searchhistory": "వెతుకుడు చరిత్ర",
+	"bs-extendedsearch-suggest-operator": "మీరు <b>$1</b> కోసం వెతకాలనుకున్నారా?"
 }
