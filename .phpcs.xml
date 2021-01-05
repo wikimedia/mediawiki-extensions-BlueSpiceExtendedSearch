@@ -5,7 +5,6 @@
 		<exclude name="MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName" />
 		<exclude name="MediaWiki.NamingConventions.ValidGlobalName.allowedPrefix" />
 		<exclude name="MediaWiki.Usage.ExtendClassUsage.FunctionVarUsage" />
-		<exclude name="MediaWiki.Usage.NullableType.PHP71NullableStyle" />
 		<exclude name="PSR12.Properties.ConstantVisibility.NotFound" />
 		<exclude name="Generic.Files.LineLength.TooLong" />
 		<exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationPrivate" />
