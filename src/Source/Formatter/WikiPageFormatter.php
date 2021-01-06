@@ -303,7 +303,7 @@ class WikiPageFormatter extends Base {
 		$dfdUrlBuilder = $this->source->getBackend()->getService(
 			'BSDynamicFileDispatcherUrlBuilder'
 		);
-		if ( null == $dfdUrlBuilder ) {
+		if ( $dfdUrlBuilder == null ) {
 			return '';
 		}
 
