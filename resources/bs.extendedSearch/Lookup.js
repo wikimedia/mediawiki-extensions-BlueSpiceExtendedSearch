@@ -141,7 +141,7 @@ bs.extendedSearch.Lookup.prototype.setQueryString = function ( q ) {
 
 /**
  *
- * @returns object|null
+ * @returns array
  */
 bs.extendedSearch.Lookup.prototype.getQueryString = function () {
 	this.ensurePropertyPath( 'query.bool.must', [] );
@@ -152,7 +152,7 @@ bs.extendedSearch.Lookup.prototype.getQueryString = function () {
 		}
 	}
 
-	return '';
+	return [];
 };
 
 /**

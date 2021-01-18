@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\Updater;
 
+use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Revision\RevisionStoreRecord;
 use MediaWiki\Storage\EditResult;
 use User;
@@ -10,16 +11,26 @@ use WikiPage as MWWikiPage;
 class WikiPage extends Base {
 	/**
 	 *
-	 * @param array &$aHooks
+	 * @param HookContainer $hookContainer
 	 */
-	public function init( &$aHooks ) {
-		$aHooks['PageSaveComplete'][] = [ $this, 'onPageSaveComplete' ];
-		$aHooks['ArticleDeleteComplete'][] = [ $this, 'onArticleDeleteComplete' ];
-		$aHooks['ArticleUndelete'][] = [ $this, 'onArticleUndelete' ];
-		$aHooks['TitleMoveComplete'][] = [ $this, 'onTitleMoveComplete' ];
-		$aHooks['AfterImportPage'][] = [ $this, 'onAfterImportPage' ];
+	public function init( $hookContainer ) {
+		$hookContainer->register(
+			'PageSaveComplete', [ $this, 'onPageSaveComplete' ]
+		);
+		$hookContainer->register(
+			'ArticleDeleteComplete', [ $this, 'onArticleDeleteComplete' ]
+		);
+		$hookContainer->register(
+			'ArticleUndelete', [ $this, 'onArticleUndelete' ]
+		);
+		$hookContainer->register(
+			'TitleMoveComplete', [ $this, 'onTitleMoveComplete' ]
+		);
+		$hookContainer->register(
+			'AfterImportPage', [ $this, 'onAfterImportPage' ]
+		);
 
-		parent::init( $aHooks );
+		parent::init( $hookContainer );
 	}
 
 	/**

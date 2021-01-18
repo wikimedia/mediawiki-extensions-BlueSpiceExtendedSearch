@@ -2,7 +2,6 @@
 
 namespace BS\ExtendedSearch;
 
-use BS\ExtendedSearch\Backend as SearchBackend;
 use BS\ExtendedSearch\MediaWiki\Backend\BlueSpiceSearch;
 use MediaWiki\MediaWikiServices;
 use QuickTemplate;
@@ -14,9 +13,12 @@ class Setup {
 	 * ExtensionFunction callback to wire up all updaters
 	 */
 	public static function init() {
-		$sources = SearchBackend::instance()->getSources();
+		$sources = MediaWikiServices::getInstance()
+			->getService( 'BSExtendedSearchBackend' )->getSources();
 		foreach ( $sources as $source ) {
-			$source->getUpdater()->init( $GLOBALS['wgHooks'] );
+			$source->getUpdater()->init(
+				MediaWikiServices::getInstance()->getHookContainer()
+			);
 		}
 
 		// Set ExtendedSearch backend as default MW engine
