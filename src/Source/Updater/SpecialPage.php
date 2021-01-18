@@ -1,15 +1,19 @@
 <?php
 namespace BS\ExtendedSearch\Source\Updater;
 
+use MediaWiki\HookContainer\HookContainer;
+
 class SpecialPage extends Base {
 	/**
 	 *
-	 * @param array &$aHooks
+	 * @param HookContainer $hookContainer
 	 */
-	public function init( &$aHooks ) {
-		$aHooks['LoadExtensionSchemaUpdates'][] = [ $this, 'onLoadExtensionSchemaUpdates' ];
+	public function init( $hookContainer ) {
+		$hookContainer->register(
+			'LoadExtensionSchemaUpdates', [ $this, 'onLoadExtensionSchemaUpdates' ]
+		);
 
-		parent::init( $aHooks );
+		parent::init( $hookContainer );
 	}
 
 	/**

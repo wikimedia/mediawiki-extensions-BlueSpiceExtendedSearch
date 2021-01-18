@@ -101,7 +101,7 @@ class Lookup extends \ArrayObject {
 
 	/**
 	 *
-	 * @return string|array
+	 * @return array
 	 */
 	public function getQueryString() {
 		$this->ensurePropertyPath( 'query.bool.must', [] );
@@ -110,7 +110,8 @@ class Lookup extends \ArrayObject {
 				return $aMust['query_string'];
 			}
 		}
-		return null;
+
+		return [];
 	}
 
 	/**

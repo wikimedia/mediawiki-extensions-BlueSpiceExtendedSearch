@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\Updater;
 
+use MediaWiki\HookContainer\HookContainer;
+
 class Base {
 
 	/** @var string */
@@ -17,10 +19,12 @@ class Base {
 
 	/**
 	 *
-	 * @param array &$aHooks
+	 * @param HookContainer $hookContainer
 	 */
-	public function init( &$aHooks ) {
-		$aHooks['BSExtendedSearchTriggerUpdate'][] = [ $this, 'onBSExtendedSearchTriggerUpdate' ];
+	public function init( $hookContainer ) {
+		$hookContainer->register(
+			'BSExtendedSearchTriggerUpdate', [ $this, 'onBSExtendedSearchTriggerUpdate' ]
+		);
 	}
 
 	/**

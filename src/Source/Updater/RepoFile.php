@@ -6,24 +6,38 @@ use Article;
 use BS\ExtendedSearch\Source\Job\UpdateRepoFile;
 use File;
 use JobQueueGroup;
+use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
 use Title;
 use User;
 
 class RepoFile extends Base {
+
 	/**
 	 *
-	 * @param array &$aHooks
+	 * @param HookContainer $hookContainer
 	 */
-	public function init( &$aHooks ) {
-		$aHooks['FileUpload'][] = [ $this, 'onFileUpload' ];
-		$aHooks['FileDeleteComplete'][] = [ $this, 'onFileDeleteComplete' ];
-		$aHooks['FileUndeleteComplete'][] = [ $this, 'onFileUndeleteComplete' ];
-		$aHooks['TitleMove'][] = [ $this, 'onTitleMove' ];
-		$aHooks['TitleMoveComplete'][] = [ $this, 'onTitleMoveComplete' ];
-		$aHooks['WebDAVPublishToWikiDone'][] = [ $this, 'onWebDAVPublishToWikiDone' ];
+	public function init( $hookContainer ) {
+		$hookContainer->register(
+			'FileUpload', [ $this, 'onFileUpload' ]
+		);
+		$hookContainer->register(
+			'FileDeleteComplete', [ $this, 'onFileDeleteComplete' ]
+		);
+		$hookContainer->register(
+			'FileUndeleteComplete', [ $this, 'onFileUndeleteComplete' ]
+		);
+		$hookContainer->register(
+			'TitleMove', [ $this, 'onTitleMove' ]
+		);
+		$hookContainer->register(
+			'TitleMoveComplete', [ $this, 'onTitleMoveComplete' ]
+		);
+		$hookContainer->register(
+			'WebDAVPublishToWikiDone', [ $this, 'onWebDAVPublishToWikiDone' ]
+		);
 
-		parent::init( $aHooks );
+		parent::init( $hookContainer );
 	}
 
 	/**
