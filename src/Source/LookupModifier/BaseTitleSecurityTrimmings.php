@@ -5,7 +5,9 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 use BS\ExtendedSearch\Backend;
 
 class BaseTitleSecurityTrimmings extends Base {
+	/** @var \Config */
 	protected $config;
+	/** @var \Elastica\Search */
 	protected $search;
 
 	/**

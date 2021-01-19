@@ -6,15 +6,17 @@ use BlueSpice\Privacy\IPrivacyHandler;
 use BlueSpice\Privacy\Module\Transparency;
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
+use Wikimedia\Rdbms\IDatabase;
 
 class Handler implements IPrivacyHandler {
+	/** @var IDatabase */
 	protected $db;
 
 	/**
 	 *
-	 * @param \Database $db
+	 * @param IDatabase $db
 	 */
-	public function __construct( \Database $db ) {
+	public function __construct( IDatabase $db ) {
 		$this->db = $db;
 	}
 

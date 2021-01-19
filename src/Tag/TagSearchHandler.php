@@ -13,7 +13,9 @@ class TagSearchHandler extends Handler {
 	const OPERATOR_OR = 'OR';
 	const OPERATOR_AND = 'AND';
 
+	/** @var Config */
 	protected $config;
+	/** @var int */
 	protected $tagIdNumber;
 
 	/**

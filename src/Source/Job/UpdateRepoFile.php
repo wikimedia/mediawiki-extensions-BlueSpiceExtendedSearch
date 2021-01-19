@@ -7,7 +7,7 @@ use Hooks;
 use MediaWiki\MediaWikiServices;
 
 class UpdateRepoFile extends UpdateTitleBase {
-	/** @var string */
+	/** @inheritDoc */
 	protected $sSourceKey = 'repofile';
 	/** @var File|null */
 	protected $file = null;

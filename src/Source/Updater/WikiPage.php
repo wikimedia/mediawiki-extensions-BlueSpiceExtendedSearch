@@ -44,8 +44,8 @@ class WikiPage extends Base {
 	 * Delete search index entry on article deletion
 	 * @param \WikiPage &$article
 	 * @param \User &$user
-	 * @param type $reason
-	 * @param type $id
+	 * @param string $reason
+	 * @param int $id
 	 * @param \Content|null $content
 	 * @param \LogEntry $logEntry
 	 * @return bool

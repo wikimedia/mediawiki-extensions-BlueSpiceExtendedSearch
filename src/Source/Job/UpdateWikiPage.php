@@ -7,6 +7,7 @@ use WikiPage;
 
 class UpdateWikiPage extends UpdateTitleBase {
 
+	/** @inheritDoc */
 	protected $sSourceKey = 'wikipage';
 
 	/**

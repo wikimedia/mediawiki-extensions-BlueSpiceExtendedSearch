@@ -2,7 +2,9 @@
 namespace BS\ExtendedSearch\MediaWiki\Backend;
 
 class SearchResultSet extends \SearchResultSet {
+	/** @var int */
 	public $index = -1;
+	/** @inheritDoc */
 	protected $results = [];
 
 	/**

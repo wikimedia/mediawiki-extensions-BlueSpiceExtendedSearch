@@ -135,6 +135,11 @@ class PostProcessor {
 		}
 	}
 
+	/**
+	 * @param array &$results
+	 * @param Lookup $lookup
+	 * @return array|void
+	 */
 	private function doReSort( &$results, $lookup ) {
 		$sort = $lookup->getSort();
 		if ( is_array( $sort ) && isset( $sort[0] ) ) {
@@ -150,6 +155,12 @@ class PostProcessor {
 		}
 	}
 
+	/**
+	 * @param array &$results
+	 * @param string $field
+	 * @param string $order
+	 * @return array
+	 */
 	private function doSort( &$results, $field, $order ) {
 		usort( $results, function ( $a, $b ) use ( $field, $order ) {
 			if ( $field === '_score' ) {

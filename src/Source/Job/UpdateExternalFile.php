@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Source\Job;
 
 class UpdateExternalFile extends UpdateBase {
+	/** @inheritDoc */
 	protected $sSourceKey = 'externalfile';
 
 	/**

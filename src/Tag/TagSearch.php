@@ -23,6 +23,7 @@ class TagSearch extends Tag {
 	const PARAM_OPERATOR = 'operator';
 	const PARAM_TYPE = 'type';
 
+	/** @var int */
 	protected $tagCounter = 0;
 
 	/**
@@ -42,7 +43,7 @@ class TagSearch extends Tag {
 		$config = MediaWikiServices::getInstance()
 			->getConfigFactory()
 			->makeConfig( 'bsg' );
-		$this->tagCounter ++;
+		$this->tagCounter++;
 
 		return new TagSearchHandler(
 			$processedInput,

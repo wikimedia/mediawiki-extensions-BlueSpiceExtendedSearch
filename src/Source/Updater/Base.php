@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\Source\Updater;
 
 class Base {
 
+	/** @var string */
 	protected $sUpdateJobClass = '';
 
 	/**
@@ -40,7 +41,7 @@ class Base {
 	/**
 	 * @param \Title $oTitle
 	 * @param array $aParams
-	 * @return \BS\ExtendedSearch\Source\Updater\Base | null
+	 * @return \BS\ExtendedSearch\Source\Updater\Base|null
 	 */
 	public function makeJob( $oTitle, $aParams = [] ) {
 		if ( !is_subclass_of( $this->sUpdateJobClass, '\Job' ) ) {

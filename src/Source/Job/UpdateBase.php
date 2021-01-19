@@ -14,9 +14,12 @@ abstract class UpdateBase extends \Job {
 	const ACTION_DELETE = 'delete';
 	const ACTION_UPDATE = 'update';
 
+	/** @var string */
 	protected $action = self::ACTION_UPDATE;
 
+	/** @var string */
 	protected $sBackendKey = 'local';
+	/** @var string */
 	protected $sSourceKey = '';
 
 	/**

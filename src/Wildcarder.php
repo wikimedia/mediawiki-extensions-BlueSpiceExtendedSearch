@@ -160,6 +160,10 @@ class Wildcarder {
 		}
 	}
 
+	/**
+	 * @param string $snippet
+	 * @return string
+	 */
 	private function doWildcardSnippet( $snippet ) {
 		foreach ( $this->wildcardingSeparators as $sep ) {
 			$snippet = str_replace( $sep, ' ', $snippet );

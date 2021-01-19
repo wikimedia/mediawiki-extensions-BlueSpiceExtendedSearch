@@ -79,6 +79,11 @@ class Base implements IPostProcessor {
 		return $this->percentageBoost( $result, $lookup );
 	}
 
+	/**
+	 * @param Result &$result
+	 * @param Lookup $lookup
+	 * @return bool
+	 */
 	private function percentageBoost( Result &$result, Lookup $lookup ) {
 		$score = $result->getScore();
 		if ( !is_float( $score ) ) {
@@ -93,6 +98,11 @@ class Base implements IPostProcessor {
 		return true;
 	}
 
+	/**
+	 * @param Result $result
+	 * @param Lookup $lookup
+	 * @return int
+	 */
 	private function getMatchPercent( $result, $lookup ) {
 		$title = strtolower( $this->getTitleFieldValue( $result ) );
 		$tokens = $this->getSearchTermTokens( $lookup );
@@ -119,6 +129,10 @@ class Base implements IPostProcessor {
 		return $matchCount / strlen( $title );
 	}
 
+	/**
+	 * @param Lookup $lookup
+	 * @return string
+	 */
 	private function getSearchTermTokens( $lookup ) {
 		$term = $this->getTermFromLookup( $lookup );
 		$wildcarder = Wildcarder::factory( $term );

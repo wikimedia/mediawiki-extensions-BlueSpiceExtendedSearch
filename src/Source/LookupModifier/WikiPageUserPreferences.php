@@ -5,6 +5,7 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 use BS\ExtendedSearch\Backend;
 
 class WikiPageUserPreferences extends Base {
+	/** @var int[] */
 	protected $namespacesToBoost;
 
 	public function apply() {
