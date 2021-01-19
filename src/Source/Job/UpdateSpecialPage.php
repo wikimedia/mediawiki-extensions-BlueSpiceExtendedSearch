@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\Source\Job;
 
 class UpdateSpecialPage extends UpdateTitleBase {
 
+	/** @inheritDoc */
 	protected $sSourceKey = 'specialpage';
 
 	/**

@@ -6,6 +6,7 @@ use MediaWiki\MediaWikiServices;
 
 class Base {
 
+	/** @var string */
 	protected $sJobClass = '';
 
 	/**

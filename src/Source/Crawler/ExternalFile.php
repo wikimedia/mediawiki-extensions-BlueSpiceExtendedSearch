@@ -9,6 +9,7 @@ use SplFileInfo;
 use UnexpectedValueException;
 
 class ExternalFile extends File {
+	/** @var Wikimedia\Rdbms */
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateExternalFile';
 
 	public function crawl() {

@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Source\Crawler;
 
 class SpecialPage extends Base {
+	/** @inheritDoc */
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateSpecialPage';
 
 	public function crawl() {

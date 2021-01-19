@@ -6,6 +6,7 @@ use BS\ExtendedSearch\Backend;
 
 class WikiPageSecurityTrimming extends Base {
 
+	/** @var int[] */
 	protected $namespaceIdBlacklist = [];
 
 	/**

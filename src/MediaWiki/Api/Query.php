@@ -3,7 +3,9 @@
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
 class Query extends \ApiBase {
+	/** @var string */
 	protected $searchTerm;
+	/** @var array */
 	protected $pageCreateData = [];
 
 	public function execute() {
@@ -65,9 +67,10 @@ class Query extends \ApiBase {
 
 	/**
 	 *
-	 * @var \BS\ExtendedSearch\Lookup
+	 * @var \BS\ExtendedSearch\Lookup|null
 	 */
 	protected $oLookup = null;
+	/** @var string */
 	protected $sBackend = '';
 
 	protected function readInParameters() {
@@ -87,6 +90,7 @@ class Query extends \ApiBase {
 		$this->resultSet = $oBackend->runLookup( $this->oLookup );
 	}
 
+	/** @var \ApiResult */
 	protected $oResult;
 
 	protected function returnResults() {

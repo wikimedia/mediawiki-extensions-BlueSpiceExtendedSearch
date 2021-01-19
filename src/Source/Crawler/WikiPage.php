@@ -5,6 +5,7 @@ namespace BS\ExtendedSearch\Source\Crawler;
 use MediaWiki\MediaWikiServices;
 
 class WikiPage extends Base {
+	/** @var Wikimedia\Rdbms */
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateWikiPage';
 
 	public function crawl() {

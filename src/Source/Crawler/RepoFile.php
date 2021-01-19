@@ -5,6 +5,7 @@ namespace BS\ExtendedSearch\Source\Crawler;
 use MediaWiki\MediaWikiServices;
 
 class RepoFile extends File {
+	/** @var Wikimedia\Rdbms */
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateRepoFile';
 
 	public function crawl() {

@@ -864,6 +864,10 @@ class Backend {
 		}
 	}
 
+	/**
+	 * @param string $searchType
+	 * @return PostProcessor
+	 */
 	private function getPostProcessor( $searchType ) {
 		$backend = $this;
 		return PostProcessor::factory( $searchType, $backend );

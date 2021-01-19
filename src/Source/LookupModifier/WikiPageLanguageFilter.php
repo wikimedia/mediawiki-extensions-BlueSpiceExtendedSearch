@@ -13,7 +13,9 @@ use MediaWiki\MediaWikiServices;
  */
 class WikiPageLanguageFilter extends Base {
 
+	/** @var array */
 	protected $originalMust = [];
+	/** @var string */
 	protected $filterValue;
 
 	public function apply() {

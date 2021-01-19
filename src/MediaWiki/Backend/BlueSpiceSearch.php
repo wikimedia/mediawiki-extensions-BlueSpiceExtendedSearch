@@ -6,7 +6,9 @@ use MediaWiki\MediaWikiServices;
 use SearchResult;
 
 class BlueSpiceSearch extends \SearchEngine {
+	/** @var \SearchEngine|null */
 	protected $fallbackSearchEngine = null;
+	/** @var \BS\ExtendedSearch\Backend */
 	protected $backend;
 
 	public function __construct() {

@@ -5,8 +5,11 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 use BS\ExtendedSearch\ResultRelevance;
 
 class BaseUserRelevance extends Base {
+	/** @var array */
 	protected $relevanceValues = [];
+	/** @var array */
 	protected $positiveBoosts = [];
+	/** @var array */
 	protected $negativeBoosts = [];
 
 	/**

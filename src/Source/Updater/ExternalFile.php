@@ -6,10 +6,14 @@ use BlueSpice\INotifier;
 use BlueSpice\RunJobsTriggerHandler;
 
 class ExternalFile extends RunJobsTriggerHandler {
+	/** @var string */
 	protected $sourceKey = 'externalfile';
+	/** @var \BS\ExtendedSearch\Backend */
 	protected $backend;
+	/** @var string */
 	protected $index;
 
+	/** @var array */
 	protected $indexedFiles = [];
 
 	/**

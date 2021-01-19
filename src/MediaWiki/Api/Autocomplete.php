@@ -100,6 +100,7 @@ class Autocomplete extends \ApiBase {
 		$this->secondaryRequestData = $this->getParameter( 'secondaryRequestData' );
 	}
 
+	/** @var array|null */
 	protected $pageCreateInfo;
 
 	protected function setPageCreatable() {
@@ -162,6 +163,7 @@ class Autocomplete extends \ApiBase {
 		$this->suggestions = $backend->runAutocompleteLookup( $this->lookup, $this->searchData );
 	}
 
+	/** @var \ApiResult */
 	protected $oResult;
 
 	protected function returnResults() {

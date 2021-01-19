@@ -6,7 +6,9 @@ use BS\ExtendedSearch\Param\Parser\SearchResultTypeParser;
 use BS\ExtendedSearch\Param\Validator\SearchResultTypeValidator;
 
 class SearchResultTypeListParam extends \ParamProcessor\ParamDefinition {
+	/** @var string */
 	protected $delimiter = '|';
+	/** @var SearchResultTypeValidator|null */
 	protected $validator = null;
 
 	/**
