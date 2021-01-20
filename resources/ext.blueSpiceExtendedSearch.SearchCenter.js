@@ -76,6 +76,9 @@
 				}
 			};
 
+			if ( !$.isArray( rawFilter.buckets ) ) {
+				continue;
+			}
 			for( var i = 0; i < rawFilter.buckets.length; i++ ) {
 				var bucket = rawFilter.buckets[i];
 				filter.filter.options.push( {
