@@ -825,7 +825,8 @@ class Lookup extends \ArrayObject {
 
 			$aBase['aggs']['field_' . $sFieldNamePart] = [
 				'terms' => [
-					'field' => $sFieldNamePart
+					'field' => $sFieldNamePart,
+					'size' => 1000
 				]
 			];
 

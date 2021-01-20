@@ -483,12 +483,14 @@ class LookupTest extends \MediaWikiTestCase {
 			"aggs" => [
 				"field__type" => [
 					"terms" => [
-						"field" => "_type"
+						"field" => "_type",
+						"size" => 1000
 					],
 					"aggs" => [
 						"field_extension" => [
 							"terms" => [
-								"field" => "extension"
+								"field" => "extension",
+								"size" => 1000
 							]
 						]
 					]
