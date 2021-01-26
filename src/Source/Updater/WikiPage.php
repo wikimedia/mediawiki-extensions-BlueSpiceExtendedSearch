@@ -12,6 +12,7 @@ class WikiPage extends Base {
 		$aHooks['ArticleDeleteComplete'][] = [ $this, 'onArticleDeleteComplete' ];
 		$aHooks['ArticleUndelete'][] = [ $this, 'onArticleUndelete' ];
 		$aHooks['TitleMoveComplete'][] = [ $this, 'onTitleMoveComplete' ];
+		$aHooks['AfterImportPage'][] = [ $this, 'onAfterImportPage' ];
 
 		parent::init( $aHooks );
 	}
@@ -89,6 +90,25 @@ class WikiPage extends Base {
 		);
 		\JobQueueGroup::singleton()->push(
 			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage( $newtitle )
+		);
+		return true;
+	}
+
+	/**
+	 *
+	 * @param \Title $title
+	 * @param string $origTitle
+	 * @param int $revCount
+	 * @param int $sRevCount
+	 * @param array $pageInfo
+	 * @return bool
+	 */
+	public function onAfterImportPage( $title, $origTitle, $revCount, $sRevCount, $pageInfo ) {
+		if ( empty( $sRevCount ) ) {
+			return true;
+		}
+		\JobQueueGroup::singleton()->push(
+			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage( $title )
 		);
 		return true;
 	}
