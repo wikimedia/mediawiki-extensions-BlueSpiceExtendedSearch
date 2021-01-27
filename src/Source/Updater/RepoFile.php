@@ -7,7 +7,9 @@ use BS\ExtendedSearch\Source\Job\UpdateRepoFile;
 use File;
 use JobQueueGroup;
 use MediaWiki\HookContainer\HookContainer;
+use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserIdentity;
 use Title;
 use User;
 
@@ -31,7 +33,7 @@ class RepoFile extends Base {
 			'TitleMove', [ $this, 'onTitleMove' ]
 		);
 		$hookContainer->register(
-			'TitleMoveComplete', [ $this, 'onTitleMoveComplete' ]
+			'PageMoveComplete', [ $this, 'onTitleMoveComplete' ]
 		);
 		$hookContainer->register(
 			'WebDAVPublishToWikiDone', [ $this, 'onWebDAVPublishToWikiDone' ]
@@ -113,25 +115,19 @@ class RepoFile extends Base {
 
 	/**
 	 * Update search index when a file is moved.
-	 * @param Title &$oTitle Old title of the moved article.
-	 * @param Title &$oNewtitle New title of the moved article.
-	 * @param User $oUser User that moved the article.
-	 * @param int $iOldID ID of the page that has been moved.
-	 * @param int $iNewID ID of the newly created redirect.
+	 * @param LinkTarget $oTitle Old title of the moved article.
+	 * @param LinkTarget $oNewtitle New title of the moved article.
+	 * @param UserIdentity $oUser User that moved the article.
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
-	public function onTitleMoveComplete( &$oTitle, &$oNewtitle, $oUser, $iOldID, $iNewID ) {
+	public function onTitleMoveComplete( $oTitle, $oNewtitle, $oUser ) {
 		if ( $oTitle->getNamespace() !== NS_FILE ) {
 			return true;
 		}
 
-		$oldFile = new \LocalFile(
-			$oTitle,
-			MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo()
-		);
 		JobQueueGroup::singleton()->push(
 			new \BS\ExtendedSearch\Source\Job\UpdateRepoFile(
-				$oTitle,
+				Title::newFromLinkTarget( $oTitle ),
 				[
 					'filedata' => $this->getFileData( $this->titleMoveOrigFile ),
 					'action' => UpdateRepoFile::ACTION_DELETE
@@ -140,7 +136,7 @@ class RepoFile extends Base {
 		);
 
 		JobQueueGroup::singleton()->push(
-			new UpdateRepoFile( $oNewtitle )
+			new UpdateRepoFile( Title::newFromLinkTarget( $oNewtitle ) )
 		);
 		return true;
 	}

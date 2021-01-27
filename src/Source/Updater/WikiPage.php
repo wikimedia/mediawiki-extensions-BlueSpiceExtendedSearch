@@ -5,6 +5,7 @@ namespace BS\ExtendedSearch\Source\Updater;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Revision\RevisionStoreRecord;
 use MediaWiki\Storage\EditResult;
+use Title;
 use User;
 use WikiPage as MWWikiPage;
 
@@ -24,7 +25,7 @@ class WikiPage extends Base {
 			'ArticleUndelete', [ $this, 'onArticleUndelete' ]
 		);
 		$hookContainer->register(
-			'TitleMoveComplete', [ $this, 'onTitleMoveComplete' ]
+			'PageMoveComplete', [ $this, 'onTitleMoveComplete' ]
 		);
 		$hookContainer->register(
 			'AfterImportPage', [ $this, 'onAfterImportPage' ]
@@ -77,7 +78,7 @@ class WikiPage extends Base {
 	 * @param int $oldPageId
 	 * @return bool
 	 */
-	public function onArticleUndelete( \Title $title, $create, $comment, $oldPageId ) {
+	public function onArticleUndelete( Title $title, $create, $comment, $oldPageId ) {
 		\JobQueueGroup::singleton()->push(
 			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage( $title )
 		);
@@ -86,28 +87,28 @@ class WikiPage extends Base {
 
 	/**
 	 * Update search index when an article is moved.
-	 * @param \Title &$title
-	 * @param \Title &$newtitle
-	 * @param \User &$user
-	 * @param int $oldid
-	 * @param int $newid
-	 * @param string $reason
-	 * @param \Revision $revision
+	 * @param LinkTarget $title Old title of the moved article.
+	 * @param LinkTarget $newtitle New title of the moved article.
+	 * @param UserIdentity $user User that moved the article.
 	 * @return bool
 	 */
-	public function onTitleMoveComplete( \Title &$title, \Title &$newtitle, \User &$user, $oldid, $newid, $reason, \Revision $revision ) {
+	public function onTitleMoveComplete( $title, $newtitle, $user ) {
 		\JobQueueGroup::singleton()->push(
-			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage( $title )
+			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage(
+				Title::newFromLinkTarget( $title )
+			)
 		);
 		\JobQueueGroup::singleton()->push(
-			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage( $newtitle )
+			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage(
+				Title::newFromLinkTarget( $newtitle )
+			)
 		);
 		return true;
 	}
 
 	/**
 	 *
-	 * @param \Title $title
+	 * @param Title $title
 	 * @param string $origTitle
 	 * @param int $revCount
 	 * @param int $sRevCount
