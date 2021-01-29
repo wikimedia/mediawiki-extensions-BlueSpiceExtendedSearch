@@ -7,6 +7,7 @@
 		this.basename = cfg.suggestion.basename;
 		this.type = cfg.suggestion.type;
 		this.score = cfg.suggestion.score;
+		this.titleTrim = cfg.titleTrim || null;
 
 		this.searchTerm = cfg.term || '';
 		this.popup = cfg.popup;

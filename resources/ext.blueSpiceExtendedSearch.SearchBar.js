@@ -14,6 +14,7 @@
 		this.mobile = cfg.mobile || false;
 		this.value = '';
 		this.namespace = {};
+		this.masterFilter = cfg.masterFilter || null;
 
 		this.useNamespacePills = true;
 		if( cfg.hasOwnProperty( 'useNamespacePills' ) && cfg.useNamespacePills === false ) {
@@ -56,6 +57,14 @@
 		this.$searchBox.on( 'keydown', this.onKeyDown.bind( this ) );
 		this.$searchBox.on( 'keyup', this.onKeyUp.bind( this ) );
 		this.$searchBox.on( 'paste', this.onPaste.bind( this ) );
+
+		if ( this.masterFilter ) {
+			this.useNamespacePills = false;
+			this.useSubpagePills = false;
+			this.mainpage = this.masterFilter.title;
+			this.namespace = this.masterFilter.namespace;
+			this.generateMasterFilterPill();
+		}
 	};
 
 	bs.extendedSearch.SearchBar.prototype.detectNamespace = function( value ) {
@@ -181,6 +190,35 @@
 		this.setSearchBoxWidthInline( sbW - this.$pill.outerWidth() );
 		this.$searchBox.val( value );
 	};
+
+	bs.extendedSearch.SearchBar.prototype.generateMasterFilterPill = function() {
+		this.removeMasterFilterPill();
+
+		this.$pill = $( '<span>' )
+			.addClass( 'bs-extendedsearch-searchbar-pill subpage-pill master-filter-pill' );
+
+		this.$pill.html( new OO.ui.IconWidget( {
+			icon: 'funnel', flags: [ 'progressive', 'primary' ]
+		} ).$element );
+		this.$pill.attr( 'title', mw.message(
+			'bs-extendedsearch-searchbar-master-filter-tooltip', this.getMasterFilterPage()
+		).text() );
+
+		this.$searchBox.before( this.$pill );
+		var sbW = this.$searchBox.outerWidth();
+		this.setSearchBoxWidthInline( sbW - this.$pill.outerWidth() );
+	};
+
+	bs.extendedSearch.SearchBar.prototype.removeMasterFilterPill = function() {
+		var pill = this.$searchContainer.find( '.bs-extendedsearch-searchbar-pill.master-filter-pill' );
+		if( pill.length === 0 ) {
+			return false;
+		}
+		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() + pill.outerWidth() );
+		pill.remove();
+		return true;
+	};
+
 
 	bs.extendedSearch.SearchBar.prototype.removeNamespacePill = function( clearNamespace ) {
 		clearNamespace = clearNamespace || false;
@@ -342,7 +380,6 @@
 	bs.extendedSearch.SearchBar.prototype.setValue = function( value ) {
 		this.$searchBox.val( value );
 		if( this.useNamespacePills ) {
-
 			value = this.detectNamespace( value );
 		}
 		if( this.useSubpagePills ) {
@@ -366,4 +403,40 @@
 		// Emit only when value is actually changed
 		this.emit( 'valueChanged' );
 	};
+
+	bs.extendedSearch.SearchBar.prototype.isMasterFilterActive = function() {
+		return this.quietSubpageSupressed;
+	};
+
+	bs.extendedSearch.SearchBar.prototype.getMasterFilterPage = function() {
+		if ( this.masterFilter && !this.isMasterFilterActive() ) {
+			if ( this.namespace.id !== 0 ) {
+				return this.namespace.text + ':' + this.mainpage;
+			} else {
+				return this.mainpage;
+			}
+		}
+
+		return null;
+	};
+
+	bs.extendedSearch.SearchBar.prototype.suppressQuietSubpage = function( value ) {
+		if ( !this.masterFilter ) {
+			return;
+		}
+		if ( value === 'suppress' ) {
+			this.quietSubpageSupressed = true;
+			this.mainpage = '';
+			this.namespace = {};
+			this.removeMasterFilterPill();
+		} else if ( value === 'arm' && this.quietSubpageSupressed ) {
+			this.quietSubpageSupressed = false;
+			this.quietSubpageArmToRestore = true;
+		} else if ( value === 'restore' && this.quietSubpageArmToRestore ) {
+			this.generateMasterFilterPill();
+			this.quietSubpageArmToRestore = false;
+			this.mainpage = this.masterFilter.title;
+			this.namespace = this.masterFilter.namespace;
+		}
+	}
 } )( mediaWiki, jQuery, blueSpice, document );

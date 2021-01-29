@@ -8,7 +8,8 @@
 			//Create new autocomplete and searchBar instance and bind them together
 			var autocomplete = new bs.extendedSearch.Autocomplete();
 			var searchBar = new bs.extendedSearch.SearchBar( {
-				useSubpagePills: mw.config.get( 'ESUseSubpagePillsAutocomplete' )
+				useSubpagePills: mw.config.get( 'ESUseSubpagePillsAutocomplete' ),
+				masterFilter: mw.config.get( 'ESMasterFilter' )
 			} );
 			autocomplete.init( {
 				searchBar: searchBar,
