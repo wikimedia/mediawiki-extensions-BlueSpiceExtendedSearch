@@ -29,7 +29,7 @@ class SearchCenter extends SpecialPage {
 
 		$returnTo = $this->getRequest()->getText( 'returnto' );
 		$title = Title::newFromText( $returnTo );
-		if ( $title instanceof Title ) {
+		if ( $title instanceof Title && $title->exists() ) {
 			$this->getOutput()->addReturnTo( $title );
 		}
 
