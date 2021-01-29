@@ -5,6 +5,7 @@
 		cfg = cfg || {};
 
 		this.popup = cfg.popup;
+		this.titleTrim = cfg.titleTrim || null;
 
 		this.$element = $( '<div>' );
 

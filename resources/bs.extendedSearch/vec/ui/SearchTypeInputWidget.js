@@ -26,7 +26,7 @@ bs.extendedSearch.vec.ui.SearchTypeInputWidget.prototype.setValue = function( va
 	if ( !value || $.isArray( value ) ) {
 		return;
 	}
-	console.log( value );
+
 	// remove any whitespace around commas
 	value = value.replace( /[\s,]+/g, '|' );
 	value = value.split( "|" );
