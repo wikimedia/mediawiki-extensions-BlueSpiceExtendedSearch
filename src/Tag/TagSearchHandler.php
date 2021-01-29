@@ -73,7 +73,8 @@ class TagSearchHandler extends Handler {
 			"placeholder" => $this->processedArgs[TagSearch::PARAM_PLACEHOLDER],
 			"action" => \SpecialPage::getTitleFor( 'SearchCenter' )->getLocalURL(),
 			"lookup_object" => $lookup,
-			"id_number" => $this->tagIdNumber
+			"id_number" => $this->tagIdNumber,
+			"returnto" => ""
 		];
 
 		$title = \RequestContext::getMain()->getTitle();
