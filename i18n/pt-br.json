@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe L. Ewald",
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Felipe L. Ewald"
 		]
 	},
 	"bs-extsearch-desc": "Motor de pesquisa Elasticsearch",
@@ -159,5 +159,7 @@
 	"action-extendedsearch-search-specialpage": "procurar páginas especiais",
 	"action-extendedsearch-search-wikipage": "procurar páginas",
 	"action-extendedsearch-search-repofile": "Pesquisar por arquivos",
-	"action-extendedsearch-search-externalfile": "procurar arquivos externos"
+	"action-extendedsearch-search-externalfile": "procurar arquivos externos",
+	"bs-extendedsearch-pref-externalfilepaths-help": "Locais externos para procurar arquivos e arquivos de índice. Esses locais são inseridos em pares de chave/valor.",
+	"bs-extendedsearch-suggest-operator": "Pretendia pesquisar <b>$1</b>?"
 }

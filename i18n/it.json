@@ -2,7 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
-			"Dansita"
+			"Dansita",
+			"TheRukk",
+			"ValeJappo"
 		]
 	},
 	"apihelp-bs-extendedsearch-query-param-search-term": "Termine per il quale viene condotta la ricerca",
@@ -83,5 +85,20 @@
 	"bs-extendedsearch-export-button-label": "Esporta risultati di ricerca",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Usato nelle pagine",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Operatore di ricerca",
-	"bs-extendedsearch-collection-var-numbersearched": "Ricerche"
+	"bs-extendedsearch-collection-var-numbersearched": "Ricerche",
+	"bssearchadmin": "Cerca amministratore",
+	"bs-extendedsearch-admin-heading-backend": "Backend locale",
+	"bs-extendedsearch-admin-heading-sources": "Fonti",
+	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Attività di aggiornamento in attesa",
+	"bs-extendedsearch-search-center-result-namespace_text-label": "Namespace:",
+	"bs-extendedsearch-search-center-result-no-results": "Non ci sono risultati per il termine fornito",
+	"bs-extendedsearch-search-center-pagesize-dialog-title": "Risultati per pagina",
+	"bs-extendedsearch-search-center-sort-order-desc": "Decrescente",
+	"bs-extendedsearch-search-center-options-sort-order": "Ordinamento",
+	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Non ci sono risultati per la query attuale",
+	"bs-extendedsearch-autocomplete-result-top-match-label": "Migliori risultati",
+	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Potresti stare cercando...",
+	"bs-extendedsearch-search-center-result-help": "Scrivi qualcosa nella barra di ricerca sopra",
+	"bs-extendedsearch-searchcenter-sort-field-_score": "Rilevanza",
+	"bs-extendedsearch-filter-add-button-label": "Aggiungi un filtro"
 }

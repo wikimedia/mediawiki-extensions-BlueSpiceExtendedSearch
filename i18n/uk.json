@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата",
 			"Piramidion",
-			"Vlad5250"
+			"Vlad5250",
+			"Ата"
 		]
 	},
 	"bs-extsearch-desc": "Бекенд пошуку через Elasticsearch",
@@ -145,5 +145,21 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Оператор пошуку",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Цей параметр оцінюється лише в комбінації з параметром «категорія». Налаштування AND видасть лише результати, які є в усіх поданих категоріях, а значення OR покаже результати, які мають хоча б одну з поданого набору категорій",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Список дійсних типів результатів через вертикальну риску (|)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Список дійсних типів результатів через вертикальну риску (|)",
+	"apihelp-bs-extendedsearch-query-param-search-data": "JSON-декодований рядок, що містить додаткову інформацію про контекст пошуку",
+	"apihelp-bs-extendedsearch-query-param-secondary-request-data": "JSON-декодований рядок, що містить додаткову другорядну інформацію про контекст пошуку",
+	"apihelp-bs-extendedsearch-query-param-relevance-data": "JSON-декодований рядок, що містить додаткову інформацію про контекст пошуку",
+	"bs-extendedsearch-search-input-aria-label": "Поле пошуку",
+	"bs-extendedsearch-collection-type-searchhistory": "Історія пошуку",
+	"bs-extendedsearch-collection-var-searchterm": "Термін",
+	"bs-extendedsearch-collection-var-numbersearched": "Пошуки",
+	"right-extendedsearch-search-specialpage": "Пошук спеціальних сторінок",
+	"right-extendedsearch-search-wikipage": "Пошук сторінок",
+	"right-extendedsearch-search-repofile": "Пошук файлів",
+	"right-extendedsearch-search-externalfile": "Пошук зовнішніх файлів",
+	"action-extendedsearch-search-specialpage": "пошук спеціальних сторінок",
+	"action-extendedsearch-search-wikipage": "пошук сторінок",
+	"action-extendedsearch-search-repofile": "пошук файлів",
+	"action-extendedsearch-search-externalfile": "пошук зовнішніх файлів",
+	"bs-extendedsearch-pref-externalfilepaths-help": "Зовнішні локації, в яких слід виконувати сканування на наявність файлів, і звідки здійснювати індексування файлів. Ці локації вводяться парами ключ/значення."
 }

@@ -1,19 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226",
-			"夢蝶葬花",
-			"Phenolla",
 			"A Chinese Wikipedian",
-			"Ff98sha",
-			"佛壁灯",
-			"科劳",
-			"神樂坂秀吉",
-			"Looong",
-			"予弦",
 			"A Retired User",
+			"Ff98sha",
+			"Liuxinyu970226",
+			"Looong",
+			"Phenolla",
+			"VulpesVulpes825",
+			"予弦",
+			"佛壁灯",
+			"夢蝶葬花",
 			"沈澄心",
-			"VulpesVulpes825"
+			"神樂坂秀吉",
+			"科劳",
+			"铁桶"
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch搜索后端",
@@ -153,5 +154,14 @@
 	"bs-extendedsearch-search-input-aria-label": "搜索栏",
 	"bs-extendedsearch-collection-type-searchhistory": "搜索历史",
 	"bs-extendedsearch-collection-var-numbersearched": "搜索",
-	"right-extendedsearch-search-wikipage": "搜索页面"
+	"right-extendedsearch-search-wikipage": "搜索页面",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "名字空间1|名字空间2|...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "分类1|分类2|...",
+	"right-extendedsearch-search-specialpage": "搜索特殊页面",
+	"right-extendedsearch-search-repofile": "搜索文件",
+	"right-extendedsearch-search-externalfile": "搜索外部文件",
+	"action-extendedsearch-search-specialpage": "搜索特殊页面",
+	"action-extendedsearch-search-wikipage": "搜索页面",
+	"action-extendedsearch-search-repofile": "搜索文件",
+	"action-extendedsearch-search-externalfile": "搜索外部文件"
 }

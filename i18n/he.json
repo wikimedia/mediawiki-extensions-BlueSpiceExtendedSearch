@@ -3,7 +3,8 @@
 		"authors": [
 			"Erelon",
 			"Steeve815",
-			"Strayblues"
+			"Strayblues",
+			"YaronSh"
 		]
 	},
 	"bssearchadmin": "חיפוש מפעיל מערכת",
@@ -88,5 +89,26 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "קטגוריה/יות",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "ממלא מקום",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "סוג",
-	"bs-extendedsearch-search-input-aria-label": "תיבת חיפוש"
+	"bs-extendedsearch-search-input-aria-label": "תיבת חיפוש",
+	"bs-extsearch-desc": "מנגנון חיפוש Elasticsearch",
+	"bssearchcenter": "מרכז החיפוש",
+	"apihelp-bs-extendedsearch-query-param-q": "ביטוי השאילתה",
+	"bs-extendedsearch-admin-heading-backend": "מנגנון מקומי",
+	"bs-extendedsearch-autocomplete-fulltext-search-button": "חיפוש טקסט מלא",
+	"prefs-extendedsearch": "חיפוש מורחב",
+	"bs-extendedsearch-pref-external-file-paths-path": "נתיב פיזי",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "מיקום בכונן או בכונן מעוגן",
+	"bs-extendedsearch-pref-compact-ac-paths": "להשתמש בהשלמה אוטומטית פשוטה",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "דף $1: טקסט: $2",
+	"bs-extendedsearch-collection-var-searchterm": "ביטוי",
+	"bs-extendedsearch-collection-var-numbersearched": "חיפושים",
+	"right-extendedsearch-search-specialpage": "חיפוש אחר דפים מיוחדים",
+	"right-extendedsearch-search-wikipage": "חיפוש אחר דפים",
+	"right-extendedsearch-search-repofile": "חיפוש אחר קבצים",
+	"right-extendedsearch-search-externalfile": "חיפוש אחר קבצים חיצוניים",
+	"action-extendedsearch-search-specialpage": "חיפוש אחר דפים מיוחדים",
+	"action-extendedsearch-search-wikipage": "חיפוש אחר דפים",
+	"action-extendedsearch-search-repofile": "חיפוש אחר קבצים",
+	"action-extendedsearch-search-externalfile": "חיפוש אחר קבצים חיצוניים",
+	"bs-extendedsearch-suggest-operator": "התכוונת לחפש אחר <b>$1</b>?"
 }

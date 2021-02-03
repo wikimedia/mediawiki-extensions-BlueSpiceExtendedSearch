@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente",
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"Mansil alfalb",
+			"Vitorvicentevalente"
 		]
 	},
 	"bs-extsearch-desc": "Motor de pesquisa Elasticsearch",
@@ -151,5 +152,15 @@
 	"bs-extendedsearch-search-input-aria-label": "Caixa de pesquisa",
 	"bs-extendedsearch-collection-type-searchhistory": "Historial de pesquisas",
 	"bs-extendedsearch-collection-var-searchterm": "Termo",
-	"bs-extendedsearch-collection-var-numbersearched": "Pesquisas"
+	"bs-extendedsearch-collection-var-numbersearched": "Pesquisas",
+	"right-extendedsearch-search-specialpage": "Procurar páginas especiais",
+	"right-extendedsearch-search-wikipage": "Procurar páginas",
+	"right-extendedsearch-search-repofile": "Procurar ficheiros",
+	"right-extendedsearch-search-externalfile": "Procurar ficheiros externos",
+	"action-extendedsearch-search-specialpage": "procurar páginas especiais",
+	"action-extendedsearch-search-wikipage": "procurar páginas",
+	"action-extendedsearch-search-repofile": "procurar ficheiros",
+	"action-extendedsearch-search-externalfile": "procurar ficheiros externos",
+	"bs-extendedsearch-pref-externalfilepaths-help": "Localizações externas onde procurar ficheiros e cujos ficheiros indexar. Estas localizações são inseridas em pares de chave e valor.",
+	"bs-extendedsearch-suggest-operator": "Pretendia pesquisar <b>$1</b>?"
 }

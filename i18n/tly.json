@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Patriot Kur",
 			"Yusifmv"
 		]
 	},
@@ -9,5 +10,6 @@
 	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Nışonon:",
 	"bs-extendedsearch-search-center-result-namespace_text-label": "Nomico:",
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Nom",
-	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nomico"
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nomico",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Ləğv karde"
 }

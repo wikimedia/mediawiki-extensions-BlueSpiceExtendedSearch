@@ -25,5 +25,10 @@
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "పేజీ భాష:",
 	"bs-extendedsearch-wikipage-title-original": "(అసలు శీర్షిక: $1)",
 	"bs-extendedsearch-flyout-similar-pages-title": "పోలిన పేజీలు",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "పేరుబరు(లు)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "పేరుబరు(లు)",
+	"bs-extendedsearch-search-center-filter-namespace_text-label": "పేరుబరి",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "వర్గము(లు)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "వర్గం1|వర్గం2|...",
+	"bs-extendedsearch-collection-type-searchhistory": "వెతుకుడు చరిత్ర",
+	"bs-extendedsearch-suggest-operator": "మీరు <b>$1</b> కోసం వెతకాలనుకున్నారా?"
 }

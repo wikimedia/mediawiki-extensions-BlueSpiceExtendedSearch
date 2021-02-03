@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"BadDog",
+			"Kizule",
 			"Zoranzoki21"
 		]
 	},
@@ -49,9 +50,9 @@
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Откажи",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Примени",
 	"bs-extendedsearch-search-center-options-page-size": "Уноси по страници",
-	"bs-extendedsearch-search-center-options-sort-by": "Сортирај по",
-	"bs-extendedsearch-search-center-options-sort-order": "Редослед сортирања",
-	"bs-extendedsearch-autocomplete-result-type": "Тип: $1",
+	"bs-extendedsearch-search-center-options-sort-by": "Поређај по",
+	"bs-extendedsearch-search-center-options-sort-order": "Начин ређања",
+	"bs-extendedsearch-autocomplete-result-type": "Врста: $1",
 	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Можда тражите и…",
 	"bs-extendedsearch-search-center-result-help": "Откуцајте нешто у траци за претрагу изнад…",
 	"bs-extendedsearch-searchcenter-filter-or-label": "или",
@@ -98,5 +99,13 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип",
 	"bs-extendedsearch-collection-type-searchhistory": "Историја претраге",
 	"bs-extendedsearch-collection-var-searchterm": "Појам",
-	"bs-extendedsearch-collection-var-numbersearched": "Претраге"
+	"bs-extendedsearch-collection-var-numbersearched": "Претраге",
+	"right-extendedsearch-search-specialpage": "претрага посебних страница",
+	"right-extendedsearch-search-wikipage": "претрага страница",
+	"right-extendedsearch-search-repofile": "претрага датотека",
+	"right-extendedsearch-search-externalfile": "претрага спољашњих датотека",
+	"action-extendedsearch-search-specialpage": "претражујете посебне странице",
+	"action-extendedsearch-search-wikipage": "претражујете странице",
+	"action-extendedsearch-search-repofile": "претражујете датотеке",
+	"action-extendedsearch-search-externalfile": "претражујете спољашње датотеке"
 }

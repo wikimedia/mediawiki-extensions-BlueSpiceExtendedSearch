@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ykhwong",
-			"Maoue"
+			"Maoue",
+			"Ykhwong"
 		]
 	},
 	"bs-extsearch-desc": "일래스틱서치 검색 백엔드",
@@ -116,5 +116,17 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "유형",
 	"bs-extendedsearch-search-input-aria-label": "검색 상자",
 	"bs-extendedsearch-collection-type-searchhistory": "검색 역사",
-	"bs-extendedsearch-collection-var-numbersearched": "검색"
+	"bs-extendedsearch-collection-var-numbersearched": "검색",
+	"bs-extendedsearch-search-center-result-file-usage-label": "문서에 사용됨",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "태그 검색",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "검색 연산자",
+	"right-extendedsearch-search-specialpage": "특수 문서 검색",
+	"right-extendedsearch-search-wikipage": "문서 검색",
+	"right-extendedsearch-search-repofile": "파일 검색",
+	"right-extendedsearch-search-externalfile": "외부 파일 검색",
+	"action-extendedsearch-search-specialpage": "특수 문서 검색",
+	"action-extendedsearch-search-wikipage": "문서 검색",
+	"action-extendedsearch-search-repofile": "파일 검색",
+	"action-extendedsearch-search-externalfile": "외부 파일 검색",
+	"bs-extendedsearch-suggest-operator": "찾으시려는 항목이 <b>$1</b>입니까?"
 }

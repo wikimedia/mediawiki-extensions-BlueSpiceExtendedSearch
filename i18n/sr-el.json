@@ -1,5 +1,7 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": []
+	},
 	"bssearchadmin": "Pretraga administatora",
 	"bssearchadmin-desc": "Pruža interfejs za upravljanje pretragom",
 	"bssearchcenter": "Centar za pretraživanje",

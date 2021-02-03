@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kareyac"
+		]
+	},
+	"bs-extendedsearch-search-input-placeholder": "Գտնել...",
+	"bs-extendedsearch-source-label-wikipage": "Վիքիէջ",
+	"bs-extendedsearch-source-label-user": "Մասնակից",
+	"bs-extendedsearch-admin-label-error": "Սխալ",
+	"bs-extendedsearch-admin-heading-sources": "Աղբյուրներ",
+	"bs-extendedsearch-admin-heading-sources-documentscount": "Փաստափղթեր",
+	"bs-extendedsearch-search-center-filter-categories-label": "Կատեգորիա",
+	"bs-extendedsearch-search-center-result-namespace_text-label": "Անվանատարածք.",
+	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Կիրառել",
+	"bs-extendedsearch-searchcenter-filter-or-label": "կամ",
+	"bs-extendedsearch-searchcenter-filter-and-label": "և",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "Անուն",
+	"bs-extendedsearch-searchcenter-sort-field-size": "Չափ",
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "Անվանատարածք",
+	"bs-extendedsearch-source-type-wikipage-label": "Վիքիէջ"
+}

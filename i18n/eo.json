@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Javiero",
 			"Mirin"
 		]
 	},
@@ -55,5 +56,6 @@
 	"bs-extendedsearch-search-center-create-page-link": "Krei paĝon \"$1\"",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Paĝo $1: Teksto: $2",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Entajpu por serĉi...",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Speco"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Speco",
+	"bs-extendedsearch-suggest-operator": "Ĉu vi celis serĉi <b>$1</b>?"
 }

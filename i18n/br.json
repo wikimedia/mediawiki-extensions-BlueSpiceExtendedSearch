@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fohanno"
+			"Fohanno",
+			"Fulup"
 		]
 	},
-	"prefs-extendedsearch": "Klask astennet"
+	"prefs-extendedsearch": "Klask astennet",
+	"bs-extendedsearch-search-center-result-mtime-label": "Kemmet :",
+	"bs-extendedsearch-searchcenter-sort-field-mtime": "Eur kemmañ",
+	"bs-extendedsearch-autocomplete-modified-time-label": "Kemmet da ziwezhañ : $1"
 }

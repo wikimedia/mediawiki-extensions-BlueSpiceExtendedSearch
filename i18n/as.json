@@ -2,8 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Onubadok",
-			"Paradox"
+			"Paradox",
+			"Simbu123"
 		]
 	},
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "অনুসন্ধান কৰিবলৈ টাইপ কৰক..."
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "অনুসন্ধান কৰিবলৈ টাইপ কৰক...",
+	"bs-extendedsearch-search-center-filter-has-hidden": "...{{PLURAL:$1|আৰু $1টা অধিক|আৰু $1টা অধিক}}",
+	"bs-extendedseach-wikipage-section-more-text": " ... অধিক $1টা"
 }
