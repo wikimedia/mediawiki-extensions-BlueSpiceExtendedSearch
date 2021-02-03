@@ -1087,11 +1087,11 @@ class Lookup extends \ArrayObject {
 		$base = $this;
 
 		if ( !isset( $base['suggest'] ) ) {
-			return;
+			return $this;
 		}
 
 		if ( !isset( $base['suggest'][$field] ) ) {
-			return;
+			return $this;
 		}
 
 		unset( $base['suggest'][$field] );
@@ -1131,7 +1131,7 @@ class Lookup extends \ArrayObject {
 		}
 
 		if ( !isset( $base['suggest'][$acField] ) ) {
-			return;
+			return $this;
 		}
 
 		$this->ensurePropertyPath( "suggest.$acField.completion.contexts", [] );
@@ -1153,7 +1153,7 @@ class Lookup extends \ArrayObject {
 		$base = $this;
 
 		if ( !isset( $base['suggest'][$acField] ) ) {
-			return;
+			return $this;
 		}
 
 		$this->ensurePropertyPath( "suggest.$acField.completion.contexts.$contextField", [] );
@@ -1180,7 +1180,7 @@ class Lookup extends \ArrayObject {
 		$base = $this;
 
 		if ( !isset( $base['suggest'][$acField] ) ) {
-			return;
+			return $this;
 		}
 
 		$this->ensurePropertyPath( "suggest.$acField.completion.contexts.$contextField", [] );
@@ -1211,7 +1211,7 @@ class Lookup extends \ArrayObject {
 		$base = $this;
 
 		if ( !isset( $base['suggest'][$acField] ) ) {
-			return;
+			return $this;
 		}
 
 		$this->ensurePropertyPath( "suggest.$acField.completion.fuzzy", [] );
@@ -1234,7 +1234,7 @@ class Lookup extends \ArrayObject {
 		$base = $this;
 
 		if ( !isset( $base['suggest'][$acField] ) ) {
-			return;
+			return $this;
 		}
 
 		$this->ensurePropertyPath( "suggest.$acField.completion.fuzzy", [] );
@@ -1257,7 +1257,7 @@ class Lookup extends \ArrayObject {
 		$base = $this;
 
 		if ( !isset( $base['suggest'][$acField] ) ) {
-			return;
+			return $this;
 		}
 
 		$this->ensurePropertyPath( "suggest.$acField.completion", [] );
