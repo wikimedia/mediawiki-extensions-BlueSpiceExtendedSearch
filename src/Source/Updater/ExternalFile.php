@@ -76,7 +76,6 @@ class ExternalFile extends RunJobsTriggerHandler {
 	 * @param \Elastica\Search $search
 	 * @param \BS\ExtendedSearch\Lookup $lookup
 	 * @param array &$results
-	 * @return null
 	 */
 	protected function getResults( $search, $lookup, &$results ) {
 		$res = $search->search( $lookup->getQueryDSL() );

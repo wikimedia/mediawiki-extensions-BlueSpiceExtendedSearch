@@ -45,7 +45,6 @@ class WikiPageFormatter extends Base {
 	 *
 	 * @param array &$result
 	 * @param \Elastica\Result $resultObject
-	 * @return null
 	 */
 	public function format( &$result, $resultObject ) {
 		if ( $this->source->getTypeKey() != $resultObject->getType() ) {
@@ -134,7 +133,7 @@ class WikiPageFormatter extends Base {
 	 */
 	protected function formatCategories( $categories ) {
 		if ( empty( $categories ) ) {
-			return;
+			return null;
 		}
 
 		$moreCategories = false;
@@ -327,7 +326,6 @@ class WikiPageFormatter extends Base {
 	/**
 	 *
 	 * @param array &$result
-	 * @return null
 	 */
 	protected function formatRedirect( &$result ) {
 		$title = \Title::newFromText( $result['prefixed_title'] );

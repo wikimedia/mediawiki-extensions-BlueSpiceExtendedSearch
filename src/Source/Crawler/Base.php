@@ -31,11 +31,11 @@ class Base {
 	 *
 	 * @param \Title $oTitle
 	 * @param array $aParams
-	 * @return \Job
+	 * @return \Job|null
 	 */
 	protected function addToJobQueue( $oTitle, $aParams = [] ) {
 		if ( empty( $this->sJobClass ) ) {
-			return;
+			return null;
 		}
 
 		$oJob = new $this->sJobClass( $oTitle, $aParams );
