@@ -365,6 +365,7 @@
 			"class": "\\BlueSpice\\ResourceModule\\LessVars",
 			"scripts": [
 				"bs.extendedSearch/mixin/Autocomplete.js",
+				"bs.extendedSearch/mixin/QuietSubpage.js",
 				"bs.extendedSearch/widget/autocomplete/Popup.js",
 				"bs.extendedSearch/widget/autocomplete/NormalResult.js",
 				"bs.extendedSearch/widget/autocomplete/SecondaryResult.js",
@@ -381,10 +382,14 @@
 				"bs-extendedsearch-autocomplete-result-secondary-results-label",
 				"bs-extendedsearch-autocomplete-create-page-link",
 				"bs-extendedsearch-autocomplete-fulltext-search-button",
-				"bs-extendedsearch-autocomplete-modified-time-label"
+				"bs-extendedsearch-autocomplete-modified-time-label",
+				"bs-extendedsearch-autocomplete-popup-quiet-subpage",
+				"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear",
+				"bs-extendedsearch-searchbar-master-filter-tooltip"
 			],
 			"dependencies": [
-				"ext.blueSpiceExtendedSearch.SearchBar"
+				"ext.blueSpiceExtendedSearch.SearchBar",
+				"oojs-ui.styles.icons-interactions"
 			]
 		},
 		"ext.blueSpiceExtendedSearch.SearchCenter": {
@@ -752,6 +757,14 @@
 			"value": true
 		},
 		"ESEnableTypeFilter": {
+			"value": true
+		},
+		"ESSubpageMasterFilterPatterns": {
+			"description": "List of regexes specifying pattern of page names on which to turn this feature on",
+			"value": []
+		},
+		"ESSubpageMasterFilterUseRootOnly": {
+			"description": "Whether to use the whole name of the current page or just the root part",
 			"value": true
 		}
 	},

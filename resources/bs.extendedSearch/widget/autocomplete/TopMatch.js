@@ -9,6 +9,7 @@
 		this.autocomplete = cfg.autocomplete;
 		this.imageUri = cfg.suggestion.image_uri ||
 			this.autocomplete.getIconPath( this.type );
+		this.titleTrim = cfg.titleTrim || null;
 
 		this.$element = $( '<div>' );
 
@@ -40,7 +41,7 @@
 		this.$element.on( 'click', { pageAnchor: this.$header }, this.onResultClick );
 
 		this.$element.addClass( 'bs-extendedsearch-autocomplete-popup-top-match-item' );
-	}
+	};
 
 	OO.inheritClass( bs.extendedSearch.AutocompleteTopMatch, OO.ui.Widget );
 	OO.mixinClass( bs.extendedSearch.AutocompleteTopMatch, bs.extendedSearch.mixin.AutocompleteHeader );
@@ -54,6 +55,6 @@
 			return;
 		}
 		window.location = anchor.attr( 'href' );
-	}
+	};
 
 } )( mediaWiki, jQuery, blueSpice, document );

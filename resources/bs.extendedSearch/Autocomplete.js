@@ -41,7 +41,10 @@
 			queryString = this.searchBar.mainpage + '/' + queryString;
 		}
 		if( _hasNamespaceSet( this.searchBar ) ) {
-			queryString = this.searchBar.namespace.text + ':' + queryString;
+			if ( this.searchBar.namespace.id !== 0 ) {
+				queryString = this.searchBar.namespace.text + ':' + queryString;
+			}
+
 			lookup.addTermsFilter( 'namespace_text', this.searchBar.namespace.text );
 		}
 
@@ -151,10 +154,17 @@
 			mobile: this.searchBar.mobile,
 			pageCreateInfo: pageCreateInfo,
 			compact: this.compact,
+			quietSubpage: this.searchBar.getMasterFilterPage(),
 			autocomplete: this
 		};
 
 		this.popup = new bs.extendedSearch.AutocompletePopup( popupCfg );
+		this.popup.connect( this, {
+			quietSubpageRemoved: function() {
+				this.searchBar.suppressQuietSubpage( 'suppress' );
+				this.searchBar.changeValue( this.searchBar.$searchBox.val() );
+			}
+		} );
 
 		this.popup.$element.css( 'top', this.searchBar.$searchBox.outerHeight() + 'px' );
 		this.popup.$element.css( 'width', this.getPopupWidth() + 'px' );
@@ -162,6 +172,8 @@
 
 		var wrapperId = this.searchBar.$searchBoxWrapper.attr( 'id' );
 		this.popup.$element.insertAfter( $( '#' + wrapperId ) );
+
+		this.searchBar.suppressQuietSubpage( 'arm' );
 	}
 
 	function _removePopup() {
@@ -171,15 +183,15 @@
 
 		this.searchBar.$searchContainer.find( this.popup.$element ).remove();
 		this.popup = null;
+		this.searchBar.suppressQuietSubpage( 'restore' );
 	}
 
 	function _getSuggestions() {
 		var lookup = new bs.extendedSearch.Lookup( this.lookupConfig );
-
 		this.suggestField = this.autocompleteConfig['SuggestField'];
 
 		lookup.setBoolMatchQueryString( this.suggestField, this.searchBar.value );
-		if( $.isEmptyObject( this.searchBar.namespace ) == false ) {
+		if( $.isEmptyObject( this.searchBar.namespace ) === false ) {
 			lookup.addTermFilter( 'namespace', this.searchBar.namespace.id );
 		}
 		var primaryCount = this.autocompleteConfig['DisplayLimits']['normal'] +
