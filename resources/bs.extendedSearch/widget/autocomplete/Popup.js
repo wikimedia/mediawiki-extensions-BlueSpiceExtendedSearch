@@ -11,6 +11,9 @@
 		this.displayLimits = cfg.displayLimits || {};
 		this.mobile = cfg.mobile || false;
 		this.searchForm = cfg.searchForm || {};
+		this.titleTrim = cfg.titleTrim || null;
+		// This represents implicit subpage filter, not visible in the searchbar
+		this.quietSubpage = cfg.quietSubpage || null;
 
 		this.compact = cfg.compact || false;
 
@@ -18,9 +21,14 @@
 
 		bs.extendedSearch.AutocompletePopup.parent.call( this, cfg );
 
+		if ( this.quietSubpage ) {
+			bs.extendedSearch.mixin.QuietSubpage.call( this, this.quietSubpage );
+		}
+
 		bs.extendedSearch.mixin.AutocompleteResults.call( this, cfg );
 		bs.extendedSearch.mixin.AutocompleteCreatePageLink.call( this, cfg.pageCreateInfo );
 		bs.extendedSearch.mixin.FullTextSearchButton.call( this, {} );
+
 
 		this.fullTextSearchButton.on( 'click', this.onFullTextClick.bind( this ) );
 
@@ -29,6 +37,8 @@
 		if( this.compact ) {
 			this.$element.addClass( 'compact' );
 		}
+
+		this.$primaryResults.append( this.$quietSubpage );
 		this.$element.append( this.$primaryResults );
 
 		if( !this.mobile && !this.compact ) {
@@ -40,6 +50,7 @@
 	OO.mixinClass( bs.extendedSearch.AutocompletePopup, bs.extendedSearch.mixin.AutocompleteResults );
 	OO.mixinClass( bs.extendedSearch.AutocompletePopup, bs.extendedSearch.mixin.AutocompleteCreatePageLink );
 	OO.mixinClass( bs.extendedSearch.AutocompletePopup, bs.extendedSearch.mixin.FullTextSearchButton );
+	OO.mixinClass( bs.extendedSearch.AutocompletePopup, bs.extendedSearch.mixin.QuietSubpage );
 
 	/**
 	 * Changes currently selected item.Used in navigation with up/down arrows
@@ -58,7 +69,7 @@
 			this.currentColumn = 0;
 		}
 
-		if( direction == 'up' ) {
+		if( direction === 'up' ) {
 			if( typeof this.currentIndex === 'undefined' || this.currentIndex === 0 ) {
 				this.currentIndex = this.popupGrid[this.currentColumn].length - 1;
 			} else {

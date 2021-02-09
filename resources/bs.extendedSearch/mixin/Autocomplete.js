@@ -26,13 +26,14 @@
 		for( var i = 0; i < cfg.data.length; i++ ) {
 			var suggestion = cfg.data[i];
 			//Top matches
-			if( !this.compact && suggestion.rank == bs.extendedSearch.Autocomplete.AC_RANK_TOP ) {
+			if( !this.compact && suggestion.rank === bs.extendedSearch.Autocomplete.AC_RANK_TOP ) {
 				if( limits.top > this.displayedResults.top.length ) {
 					topResultElements.push(
 						new bs.extendedSearch.AutocompleteTopMatch( {
 							suggestion: suggestion,
 							popup: this,
-							autocomplete: this.autocomplete
+							autocomplete: this.autocomplete,
+							titleTrim: this.titleTrim
 						} ).$element
 					);
 					this.displayedResults.top.push( suggestion );
@@ -51,7 +52,8 @@
 			var pageItem = new bs.extendedSearch.AutocompleteNormalResult( {
 				suggestion: suggestion,
 				term: this.searchTerm,
-				popup: this
+				popup: this,
+				titleTrim: this.titleTrim
 			} );
 
 			normalResultElements.push( pageItem.$element );
@@ -84,15 +86,18 @@
 		//Fuzzy results when no NS is selected and hits in other NSs when it is
 		for( var i = 0; i < suggestions.length; i++ ) {
 			var suggestion = suggestions[i];
-			if( suggestion.rank === bs.extendedSearch.Autocomplete.AC_RANK_SECONDARY
-					|| this.namespaceId != 0 ) {
+			if(
+				suggestion.rank === bs.extendedSearch.Autocomplete.AC_RANK_SECONDARY ||
+				this.namespaceId !== 0
+			) {
 				if( this.displayLimits.secondary <= this.displayedResults.secondary.length ) {
 					continue;
 				}
 				this.$secondaryResults.append(
 					new bs.extendedSearch.AutocompleteSecondaryResult( {
 						suggestion: suggestion,
-						popup: this
+						popup: this,
+						titleTrim: this.titleTrim
 					} ).$element
 				);
 				this.displayedResults.secondary.push( suggestion );
@@ -111,8 +116,13 @@
 			this.$pageAnchor = $( this.pageAnchor );
 			this.basename = this.$pageAnchor.html();
 		}
+
 		// Decode HTML entities
 		this.basename = $( "<textarea/>" ).html( this.basename ).text();
+		if ( this.titleTrim ) {
+			var regex = new RegExp( '^' + this.titleTrim );
+			this.basename = this.basename.replace( regex, '' );
+		}
 
 		var popupWidth = this.popup.searchForm.width();
 		popupWidth = ( !this.popup.mobile && !this.popup.compact ) ? popupWidth / 2 : popupWidth;
