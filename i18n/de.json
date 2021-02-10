@@ -7,7 +7,8 @@
 			"Mglaser",
 			"Peter Böhm <boehm@hallowelt.com>",
 			"Tiin",
-			"Umherirrender"
+			"Umherirrender",
+			"Wolfdietmann"
 		]
 	},
 	"bs-extsearch-extensionname": "BlueSpiceExtendedSearch",
@@ -167,5 +168,7 @@
 	"action-extendedsearch-search-wikipage": "nach Seiten zu suchen",
 	"action-extendedsearch-search-repofile": "nach Dateien zu suchen",
 	"action-extendedsearch-search-externalfile": "nach externen Dateien zu suchen",
-	"bs-extendedsearch-pref-externalfilepaths-help": "Externe Speicherorte, die gescannt und indiziert werden. Diese Orte werden als Schlüssel/Wert-Paare eingegeben."
+	"bs-extendedsearch-pref-externalfilepaths-help": "Externe Speicherorte, die gescannt und indiziert werden. Diese Orte werden als Schlüssel/Wert-Paare eingegeben.",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Globale Ergebnisse anzeigen",
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Suchen in \"$1\""
 }
