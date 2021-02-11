@@ -162,5 +162,8 @@
 	"action-extendedsearch-search-repofile": "Pesquisar por arquivos",
 	"action-extendedsearch-search-externalfile": "procurar arquivos externos",
 	"bs-extendedsearch-pref-externalfilepaths-help": "Locais externos para procurar arquivos e arquivos de índice. Esses locais são inseridos em pares de chave/valor.",
-	"bs-extendedsearch-suggest-operator": "Pretendia pesquisar <b>$1</b>?"
+	"bs-extendedsearch-suggest-operator": "Pretendia pesquisar <b>$1</b>?",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Mostrando resultados em \"$1\"",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Mostrar resultados globais",
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Pesquisando em \"$1\""
 }

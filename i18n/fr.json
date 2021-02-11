@@ -171,6 +171,7 @@
 	"action-extendedsearch-search-externalfile": "rechercher des fichiers externes",
 	"bs-extendedsearch-pref-externalfilepaths-help": "Emplacements externes à parcourir pour la recherche de fichiers et de fichiers d’indexation. Ces emplacements sont entrés dans des paires clé/valeur.",
 	"bs-extendedsearch-suggest-operator": "Voulez-vous dire rechercher <b>$1</b> ?",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Affichage des résultats dans « $1 »",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Afficher les résultats globaux",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Recherche dans « $1 »"
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Recherche dans « $1 »"
 }
