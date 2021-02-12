@@ -128,5 +128,7 @@
 	"action-extendedsearch-search-wikipage": "문서 검색",
 	"action-extendedsearch-search-repofile": "파일 검색",
 	"action-extendedsearch-search-externalfile": "외부 파일 검색",
-	"bs-extendedsearch-suggest-operator": "찾으시려는 항목이 <b>$1</b>입니까?"
+	"bs-extendedsearch-suggest-operator": "찾으시려는 항목이 <b>$1</b>입니까?",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "\"$1\"에서 결과 표시",
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "\"$1\"에서 검색 중"
 }
