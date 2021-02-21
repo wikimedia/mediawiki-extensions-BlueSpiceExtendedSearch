@@ -131,7 +131,7 @@
 		"BlueSpiceExtendedSearch": {
 			"Sources": {
 				"wikipage": "BS\\ExtendedSearch\\Source\\WikiPages::create",
-				"specialpage":"BS\\ExtendedSearch\\Source\\SpecialPages::create",
+				"specialpage": "BS\\ExtendedSearch\\Source\\SpecialPages::create",
 				"repofile": "BS\\ExtendedSearch\\Source\\RepoFiles::create",
 				"externalfile": "BS\\ExtendedSearch\\Source\\ExternalFiles::create"
 			},
@@ -213,7 +213,7 @@
 				"redirect": "/extensions/BlueSpiceExtendedSearch/resources/images/icon/redirect.png"
 			},
 			"FieldsWithANDFilterEnabled": {
-				"fields": ["categories"]
+				"fields": [ "categories" ]
 			},
 			"SpellCheck": {
 				"suggestField": "basename",
@@ -296,7 +296,7 @@
 		"BeforePageDisplay": [
 			"BS\\ExtendedSearch\\Hook\\BeforePageDisplay\\AddResources::callback"
 		],
-		"LoadExtensionSchemaUpdates":  [
+		"LoadExtensionSchemaUpdates": [
 			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddRelevanceTable::callback",
 			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddHistoryTable::callback"
 		],
@@ -328,7 +328,7 @@
 				"ext.blueSpiceExtendedSearch.utils.js",
 				"bs.extendedSearch/Lookup.js"
 			],
-			"dependencies" : [
+			"dependencies": [
 				"ext.bluespice",
 				"mediawiki.api",
 				"oojs",
@@ -478,7 +478,7 @@
 				"bs-extendedsearch-search-center-result-file-usage-label",
 				"bs-extendedsearch-suggest-operator"
 			],
-			"dependencies" : [
+			"dependencies": [
 				"ext.bluespice",
 				"ext.blueSpiceExtendedSearch.SearchBar"
 			]
@@ -669,7 +669,6 @@
 				"[0-9]{4}\\\\[0-9]{2}\\\\[0-9]{2}",
 				"[0-9]{2}\\\\[0-9]{4}\\\\[0-9]{2}",
 
-
 				"[0-9]{1}\\-[0-9]{2}\\-[0-9]{4}",
 				"[0-9]{4}\\-[0-9]{2}\\-[0-9]{1}",
 				"[0-9]{1}\\-[0-9]{4}\\-[0-9]{2}",
@@ -698,12 +697,10 @@
 				"[0-9]{2}\\\\[0-9]{4}\\\\[0-9]{1}",
 				"[0-9]{2}\\\\[0-9]{1}\\\\[0-9]{4}",
 
-
 				"[0-9]{2}\\-[0-9]{2}\\-[0-9]{2}",
 				"[0-9]{2}\\/[0-9]{2}\\/[0-9]{2}",
 				"[0-9]{2}\\.[0-9]{2}\\.[0-9]{2}",
 				"[0-9]{2}\\\\[0-9]{2}\\\\[0-9]{2}",
-
 
 				"[0-9]{1}\\-[0-9]{1}\\-[0-9]{4}",
 				"[0-9]{4}\\-[0-9]{1}\\-[0-9]{1}",
@@ -782,6 +779,6 @@
 	"TestAutoloadNamespaces": {
 		"BS\\ExtendedSearch\\Tests\\": "tests/phpunit/"
 	},
-	"load_composer_autoloader" : true,
+	"load_composer_autoloader": true,
 	"manifest_version": 2
 }
