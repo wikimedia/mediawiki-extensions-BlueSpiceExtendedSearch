@@ -170,7 +170,7 @@
 	"action-extendedsearch-search-externalfile": "nach externen Dateien zu suchen",
 	"bs-extendedsearch-pref-externalfilepaths-help": "Externe Speicherorte, die gescannt und indiziert werden. Diese Orte werden als Schlüssel/Wert-Paare eingegeben.",
 	"bs-extendedsearch-suggest-operator": "Wolltest du nach <b>$1</b> suchen?",
-	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Ergebnisse in \"$1\" anzeigen",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Ergebnisse in „$1“ anzeigen",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Globale Ergebnisse anzeigen",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Suchen in \"$1\""
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Suchen in „$1“"
 }
