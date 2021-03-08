@@ -140,6 +140,10 @@ class ExternalFile extends RunJobsTriggerHandler {
 			$docs[] = new \Elastica\Document( $id );
 		}
 
+		if ( empty( $docs ) ) {
+			return;
+		}
+
 		$bulk = new \Elastica\Bulk( $this->backend->getClient() );
 		$bulk->setIndex( $this->index->getName() );
 		$bulk->setType( $this->sourceKey );
