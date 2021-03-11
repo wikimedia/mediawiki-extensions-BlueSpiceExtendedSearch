@@ -14,6 +14,7 @@
 			"Zarisi"
 		]
 	},
+	"bs-extsearch-extensionname": "BlueSpiceExtendedSearch",
 	"bs-extsearch-desc": "Plateforme de recherche Elasticsearch",
 	"bssearchadmin": "Administration de recherche",
 	"bssearchadmin-desc": "Fournit une interface de gestion de la recherche",
@@ -99,6 +100,7 @@
 	"bs-extendedsearch-search-center-hitcount-suggest": "Voulez-vous dire $1 ($2 résultat{{PLURAL:$2||s}}) ?",
 	"bs-extendedsearch-loadmore-label": "Charger plus de résultats",
 	"bs-extendedsearch-loadmore-error": "Impossible de récupérer plus de résultats",
+	"bs-extendedsearch-filter-label-count-only": "($1)",
 	"bs-extendedsearch-search-center-result-typetext-label": "Type :",
 	"bs-extendedsearch-source-type-wikipage-label": "Page wiki",
 	"bs-extendedsearch-source-type-repofile-label": "Fichier local",
@@ -132,6 +134,7 @@
 	"bs-extendedsearch-pref-auto-set-lang-filter": "Déterminer automatiquement le filtre de langue",
 	"bs-extendedsearch-search-center-create-page-link": "Créer la page « $1 »",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Page $1, texte : $2",
+	"bs-extendedsearch-privacy-transparency-history-item": "$1 ($2)",
 	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpiceExtendedSearch – Historique des recherches : mot-clé (nombre de fois recherché) : $1",
 	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch – Vous{{GENDER:$2|}} avez {{PLURAL:$1|une seule |$1}} page{{PLURAL:$1||s}} marquée{{PLURAL:$1||s}} comme résultat{{PLURAL:$1||s}} significatif{{PLURAL:$1||s}} de recherche",
 	"bs-extendedsearch-filter-add-button-label": "Ajouter un filtre",
