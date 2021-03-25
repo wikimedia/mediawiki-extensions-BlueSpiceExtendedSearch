@@ -191,6 +191,13 @@ class Base {
 								"autocomplete_filter"
 							]
 						]
+					],
+					"normalizer" => [
+						"lowercase" => [
+							"type" => "custom",
+							"char_filter" => [],
+							"filter" => [ "lowercase", "asciifolding" ]
+						]
 					]
 				]
 			]
