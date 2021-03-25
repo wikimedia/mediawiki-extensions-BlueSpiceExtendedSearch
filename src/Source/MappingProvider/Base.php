@@ -36,7 +36,8 @@ class Base {
 			],
 			'extension' => [
 				'type' => 'keyword',
-				'copy_to' => 'congregated'
+				'copy_to' => 'congregated',
+				'normalizer' => 'lowercase'
 			],
 			'mime_type' => [
 				'type' => 'text'
