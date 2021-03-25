@@ -52,7 +52,7 @@ class PrimaryDataProvider implements IPrimaryDataProvider {
 		try{
 			$res = $this->db->select(
 				'bs_extendedsearch_history',
-				[ Record::NAME => 'esh_term', Record::COUNT => 'esh_hits' ],
+				[ Record::NAME => 'esh_term', Record::COUNT => 'COUNT( esh_term )' ],
 				$this->makePreFilterConds( $params ),
 				__METHOD__,
 				$this->makePreOptionConds( $params )
