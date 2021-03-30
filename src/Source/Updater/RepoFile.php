@@ -84,7 +84,7 @@ class RepoFile extends Base {
 	 */
 	public function onFileUndeleteComplete( $oTitle, $aFileVersions, $oUser, $sReason ) {
 		JobQueueGroup::singleton()->push(
-			new \UpdateRepoFile( $oTitle )
+			new UpdateRepoFile( $oTitle )
 		);
 		return true;
 	}
