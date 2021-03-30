@@ -3,7 +3,7 @@
 namespace BS\ExtendedSearch\Source;
 
 use BS\ExtendedSearch\Source\Crawler\RepoFile as RepoFileCrawler;
-use BS\ExtendedSearch\Source\DocumentProvider\File as FileDocumentProvider;
+use BS\ExtendedSearch\Source\DocumentProvider\RepoFile as RepoFileDocumentProvider;
 use BS\ExtendedSearch\Source\Formatter\RepoFileFormatter;
 use BS\ExtendedSearch\Source\Updater\RepoFile as RepoFileUpdater;
 
@@ -19,10 +19,10 @@ class RepoFiles extends Files {
 
 	/**
 	 *
-	 * @return FileDocumentProvider
+	 * @return RepoFileDocumentProvider
 	 */
 	public function getDocumentProvider() {
-		return new DocumentProvider\File(
+		return new RepoFileDocumentProvider(
 			$this->oDecoratedSource->getDocumentProvider()
 		);
 	}

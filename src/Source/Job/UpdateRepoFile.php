@@ -44,11 +44,12 @@ class UpdateRepoFile extends UpdateTitleBase {
 
 	/**
 	 *
-	 * @return \SplFileInfo
+	 * @return array
 	 * @throws \Exception
 	 */
 	protected function getDocumentProviderSource() {
 		$this->setFileRepoFile();
+
 		if ( isset( $this->fileData['fsFile'] ) ) {
 			$fsFile = $this->fileData['fsFile'];
 		} elseif ( $this->file ) {
@@ -66,7 +67,10 @@ class UpdateRepoFile extends UpdateTitleBase {
 		}
 
 		if ( $fsFile instanceof \FSFile ) {
-			return new \SplFileInfo( $fsFile->getPath() );
+			return [
+				'fsFile' => new \SplFileInfo( $fsFile->getPath() ),
+				'title' => $this->title->getDBkey()
+			];
 		}
 
 		throw new \Exception( "FSFile cannot be created" );

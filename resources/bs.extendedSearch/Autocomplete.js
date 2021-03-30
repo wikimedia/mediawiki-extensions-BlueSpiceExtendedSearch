@@ -314,7 +314,7 @@
 
 	function _getIconPath( type ) {
 		var scriptPath = mw.config.get( 'wgScriptPath' );
-		if( type in this.sourceIcons ) {
+		if( type.toLowerCase() in this.sourceIcons ) {
 			return scriptPath + '/' + this.sourceIcons[type];
 		}
 		return scriptPath + '/' + this.sourceIcons['default'];

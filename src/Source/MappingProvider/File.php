@@ -28,6 +28,12 @@ class File extends DecoratorBase {
 	public function getPropertyConfig() {
 		$aPC = $this->oDecoratedMP->getPropertyConfig();
 		$aPC = array_merge( $aPC, [
+			'filename' => [
+				'type' => 'text',
+				'copy_to' => [ 'congregated', 'ac_ngram' ],
+				// required in order to be sortable
+				'fielddata' => true
+			],
 			'the_file' => [
 				'type' => 'binary'
 			]
