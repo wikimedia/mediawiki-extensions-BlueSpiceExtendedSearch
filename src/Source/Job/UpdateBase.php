@@ -8,6 +8,7 @@ use BS\ExtendedSearch\IExternalIndex;
 use BS\ExtendedSearch\Source\Base;
 use Exception;
 use MediaWiki\MediaWikiServices;
+use MWException;
 use Status;
 
 abstract class UpdateBase extends \Job {
@@ -35,7 +36,12 @@ abstract class UpdateBase extends \Job {
 		if ( $this->shouldSkipProcessing() ) {
 			return true;
 		}
-		$dC = $this->doRun();
+		try {
+			$dC = $this->doRun();
+		} catch ( MWException $ex ) {
+			$this->setLastError( $ex->getMessage() );
+			return false;
+		}
 
 		if ( !empty( $dC ) && is_array( $dC ) ) {
 			$status = $this->pushToExternal( $dC );
@@ -58,7 +64,7 @@ abstract class UpdateBase extends \Job {
 	 * @return Backend
 	 */
 	protected function getBackend() {
-		return Backend::instance( $this->getBackendKey() );
+		return MediaWikiServices::getInstance()->getService( 'BSExtendedSearchBackend' );
 	}
 
 	/**
