@@ -21,7 +21,7 @@ class Store implements IStore {
 	 *
 	 * @var ILoadBalancer
 	 */
-	protected $lb = null;
+	protected $loadBalancer = null;
 
 	/**
 	 *
