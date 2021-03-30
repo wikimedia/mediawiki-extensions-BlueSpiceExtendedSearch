@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Source\Job;
 
 use Exception;
+use MWException;
 use Status;
 use BlueSpice\Services;
 use BS\ExtendedSearch\Backend;
@@ -33,7 +34,12 @@ abstract class UpdateBase extends \Job {
 		if ( $this->shouldSkipProcessing() ) {
 			return true;
 		}
-		$dC = $this->doRun();
+		try {
+			$dC = $this->doRun();
+		} catch ( MWException $ex ) {
+			$this->setLastError( $ex->getMessage() );
+			return false;
+		}
 
 		if ( !empty( $dC ) && is_array( $dC ) ) {
 			$status = $this->pushToExternal( $dC );

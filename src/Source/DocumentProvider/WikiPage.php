@@ -31,20 +31,18 @@ class WikiPage extends DecoratorBase {
 	 *
 	 * @param string $sUri
 	 * @param WikiPageObject|null $wikiPage
-	 * @return array|null
+	 * @return array
+	 * @throws MWException
 	 */
 	public function getDataConfig( $sUri, $wikiPage ) {
 		$aDC = $this->oDecoratedDP->getDataConfig( $sUri, null );
-		if ( !$wikiPage instanceof WikiPageObject ) {
-			return null;
-		}
-
 		$this->wikipage = $wikiPage;
+		$this->assertWikiPage();
+
 		$this->title = $this->wikipage->getTitle();
 		$this->revision = $this->getRevision();
-		if ( !$this->revision ) {
-			return null;
-		}
+		$this->assertRevision();
+
 		$this->content = $this->revision->getContent( 'main' );
 		$this->parserOutput = $this->content->getParserOutput( $this->title );
 
@@ -301,5 +299,32 @@ class WikiPage extends DecoratorBase {
 			return wfMessage( 'bs-ns_main' )->plain();
 		}
 		return $title->getNsText();
+	}
+
+	/**
+	 * @throws MWException
+	 */
+	private function assertWikiPage() {
+		if ( !$this->wikipage instanceof WikiPageObject ) {
+			$exceptionMessage = sprintf(
+				'%s: instance of %s expected, %s given',
+				__METHOD__, WikiPageObject::class,
+				is_null( $this->wikipage ) ? 'null' : get_class( $this->wikipage )
+			);
+			throw new MWException( $exceptionMessage );
+		}
+	}
+
+	/**
+	 * @throws MWException
+	 */
+	private function assertRevision() {
+		if ( is_null( $this->revision ) ) {
+			$exceptionMessage = sprintf(
+				'%s: could not retrieve revision for %s',
+				__METHOD__, $this->title->getPrefixedDBkey()
+			);
+			throw new MWException( $exceptionMessage );
+		}
 	}
 }
