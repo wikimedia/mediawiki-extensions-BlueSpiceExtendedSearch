@@ -3,11 +3,11 @@
 namespace BS\ExtendedSearch\Data\SearchHistory;
 
 use IContextSource;
+use MediaWiki\MediaWikiServices;
 use RequestContext;
 use Wikimedia\Rdbms\ILoadBalancer;
 use BlueSpice\Data\IStore;
 use BlueSpice\Data\ReaderParams;
-use BlueSpice\Services;
 
 class Store implements IStore {
 
@@ -21,7 +21,7 @@ class Store implements IStore {
 	 *
 	 * @var ILoadBalancer
 	 */
-	protected $lb = null;
+	protected $loadBalancer = null;
 
 	/**
 	 *
@@ -32,7 +32,7 @@ class Store implements IStore {
 			$context = RequestContext::getMain();
 		}
 		$this->context = $context;
-		$this->loadBalancer = Services::getInstance()->getDBLoadBalancer();
+		$this->loadBalancer = MediaWikiServices::getInstance()->getDBLoadBalancer();
 	}
 
 	/**
@@ -58,6 +58,7 @@ class Store implements IStore {
 	/**
 	 *
 	 * @param array $params
+	 * @return ReaderParams
 	 */
 	public function makeReaderParams( array $params = [] ) {
 		return new ReaderParams( $params );

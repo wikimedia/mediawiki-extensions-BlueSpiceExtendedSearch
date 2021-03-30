@@ -108,7 +108,8 @@ class Backend {
 	 */
 	public function destroySource( $sourceKey ) {
 		unset( $this->sources[$sourceKey] );
-		$this->sourceFactory->destroySource( $sourceKey );	}
+		$this->sourceFactory->destroySource( $sourceKey );
+ }
 
 	/**
 	 *
