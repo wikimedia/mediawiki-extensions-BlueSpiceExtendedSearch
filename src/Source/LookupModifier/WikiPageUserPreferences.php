@@ -3,15 +3,18 @@
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Backend;
+use MediaWiki\MediaWikiServices;
 
 class WikiPageUserPreferences extends Base {
 	/** @var int[] */
 	protected $namespacesToBoost;
 
 	public function apply() {
+		$services = MediaWikiServices::getInstance();
+		$userOptionsLookup = $services->getUserOptionsLookup();
+		$permManager = $services->getPermissionManager();
 		$user = $this->oContext->getUser();
-		$options = $user->getOptions();
-		$permManager = \MediaWiki\MediaWikiServices::getInstance()->getPermissionManager();
+		$options = $userOptionsLookup->getOptions( $user );
 
 		$namespacesToBoost = [];
 		foreach ( $options as $optionName => $optionValue ) {
