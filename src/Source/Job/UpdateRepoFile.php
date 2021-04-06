@@ -42,23 +42,12 @@ class UpdateRepoFile extends UpdateTitleBase {
 
 	/**
 	 *
-	 * @return \SplFileInfo
+	 * @return File
 	 * @throws \Exception
 	 */
 	protected function getDocumentProviderSource() {
 		$this->setFileRepoFile();
-		if ( !$this->file ) {
-			return null;
-		}
-		$fileBackend = $this->file->getRepo()->getBackend();
-		$fsFile = $fileBackend->getLocalReference( [
-			'src' => $this->file->getPath()
-		] );
-		if ( $fsFile === null ) {
-			throw new \Exception( "File '{$this->getTitle()->getPrefixedDBkey()}' not found on filesystem!" );
-		}
-
-		return new \SplFileInfo( $fsFile->getPath() );
+		return $this->file;
 	}
 
 	/**

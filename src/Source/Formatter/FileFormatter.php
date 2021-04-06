@@ -31,7 +31,7 @@ class FileFormatter extends Base {
 			return $this->getActualImageUrl( $result );
 		}
 
-		$extension = $result['extension'];
+		$extension = strtolower( $result['extension'] );
 		$fileIcons = \ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchIcons' );
 
