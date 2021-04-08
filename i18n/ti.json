@@ -19,5 +19,8 @@
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "ቦታ ሽም",
 	"bs-extendedsearch-autocomplete-create-page-link": "ገጽ «$1» ፍጠር",
 	"bs-extendedseach-wikipage-section-more-text": "... $1 ተወሳኺ",
-	"bs-extendedsearch-search-center-create-page-link": "ገጽ «$1» ፍጠር"
+	"bs-extendedsearch-search-center-create-page-link": "ገጽ «$1» ፍጠር",
+	"bs-extendedsearch-admin-label-error": "ጌጋ",
+	"bs-extendedsearch-admin-heading-sources": "ምንጭታት",
+	"bs-extendedsearch-admin-heading-sources-documentscount": "ሰነዳት"
 }

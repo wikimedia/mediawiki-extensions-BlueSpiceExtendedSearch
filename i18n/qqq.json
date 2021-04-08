@@ -168,5 +168,8 @@
 	"action-extendedsearch-search-repofile": "{{doc-action|extendedsearch-search-repofile}}",
 	"action-extendedsearch-search-externalfile": "{{doc-action|extendedsearch-search-externalfile}}",
 	"bs-extendedsearch-pref-externalfilepaths-help": "Description for config variable \"ESExternalFilePaths\"",
-	"bs-extendedsearch-suggest-operator": "Suggestion message for suggested search operators.\n$1 - suggested query"
+	"bs-extendedsearch-suggest-operator": "Suggestion message for suggested search operators.\n$1 - suggested query",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Notice when a quiet subpage filter is active. \n$1 - page title of the filter",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Label for the button that clears the quiet subpage filter",
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Tooltip for the quiet subpage filter pill in the search input field.\n$1 - page title of the filter"
 }

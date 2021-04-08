@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hwboehm"
+			"Hwboehm",
+			"Mglaser"
 		]
 	},
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Keine gültigen Übereinstimmungen für Ihre Anfrage",
@@ -10,5 +11,6 @@
 	"bs-extendedsearch-search-center-result-exception": "Anfrage kann nicht ausgeführt werden, bitte ändern Sie den Suchbegriff.",
 	"bs-extendedsearch-search-center-hitcount-suggest": "Meinten Sie $1 ({{PLURAL:$2|Ein|$2}} Treffer)?",
 	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch – {{GENDER:$2|Sie}} haben {{PLURAL:$1|eine Seite|$1 Seiten}} als {{PLURAL:$1|relevantes Suchergebnis|relevante Suchergebnisse}} markiert",
-	"bs-extendedsearch-tagsearch-extension-description": "{{GENDER:|Ihrem}} Inhalt ein Suchformular hinzufügen"
+	"bs-extendedsearch-tagsearch-extension-description": "{{GENDER:|Ihrem}} Inhalt ein Suchformular hinzufügen",
+	"bs-extendedsearch-suggest-operator": "Wollten Sie nach <b>$1</b> suchen?"
 }

@@ -160,5 +160,8 @@
 	"action-extendedsearch-search-repofile": "cirche le fail",
 	"action-extendedsearch-search-externalfile": "cirche le fail de fore",
 	"bs-extendedsearch-pref-externalfilepaths-help": "Luèche de fore pe scansionà le fail e le fail de indice. Ste luèche so sckaffate jndr'à coppie chiave/valore.",
-	"bs-extendedsearch-suggest-operator": "Se cercà <b>$1</b>?"
+	"bs-extendedsearch-suggest-operator": "Se cercà <b>$1</b>?",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Fa 'ndrucà le resultate jndr'à \"$1\"",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Fa 'ndrucà le resultate globbale",
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Stoche a cerche jndr'à \"$1\""
 }

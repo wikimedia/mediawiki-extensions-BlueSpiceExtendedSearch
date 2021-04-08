@@ -162,5 +162,8 @@
 	"action-extendedsearch-search-repofile": "搜尋檔案",
 	"action-extendedsearch-search-externalfile": "搜尋外部檔案",
 	"bs-extendedsearch-pref-externalfilepaths-help": "用來掃描檔案與索引檔案出處的外部位置。這些位置請填入鍵/值配對。",
-	"bs-extendedsearch-suggest-operator": "您是不是要搜尋<b>$1</b>？"
+	"bs-extendedsearch-suggest-operator": "您是不是要搜尋<b>$1</b>？",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "顯示在「$1」的結果",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "顯示全域結果",
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "在「$1」搜尋"
 }

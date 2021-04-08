@@ -53,5 +53,6 @@
 	"action-extendedsearch-search-wikipage": "no Säite sichen",
 	"action-extendedsearch-search-repofile": "no Fichiere sichen",
 	"action-extendedsearch-search-externalfile": "no externe Fichiere sichen",
-	"bs-extendedsearch-suggest-operator": "Wollt Dir no <b>$1</b> sichen?"
+	"bs-extendedsearch-suggest-operator": "Wollt Dir no <b>$1</b> sichen?",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Global Resultater weisen"
 }
