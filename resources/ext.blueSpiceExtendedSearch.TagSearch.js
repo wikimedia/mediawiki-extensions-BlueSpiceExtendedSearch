@@ -6,13 +6,25 @@
 
 		var lookupCfg = JSON.parse( $lookupInput.val() );
 
-		var autocomplete = new bs.extendedSearch.Autocomplete();
-		var searchBar = new bs.extendedSearch.SearchBar( {
-			useNamespacePills: false,
-			cntId: $searchField.attr( 'id' ),
-			inputId: $searchInput.attr( 'id' )
+		bs.config.getDeferred( [
+			'AutocompleteConfig',
+			'SourceIcons'
+		] ).done( function( response ) {
+			var autocomplete = new bs.extendedSearch.Autocomplete();
+			var searchBar = new bs.extendedSearch.SearchBar( {
+				useNamespacePills: false,
+				cntId: $searchField.attr( 'id' ),
+				inputId: $searchInput.attr( 'id' )
+			} );
+
+			autocomplete.init( {
+				searchBar: searchBar,
+				autocompleteConfig: response.AutocompleteConfig,
+				compact: true,
+				sourceIcons: response.SourceIcons,
+				lookupConfig: lookupCfg
+			} );
 		} );
 
-		autocomplete.init( { searchBar: searchBar, compact: true, lookupConfig: lookupCfg } );
 	} );
 } )( mediaWiki, jQuery, blueSpice, document );

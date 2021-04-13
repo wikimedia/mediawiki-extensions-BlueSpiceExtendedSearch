@@ -68,7 +68,7 @@ class WikiPage extends DecoratorBase {
 			'source_content' => $this->getTextContent(),
 			'rendered_content' => $this->getHTMLContent(),
 			'namespace' => $this->title->getNamespace(),
-			'namespace_text' => $this->getNamespaceText(),
+			'namespace_text' => $this->getNamespaceText( $this->title ),
 			'tags' => $this->getTags(),
 			'is_redirect' => $this->title->isRedirect(),
 			'redirects_to' => $this->getRedirectsTo(),
@@ -112,17 +112,6 @@ class WikiPage extends DecoratorBase {
 		}
 
 		return $this->pageProps;
-	}
-
-	/**
-	 *
-	 * @return string
-	 */
-	protected function getNamespaceText() {
-		if ( $this->title->getNamespace() === NS_MAIN ) {
-			return wfMessage( 'bs-ns_main' )->plain();
-		}
-		return $this->title->getNsText();
 	}
 
 	/**
@@ -297,5 +286,20 @@ class WikiPage extends DecoratorBase {
 	 */
 	protected function isLatestRevision() {
 		return $this->revision->getId() === $this->title->getLatestRevID();
+	}
+
+	/**
+	 *
+	 * @param Title|null $title
+	 * @return string
+	 */
+	protected function getNamespaceText( $title ) {
+		if ( !$title instanceof Title ) {
+			return '';
+		}
+		if ( $title->getNamespace() === NS_MAIN ) {
+			return wfMessage( 'bs-ns_main' )->plain();
+		}
+		return $title->getNsText();
 	}
 }

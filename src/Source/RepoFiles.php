@@ -6,6 +6,7 @@ use BS\ExtendedSearch\Source\Formatter\RepoFileFormatter;
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Source\Crawler\RepoFile as RepoFileCrawler;
 use BS\ExtendedSearch\Source\DocumentProvider\RepoFile as RepoFileDocumentProvider;
+use BS\ExtendedSearch\Source\MappingProvider\RepoFile as RepoFileMappingProvider;
 use BS\ExtendedSearch\Source\Updater\RepoFile as RepoFileUpdater;
 
 class RepoFiles extends Files {
@@ -20,11 +21,21 @@ class RepoFiles extends Files {
 
 	/**
 	 *
-	 * @return FileDocumentProvider
+	 * @return RepoFileDocumentProvider
 	 */
 	public function getDocumentProvider() {
 		return new RepoFileDocumentProvider(
 			$this->oDecoratedSource->getDocumentProvider()
+		);
+	}
+
+	/**
+	 *
+	 * @return RepoFileMappingProvider
+	 */
+	public function getMappingProvider() {
+		return new RepoFileMappingProvider(
+			$this->oDecoratedSource->getMappingProvider()
 		);
 	}
 
