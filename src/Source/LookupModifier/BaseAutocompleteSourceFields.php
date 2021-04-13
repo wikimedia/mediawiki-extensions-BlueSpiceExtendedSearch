@@ -9,6 +9,7 @@ class BaseAutocompleteSourceFields extends Base {
 	public function apply() {
 		$this->oLookup->addSourceField( 'basename' );
 		$this->oLookup->addSourceField( 'uri' );
+		$this->oLookup->addSourceField( 'filename' );
 	}
 
 	public function undo() {

@@ -36,4 +36,16 @@ class RepoFileFormatter extends FileFormatter {
 
 		return '';
 	}
+
+	/**
+	 * @param array &$results
+	 * @param array $searchData
+	 */
+	public function formatAutocompleteResults( &$results, $searchData ) {
+		parent::formatAutocompleteResults( $results, $searchData );
+		foreach ( $results as &$result ) {
+			$result['basename'] = $result['filename'];
+			$result['image_uri'] = $this->getActualImageUrl( $result );
+		}
+	}
 }
