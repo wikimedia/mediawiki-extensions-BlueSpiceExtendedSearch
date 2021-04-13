@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Tag;
 
 use BlueSpice\Tag\Handler;
+use BS\ExtendedSearch\Lookup;
 use Config;
 use ConfigException;
 use MWException;
@@ -52,13 +53,12 @@ class TagSearchHandler extends Handler {
 
 		$templateParser = new \TemplateParser( $this->config->get( 'TagSearchSearchFieldTemplatePath' ) );
 
-		$lookup = new \BS\ExtendedSearch\Lookup();
+		$lookup = new Lookup();
 
-		if ( count( $this->processedArgs[TagSearch::PARAM_NAMESPACE] ) > 0 ) {
-			$namespaceNames = $this
-				->getNamespaceNamesFromIds( $this->processedArgs[TagSearch::PARAM_NAMESPACE] );
-			$lookup->addTermsFilter( 'namespace_text', $namespaceNames );
-		}
+		$namespaceNames = [];
+		$this->addFilterNamespaceNames( TagSearch::PARAM_NAMESPACE, $namespaceNames );
+		$this->addFilterNamespaceNames( TagSearch::PARAM_NAMESPACE_FULLNAME, $namespaceNames );
+		$lookup->addTermsFilter( 'namespace_text', array_unique( $namespaceNames ) );
 
 		$this->handleCategories( $lookup, TagSearch::PARAM_CATEGORY );
 		$this->handleCategories( $lookup, TagSearch::PARAM_CATEGORY_FULLNAME );
@@ -89,7 +89,7 @@ class TagSearchHandler extends Handler {
 	}
 
 	/**
-	 * @param BS\ExtendedSearch\Lookup $lookup
+	 * @param Lookup $lookup
 	 * @param string $argName
 	 */
 	protected function handleCategories( $lookup, $argName ) {
@@ -130,6 +130,22 @@ class TagSearchHandler extends Handler {
 		}
 
 		return $namespaceNames;
+	}
+
+	/**
+	 * Read in namespace param(s) and add namespace names
+	 *
+	 * @param string $param
+	 * @param array &$namespaceNames
+	 */
+	private function addFilterNamespaceNames( $param, &$namespaceNames ) {
+		if ( count( $this->processedArgs[$param] ) > 0 ) {
+			$namespaceNames = array_merge(
+				$namespaceNames, $this->getNamespaceNamesFromIds(
+					$this->processedArgs[$param]
+				)
+			);
+		}
 	}
 
 }
