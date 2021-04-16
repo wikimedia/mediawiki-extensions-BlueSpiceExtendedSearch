@@ -139,6 +139,11 @@ class TagSearchHandler extends Handler {
 	 * @param array &$namespaceNames
 	 */
 	private function addFilterNamespaceNames( $param, &$namespaceNames ) {
+		if (
+			!isset( $this->processedArgs[$param] ) || !is_array( $this->processedArgs[$param] )
+		) {
+			return;
+		}
 		if ( count( $this->processedArgs[$param] ) > 0 ) {
 			$namespaceNames = array_merge(
 				$namespaceNames, $this->getNamespaceNamesFromIds(
