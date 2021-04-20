@@ -123,6 +123,55 @@ class Backend {
 	}
 
 	/**
+	 * Check if Elasticsearch is up
+	 *
+	 * @return bool
+	 */
+	public function testConnection() {
+		try {
+			$this->getClient()->getStatus()->getIndexNames();
+			return true;
+		} catch ( Exception $e ) {
+			return false;
+		}
+	}
+
+	/**
+	 * Check if search is initialized for use with the wiki
+	 *
+	 * @return bool
+	 */
+	public function hasIndices() {
+		$should = array_map( function ( $sourceKey ) {
+			return $this->getIndexByType( $sourceKey )->getName();
+		}, array_keys( $this->getSources() ) );
+
+		$is = $this->getClient()->getStatus()->getIndexNames();
+		if ( array_intersect( $should, $is ) === $should ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Check if indices are read-only
+	 *
+	 * @return bool
+	 */
+	public function isReadOnly() {
+		foreach ( $this->getSources() as $key => $source ) {
+			if (
+				$this->getIndexByType( $key )->getSettings()->getReadOnly()
+			) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * TODO: ClientFactory!
 	 * @return Client
 	 */
