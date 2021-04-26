@@ -20,14 +20,14 @@
 		"BlueSpiceFoundation": {
 			"Extensions": {
 				"BlueSpiceExtendedSearch": {
-					"className": "BS\\ExtendedSearch\\Extension",
-					"configDefinitions": {
-						"ESExternalFilePaths": "BS\\ExtendedSearch\\ConfigDefinition\\ExternalFilePaths::getInstance",
-						"ESCompactAutocomplete": "BS\\ExtendedSearch\\ConfigDefinition\\CompactAutocomplete::getInstance",
-						"ESAutoSetLangFilter": "BS\\ExtendedSearch\\ConfigDefinition\\AutoSetLanguageFilter::getInstance",
-						"ExtendedSearchExternalFilePathsExcludes": "\\BS\\ExtendedSearch\\ConfigDefinition\\ExternalFilePathsExcludes::getInstance"
-					}
+					"className": "BS\\ExtendedSearch\\Extension"
 				}
+			},
+			"ConfigDefinitionRegistry": {
+				"ESExternalFilePaths": "BS\\ExtendedSearch\\ConfigDefinition\\ExternalFilePaths::getInstance",
+				"ESCompactAutocomplete": "BS\\ExtendedSearch\\ConfigDefinition\\CompactAutocomplete::getInstance",
+				"ESAutoSetLangFilter": "BS\\ExtendedSearch\\ConfigDefinition\\AutoSetLanguageFilter::getInstance",
+				"ExtendedSearchExternalFilePathsExcludes": "\\BS\\ExtendedSearch\\ConfigDefinition\\ExternalFilePathsExcludes::getInstance"
 			},
 			"AdminToolRegistry": {
 				"bs-extended-search": "BS\\ExtendedSearch\\AdminTool"
