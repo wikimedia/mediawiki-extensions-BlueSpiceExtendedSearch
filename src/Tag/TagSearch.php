@@ -73,6 +73,12 @@ class TagSearch extends Tag {
 			[]
 		);
 		$namespaceListParam->setArrayValues( [ 'hastoexist' => true ] );
+		$namespaceListParamFull = new BSNamespaceListParam(
+			ParamType::NAMESPACE_LIST,
+			static::PARAM_NAMESPACE_FULLNAME,
+			[]
+		);
+		$namespaceListParam->setArrayValues( [ 'hastoexist' => true ] );
 
 		$categoryParam  = new BSCategoryListParam(
 			ParamType::CATEGORY_LIST, static::PARAM_CATEGORY_FULLNAME, []
@@ -87,6 +93,7 @@ class TagSearch extends Tag {
 				static::PARAM_TYPE
 			),
 			$namespaceListParam,
+			$namespaceListParamFull,
 			$catParam,
 			$categoryParam,
 			new ParamDefinition(
