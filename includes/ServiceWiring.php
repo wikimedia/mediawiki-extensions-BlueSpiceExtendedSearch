@@ -5,7 +5,7 @@ use BS\ExtendedSearch\LookupModifierFactory;
 use MediaWiki\MediaWikiServices;
 
 return [
-	'BSExtendedSearchSourceFactory' => function ( MediaWikiServices $services ) {
+	'BSExtendedSearchSourceFactory' => static function ( MediaWikiServices $services ) {
 		return new \BS\ExtendedSearch\SourceFactory(
 			// deprecated since version 3.1.13
 			null,
@@ -13,7 +13,7 @@ return [
 		);
 	},
 
-	'BSExtendedSearchExternalIndexFactory' => function ( MediaWikiServices $services ) {
+	'BSExtendedSearchExternalIndexFactory' => static function ( MediaWikiServices $services ) {
 		$registry = new ExtensionAttributeBasedRegistry(
 			'BlueSpiceExtendedSearchExternalIndexRegistry'
 		);
@@ -23,7 +23,7 @@ return [
 		);
 	},
 
-	'BSExtendedSearchLookupModifierFactory' => function ( MediaWikiServices $services ) {
+	'BSExtendedSearchLookupModifierFactory' => static function ( MediaWikiServices $services ) {
 		$registry = new ExtensionAttributeBasedRegistry(
 			'BlueSpiceExtendedSearchLookupModifierRegistry'
 		);
@@ -37,7 +37,7 @@ return [
 		);
 	},
 
-	'BSExtendedSearchBackend' => function ( MediaWikiServices $services ) {
+	'BSExtendedSearchBackend' => static function ( MediaWikiServices $services ) {
 		$config = $services->getConfigFactory()->makeConfig( 'bsg' );
 
 		$backendClass = $config->get( 'ESBackendClass' );

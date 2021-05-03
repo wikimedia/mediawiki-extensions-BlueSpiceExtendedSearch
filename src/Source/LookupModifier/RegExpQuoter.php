@@ -82,7 +82,7 @@ class RegExpQuoter extends Base {
 
 		$query = preg_replace_callback(
 			'#"(.*?)"#',
-			function ( $matches ) use ( &$replaceCounter, &$mapping ) {
+			static function ( $matches ) use ( &$replaceCounter, &$mapping ) {
 				$placeholder = "###Q$replaceCounter###";
 				$mapping[$placeholder] = $matches[1];
 				return $placeholder;

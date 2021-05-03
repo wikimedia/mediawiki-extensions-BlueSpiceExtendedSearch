@@ -162,7 +162,7 @@ class PostProcessor {
 	 * @return array
 	 */
 	private function doSort( &$results, $field, $order ) {
-		usort( $results, function ( $a, $b ) use ( $field, $order ) {
+		usort( $results, static function ( $a, $b ) use ( $field, $order ) {
 			if ( $field === '_score' ) {
 				$fieldValueA = $a->getScore();
 				$fieldValueB = $b->getScore();

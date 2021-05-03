@@ -328,7 +328,7 @@ class Backend {
 			$this->getLegacyLookupModifiers( $lookup, $type )
 		);
 
-		uasort( $lookupModifiers, function ( $a, $b ) {
+		uasort( $lookupModifiers, static function ( $a, $b ) {
 			if ( $a->getPriority() === $b->getPriority() ) {
 				return 0;
 			}
@@ -424,7 +424,7 @@ class Backend {
 			$source->getFormatter()->formatAutocompleteResults( $results, $searchData );
 		}
 
-		usort( $results, function ( $e1, $e2 ) {
+		usort( $results, static function ( $e1, $e2 ) {
 			if ( $e1['score'] == $e2['score'] ) {
 				return 0;
 			}
@@ -793,7 +793,7 @@ class Backend {
 	 * @param array $data
 	 */
 	protected function logSearchHistory( $data ) {
-		$dbw = $this->lb->getConnection( DB_MASTER );
+		$dbw = $this->lb->getConnection( DB_PRIMARY );
 
 		$dbw->insert(
 			'bs_extendedsearch_history',

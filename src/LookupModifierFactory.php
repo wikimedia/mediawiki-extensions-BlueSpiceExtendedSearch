@@ -117,7 +117,7 @@ class LookupModifierFactory {
 		IContextSource $context ) {
 		return array_filter(
 			$this->getLookupModifiers( $lookup, $context ),
-			function ( ILookupModifier $lM ) use( $type ) {
+			static function ( ILookupModifier $lM ) use( $type ) {
 				return in_array( $type, $lM->getSearchTypes() );
 			} );
 	}

@@ -102,7 +102,7 @@ class ResultRelevance {
 			return false;
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$this->setConditions();
 
 		if ( $this->value == 0 ) {

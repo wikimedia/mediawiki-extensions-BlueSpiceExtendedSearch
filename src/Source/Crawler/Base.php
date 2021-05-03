@@ -73,7 +73,7 @@ class Base {
 		}
 
 		$oDummyJob = new $this->sJobClass( \Title::newMainPage(), [] );
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$res = $dbw->delete(
 			'job',
 			[ 'job_cmd' => $oDummyJob->getType() ]
