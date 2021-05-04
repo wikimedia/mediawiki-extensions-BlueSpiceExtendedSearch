@@ -4,12 +4,16 @@
 			"Умар"
 		]
 	},
+	"bs-extendedsearch-search-center-filter-namespace_text-label": "ЦӀерийн меттиг",
 	"bs-extendedsearch-search-center-filter-type-label": "Тайпа",
+	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "ЦӀерийн меттиг:",
 	"bs-extendedsearch-search-center-filter-type-with-values-label": "Тайпа:",
+	"bs-extendedsearch-search-center-result-namespace_text-label": "ЦӀерийн меттиг:",
 	"bs-extendedsearch-search-center-options-sort-order": "Къепе листар",
 	"bs-extendedsearch-autocomplete-result-type": "Тайпа: $1",
 	"bs-extendedsearch-searchcenter-filter-or-label": "я",
 	"bs-extendedsearch-searchcenter-filter-and-label": ",",
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "ЦӀерийн меттиг",
 	"bs-extendedsearch-search-center-result-typetext-label": "Тайпа:",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "ЦӀерийн меттиг",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тайпа"
