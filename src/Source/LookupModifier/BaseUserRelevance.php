@@ -21,7 +21,7 @@ class BaseUserRelevance extends Base {
 	public function __construct( &$lookup, $context ) {
 		parent::__construct( $lookup, $context );
 
-		if ( $context->getUser()->isLoggedIn() == false ) {
+		if ( $context->getUser()->isRegistered() == false ) {
 			return;
 		}
 

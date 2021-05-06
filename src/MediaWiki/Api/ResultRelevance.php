@@ -48,7 +48,7 @@ class ResultRelevance extends \ApiBase {
 	 * @return \BS\ExtendedSearch\ResultRelevance|false
 	 */
 	protected function makeResultRelevanceFromArray( $value ) {
-		if ( $this->getUser()->isLoggedIn() == false ) {
+		if ( $this->getUser()->isRegistered() == false ) {
 			return false;
 		}
 		if ( isset( $value['resultId'] ) && isset( $value['value'] ) ) {
