@@ -3,7 +3,8 @@
 		"authors": [
 			"Alirezaaa",
 			"Amirsara",
-			"FarsiNevis"
+			"FarsiNevis",
+			"Mohammad ebz"
 		]
 	},
 	"bssearchadmin": "مدیر جستجو",
@@ -56,6 +57,8 @@
 	"bs-extendedsearch-searchcenter-filter-and-label": "و",
 	"bs-extendedsearch-searchcenter-sort-field-_score": "ارتباط",
 	"bs-extendedsearch-searchcenter-sort-field-basename": "نام",
+	"bs-extendedsearch-searchcenter-sort-field-mtime": "زمان اصلاح شده",
+	"bs-extendedsearch-searchcenter-sort-field-ctime": "زمان ایجاد شده",
 	"bs-extendedsearch-searchcenter-sort-field-size": "اندازه",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "فضای نام",
 	"bs-extendedsearch-autocomplete-create-page-link": "صفحهٔ «$1» را بسازید",
