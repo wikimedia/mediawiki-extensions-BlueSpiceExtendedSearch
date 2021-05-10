@@ -97,7 +97,7 @@ class Base {
 
 		// Experimental
 		$user = $this->getContext()->getUser();
-		if ( $user->isLoggedIn() ) {
+		if ( $user->isRegistered() ) {
 			$resultRelevance = new \BS\ExtendedSearch\ResultRelevance( $user, $resultObject->getId() );
 			$result['user_relevance'] = $resultRelevance->getValue();
 		} else {
