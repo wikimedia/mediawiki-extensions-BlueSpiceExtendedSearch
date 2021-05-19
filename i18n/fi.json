@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Joquliina",
 			"Nike",
 			"Pyscowicz",
 			"Silvonen"
@@ -8,6 +9,7 @@
 	},
 	"bs-extendedsearch-source-label-user": "Käyttäjä",
 	"bs-extendedsearch-admin-label-error": "Virhe",
+	"bs-extendedsearch-admin-heading-sources": "Lähteet",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Nimiavaruus",
 	"bs-extendedsearch-search-center-filter-tags-label": "Merkkaus",
 	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Nimiavaruus:",
