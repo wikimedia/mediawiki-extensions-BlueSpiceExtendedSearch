@@ -11,6 +11,7 @@ use MWException;
 use ParserOptions;
 use ParserOutput;
 use Title;
+use User;
 use WikiPage as WikiPageObject;
 
 class WikiPage extends DecoratorBase {
@@ -270,6 +271,16 @@ class WikiPage extends DecoratorBase {
 		$displayTitle = $this->getPageProps( $this->title, 'displaytitle' );
 		if ( $displayTitle ) {
 			return $displayTitle;
+		}
+		if ( $this->title->getNamespace() === NS_USER ) {
+			$user = User::newFromName( $this->title->getDBkey() );
+			if ( $user instanceof User ) {
+				if ( $user->isRegistered() && $user->getRealName() !== '' ) {
+					return $user->getRealName();
+				}
+			}
+			// Fall back to username
+			return $this->title->getText();
 		}
 		return $this->title->getPrefixedText();
 	}
