@@ -29,13 +29,15 @@ class UpdateTitleBase extends UpdateBase {
 
 		$providerSource = $this->getDocumentProviderSource();
 		if ( !$providerSource ) {
-			return null;
+			return [];
 		}
+
 		$aDC = $this->dp->getDataConfig(
 			$this->getDocumentProviderUri(),
 			$providerSource
 		);
 		$this->getSource()->addDocumentsToIndex( [ $aDC ] );
+
 		return $aDC;
 	}
 
