@@ -10,9 +10,14 @@ class BlueSpiceSearch extends \SearchEngine {
 	protected $fallbackSearchEngine = null;
 	/** @var \BS\ExtendedSearch\Backend */
 	protected $backend;
+	/** @var string */
+	protected $defaultOperator;
 
 	public function __construct() {
-		$this->backend = \BS\ExtendedSearch\Backend::instance();
+		$services = MediaWikiServices::getInstance();
+		$this->backend = $services->getService( 'BSExtendedSearchBackend' );
+		$config = $services->getConfigFactory()->makeConfig( 'bsg' );
+		$this->defaultOperator = $config->get( 'ESDefaultSearchOperator' );
 	}
 
 	/**
@@ -107,7 +112,7 @@ class BlueSpiceSearch extends \SearchEngine {
 		$lookup = $this->getLookup();
 		$qs = [
 			'query' => $search,
-			'default_operator' => 'AND',
+			'default_operator' => $this->defaultOperator,
 		];
 		if ( is_array( $sourceFields ) && !empty( $sourceFields ) ) {
 			$qs['fields'] = $sourceFields;
