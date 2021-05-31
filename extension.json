@@ -740,6 +740,9 @@
 		},
 		"ESEnableTypeFilter": {
 			"value": true
+		},
+		"ESDefaultSearchOperator": {
+			"value": "AND"
 		}
 	},
 	"callback": "\\BS\\ExtendedSearch\\Setup::onRegistration",
