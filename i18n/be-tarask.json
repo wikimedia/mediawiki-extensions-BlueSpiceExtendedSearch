@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"W"
+		]
+	},
+	"bs-extendedsearch-search-input-placeholder": "Знайсьці ...",
+	"bs-extendedsearch-source-label-wikipage": "Вікістаронка",
+	"bs-extendedsearch-source-label-specialpage": "Адмысловая старонка",
+	"bs-extendedsearch-admin-label-error": "Памылка",
+	"bs-extendedsearch-admin-heading-sources": "Крыніцы",
+	"bs-extendedsearch-search-center-filter-categories-label": "Катэгорыя",
+	"bs-extendedsearch-search-center-filter-type-label": "Від",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Катэгорыя:",
+	"bs-extendedsearch-search-center-filter-type-with-values-label": "Від:",
+	"bs-extendedsearch-search-center-result-categories-label": "Катэгорыя:",
+	"bs-extendedsearch-searchcenter-filter-or-label": "або",
+	"bs-extendedsearch-searchcenter-filter-and-label": "і",
+	"bs-extendedsearch-searchcenter-sort-field-size": "Памер",
+	"bs-extendedsearch-search-center-result-typetext-label": "Від:",
+	"bs-extendedsearch-source-type-wikipage-label": "Вікістаронка",
+	"bs-extendedsearch-source-type-specialpage-label": "Адмысловая старонка",
+	"bs-extendedsearch-autocomplete-fulltext-search-button": "Шукаць увесь тэкст",
+	"prefs-extendedsearch": "Пашыраны пошук",
+	"bs-extendedsearch-search-center-filter-page_language-label": "Мова старонкі",
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Мова старонкі:",
+	"bs-extendedsearch-search-center-create-page-link": "Стварыць старонку «$1»",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "Старонка $1: Тэкст: $2",
+	"bs-extendedsearch-flyout-similar-pages-title": "Падобныя старонкі",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Катэгорыя(-і)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Катэгорыя1|Катэгорыя2|...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Від",
+	"right-extendedsearch-search-specialpage": "Пошук адмысловых старонак",
+	"right-extendedsearch-search-wikipage": "Пошук старонак",
+	"right-extendedsearch-search-repofile": "Пошук файлаў",
+	"action-extendedsearch-search-specialpage": "пошук адмысловых старонак",
+	"action-extendedsearch-search-wikipage": "пошук старонак",
+	"action-extendedsearch-search-repofile": "пошук файлаў"
+}

@@ -159,5 +159,9 @@
 	"action-extendedsearch-search-wikipage": "søke etter sider",
 	"action-extendedsearch-search-repofile": "søke etter filer",
 	"action-extendedsearch-search-externalfile": "søke etter eksterne filer",
-	"bs-extendedsearch-pref-externalfilepaths-help": "Eksterne steder det skal skannes etter filer og indeksfiler fra. Disse stedene skrives inn som nøkkel- og verdipar."
+	"bs-extendedsearch-pref-externalfilepaths-help": "Eksterne steder det skal skannes etter filer og indeksfiler fra. Disse stedene skrives inn som nøkkel- og verdipar.",
+	"bs-extendedsearch-suggest-operator": "Mente du å søke etter <b>$1</b>?",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Viser resultater i «$1»",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Viser globale resultater",
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Søker i «$1»"
 }

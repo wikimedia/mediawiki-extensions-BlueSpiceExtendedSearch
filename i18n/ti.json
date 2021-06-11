@@ -5,16 +5,22 @@
 		]
 	},
 	"bs-extendedsearch-source-label-specialpage": "ፍሉይ ገጽ",
-	"bs-extendedsearch-source-label-repofile": "ፋይል ጸዓን",
+	"bs-extendedsearch-source-label-repofile": "ፋይል ጸዓን/ስቐል",
 	"bs-extendedsearch-source-label-user": "ተጠቃሚ",
 	"bs-extendedsearch-search-center-filter-categories-label": "መደብ",
 	"bs-extendedsearch-search-center-filter-categories-with-values-label": "መደብ፦",
-	"bs-extendedsearch-search-center-result-ctime-label": "ተፈጢሩ፦",
+	"bs-extendedsearch-search-center-result-ctime-label": "ዝተፈጠረ፦",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "ኣትርፍ",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "ኣተግብር",
 	"bs-extendedsearch-search-center-options-sort-by": "ጎጅል ብ",
 	"bs-extendedsearch-autocomplete-create-page-link": "ገጽ «$1» ፍጠር",
 	"bs-extendedseach-wikipage-section-more-text": "... $1 ተወሳኺ",
 	"bs-extendedsearch-search-center-create-page-link": "ገጽ «$1» ፍጠር",
-	"bs-extendedsearch-search-center-result-author-label": "ደራሲ፦"
+	"bs-extendedsearch-search-center-result-author-label": "ደራሲ፦",
+	"bs-extendedsearch-admin-label-error": "ጌጋ",
+	"bs-extendedsearch-admin-heading-sources": "ምንጭታት",
+	"bs-extendedsearch-admin-heading-sources-documentscount": "ሰነዳት",
+	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "ቦታ ሽም፦",
+	"bs-extendedsearch-search-center-result-namespace_text-label": "ቦታ ሽም፦",
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "ቦታ ሽም"
 }

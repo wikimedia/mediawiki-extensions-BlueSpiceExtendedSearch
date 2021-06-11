@@ -4,6 +4,7 @@
 			"A Chinese Wikipedian",
 			"A Retired User",
 			"Ff98sha",
+			"Lakejason0",
 			"Liuxinyu970226",
 			"Looong",
 			"Phenolla",
@@ -163,5 +164,9 @@
 	"action-extendedsearch-search-specialpage": "搜索特殊页面",
 	"action-extendedsearch-search-wikipage": "搜索页面",
 	"action-extendedsearch-search-repofile": "搜索文件",
-	"action-extendedsearch-search-externalfile": "搜索外部文件"
+	"action-extendedsearch-search-externalfile": "搜索外部文件",
+	"bs-extendedsearch-collection-var-searchterm": "项目",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "显示在“$1”的结果",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "显示全域结果",
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "在“$1”中搜索"
 }

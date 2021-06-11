@@ -4,6 +4,7 @@
 			"HitomiAkane",
 			"Kassem789",
 			"Meno25",
+			"Omda4wady",
 			"ديفيد",
 			"محمد أحمد عبد الفتاح"
 		]
@@ -160,5 +161,9 @@
 	"right-extendedsearch-search-wikipage": "البحث عن الصفحات",
 	"right-extendedsearch-search-repofile": "البحث عن ملفات",
 	"right-extendedsearch-search-externalfile": "البحث عن الملفات الخارجية",
-	"action-extendedsearch-search-repofile": "البحث عن ملفات"
+	"action-extendedsearch-search-repofile": "البحث عن ملفات",
+	"action-extendedsearch-search-specialpage": "البحث عن الصفحات الخاصة",
+	"action-extendedsearch-search-wikipage": "البحث عن الصفحات",
+	"action-extendedsearch-search-externalfile": "البحث عن الملفات الخارجية",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "أظهر النتائج العالمية"
 }

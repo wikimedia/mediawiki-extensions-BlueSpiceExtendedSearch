@@ -4,6 +4,7 @@
 			"Jopparn",
 			"Josve05a",
 			"Mjälten",
+			"Sabelöga",
 			"Technic2",
 			"WikiPhoenix"
 		]
@@ -125,5 +126,8 @@
 	"right-extendedsearch-search-externalfile": "Sök efter externa filer",
 	"action-extendedsearch-search-wikipage": "sök efter sidor",
 	"action-extendedsearch-search-repofile": "sök efter filer",
-	"action-extendedsearch-search-externalfile": "sök efter externa filer"
+	"action-extendedsearch-search-externalfile": "sök efter externa filer",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Visar resultat i \"$1\"",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Visa globala resultat",
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Söker i \"$1\""
 }

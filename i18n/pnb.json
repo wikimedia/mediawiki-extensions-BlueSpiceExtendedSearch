@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Abbas dhothar"
+		]
+	},
+	"bssearchcenter": "وچکار لبھو",
+	"bs-extendedsearch-source-label-repofile": "فائل چڑھاؤ",
+	"bs-extendedsearch-search-center-filter-tags-label": "ٹیگ",
+	"bs-extendedsearch-search-center-filter-tags-with-values-label": "ٹیگز:",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "مکاؤ",
+	"bs-extendedsearch-search-center-options-sort-by": "چُنن ترتیب",
+	"bs-extendedsearch-searchcenter-sort-field-_score": "متعلقہ",
+	"bs-extendedsearch-search-center-filter-has-hidden": "...{{PLURAL:$1|ہور$1 ہور|تے$1 more}}",
+	"bs-extendedseach-wikipage-section-more-text": " ... $1 ہور",
+	"bs-extendedsearch-search-center-filter-page_language-label": "صحفہ بولی",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "ٹیگ لبھو"
+}

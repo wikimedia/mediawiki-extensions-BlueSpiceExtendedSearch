@@ -62,5 +62,7 @@
 	"action-extendedsearch-search-repofile": "søg efter filer",
 	"action-extendedsearch-search-externalfile": "søg efter eksterne filer",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Ventende opdateringsjobs",
-	"bs-extendedsearch-autocomplete-create-page-link": "Opret siden \"$1\""
+	"bs-extendedsearch-autocomplete-create-page-link": "Opret siden \"$1\"",
+	"bs-extendedsearch-search-center-filter-no-options-label": "Ingen værdier tilgængelig",
+	"bs-extendedsearch-pref-external-file-paths-excludes": "Ekskluder mønstre"
 }

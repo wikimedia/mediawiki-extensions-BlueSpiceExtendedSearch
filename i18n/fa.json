@@ -3,7 +3,8 @@
 		"authors": [
 			"Alirezaaa",
 			"Amirsara",
-			"FarsiNevis"
+			"FarsiNevis",
+			"Mohammad ebz"
 		]
 	},
 	"bssearchadmin": "مدیر جستجو",
@@ -95,5 +96,7 @@
 	"right-extendedsearch-search-repofile": "جستجوی پرونده‌ها",
 	"action-extendedsearch-search-specialpage": "جستجوی صفحه‌هایی خاص",
 	"action-extendedsearch-search-wikipage": "جستجوی صفحه‌ها",
-	"action-extendedsearch-search-repofile": "جستجوی پرونده‌ها"
+	"action-extendedsearch-search-repofile": "جستجوی پرونده‌ها",
+	"bs-extendedsearch-searchcenter-sort-field-mtime": "زمان اصلاح شده",
+	"bs-extendedsearch-searchcenter-sort-field-ctime": "زمان ایجاد شده"
 }

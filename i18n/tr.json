@@ -2,6 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
+			"Joseph",
+			"MuratTheTurkish",
 			"TmY e12",
 			"ToprakM"
 		]
@@ -161,5 +163,9 @@
 	"action-extendedsearch-search-wikipage": "sayfaları ara",
 	"action-extendedsearch-search-repofile": "dosyaları ara",
 	"action-extendedsearch-search-externalfile": "harici dosyaları ara",
-	"bs-extendedsearch-pref-externalfilepaths-help": "Dosyaları taramak ve dosyaları dizinlemek için harici konumlar. Bu konumlar anahtar/değer çiftlerine girilir."
+	"bs-extendedsearch-pref-externalfilepaths-help": "Dosyaları taramak ve dosyaları dizinlemek için harici konumlar. Bu konumlar anahtar/değer çiftlerine girilir.",
+	"bs-extendedsearch-suggest-operator": "<b>$1</b> sonucu mu aramak istediniz?",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "\"$1\" içindeki sonuçlar gösteriliyor",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Küresel sonuçları göster",
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "\"$1\" içinde aranıyor"
 }
