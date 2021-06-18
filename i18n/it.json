@@ -3,11 +3,12 @@
 		"authors": [
 			"Beta16",
 			"Dansita",
+			"McDutchie",
 			"TheRukk",
 			"ValeJappo"
 		]
 	},
-	"bssearchadmin": "Cerca amministratore",
+	"bssearchadmin": "Amministrazione della ricerca",
 	"bssearchcenter": "Centro ricerca",
 	"apihelp-bs-extendedsearch-query-description": "Cerca nell'indice",
 	"apihelp-bs-extendedsearch-query-summary": "Cerca nell'indice",

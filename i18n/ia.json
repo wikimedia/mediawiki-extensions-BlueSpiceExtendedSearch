@@ -4,6 +4,16 @@
 			"McDutchie"
 		]
 	},
+	"bs-extsearch-desc": "Platteforma de recerca Elasticsearch",
+	"bssearchadmin": "Administration de recerca",
+	"bssearchadmin-desc": "Forni un interfacie de gestion del recerca",
+	"bssearchcenter": "Centro de recerca",
+	"apihelp-bs-extendedsearch-query-description": "Cercar in le indice",
+	"apihelp-bs-extendedsearch-query-summary": "Cercar in le indice",
+	"apihelp-bs-extendedsearch-query-param-q": "Le termino del recerca",
+	"apihelp-bs-extendedsearch-query-param-params": "Parametros additional pro le consulta",
+	"apihelp-bs-extendedsearch-stats-description": "Rende datos statistic sur le servitores registrate e lor fontes configurate",
+	"apihelp-bs-extendedsearch-stats-summary": "Rende datos statistic sur le servitores registrate e lor fontes configurate",
 	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|visita|visitas}} pro $2",
 	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Circa $1 {{PLURAL:$1|visita|visitas}} pro $2",
 	"prefs-extendedsearch": "Recerca extendite",
