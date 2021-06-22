@@ -113,12 +113,12 @@
 	"bs-extendedsearch-pref-external-file-paths": "Externe Dateipfade",
 	"bs-extendedsearch-pref-external-file-paths-path": "Physikalischer Dateipfad",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL Prefix",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "Speicherort auf der Festplatte oder im gemounteten Laufwerk",
-	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Webspeicherort, der Dateien aus diesem Ordner bereitstellen kann.",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Speicherpfad. Zum Beispiel X:\\Dokumente für bereitgestellte Laufwerke.",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Alle Dateien aus dem Dateisystem werden in den Suchergebnissen mit einem Präfix ausgegeben. Es sollte benutzt werden, wenn Dateien von einem Webserver zugänglich sind. Standardmäßig ist das URL-Präfix der gleiche Wert wie der Physikalische Dateipfad.",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Muster für Ausnahmen",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Ungültiger regulärer Ausdruck",
 	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "Regulärer Ausdruck für Ausnahmen",
-	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Regulärer Ausdruck für den Ausschluss physischer Dateipfade",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Dateien aus externen Speicherorten können mit regulären Ausdrücken von der Suche ausgeschlossen werden.",
 	"bs-extendedsearch-external-file-paths-desc": "Liste von externen Ordnern, die indiziert werden sollen.",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Letzte Änderung: $1",
 	"bs-extendedseach-wikipage-section-more-text": " … $1 weitere",
@@ -175,5 +175,7 @@
 	"bs-extendedsearch-suggest-operator": "Wolltest du nach <b>$1</b> suchen?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Ergebnisse in „$1“ anzeigen",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Globale Ergebnisse anzeigen",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Suchen in „$1“"
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Suchen in „$1“",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Zeigt nur Suchergebnisse in der Sprache des Benutzers an. Benutzer können ihre Sprache in ihren Einstellungen festlegen.",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Kompaktes Autocomplete Layout des Suchmenüs (einspaltig, ohne Vorschauen)"
 }

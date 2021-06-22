@@ -24,4 +24,12 @@ class CompactAutocomplete extends \BlueSpice\ConfigDefinition\BooleanSetting {
 	public function getLabelMessageKey() {
 		return 'bs-extendedsearch-pref-compact-ac-paths';
 	}
+
+	/**
+	 *
+	 * @return string
+	 */
+	public function getHelpMessageKey() {
+		return 'bs-extendedsearch-pref-compact-ac-paths-help';
+	}
 }

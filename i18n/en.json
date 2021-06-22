@@ -105,12 +105,12 @@
 	"bs-extendedsearch-pref-external-file-paths": "External file paths",
 	"bs-extendedsearch-pref-external-file-paths-path": "Physical path",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL prefix",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "Location on disk or mounted drive",
-	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Web location capable of serving files from this folder",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Storage path. For mounted drives, for example: X:\\Documents",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "All files indexed from the indexed physical location are prefixed in the search results. It should be used if files are available from a web server. By default, the URL prefix is set to the same value as Physical path.",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Exclude patterns",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Invalid regular expression pattern",
 	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "Exclude regular expression pattern",
-	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Exclude regular expression pattern for physical file paths",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Files at external file locations can be exluded from search based on regular expression patterns.",
 	"bs-extendedsearch-external-file-paths-desc": "Array of external folders that should be indexed",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Last modified: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... $1 more",
@@ -170,5 +170,7 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Show global results",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Searching in \"$1\"",
 	"bs-extendedsearch-statistics-report-search-terms": "Search terms",
-	"bs-extendedsearch-statistics-report-search-term-by-user": "Search terms per user"
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Search terms per user",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Returns search results for a user only in the user's language. Users can set their language in their preferences.",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Show a compact autocomplete layout of the search menu (one-column layout, no thumbnail preview)."
 }
