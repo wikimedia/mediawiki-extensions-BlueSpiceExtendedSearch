@@ -175,5 +175,7 @@
 	"bs-extendedsearch-search-button-title": "Title for submit button in search form",
 	"bs-extendedsearch-search-button-aria-label": "Aria-label for submit button in search form",
 	"bs-extendedsearch-statistics-report-search-terms": "Statistics report name",
-	"bs-extendedsearch-statistics-report-search-term-by-user": "Statistics report name"
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Statistics report name",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Description for config variable \"ESCompactAutocomplete\"",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Description for config variable \"ESAutoSetLangFilter\""
 }

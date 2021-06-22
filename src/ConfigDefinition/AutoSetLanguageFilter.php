@@ -25,4 +25,12 @@ class AutoSetLanguageFilter extends \BlueSpice\ConfigDefinition\BooleanSetting {
 		return 'bs-extendedsearch-pref-auto-set-lang-filter';
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
+	public function getHelpMessageKey() {
+		return 'bs-extendedsearch-pref-auto-set-lang-filter-help';
+	}
+
 }
