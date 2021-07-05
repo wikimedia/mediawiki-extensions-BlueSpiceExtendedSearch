@@ -132,7 +132,7 @@ class BlueSpiceSearch extends \SearchEngine {
 			$title = \Title::newFromText( $item['prefixed_title'] );
 			if (
 				$search !== '*' &&
-				strpos( strtolower( $title->getText() ), strtolower( $search ) ) === false
+				!$this->containsSearchTerm( $search, $title )
 			) {
 				continue;
 			}
@@ -143,6 +143,18 @@ class BlueSpiceSearch extends \SearchEngine {
 		}
 
 		return $titles;
+	}
+
+	/**
+	 * @param string $search
+	 * @param \Title $title
+	 * @return bool
+	 */
+	private function containsSearchTerm( $search, $title ) {
+		return strpos(
+			strtolower( $title->getDBkey() ),
+			strtolower( str_replace( ' ', '_', $search ) )
+		) !== false;
 	}
 
 	/**

@@ -13,6 +13,9 @@ class RepoFileFormatter extends FileFormatter {
 	 */
 	public function format( &$result, $resultObject ) {
 		parent::format( $result, $resultObject );
+		if ( $this->source->getTypeKey() != $resultObject->getType() ) {
+			return;
+		}
 		$result['basename'] = $result['filename'];
 	}
 
