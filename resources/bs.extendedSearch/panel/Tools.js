@@ -370,11 +370,13 @@
 			// Destroy previous instance to prevent double input rendering
 			this.dialog.destroy();
 		}
-		this.dialog = Ext.create( 'BS.dialog.PageExport', {
-			pages: pages,
-			defaultName: term
-		});
-		this.dialog.show();
+		mw.loader.using( 'ext.bluespice.extjs', function() {
+			this.dialog = Ext.create( 'BS.dialog.PageExport', {
+				pages: pages,
+				defaultName: term
+			});
+			this.dialog.show();
+		}.bind( this ) );
 	}
 
 } )( mediaWiki, jQuery, blueSpice, document );
