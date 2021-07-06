@@ -58,7 +58,9 @@ class TagSearchHandler extends Handler {
 		$namespaceNames = [];
 		$this->addFilterNamespaceNames( TagSearch::PARAM_NAMESPACE, $namespaceNames );
 		$this->addFilterNamespaceNames( TagSearch::PARAM_NAMESPACE_FULLNAME, $namespaceNames );
-		$lookup->addTermsFilter( 'namespace_text', array_unique( $namespaceNames ) );
+		if ( !empty( $namespaceNames ) ) {
+			$lookup->addTermsFilter( 'namespace_text', array_unique( $namespaceNames ) );
+		}
 
 		$this->handleCategories( $lookup, TagSearch::PARAM_CATEGORY );
 		$this->handleCategories( $lookup, TagSearch::PARAM_CATEGORY_FULLNAME );
