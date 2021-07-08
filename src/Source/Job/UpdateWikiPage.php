@@ -37,9 +37,6 @@ class UpdateWikiPage extends UpdateTitleBase {
 	 * @return bool
 	 */
 	protected function skipProcessing() {
-		if ( $this->isNoIndex() ) {
-			return true;
-		}
 		return in_array(
 			$this->getTitle()->getNamespace(),
 			$this->getSource()->getConfig()->get( 'skip_namespaces' )
