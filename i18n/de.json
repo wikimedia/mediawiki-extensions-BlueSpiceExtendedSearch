@@ -3,6 +3,7 @@
 		"authors": [
 			"Ferdinand0101",
 			"Hwboehm",
+			"McDutchie",
 			"Metalhead64",
 			"Mglaser",
 			"Peter Böhm <boehm@hallowelt.com>",
@@ -13,7 +14,7 @@
 	},
 	"bs-extsearch-extensionname": "BlueSpiceExtendedSearch",
 	"bs-extsearch-desc": "Elasticsearch Suche Backend",
-	"bssearchadmin": "Suche Administration",
+	"bssearchadmin": "Suchverwaltung",
 	"bssearchadmin-desc": "Bietet eine Verwaltungsoberfläche für die Suche.",
 	"bssearchcenter": "Erweiterte Suche",
 	"apihelp-bs-extendedsearch-query-description": "Suche im Index",

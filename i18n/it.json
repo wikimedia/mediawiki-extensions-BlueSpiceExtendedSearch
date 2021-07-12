@@ -3,6 +3,7 @@
 		"authors": [
 			"Beta16",
 			"Dansita",
+			"McDutchie",
 			"TheRukk",
 			"ValeJappo"
 		]
@@ -86,7 +87,7 @@
 	"bs-extendedsearch-search-center-result-file-usage-label": "Usato nelle pagine",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Operatore di ricerca",
 	"bs-extendedsearch-collection-var-numbersearched": "Ricerche",
-	"bssearchadmin": "Cerca amministratore",
+	"bssearchadmin": "Amministrazione della ricerca",
 	"bs-extendedsearch-admin-heading-backend": "Backend locale",
 	"bs-extendedsearch-admin-heading-sources": "Fonti",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Attività di aggiornamento in attesa",
