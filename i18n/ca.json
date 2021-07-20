@@ -1,9 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Vfc"
 		]
 	},
 	"bs-extendedsearch-flyout-similar-pages-title": "Pàgines similars",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "No s’ha trobat cap pàgina similar"
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "No s’ha trobat cap pàgina similar",
+	"bs-extendedsearch-search-center-result-ctime-label": "Creat:",
+	"bs-extendedsearch-searchcenter-sort-field-ctime": "Temps de creació",
+	"bs-extendedsearch-autocomplete-create-page-link": "Crea la pàgina \"$1\"",
+	"bs-extendedsearch-search-center-create-page-link": "Crea la pàgina \"$1\""
 }

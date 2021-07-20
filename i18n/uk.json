@@ -161,5 +161,9 @@
 	"action-extendedsearch-search-wikipage": "пошук сторінок",
 	"action-extendedsearch-search-repofile": "пошук файлів",
 	"action-extendedsearch-search-externalfile": "пошук зовнішніх файлів",
-	"bs-extendedsearch-pref-externalfilepaths-help": "Зовнішні локації, в яких слід виконувати сканування на наявність файлів, і звідки здійснювати індексування файлів. Ці локації вводяться парами ключ/значення."
+	"bs-extendedsearch-pref-externalfilepaths-help": "Зовнішні локації, в яких слід виконувати сканування на наявність файлів, і звідки здійснювати індексування файлів. Ці локації вводяться парами ключ/значення.",
+	"bs-extendedsearch-suggest-operator": "Можливо, ви планували шукати <b>$1</b>?",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Показування результатів у «$1»",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Показати глобальні результати",
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Пошук у «$1»"
 }
