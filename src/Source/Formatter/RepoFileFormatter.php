@@ -47,6 +47,9 @@ class RepoFileFormatter extends FileFormatter {
 	public function formatAutocompleteResults( &$results, $searchData ) {
 		parent::formatAutocompleteResults( $results, $searchData );
 		foreach ( $results as &$result ) {
+			if ( $result['type'] !== $this->source->getTypeKey() ) {
+				continue;
+			}
 			$result['basename'] = $result['filename'];
 			$result['image_uri'] = $this->getActualImageUrl( $result );
 		}
