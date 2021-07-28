@@ -35,7 +35,15 @@ class BlueSpiceSearch extends \SearchEngine {
 	 * @return SearchResultSet
 	 */
 	public function searchTitle( $term ) {
-		return $this->fullSearchWrapper( $term, [ 'basename' ] );
+		$res = $this->runNGramSearch( $term );
+		$searchResultSet = new SearchResultSet( $this->searchContainedSyntax( $term ) );
+		foreach ( $res as $title ) {
+			$searchResultSet->add(
+				SearchResult::newFromTitle( $title, $searchResultSet )
+			);
+		}
+
+		return $searchResultSet;
 	}
 
 	/**
@@ -118,7 +126,6 @@ class BlueSpiceSearch extends \SearchEngine {
 			$qs['fields'] = $sourceFields;
 		}
 		$lookup->setQueryString( $qs );
-
 		$resultSet = $this->backend->runLookup( $lookup );
 		if ( property_exists( $resultSet, 'exception' ) ) {
 			return [];
