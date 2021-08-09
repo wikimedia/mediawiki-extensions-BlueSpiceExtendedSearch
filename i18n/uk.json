@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"DDPAT",
 			"Piramidion",
 			"Vlad5250",
 			"Ата"
 		]
 	},
+	"bs-extsearch-extensionname": "Розширений пошук BlueSpice",
 	"bs-extsearch-desc": "Бекенд пошуку через Elasticsearch",
 	"bssearchadmin": "Адміністрування пошуку",
 	"bssearchadmin-desc": "Надає інтерфейс керування пошуком",
@@ -91,6 +93,7 @@
 	"bs-extendedsearch-search-center-hitcount-suggest": "Можливо, Ви мали на увазі $1 ({{PLURAL:$2|$2 збіг|$2 збіги|$2 збігів}})?",
 	"bs-extendedsearch-loadmore-label": "Завантажити більше результатів",
 	"bs-extendedsearch-loadmore-error": "Більше результатів отримати неможливо",
+	"bs-extendedsearch-filter-label-count-only": "($1)",
 	"bs-extendedsearch-search-center-result-typetext-label": "Тип:",
 	"bs-extendedsearch-source-type-wikipage-label": "Вікісторінка",
 	"bs-extendedsearch-source-type-repofile-label": "Локальний файл",
@@ -124,6 +127,7 @@
 	"bs-extendedsearch-pref-auto-set-lang-filter": "Встановити мовний фільтр автоматично",
 	"bs-extendedsearch-search-center-create-page-link": "Створити сторінку «$1»",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Сторінка $1: Текст: $2",
+	"bs-extendedsearch-privacy-transparency-history-item": "$1 ($2)",
 	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpiceExtendedSearch — історія пошуку: термін (кількість запитів): $1",
 	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch — {{GENDER:$2|у Вас}} є {{PLURAL:$1|$1 сторінка, позначена|$1 сторінки, позначені|$1 сторінок, позначених}} як {{PLURAL:$1|релевантний пошуковий результат|релевантні пошукові результати}}",
 	"bs-extendedsearch-filter-add-button-label": "Додати фільтр",
