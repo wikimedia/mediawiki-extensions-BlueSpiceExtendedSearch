@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"DDPAT",
 			"Piramidion",
 			"Vlad5250",
 			"Ата"
@@ -165,5 +166,8 @@
 	"bs-extendedsearch-suggest-operator": "Можливо, ви планували шукати <b>$1</b>?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Показування результатів у «$1»",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Показати глобальні результати",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Пошук у «$1»"
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Пошук у «$1»",
+	"bs-extsearch-extensionname": "Розширений пошук BlueSpice",
+	"bs-extendedsearch-filter-label-count-only": "($1)",
+	"bs-extendedsearch-privacy-transparency-history-item": "$1 ($2)"
 }
