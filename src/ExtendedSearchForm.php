@@ -1,0 +1,81 @@
+<?php
+
+namespace BS\ExtendedSearch;
+
+use MediaWiki\MediaWikiServices;
+use Message;
+use MWStake\MediaWiki\Component\CommonUserInterface\Component\Literal;
+use MWStake\MediaWiki\Component\CommonUserInterface\IRestrictedComponent;
+use SpecialPage;
+use TemplateParser;
+
+class ExtendedSearchForm extends Literal implements IRestrictedComponent {
+
+	/**
+	 *
+	 */
+	public function __construct() {
+		parent::__construct(
+			'bs-extended-search-form',
+			$this->getTemplateHtml()
+		);
+	}
+
+	/**
+	 *
+	 * @return array
+	 */
+	public function getPermissions() : array {
+		return [ 'read' ];
+	}
+
+	/**
+	 *
+	 * @return array
+	 */
+	private function getParams() : array {
+		$services = MediaWikiServices::getInstance();
+		$config = $services->getMainConfig();
+		$specialSearch = SpecialPage::getTitleFor( 'BSSearchCenter' );
+
+		$params = [
+			'form-id' => 'bs-extendedsearch-box',
+			'form-class' => 'form-inline input-group mx-4',
+			'form-action' => $config->get( 'Script' ),
+			'form-method' => 'GET',
+			'button-id' => 'mw-searchButton',
+			'button-class' => 'input-group-text bi bi-search',
+			'button-title' => Message::newFromKey( 'bs-discovery-searchform-button-title' )->text(),
+			'button-aria-label' => Message::newFromKey( 'bs-discovery-searchform-button-aria-label' )->text(),
+			'button-type' => 'submit',
+			'input-id' => 'bs-extendedsearch-input',
+			'input-class' => 'form-control input_pass',
+			'input-type' => 'text',
+			'input-placeholder' => Message::newFromKey( 'bs-discovery-searchform-input-placeholder' )->text(),
+			'input-aria-label' => Message::newFromKey( 'bs-discovery-searchform-input-aria-label' )->text(),
+			'input-accesskey' => 'f',
+			'input-autocomplete' => 'off',
+			'input-maxlength' => '50',
+			'input-name' => 'raw_term',
+			'page-name' => $specialSearch->getPrefixedText(),
+			'field-name' => 'fulltext',
+			'field-value' => '1'
+		];
+		return $params;
+	}
+
+	/**
+	 *
+	 * @return string
+	 */
+	private function getTemplateHtml() : string {
+		$templateParser = new TemplateParser(
+			dirname( __DIR__ ) . '/resources/templates'
+		);
+		$html = $templateParser->processTemplate(
+			'ExtendedSearchForm',
+			$this->getParams()
+		);
+		return $html;
+	}
+}
