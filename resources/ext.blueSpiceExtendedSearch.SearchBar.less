@@ -1,51 +1,58 @@
 @import "ext.blueSpiceExtendedSearch.variables.less";
 
 /*Search form*/
-.p-search {
-	form {
-		position: relative;
-		.bs-extendedsearch-searchbar-wrapper {
-			display: table;
-			.bs-extendedsearch-searchbar-pill {
-				padding-left: 8px;
-				padding-right: 8px;
-				background-color: @autocomplete-pill-background-color;
-				font-weight: bold;
-				color: white;
-				display: table-cell;
-				width:1%;
-				white-space:nowrap;
-				vertical-align: middle;
-				&.subpage-pill {
-					border-left: 1px solid white;
-				}
-				&.master-filter-pill {
-					background-color: white;
-					border: 3px solid @autocomplete-pill-background-color;
-				}
+#bs-extendedsearch-box,
+#bs-extendedsearch-mobile-box{
+	position: relative;
+	button {
+		width: 48px;
+	}
+	.bs-extendedsearch-searchbar-wrapper,
+	.bs-extendedsearch-mobile-box-wrapper {
+		display: table;
+		width: calc(~"100% - 48px");
+		.bs-extendedsearch-searchbar-pill {
+			padding-left: 8px;
+			padding-right: 8px;
+			background-color: @autocomplete-pill-background-color;
+			font-weight: bold;
+			color: white;
+			display: table-cell;
+			width:1%;
+			white-space:nowrap;
+			vertical-align: middle;
+			&.subpage-pill {
+				border-left: 1px solid white;
 			}
-			.bs-extendedsearch-searchbar-clear {
-				display: table-cell !important;
-				background-color: white !important;
-				width: 1%;
-				white-space: nowrap;
-				padding-left: 5px;
-				padding-right: 10px;
-				border: 1px solid #cccccc;
-				border-radius: 0px 5px 5px 0px;
-				border-left: none;
+			&.master-filter-pill {
+				background-color: white;
+				border: 3px solid @autocomplete-pill-background-color;
 			}
-			input#bs-extendedsearch-input,
-			input#bs-extendedsearch-mobile-input {
-				&:focus {
-					/*Remove "outline" when focused - just keep the same border color*/
-					border-color: rgb(204, 204, 204);
-				}
-				&.clear-present {
-					border-right: none !important;
-					border-radius: 0 !important;
-				}
+		}
+		.bs-extendedsearch-searchbar-clear {
+			display: table-cell !important;
+			background-color: white !important;
+			width: 1%;
+			white-space: nowrap;
+			padding-left: 5px;
+			padding-right: 10px;
+			border: 1px solid #cccccc;
+			border-radius: 0px 5px 5px 0px;
+			border-left: none;
+		}
+		input#bs-extendedsearch-input,
+		input#bs-extendedsearch-mobile-input {
+			&:focus {
+				/*Remove "outline" when focused - just keep the same border color*/
+				border-color: rgb(204, 204, 204);
 			}
+		}
+	}
+	&.clear-present {
+		input#bs-extendedsearch-input,
+		input#bs-extendedsearch-mobile-input {
+			border-right: none !important;
+			border-radius: 0 !important;
 		}
 	}
 }

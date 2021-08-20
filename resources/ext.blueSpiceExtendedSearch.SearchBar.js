@@ -48,8 +48,6 @@
 			.attr( 'id', cfg.cntId + '-wrapper' );
 
 		//Wrap search box input in another div to make it sizable when pill is added
-		var wrapperWidth = this.$searchForm.children( '.form-group' ).find( 'input' ).outerWidth();
-		this.$searchBoxWrapper.attr( 'style', 'width: ' + wrapperWidth + 'px' );
 		this.$searchBox.attr( 'style', 'display: table-cell;' );
 		this.$searchBox.wrap( this.$searchBoxWrapper );
 
@@ -270,7 +268,7 @@
 		var cbW = clearButton.$element.outerWidth();
 
 		this.setSearchBoxWidthInline( sbW - cbW );
-		this.$searchBox.addClass( 'clear-present' );
+		this.$searchContainer.addClass( 'clear-present' );
 	};
 
 	bs.extendedSearch.SearchBar.prototype.removeClearButton = function() {
@@ -284,7 +282,7 @@
 	};
 
 	bs.extendedSearch.SearchBar.prototype.setSearchBoxWidthInline = function( width ) {
-		var value = 'display: table-cell; width:' + width + 'px';
+		var value = 'display: table-cell;';
 
 		this.$searchBox.attr( 'style', value );
 	};

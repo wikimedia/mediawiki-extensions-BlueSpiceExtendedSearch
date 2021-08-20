@@ -291,6 +291,11 @@
 	"ExtensionFunctions": [
 		"BS\\ExtendedSearch\\Setup::init"
 	],
+	"HookHandlers": {
+		"extendedsearchform": {
+			"class": "BS\\ExtendedSearch\\HookHandler\\SkinSlotNavbarPrimarySearchForm"
+		}
+	},
 	"Hooks": {
 		"ChameleonSkinTemplateOutputPageBeforeExec": "BS\\ExtendedSearch\\Setup::onSkinTemplateOutputPageBeforeExec",
 		"BeforePageDisplay": [
@@ -303,7 +308,8 @@
 		"GetPreferences": "BS\\ExtendedSearch\\Hook\\GetPreferences\\AddUserPreferredNamespaces::callback",
 		"BSInsertMagicAjaxGetData": "BS\\ExtendedSearch\\Hook\\BSInsertMagicAjaxGetData\\AddTagSearch::callback",
 		"BSUEModulePDFBeforeCreatePDF": "\\BS\\ExtendedSearch\\Hook\\BSUEModulePDFBeforeCreatePDF\\RemoveTagSearch::callback",
-		"NamespaceManager::editNamespace": "\\BS\\ExtendedSearch\\Hook\\NamespaceManagerEditNamespace\\ReindexNamespace::callback"
+		"NamespaceManager::editNamespace": "\\BS\\ExtendedSearch\\Hook\\NamespaceManagerEditNamespace\\ReindexNamespace::callback",
+		"MWStakeCommonUIRegisterSkinSlotComponents": [ "extendedsearchform" ]
 	},
 	"SpecialPages": {
 		"BSSearchCenter": "BS\\ExtendedSearch\\MediaWiki\\Specials\\SearchCenter",
