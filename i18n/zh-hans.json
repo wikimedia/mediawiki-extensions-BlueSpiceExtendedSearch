@@ -3,6 +3,7 @@
 		"authors": [
 			"A Chinese Wikipedian",
 			"A Retired User",
+			"AYZ04",
 			"Ff98sha",
 			"Lakejason0",
 			"Liuxinyu970226",
@@ -117,6 +118,7 @@
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL前缀",
 	"bs-extendedsearch-pref-external-file-paths-path-help": "硬盘或挂载驱动器上的位置",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "来自此文件夹的，能够存储文件的网址",
+	"bs-extendedsearch-pref-external-file-paths-excludes": "排除的图案",
 	"bs-extendedsearch-external-file-paths-desc": "应索引的外部文件夹数组",
 	"bs-extendedsearch-autocomplete-modified-time-label": "最近修改：$1",
 	"bs-extendedseach-wikipage-section-more-text": " ...更多$1个",
