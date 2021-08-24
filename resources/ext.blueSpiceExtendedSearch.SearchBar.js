@@ -278,7 +278,7 @@
 		}
 		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() + $clearButton.outerWidth() );
 		$clearButton.remove();
-		this.$searchBox.removeClass( 'clear-present' );
+		this.$searchContainer.removeClass( 'clear-present' );
 	};
 
 	bs.extendedSearch.SearchBar.prototype.setSearchBoxWidthInline = function( width ) {
