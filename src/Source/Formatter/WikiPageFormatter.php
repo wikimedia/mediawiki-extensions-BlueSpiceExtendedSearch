@@ -415,8 +415,8 @@ class WikiPageFormatter extends Base {
 				}
 			}
 
-			$lcTitle = strtolower( $pageTitle );
-			$lcSearchTerm = strtolower( $searchData['value'] );
+			$lcTitle = mb_strtolower( $pageTitle );
+			$lcSearchTerm = mb_strtolower( $searchData['value'] );
 			if ( strpos( $lcTitle, $lcSearchTerm ) === 0 && $top['_id'] === $result['_id'] ) {
 				$result['rank'] = self::AC_RANK_TOP;
 			} elseif ( $this->matchTokenized( $lcTitle, $searchData['value'] ) ) {
