@@ -10,12 +10,12 @@ class SkinSlotNavbarPrimarySearchForm implements MWStakeCommonUIRegisterSkinSlot
 	/**
 	 * @inheritDoc
 	 */
-	public function onMWStakeCommonUIRegisterSkinSlotComponents( $registry ) : void {
+	public function onMWStakeCommonUIRegisterSkinSlotComponents( $registry ): void {
 		$registry->register(
 			'NavbarPrimarySearchForm',
 			[
 				'bs-extended-search' => [
-					'factory' => function () {
+					'factory' => static function () {
 						return new ExtendedSearchForm();
 					}
 				]
