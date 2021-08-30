@@ -25,7 +25,7 @@ class ExtendedSearchForm extends Literal implements IRestrictedComponent {
 	 *
 	 * @return array
 	 */
-	public function getPermissions() : array {
+	public function getPermissions(): array {
 		return [ 'read' ];
 	}
 
@@ -33,7 +33,7 @@ class ExtendedSearchForm extends Literal implements IRestrictedComponent {
 	 *
 	 * @return array
 	 */
-	private function getParams() : array {
+	private function getParams(): array {
 		$services = MediaWikiServices::getInstance();
 		$config = $services->getMainConfig();
 		$specialSearch = SpecialPage::getTitleFor( 'BSSearchCenter' );
@@ -68,7 +68,7 @@ class ExtendedSearchForm extends Literal implements IRestrictedComponent {
 	 *
 	 * @return string
 	 */
-	private function getTemplateHtml() : string {
+	private function getTemplateHtml(): string {
 		$templateParser = new TemplateParser(
 			dirname( __DIR__ ) . '/resources/templates'
 		);
