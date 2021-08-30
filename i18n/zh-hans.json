@@ -16,6 +16,7 @@
 			"沈澄心",
 			"神樂坂秀吉",
 			"科劳",
+			"落花有意12138",
 			"铁桶"
 		]
 	},
@@ -145,6 +146,7 @@
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "输入什么就能搜索了……",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "无效的搜索结果类型：$1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-desc": "设置要在指定上下文中搜索的输入字段",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "名字空间",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "名字空间的有效名称或有效ID；用pipe (\"|\")分隔",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "名字空间1|名字空间2|...",
@@ -168,6 +170,7 @@
 	"action-extendedsearch-search-wikipage": "搜索页面",
 	"action-extendedsearch-search-repofile": "搜索文件",
 	"action-extendedsearch-search-externalfile": "搜索外部文件",
+	"bs-extendedsearch-suggest-operator": "您的意思是搜索<b>$1</b>吗？",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "显示在“$1”的结果",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "显示全域结果",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "在“$1”中搜索"
