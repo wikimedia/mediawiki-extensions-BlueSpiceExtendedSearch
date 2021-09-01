@@ -167,9 +167,7 @@
 		} );
 
 		this.popup.$element.css( 'top', this.searchBar.$searchBox.outerHeight() + 'px' );
-		this.popup.$element.css( 'width', this.getPopupWidth() + 'px' );
-		this.popup.$element.css( 'height', "600px" );
-
+		this.popup.$element.addClass( 'searchbar-autocomplete-results' );
 		var wrapperId = this.searchBar.$searchBoxWrapper.attr( 'id' );
 		this.popup.$element.insertAfter( $( '#' + wrapperId ) );
 
