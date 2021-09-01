@@ -2,11 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Joquliina",
+			"MITO",
 			"Nike",
 			"Pyscowicz",
 			"Silvonen"
 		]
 	},
+	"bs-extendedsearch-search-button-title": "Aloita haku",
+	"bs-extendedsearch-search-button-aria-label": "Aloita haku",
 	"bs-extendedsearch-source-label-user": "Käyttäjä",
 	"bs-extendedsearch-admin-label-error": "Virhe",
 	"bs-extendedsearch-admin-heading-sources": "Lähteet",
