@@ -168,8 +168,8 @@ class Base {
 				return;
 			}
 
-			$lcBasename = strtolower( $result['basename'] );
-			$lcSearchTerm = strtolower( $searchData['value'] );
+			$lcBasename = mb_strtolower( $result['basename'] );
+			$lcSearchTerm = mb_strtolower( $searchData['value'] );
 			if ( strpos( $lcBasename, $lcSearchTerm ) === 0 && $top['_id'] === $result['_id'] ) {
 				$result['rank'] = self::AC_RANK_TOP;
 			} elseif ( $this->matchTokenized( strtolower( $result['basename'] ), $searchData['value'] ) ) {
