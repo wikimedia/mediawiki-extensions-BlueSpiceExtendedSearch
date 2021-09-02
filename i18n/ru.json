@@ -12,6 +12,8 @@
 	"bssearchcenter": "Центр поиска",
 	"apihelp-bs-extendedsearch-query-description": "Поиск по индексу",
 	"apihelp-bs-extendedsearch-query-summary": "Поиск по индексу",
+	"bs-extendedsearch-search-button-title": "Начать поиск",
+	"bs-extendedsearch-search-button-aria-label": "Начать поиск",
 	"bs-extendedsearch-search-input-placeholder": "Найти ...",
 	"bs-extendedsearch-search-input-aria-label": "Строка поиска",
 	"bs-extendedsearch-source-label-wikipage": "Вики-страница",
@@ -89,10 +91,13 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "Похожие страницы",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Похожие страницы не найдены",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Используется на страницах",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Введите для поиска…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Пространства имён",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Категрии",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Категория1|Категория2|…",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Введите для поиска…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип",
 	"bs-extendedsearch-collection-type-searchhistory": "История поиска",
-	"bs-extendedsearch-collection-var-numbersearched": "Поиски"
+	"bs-extendedsearch-collection-var-numbersearched": "Поиски",
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Поиск в «$1»"
 }
