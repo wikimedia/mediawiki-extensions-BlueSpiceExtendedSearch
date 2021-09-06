@@ -14,6 +14,7 @@
 	"apihelp-bs-extendedsearch-stats-param-stats": "반환되어야 하는 통계 목록",
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "쿼리의 추가 변수",
 	"apihelp-bs-extendedsearch-query-param-search-term": "검색을 수행할 대상이 되는 용어",
+	"bs-extendedsearch-search-button-aria-label": "검색 시작",
 	"bs-extendedsearch-search-input-placeholder": "찾기 ...",
 	"bs-extendedsearch-search-input-aria-label": "검색 상자",
 	"bs-extendedsearch-source-label-wikipage": "위키 페이지",
