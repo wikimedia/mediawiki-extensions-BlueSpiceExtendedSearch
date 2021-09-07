@@ -4,6 +4,8 @@
 			"Dr Lotus Black"
 		]
 	},
+	"bs-extendedsearch-search-button-title": "စတင်ရှာဖွေရန်",
+	"bs-extendedsearch-search-button-aria-label": "စတင်ရှာဖွေရန်",
 	"bs-extendedsearch-search-input-placeholder": "ရှာဖွေပါ...",
 	"bs-extendedsearch-source-label-wikipage": "ဝီကီ စာမျက်နှာ",
 	"bs-extendedsearch-source-label-specialpage": "အထူး စာမျက်နှာ",
