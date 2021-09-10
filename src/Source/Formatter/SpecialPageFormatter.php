@@ -57,7 +57,7 @@ class SpecialPageFormatter extends Base {
 
 			$title = \Title::makeTitle( NS_SPECIAL, $origBasename );
 			if ( $title instanceof \Title ) {
-				$result['pageAnchor'] = $this->linkRenderer->makeLink( $title, $result['prefixed_title'] );
+				$result['page_anchor'] = $this->linkRenderer->makeLink( $title, $result['prefixed_title'] );
 			}
 		}
 	}
