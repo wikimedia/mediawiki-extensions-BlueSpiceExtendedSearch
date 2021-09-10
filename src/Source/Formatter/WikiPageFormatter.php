@@ -417,7 +417,7 @@ class WikiPageFormatter extends Base {
 			$lcSearchTerm = mb_strtolower( $searchData['value'] );
 			if ( strpos( $lcTitle, $lcSearchTerm ) === 0 && $top['_id'] === $result['_id'] ) {
 				$result['rank'] = self::AC_RANK_TOP;
-			} elseif ( $this->matchTokenized( $lcTitle, $searchData['value'] ) ) {
+			} elseif ( $this->matchTokenized( $lcTitle, $lcSearchTerm ) ) {
 				$result['rank'] = self::AC_RANK_NORMAL;
 			} else {
 				$result['rank'] = self::AC_RANK_SECONDARY;
