@@ -4,6 +4,7 @@
 			"Beta16",
 			"Dansita",
 			"McDutchie",
+			"Stefano",
 			"TheRukk",
 			"ValeJappo"
 		]
@@ -101,5 +102,10 @@
 	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Potresti stare cercando...",
 	"bs-extendedsearch-search-center-result-help": "Scrivi qualcosa nella barra di ricerca sopra",
 	"bs-extendedsearch-searchcenter-sort-field-_score": "Rilevanza",
-	"bs-extendedsearch-filter-add-button-label": "Aggiungi un filtro"
+	"bs-extendedsearch-filter-add-button-label": "Aggiungi un filtro",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Prefisso URL",
+	"bs-extendedsearch-autocomplete-modified-time-label": "Ultima modifica: $1",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Scrivi per ricercare ...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "Elenco di nomi di categorie validi separati da pipe (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Scrivi per cercare ..."
 }

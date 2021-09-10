@@ -47,5 +47,7 @@
 	"right-extendedsearch-search-repofile": "ဖိုင်များကို ရှာရန်",
 	"right-extendedsearch-search-externalfile": "ပြင်ပဖိုင်များအတွက် ရှာဖွေရန်",
 	"action-extendedsearch-search-specialpage": "အထူးစာမျက်နှာများအတွက် ရှာဖွေရန်",
-	"action-extendedsearch-search-wikipage": "စာမျက်နှာများအတွက် ရှာဖွေရန်"
+	"action-extendedsearch-search-wikipage": "စာမျက်နှာများအတွက် ရှာဖွေရန်",
+	"bs-extendedsearch-search-button-title": "စတင်ရှာဖွေရန်",
+	"bs-extendedsearch-search-button-aria-label": "စတင်ရှာဖွေရန်"
 }

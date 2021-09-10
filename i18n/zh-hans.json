@@ -3,6 +3,7 @@
 		"authors": [
 			"A Chinese Wikipedian",
 			"A Retired User",
+			"AYZ04",
 			"Ff98sha",
 			"Lakejason0",
 			"Liuxinyu970226",
@@ -15,6 +16,7 @@
 			"沈澄心",
 			"神樂坂秀吉",
 			"科劳",
+			"落花有意12138",
 			"铁桶"
 		]
 	},
@@ -168,5 +170,8 @@
 	"bs-extendedsearch-collection-var-searchterm": "项目",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "显示在“$1”的结果",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "显示全域结果",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "在“$1”中搜索"
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "在“$1”中搜索",
+	"bs-extendedsearch-pref-external-file-paths-excludes": "排除的图案",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-desc": "设置要在指定上下文中搜索的输入字段",
+	"bs-extendedsearch-suggest-operator": "您的意思是搜索<b>$1</b>吗？"
 }

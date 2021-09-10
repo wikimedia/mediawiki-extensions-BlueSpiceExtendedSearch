@@ -129,5 +129,9 @@
 	"action-extendedsearch-search-externalfile": "sök efter externa filer",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Visar resultat i \"$1\"",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Visa globala resultat",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Söker i \"$1\""
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Söker i \"$1\"",
+	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Ogiltig typ av sökresultat: $1",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "Namnrymd1|Namnrymd2|...",
+	"bs-extendedsearch-suggest-operator": "Menade du söka efter <b>$1</b>?"
 }

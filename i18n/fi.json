@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Joquliina",
+			"MITO",
 			"Nike",
 			"Pyscowicz",
 			"Silvonen"
@@ -40,5 +41,7 @@
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Samankaltaisia sivuja ei löytynyt",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Käytössä sivuilla",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Nimiavaruudet",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Luokat"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Luokat",
+	"bs-extendedsearch-search-button-title": "Aloita haku",
+	"bs-extendedsearch-search-button-aria-label": "Aloita haku"
 }

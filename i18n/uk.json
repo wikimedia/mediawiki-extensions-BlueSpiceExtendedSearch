@@ -169,5 +169,7 @@
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Пошук у «$1»",
 	"bs-extsearch-extensionname": "Розширений пошук BlueSpice",
 	"bs-extendedsearch-filter-label-count-only": "($1)",
-	"bs-extendedsearch-privacy-transparency-history-item": "$1 ($2)"
+	"bs-extendedsearch-privacy-transparency-history-item": "$1 ($2)",
+	"bs-extendedsearch-search-button-title": "Почати пошук",
+	"bs-extendedsearch-search-button-aria-label": "Почати пошук"
 }

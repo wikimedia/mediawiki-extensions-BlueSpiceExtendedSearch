@@ -5,6 +5,7 @@
 			"Elroy",
 			"Goefie",
 			"Mainframe98",
+			"McDutchie",
 			"Rots61",
 			"Siebrand",
 			"Sjoerddebruin"
@@ -160,5 +161,16 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Lijst met geldige typen resultaten gescheiden door een sluisteken (|)",
 	"bs-extendedsearch-collection-var-searchterm": "Zoekterm",
 	"bs-extendedsearch-collection-var-numbersearched": "Zoekopdrachten",
-	"bs-extendedsearch-pref-externalfilepaths-help": "Externe locaties om naar bestanden te zoeken en te indexeren. Geef de locaties op in paren van sleutel en waarde."
+	"bs-extendedsearch-pref-externalfilepaths-help": "Externe locaties om naar bestanden te zoeken en te indexeren. Geef de locaties op in paren van sleutel en waarde.",
+	"apihelp-bs-extendedsearch-stats-description": "Geeft statistische gegevens terug over de geregistreerde backends en hun geconfigureerde bronnen",
+	"apihelp-bs-extendedsearch-generic-param-sources": "Een of meer bronnen binnen de opgegeven backend, gescheiden door een sluisteken. Als dit leeg wordt gelaten, worden alle beschikbare bronnen opgevraagd.",
+	"apihelp-bs-extendedsearch-query-param-search-data": "Gedecodeerde JSON-tekenreeks met aanvullende informatie over de context van de zoekopdracht",
+	"apihelp-bs-extendedsearch-query-param-secondary-request-data": "Gedecodeerde JSON-tekenreeks met aanvullende secundaire informatie over de context van de zoekopdracht",
+	"apihelp-bs-extendedsearch-query-param-relevance-data": "Gedecodeerde JSON-tekenreeks met aanvullende informatie over de context van de zoekopdracht",
+	"bs-extendedsearch-search-button-title": "Beginnen met zoeken",
+	"bs-extendedsearch-search-button-aria-label": "Beginnen met zoeken",
+	"bs-extendedsearch-suggest-operator": "Had u willen zoeken naar <b>$1</b>?",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Er zijn resultaten in \"$1\"",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Globale resultaten tonen",
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Er wordt gezocht in \"$1\""
 }

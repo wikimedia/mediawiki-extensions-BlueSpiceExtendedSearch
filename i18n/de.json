@@ -173,5 +173,7 @@
 	"bs-extendedsearch-suggest-operator": "Wolltest du nach <b>$1</b> suchen?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Ergebnisse in „$1“ anzeigen",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Globale Ergebnisse anzeigen",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Suchen in „$1“"
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Suchen in „$1“",
+	"bs-extendedsearch-search-button-title": "Suche starten",
+	"bs-extendedsearch-search-button-aria-label": "Suche starten"
 }
