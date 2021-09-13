@@ -172,7 +172,7 @@ class Base {
 			$lcSearchTerm = mb_strtolower( $searchData['value'] );
 			if ( strpos( $lcBasename, $lcSearchTerm ) === 0 && $top['_id'] === $result['_id'] ) {
 				$result['rank'] = self::AC_RANK_TOP;
-			} elseif ( $this->matchTokenized( strtolower( $result['basename'] ), $searchData['value'] ) ) {
+			} elseif ( $this->matchTokenized( $lcBasename, $lcSearchTerm ) ) {
 				$result['rank'] = self::AC_RANK_NORMAL;
 			} else {
 				$result['rank'] = self::AC_RANK_SECONDARY;
