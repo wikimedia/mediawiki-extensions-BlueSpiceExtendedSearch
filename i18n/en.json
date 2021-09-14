@@ -168,5 +168,7 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Show global results",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Searching in \"$1\"",
 	"bs-extendedsearch-search-button-title": "Start search",
-	"bs-extendedsearch-search-button-aria-label": "Start search"
+	"bs-extendedsearch-search-button-aria-label": "Start search",
+	"bs-extendedsearch-statistics-report-search-terms": "Search terms",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Search terms per user"
 }
