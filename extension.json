@@ -309,6 +309,7 @@
 		"BSInsertMagicAjaxGetData": "BS\\ExtendedSearch\\Hook\\BSInsertMagicAjaxGetData\\AddTagSearch::callback",
 		"BSUEModulePDFBeforeCreatePDF": "\\BS\\ExtendedSearch\\Hook\\BSUEModulePDFBeforeCreatePDF\\RemoveTagSearch::callback",
 		"NamespaceManager::editNamespace": "\\BS\\ExtendedSearch\\Hook\\NamespaceManagerEditNamespace\\ReindexNamespace::callback",
+		"UserMergeAccountFields": "\\BS\\ExtendedSearch\\Hook\\UserMergeAccountFields\\MergeExtendedSearchDBFields::callback",
 		"MWStakeCommonUIRegisterSkinSlotComponents": [ "extendedsearchform" ]
 	},
 	"SpecialPages": {
