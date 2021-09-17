@@ -29,6 +29,8 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "回傳搜尋結果的關聯內容",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "JSON 解碼字串包含搜尋上下文的額外資訊",
 	"apihelp-bs-extendedsearch-type-store-summary": "回傳已註冊搜尋類型",
+	"bs-extendedsearch-search-button-title": "開始搜尋",
+	"bs-extendedsearch-search-button-aria-label": "開始搜尋",
 	"bs-extendedsearch-search-input-placeholder": "尋找...",
 	"bs-extendedsearch-search-input-aria-label": "搜尋框",
 	"bs-extendedsearch-source-label-wikipage": "Wiki 頁面",
