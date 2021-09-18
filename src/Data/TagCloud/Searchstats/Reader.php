@@ -10,7 +10,7 @@ use MediaWiki\MediaWikiServices;
 class Reader extends DatabaseReader {
 	/**
 	 *
-	 * @param \LoadBalancer $loadBalancer
+	 * @param \Wikimedia\Rdbms\LoadBalancer $loadBalancer
 	 * @param \IContextSource|null $context
 	 */
 	public function __construct( $loadBalancer, \IContextSource $context = null ) {
