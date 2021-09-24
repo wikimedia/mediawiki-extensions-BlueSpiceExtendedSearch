@@ -165,5 +165,7 @@
 	"bs-extendedsearch-suggest-operator": "Voleva tu cercar <b>$1</b>?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Se monstra resultatos in \"$1\"",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Monstrar resultatos global",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Cercante in \"$1\""
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Cercante in \"$1\"",
+	"bs-extendedsearch-statistics-report-search-terms": "Terminos de recerca",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Terminos de recerca per usator"
 }
