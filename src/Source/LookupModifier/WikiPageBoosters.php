@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Backend;
+use MediaWiki\MediaWikiServices;
 
 class WikiPageBoosters extends Base {
 
@@ -12,10 +13,14 @@ class WikiPageBoosters extends Base {
 		// Boost NS_MAIN
 		$this->oLookup->addShouldTerms( 'namespace', NS_MAIN, 2, false );
 		// Boost $wgContentNamespaces
-		$contentNamespaces = \MWNamespace::getContentNamespaces();
+		$contentNamespaces = MediaWikiServices::getInstance()
+			->getNamespaceInfo()
+			->getContentNamespaces();
 		$this->oLookup->addShouldTerms( 'namespace', array_values( $contentNamespaces ), 4, false );
 		// Boost subject namespaces (non-talk, non-specialpage)
-		$subjectNamespaces = \MWNamespace::getSubjectNamespaces();
+		$subjectNamespaces = MediaWikiServices::getInstance()
+			->getNamespaceInfo()
+			->getSubjectNamespaces();
 		$this->oLookup->addShouldTerms( 'namespace', array_values( $subjectNamespaces ), 3, false );
 	}
 

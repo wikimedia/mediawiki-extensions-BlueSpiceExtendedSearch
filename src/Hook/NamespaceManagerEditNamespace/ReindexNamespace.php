@@ -7,7 +7,6 @@ use BS\ExtendedSearch\Source\Job\UpdateRepoFile;
 use BS\ExtendedSearch\Source\Job\UpdateWikiPage;
 use JobQueueGroup;
 use MediaWiki\MediaWikiServices;
-use MWNamespace;
 use Title;
 
 class ReindexNamespace extends NamespaceManagerEditNamespace {
@@ -15,7 +14,9 @@ class ReindexNamespace extends NamespaceManagerEditNamespace {
 		if ( !isset( $this->namespaceDefinition[$this->nsId]['name' ] ) ) {
 			return true;
 		}
-		$canonical = MWNamespace::getCanonicalName( $this->nsId );
+		$canonical = MediaWikiServices::getInstance()
+			->getNamespaceInfo()
+			->getCanonicalName( $this->nsId );
 		$name = $this->namespaceDefinition[$this->nsId]['name'];
 
 		return $canonical === $name;
@@ -36,7 +37,9 @@ class ReindexNamespace extends NamespaceManagerEditNamespace {
 				continue;
 			}
 			$oldTitle = Title::newFromText(
-				MWNamespace::getCanonicalName( $this->nsId ) . ':' . $title->getText()
+				MediaWikiServices::getInstance()
+					->getNamespaceInfo()
+					->getgetCanonicalName( $this->nsId ) . ':' . $title->getText()
 			);
 			// Delete old
 			JobQueueGroup::singleton()->push(
