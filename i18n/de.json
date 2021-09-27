@@ -9,6 +9,7 @@
 			"Peter Böhm <boehm@hallowelt.com>",
 			"Tiin",
 			"Umherirrender",
+			"Umlaut",
 			"Wolfdietmann"
 		]
 	},
@@ -176,6 +177,7 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Ergebnisse in „$1“ anzeigen",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Globale Ergebnisse anzeigen",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Suchen in „$1“",
+	"bs-extendedsearch-statistics-report-search-terms": "Suchbegriffe",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Zeigt nur Suchergebnisse in der Sprache des Benutzers an. Benutzer können ihre Sprache in ihren Einstellungen festlegen.",
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Kompaktes Autocomplete Layout des Suchmenüs (einspaltig, ohne Vorschauen)"
 }
