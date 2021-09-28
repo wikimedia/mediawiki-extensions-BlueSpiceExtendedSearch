@@ -165,5 +165,7 @@
 	"bs-extendedsearch-suggest-operator": "您是不是要搜尋<b>$1</b>？",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "顯示在「$1」的結果",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "顯示全域結果",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "在「$1」搜尋"
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "在「$1」搜尋",
+	"bs-extendedsearch-search-button-title": "開始搜尋",
+	"bs-extendedsearch-search-button-aria-label": "開始搜尋"
 }

@@ -5,10 +5,12 @@
 			"A Retired User",
 			"AYZ04",
 			"Ff98sha",
+			"GuoPC",
 			"Lakejason0",
 			"Liuxinyu970226",
 			"Looong",
 			"Phenolla",
+			"TsuyaMarisa",
 			"VulpesVulpes825",
 			"予弦",
 			"佛壁灯",
@@ -110,8 +112,8 @@
 	"bs-extendedsearch-pref-external-file-paths": "外部文件路径",
 	"bs-extendedsearch-pref-external-file-paths-path": "物理路径",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL前缀",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "硬盘或挂载驱动器上的位置",
-	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "来自此文件夹的，能够存储文件的网址",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "存储位置。对于已架设的驱动器，例如：X:\\Documents",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "所有从已索引物理位置索引的文件都已在搜索结果中加上前缀。如果文件可从web服务器获得则应使用。默认情况下，URL前缀被设置为与物理路径具有相同的值。",
 	"bs-extendedsearch-external-file-paths-desc": "应索引的外部文件夹数组",
 	"bs-extendedsearch-autocomplete-modified-time-label": "最近修改：$1",
 	"bs-extendedseach-wikipage-section-more-text": " ...更多$1个",
@@ -173,5 +175,8 @@
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "在“$1”中搜索",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "排除的图案",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-desc": "设置要在指定上下文中搜索的输入字段",
-	"bs-extendedsearch-suggest-operator": "您的意思是搜索<b>$1</b>吗？"
+	"bs-extendedsearch-suggest-operator": "您的意思是搜索<b>$1</b>吗？",
+	"bs-extendedsearch-search-button-title": "开始搜索",
+	"bs-extendedsearch-search-button-aria-label": "开始搜索",
+	"bs-extendedsearch-statistics-report-search-terms": "搜索关键词"
 }

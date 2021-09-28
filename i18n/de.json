@@ -6,9 +6,11 @@
 			"McDutchie",
 			"Metalhead64",
 			"Mglaser",
+			"Mschlindwein",
 			"Peter Böhm <boehm@hallowelt.com>",
 			"Tiin",
 			"Umherirrender",
+			"Umlaut",
 			"Wolfdietmann"
 		]
 	},
@@ -153,10 +155,6 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "Gibt die Relevanz der Suchergebnisse zurück",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "JSON dekodierter String, der zusätzliche Informationen über den Kontext der Suche enthält",
 	"apihelp-bs-extendedsearch-type-store-summary": "Gibt die registrierten Suchtypen zurück",
-	"bs-extendedsearch-pref-external-file-paths-excludes": "Muster für Ausnahmen",
-	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Ungültiger regulärer Ausdruck",
-	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "Regulärer Ausdruck für Ausnahmen",
-	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Regulärer Ausdruck für den Ausschluss physischer Dateipfade",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-desc": "Erzeugt ein Suchfeld das in definierten Kontexten sucht",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "Namensraum1|Namensraum2|…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Kategorie1|Kategorie2|…",
@@ -181,5 +179,7 @@
 	"bs-extendedsearch-search-button-title": "Suche starten",
 	"bs-extendedsearch-search-button-aria-label": "Suche starten",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Zeigt nur Suchergebnisse in der Sprache des Benutzers an. Benutzer können ihre Sprache in ihren Einstellungen festlegen.",
-	"bs-extendedsearch-pref-compact-ac-paths-help": "Kompaktes Autocomplete Layout des Suchmenüs (einspaltig, ohne Vorschauen)"
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Kompaktes Autocomplete Layout des Suchmenüs (einspaltig, ohne Vorschauen)",
+	"bs-extendedsearch-statistics-report-search-terms": "Suchbegriffe",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Suchbegriffe pro Nutzer"
 }

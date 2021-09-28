@@ -97,8 +97,8 @@
 	"bs-extendedsearch-pref-external-file-paths": "Шляхи до зовнішніх файлів",
 	"bs-extendedsearch-pref-external-file-paths-path": "Фізичний шлях",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL-префікс",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "Розташування на жорсткому чи віртуальному диску",
-	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Веб-розташування має спроможність надавати файли з цього каталогу",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Шлях зберігання. Наприклад, для навісних дисків: X:\\Documents",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Усі файли, індексовані з індексованого фізичного розташування, мають префікс у результатах пошуку. Його слід використовувати, якщо файли доступні з веб-сервера. За замовчуванням для префіксу URL-адреси встановлено те саме значення, що і для фізичного шляху.",
 	"bs-extendedsearch-external-file-paths-desc": "Масив зовнішніх каталогів, які слід індексувати",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Остання зміна: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... ще $1",
@@ -128,7 +128,7 @@
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Виключити моделі",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Неправильна модель регулярного виразу",
 	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "Виключити модель регулярного виразу",
-	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Виключити модель регулярного виразу для фізичних файлових шляхів",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Файли, розташовані у зовнішніх файлах, можна виключити з пошуку на основі шаблонів регулярних виразів.",
 	"bs-extendedsearch-tagsearch-extension-description": "Додати форму пошуку до {{GENDER:Вашого}} контенту",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Введіть для пошуку...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Недійсний тип результату пошуку: $1",
@@ -171,5 +171,9 @@
 	"bs-extendedsearch-filter-label-count-only": "($1)",
 	"bs-extendedsearch-privacy-transparency-history-item": "$1 ($2)",
 	"bs-extendedsearch-search-button-title": "Почати пошук",
-	"bs-extendedsearch-search-button-aria-label": "Почати пошук"
+	"bs-extendedsearch-search-button-aria-label": "Почати пошук",
+	"bs-extendedsearch-statistics-report-search-terms": "Пошукові терміни",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Пошукові терміни для кожного користувача",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Повертає результати пошуку користувача лише мовою користувача. Користувачі можуть вибирати свою мову відповідно до своїх уподобань.",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Показувати компактний макет автозаповнення меню пошуку (макет з одним стовпцем, без попереднього перегляду ескізів)."
 }
