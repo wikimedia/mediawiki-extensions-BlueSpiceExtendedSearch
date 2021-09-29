@@ -167,5 +167,9 @@
 	"bs-extendedsearch-suggest-operator": "Pretendia pesquisar <b>$1</b>?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Mostrando resultados em \"$1\"",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Mostrar resultados globais",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Pesquisando em \"$1\""
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Pesquisando em \"$1\"",
+	"bs-extendedsearch-statistics-report-search-terms": "Termos de pesquisa",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Termos de pesquisa por usuário",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Retorna resultados de pesquisa para um usuário apenas no idioma do usuário. Os usuários podem definir seu idioma em suas preferências.",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Mostra um layout de preenchimento automático compacto do menu de pesquisa (layout de uma coluna, sem visualização em miniatura)."
 }
