@@ -3,6 +3,7 @@
 		"authors": [
 			"Agusbou2015",
 			"Carlosmg.dg",
+			"Fewasser Traduce",
 			"Fitoschido",
 			"Joanmp17",
 			"Madamebiblio",
@@ -127,5 +128,6 @@
 	"action-extendedsearch-search-specialpage": "buscar páginas especiales",
 	"action-extendedsearch-search-wikipage": "buscar páginas",
 	"action-extendedsearch-search-repofile": "buscar archivos",
-	"action-extendedsearch-search-externalfile": "buscar archivos externos"
+	"action-extendedsearch-search-externalfile": "buscar archivos externos",
+	"bs-extendedsearch-statistics-report-search-terms": "Buscar términos"
 }

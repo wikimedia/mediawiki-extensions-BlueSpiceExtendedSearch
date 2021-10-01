@@ -27,6 +27,8 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "Tuèrne 'a relevanze de le resultate d'a recerche",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "'A stringhe JSON decodifecate tène 'mbormaziune aggiundive d'u condeste d'a recerche",
 	"apihelp-bs-extendedsearch-type-store-summary": "Tuèrne le tipe de recerche reggistrate",
+	"bs-extendedsearch-search-button-title": "Accuminze a cercà",
+	"bs-extendedsearch-search-button-aria-label": "Accuminze a cercà",
 	"bs-extendedsearch-search-input-placeholder": "Iacchie ...",
 	"bs-extendedsearch-search-input-aria-label": "Buatte de recerche",
 	"bs-extendedsearch-source-label-wikipage": "Pàgene uicchi",
@@ -101,7 +103,7 @@
 	"bs-extendedsearch-pref-external-file-paths": "Percorse de le file de fore",
 	"bs-extendedsearch-pref-external-file-paths-path": "Percorse fiseche",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Prefisse de l'URL",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "Posizione sus a 'u dische o 'u drive mundate",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Percorse de memorizzazione. Pe le drive mundate, pe esembie: X:\\Documents",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Capacetà d'a posizione web de le file de servizie da sta cartelle",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Esclude le modelle",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Modelle de l'espressione regolare invalide",
@@ -163,5 +165,7 @@
 	"bs-extendedsearch-suggest-operator": "Se cercà <b>$1</b>?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Fa 'ndrucà le resultate jndr'à \"$1\"",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Fa 'ndrucà le resultate globbale",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Stoche a cerche jndr'à \"$1\""
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Stoche a cerche jndr'à \"$1\"",
+	"bs-extendedsearch-statistics-report-search-terms": "Cirche le termine",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Cirche le termine pe utende"
 }
