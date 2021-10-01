@@ -113,7 +113,7 @@
 	"bs-extendedsearch-search-center-result-exception": "'A 'nderrogazione non ge pò essere fatte, cange le termine de recerche.",
 	"bs-extendedsearch-search-center-hitcount-replaced": "Stoche a fazze 'ndrucà le resultate pe $1, cerche $2 invece de ({{PLURAL:$3|$3 hit}})",
 	"bs-extendedsearch-search-center-hitcount-suggest": "Ce segnifeche $1 ({{PLURAL:$2|$2 hit}})?",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "Posizione sus a 'u dische o 'u drive mundate",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Percorse de memorizzazione. Pe le drive mundate, pe esembie: X:\\Documents",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Capacetà d'a posizione web de le file de servizie da sta cartelle",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Esclude le modelle",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Modelle de l'espressione regolare invalide",
@@ -163,5 +163,9 @@
 	"bs-extendedsearch-suggest-operator": "Se cercà <b>$1</b>?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Fa 'ndrucà le resultate jndr'à \"$1\"",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Fa 'ndrucà le resultate globbale",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Stoche a cerche jndr'à \"$1\""
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Stoche a cerche jndr'à \"$1\"",
+	"bs-extendedsearch-search-button-title": "Accuminze a cercà",
+	"bs-extendedsearch-search-button-aria-label": "Accuminze a cercà",
+	"bs-extendedsearch-statistics-report-search-terms": "Cirche le termine",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Cirche le termine pe utende"
 }

@@ -179,5 +179,8 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Afficher les résultats globaux",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Recherche dans « $1 »",
 	"bs-extendedsearch-search-button-title": "Commencer la recherche",
-	"bs-extendedsearch-search-button-aria-label": "Commencer la recherche"
+	"bs-extendedsearch-search-button-aria-label": "Commencer la recherche",
+	"bs-extendedsearch-statistics-report-search-terms": "Rechercher les termes",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Rechercher les termes par utilisateur",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Renvoie les résultats de recherche pour un utilisateur seulement dans sa langue Les utilisateurs peuvent définir leur langue dans leurs préférences."
 }
