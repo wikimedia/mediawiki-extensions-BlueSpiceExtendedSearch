@@ -35,6 +35,10 @@ class BlueSpiceSearch extends \SearchEngine {
 	 * @return SearchResultSet
 	 */
 	public function searchTitle( $term ) {
+		if ( $term === '*' ) {
+			return $this->fullSearchWrapper( $term );
+		}
+
 		$res = $this->runNGramSearch( $term );
 		$searchResultSet = new SearchResultSet( $this->searchContainedSyntax( $term ) );
 		foreach ( $res as $title ) {
