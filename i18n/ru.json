@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"1233qwer1234qwer4",
+			"DDPAT",
 			"Katunchik",
 			"Okras",
 			"Romanko Mikhail",
@@ -99,5 +100,7 @@
 	"bs-extendedsearch-search-button-aria-label": "Начать поиск",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Введите для поиска…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Введите для поиска…",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Поиск в «$1»"
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Поиск в «$1»",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "Поиск тегов",
+	"bs-extendedsearch-collection-var-searchterm": "Термин"
 }

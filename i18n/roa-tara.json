@@ -114,11 +114,11 @@
 	"bs-extendedsearch-search-center-hitcount-replaced": "Stoche a fazze 'ndrucà le resultate pe $1, cerche $2 invece de ({{PLURAL:$3|$3 hit}})",
 	"bs-extendedsearch-search-center-hitcount-suggest": "Ce segnifeche $1 ({{PLURAL:$2|$2 hit}})?",
 	"bs-extendedsearch-pref-external-file-paths-path-help": "Percorse de memorizzazione. Pe le drive mundate, pe esembie: X:\\Documents",
-	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Capacetà d'a posizione web de le file de servizie da sta cartelle",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Tutte le file indicizzate da 'nu poste fiseche sò prefissate jndr'à le resultate de recerche. Avessa essere ausate ce le file so disponibbele da 'nu web server. De base, 'u prefisse de l'URL jè 'mbostate cu 'u stesse valore d'u percorse fiseche.",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Esclude le modelle",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Modelle de l'espressione regolare invalide",
 	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "Esclude 'u modelle de l'espressione regolare",
-	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Esclude 'u modelle de l'espressione regolare pe le percorse fisece d'u file",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "File jndr'à le posiziune de fore ponne essere escluse da 'a recerche basate sus a pattern de espressiune regolare.",
 	"bs-extendedsearch-external-file-paths-desc": "Matrice de le cartelle de fore ca avessera essere indicizzate",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Urteme cangiamende: $1",
 	"bs-extendedsearch-pref-compact-ac-paths": "Ause 'nu autocompletamende semblice",
@@ -167,5 +167,7 @@
 	"bs-extendedsearch-search-button-title": "Accuminze a cercà",
 	"bs-extendedsearch-search-button-aria-label": "Accuminze a cercà",
 	"bs-extendedsearch-statistics-report-search-terms": "Cirche le termine",
-	"bs-extendedsearch-statistics-report-search-term-by-user": "Cirche le termine pe utende"
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Cirche le termine pe utende",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Torne le resultate de recerche pe 'n'utende sulamende jndr'à lènghe de l'utende stesse. le utinde ponne 'mbostà 'a lènga lore jndr'à le preferenze.",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "'Ndruche 'na disposizione combatte e autocomblete d'u menù de recerche (disposizione a 'na culonne, andeprime senze miniature)."
 }
