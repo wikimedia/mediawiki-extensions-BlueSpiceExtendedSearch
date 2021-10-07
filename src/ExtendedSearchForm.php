@@ -40,7 +40,7 @@ class ExtendedSearchForm extends Literal implements IRestrictedComponent {
 
 		$params = [
 			'form-id' => 'bs-extendedsearch-box',
-			'form-class' => 'form-inline input-group mx-4',
+			'form-class' => 'form-inline input-group',
 			'form-action' => $config->get( 'Script' ),
 			'form-method' => 'GET',
 			'button-id' => 'mw-searchButton',
