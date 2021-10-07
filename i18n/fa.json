@@ -4,6 +4,7 @@
 			"Alirezaaa",
 			"Amirsara",
 			"FarsiNevis",
+			"Jeeputer",
 			"Mohammad ebz"
 		]
 	},
@@ -14,6 +15,8 @@
 	"apihelp-bs-extendedsearch-query-param-q": "عبارت پرسمان",
 	"apihelp-bs-extendedsearch-query-param-params": "پارامترهای بیشتر برای پرسمان",
 	"apihelp-bs-extendedsearch-stats-param-stats": "فهرستی از آمارهایی که ارائه می‌شود",
+	"bs-extendedsearch-search-button-title": "آغاز جستجو",
+	"bs-extendedsearch-search-button-aria-label": "آغاز جستجو",
 	"bs-extendedsearch-search-input-placeholder": "یافتن…",
 	"bs-extendedsearch-search-input-aria-label": "جعبهٔ جستجو",
 	"bs-extendedsearch-source-label-wikipage": "صفحه ویکی",
