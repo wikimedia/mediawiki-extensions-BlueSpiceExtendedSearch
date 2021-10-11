@@ -20,14 +20,14 @@ use Exception;
 use FormatJson;
 
 abstract class PrimaryDataProvider implements IPrimaryDataProvider {
-	const TYPE = 'type';
+	public const TYPE = 'type';
 
-	const TEXT = 'text';
-	const KEYWORD = 'keyword';
-	const INTEGER = 'integer';
-	const BOOLEAN = 'boolean';
-	const DATE = 'date';
-	const FLOAT = 'float';
+	public const TEXT = 'text';
+	public const KEYWORD = 'keyword';
+	public const INTEGER = 'integer';
+	public const BOOLEAN = 'boolean';
+	public const DATE = 'date';
+	public const FLOAT = 'float';
 
 	/**
 	 *

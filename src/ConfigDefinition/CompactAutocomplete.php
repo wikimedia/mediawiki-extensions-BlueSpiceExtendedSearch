@@ -3,7 +3,7 @@
 namespace BS\ExtendedSearch\ConfigDefinition;
 
 class CompactAutocomplete extends \BlueSpice\ConfigDefinition\BooleanSetting {
-	const EXTENSION_EXTENDED_SEARCH = 'BlueSpiceExtendedSearch';
+	public const EXTENSION_EXTENDED_SEARCH = 'BlueSpiceExtendedSearch';
 
 	/**
 	 *

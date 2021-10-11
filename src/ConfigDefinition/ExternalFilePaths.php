@@ -3,7 +3,7 @@
 namespace BS\ExtendedSearch\ConfigDefinition;
 
 class ExternalFilePaths extends \BlueSpice\ConfigDefinition {
-	const EXTENSION_EXTENDED_SEARCH = 'BlueSpiceExtendedSearch';
+	public const EXTENSION_EXTENDED_SEARCH = 'BlueSpiceExtendedSearch';
 
 	/**
 	 *
