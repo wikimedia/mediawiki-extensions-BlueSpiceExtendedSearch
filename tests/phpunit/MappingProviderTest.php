@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Tests;
 
-class MappingProviderTest extends \MediaWikiTestCase {
+class MappingProviderTest extends \MediaWikiIntegrationTestCase {
 	/**
 	 * @covers \BS\ExtendedSearch\Source\MappingProvider\Base::getPropertyConfig
 	 */

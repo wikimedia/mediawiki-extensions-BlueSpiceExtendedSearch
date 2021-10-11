@@ -4,9 +4,9 @@ namespace BS\ExtendedSearch\Tests\Source\LookupModifier;
 
 use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\Source\LookupModifier\RegExpQuoter;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 
-class RegExpQuoterTest extends MediaWikiTestCase {
+class RegExpQuoterTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideTestQueries

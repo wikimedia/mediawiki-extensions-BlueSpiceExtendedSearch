@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Tests;
 
-class BackendTest extends \MediaWikiTestCase {
+class BackendTest extends \MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers \BS\ExtendedSearch\Backend::instance

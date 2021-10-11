@@ -3,9 +3,9 @@
 namespace BS\ExtendedSearch\Tests;
 
 use BS\ExtendedSearch\Wildcarder;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 
-class WildcarderTest extends MediaWikiTestCase {
+class WildcarderTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers \BS\ExtendedSearch\Wildcarder::getWildcarded
 	 */

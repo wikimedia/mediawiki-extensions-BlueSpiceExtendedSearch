@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Tests;
 
-class LookupTest extends \MediaWikiTestCase {
+class LookupTest extends \MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers \BS\ExtendedSearch\Lookup::getQueryDSL

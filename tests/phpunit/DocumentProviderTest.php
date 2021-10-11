@@ -8,7 +8,7 @@ namespace BS\ExtendedSearch\Tests;
  * @group BlueSpiceExtensions
  * @group BlueSpiceExtendedSearch
  */
-class DocumentProviderTest extends \MediaWikiTestCase {
+class DocumentProviderTest extends \MediaWikiIntegrationTestCase {
 
 	/**
 	 * @return bool

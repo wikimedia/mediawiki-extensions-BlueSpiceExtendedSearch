@@ -4,7 +4,7 @@ namespace BS\ExtendedSearch\Tests;
 
 use BS\ExtendedSearch\Backend;
 
-class SourceTest extends \MediaWikiTestCase {
+class SourceTest extends \MediaWikiIntegrationTestCase {
 	/**
 	 * @covers \BS\ExtendedSearch\Backend::getSources
 	 */
