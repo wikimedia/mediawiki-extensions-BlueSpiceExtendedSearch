@@ -12,8 +12,8 @@ use MWException;
 use Status;
 
 abstract class UpdateBase extends \Job {
-	const ACTION_DELETE = 'delete';
-	const ACTION_UPDATE = 'update';
+	public const ACTION_DELETE = 'delete';
+	public const ACTION_UPDATE = 'update';
 
 	/** @var string */
 	protected $action = self::ACTION_UPDATE;
