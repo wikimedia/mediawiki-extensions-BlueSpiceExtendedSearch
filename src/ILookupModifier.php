@@ -7,13 +7,13 @@ interface ILookupModifier {
 	 * @deprecated since version 3.1.13 - already defined in
 	 * \BS\ExtendedSearch\Backend::QUERY_TYPE_SEARCH
 	 */
-	const TYPE_SEARCH = 'search';
+	public const TYPE_SEARCH = 'search';
 
 	/**
 	 * @deprecated since version 3.1.13 - already defined in
 	 * \BS\ExtendedSearch\Backend::QUERY_TYPE_AUTOCOMPLETE
 	 */
-	const TYPE_AUTOCOMPLETE = 'autocomplete';
+	public const TYPE_AUTOCOMPLETE = 'autocomplete';
 
 	/**
 	 * Gets how far down should the LM be executed

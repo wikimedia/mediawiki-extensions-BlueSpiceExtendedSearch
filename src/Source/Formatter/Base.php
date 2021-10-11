@@ -12,17 +12,17 @@ class Base {
 	 * Used to separate multiple values in arrays
 	 * when they are displayed in the UI
 	 */
-	const VALUE_SEPARATOR = ', ';
+	public const VALUE_SEPARATOR = ', ';
 
 	/**
 	 * Used to indicate there are more values than
 	 * can be displayed
 	 */
-	const MORE_VALUES_TEXT = '...';
+	public const MORE_VALUES_TEXT = '...';
 
-	const AC_RANK_NORMAL = 'normal';
-	const AC_RANK_SECONDARY = 'secondary';
-	const AC_RANK_TOP = 'top';
+	public const AC_RANK_NORMAL = 'normal';
+	public const AC_RANK_SECONDARY = 'secondary';
+	public const AC_RANK_TOP = 'top';
 
 	/**
 	 *

@@ -9,9 +9,9 @@ use Status;
 
 interface IExternalIndex {
 
-	const FIELD_INDEX_NAME = 'indexname';
-	const FIELD_BACKEND_KEY = 'backendkey';
-	const FIELD_SOURCE_KEY = 'sourcekey';
+	public const FIELD_INDEX_NAME = 'indexname';
+	public const FIELD_BACKEND_KEY = 'backendkey';
+	public const FIELD_SOURCE_KEY = 'sourcekey';
 
 	/**
 	 *
