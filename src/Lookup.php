@@ -7,9 +7,9 @@ namespace BS\ExtendedSearch;
  */
 class Lookup extends \ArrayObject {
 
-	const SORT_ASC = 'asc';
-	const SORT_DESC = 'desc';
-	const TYPE_FIELD_NAME = '_type';
+	public const SORT_ASC = 'asc';
+	public const SORT_DESC = 'desc';
+	public const TYPE_FIELD_NAME = '_type';
 
 	/**
 	 *

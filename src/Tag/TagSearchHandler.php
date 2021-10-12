@@ -11,8 +11,8 @@ use Parser;
 use PPFrame;
 
 class TagSearchHandler extends Handler {
-	const OPERATOR_OR = 'OR';
-	const OPERATOR_AND = 'AND';
+	public const OPERATOR_OR = 'OR';
+	public const OPERATOR_AND = 'AND';
 
 	/** @var Config */
 	protected $config;

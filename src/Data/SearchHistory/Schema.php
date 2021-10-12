@@ -5,7 +5,7 @@ namespace BS\ExtendedSearch\Data\SearchHistory;
 use BlueSpice\Data\FieldType;
 
 class Schema extends \BlueSpice\Data\Schema {
-	const TABLE_NAME = 'bs_extendedsearch_history';
+	public const TABLE_NAME = 'bs_extendedsearch_history';
 
 	public function __construct() {
 		parent::__construct( [

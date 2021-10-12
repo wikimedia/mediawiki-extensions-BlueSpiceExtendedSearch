@@ -16,13 +16,13 @@ use Parser;
 use PPFrame;
 
 class TagSearch extends Tag {
-	const PARAM_NAMESPACE = 'ns';
-	const PARAM_NAMESPACE_FULLNAME = 'namespace';
-	const PARAM_CATEGORY = 'cat';
-	const PARAM_CATEGORY_FULLNAME = 'category';
-	const PARAM_PLACEHOLDER = 'placeholder';
-	const PARAM_OPERATOR = 'operator';
-	const PARAM_TYPE = 'type';
+	public const PARAM_NAMESPACE = 'ns';
+	public const PARAM_NAMESPACE_FULLNAME = 'namespace';
+	public const PARAM_CATEGORY = 'cat';
+	public const PARAM_CATEGORY_FULLNAME = 'category';
+	public const PARAM_PLACEHOLDER = 'placeholder';
+	public const PARAM_OPERATOR = 'operator';
+	public const PARAM_TYPE = 'type';
 
 	/** @var int */
 	protected $tagCounter = 0;

@@ -7,7 +7,7 @@ use BlueSpice\Html\FormField\KeyValueField;
 use Exception;
 
 class ExternalFilePathsExcludes extends ConfigDefinition {
-	const EXTENSION_EXTENDED_SEARCH = 'BlueSpiceExtendedSearch';
+	public const EXTENSION_EXTENDED_SEARCH = 'BlueSpiceExtendedSearch';
 
 	/**
 	 *

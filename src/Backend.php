@@ -18,12 +18,12 @@ use RequestContext;
 use stdClass;
 
 class Backend {
-	const SPELLCHECK_ACTION_IGNORE = 'ignore';
-	const SPELLCHECK_ACTION_SUGGEST = 'suggest';
-	const SPELLCHECK_ACTION_REPLACED = 'replaced';
+	public const SPELLCHECK_ACTION_IGNORE = 'ignore';
+	public const SPELLCHECK_ACTION_SUGGEST = 'suggest';
+	public const SPELLCHECK_ACTION_REPLACED = 'replaced';
 
-	const QUERY_TYPE_SEARCH = 'search';
-	const QUERY_TYPE_AUTOCOMPLETE = 'autocomplete';
+	public const QUERY_TYPE_SEARCH = 'search';
+	public const QUERY_TYPE_AUTOCOMPLETE = 'autocomplete';
 
 	/**
 	 *
