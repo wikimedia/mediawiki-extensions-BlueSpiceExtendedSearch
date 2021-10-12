@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\MediaWiki\Backend;
 use BS\ExtendedSearch\Lookup;
 use MediaWiki\MediaWikiServices;
 use SearchResult;
+use SearchSuggestionSet;
 
 class BlueSpiceSearch extends \SearchEngine {
 	/** @var \SearchEngine|null */
@@ -63,6 +64,21 @@ class BlueSpiceSearch extends \SearchEngine {
 		}
 
 		return $searchResultSet;
+	}
+
+	/**
+	 * Used in opensearchApi
+	 * @param string $search
+	 * @return SearchSuggestionSet
+	 */
+	public function completionSearchWithVariants( $search ) {
+		if ( trim( $search ) === '' ) {
+			return SearchSuggestionSet::emptySuggestionSet();
+		}
+		$search = $this->normalizeNamespaces( $search );
+		$results = $this->runFullSearch( $search, [ 'prefixed_title', 'rendered_content' ] );
+
+		return SearchSuggestionSet::fromTitles( $results );
 	}
 
 	/**
