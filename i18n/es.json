@@ -7,7 +7,8 @@
 			"Fitoschido",
 			"Joanmp17",
 			"Madamebiblio",
-			"Vanbasten 23"
+			"Vanbasten 23",
+			"Whovian Biologist"
 		]
 	},
 	"bs-extsearch-desc": "Motor de búsquedas Elasticsearch",
@@ -21,6 +22,8 @@
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Parámetros adicionales para la consulta",
 	"apihelp-bs-extendedsearch-query-param-search-data": "Cadena codificada en JSON que contiene información adicional del contexto de la búsqueda",
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "Devuelve la relevancia de los resultados de la búsqueda",
+	"bs-extendedsearch-search-button-title": "Iniciar búsqueda",
+	"bs-extendedsearch-search-button-aria-label": "Iniciar búsqueda",
 	"bs-extendedsearch-search-input-placeholder": "Encuentra ...",
 	"bs-extendedsearch-search-input-aria-label": "Cuadro de búsqueda",
 	"bs-extendedsearch-source-label-wikipage": "Página wiki",
@@ -88,7 +91,7 @@
 	"bs-extendedsearch-pref-external-file-paths": "Rutas del archivo externo",
 	"bs-extendedsearch-pref-external-file-paths-path": "Ruta física",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Prefijo de URL",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "Ubicación en el disco o disco montado",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Ruta de almacenamiento. Para unidades montadas, por ejemplo: X:\\Documentos",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Ubicación web capaz de despachar archivos de esta carpeta",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Patrón de expresión regular no válido",
 	"bs-extendedsearch-external-file-paths-desc": "Matriz de carpetas externas que debe indizarse",
