@@ -4,6 +4,7 @@
 			"Alirezaaa",
 			"Amirsara",
 			"FarsiNevis",
+			"Jeeputer",
 			"Mohammad ebz"
 		]
 	},
@@ -98,5 +99,20 @@
 	"action-extendedsearch-search-wikipage": "جستجوی صفحه‌ها",
 	"action-extendedsearch-search-repofile": "جستجوی پرونده‌ها",
 	"bs-extendedsearch-searchcenter-sort-field-mtime": "زمان اصلاح شده",
-	"bs-extendedsearch-searchcenter-sort-field-ctime": "زمان ایجاد شده"
+	"bs-extendedsearch-searchcenter-sort-field-ctime": "زمان ایجاد شده",
+	"bs-extendedsearch-search-button-title": "آغاز جستجو",
+	"bs-extendedsearch-search-button-aria-label": "آغاز جستجو",
+	"bs-extendedsearch-autocomplete-modified-time-label": "آخرین تغییر: $1",
+	"bs-extendedsearch-pref-auto-set-lang-filter": "تنظیم خودکار پالایهٔ زبان",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "برای جستجو تایپ کنید...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "فضای نام ۱|فضای نام ۲|...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "فهرست نام‌های معتبر رده‌ها، جداشده با لوله (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "رده ۱|رده۲|...",
+	"right-extendedsearch-search-externalfile": "جستجوی پرونده‌های بیرونی",
+	"action-extendedsearch-search-externalfile": "جستجوی پرونده‌های بیرونی",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "نمایش نتایج در «$1»",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "نمایش نتایج سراسری",
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "جستجو در «$1»",
+	"bs-extendedsearch-statistics-report-search-terms": "عبارت‌های جستجو",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "عبارت‌های جستجو به‌ازای کاربر"
 }

@@ -117,12 +117,12 @@
 	"bs-extendedsearch-pref-external-file-paths": "Percursos de files externe",
 	"bs-extendedsearch-pref-external-file-paths-path": "Percurso physic",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Prefixo de URL",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "Loco sur disco interne o externe",
-	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Loco web capabile de servir files ab iste dossier",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Percurso de immagazinage. Pro unitates montate, per exemplo: X:\\Documentos",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Tote le files que es indexate a partir del percurso physic indexate se prefixa in le resultatos de recerca. Deberea esser usate si files es disponibile ab un servitor web. Per predefinition, le prefixo de URL ha le mesme valor que le percurso physic.",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Patronos de exclusion",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Expression regular invalide",
 	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "Expression regular de exclusion",
-	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Expression regular de exclusion pro percursos physic de files",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Files situate in locos de immagazinage externe pote esser excludite del recerca a base de patronos de expression regular.",
 	"bs-extendedsearch-external-file-paths-desc": "Serie de dossiers externe que debe esser indexate",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Ultime modification: $1",
 	"bs-extendedseach-wikipage-section-more-text": "... $1 plus",
@@ -163,5 +163,11 @@
 	"bs-extendedsearch-suggest-operator": "Voleva tu cercar <b>$1</b>?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Se monstra resultatos in \"$1\"",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Monstrar resultatos global",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Cercante in \"$1\""
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Cercante in \"$1\"",
+	"bs-extendedsearch-search-button-title": "Comenciar le recerca",
+	"bs-extendedsearch-search-button-aria-label": "Comenciar le recerca",
+	"bs-extendedsearch-statistics-report-search-terms": "Terminos de recerca",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Terminos de recerca per usator",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Retorna resultatos de recerca pro un usator solmente in le lingua del usator. Usatores pote configurar lor lingua in lor preferentias.",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Monstra un disposition compacte de autocompletion del menu de recerca (disposition unicolumnar sin previsualisation in miniatura)."
 }

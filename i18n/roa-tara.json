@@ -101,12 +101,12 @@
 	"bs-extendedsearch-pref-external-file-paths": "Percorse de le file de fore",
 	"bs-extendedsearch-pref-external-file-paths-path": "Percorse fiseche",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Prefisse de l'URL",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "Posizione sus a 'u dische o 'u drive mundate",
-	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Capacetà d'a posizione web de le file de servizie da sta cartelle",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Percorse de memorizzazione. Pe le drive mundate, pe esembie: X:\\Documents",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Tutte le file indicizzate da 'nu poste fiseche sò prefissate jndr'à le resultate de recerche. Avessa essere ausate ce le file so disponibbele da 'nu web server. De base, 'u prefisse de l'URL jè 'mbostate cu 'u stesse valore d'u percorse fiseche.",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Esclude le modelle",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Modelle de l'espressione regolare invalide",
 	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "Esclude 'u modelle de l'espressione regolare",
-	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Esclude 'u modelle de l'espressione regolare pe le percorse fisece d'u file",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "File jndr'à le posiziune de fore ponne essere escluse da 'a recerche basate sus a pattern de espressiune regolare.",
 	"bs-extendedsearch-external-file-paths-desc": "Matrice de le cartelle de fore ca avessera essere indicizzate",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Urteme cangiamende: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... $1 de cchiù",
@@ -163,5 +163,11 @@
 	"bs-extendedsearch-suggest-operator": "Se cercà <b>$1</b>?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Fa 'ndrucà le resultate jndr'à \"$1\"",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Fa 'ndrucà le resultate globbale",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Stoche a cerche jndr'à \"$1\""
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Stoche a cerche jndr'à \"$1\"",
+	"bs-extendedsearch-search-button-title": "Accuminze a cercà",
+	"bs-extendedsearch-search-button-aria-label": "Accuminze a cercà",
+	"bs-extendedsearch-statistics-report-search-terms": "Cirche le termine",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Cirche le termine pe utende",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Torne le resultate de recerche pe 'n'utende sulamende jndr'à lènghe de l'utende stesse. le utinde ponne 'mbostà 'a lènga lore jndr'à le preferenze.",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "'Ndruche 'na disposizione combatte e autocomblete d'u menù de recerche (disposizione a 'na culonne, andeprime senze miniature)."
 }

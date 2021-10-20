@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Erelon",
 			"Steeve815",
 			"Strayblues",
@@ -97,7 +98,7 @@
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "חיפוש טקסט מלא",
 	"prefs-extendedsearch": "חיפוש מורחב",
 	"bs-extendedsearch-pref-external-file-paths-path": "נתיב פיזי",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "מיקום בכונן או בכונן מעוגן",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "נתיב אחסון. עבור כוננים מורכבים, למשל: X:\\Documents",
 	"bs-extendedsearch-pref-compact-ac-paths": "להשתמש בהשלמה אוטומטית פשוטה",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "דף $1: טקסט: $2",
 	"bs-extendedsearch-collection-var-searchterm": "ביטוי",

@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fraxinus.cs"
+		]
+	},
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Cesta úložiště. Pro připojené jednotky například: X:\\Dokumenty",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Všechny soubory indexované z indexovaného fyzického umístění jsou uvozené ve výsledcích hledání. Mělo by to být použito, pokud jsou soubory dostupné z webového serveru. Ve výchozím nastavení je předpona adresy URL nastavena na stejnou hodnotu jako fyzická cesta.",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Zobrazí výsledky vyhledávání pouze v jazyce uživatele. Uživatelé si mohou svůj jazyk uložit v nastavení."
+}

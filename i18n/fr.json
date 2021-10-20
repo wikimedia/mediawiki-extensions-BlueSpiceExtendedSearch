@@ -3,6 +3,7 @@
 		"authors": [
 			"Alacabe",
 			"Crochet.david",
+			"DreZhsh",
 			"Eihel",
 			"Eneelk",
 			"Fany",
@@ -111,12 +112,12 @@
 	"bs-extendedsearch-pref-external-file-paths": "Chemins des fichiers externes",
 	"bs-extendedsearch-pref-external-file-paths-path": "Chemin physique",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Préfixe d’URL",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "Emplacement sur le disque ou le disque monté",
-	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Emplacement web capable de fournir les fichiers de ce répertoire",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Chemin de stockage. Pour les lecteurs montés, par exemple : X:\\Documents",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Tous les fichiers indexés à partir de l'emplacement physique indexé sont préfixés dans les résultats de la recherche. Il doit être utilisé si les fichiers sont disponibles à partir d'un serveur web. Par défaut, le préfixe de l'URL est défini sur la même valeur que le chemin physique.",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Exclure les motifs",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Motif d’expression rationnelle non valide",
 	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "Exclure un motif d’expression rationnelle",
-	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Exclure un motif d’expression rationnelle pour les chemins de fichier physique",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Les fichiers situés dans des emplacements de fichiers externes peuvent être exclus de la recherche sur la base de modèles d'expression régulière.",
 	"bs-extendedsearch-external-file-paths-desc": "Table de répertoires externes à indexer",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Dernière modification : $1",
 	"bs-extendedseach-wikipage-section-more-text": "... $1 de plus",
@@ -176,5 +177,11 @@
 	"bs-extendedsearch-suggest-operator": "Voulez-vous dire rechercher <b>$1</b> ?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Affichage des résultats dans « $1 »",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Afficher les résultats globaux",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Recherche dans « $1 »"
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Recherche dans « $1 »",
+	"bs-extendedsearch-search-button-title": "Commencer la recherche",
+	"bs-extendedsearch-search-button-aria-label": "Commencer la recherche",
+	"bs-extendedsearch-statistics-report-search-terms": "Rechercher les termes",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Rechercher les termes par utilisateur",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Renvoie les résultats de recherche pour un utilisateur seulement dans sa langue Les utilisateurs peuvent définir leur langue dans leurs préférences.",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Afficher un aspect compact complété automatiquement du menu de recherche (une seule colonne, pas d’aperçu de vignette)."
 }
