@@ -103,12 +103,12 @@
 	"bs-extendedsearch-pref-external-file-paths": "外部檔案路徑",
 	"bs-extendedsearch-pref-external-file-paths-path": "實體路徑",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL 前綴",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "在磁碟或掛載裝置的位置",
-	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "可提供來自此資料夾檔案服務的網站位置",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "在掛載裝置的儲存路徑，例如： X:\\Documents",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "所有來自已索引實體位置的索引檔案都在搜索結果中加上前綴。如果檔案可從 web 伺服器獲得則應使用。在預設情況下，URL 前綴的值被設定成等同於實體路徑。",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "排除的模式",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "無效的正規表達式模式",
 	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "排除的正規表達式模式",
-	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "排除的用於實體檔案路徑之正規表達式模式",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "位於外部檔案位置的檔案可從基於正規表達式模式的搜尋裡排除 。",
 	"bs-extendedsearch-external-file-paths-desc": "應被索引化的外部資料夾陣列",
 	"bs-extendedsearch-autocomplete-modified-time-label": "最近修改於：$1",
 	"bs-extendedseach-wikipage-section-more-text": " ...更多 $1 個",
@@ -165,5 +165,11 @@
 	"bs-extendedsearch-suggest-operator": "您是不是要搜尋<b>$1</b>？",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "顯示在「$1」的結果",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "顯示全域結果",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "在「$1」搜尋"
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "在「$1」搜尋",
+	"bs-extendedsearch-search-button-title": "開始搜尋",
+	"bs-extendedsearch-search-button-aria-label": "開始搜尋",
+	"bs-extendedsearch-statistics-report-search-terms": "搜尋項",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "各使用者搜尋項",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "使用者的搜尋僅會回傳該使用者所使用語言的結果。使用者可以在他們的偏好設定中更改他們的語言。",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "顯示搜尋選單的簡潔自動完成陳列（一欄陳列，無縮圖預覽）。"
 }

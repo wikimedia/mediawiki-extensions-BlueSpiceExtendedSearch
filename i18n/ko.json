@@ -82,12 +82,12 @@
 	"bs-extendedsearch-pref-external-file-paths": "외부 파일 경로",
 	"bs-extendedsearch-pref-external-file-paths-path": "물리적인 경로",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL 두문자",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "디스크 또는 마운트된 드라이브의 위치",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "스토리지 경로입니다. 마운트된 드라이브의 경우 예시: X:\\Documents",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "이 폴더에서 파일을 서비스할 수 있는 웹 위치",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "패턴 제외",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "잘못된 정규 표현식 패턴",
 	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "정규 표현식 패턴 제외",
-	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "물리적 파일 경로에 대한 정규 표현식 패턴 제외",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "외부 파일 위치의 파일들은 정규 표현식 패턴을 기반으로 검색에서 제외할 수 있습니다.",
 	"bs-extendedsearch-external-file-paths-desc": "색인해야 하는 외부 폴더의 배열",
 	"bs-extendedsearch-autocomplete-modified-time-label": "최근 수정 시간: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... $1개 더 보기",
@@ -130,5 +130,8 @@
 	"action-extendedsearch-search-externalfile": "외부 파일 검색",
 	"bs-extendedsearch-suggest-operator": "찾으시려는 항목이 <b>$1</b>입니까?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "\"$1\"에서 결과 표시",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "\"$1\"에서 검색 중"
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "\"$1\"에서 검색 중",
+	"bs-extendedsearch-search-button-title": "검색 시작",
+	"bs-extendedsearch-search-button-aria-label": "검색 시작",
+	"bs-extendedsearch-statistics-report-search-terms": "검색어"
 }
