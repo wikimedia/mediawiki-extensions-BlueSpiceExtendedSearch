@@ -182,5 +182,6 @@
 	"bs-extendedsearch-search-button-aria-label": "Commencer la recherche",
 	"bs-extendedsearch-statistics-report-search-terms": "Rechercher les termes",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Rechercher les termes par utilisateur",
-	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Renvoie les résultats de recherche pour un utilisateur seulement dans sa langue Les utilisateurs peuvent définir leur langue dans leurs préférences."
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Renvoie les résultats de recherche pour un utilisateur seulement dans sa langue Les utilisateurs peuvent définir leur langue dans leurs préférences.",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Afficher un aspect compact complété automatiquement du menu de recherche (une seule colonne, pas d’aperçu de vignette)."
 }

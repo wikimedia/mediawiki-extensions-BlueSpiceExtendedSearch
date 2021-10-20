@@ -7,7 +7,8 @@
 			"Fitoschido",
 			"Joanmp17",
 			"Madamebiblio",
-			"Vanbasten 23"
+			"Vanbasten 23",
+			"Whovian Biologist"
 		]
 	},
 	"apihelp-bs-extendedsearch-query-description": "Buscar en el índice",
@@ -79,7 +80,7 @@
 	"bs-extendedsearch-pref-external-file-paths": "Rutas del archivo externo",
 	"bs-extendedsearch-pref-external-file-paths-path": "Ruta física",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Prefijo de URL",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "Ubicación en el disco o disco montado",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Ruta de almacenamiento. Para unidades montadas, por ejemplo: X:\\Documentos",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Ubicación web capaz de despachar archivos de esta carpeta",
 	"bs-extendedsearch-external-file-paths-desc": "Matriz de carpetas externas que debe indizarse",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Última modificación: $1",
@@ -129,5 +130,7 @@
 	"bs-extendedsearch-collection-type-searchhistory": "Historial de búsquedas",
 	"right-extendedsearch-search-specialpage": "Buscar páginas especiales",
 	"right-extendedsearch-search-repofile": "Buscar archivos",
-	"bs-extendedsearch-statistics-report-search-terms": "Buscar términos"
+	"bs-extendedsearch-statistics-report-search-terms": "Buscar términos",
+	"bs-extendedsearch-search-button-title": "Iniciar búsqueda",
+	"bs-extendedsearch-search-button-aria-label": "Iniciar búsqueda"
 }
