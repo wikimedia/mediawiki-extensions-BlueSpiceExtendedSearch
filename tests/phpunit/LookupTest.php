@@ -1043,7 +1043,7 @@ class LookupTest extends \MediaWikiIntegrationTestCase {
 
 		$this->assertArrayEquals( $aExpected, $oLookup->getQueryDSL() );
 		$aQS = $oLookup->getQueryString();
-		$this->assertEquals( $aQS['query'], '"fried eggs" +(eggplant | potato) -frittata' );
+		$this->assertEquals( '"fried eggs" +(eggplant | potato) -frittata', $aQS['query'] );
 
 		$aExpected = [
 			'query' => "Copy Paste",
