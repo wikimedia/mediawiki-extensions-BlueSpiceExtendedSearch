@@ -136,9 +136,14 @@ class Wildcarder {
 			return;
 		}
 
+		$this->removeUnsupportedChars();
 		$this->escapeColons();
 		$this->doWildcarding();
 		$this->done = true;
+	}
+
+	private function removeUnsupportedChars() {
+		$this->wildcarded = preg_replace( '/„|“|’/', '', $this->wildcarded );
 	}
 
 	protected function doWildcarding() {
