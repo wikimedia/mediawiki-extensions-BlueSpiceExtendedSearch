@@ -105,7 +105,7 @@
 	"bs-extendedsearch-pref-external-file-paths": "Harici dosya yolları",
 	"bs-extendedsearch-pref-external-file-paths-path": "Fiziksel yol",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL öneki",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "Diskteki veya takılı sürücüdeki konum",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Depolama konumu. Takılı sürücüler için, örneğin: X:\\Belgeler",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Bu klasördeki dosyaları sunabilecek web konumu",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Kalıpları hariç tut",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Geçersiz normal ifade kalıbı",

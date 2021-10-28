@@ -114,5 +114,9 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "نمایش نتایج سراسری",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "جستجو در «$1»",
 	"bs-extendedsearch-statistics-report-search-terms": "عبارت‌های جستجو",
-	"bs-extendedsearch-statistics-report-search-term-by-user": "عبارت‌های جستجو به‌ازای کاربر"
+	"bs-extendedsearch-statistics-report-search-term-by-user": "عبارت‌های جستجو به‌ازای کاربر",
+	"apihelp-bs-extendedsearch-triggerupdate-param-params": "پارامترهای بیشتر برای پرسمان",
+	"bs-extendedsearch-search-center-filter-has-hidden": "{{PLURAL:$1|و $1 مورد بیشتر}}...",
+	"bs-extendedsearch-search-center-hitcount-replaced": "نمایش نتایج برای $1، جستجوی جایگزین برای $2 ({{PLURAL:$3|$3 نتیجه}})",
+	"bs-extendedsearch-source-type-repofile-label": "پروندهٔ محلی"
 }
