@@ -150,11 +150,14 @@ class PrimaryDataProvider implements IPrimaryDataProvider {
 	 * @param \stdClass $row
 	 */
 	protected function appendRowToData( $row ) {
-		$this->data[] = new Record( (object)[
-			Record::NAME => $this->normalizeTerm( $row->{Record::NAME} ),
-			Record::COUNT => (int)$row->{Record::COUNT},
-			Record::LINK => '',
-		] );
+		$normalizedName = $this->normalizeTerm( $row->{Record::NAME} );
+		if ( trim( $normalizedName ) !== '' ) {
+			$this->data[] = new Record( (object)[
+				Record::NAME => $normalizedName,
+				Record::COUNT => (int)$row->{Record::COUNT},
+				Record::LINK => '',
+			] );
+		}
 	}
 
 	/**
