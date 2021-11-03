@@ -582,6 +582,11 @@
 				"bs-extendedsearch-statistics-report-search-terms",
 				"bs-extendedsearch-statistics-report-search-term-by-user"
 			]
+		},
+		"ext.bluespice.extendedsearch.form.styles": {
+			"styles": [
+				"ext.blueSpiceExtendedSearch.searchform.css"
+			]
 		}
 	},
 	"config_prefix": "bsg",

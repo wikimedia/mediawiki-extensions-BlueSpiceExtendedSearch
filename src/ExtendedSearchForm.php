@@ -78,4 +78,12 @@ class ExtendedSearchForm extends Literal implements IRestrictedComponent {
 		);
 		return $html;
 	}
+
+	/**
+	 *
+	 * @inheritDoc
+	 */
+	public function getRequiredRLStyles(): array {
+		return [ 'ext.bluespice.extendedsearch.form.styles' ];
+	}
 }

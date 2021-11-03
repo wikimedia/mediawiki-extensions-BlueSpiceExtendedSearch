@@ -1,0 +1,37 @@
+form .bs-extendedsearch-searchbar-pill {
+	display: table-cell;
+	width: 1%;
+	padding-left: 8px;
+	padding-right: 8px;
+	background-color: var(--navbar-primary-pill-bg);
+	color: var(--navbar-primary-pill-fg);
+}
+.bs-extendedsearch-searchbar-wrapper {
+	display: table;
+	width: calc(100% - 48px);
+}
+form .bs-extendedsearch-searchbar-clear {
+	display: table-cell;
+	background-color: var( --navbar-primary-searchform-bg );
+	border: 1px solid var( --navbar-primary-border-color );
+	border-left: none;
+	border-radius: 0px 5px 5px 0px;
+	width: 1%;
+	padding-right: 10px;
+}
+#nb-pri form.clear-present input {
+	border-radius: 0px 0px 0px 0px;
+}
+#nb-pri form input:focus + .bs-extendedsearch-searchbar-clear {
+	border-width: 1px;
+}
+#nb-pri form.clear-present input:focus {
+	border-right: none;
+}
+#nb-pri form input + .bs-extendedsearch-searchbar-clear {
+	border-width: 0px;
+}
+.bs-extendedsearch-box {
+	margin: 0 auto;
+	width: 100%;
+}
