@@ -8,7 +8,7 @@ class MergeExtendedSearchDBFields extends UserMergeAccountFields {
 
 	protected function doProcess() {
 		$this->updateFields[] = [ 'bs_extendedsearch_relevance', 'esr_user' ];
-		$this->updateFields[] = [ 'bs_extendedsearch_history', 'esh_id' ];
+		$this->updateFields[] = [ 'bs_extendedsearch_history', 'esh_user' ];
 	}
 
 }
