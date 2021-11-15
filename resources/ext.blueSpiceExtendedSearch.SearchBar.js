@@ -40,6 +40,9 @@
 
 		this.$searchContainer = $( '#' + cfg.cntId );
 		this.$searchForm = this.$searchContainer.find( 'form' );
+		if ( this.$searchForm.length === 0 && this.$searchContainer.length !== 0 ) {
+			this.$searchForm = this.$searchContainer;
+		}
 		this.$searchBox = $( '#' + cfg.inputId );
 		this.$searchButton = this.$searchForm.find( 'button' );
 
