@@ -583,7 +583,10 @@
 				"bs-extendedsearch-statistics-report-search-term-by-user"
 			]
 		},
-		"ext.bluespice.extendedsearch.form.styles": {
+		"ext.bluespice.extendedsearch.searchform": {
+			"scripts": [
+				"ext.blueSpiceExtendedSearch.Searchform.js"
+			],
 			"styles": [
 				"ext.blueSpiceExtendedSearch.searchform.css"
 			]
