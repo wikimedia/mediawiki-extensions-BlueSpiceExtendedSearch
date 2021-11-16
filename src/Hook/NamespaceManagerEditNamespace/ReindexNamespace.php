@@ -39,7 +39,7 @@ class ReindexNamespace extends NamespaceManagerEditNamespace {
 			$oldTitle = Title::newFromText(
 				MediaWikiServices::getInstance()
 					->getNamespaceInfo()
-					->getgetCanonicalName( $this->nsId ) . ':' . $title->getText()
+					->getCanonicalName( $this->nsId ) . ':' . $title->getText()
 			);
 			// Delete old
 			JobQueueGroup::singleton()->push(
