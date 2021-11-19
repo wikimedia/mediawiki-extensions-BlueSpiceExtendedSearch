@@ -5,7 +5,8 @@
 			"MITO",
 			"Nike",
 			"Pyscowicz",
-			"Silvonen"
+			"Silvonen",
+			"Veikk0.ma"
 		]
 	},
 	"bs-extendedsearch-search-button-title": "Aloita haku",
@@ -13,6 +14,7 @@
 	"bs-extendedsearch-source-label-user": "Käyttäjä",
 	"bs-extendedsearch-admin-label-error": "Virhe",
 	"bs-extendedsearch-admin-heading-sources": "Lähteet",
+	"bs-extendedsearch-admin-heading-sources-documentscount": "Asiakirjoja",
 	"bs-extendedsearch-search-center-filter-extension-label": "Laajennus",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Nimiavaruus",
 	"bs-extendedsearch-search-center-filter-tags-label": "Merkkaus",
