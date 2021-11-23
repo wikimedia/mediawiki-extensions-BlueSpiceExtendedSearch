@@ -5,7 +5,8 @@
 			"MITO",
 			"Nike",
 			"Pyscowicz",
-			"Silvonen"
+			"Silvonen",
+			"Veikk0.ma"
 		]
 	},
 	"bs-extendedsearch-source-label-user": "Käyttäjä",
@@ -43,5 +44,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Nimiavaruudet",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Luokat",
 	"bs-extendedsearch-search-button-title": "Aloita haku",
-	"bs-extendedsearch-search-button-aria-label": "Aloita haku"
+	"bs-extendedsearch-search-button-aria-label": "Aloita haku",
+	"bs-extendedsearch-admin-heading-sources-documentscount": "Asiakirjoja"
 }
