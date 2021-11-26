@@ -91,10 +91,13 @@ form .bs-extendedsearch-searchbar-clear {
 	color: var(--content-fg-primary );
 	text-decoration: none;
 }
-
+#bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup-create-page-link {
+	height: auto;
+}
 #bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup-create-page-link a {
 	text-decoration: none;
 	color: var(--new-link-fg);
+	height: auto;
 }
 
 @media ( max-width: 1199.98px ) {
