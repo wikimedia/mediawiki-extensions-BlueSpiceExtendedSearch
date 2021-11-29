@@ -116,7 +116,7 @@
 	"bs-extendedsearch-pref-external-file-paths-path": "Physikalischer Dateipfad",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL Prefix",
 	"bs-extendedsearch-pref-external-file-paths-path-help": "Speicherpfad. Zum Beispiel X:\\Dokumente für bereitgestellte Laufwerke.",
-	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Alle Dateien aus dem Dateisystem werden in den Suchergebnissen mit einem Präfix ausgegeben. Es sollte benutzt werden, wenn Dateien von einem Webserver zugänglich sind. Standardmäßig ist das URL-Präfix der gleiche Wert wie der Physikalische Dateipfad.",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Alle Dateien aus dem indexierten physikalischen Ort werden in den Suchergebnissen mit einem Präfix ausgegeben. Es sollte benutzt werden, wenn Dateien von einem Webserver zugänglich sind. Standardmäßig ist hat das URL-Präfix den gleichen Wert wie der physikalische Dateipfad.",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Muster für Ausnahmen",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Ungültiger regulärer Ausdruck",
 	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "Regulärer Ausdruck für Ausnahmen",
