@@ -13,5 +13,9 @@
 	"bs-extendedsearch-search-center-result-ctime-label": "Rajjum:",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Seeid ǩiõll",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Seeid ǩiõll:",
-	"action-extendedsearch-search-repofile": "ooccâd teâttõõzzid"
+	"action-extendedsearch-search-repofile": "ooccâd teâttõõzzid",
+	"bs-extendedsearch-source-label-specialpage": "Tuåimmseidd",
+	"bs-extendedsearch-source-type-specialpage-label": "Tuåimmseidd",
+	"right-extendedsearch-search-specialpage": "Ooccâd tuåimmseeidaid",
+	"action-extendedsearch-search-specialpage": "ooccâd tuåimmseeidaid"
 }
