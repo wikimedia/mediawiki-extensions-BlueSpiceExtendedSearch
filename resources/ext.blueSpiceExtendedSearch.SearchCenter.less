@@ -67,11 +67,11 @@ div.bs-es-tools {
 			text-align: center;
 			&:before {
 				cursor: pointer;
-				font-size: 16px;
+				font-size: 15px;
 				color: @tools-text-color;
 				position: relative;
 				display: inline-block;
-				vertical-align: middle;
+				vertical-align: text-top;
 			}
 			&:hover:before {
 				color: @tools-hover-color;
@@ -108,7 +108,6 @@ div.bs-es-tools {
 				font-weight: normal;
 				background-color: @tools-base-color;
 				color: @tools-text-color;
-				padding: 3px 10px 0px 10px;
 				height: 24px;
 				border: none;
 				span.oo-ui-labelElement-label {
@@ -128,8 +127,8 @@ div.bs-es-tools {
 				span.oo-ui-indicatorElement-indicator {
 					right: 8px;
 					background: none;
+					padding: 6px 0px;
 					&:before {
-						line-height: 23px;
 						content: '\ea0f';
 						font-family: icomoon !important;
 						color: @tools-text-color;
@@ -149,6 +148,7 @@ div.bs-es-tools {
 				overflow-y: auto;
 				overflow-x: hidden;
 				.bs-extendedsearch-filter-option {
+					width: 100%;
 					padding: 3px;
 					background-color: @results-background-color;
 					margin-top: 3px;
@@ -156,6 +156,7 @@ div.bs-es-tools {
 						text-align: right;
 						padding-left: 10px;
 						padding-right: 10px;
+						margin: 0;
 					}
 				}
 			}
