@@ -4,19 +4,20 @@
 			"Yupik"
 		]
 	},
+	"bs-extendedsearch-search-input-placeholder": "Ooʒʒ ...",
+	"bs-extendedsearch-source-label-specialpage": "Tuåimmseidd",
 	"bs-extendedsearch-admin-label-error": "Vââʹǩǩ",
 	"bs-extendedsearch-search-center-filter-categories-label": "Kategoria",
+	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Ǩeâlggal:",
 	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Kategoria:",
 	"bs-extendedsearch-search-center-result-categories-label": "Kategoria:",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategoria",
-	"bs-extendedsearch-search-input-placeholder": "Ooʒʒ ...",
 	"bs-extendedsearch-search-center-result-ctime-label": "Rajjum:",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "Nõmm",
+	"bs-extendedsearch-source-type-specialpage-label": "Tuåimmseidd",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Seeid ǩiõll",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Seeid ǩiõll:",
-	"action-extendedsearch-search-repofile": "ooccâd teâttõõzzid",
-	"bs-extendedsearch-source-label-specialpage": "Tuåimmseidd",
-	"bs-extendedsearch-source-type-specialpage-label": "Tuåimmseidd",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategoria",
 	"right-extendedsearch-search-specialpage": "Ooccâd tuåimmseeidaid",
 	"action-extendedsearch-search-specialpage": "ooccâd tuåimmseeidaid",
-	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Ǩeâlggal:"
+	"action-extendedsearch-search-repofile": "ooccâd teâttõõzzid"
 }
