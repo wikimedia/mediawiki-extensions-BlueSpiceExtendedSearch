@@ -16,6 +16,7 @@ use MediaWiki\MediaWikiServices;
 use MWException;
 use RequestContext;
 use stdClass;
+use WikiMap;
 
 class Backend {
 	public const SPELLCHECK_ACTION_IGNORE = 'ignore';
@@ -77,7 +78,7 @@ class Backend {
 	public function __construct( $config, $lb, $sourceFactory, $lookupModifierFactory,
 		array $legacyConfig = [] ) {
 		if ( !isset( $legacyConfig['index'] ) ) {
-			$legacyConfig['index'] = strtolower( wfWikiID() );
+			$legacyConfig['index'] = strtolower( WikiMap::getCurrentWikiId() );
 		}
 
 		$this->legacyConfig = new \HashConfig( $legacyConfig );
