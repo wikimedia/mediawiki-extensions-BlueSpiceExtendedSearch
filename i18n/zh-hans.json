@@ -21,7 +21,8 @@
 			"神樂坂秀吉",
 			"科劳",
 			"落花有意12138",
-			"铁桶"
+			"铁桶",
+			"孟天皓"
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch搜索后端",
@@ -47,6 +48,8 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "返回相关的检索结果",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "JSON解码含有检索到的上下文的附加信息的字符串",
 	"apihelp-bs-extendedsearch-type-store-summary": "返回被注册的检索类型",
+	"bs-extendedsearch-search-button-title": "开始搜索",
+	"bs-extendedsearch-search-button-aria-label": "开始搜索",
 	"bs-extendedsearch-search-input-placeholder": "查找...",
 	"bs-extendedsearch-search-input-aria-label": "搜索栏",
 	"bs-extendedsearch-source-label-wikipage": "Wiki页面",
@@ -123,6 +126,8 @@
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL前缀",
 	"bs-extendedsearch-pref-external-file-paths-path-help": "存储位置。对于已架设的驱动器，例如：X:\\Documents",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "所有从已索引物理位置索引的文件都已在搜索结果中加上前缀。如果文件可从 web 服务器获得则应使用。默认情况下，URL 前缀被设置为与物理路径具有相同的值。",
+	"bs-extendedsearch-pref-external-file-paths-excludes": "排除的图案",
+	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "无效的正则表达式",
 	"bs-extendedsearch-external-file-paths-desc": "应索引的外部文件夹数组",
 	"bs-extendedsearch-autocomplete-modified-time-label": "最近修改：$1",
 	"bs-extendedseach-wikipage-section-more-text": " ...更多$1个",
@@ -149,6 +154,7 @@
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "输入什么就能搜索了……",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "无效的搜索结果类型：$1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-desc": "设置要在指定上下文中搜索的输入字段",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "命名空间",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "命名空间的有效名称或有效ID；用pipe (\"|\")分隔",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "命名空间1|命名空间2|...",
@@ -162,6 +168,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "类型",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "搜索结果的有效类型；用pipe (\"|\") 分隔",
 	"bs-extendedsearch-collection-type-searchhistory": "搜索历史",
+	"bs-extendedsearch-collection-var-searchterm": "项目",
 	"bs-extendedsearch-collection-var-numbersearched": "搜索",
 	"right-extendedsearch-search-specialpage": "搜索特殊页面",
 	"right-extendedsearch-search-wikipage": "搜索页面",
@@ -171,15 +178,10 @@
 	"action-extendedsearch-search-wikipage": "搜索页面",
 	"action-extendedsearch-search-repofile": "搜索文件",
 	"action-extendedsearch-search-externalfile": "搜索外部文件",
-	"bs-extendedsearch-collection-var-searchterm": "项目",
+	"bs-extendedsearch-suggest-operator": "您的意思是搜索<b>$1</b>吗？",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "显示在“$1”的结果",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "显示全域结果",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "在“$1”中搜索",
-	"bs-extendedsearch-search-button-title": "开始搜索",
-	"bs-extendedsearch-search-button-aria-label": "开始搜索",
-	"bs-extendedsearch-pref-external-file-paths-excludes": "排除的图案",
-	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "无效的正则表达式",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-desc": "设置要在指定上下文中搜索的输入字段",
-	"bs-extendedsearch-suggest-operator": "您的意思是搜索<b>$1</b>吗？",
-	"bs-extendedsearch-statistics-report-search-terms": "搜索关键词"
+	"bs-extendedsearch-statistics-report-search-terms": "搜索关键词",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "仅以用户的语言返回用户的搜索结果。 用户可以在他们的首选项中设置他们的语言。"
 }
