@@ -53,7 +53,6 @@ class ExtendedSearchForm extends Literal implements IRestrictedComponent {
 			'input-type' => 'text',
 			'input-placeholder' => Message::newFromKey( 'bs-extendedsearch-search-input-placeholder' )->text(),
 			'input-aria-label' => Message::newFromKey( 'bs-extendedsearch-search-input-aria-label' )->text(),
-			'input-accesskey' => 'f',
 			'input-autocomplete' => 'off',
 			'input-maxlength' => '50',
 			'input-name' => 'raw_term',
