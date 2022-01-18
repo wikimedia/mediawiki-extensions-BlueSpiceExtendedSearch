@@ -13,7 +13,7 @@ class WildcarderTest extends MediaWikiTestCase {
 		$origin = 'test';
 		$wildcarder = Wildcarder::factory( $origin );
 		$result = $wildcarder->getWildcarded();
-		$this->assertEquals( "(*test OR test*)", $result );
+		$this->assertEquals( "(*test OR test* OR *test*)", $result );
 	}
 
 	/**
@@ -23,7 +23,7 @@ class WildcarderTest extends MediaWikiTestCase {
 		$origin = 'Test text';
 		$wildcarder = Wildcarder::factory( $origin );
 		$result = $wildcarder->getWildcarded();
-		$this->assertEquals( "(*Test OR Test*) (*text OR text*)", $result );
+		$this->assertEquals( "(*Test OR Test* OR *Test*) (*text OR text* OR *text*)", $result );
 	}
 
 	/**
@@ -34,7 +34,10 @@ class WildcarderTest extends MediaWikiTestCase {
 		$origin = '   Test-text;   dummy   ';
 		$wildcarder = Wildcarder::factory( $origin );
 		$result = $wildcarder->getWildcarded();
-		$this->assertEquals( "(*Test OR Test*) (*text OR text*) (*dummy OR dummy*)", $result );
+		$this->assertEquals(
+			"(*Test OR Test* OR *Test*) (*text OR text* OR *text*) (*dummy OR dummy* OR *dummy*)",
+			$result
+		);
 	}
 
 	/**
