@@ -175,7 +175,7 @@ class Wildcarder {
 			if ( $term == '' ) {
 				continue;
 			}
-			$term = "(*$term OR $term*)";
+			$term = "(*$term OR $term* OR *$term*)";
 		}
 		return implode( ' ', $terms );
 	}
