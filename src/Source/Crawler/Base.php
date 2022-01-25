@@ -39,7 +39,7 @@ class Base {
 		}
 
 		$oJob = new $this->sJobClass( $oTitle, $aParams );
-		\JobQueueGroup::singleton()->push( $oJob );
+		MediaWikiServices::getInstance()->getJobQueueGroup()->push( $oJob );
 		return $oJob;
 	}
 

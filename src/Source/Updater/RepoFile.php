@@ -5,7 +5,6 @@ namespace BS\ExtendedSearch\Source\Updater;
 use Article;
 use BS\ExtendedSearch\Source\Job\UpdateRepoFile;
 use File;
-use JobQueueGroup;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
@@ -50,7 +49,7 @@ class RepoFile extends Base {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onFileUpload( $oFile, $bReupload = false, $bHasDescription = false ) {
-		JobQueueGroup::singleton()->push(
+		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
 			new UpdateRepoFile( $oFile->getTitle() )
 		);
 		return true;
@@ -66,7 +65,7 @@ class RepoFile extends Base {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onFileDeleteComplete( $oFile, $oOldimage, $oArticle, $oUser, $sReason ) {
-		JobQueueGroup::singleton()->push(
+		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
 			new UpdateRepoFile( $oFile->getTitle(), [
 				'filedata' => $this->getFileData( $oFile )
 			] )
@@ -83,7 +82,7 @@ class RepoFile extends Base {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onFileUndeleteComplete( $oTitle, $aFileVersions, $oUser, $sReason ) {
-		JobQueueGroup::singleton()->push(
+		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
 			new UpdateRepoFile( $oTitle )
 		);
 		return true;
@@ -125,19 +124,17 @@ class RepoFile extends Base {
 			return true;
 		}
 
-		JobQueueGroup::singleton()->push(
+		$jobs = [
 			new \BS\ExtendedSearch\Source\Job\UpdateRepoFile(
 				Title::newFromLinkTarget( $oTitle ),
 				[
 					'filedata' => $this->getFileData( $this->titleMoveOrigFile ),
 					'action' => UpdateRepoFile::ACTION_DELETE
 				]
-			)
-		);
-
-		JobQueueGroup::singleton()->push(
-			new UpdateRepoFile( Title::newFromLinkTarget( $oNewtitle ) )
-		);
+			),
+			new UpdateRepoFile( Title::newFromLinkTarget( $oNewtitle ) ),
+		];
+		MediaWikiServices::getInstance()->getJobQueueGroup()->push( $jobs );
 		return true;
 	}
 
@@ -147,7 +144,7 @@ class RepoFile extends Base {
 	 */
 	public function onWebDAVPublishToWikiDone( $repoFile, $sourceFilePath ) {
 		if ( $repoFile->getTitle() instanceof Title ) {
-			JobQueueGroup::singleton()->push(
+			MediaWikiServices::getInstance()->getJobQueueGroup()->push(
 				new UpdateRepoFile( $repoFile->getTitle() )
 			);
 		}

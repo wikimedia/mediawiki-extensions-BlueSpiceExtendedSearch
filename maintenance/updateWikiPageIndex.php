@@ -1,6 +1,7 @@
 <?php
 
 use BS\ExtendedSearch\Source\Job\UpdateWikiPage;
+use MediaWiki\MediaWikiServices;
 
 $IP = dirname( dirname( dirname( __DIR__ ) ) );
 
@@ -50,6 +51,7 @@ class UpdateWikiPageIndex extends Maintenance {
 		}
 
 		$validCount = 0;
+		$jobs = [];
 		foreach ( $lines as $line ) {
 			$page = trim( $line );
 			$title = Title::newFromText( $page );
@@ -57,10 +59,9 @@ class UpdateWikiPageIndex extends Maintenance {
 				continue;
 			}
 			$validCount++;
-			JobQueueGroup::singleton()->push(
-				new UpdateWikiPage( $title )
-			);
+			$jobs[] = new UpdateWikiPage( $title );
 		}
+		MediaWikiServices::getInstance()->getJobQueueGroup()->push( $jobs );
 
 		$this->output( 'Created jobs to update ' . $validCount . ' page(s)' . PHP_EOL );
 

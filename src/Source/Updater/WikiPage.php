@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Source\Updater;
 
 use MediaWiki\HookContainer\HookContainer;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionStoreRecord;
 use MediaWiki\Storage\EditResult;
 use Title;
@@ -47,7 +48,7 @@ class WikiPage extends Base {
 	 */
 	public function onPageSaveComplete( MWWikiPage $wikiPage, User $user, string $summary,
 		int $flags, RevisionStoreRecord $revisionRecord, EditResult $editResult ) {
-		\JobQueueGroup::singleton()->push(
+		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
 			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage( $wikiPage->getTitle() )
 		);
 		return true;
@@ -64,7 +65,7 @@ class WikiPage extends Base {
 	 * @return bool
 	 */
 	public function onArticleDeleteComplete( &$article, \User &$user, $reason, $id, ?\Content $content, \LogEntry $logEntry ) {
-		\JobQueueGroup::singleton()->push(
+		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
 			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage( $article->getTitle() )
 		);
 		return true;
@@ -79,7 +80,7 @@ class WikiPage extends Base {
 	 * @return bool
 	 */
 	public function onArticleUndelete( Title $title, $create, $comment, $oldPageId ) {
-		\JobQueueGroup::singleton()->push(
+		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
 			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage( $title )
 		);
 		return true;
@@ -93,16 +94,15 @@ class WikiPage extends Base {
 	 * @return bool
 	 */
 	public function onTitleMoveComplete( $title, $newtitle, $user ) {
-		\JobQueueGroup::singleton()->push(
+		$jobs = [
 			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage(
 				Title::newFromLinkTarget( $title )
-			)
-		);
-		\JobQueueGroup::singleton()->push(
+			),
 			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage(
 				Title::newFromLinkTarget( $newtitle )
-			)
-		);
+			),
+		];
+		MediaWikiServices::getInstance()->getJobQueueGroup()->push( $jobs );
 		return true;
 	}
 
@@ -119,7 +119,7 @@ class WikiPage extends Base {
 		if ( empty( $sRevCount ) ) {
 			return true;
 		}
-		\JobQueueGroup::singleton()->push(
+		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
 			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage( $title )
 		);
 		return true;

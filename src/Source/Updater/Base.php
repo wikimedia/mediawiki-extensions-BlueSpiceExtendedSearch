@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Source\Updater;
 
 use MediaWiki\HookContainer\HookContainer;
+use MediaWiki\MediaWikiServices;
 
 class Base {
 
@@ -39,7 +40,7 @@ class Base {
 			return;
 		}
 
-		\JobQueueGroup::singleton()->push( $oJob );
+		MediaWikiServices::getInstance()->getJobQueueGroup()->push( $oJob );
 	}
 
 	/**
