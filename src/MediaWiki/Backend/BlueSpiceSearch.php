@@ -157,6 +157,9 @@ class BlueSpiceSearch extends \SearchEngine {
 				continue;
 			}
 			$title = \Title::newFromText( $item['prefixed_title'] );
+			if ( !( $title instanceof \Title ) ) {
+				continue;
+			}
 			if (
 				$search !== '*' &&
 				!$this->containsSearchTerm( $search, $title )
@@ -164,9 +167,7 @@ class BlueSpiceSearch extends \SearchEngine {
 				continue;
 			}
 
-			if ( $title instanceof \Title ) {
-				$titles[] = $title;
-			}
+			$titles[] = $title;
 		}
 
 		return $titles;
@@ -179,8 +180,8 @@ class BlueSpiceSearch extends \SearchEngine {
 	 */
 	private function containsSearchTerm( $search, $title ) {
 		return strpos(
-			strtolower( $title->getDBkey() ),
-			strtolower( str_replace( ' ', '_', $search ) )
+			mb_strtolower( $title->getDBkey() ),
+			mb_strtolower( str_replace( ' ', '_', $search ) )
 		) !== false;
 	}
 
