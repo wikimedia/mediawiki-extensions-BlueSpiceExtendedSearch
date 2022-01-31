@@ -15,7 +15,7 @@
 			messageKey,
 			this.count
 		).escaped();
-		message = message.replace( '$2', "<b>" + this.term + "</b>" );
+		message = message.replace( '$2', "<b>" + mw.html.escape( this.term ) + "</b>" );
 		this.$counter = $( '<p>' )
 			.html( message );
 
