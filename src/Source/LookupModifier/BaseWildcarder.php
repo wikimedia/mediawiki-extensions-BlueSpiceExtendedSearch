@@ -47,9 +47,9 @@ class BaseWildcarder extends Base {
 
 	public function apply() {
 		$this->queryString = $this->oLookup->getQueryString();
-		$this->originalQuery = $this->queryString['query'];
+		$this->originalQuery = trim( strip_tags( $this->queryString['query'] ) );
 
-		$wildcarder = Wildcarder::factory( trim( $this->originalQuery ) );
+		$wildcarder = Wildcarder::factory( $this->originalQuery );
 		$this->setWildcarded( $wildcarder->getWildcarded() );
 	}
 
