@@ -7,7 +7,8 @@
 			"MuratTheTurkish",
 			"SaldırganSincap",
 			"TmY e12",
-			"ToprakM"
+			"ToprakM",
+			"Sayginer"
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch arama arka ucu",
@@ -173,5 +174,6 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Küresel sonuçları göster",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "\"$1\" içinde aranıyor",
 	"bs-extendedsearch-statistics-report-search-terms": "Arama terimleri",
-	"bs-extendedsearch-statistics-report-search-term-by-user": "Kişi başına arama terimleri"
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Kişi başına arama terimleri",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Bir kullanıcıya sadece kendi dilindeki arama sonuçlarını gösterir. Kullanıcılar tercihler bölümünde dili belirleyebilir."
 }
