@@ -52,6 +52,7 @@
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Side $1: Tekst: $2",
 	"bs-extendedsearch-filter-add-button-label": "Tilføj et filter",
 	"bs-extendedsearch-flyout-similar-pages-title": "Lignende sider",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Ingen lignende sider fundet",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Navnerum",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategori(er)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Type",
