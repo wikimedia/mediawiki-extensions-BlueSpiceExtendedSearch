@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Yupik"
+			"Yupik",
+			"Seipinne"
 		]
 	},
+	"bs-extendedsearch-source-label-user": "Kevttee",
 	"bs-extendedsearch-search-center-filter-categories-label": "Luokka",
 	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Kilgoleh:",
 	"bs-extendedsearch-search-center-result-categories-label": "Luokka:",
