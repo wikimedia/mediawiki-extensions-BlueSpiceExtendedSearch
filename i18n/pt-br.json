@@ -3,7 +3,8 @@
 		"authors": [
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Juan90264"
 		]
 	},
 	"bs-extsearch-desc": "Motor de pesquisa Elasticsearch",
@@ -29,6 +30,8 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "Devolve a relevância dos resultados da pesquisa",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "Texto JSON descodificado que contém informação adicional sobre o contexto da pesquisa",
 	"apihelp-bs-extendedsearch-type-store-summary": "Devolve os tipos de pesquisa registados",
+	"bs-extendedsearch-search-button-title": "Começe a pesquisar",
+	"bs-extendedsearch-search-button-aria-label": "Começe a pesquisar",
 	"bs-extendedsearch-search-input-placeholder": "Pesquisar...",
 	"bs-extendedsearch-search-input-aria-label": "Caixa de pesquisa",
 	"bs-extendedsearch-source-label-wikipage": "Página Wiki",
@@ -103,12 +106,12 @@
 	"bs-extendedsearch-pref-external-file-paths": "Caminhos de arquivos  externos",
 	"bs-extendedsearch-pref-external-file-paths-path": "Caminho físico",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Prefixo do URL",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "Localização no disco ou na ''drive'' montada",
-	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Localização da Internet capaz de servir arquivos desta pasta",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Caminho de armazenamento. Para unidades montadas, por exemplo: X:\\Documents",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Todos os arquivos indexados do local físico indexado são prefixados nos resultados da pesquisa. Deve ser usado se os arquivos estiverem disponíveis em um servidor web. Por padrão, o prefixo de URL é definido com o mesmo valor que Caminho físico.",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Modelos de exclusão",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Modelo de expressão regular inválida",
 	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "Modelo de exclusão de expressão regular",
-	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Modelo de exclusão de expressão regular para caminhos físicos de ficheiros",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Arquivos em locais de arquivos externos podem ser excluídos da pesquisa com base em padrões de expressão regular.",
 	"bs-extendedsearch-external-file-paths-desc": "Matriz das pastas externas que devem ser indexadas",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Última modificação: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... mais $1",
@@ -166,8 +169,6 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Mostrando resultados em \"$1\"",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Mostrar resultados globais",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Pesquisando em \"$1\"",
-	"bs-extendedsearch-search-button-title": "Começe a pesquisar",
-	"bs-extendedsearch-search-button-aria-label": "Começe a pesquisar",
 	"bs-extendedsearch-statistics-report-search-terms": "Termos de pesquisa",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Termos de pesquisa por usuário",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Retorna resultados de pesquisa para um usuário apenas no idioma do usuário. Os usuários podem definir seu idioma em suas preferências.",
