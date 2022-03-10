@@ -33,6 +33,8 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "يرجع صلة نتائج البحث",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "سلسلة JSON لفك الشفرة التي تحتوي على معلومات إضافية عن سياق البحث",
 	"apihelp-bs-extendedsearch-type-store-summary": "ترجع أنواع البحث المسجلة",
+	"bs-extendedsearch-search-button-title": "ابدأ البحث",
+	"bs-extendedsearch-search-button-aria-label": "ابدأ البحث",
 	"bs-extendedsearch-search-input-placeholder": "إيجاد...",
 	"bs-extendedsearch-search-input-aria-label": "صندوق البحث",
 	"bs-extendedsearch-source-label-wikipage": "صفحة ويكي",
@@ -165,5 +167,6 @@
 	"action-extendedsearch-search-wikipage": "البحث عن الصفحات",
 	"action-extendedsearch-search-repofile": "البحث عن ملفات",
 	"action-extendedsearch-search-externalfile": "البحث عن الملفات الخارجية",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "عرض النتائج في «$1»",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "أظهر النتائج العالمية"
 }
