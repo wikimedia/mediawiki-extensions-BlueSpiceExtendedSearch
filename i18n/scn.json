@@ -47,5 +47,15 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "Namespace1|Namespace2|...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Catigurìa/i",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Catigurìa1|Catigurìa2|...",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipu"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipu",
+	"bs-extendedsearch-admin-heading-sources": "Fonti",
+	"bs-extendedsearch-search-center-filter-extension-label": "Estinzioni",
+	"bs-extendedsearch-search-center-filter-extension-with-values-label": "Estinzioni:",
+	"bs-extendedsearch-search-center-create-page-link": "Crea la pàggina \"$1\"",
+	"bs-extendedsearch-filter-add-button-label": "Agghiunci nu filtru",
+	"bs-extendedsearch-flyout-similar-pages-title": "Pàggini sìmili",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Nudda pàggini sìmili attruvata",
+	"bs-extendedsearch-search-center-result-file-usage-label": "Usatu ntî pàggini",
+	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Tipu di risurtatu di l'arricerca nun vàlidu: $1",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Ammustra li risurtati glubbali"
 }

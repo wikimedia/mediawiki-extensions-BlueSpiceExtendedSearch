@@ -2,8 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
+			"Can",
 			"Joseph",
 			"MuratTheTurkish",
+			"SaldırganSincap",
+			"Sayginer",
 			"TmY e12",
 			"ToprakM"
 		]
@@ -106,11 +109,11 @@
 	"bs-extendedsearch-pref-external-file-paths-path": "Fiziksel yol",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL öneki",
 	"bs-extendedsearch-pref-external-file-paths-path-help": "Depolama konumu. Takılı sürücüler için, örneğin: X:\\Belgeler",
-	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Bu klasördeki dosyaları sunabilecek web konumu",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Dizine alınmış fiziksel konumdan dizine eklenen tüm dosyalar, arama sonuçlarında önek olarak gösterilir. Dosyalar bir web sunucusundan mevcutsa kullanılmalıdır. Varsayılan olarak, URL öneki, Fiziksel yol ile aynı değere ayarlanmıştır.",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Kalıpları hariç tut",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Geçersiz normal ifade kalıbı",
 	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "Normal ifade modelini hariç tut",
-	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Fiziksel dosya yolları için normal ifade desenini hariç tut",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Dış dosya konumlarındaki dosyalar, normal ifade kalıplarına dayalı olarak aramanın dışında tutulabilir.",
 	"bs-extendedsearch-external-file-paths-desc": "Dizine alınması gereken harici klasör dizisi",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Son değiştirme: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... $1 fazlası",
@@ -167,5 +170,10 @@
 	"bs-extendedsearch-suggest-operator": "<b>$1</b> sonucu mu aramak istediniz?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "\"$1\" içindeki sonuçlar gösteriliyor",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Küresel sonuçları göster",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "\"$1\" içinde aranıyor"
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "\"$1\" içinde aranıyor",
+	"bs-extendedsearch-search-button-title": "Aramayı başlat",
+	"bs-extendedsearch-search-button-aria-label": "Aramayı başalt",
+	"bs-extendedsearch-statistics-report-search-terms": "Arama terimleri",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Kişi başına arama terimleri",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Bir kullanıcıya sadece kendi dilindeki arama sonuçlarını gösterir. Kullanıcılar tercihler bölümünde dili belirleyebilir."
 }

@@ -17,5 +17,9 @@
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Seeid ǩiõll:",
 	"right-extendedsearch-search-specialpage": "Ooccâd tuåimmseeidaid",
 	"action-extendedsearch-search-specialpage": "ooccâd tuåimmseeidaid",
-	"action-extendedsearch-search-repofile": "ooccâd teâttõõzzid"
+	"action-extendedsearch-search-repofile": "ooccâd teâttõõzzid",
+	"bs-extendedsearch-source-label-repofile": "Ruõkk teâttõõzz",
+	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Ǩeâlggal:",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "Nõmm",
+	"bs-extendedsearch-wikipage-title-original": "(seeid alggveärlaž nõmm: $1)"
 }

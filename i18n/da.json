@@ -64,5 +64,6 @@
 	"right-extendedsearch-search-externalfile": "Søg efter eksterne filer",
 	"action-extendedsearch-search-specialpage": "søg efter specialsider",
 	"action-extendedsearch-search-wikipage": "søg efter sider",
-	"action-extendedsearch-search-externalfile": "søg efter eksterne filer"
+	"action-extendedsearch-search-externalfile": "søg efter eksterne filer",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Ingen lignende sider fundet"
 }
