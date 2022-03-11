@@ -3,7 +3,8 @@
 		"authors": [
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Juan90264"
 		]
 	},
 	"bs-extsearch-desc": "Motor de pesquisa Elasticsearch",
@@ -103,12 +104,12 @@
 	"bs-extendedsearch-pref-external-file-paths": "Caminhos de arquivos  externos",
 	"bs-extendedsearch-pref-external-file-paths-path": "Caminho físico",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Prefixo do URL",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "Localização no disco ou na ''drive'' montada",
-	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Localização da Internet capaz de servir arquivos desta pasta",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Caminho de armazenamento. Para unidades montadas, por exemplo: X:\\Documents",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Todos os arquivos indexados do local físico indexado são prefixados nos resultados da pesquisa. Deve ser usado se os arquivos estiverem disponíveis em um servidor web. Por padrão, o prefixo de URL é definido com o mesmo valor que Caminho físico.",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Modelos de exclusão",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Modelo de expressão regular inválida",
 	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "Modelo de exclusão de expressão regular",
-	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Modelo de exclusão de expressão regular para caminhos físicos de ficheiros",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Arquivos em locais de arquivos externos podem ser excluídos da pesquisa com base em padrões de expressão regular.",
 	"bs-extendedsearch-external-file-paths-desc": "Matriz das pastas externas que devem ser indexadas",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Última modificação: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... mais $1",

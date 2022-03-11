@@ -64,5 +64,6 @@
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Ventende opdateringsjobs",
 	"bs-extendedsearch-autocomplete-create-page-link": "Opret siden \"$1\"",
 	"bs-extendedsearch-search-center-filter-no-options-label": "Ingen værdier tilgængelig",
-	"bs-extendedsearch-pref-external-file-paths-excludes": "Ekskluder mønstre"
+	"bs-extendedsearch-pref-external-file-paths-excludes": "Ekskluder mønstre",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Ingen lignende sider fundet"
 }

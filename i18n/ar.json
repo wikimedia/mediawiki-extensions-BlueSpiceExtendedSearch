@@ -165,5 +165,8 @@
 	"action-extendedsearch-search-specialpage": "البحث عن الصفحات الخاصة",
 	"action-extendedsearch-search-wikipage": "البحث عن الصفحات",
 	"action-extendedsearch-search-externalfile": "البحث عن الملفات الخارجية",
-	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "أظهر النتائج العالمية"
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "أظهر النتائج العالمية",
+	"bs-extendedsearch-search-button-title": "ابدأ البحث",
+	"bs-extendedsearch-search-button-aria-label": "ابدأ البحث",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "عرض النتائج في «$1»"
 }
