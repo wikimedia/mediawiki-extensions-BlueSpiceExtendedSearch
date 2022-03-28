@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Eleassar",
 			"Skalcaa"
 		]
 	},
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Prekliči",
 	"prefs-extendedsearch": "Razširjeno iskanje"
 }
