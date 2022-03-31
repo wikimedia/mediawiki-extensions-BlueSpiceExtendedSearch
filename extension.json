@@ -278,6 +278,14 @@
 			"extendedsearch-search-externalfile": true
 		}
 	},
+	"GrantPermissions": {
+		"basic": {
+			"extendedsearch-search-specialpage":  true,
+			"extendedsearch-search-wikipage": true,
+			"extendedsearch-search-repofile": true,
+			"extendedsearch-search-externalfile": true
+		}
+	},
 	"AvailableRights": [
 		"extendedsearch-search-specialpage",
 		"extendedsearch-search-wikipage",
