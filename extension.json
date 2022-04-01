@@ -280,7 +280,7 @@
 	},
 	"GrantPermissions": {
 		"basic": {
-			"extendedsearch-search-specialpage":  true,
+			"extendedsearch-search-specialpage": true,
 			"extendedsearch-search-wikipage": true,
 			"extendedsearch-search-repofile": true,
 			"extendedsearch-search-externalfile": true
