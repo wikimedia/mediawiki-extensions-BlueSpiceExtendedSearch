@@ -27,7 +27,7 @@ class BlueSpiceSearch extends \SearchEngine {
 	 * @return SearchResultSet
 	 */
 	public function searchText( $term ) {
-		return $this->fullSearchWrapper( $term );
+		return $this->fullSearchWrapper( $term, [], false );
 	}
 
 	/**
@@ -53,18 +53,19 @@ class BlueSpiceSearch extends \SearchEngine {
 
 	/**
 	 * @param string $term
-	 * @param array|null $sourceFields
+	 * @param array $sourceFields
+	 * @param bool $titleMustContainTerm
 	 * @return SearchResultSet
 	 */
-	protected function fullSearchWrapper( $term, $sourceFields = [] ) {
+	protected function fullSearchWrapper( $term, $sourceFields = [], $titleMustContainTerm = true ) {
 		$term = trim( $term );
-		$results = $this->runFullSearch( $term, $sourceFields );
+		$results = $this->runFullSearch( $term, $sourceFields, $titleMustContainTerm );
 
 		$searchResultSet = new SearchResultSet( $this->searchContainedSyntax( $term ) );
-		foreach ( $results as $title ) {
-			$searchResultSet->add(
-				SearchResult::newFromTitle( $title, $searchResultSet )
-			);
+		foreach ( $results as $resultData ) {
+			$result = BlueSpiceSearchResult::newFromTitle( $resultData['title'], $searchResultSet );
+			$result->setTextSnippet( $resultData['snippet'] );
+			$searchResultSet->add( $result );
 		}
 
 		return $searchResultSet;
@@ -82,7 +83,9 @@ class BlueSpiceSearch extends \SearchEngine {
 		$search = $this->normalizeNamespaces( $search );
 		$results = $this->runFullSearch( $search, [ 'prefixed_title', 'rendered_content' ] );
 
-		return SearchSuggestionSet::fromTitles( $results );
+		return SearchSuggestionSet::fromTitles( array_map( function ( $results ) {
+			return $results['title'];
+		}, $results ) );
 	}
 
 	/**
@@ -129,10 +132,11 @@ class BlueSpiceSearch extends \SearchEngine {
 
 	/**
 	 * @param string $search
-	 * @param array|null $sourceFields
-	 * @return \Title[]
+	 * @param array $sourceFields
+	 * @param bool $titleMustContainTerm
+	 * @return array
 	 */
-	protected function runFullSearch( $search, $sourceFields = [] ) {
+	protected function runFullSearch( $search, $sourceFields = [], $titleMustContainTerm = true ) {
 		if ( $search === '' ) {
 			return [];
 		}
@@ -161,13 +165,17 @@ class BlueSpiceSearch extends \SearchEngine {
 				continue;
 			}
 			if (
+				$titleMustContainTerm &&
 				$search !== '*' &&
 				!$this->containsSearchTerm( $search, $title )
 			) {
 				continue;
 			}
 
-			$titles[] = $title;
+			$titles[] = [
+				'title' => $title,
+				'snippet' => $item['highlight'] ?? $item['rendered_content_snippet'] ?? '',
+			];
 		}
 
 		return $titles;
