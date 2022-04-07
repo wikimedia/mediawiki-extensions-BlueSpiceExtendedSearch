@@ -54,7 +54,6 @@ class ExtendedSearchForm extends Literal implements IRestrictedComponent {
 			'input-placeholder' => Message::newFromKey( 'bs-extendedsearch-search-input-placeholder' )->text(),
 			'input-aria-label' => Message::newFromKey( 'bs-extendedsearch-search-input-aria-label' )->text(),
 			'input-autocomplete' => 'off',
-			'input-maxlength' => '50',
 			'input-name' => 'raw_term',
 			'page-name' => $specialSearch->getPrefixedText(),
 			'field-name' => 'fulltext',
