@@ -83,7 +83,7 @@ class BlueSpiceSearch extends \SearchEngine {
 		$search = $this->normalizeNamespaces( $search );
 		$results = $this->runFullSearch( $search, [ 'prefixed_title', 'rendered_content' ] );
 
-		return SearchSuggestionSet::fromTitles( array_map( function ( $results ) {
+		return SearchSuggestionSet::fromTitles( array_map( static function ( $results ) {
 			return $results['title'];
 		}, $results ) );
 	}
