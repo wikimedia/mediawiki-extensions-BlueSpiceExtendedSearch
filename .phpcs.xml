@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleset>
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
+		<exclude name="Generic.ControlStructures.DisallowYodaConditions.Found" />
 		<exclude name="MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName" />
 		<exclude name="MediaWiki.NamingConventions.ValidGlobalName.allowedPrefix" />
+		<exclude name="MediaWiki.PHPUnit.AssertionOrder.WrongOrder" />
+		<exclude name="MediaWiki.Usage.ExtendClassUsage.FunctionVarUsage" />
 		<exclude name="MediaWiki.Usage.NullableType.PHP71NullableStyle" />
+		<exclude name="MediaWiki.Usage.StaticClosure.StaticClosure" />
 		<exclude name="Generic.Files.LineLength.TooLong" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.ObjectTypeHintReturn" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.UppercasePrimitiveObjectReturn" />
+		<exclude name="MediaWiki.Commenting.PropertyDocumentation.NotShortBoolVar" />
+		<exclude name="MediaWiki.Commenting.PropertyDocumentation.NotShortIntVar" />
+		<exclude name="MediaWiki.Commenting.RedundantVarName.Found" />
 		<exclude name="Squiz.Classes.ValidClassName.NotCamelCaps" />
 	</rule>
 	<file>.</file>
