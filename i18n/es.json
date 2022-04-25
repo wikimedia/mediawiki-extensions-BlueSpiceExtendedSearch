@@ -27,6 +27,7 @@
 	"apihelp-bs-extendedsearch-triggerupdate-summary": "Iniciar actualización de índice de búsquedas",
 	"apihelp-bs-extendedsearch-triggerupdate-param-title": "Título de la página en la que debe activarse la actualización",
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Parámetros adicionales para la consulta",
+	"apihelp-bs-extendedsearch-query-param-search-term": "Término para el que se realiza la búsqueda",
 	"apihelp-bs-extendedsearch-query-param-search-data": "Cadena codificada en JSON que contiene información adicional del contexto de la búsqueda",
 	"apihelp-bs-extendedsearch-query-param-secondary-request-data": "Cadena decodificada JSON que contiene información secundaria adicional del contexto de la búsqueda",
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "Devuelve la relevancia de los resultados de la búsqueda",
