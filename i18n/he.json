@@ -77,7 +77,7 @@
 	"bs-extendedsearch-user-preferred-namespaces": "מרחבי שם עדיפים",
 	"bs-extendedsearch-pref-external-file-paths": "נתיבים חיצוניים של קבצים",
 	"bs-extendedsearch-pref-external-file-paths-path": "נתיב פיזי",
-	"bs-extendedsearch-pref-external-file-paths-url-prefix": "קידומת URL",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix": "תחילית URL",
 	"bs-extendedsearch-pref-external-file-paths-path-help": "נתיב אחסון. עבור כוננים מורכבים, למשל: X:\\Documents",
 	"bs-extendedsearch-autocomplete-modified-time-label": "שונה לאחרונה: $1",
 	"bs-extendedsearch-pref-compact-ac-paths": "להשתמש בהשלמה אוטומטית פשוטה",

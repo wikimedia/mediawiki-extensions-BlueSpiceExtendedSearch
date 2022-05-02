@@ -3,6 +3,7 @@
 		"authors": [
 			"Beta16",
 			"Dansita",
+			"GpieroMW",
 			"McDutchie",
 			"Stefano",
 			"TheRukk",
@@ -70,6 +71,7 @@
 	"bs-extendedsearch-searchcenter-sort-field-ctime": "Ora di creazione",
 	"bs-extendedsearch-searchcenter-sort-field-size": "Dimensione",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Namespace",
+	"bs-extendedsearch-search-center-result-exception": "La query non può essere eseguita, modifica le condizioni di ricerca.",
 	"bs-extendedsearch-autocomplete-create-page-link": "Crea pagina \"$1\"",
 	"bs-extendedsearch-loadmore-label": "Carica altri risultati",
 	"bs-extendedsearch-loadmore-error": "Non è possibile recuperare altri risultati",
@@ -83,6 +85,7 @@
 	"prefs-extendedsearch": "Ricerca avanzata",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Prefisso URL",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Ultima modifica: $1",
+	"bs-extendedsearch-pref-compact-ac-paths": "Utilizzare l'autocompletamento semplice",
 	"bs-extendedsearch-search-center-result-redirects-label": "Reindirizzamento da:",
 	"bs-extendedsearch-redirect-target-label": "Reindirizza a:",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Lingua della pagina",
@@ -107,5 +110,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipo",
 	"bs-extendedsearch-collection-type-searchhistory": "Cerca nella cronologia",
 	"bs-extendedsearch-collection-var-searchterm": "Termine",
-	"bs-extendedsearch-collection-var-numbersearched": "Ricerche"
+	"bs-extendedsearch-collection-var-numbersearched": "Ricerche",
+	"bs-extendedsearch-statistics-report-search-terms": "Termini di ricerca",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Termini di ricerca per utente"
 }
