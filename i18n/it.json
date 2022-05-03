@@ -16,6 +16,7 @@
 	"apihelp-bs-extendedsearch-query-summary": "Cerca nell'indice",
 	"apihelp-bs-extendedsearch-query-param-q": "Il termine di ricerca",
 	"apihelp-bs-extendedsearch-query-param-params": "Parametri aggiuntivi per la ricerca",
+	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Parametri addizionali per la query",
 	"apihelp-bs-extendedsearch-query-param-search-term": "Termine per il quale viene condotta la ricerca",
 	"bs-extendedsearch-search-input-placeholder": "Trova ...",
 	"bs-extendedsearch-search-input-aria-label": "Casella di ricerca",
@@ -111,6 +112,8 @@
 	"bs-extendedsearch-collection-type-searchhistory": "Cerca nella cronologia",
 	"bs-extendedsearch-collection-var-searchterm": "Termine",
 	"bs-extendedsearch-collection-var-numbersearched": "Ricerche",
+	"right-extendedsearch-search-wikipage": "Cerca per pagine",
+	"action-extendedsearch-search-wikipage": "cerca per pagine",
 	"bs-extendedsearch-statistics-report-search-terms": "Termini di ricerca",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Termini di ricerca per utente"
 }
