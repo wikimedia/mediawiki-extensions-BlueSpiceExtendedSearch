@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Chrumps",
-			"Rail"
+			"Rail",
+			"Msz2001"
 		]
 	},
 	"apihelp-bs-extendedsearch-query-param-params": "Dodatkowe parametry dla zapytania",
@@ -37,7 +38,7 @@
 	"bs-extendedsearch-search-center-options-dialog-title": "Opcje wyszukiwania",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Anuluj",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Zastosuj",
-	"bs-extendedsearch-search-center-options-page-size": "Rozmiar strony",
+	"bs-extendedsearch-search-center-options-page-size": "Wpisów na stronie",
 	"bs-extendedsearch-search-center-options-sort-by": "Sortuj według",
 	"bs-extendedsearch-search-center-options-sort-order": "Kolejność sortowania",
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Brak poprawnych dopasowań dla Twojego zapytania",
@@ -60,7 +61,7 @@
 	"bs-extendedsearch-pref-external-file-paths": "Zewnętrzne ścieżki plików",
 	"bs-extendedsearch-pref-external-file-paths-path": "Ścieżka fizyczna",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Prefiks adresu URL",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "Lokalizacja na dysku lub zamontowanym napędzie",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Lokalizacja na dysku. Dla zamontowanych napędów, np. X:\\Dokumenty",
 	"bs-extendedsearch-search-center-result-redirects-label": "Przekierowano z:",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Język strony",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Język strony:",
