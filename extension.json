@@ -387,6 +387,7 @@
 		"ext.blueSpiceExtendedSearch.Autocomplete": {
 			"class": "\\BlueSpice\\ResourceModule\\LessVars",
 			"scripts": [
+				"bs.extendedSearch/mixin/Result.js",
 				"bs.extendedSearch/mixin/Autocomplete.js",
 				"bs.extendedSearch/mixin/QuietSubpage.js",
 				"bs.extendedSearch/widget/autocomplete/Popup.js",
@@ -408,7 +409,8 @@
 				"bs-extendedsearch-autocomplete-modified-time-label",
 				"bs-extendedsearch-autocomplete-popup-quiet-subpage",
 				"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear",
-				"bs-extendedsearch-searchbar-master-filter-tooltip"
+				"bs-extendedsearch-searchbar-master-filter-tooltip",
+				"bs-extendedsearch-wikipage-title-original"
 			],
 			"dependencies": [
 				"ext.blueSpiceExtendedSearch.SearchBar",
