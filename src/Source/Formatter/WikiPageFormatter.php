@@ -377,6 +377,7 @@ class WikiPageFormatter extends Base {
 
 			if ( $result['display_title'] !== '' ) {
 				$result['display_text'] = $result['display_title'];
+				$result['original_title'] = $this->getOriginalTitleText( $result );
 			} else {
 				$result['display_text'] = $result['prefixed_title'];
 			}
@@ -397,35 +398,48 @@ class WikiPageFormatter extends Base {
 				continue;
 			}
 
-			$pageTitle = $result['display_title'];
-			// If there is a namespace filter set, all results coming here will
-			// already be in desired namespace, so we should match only non-namespace
-			// part of a title to determine match rank.
-			if ( $searchData['namespace'] !== NS_MAIN ) {
-				$pageTitle = $this->removeNamespace( $pageTitle );
-			}
-
-			if ( isset( $searchData['mainpage'] ) ) {
-				// If we are querying subpages, we dont want base page
-				// as a result - kick it to secondary
-				if ( strtolower( $pageTitle ) == strtolower( $searchData['mainpage'] ) ) {
-					$result['rank'] = self::AC_RANK_SECONDARY;
-					$result['is_ranked'] = true;
-					continue;
-				}
-			}
-
-			$lcTitle = mb_strtolower( $pageTitle );
-			$lcSearchTerm = mb_strtolower( $searchData['value'] );
-			if ( strpos( $lcTitle, $lcSearchTerm ) === 0 && $top['_id'] === $result['_id'] ) {
-				$result['rank'] = self::AC_RANK_TOP;
-			} elseif ( $this->matchTokenized( $lcTitle, $lcSearchTerm ) ) {
-				$result['rank'] = self::AC_RANK_NORMAL;
-			} else {
-				$result['rank'] = self::AC_RANK_SECONDARY;
+			$this->assignRank( $result, $result['display_title'], $searchData, $top['_id'] );
+			if ( $this->getOriginalTitleText( $result ) ) {
+				$this->assignRank( $result, $result['prefixed_title'], $searchData, $top['_id'] );
 			}
 
 			$result['is_ranked'] = true;
+		}
+	}
+
+	/**
+	 * @param array &$result
+	 * @param string $pageTitle
+	 * @param array $searchData
+	 * @param string $topId
+	 */
+	protected function assignRank( &$result, $pageTitle, $searchData, $topId ) {
+		// If there is a namespace filter set, all results coming here will
+		// already be in desired namespace, so we should match only non-namespace
+		// part of a title to determine match rank.
+		if ( $searchData['namespace'] !== NS_MAIN ) {
+			$pageTitle = $this->removeNamespace( $pageTitle );
+		}
+
+		if ( isset( $searchData['mainpage'] ) ) {
+			// If we are querying subpages, we dont want base page
+			// as a result - kick it to secondary
+			if ( strtolower( $pageTitle ) == strtolower( $searchData['mainpage'] ) ) {
+				if ( !isset( $result['rank'] ) || $result['rank'] !== 'primary' ) {
+					$result['rank'] = self::AC_RANK_SECONDARY;
+				}
+				return;
+			}
+		}
+
+		$lcTitle = mb_strtolower( $pageTitle );
+		$lcSearchTerm = mb_strtolower( $searchData['value'] );
+		if ( strpos( $lcTitle, $lcSearchTerm ) === 0 && $topId === $result['_id'] ) {
+			$result['rank'] = self::AC_RANK_TOP;
+		} elseif ( $this->matchTokenized( $lcTitle, $lcSearchTerm ) ) {
+			$result['rank'] = self::AC_RANK_NORMAL;
+		} elseif ( !isset( $result['rank'] ) ) {
+			$result['rank'] = self::AC_RANK_SECONDARY;
 		}
 	}
 

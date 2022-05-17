@@ -382,6 +382,7 @@
 		"ext.blueSpiceExtendedSearch.Autocomplete": {
 			"class": "\\BlueSpice\\ResourceModule\\LessVars",
 			"scripts": [
+				"bs.extendedSearch/mixin/Result.js",
 				"bs.extendedSearch/mixin/Autocomplete.js",
 				"bs.extendedSearch/widget/autocomplete/Popup.js",
 				"bs.extendedSearch/widget/autocomplete/NormalResult.js",
@@ -399,7 +400,8 @@
 				"bs-extendedsearch-autocomplete-result-secondary-results-label",
 				"bs-extendedsearch-autocomplete-create-page-link",
 				"bs-extendedsearch-autocomplete-fulltext-search-button",
-				"bs-extendedsearch-autocomplete-modified-time-label"
+				"bs-extendedsearch-autocomplete-modified-time-label",
+				"bs-extendedsearch-wikipage-title-original"
 			],
 			"dependencies": [
 				"ext.blueSpiceExtendedSearch.SearchBar"

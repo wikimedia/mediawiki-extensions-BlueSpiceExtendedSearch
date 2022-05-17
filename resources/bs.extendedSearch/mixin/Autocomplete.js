@@ -103,6 +103,8 @@
 	OO.initClass( bs.extendedSearch.mixin.AutocompleteResults );
 
 	bs.extendedSearch.mixin.AutocompleteHeader = function( cfg ) {
+		bs.extendedSearch.mixin.ResultOriginalTitle.call( this, cfg );
+
 		this.uri = cfg.uri;
 		this.basename = cfg.basename;
 		this.pageAnchor = cfg.page_anchor || null;
@@ -131,10 +133,14 @@
 				.attr( 'href', this.uri )
 				.html( this.basename );
 		}
+		if ( cfg.original_title ) {
+			this.$header.append( this.$originalTitle );
+		}
 
 		this.$header.addClass( 'bs-extendedsearch-autocomplete-popup-primary-item-header' );
 	};
 
+	OO.mixinClass( bs.extendedSearch.mixin.AutocompleteHeader, bs.extendedSearch.mixin.ResultOriginalTitle );
 	OO.initClass( bs.extendedSearch.mixin.AutocompleteHeader );
 
 	bs.extendedSearch.mixin.AutocompleteHeader.prototype.getSnippet = function( text, length, mustContain ) {
