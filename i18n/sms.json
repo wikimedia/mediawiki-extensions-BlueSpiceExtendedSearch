@@ -21,6 +21,9 @@
 	"bs-extendedsearch-wikipage-title-original": "(seeid alggveärlaž nõmm: $1)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategoria",
 	"right-extendedsearch-search-specialpage": "Ooccâd tuåimmseeidaid",
+	"right-extendedsearch-search-wikipage": "Ooccâd seeidaid",
+	"right-extendedsearch-search-repofile": "Ooccâd teâttõõzzid",
 	"action-extendedsearch-search-specialpage": "ooccâd tuåimmseeidaid",
+	"action-extendedsearch-search-wikipage": "ooccâd seeidaid",
 	"action-extendedsearch-search-repofile": "ooccâd teâttõõzzid"
 }
