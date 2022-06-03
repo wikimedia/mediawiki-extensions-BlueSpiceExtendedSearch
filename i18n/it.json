@@ -3,6 +3,7 @@
 		"authors": [
 			"Beta16",
 			"Dansita",
+			"GpieroMW",
 			"McDutchie",
 			"Stefano",
 			"TheRukk",
@@ -107,5 +108,12 @@
 	"bs-extendedsearch-autocomplete-modified-time-label": "Ultima modifica: $1",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Scrivi per ricercare ...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "Elenco di nomi di categorie validi separati da pipe (|)",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Scrivi per cercare ..."
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Scrivi per cercare ...",
+	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Parametri addizionali per la query",
+	"bs-extendedsearch-search-center-result-exception": "La query non può essere eseguita, modifica le condizioni di ricerca.",
+	"bs-extendedsearch-pref-compact-ac-paths": "Utilizzare l'autocompletamento semplice",
+	"right-extendedsearch-search-wikipage": "Cerca per pagine",
+	"action-extendedsearch-search-wikipage": "cerca per pagine",
+	"bs-extendedsearch-statistics-report-search-terms": "Termini di ricerca",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Termini di ricerca per utente"
 }
