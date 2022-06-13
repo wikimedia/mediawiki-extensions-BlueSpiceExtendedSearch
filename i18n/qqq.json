@@ -6,7 +6,8 @@
 			"Robby",
 			"Robert Vogel <vogel@hallowelt.com>",
 			"Umherirrender",
-			"Zoranzoki21"
+			"Zoranzoki21",
+			"Verdy p"
 		]
 	},
 	"bs-extsearch-extensionname": "{{name}}",
@@ -145,7 +146,7 @@
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Error message text when given search result type is invalid. $1 - name of the given type",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "Title of VE inspector for TagSearch tag",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-desc": "Description of the purpose of TagSearch tag",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Field label for namespace field",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Field label for namespace field\n{{Identical|Namespace}}",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "Help text for field namespace",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "Placeholder text for namespace field",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Field label for category field",
@@ -176,6 +177,6 @@
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Tooltip for the quiet subpage filter pill in the search input field.\n$1 - page title of the filter",
 	"bs-extendedsearch-statistics-report-search-terms": "Statistics report name",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Statistics report name",
-	"bs-extendedsearch-pref-compact-ac-paths-help": "Description for config variable \"ESCompactAutocomplete\"",
-	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Description for config variable \"ESAutoSetLangFilter\""
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Description for config variable \"ESAutoSetLangFilter\"",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Description for config variable \"ESCompactAutocomplete\""
 }
