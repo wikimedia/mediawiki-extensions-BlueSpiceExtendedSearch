@@ -48,8 +48,8 @@ class TagSearchHandler extends Handler {
 	 * @throws MWException
 	 */
 	public function handle() {
-		$this->parser->getOutput()->addModuleStyles( 'ext.blueSpiceExtendedSearch.TagSearch.styles' );
-		$this->parser->getOutput()->addModules( 'ext.blueSpiceExtendedSearch.TagSearch' );
+		$this->parser->getOutput()->addModuleStyles( [ 'ext.blueSpiceExtendedSearch.TagSearch.styles' ] );
+		$this->parser->getOutput()->addModules( [ 'ext.blueSpiceExtendedSearch.TagSearch' ] );
 
 		$templateParser = new \TemplateParser( $this->config->get( 'TagSearchSearchFieldTemplatePath' ) );
 
