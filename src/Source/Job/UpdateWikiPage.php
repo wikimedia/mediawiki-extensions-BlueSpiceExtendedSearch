@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
+use MediaWiki\MediaWikiServices;
 use Title;
 use WikiPage;
 
@@ -49,7 +50,7 @@ class UpdateWikiPage extends UpdateTitleBase {
 	 * @return WikiPage|null
 	 */
 	protected function getDocumentProviderSource() {
-		return WikiPage::factory( $this->getTitle() );
+		return MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $this->getTitle() );
 	}
 
 	/**

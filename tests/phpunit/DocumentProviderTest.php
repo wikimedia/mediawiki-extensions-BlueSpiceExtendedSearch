@@ -44,7 +44,7 @@ class DocumentProviderTest extends \MediaWikiIntegrationTestCase {
 
 		$title = \Title::makeTitle( NS_HELP, 'Dummy title' );
 		$this->insertPage( $title, 'Dummy text' );
-		$oWikiPage = \WikiPage::factory( $title );
+		$oWikiPage = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
 		$sTestUri = $oWikiPage->getTitle()->getCanonicalURL();
 		$sTestUriMD5 = md5( $sTestUri );
 
