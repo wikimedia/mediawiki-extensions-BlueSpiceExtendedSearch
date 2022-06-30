@@ -38,5 +38,5 @@ class rebuildIndex extends elasticScriptBase {
 	}
 }
 
-$maintClass = 'rebuildIndex';
+$maintClass = rebuildIndex::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

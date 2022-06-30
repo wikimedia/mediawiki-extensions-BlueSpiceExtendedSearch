@@ -27,5 +27,5 @@ class purgeIndexes extends elasticScriptBase {
 	}
 }
 
-$maintClass = 'purgeIndexes';
+$maintClass = purgeIndexes::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

@@ -28,5 +28,5 @@ class initBackends extends elasticScriptBase {
 	}
 }
 
-$maintClass = 'initBackends';
+$maintClass = initBackends::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
