@@ -2,15 +2,15 @@
 
 namespace BS\ExtendedSearch\Data\TagCloud\Searchstats;
 
-use BlueSpice\Data\Filter;
-use BlueSpice\Data\Filter\ListValue;
-use BlueSpice\Data\Filter\Numeric;
-use BlueSpice\Data\Filter\StringValue;
-use BlueSpice\Data\FilterFinder;
-use BlueSpice\Data\IPrimaryDataProvider;
 use BlueSpice\TagCloud\Context;
 use BlueSpice\TagCloud\Data\TagCloud\Record;
 use BlueSpice\TagCloud\Data\TagCloud\Schema;
+use MWStake\MediaWiki\Component\DataStore\Filter;
+use MWStake\MediaWiki\Component\DataStore\Filter\ListValue;
+use MWStake\MediaWiki\Component\DataStore\Filter\Numeric;
+use MWStake\MediaWiki\Component\DataStore\Filter\StringValue;
+use MWStake\MediaWiki\Component\DataStore\FilterFinder;
+use MWStake\MediaWiki\Component\DataStore\IPrimaryDataProvider;
 
 class PrimaryDataProvider implements IPrimaryDataProvider {
 

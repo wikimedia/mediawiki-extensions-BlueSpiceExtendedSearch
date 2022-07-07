@@ -2,8 +2,8 @@
 
 namespace BS\ExtendedSearch\Data;
 
-use BlueSpice\Data\IStore;
 use BS\ExtendedSearch\Backend;
+use MWStake\MediaWiki\Component\DataStore\IStore;
 
 abstract class Store implements IStore {
 

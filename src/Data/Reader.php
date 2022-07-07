@@ -2,14 +2,15 @@
 
 namespace BS\ExtendedSearch\Data;
 
-use BlueSpice\Data\ISecondaryDataProvider;
-use BlueSpice\Data\ReaderParams;
-use BlueSpice\Data\ResultSet;
 use BS\ExtendedSearch\Backend;
 use Config;
 use IContextSource;
+use MWStake\MediaWiki\Component\DataStore\ISecondaryDataProvider;
+use MWStake\MediaWiki\Component\DataStore\Reader as BaseReader;
+use MWStake\MediaWiki\Component\DataStore\ReaderParams;
+use MWStake\MediaWiki\Component\DataStore\ResultSet;
 
-abstract class Reader extends \BlueSpice\Data\Reader {
+abstract class Reader extends BaseReader {
 
 	/**
 	 *
