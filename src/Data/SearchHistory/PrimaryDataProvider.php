@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Data\SearchHistory;
 
-use BlueSpice\Data\PrimaryDatabaseDataProvider;
+use MWStake\MediaWiki\Component\DataStore\PrimaryDatabaseDataProvider;
 use Wikimedia\Rdbms\IDatabase;
 
 class PrimaryDataProvider extends PrimaryDatabaseDataProvider {

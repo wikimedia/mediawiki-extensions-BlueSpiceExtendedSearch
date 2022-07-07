@@ -5,7 +5,8 @@
 	"license": "GPL-3.0-only",
 	"require": {
 		"composer/installers": "~1.0",
-		"ruflin/elastica": "~6"
+		"ruflin/elastica": "~6",
+		"mwstake/mediawiki-component-datastore": "~1"
 	},
 	"require-dev": {
 		"mediawiki/mediawiki-codesniffer": "39.0.0",

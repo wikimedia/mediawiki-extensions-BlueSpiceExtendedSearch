@@ -2,10 +2,10 @@
 
 namespace BS\ExtendedSearch\Data\TagCloud\Searchstats;
 
-use BlueSpice\Data\DatabaseReader;
-use BlueSpice\Data\ReaderParams;
 use BlueSpice\TagCloud\Data\TagCloud\Schema;
 use MediaWiki\MediaWikiServices;
+use MWStake\MediaWiki\Component\DataStore\DatabaseReader;
+use MWStake\MediaWiki\Component\DataStore\ReaderParams;
 
 class Reader extends DatabaseReader {
 	/**

@@ -4,7 +4,7 @@ namespace BS\ExtendedSearch\Data\TagCloud\Searchstats;
 
 use BlueSpice\TagCloud\Data\TagCloud\Record;
 
-class SecondaryDataProvider extends \BlueSpice\Data\SecondaryDataProvider {
+class SecondaryDataProvider extends \MWStake\MediaWiki\Component\DataStore\SecondaryDataProvider {
 
 	/**
 	 *

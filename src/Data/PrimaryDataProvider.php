@@ -2,22 +2,22 @@
 
 namespace BS\ExtendedSearch\Data;
 
-use BlueSpice\Data\FieldType;
-use BlueSpice\Data\Filter\Boolean;
-use BlueSpice\Data\Filter\Date;
-use BlueSpice\Data\Filter\ListValue;
-use BlueSpice\Data\Filter\Numeric;
-use BlueSpice\Data\FilterFinder;
-use BlueSpice\Data\IPrimaryDataProvider;
-use BlueSpice\Data\ReaderParams;
-use BlueSpice\Data\Record;
-use BlueSpice\Data\Schema;
 use BS\ExtendedSearch\Backend;
 use Elastica\Client;
 use Elastica\Index;
 use Elastica\Search;
 use Exception;
 use FormatJson;
+use MWStake\MediaWiki\Component\DataStore\FieldType;
+use MWStake\MediaWiki\Component\DataStore\Filter\Boolean;
+use MWStake\MediaWiki\Component\DataStore\Filter\Date;
+use MWStake\MediaWiki\Component\DataStore\Filter\ListValue;
+use MWStake\MediaWiki\Component\DataStore\Filter\Numeric;
+use MWStake\MediaWiki\Component\DataStore\FilterFinder;
+use MWStake\MediaWiki\Component\DataStore\IPrimaryDataProvider;
+use MWStake\MediaWiki\Component\DataStore\ReaderParams;
+use MWStake\MediaWiki\Component\DataStore\Record;
+use MWStake\MediaWiki\Component\DataStore\Schema;
 
 abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 	public const TYPE = 'type';
