@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"ToniSant"
+		]
+	},
+	"bs-extendedsearch-search-center-filter-categories-label": "Kategorija",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Kategorija:",
+	"bs-extendedsearch-search-center-result-categories-label": "Kategorija:",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategorija/i"
+}
