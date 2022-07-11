@@ -6,6 +6,7 @@
 			"Robby",
 			"Robert Vogel <vogel@hallowelt.com>",
 			"Umherirrender",
+			"Verdy p",
 			"Zoranzoki21"
 		]
 	},
@@ -145,7 +146,7 @@
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Error message text when given search result type is invalid. $1 - name of the given type",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "Title of VE inspector for TagSearch tag",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-desc": "Description of the purpose of TagSearch tag",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Field label for namespace field",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Field label for namespace field\n{{Identical|Namespace}}",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "Help text for field namespace",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "Placeholder text for namespace field",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Field label for category field",

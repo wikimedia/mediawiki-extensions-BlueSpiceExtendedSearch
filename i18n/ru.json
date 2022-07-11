@@ -6,6 +6,7 @@
 			"Ice bulldog",
 			"Katunchik",
 			"Okras",
+			"Pacha Tchernof",
 			"Romanko Mikhail",
 			"Vlad5250"
 		]
@@ -103,5 +104,10 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "Поиск тегов",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Введите для поиска…",
 	"bs-extendedsearch-collection-var-searchterm": "Термин",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Поиск в «$1»"
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Поиск в «$1»",
+	"apihelp-bs-extendedsearch-query-param-q": "Термин запроса",
+	"apihelp-bs-extendedsearch-query-param-params": "Дополнительные параметры запроса",
+	"apihelp-bs-extendedsearch-stats-description": "Возвращает статистические данные о зарегистрированных бэкэндах и их сконфигурированных источниках",
+	"apihelp-bs-extendedsearch-stats-summary": "Возвращает статистические данные о зарегистрированных бэкэндах и их сконфигурированных источниках",
+	"apihelp-bs-extendedsearch-stats-param-stats": "Список статистических данных, который должен быть возвращён"
 }

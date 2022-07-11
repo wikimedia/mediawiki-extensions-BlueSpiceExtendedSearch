@@ -6,6 +6,7 @@
 			"DiegoAmbrocio",
 			"Fewasser Traduce",
 			"Fitoschido",
+			"Francodiaz7",
 			"Jakeukalane",
 			"Joanmp17",
 			"Madamebiblio",
@@ -172,5 +173,8 @@
 	"bs-extendedsearch-statistics-report-search-terms": "Buscar términos",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Términos de búsqueda por usuario",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Devuelve los resultados de la búsqueda de un usuario sólo en su idioma. Los usuarios pueden establecer su idioma en sus preferencias.",
-	"bs-extendedsearch-pref-compact-ac-paths-help": "Mostrar un diseño compacto de autocompletar del menú de búsqueda (diseño de una columna, sin vista previa de miniaturas)."
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Mostrar un diseño compacto de autocompletar del menú de búsqueda (diseño de una columna, sin vista previa de miniaturas).",
+	"apihelp-bs-extendedsearch-generic-param-backend": "Key of the configured backend that should be queried",
+	"bs-extendedsearch-search-center-hitcount-replaced": "Mostrando resultados para $1, busque $2 en su lugar ( {{PLURAL:$3|$3 hit|$3 hits}})",
+	"bs-extendedsearch-search-center-hitcount-suggest": "¿Quiso decir $1 ({{PLURAL:$2|$2 hits|$2 hits}})?"
 }
