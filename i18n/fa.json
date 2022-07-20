@@ -120,5 +120,8 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "نمایش نتایج سراسری",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "جستجو در «$1»",
 	"bs-extendedsearch-statistics-report-search-terms": "عبارت‌های جستجو",
-	"bs-extendedsearch-statistics-report-search-term-by-user": "عبارت‌های جستجو به‌ازای کاربر"
+	"bs-extendedsearch-statistics-report-search-term-by-user": "عبارت‌های جستجو به‌ازای کاربر",
+	"bs-extendedsearch-search-center-result-help": "در نوار جستجوی بالا چیزی بنویسید...",
+	"bs-extendedsearch-loadmore-error": "نتایج بیشتر قابل واکشی نیستند",
+	"bs-extendedsearch-pref-compact-ac-paths": "استفاده از تکمیل خودکار ساده"
 }
