@@ -6,11 +6,12 @@ use BlueSpice\Hook\LoadExtensionSchemaUpdates;
 
 class AddHistoryTable extends LoadExtensionSchemaUpdates {
 	protected function doProcess() {
-		$dir = $this->getExtensionPath() . '/maintenance/db';
+		$dbType = $this->updater->getDB()->getType();
+		$dir = $this->getExtensionPath();
 
 		$this->updater->addExtensionTable(
 			'bs_extendedsearch_history',
-			"$dir/bs_extendedsearch_history.sql"
+			"$dir/maintenance/db/sql/$dbType/bs_extendedsearch_history-generated.sql"
 		);
 	}
 
