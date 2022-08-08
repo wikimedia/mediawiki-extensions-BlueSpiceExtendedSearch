@@ -115,5 +115,13 @@
 	"right-extendedsearch-search-wikipage": "Cerca per pagine",
 	"action-extendedsearch-search-wikipage": "cerca per pagine",
 	"bs-extendedsearch-statistics-report-search-terms": "Termini di ricerca",
-	"bs-extendedsearch-statistics-report-search-term-by-user": "Termini di ricerca per utente"
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Termini di ricerca per utente",
+	"bs-extendedseach-wikipage-section-more-text": " ... altre $1",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "Elenco di nomi o ID validi di namespace separati dalla barra verticale (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "Namespace1|Namespace2|...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Categoria 1|Categoria 2|…",
+	"right-extendedsearch-search-specialpage": "Ricercare pagine speciali",
+	"right-extendedsearch-search-repofile": "Ricercare file",
+	"right-extendedsearch-search-externalfile": "Cercare file esterni",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Mostra risultati globali"
 }
