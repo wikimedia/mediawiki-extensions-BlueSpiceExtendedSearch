@@ -256,6 +256,13 @@
 					"class": "\\BS\\ExtendedSearch\\Statistics\\Report\\SearchTermsByUser"
 				}
 			}
+		},
+		"ContentDroplets": {
+			"Droplets": {
+				"search": {
+					"class": "\\BS\\ExtendedSearch\\ContentDroplets\\SearchDroplet"
+				}
+			}
 		}
 	},
 	"GroupPermissions": {
