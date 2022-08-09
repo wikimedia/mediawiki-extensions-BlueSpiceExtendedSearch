@@ -5,6 +5,11 @@
 			"Skalcaa"
 		]
 	},
+	"bs-extendedsearch-search-center-filter-namespace_text-label": "Imenski prostor",
+	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Imenski prostor:",
+	"bs-extendedsearch-search-center-result-namespace_text-label": "Imenski prostor:",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Prekliči",
-	"prefs-extendedsearch": "Razširjeno iskanje"
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "Imenski prostor",
+	"prefs-extendedsearch": "Razširjeno iskanje",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Imenski prostor(i)"
 }
