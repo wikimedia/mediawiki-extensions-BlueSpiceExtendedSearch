@@ -6,5 +6,10 @@
 		]
 	},
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Prekliči",
-	"prefs-extendedsearch": "Razširjeno iskanje"
+	"prefs-extendedsearch": "Razširjeno iskanje",
+	"bs-extendedsearch-search-center-filter-namespace_text-label": "Imenski prostor",
+	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Imenski prostor:",
+	"bs-extendedsearch-search-center-result-namespace_text-label": "Imenski prostor:",
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "Imenski prostor",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Imenski prostor(i)"
 }
