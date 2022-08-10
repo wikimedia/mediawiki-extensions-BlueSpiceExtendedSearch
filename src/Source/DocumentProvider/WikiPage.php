@@ -10,6 +10,7 @@ use MediaWiki\Storage\RevisionRecord;
 use MWException;
 use ParserOptions;
 use ParserOutput;
+use TextContent;
 use Title;
 use User;
 use WikiPage as WikiPageObject;
@@ -25,11 +26,16 @@ class WikiPage extends DecoratorBase {
 	protected $title;
 	/** @var RevisionRecord */
 	protected $revision;
+	/** @var MediaWikiServices */
+	private $services = null;
 	/** @var array */
 	protected $pageProps = null;
 
+	public function __construct() {
+		$this->services = MediaWikiServices::getInstance();
+	}
+
 	/**
-	 *
 	 * @param string $sUri
 	 * @param WikiPageObject|null $wikiPage
 	 * @return array
@@ -47,8 +53,7 @@ class WikiPage extends DecoratorBase {
 		$this->content = $this->revision->getContent( 'main' );
 		$this->parserOutput = $this->content->getParserOutput( $this->title );
 
-		$firstRev = MediaWikiServices::getInstance()
-			->getRevisionLookup()
+		$firstRev = $this->services->getRevisionLookup()
 			->getFirstRevision( $this->title );
 		if ( $firstRev === null ) {
 			return $aDC;
@@ -94,8 +99,8 @@ class WikiPage extends DecoratorBase {
 		parent::__destruct();
 		$this->parserOutput = null;
 		$this->content = null;
-		if ( MediaWikiServices::getInstance()->getParser()->getOptions() instanceof ParserOptions ) {
-			MediaWikiServices::getInstance()->getParser()->clearState();
+		if ( $this->services->getParser()->getOptions() instanceof ParserOptions ) {
+			$this->services->getParser()->clearState();
 		}
 	}
 
@@ -108,9 +113,8 @@ class WikiPage extends DecoratorBase {
 	 */
 	public function getPageProps( Title $title, $prop = null, $default = null ) {
 		if ( $this->pageProps === null ) {
-			$this->pageProps = MediaWikiServices::getInstance()->getService(
-				'BSUtilityFactory'
-			)->getPagePropHelper( $title )->getPageProps();
+			$this->pageProps = $this->services->getService( 'BSUtilityFactory' )
+				->getPagePropHelper( $title )->getPageProps();
 		}
 
 		if ( $prop !== null ) {
@@ -199,7 +203,7 @@ class WikiPage extends DecoratorBase {
 	protected function getTags() {
 		$res = [];
 
-		$registeredTags = MediaWikiServices::getInstance()->getParser()->getTags();
+		$registeredTags = $this->services->getParser()->getTags();
 		$pageTags = $this->parseWikipageForTags();
 		foreach ( $pageTags as $pageTag ) {
 			if ( in_array( $pageTag, $registeredTags ) ) {
@@ -217,7 +221,7 @@ class WikiPage extends DecoratorBase {
 		if ( $this->content instanceof Content == false ) {
 			return [];
 		}
-		$text = $this->content->getNativeData();
+		$text = ( $this->content instanceof TextContent ) ? $this->content->getText() : '';
 		$rawTags = [];
 		preg_match_all( '/<([^\/\s>]+)(\s|>|\/>)/', $text, $rawTags );
 		if ( isset( $rawTags[1] ) ) {
@@ -299,9 +303,8 @@ class WikiPage extends DecoratorBase {
 	 * @throws MWException
 	 */
 	protected function getRevision() {
-		$revision = MediaWikiServices::getInstance()->getRevisionStore()->getRevisionByTitle(
-			$this->title
-		);
+		$revision = $this->services->getRevisionStore()
+			->getRevisionByTitle( $this->title );
 		Hooks::run( 'BSExtendedSearchWikipageFetchRevision', [
 			$this->title,
 			&$revision
