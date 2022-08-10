@@ -10,6 +10,7 @@ use MediaWiki\Revision\RevisionRecord;
 use MWException;
 use ParserOptions;
 use ParserOutput;
+use TextContent;
 use Title;
 use User;
 use WikiPage as WikiPageObject;
@@ -35,7 +36,6 @@ class WikiPage extends DecoratorBase {
 	}
 
 	/**
-	 *
 	 * @param string $sUri
 	 * @param WikiPageObject|null $wikiPage
 	 * @return array
@@ -53,7 +53,9 @@ class WikiPage extends DecoratorBase {
 		$contentRenderer = $this->services->getContentRenderer();
 		$this->parserOutput = $contentRenderer->getParserOutput( $this->content, $this->title );
 
-		$firstRev = $this->services->getRevisionLookup()->getFirstRevision( $this->title );
+		$firstRev = $this->services->getRevisionLookup()
+			->getFirstRevision( $this->title );
+
 		if ( $firstRev === null ) {
 			return $aDC;
 		}
@@ -220,7 +222,7 @@ class WikiPage extends DecoratorBase {
 		if ( $this->content instanceof Content == false ) {
 			return [];
 		}
-		$text = $this->content->getNativeData();
+		$text = ( $this->content instanceof TextContent ) ? $this->content->getText() : '';
 		$rawTags = [];
 		preg_match_all( '/<([^\/\s>]+)(\s|>|\/>)/', $text, $rawTags );
 		if ( isset( $rawTags[1] ) ) {
@@ -302,9 +304,8 @@ class WikiPage extends DecoratorBase {
 	 * @throws MWException
 	 */
 	protected function getRevision() {
-		$revision = $this->services->getRevisionStore()->getRevisionByTitle(
-			$this->title
-		);
+		$revision = $this->services->getRevisionStore()
+			->getRevisionByTitle( $this->title );
 		Hooks::run( 'BSExtendedSearchWikipageFetchRevision', [
 			$this->title,
 			&$revision
