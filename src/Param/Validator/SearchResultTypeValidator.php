@@ -2,7 +2,9 @@
 
 namespace BS\ExtendedSearch\Param\Validator;
 
-class SearchResultTypeValidator extends \ValueValidators\ValueValidatorObject {
+use ValueValidators\PackagePrivate\ValueValidatorBase;
+
+class SearchResultTypeValidator extends ValueValidatorBase {
 
 	/**
 	 * Makes sure each given type is a valid search type
