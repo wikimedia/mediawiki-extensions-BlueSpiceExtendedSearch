@@ -2,7 +2,6 @@
 
 namespace BS\ExtendedSearch\Source\Formatter;
 
-use Hooks;
 use MediaWiki\MediaWikiServices;
 use Title;
 
@@ -24,14 +23,16 @@ class RepoFileFormatter extends FileFormatter {
 	 * @return string
 	 */
 	protected function getActualImageUrl( $result ) {
-		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile(
+		$services = MediaWikiServices::getInstance();
+		$file = $services->getRepoGroup()->findFile(
 			Title::makeTitle( NS_FILE, $result['filename'] )
 		);
 		if ( !$file ) {
 			return '';
 		}
 
-		Hooks::run( 'BSExtendedSearchRepoFileGetRepoFile', [
+		$hookContainer = $services->getHookContainer();
+		$hookContainer->run( 'BSExtendedSearchRepoFileGetRepoFile', [
 			&$file
 		] );
 		if ( $file ) {

@@ -3,7 +3,6 @@
 namespace BS\ExtendedSearch\Source\Job;
 
 use File;
-use Hooks;
 use MediaWiki\MediaWikiServices;
 
 class UpdateRepoFile extends UpdateTitleBase {
@@ -88,14 +87,16 @@ class UpdateRepoFile extends UpdateTitleBase {
 			return;
 		}
 
-		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $this->getTitle() );
+		$services = MediaWikiServices::getInstance();
+		$file = $services->getRepoGroup()->findFile( $this->getTitle() );
 		if ( $file === false ) {
 			throw new \Exception(
 				"File '{$this->getTitle()->getPrefixedDBkey()}' not found in any repo!"
 			);
 		}
 		$this->canonicalURL = $file->getCanonicalURL();
-		Hooks::run( 'BSExtendedSearchRepoFileGetRepoFile', [
+		$hookContainer = $services->getHookContainer();
+		$hookContainer->run( 'BSExtendedSearchRepoFileGetRepoFile', [
 			&$file
 		] );
 
