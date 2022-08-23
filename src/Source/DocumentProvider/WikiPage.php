@@ -4,7 +4,6 @@ namespace BS\ExtendedSearch\Source\DocumentProvider;
 
 use Content;
 use FatalError;
-use Hooks;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Storage\RevisionRecord;
 use MWException;
@@ -309,10 +308,10 @@ class WikiPage extends DecoratorBase {
 	protected function getRevision() {
 		$revision = $this->services->getRevisionStore()
 			->getRevisionByTitle( $this->title );
-		Hooks::run( 'BSExtendedSearchWikipageFetchRevision', [
-			$this->title,
-			&$revision
-		] );
+		$this->services->getHookContainer()->run(
+			'BSExtendedSearchWikipageFetchRevision',
+			[ $this->title, &$revision ]
+		);
 
 		return $revision;
 	}
