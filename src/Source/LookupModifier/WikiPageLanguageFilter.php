@@ -95,6 +95,7 @@ class WikiPageLanguageFilter extends Base {
 		if ( $user->isAnon() ) {
 			return $this->oContext->getLanguage()->getCode();
 		}
-		return $user->getOption( 'language' );
+		return MediaWikiServices::getInstance()->getUserOptionsLookup()
+			->getOption( $user, 'language' );
 	}
 }
