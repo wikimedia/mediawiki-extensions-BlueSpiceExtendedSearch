@@ -30,5 +30,7 @@
 	"bs-extendedsearch-searchcenter-sort-field-size": "Šorradvuõtt",
 	"bs-extendedsearch-search-center-filter-tags-label": "Ǩeâlǥal",
 	"bs-extendedsearch-source-type-repofile-label": "Pääiklaž teâttõs",
-	"bs-extendedsearch-filter-add-button-label": "Lââʹzzet siʹllʼjeei"
+	"bs-extendedsearch-filter-add-button-label": "Lââʹzzet siʹllʼjeei",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Jõõsk",
+	"bs-extendedsearch-autocomplete-modified-time-label": "Mââimõssân muttum: $1"
 }
