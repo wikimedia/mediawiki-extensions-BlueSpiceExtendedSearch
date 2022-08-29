@@ -11,5 +11,6 @@
 	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Kilgoleh:",
 	"bs-extendedsearch-search-center-result-categories-label": "Luokka:",
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Nommâ",
-	"bs-extendedsearch-autocomplete-modified-time-label": "Majemustáá nubástittum: $1"
+	"bs-extendedsearch-autocomplete-modified-time-label": "Majemustáá nubástittum: $1",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Jooskâ"
 }
