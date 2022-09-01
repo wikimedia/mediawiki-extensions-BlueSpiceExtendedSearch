@@ -284,7 +284,9 @@
 
 		return this.runLookup( lookup, {
 			secondaryRequestData: JSON.stringify( {
-				primary_suggestions: primarySuggestions
+				primary_suggestions: primarySuggestions.map( function( suggestion ) {
+					return suggestion.id || '';
+				} )
 			})
 		});
 	}
