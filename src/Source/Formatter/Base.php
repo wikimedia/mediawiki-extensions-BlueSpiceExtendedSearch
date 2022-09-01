@@ -128,10 +128,11 @@ class Base {
 	 */
 	public function formatAutocompleteResults( &$results, $searchData ) {
 		foreach ( $results as &$result ) {
+			// For some reason _keys are not transmitted to client
+			$result['id'] = $result['_id'];
 			if ( !isset( $result['mtime'] ) || $result['rank'] !== 'top' ) {
 				continue;
 			}
-
 			$result['modified_time'] = $this->getContext()->getLanguage()->timeanddate( $result['mtime'] );
 			unset( $result['mtime'] );
 		}
