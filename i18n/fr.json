@@ -101,7 +101,7 @@
 	"bs-extendedsearch-autocomplete-create-page-link": "Créer la page « $1 »",
 	"bs-extendedsearch-search-center-hitcount-replaced": "Affichage des résultats pour $1, recherchez plutôt $2 ($3 résultat{{PLURAL:$3||s}})",
 	"bs-extendedsearch-search-center-hitcount-suggest": "Voulez-vous dire $1 ($2 résultat{{PLURAL:$2||s}}) ?",
-	"bs-extendedsearch-loadmore-label": "Charger plus de résultats",
+	"bs-extendedsearch-loadmore-label": "Charger davantage de résultats",
 	"bs-extendedsearch-loadmore-error": "Impossible de récupérer plus de résultats",
 	"bs-extendedsearch-filter-label-count-only": "($1)",
 	"bs-extendedsearch-search-center-result-typetext-label": "Type :",
