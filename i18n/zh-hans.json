@@ -10,6 +10,7 @@
 			"Liuxinyu970226",
 			"Looong",
 			"Phenolla",
+			"Qiyue2001",
 			"Tr jason",
 			"TsuyaMarisa",
 			"VulpesVulpes825",
@@ -185,5 +186,6 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "显示全域结果",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "在“$1”中搜索",
 	"bs-extendedsearch-statistics-report-search-terms": "搜索关键词",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "各用户的搜索项",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "仅以用户的语言返回用户的搜索结果。 用户可以在他们的首选项中设置他们的语言。"
 }
