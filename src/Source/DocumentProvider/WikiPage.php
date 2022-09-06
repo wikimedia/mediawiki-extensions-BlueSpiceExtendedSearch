@@ -31,7 +31,11 @@ class WikiPage extends DecoratorBase {
 	/** @var array */
 	protected $pageProps = null;
 
-	public function __construct() {
+	/**
+	 * @param Base $oDecoratedDP
+	 */
+	public function __construct( $oDecoratedDP ) {
+		parent::__construct( $oDecoratedDP );
 		$this->services = MediaWikiServices::getInstance();
 	}
 
