@@ -2,8 +2,6 @@
 
 namespace BS\ExtendedSearch\Source\DocumentProvider;
 
-use MediaWiki\MediaWikiServices;
-
 class File extends DecoratorBase {
 
 	/**
@@ -19,7 +17,7 @@ class File extends DecoratorBase {
 		$contents = base64_encode( $contents );
 
 		$aDC = $this->oDecoratedDP->getDataConfig( $sUri, $oFile );
-		$magic = MediaWikiServices::getInstance()->getMimeAnalyzer();
+		$magic = $this->services->getMimeAnalyzer();
 		$name = $this->removeArchiveName( $oFile->getBasename() );
 		$aDC = array_merge( $aDC, [
 			'basename' => $name,
