@@ -174,5 +174,7 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Globale resultaten tonen",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Er wordt gezocht in \"$1\"",
 	"bs-extendedsearch-statistics-report-search-terms": "Zoektermen",
-	"bs-extendedsearch-statistics-report-search-term-by-user": "Zoektermen per gebruiker"
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Zoektermen per gebruiker",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Toont voor een gebruiker alleen de zoekresultaten in de taal van die gebruiker. Gebruikers kunnen hun taal instellen in hun voorkeuren.",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Het automatisch aanvullen in het zoekmenu in een beknopte opmaak weergeven (éénkolomsopmaak zonder miniatuurvoorvertoning)."
 }
