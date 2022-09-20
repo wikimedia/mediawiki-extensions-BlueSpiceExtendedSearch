@@ -269,7 +269,7 @@ class WikiPage extends DecoratorBase {
 			return $displayTitle;
 		}
 		if ( $this->title->getNamespace() === NS_USER ) {
-			$user = User::newFromName( $this->title->getDBkey() );
+			$user = $this->services->getUserFactory()->newFromName( $this->title->getDBkey() );
 			if ( $user instanceof User ) {
 				if ( $user->isRegistered() && $user->getRealName() !== '' ) {
 					return $user->getRealName();
