@@ -326,22 +326,22 @@ div.bs-es-tools {
 		}
 	}
 	.bs-extendedsearch-result-links-container {
-		width: 180px;
-		text-overflow: ellipsis;
-		overflow: hidden;
-		white-space: nowrap;
-		margin-left: 20px;
+		max-width: 180px;
+		width: 100%;
+		margin-right: 50px;
 		.bs-extendedsearch-result-links-inner,
 		.bs-extendedsearch-result-redirects-container{
 			.oo-ui-labelWidget {
 				display: block;
 			}
-			width: 180px;
-			overflow-x: hidden;
-			margin-left: 20px;
 			&:first-of-type {
 				margin-bottom: 10px;
 			}
+		}
+		.bs-extendedsearch-result-links-inner {
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
 		}
 	}
 	.bs-extendedsearch-result-relevance-cnt {
