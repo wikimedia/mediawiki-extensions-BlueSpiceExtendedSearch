@@ -193,12 +193,21 @@ class Backend {
 		if ( $this->client === null ) {
 			$backendHost = $this->getConfig()->get( 'ESBackendHost' );
 			$backendPort = $this->getConfig()->get( 'ESBackendPort' );
+			$backendUsername = $this->getConfig()->get( 'ESBackendUsername' );
+			$backendPassword = $this->getConfig()->get( 'ESBackendPassword' );
 			$backendTransport = $this->getConfig()->get( 'ESBackendTransport' );
-			$this->client = new Client( [
+
+			$config = [
 				'host' => $backendHost,
 				'port' => $backendPort,
 				'transport' => $backendTransport
-			] );
+			];
+
+			if ( !empty( $backendUsername ) ) {
+				$config['username'] = $backendUsername;
+				$config['password'] = $backendPassword;
+			}
+			$this->client = new Client( $config );
 		}
 
 		return $this->client;
