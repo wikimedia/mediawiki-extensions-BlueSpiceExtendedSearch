@@ -167,6 +167,8 @@
 	"action-extendedsearch-search-wikipage": "البحث عن الصفحات",
 	"action-extendedsearch-search-repofile": "البحث عن ملفات",
 	"action-extendedsearch-search-externalfile": "البحث عن الملفات الخارجية",
+	"bs-extendedsearch-suggest-operator": "هل تقصد البحث عن <b>$1</b> ؟",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "عرض النتائج في «$1»",
-	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "أظهر النتائج العالمية"
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "أظهر النتائج العالمية",
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "البحث في «$1»"
 }
