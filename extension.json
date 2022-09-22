@@ -618,6 +618,12 @@
 		"ESBackendTransport": {
 			"value": "http"
 		},
+		"ESBackendUsername": {
+			"value": ""
+		},
+		"ESBackendPassword": {
+			"value": ""
+		},
 		"ESEnableSearchHistoryTracking": {
 			"value": true
 		},
