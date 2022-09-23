@@ -80,6 +80,13 @@ class Backend {
 		if ( !isset( $legacyConfig['index'] ) ) {
 			$legacyConfig['index'] = strtolower( WikiMap::getCurrentWikiId() );
 		}
+		$indexPrefix = $config->get( 'ESIndexPrefix' );
+		if ( !empty( $indexPrefix ) ) {
+			// Using the `legacyConfig` here is odd, but the only reasonable
+			// alternative would be to refactor `'index'` to `'ESIndexPrefix'`
+			// within the codebase, which has more potential to break things
+			$legacyConfig['index'] = $indexPrefix;
+		}
 
 		$this->legacyConfig = new \HashConfig( $legacyConfig );
 		$this->config = new \MultiConfig( [ $config, $this->legacyConfig ] );
