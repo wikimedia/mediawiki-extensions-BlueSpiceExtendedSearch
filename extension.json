@@ -819,6 +819,10 @@
 		},
 		"ESDefaultSearchOperator": {
 			"value": "AND"
+		},
+		"ESIndexPrefix": {
+			"description": "Which prefix to use on the index names. Will use `WikiMap::getCurrentWikiId()` if empty.",
+			"value": ""
 		}
 	},
 	"callback": "\\BS\\ExtendedSearch\\Setup::onRegistration",
