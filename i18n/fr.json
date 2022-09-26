@@ -121,7 +121,7 @@
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Exclure les motifs",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Motif d’expression rationnelle non valide",
 	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "Exclure un motif d’expression rationnelle",
-	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Les fichiers situés dans des emplacements de fichiers externes peuvent être exclus de la recherche d’après des modèles d’expression régulière.",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "Les fichiers situés dans des emplacements de fichiers externes peuvent être exclus de la recherche d’après des patrons d’expression rationnelle.",
 	"bs-extendedsearch-external-file-paths-desc": "Table de répertoires externes à indexer",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Dernière modification : $1",
 	"bs-extendedseach-wikipage-section-more-text": "... $1 de plus",
