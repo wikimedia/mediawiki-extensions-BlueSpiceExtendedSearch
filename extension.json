@@ -251,9 +251,6 @@
 			"Reports": {
 				"es-searchterms": {
 					"class": "\\BS\\ExtendedSearch\\Statistics\\Report\\SearchTerms"
-				},
-				"es-searchtermsbyuser": {
-					"class": "\\BS\\ExtendedSearch\\Statistics\\Report\\SearchTermsByUser"
 				}
 			}
 		},
@@ -589,15 +586,13 @@
 		},
 		"ext.bluespice.extendedsearch.statistics": {
 			"scripts": [
-				"statistics/SearchTermsReport.js",
-				"statistics/SearchTermsByUserReport.js"
+				"statistics/SearchTermsReport.js"
 			],
 			"dependencies": [
 				"ext.bluespice"
 			],
 			"messages": [
-				"bs-extendedsearch-statistics-report-search-terms",
-				"bs-extendedsearch-statistics-report-search-term-by-user"
+				"bs-extendedsearch-statistics-report-search-terms"
 			]
 		},
 		"ext.bluespice.extendedsearch.searchform": {
