@@ -244,7 +244,7 @@ class WikiPage extends DecoratorBase {
 			return '';
 		}
 
-		$redirTitle = $this->wikipage->getRedirectTarget();
+		$redirTitle = $this->services->getRedirectLookup()->getRedirectTarget( $this->wikipage );
 		if ( $redirTitle instanceof Title ) {
 			return $this->getDisplayTitle( $redirTitle );
 		}
