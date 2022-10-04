@@ -178,7 +178,7 @@ bs.extendedSearch.Lookup.prototype.clearQueryString = function () {
 bs.extendedSearch.Lookup.prototype.addBoolMustNotTerms = function( field, value ) {
 	this.ensurePropertyPath( 'query.bool.must_not', [] );
 
-	if( !$.isArray( value ) ) {
+	if( !Array.isArray( value ) ) {
 		value = [value];
 	}
 
@@ -270,7 +270,7 @@ bs.extendedSearch.Lookup.prototype.getCompounded = function ( prop ) {
 					values[typeName][fieldName] = [];
 				}
 				var filterValue = value[typeName][fieldName];
-				if( $.isArray( filterValue ) ) {
+				if( Array.isArray( filterValue ) ) {
 					$.merge( values[typeName][fieldName], filterValue );
 				} else {
 					values[typeName][fieldName].push( filterValue );
@@ -347,7 +347,7 @@ bs.extendedSearch.Lookup.prototype.getFilters = function () {
 bs.extendedSearch.Lookup.prototype.addTermsFilter = function( fieldName, value ) {
 	this.ensurePropertyPath( 'query.bool.filter', [] );
 
-	if( !$.isArray( value ) ) {
+	if( !Array.isArray( value ) ) {
 		value = [ value ];
 	}
 
@@ -392,7 +392,7 @@ bs.extendedSearch.Lookup.prototype.addTermsFilter = function( fieldName, value )
 bs.extendedSearch.Lookup.prototype.addTermFilter = function( field, value ) {
 	this.ensurePropertyPath( 'query.bool.filter', [] );
 
-	if( !$.isArray( value ) ) {
+	if( !Array.isArray( value ) ) {
 		value = [ value ];
 	}
 
@@ -443,7 +443,7 @@ bs.extendedSearch.Lookup.prototype.removeTermsFilter = function( fieldName, valu
 bs.extendedSearch.Lookup.prototype.removeTerms = function( prop, fieldName, value ) {
 	this.ensurePropertyPath( 'query.bool.' + prop, [] );
 
-	if( !$.isArray( value ) ) {
+	if( !Array.isArray( value ) ) {
 		value = [ value ];
 	}
 
@@ -484,7 +484,7 @@ bs.extendedSearch.Lookup.prototype.removeTerms = function( prop, fieldName, valu
 bs.extendedSearch.Lookup.prototype.removeTermFilter = function( field, value ) {
 	this.ensurePropertyPath( 'query.bool.filter', [] );
 
-	if( !$.isArray( value ) ) {
+	if( !Array.isArray( value ) ) {
 		value = [ value ];
 	}
 
@@ -617,7 +617,7 @@ bs.extendedSearch.Lookup.prototype.addShouldTerms = function( field, value, boos
 	boost = boost || 1;
 	append = append === false ? false : true;
 
-	if( !$.isArray( value ) ) {
+	if( !Array.isArray( value ) ) {
 		value = [value];
 	}
 
@@ -691,7 +691,7 @@ bs.extendedSearch.Lookup.prototype.removeShould = function( field, value ) {
 bs.extendedSearch.Lookup.prototype.removeShouldTerms = function( field, value ) {
 	this.ensurePropertyPath( 'query.bool.should', [] );
 
-	if( !$.isArray( value ) ) {
+	if( !Array.isArray( value ) ) {
 		value = [value];
 	}
 
@@ -806,7 +806,7 @@ bs.extendedSearch.Lookup.prototype.getSize = function() {
 bs.extendedSearch.Lookup.prototype.addSourceField = function( field ) {
 	this.ensurePropertyPath( '_source', [] );
 
-	if( !$.isArray( field ) ) {
+	if( !Array.isArray( field ) ) {
 		field = [field];
 	}
 	this._source = $.merge( this._source, field );
@@ -823,7 +823,7 @@ bs.extendedSearch.Lookup.prototype.addSourceField = function( field ) {
 bs.extendedSearch.Lookup.prototype.removeSourceField = function( field ) {
 	this.ensurePropertyPath( '_source', [] );
 
-	if( !$.isArray( field ) ) {
+	if( !Array.isArray( field ) ) {
 		field = [field];
 	}
 
@@ -869,7 +869,7 @@ bs.extendedSearch.Lookup.prototype.setFrom = function( from ) {
 bs.extendedSearch.Lookup.prototype.setSearchAfter = function( values ) {
 	this.ensurePropertyPath( 'search_after', [] );
 
-	if( $.isArray( values ) == false ) {
+	if( Array.isArray( values ) == false ) {
 		values = [values];
 	}
 
@@ -942,7 +942,7 @@ bs.extendedSearch.Lookup.prototype.getAutocompleteSuggest = function() {
 bs.extendedSearch.Lookup.prototype.addAutocompleteSuggestContext = function( acField, contextField, value ) {
 	this.ensurePropertyPath( 'suggest', {} );
 
-	if( $.isArray( value ) == false ) {
+	if( Array.isArray( value ) == false ) {
 		value = [ value ];
 	}
 

@@ -37,7 +37,7 @@
 	}
 
 	function _removeQueryStringParams( params ) {
-		if ( $.isArray( params ) === false ) {
+		if ( Array.isArray( params ) === false ) {
 			params = [ params ];
 		}
 		var search = location.search;
