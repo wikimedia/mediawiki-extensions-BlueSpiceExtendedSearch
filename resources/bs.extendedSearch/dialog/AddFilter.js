@@ -84,7 +84,7 @@
 				filter.group = 'root';
 			}
 
-			if( $.isArray( this.groupedFilters[filter.group] ) ) {
+			if( Array.isArray( this.groupedFilters[filter.group] ) ) {
 				this.groupedFilters[filter.group].push( filter );
 			} else {
 				this.groupedFilters[filter.group] = [filter];
