@@ -76,7 +76,7 @@
 				}
 			};
 
-			if ( !$.isArray( rawFilter.buckets ) ) {
+			if ( !Array.isArray( rawFilter.buckets ) ) {
 				continue;
 			}
 			for( var i = 0; i < rawFilter.buckets.length; i++ ) {
@@ -192,7 +192,7 @@
 			}
 
 			var keyValue = search.getResultValueByKey( result, item.name );
-			if( !keyValue || ( $.isArray( keyValue ) &&  keyValue.length === 0 ) ) {
+			if( !keyValue || ( Array.isArray( keyValue ) &&  keyValue.length === 0 ) ) {
 				continue;
 			}
 
