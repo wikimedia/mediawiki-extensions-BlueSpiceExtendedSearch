@@ -9,7 +9,13 @@
 	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Imenski prostor:",
 	"bs-extendedsearch-search-center-result-namespace_text-label": "Imenski prostor:",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Prekliči",
+	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Uporabi",
+	"bs-extendedsearch-search-center-options-page-size": "Vnosov na stran",
+	"bs-extendedsearch-search-center-options-sort-by": "Razvrsti po",
+	"bs-extendedsearch-searchcenter-sort-field-size": "Velikost",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Imenski prostor",
 	"prefs-extendedsearch": "Razširjeno iskanje",
+	"bs-extendedsearch-filter-add-button-label": "Dodajte filter",
+	"bs-extendedsearch-flyout-similar-pages-title": "Podobne strani",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Imenski prostor(i)"
 }
