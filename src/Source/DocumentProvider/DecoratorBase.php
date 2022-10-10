@@ -14,6 +14,7 @@ class DecoratorBase extends Base {
 	 * @param Base $oDecoratedDP
 	 */
 	public function __construct( $oDecoratedDP ) {
+		parent::__construct();
 		$this->oDecoratedDP = $oDecoratedDP;
 	}
 

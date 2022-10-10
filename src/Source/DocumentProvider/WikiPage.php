@@ -4,7 +4,6 @@ namespace BS\ExtendedSearch\Source\DocumentProvider;
 
 use Content;
 use FatalError;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Storage\RevisionRecord;
 use MWException;
 use ParserOptions;
@@ -25,18 +24,8 @@ class WikiPage extends DecoratorBase {
 	protected $title;
 	/** @var RevisionRecord */
 	protected $revision;
-	/** @var MediaWikiServices */
-	private $services = null;
 	/** @var array */
 	protected $pageProps = null;
-
-	/**
-	 * @param Base $oDecoratedDP
-	 */
-	public function __construct( $oDecoratedDP ) {
-		parent::__construct( $oDecoratedDP );
-		$this->services = MediaWikiServices::getInstance();
-	}
 
 	/**
 	 * @param string $sUri

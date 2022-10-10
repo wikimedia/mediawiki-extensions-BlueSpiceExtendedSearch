@@ -2,7 +2,16 @@
 
 namespace BS\ExtendedSearch\Source\DocumentProvider;
 
+use MediaWiki\MediaWikiServices;
+
 class Base {
+
+	/** @var MediaWikiServices */
+	protected $services = null;
+
+	public function __construct() {
+		$this->services = MediaWikiServices::getInstance();
+	}
 
 	/**
 	 *
