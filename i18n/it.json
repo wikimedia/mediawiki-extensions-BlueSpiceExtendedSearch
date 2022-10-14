@@ -123,5 +123,8 @@
 	"right-extendedsearch-search-specialpage": "Ricercare pagine speciali",
 	"right-extendedsearch-search-repofile": "Ricercare file",
 	"right-extendedsearch-search-externalfile": "Cercare file esterni",
-	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Mostra risultati globali"
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Mostra risultati globali",
+	"bs-extendedsearch-admin-label-all-documents-count": "Numero totale di documenti nell'indice",
+	"bs-extendedsearch-pref-external-file-paths-path": "Percorso fisico",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Percorso di archiviazione. Per le unità montate, ad esempio: X:\\Documents"
 }
