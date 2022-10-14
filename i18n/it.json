@@ -123,5 +123,8 @@
 	"action-extendedsearch-search-wikipage": "cerca per pagine",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Mostra risultati globali",
 	"bs-extendedsearch-statistics-report-search-terms": "Termini di ricerca",
-	"bs-extendedsearch-statistics-report-search-term-by-user": "Termini di ricerca per utente"
+	"bs-extendedsearch-statistics-report-search-term-by-user": "Termini di ricerca per utente",
+	"bs-extendedsearch-admin-label-all-documents-count": "Numero totale di documenti nell'indice",
+	"bs-extendedsearch-pref-external-file-paths-path": "Percorso fisico",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Percorso di archiviazione. Per le unità montate, ad esempio: X:\\Documents"
 }
