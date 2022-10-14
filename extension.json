@@ -505,7 +505,8 @@
 				"bs-extendedsearch-options-button-label",
 				"bs-extendedsearch-export-button-label",
 				"bs-extendedsearch-search-center-result-file-usage-label",
-				"bs-extendedsearch-suggest-operator"
+				"bs-extendedsearch-suggest-operator",
+				"bs-extendedsearch-remove-button-label"
 			],
 			"dependencies": [
 				"ext.bluespice",

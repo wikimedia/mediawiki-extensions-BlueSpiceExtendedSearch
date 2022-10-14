@@ -70,8 +70,8 @@
 
 		this.$element.append(
 			this.hitCounter.$element,
-			this.$toolsContainer,
-			this.$filtersContainer
+			this.$filtersContainer,
+			this.$toolsContainer
 		);
 		this.$element.addClass( 'bs-es-tools' );
 
