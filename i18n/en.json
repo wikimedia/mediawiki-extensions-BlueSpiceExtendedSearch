@@ -132,6 +132,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Add a filter",
 	"bs-extendedsearch-options-button-label": "Search options",
 	"bs-extendedsearch-export-button-label": "Export search results",
+	"bs-extendedsearch-remove-button-label": "Remove filter \"$1\"",
 	"bs-extendedsearch-flyout-similar-pages-title": "Similar pages",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "No similar pages found",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Used on pages",
