@@ -85,6 +85,7 @@
 	"bs-extendedsearch-result-relevance-not-relevant": "Questo risultato non è importante per me",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "Ricerca nel testo",
 	"prefs-extendedsearch": "Ricerca avanzata",
+	"bs-extendedsearch-user-preferred-namespaces": "Namespace preferiti",
 	"bs-extendedsearch-pref-external-file-paths-path": "Percorso fisico",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Prefisso URL",
 	"bs-extendedsearch-pref-external-file-paths-path-help": "Percorso di archiviazione. Per le unità montate, ad esempio: X:\\Documents",
