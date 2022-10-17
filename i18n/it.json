@@ -126,5 +126,6 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Mostra risultati globali",
 	"bs-extendedsearch-admin-label-all-documents-count": "Numero totale di documenti nell'indice",
 	"bs-extendedsearch-pref-external-file-paths-path": "Percorso fisico",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "Percorso di archiviazione. Per le unità montate, ad esempio: X:\\Documents"
+	"bs-extendedsearch-pref-external-file-paths-path-help": "Percorso di archiviazione. Per le unità montate, ad esempio: X:\\Documents",
+	"bs-extendedsearch-user-preferred-namespaces": "Namespace preferiti"
 }
