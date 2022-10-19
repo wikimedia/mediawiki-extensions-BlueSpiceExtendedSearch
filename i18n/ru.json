@@ -109,5 +109,7 @@
 	"bs-extendedsearch-collection-type-searchhistory": "История поиска",
 	"bs-extendedsearch-collection-var-searchterm": "Термин",
 	"bs-extendedsearch-collection-var-numbersearched": "Поиски",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Поиск в «$1»"
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Поиск в «$1»",
+	"right-extendedsearch-search-wikipage": "Поиск страниц",
+	"right-extendedsearch-search-repofile": "Поиск файлов"
 }
