@@ -109,5 +109,7 @@
 	"apihelp-bs-extendedsearch-query-param-params": "Дополнительные параметры запроса",
 	"apihelp-bs-extendedsearch-stats-description": "Возвращает статистические данные о зарегистрированных бэкэндах и их сконфигурированных источниках",
 	"apihelp-bs-extendedsearch-stats-summary": "Возвращает статистические данные о зарегистрированных бэкэндах и их сконфигурированных источниках",
-	"apihelp-bs-extendedsearch-stats-param-stats": "Список статистических данных, который должен быть возвращён"
+	"apihelp-bs-extendedsearch-stats-param-stats": "Список статистических данных, который должен быть возвращён",
+	"right-extendedsearch-search-wikipage": "Поиск страниц",
+	"right-extendedsearch-search-repofile": "Поиск файлов"
 }
