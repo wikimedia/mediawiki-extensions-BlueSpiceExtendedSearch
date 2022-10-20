@@ -2,10 +2,10 @@
 
 namespace BS\ExtendedSearch\Data\SearchHistory;
 
-use BlueSpice\Data\IStore;
-use BlueSpice\Data\ReaderParams;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
+use MWStake\MediaWiki\Component\DataStore\IStore;
+use MWStake\MediaWiki\Component\DataStore\ReaderParams;
 use RequestContext;
 use Wikimedia\Rdbms\ILoadBalancer;
 
