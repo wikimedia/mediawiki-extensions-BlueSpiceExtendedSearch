@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Data\SearchHistory;
 
-use BlueSpice\Data\DatabaseWriter;
+use MWStake\MediaWiki\Component\DataStore\DatabaseWriter;
 
 class Writer extends DatabaseWriter {
 

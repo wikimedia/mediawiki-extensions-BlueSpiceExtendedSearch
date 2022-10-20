@@ -2,9 +2,9 @@
 
 namespace BS\ExtendedSearch\Data\SearchHistory;
 
-use BlueSpice\Data\DatabaseReader;
-use BlueSpice\Data\ReaderParams;
 use IContextSource;
+use MWStake\MediaWiki\Component\DataStore\DatabaseReader;
+use MWStake\MediaWiki\Component\DataStore\ReaderParams;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class Reader extends DatabaseReader {
