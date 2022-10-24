@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
 use MediaWiki\MediaWikiServices;
+use Wikimedia\ParamValidator\ParamValidator;
 
 class Autocomplete extends \ApiBase {
 	/**
@@ -43,24 +44,24 @@ class Autocomplete extends \ApiBase {
 	protected function getAllowedParams() {
 		return [
 			'q' => [
-				\ApiBase::PARAM_TYPE => 'string',
-				\ApiBase::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true,
 				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-query-param-q',
 			],
 			'backend' => [
-				\ApiBase::PARAM_TYPE => 'string',
-				\ApiBase::PARAM_REQUIRED => false,
-				\ApiBase::PARAM_DFLT => 'local',
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_DEFAULT => 'local',
 				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-generic-param-backend',
 			],
 			'searchData' => [
-				\ApiBase::PARAM_TYPE => 'string',
-				\ApiBase::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true,
 				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-query-param-search-data',
 			],
 			'secondaryRequestData' => [
-				\ApiBase::PARAM_TYPE => 'string',
-				\ApiBase::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => false,
 				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-query-param-secondary-request-data',
 			]
 		];

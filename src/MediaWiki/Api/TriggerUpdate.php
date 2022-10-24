@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
 use MediaWiki\MediaWikiServices;
+use Wikimedia\ParamValidator\ParamValidator;
 
 class TriggerUpdate extends \ApiBase {
 	public function execute() {
@@ -29,25 +30,25 @@ class TriggerUpdate extends \ApiBase {
 	protected function getAllowedParams() {
 		return [
 			'backend' => [
-				\ApiBase::PARAM_TYPE => 'string',
-				\ApiBase::PARAM_REQUIRED => false,
-				\ApiBase::PARAM_DFLT => 'local',
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_DEFAULT => 'local',
 				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-generic-param-backend',
 			],
 			'source' => [
-				\ApiBase::PARAM_TYPE => 'string',
-				\ApiBase::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true,
 				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-generic-param-sources',
 			],
 			'title' => [
-				\ApiBase::PARAM_TYPE => 'string',
-				\ApiBase::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true,
 				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-triggerupdate-param-title',
 			],
 			'params' => [
-				\ApiBase::PARAM_TYPE => 'string',
-				\ApiBase::PARAM_REQUIRED => false,
-				\ApiBase::PARAM_DFLT => '[]',
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_DEFAULT => '[]',
 				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-triggerupdate-param-params',
 			]
 		];
