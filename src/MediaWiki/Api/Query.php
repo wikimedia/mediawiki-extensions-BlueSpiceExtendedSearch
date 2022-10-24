@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
+use Wikimedia\ParamValidator\ParamValidator;
+
 class Query extends \ApiBase {
 	/** @var string */
 	protected $searchTerm;
@@ -22,19 +24,19 @@ class Query extends \ApiBase {
 	protected function getAllowedParams() {
 		return [
 			'q' => [
-				\ApiBase::PARAM_TYPE => 'string',
-				\ApiBase::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true,
 				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-query-param-q',
 			],
 			'backend' => [
-				\ApiBase::PARAM_TYPE => 'string',
-				\ApiBase::PARAM_REQUIRED => false,
-				\ApiBase::PARAM_DFLT => 'local',
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_DEFAULT => 'local',
 				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-generic-param-backend',
 			],
 			'searchTerm' => [
-				\ApiBase::PARAM_TYPE => 'string',
-				\ApiBase::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => false,
 				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-query-param-search-term'
 			]
 		];
