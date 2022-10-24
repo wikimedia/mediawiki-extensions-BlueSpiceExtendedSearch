@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
+use Wikimedia\ParamValidator\ParamValidator;
+
 class ResultRelevance extends \ApiBase {
 	public function execute() {
 		$this->readInParameters();
@@ -16,8 +18,8 @@ class ResultRelevance extends \ApiBase {
 	protected function getAllowedParams() {
 		return [
 			'relevanceData' => [
-				\ApiBase::PARAM_TYPE => 'string',
-				\ApiBase::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true,
 				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-query-param-relevance-data',
 			]
 		];
