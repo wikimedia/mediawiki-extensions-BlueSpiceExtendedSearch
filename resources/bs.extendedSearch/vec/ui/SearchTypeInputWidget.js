@@ -23,7 +23,7 @@ bs.extendedSearch.vec.ui.SearchTypeInputWidget.prototype.getValue = function() {
 };
 
 bs.extendedSearch.vec.ui.SearchTypeInputWidget.prototype.setValue = function( value ) {
-	if ( !value || $.isArray( value ) ) {
+	if ( !value || Array.isArray( value ) ) {
 		return;
 	}
 
