@@ -46,7 +46,7 @@ class WikiPage extends DecoratorBase {
 		$this->parserOutput = $contentRenderer->getParserOutput( $this->content, $this->title );
 
 		$firstRev = $this->services->getRevisionLookup()
-			->getFirstRevision( $this->title );
+			->getFirstRevision( $this->title->toPageIdentity() );
 
 		if ( $firstRev === null ) {
 			return $aDC;
