@@ -17,5 +17,6 @@
 	"bs-extendedsearch-search-center-options-sort-by": "Razvrsti po",
 	"bs-extendedsearch-searchcenter-sort-field-size": "Velikost",
 	"bs-extendedsearch-filter-add-button-label": "Dodajte filter",
-	"bs-extendedsearch-flyout-similar-pages-title": "Podobne strani"
+	"bs-extendedsearch-flyout-similar-pages-title": "Podobne strani",
+	"bs-extendedsearch-remove-button-label": "Odstrani filter »$1«"
 }
