@@ -140,6 +140,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Ajouter un filtre",
 	"bs-extendedsearch-options-button-label": "Options de recherche",
 	"bs-extendedsearch-export-button-label": "Exporter les résultats de recherche",
+	"bs-extendedsearch-remove-button-label": "Enlever le filtre « $1 »",
 	"bs-extendedsearch-flyout-similar-pages-title": "Pages similaires",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Aucune page similaire trouvée",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Utilisé sur les pages",

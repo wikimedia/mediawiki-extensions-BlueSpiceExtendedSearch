@@ -16,6 +16,7 @@
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Imenski prostor",
 	"prefs-extendedsearch": "Razširjeno iskanje",
 	"bs-extendedsearch-filter-add-button-label": "Dodajte filter",
+	"bs-extendedsearch-remove-button-label": "Odstrani filter »$1«",
 	"bs-extendedsearch-flyout-similar-pages-title": "Podobne strani",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Imenski prostor(i)"
 }
