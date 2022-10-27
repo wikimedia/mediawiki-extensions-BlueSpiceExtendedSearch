@@ -4,5 +4,6 @@
 			"Ajiniyaz Nurniyazov"
 		]
 	},
-	"bs-extendedsearch-remove-button-label": "\"$1\" filtrin alıp taslań"
+	"bs-extendedsearch-remove-button-label": "\"$1\" filtrin alıp taslań",
+	"bs-extendedsearch-search-center-filter-has-hidden": "... {{PLURAL:$1|hám jáne 1$}}"
 }

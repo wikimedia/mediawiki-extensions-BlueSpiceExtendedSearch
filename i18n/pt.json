@@ -171,5 +171,6 @@
 	"bs-extendedsearch-statistics-report-search-terms": "Termos a pesquisar",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Termos a pesquisar por utilizador",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Devolve resultados de pesquisa para um utilizador somente na língua do utilizador. Os utilizadores podem definir a sua língua nas preferências.",
-	"bs-extendedsearch-pref-compact-ac-paths-help": "Mostrar um formato de preenchimento automático compacto do menu de pesquisa (formato de uma coluna, sem antevisão de miniaturas)."
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Mostrar um formato de preenchimento automático compacto do menu de pesquisa (formato de uma coluna, sem antevisão de miniaturas).",
+	"bs-extendedsearch-remove-button-label": "Remover o filtro \"$1\""
 }
