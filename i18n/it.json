@@ -127,5 +127,9 @@
 	"bs-extendedsearch-admin-label-all-documents-count": "Numero totale di documenti nell'indice",
 	"bs-extendedsearch-pref-external-file-paths-path": "Percorso fisico",
 	"bs-extendedsearch-pref-external-file-paths-path-help": "Percorso di archiviazione. Per le unità montate, ad esempio: X:\\Documents",
-	"bs-extendedsearch-user-preferred-namespaces": "Namespace preferiti"
+	"bs-extendedsearch-user-preferred-namespaces": "Namespace preferiti",
+	"bs-extendedsearch-search-center-filter-has-hidden": "... e {{PLURAL:$1|$1 altro|altri $1}}",
+	"bs-extendedsearch-remove-button-label": "Rimuovi il filtro \"$1\"",
+	"bs-extendedsearch-tagsearch-extension-description": "Aggiungere un modulo di ricerca al {{GENDER:tuo}} contenuto",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Elenco di tipi di risultati validi separati da pipe (|)"
 }
