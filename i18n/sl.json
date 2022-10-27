@@ -14,6 +14,7 @@
 	"bs-extendedsearch-search-center-options-sort-by": "Razvrsti po",
 	"bs-extendedsearch-searchcenter-sort-field-size": "Velikost",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Imenski prostor",
+	"bs-extendedsearch-search-center-filter-has-hidden": "... {{PLURAL:$1|in še $1}}",
 	"prefs-extendedsearch": "Razširjeno iskanje",
 	"bs-extendedsearch-filter-add-button-label": "Dodajte filter",
 	"bs-extendedsearch-remove-button-label": "Odstrani filter »$1«",
