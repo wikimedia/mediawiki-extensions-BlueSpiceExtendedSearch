@@ -169,5 +169,6 @@
 	"bs-extendedsearch-statistics-report-search-terms": "Terminos de recerca",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Terminos de recerca per usator",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Retorna resultatos de recerca pro un usator solmente in le lingua del usator. Usatores pote configurar lor lingua in lor preferentias.",
-	"bs-extendedsearch-pref-compact-ac-paths-help": "Monstra un disposition compacte de autocompletion del menu de recerca (disposition unicolumnar sin previsualisation in miniatura)."
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Monstra un disposition compacte de autocompletion del menu de recerca (disposition unicolumnar sin previsualisation in miniatura).",
+	"bs-extendedsearch-remove-button-label": "Remover filtro \"$1\""
 }
