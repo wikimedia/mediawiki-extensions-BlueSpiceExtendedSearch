@@ -129,6 +129,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Adder un filtro",
 	"bs-extendedsearch-options-button-label": "Optiones de recerca",
 	"bs-extendedsearch-export-button-label": "Exportar resultatos de recerca",
+	"bs-extendedsearch-remove-button-label": "Remover filtro \"$1\"",
 	"bs-extendedsearch-flyout-similar-pages-title": "Paginas similar",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Nulle paginas similar trovate",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Usate sur paginas",
