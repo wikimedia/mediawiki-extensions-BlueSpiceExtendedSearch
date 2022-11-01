@@ -109,12 +109,12 @@
 	"bs-extendedsearch-pref-external-file-paths": "مسارات الملفات الخارجية",
 	"bs-extendedsearch-pref-external-file-paths-path": "المسار المادي",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "بادئة المسار",
-	"bs-extendedsearch-pref-external-file-paths-path-help": "موقع على القرص أو محرك أقراص محمول",
-	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "موقع ويب قادر على خدمة الملفات من هذا المجلد",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "مسار التخزين. بالنسبة لمحركات الأقراص المُحمَّلة ، على سبيل المثال: X: \\ Documents",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "تكون جميع الملفات المفهرسة من الموقع الفعلي المفهرس مسبوقة في نتائج البحث. يجب استخدامه إذا كانت الملفات متوفرة من خادم الويب. بشكل افتراضي ، يتم تعيين بادئة عنوان URL على نفس قيمة المسار الفعلي.",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "استبعاد الأنماط",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "نمط تعبير منتظم غير صالح",
 	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "استبعاد نمط التعبير المنتظم",
-	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "استبعاد نمط التعبير المنتظم لمسارات الملفات الفعلية",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "يمكن استبعاد الملفات الموجودة في مواقع الملفات الخارجية من البحث استنادًا إلى أنماط التعبير العادي.",
 	"bs-extendedsearch-external-file-paths-desc": "مجموعة المجلدات الخارجية التي تنبغي فهرستها",
 	"bs-extendedsearch-autocomplete-modified-time-label": "آخر تعديل: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... $1 أكثر",
@@ -170,5 +170,11 @@
 	"bs-extendedsearch-suggest-operator": "هل تقصد البحث عن <b>$1</b> ؟",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "عرض النتائج في «$1»",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "أظهر النتائج العالمية",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "البحث في «$1»"
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "البحث في «$1»",
+	"bs-extendedsearch-remove-button-label": "إزالة عامل التصفية \" $1 \"",
+	"bs-extendedsearch-pref-externalfilepaths-help": "المواقع الخارجية للبحث عن الملفات وفهرسة الملفات منها. يتم إدخال هذه المواقع في أزواج مفتاح / قيمة.",
+	"bs-extendedsearch-statistics-report-search-terms": "مصطلحات البحث",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "مصطلحات البحث لكل مستخدم",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "يعرض نتائج البحث لمستخدم بلغة المستخدم فقط. يمكن للمستخدمين تعيين لغتهم في تفضيلاتهم.",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "إظهار تخطيط الإكمال التلقائي المضغوط لقائمة البحث (تخطيط من عمود واحد ، بدون معاينة الصورة المصغرة)."
 }

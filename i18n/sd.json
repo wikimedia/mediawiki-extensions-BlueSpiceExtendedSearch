@@ -6,5 +6,9 @@
 	},
 	"bs-extendedsearch-search-center-result-author-label": "مصنف:",
 	"bs-extendedsearch-searchcenter-sort-field-basename": "نالو",
-	"bs-extendedsearch-search-center-result-redirects-label": "کان چوريل:"
+	"bs-extendedsearch-search-center-result-redirects-label": "کان چوريل:",
+	"bs-extendedsearch-search-center-filter-namespace_text-label": "نانءُپولار",
+	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "نانءُپولار:",
+	"bs-extendedsearch-search-center-result-namespace_text-label": "نانءُپولار:",
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "نانءُپولار"
 }
