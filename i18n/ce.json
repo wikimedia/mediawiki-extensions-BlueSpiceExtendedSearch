@@ -16,5 +16,6 @@
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "ЦӀерийн меттиг",
 	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "ЦӀерийн меттиг:",
 	"bs-extendedsearch-search-center-result-namespace_text-label": "ЦӀерийн меттиг:",
-	"bs-extendedsearch-searchcenter-sort-field-namespace": "ЦӀерийн меттиг"
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "ЦӀерийн меттиг",
+	"right-extendedsearch-search-repofile": "Файлаш лахар"
 }
