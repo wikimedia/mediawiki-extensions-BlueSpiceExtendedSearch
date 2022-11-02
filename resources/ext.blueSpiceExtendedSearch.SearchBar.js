@@ -262,12 +262,14 @@
 			indicator: 'clear',
 			framed: false
 		} );
+		clearButton.$button.attr( 'aria-label', mw.msg( 'bs-extendedsearch-close-search-button-aria-label' ) );
+		clearButton.$button.on( 'click', this.onClearSearch.bind( this ) );
+		clearButton.$button.on( 'keydown', this.onClearSearch.bind( this ) );
 
 		var sbW = this.$searchBox.outerWidth();
 
 		clearButton.$element.addClass( 'bs-extendedsearch-searchbar-clear' );
 		clearButton.$element.insertAfter( this.$searchBox );
-		clearButton.$element.on( 'click', this.onClearSearch.bind( this ) );
 		var cbW = clearButton.$element.outerWidth();
 
 		this.setSearchBoxWidthInline( sbW - cbW );
