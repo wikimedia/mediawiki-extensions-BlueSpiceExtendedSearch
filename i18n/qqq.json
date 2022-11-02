@@ -34,6 +34,7 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "{{doc-apihelp-summary|bs-extendedsearch-resultrelevance}}",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "{{doc-apihelp-param|bs-extendedsearch-query|relevance-data}}",
 	"apihelp-bs-extendedsearch-type-store-summary": "{{doc-apihelp-summary|bs-extendedsearch-type-store}}",
+	"bs-extendedsearch-close-search-button-aria-label": "Aria-label for close search box button for screenreader compatibility",
 	"bs-extendedsearch-search-button-title": "Title for submit button in search form",
 	"bs-extendedsearch-search-button-aria-label": "Aria-label for submit button in search form",
 	"bs-extendedsearch-search-input-placeholder": "Placeholder text within the search input field",
