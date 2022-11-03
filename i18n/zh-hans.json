@@ -4,6 +4,7 @@
 			"A Chinese Wikipedian",
 			"A Retired User",
 			"AYZ04",
+			"Evesiesta",
 			"Ff98sha",
 			"GuoPC",
 			"Lakejason0",
@@ -190,5 +191,6 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "各用户的搜索项",
 	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "可以根据正则表达式模式从搜索中排除位于外部文件位置的文件。",
 	"bs-extendedsearch-tagsearch-extension-description": "向 {{GENDER:your}} 内容添加搜索表单",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-help": "尚未输入任何内容时要在输入字段中显示的文本"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-help": "尚未输入任何内容时要在输入字段中显示的文本",
+	"bs-extendedsearch-remove-button-label": "删除过滤器“ $1 ”"
 }
