@@ -131,5 +131,7 @@
 	"bs-extendedsearch-search-center-filter-has-hidden": "... e {{PLURAL:$1|$1 altro|altri $1}}",
 	"bs-extendedsearch-remove-button-label": "Rimuovi il filtro \"$1\"",
 	"bs-extendedsearch-tagsearch-extension-description": "Aggiungere un modulo di ricerca al {{GENDER:tuo}} contenuto",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Elenco di tipi di risultati validi separati da pipe (|)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "Elenco di tipi di risultati validi separati da pipe (|)",
+	"bs-extendedsearch-search-button-title": "Avviare ricerca",
+	"bs-extendedsearch-search-button-aria-label": "Avviare ricerca"
 }

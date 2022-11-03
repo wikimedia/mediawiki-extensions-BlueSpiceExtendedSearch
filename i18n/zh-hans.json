@@ -4,6 +4,7 @@
 			"A Chinese Wikipedian",
 			"A Retired User",
 			"AYZ04",
+			"Evesiesta",
 			"Ff98sha",
 			"GuoPC",
 			"Lakejason0",
@@ -190,5 +191,6 @@
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "在“$1”中搜索",
 	"bs-extendedsearch-statistics-report-search-terms": "搜索关键词",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "各用户的搜索项",
-	"bs-extendedsearch-pref-auto-set-lang-filter-help": "仅以用户的语言返回用户的搜索结果。 用户可以在他们的首选项中设置他们的语言。"
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "仅以用户的语言返回用户的搜索结果。 用户可以在他们的首选项中设置他们的语言。",
+	"bs-extendedsearch-remove-button-label": "删除过滤器“ $1 ”"
 }
