@@ -24,6 +24,9 @@ class WikiPage extends Base {
 		if ( $this->mTimeBoost( $result, $lookup ) ) {
 			$this->base->requestReSort();
 		}
+		if ( $this->supressFilePages( $result ) ) {
+			$this->base->requestReSort();
+		}
 	}
 
 	/**
@@ -73,6 +76,27 @@ class WikiPage extends Base {
 		$boostValue = round( ( $result->getScore() * $portionOfScore ) * ( $relevance * $boostFactor ), 2 );
 
 		$result->setParam( '_score', $result->getScore() + $boostValue );
+		return true;
+	}
+
+	/**
+	 * Reduce score pages in NS_FILE
+	 *
+	 * @param Result $result
+	 *
+	 * @return bool
+	 */
+	private function supressFilePages( Result $result ) {
+		if ( $result->getType() !== 'wikipage' ) {
+			return false;
+		}
+		$ns = (int)$result->getData()['namespace'];
+		if ( $ns !== NS_FILE ) {
+			return false;
+		}
+		$boostReduceFactor = 0.5;
+		$boostReduce = round( $result->getScore() * $boostReduceFactor, 2 );
+		$result->setParam( '_score', $result->getScore() - $boostReduce );
 		return true;
 	}
 }
