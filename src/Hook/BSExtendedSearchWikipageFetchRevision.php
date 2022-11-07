@@ -5,7 +5,7 @@ namespace BS\ExtendedSearch\Hook;
 use BlueSpice\Hook;
 use Config;
 use IContextSource;
-use MediaWiki\Storage\RevisionRecord;
+use MediaWiki\Revision\RevisionRecord;
 use Title;
 
 abstract class BSExtendedSearchWikipageFetchRevision extends Hook {

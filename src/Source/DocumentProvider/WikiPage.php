@@ -4,7 +4,7 @@ namespace BS\ExtendedSearch\Source\DocumentProvider;
 
 use Content;
 use FatalError;
-use MediaWiki\Storage\RevisionRecord;
+use MediaWiki\Revision\RevisionRecord;
 use MWException;
 use ParserOptions;
 use ParserOutput;
