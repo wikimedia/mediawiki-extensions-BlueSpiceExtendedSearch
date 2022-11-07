@@ -32,5 +32,6 @@
 	"bs-extendedsearch-source-type-repofile-label": "Pääiklaž teâttõs",
 	"bs-extendedsearch-filter-add-button-label": "Lââʹzzet siʹllʼjeei",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Jõõsk",
-	"bs-extendedsearch-autocomplete-modified-time-label": "Mââimõssân muttum: $1"
+	"bs-extendedsearch-autocomplete-modified-time-label": "Mââimõssân muttum: $1",
+	"bs-extendedsearch-suggest-operator": "Juʹrddiǩ-a ton <b>$1</b>?"
 }
