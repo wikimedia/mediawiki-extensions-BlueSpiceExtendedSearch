@@ -6,7 +6,7 @@ use Content;
 use FatalError;
 use Hooks;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Storage\RevisionRecord;
+use MediaWiki\Revision\RevisionRecord;
 use MWException;
 use ParserOptions;
 use ParserOutput;
