@@ -39,6 +39,7 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "Renvoie la pertinence des résultats de recherche",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "Chaîne JSON décodée contenant les informations supplémentaires du contexte de la recherche",
 	"apihelp-bs-extendedsearch-type-store-summary": "Renvoie les types de recherches enregistrés",
+	"bs-extendedsearch-close-search-button-aria-label": "Fermer la boîte de recherche",
 	"bs-extendedsearch-search-button-title": "Commencer la recherche",
 	"bs-extendedsearch-search-button-aria-label": "Commencer la recherche",
 	"bs-extendedsearch-search-input-placeholder": "Trouver…",

@@ -33,6 +33,7 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "يرجع صلة نتائج البحث",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "سلسلة JSON لفك الشفرة التي تحتوي على معلومات إضافية عن سياق البحث",
 	"apihelp-bs-extendedsearch-type-store-summary": "ترجع أنواع البحث المسجلة",
+	"bs-extendedsearch-close-search-button-aria-label": "إغلاق مربع البحث",
 	"bs-extendedsearch-search-button-title": "ابدأ البحث",
 	"bs-extendedsearch-search-button-aria-label": "ابدأ البحث",
 	"bs-extendedsearch-search-input-placeholder": "إيجاد...",

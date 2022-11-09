@@ -4,12 +4,14 @@
 			"2nd-player",
 			"A2y4",
 			"Ajeje Brazorf",
+			"MathXplore",
 			"Otokoume",
 			"Shirayuki",
 			"Waki285"
 		]
 	},
 	"apihelp-bs-extendedsearch-query-param-q": "検索語句",
+	"bs-extendedsearch-close-search-button-aria-label": "検索ボックスを閉じる",
 	"bs-extendedsearch-search-input-placeholder": "探す ...",
 	"bs-extendedsearch-search-input-aria-label": "検索ボックス",
 	"bs-extendedsearch-source-label-wikipage": "ウィキページ",
