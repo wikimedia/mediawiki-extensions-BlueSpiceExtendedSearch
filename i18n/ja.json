@@ -4,6 +4,7 @@
 			"2nd-player",
 			"A2y4",
 			"Ajeje Brazorf",
+			"MathXplore",
 			"Otokoume",
 			"Shirayuki",
 			"Waki285"
@@ -57,5 +58,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "カテゴリ1|カテゴリ2|...",
 	"bs-extendedsearch-collection-type-searchhistory": "検索履歴",
 	"right-extendedsearch-search-wikipage": "ページを検索",
-	"action-extendedsearch-search-wikipage": "ページの検索"
+	"action-extendedsearch-search-wikipage": "ページの検索",
+	"bs-extendedsearch-close-search-button-aria-label": "検索ボックスを閉じる"
 }

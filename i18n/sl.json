@@ -19,5 +19,6 @@
 	"bs-extendedsearch-filter-add-button-label": "Dodajte filter",
 	"bs-extendedsearch-flyout-similar-pages-title": "Podobne strani",
 	"bs-extendedsearch-remove-button-label": "Odstrani filter »$1«",
-	"bs-extendedsearch-search-center-filter-has-hidden": "... {{PLURAL:$1|in še $1}}"
+	"bs-extendedsearch-search-center-filter-has-hidden": "... {{PLURAL:$1|in še $1}}",
+	"bs-extendedsearch-close-search-button-aria-label": "Zapri iskalno polje"
 }
