@@ -4,6 +4,7 @@
 			"2nd-player",
 			"A2y4",
 			"Ajeje Brazorf",
+			"MathXplore",
 			"Otokoume",
 			"Shirayuki",
 			"Waki285"
@@ -57,5 +58,6 @@
 	"bs-extendedsearch-search-center-filter-extension-with-values-label": "拡張機能:",
 	"bs-extendedsearch-search-center-result-sections-label": "節:",
 	"bs-extendedsearch-searchcenter-filter-or-label": "または",
-	"bs-extendedsearch-searchcenter-filter-and-label": "と"
+	"bs-extendedsearch-searchcenter-filter-and-label": "と",
+	"bs-extendedsearch-close-search-button-aria-label": "検索ボックスを閉じる"
 }
