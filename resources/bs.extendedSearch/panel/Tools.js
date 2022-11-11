@@ -31,6 +31,10 @@
 				'title',
 				mw.message( 'bs-extendedsearch-search-center-create-page-link', this.pageCreateData.title ).text()
 			);
+			createPageButton.$element.children().attr(
+				'aria-label',
+				mw.message( 'bs-extendedsearch-search-center-create-page-link', this.pageCreateData.title ).text()
+			);
 			createPageButton.$element.on( 'click', { url: this.pageCreateData.url }, function( e ) {
 				window.location.href = e.data.url;
 			} );
@@ -47,6 +51,7 @@
 		} );
 		this.optionsButton.$element.addClass( 'bs-extendedsearch-settings-button tools-button' );
 		this.optionsButton.$element.attr( 'title', mw.message( "bs-extendedsearch-options-button-label" ).text() );
+		this.optionsButton.$element.children().attr( 'aria-label', mw.message( "bs-extendedsearch-options-button-label" ).text() );
 		this.setSearchOptionsConfig();
 
 		this.optionsButton.$element.on( 'click', { options: this.searchOptionsConfig }, this.openOptionsDialog.bind( this ) );
@@ -64,6 +69,7 @@
 			} );
 			this.exportButton.$element.addClass( 'bs-extendedsearch-export-button tools-button' );
 			this.exportButton.$element.attr( 'title', mw.message( "bs-extendedsearch-export-button-label" ).text() );
+			this.exportButton.$element.children().attr( 'aria-label', mw.message( "bs-extendedsearch-export-button-label" ).text() );
 			this.exportButton.$element.on( 'click', this.showExportSearchDialog.bind( this ) );
 			this.$toolsContainer.append( this.exportButton.$element );
 		}

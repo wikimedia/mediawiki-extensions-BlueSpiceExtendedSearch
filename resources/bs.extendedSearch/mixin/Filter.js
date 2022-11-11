@@ -18,6 +18,10 @@
 		this.$removeButton = button.$element;
 		this.$removeButton.addClass( 'bs-extendedsearch-filter-button-remove' );
 		this.$removeButton.attr( 'title', mw.message( "bs-extendedsearch-remove-button-label", cfg.label ).text() );
+		this.$removeButton.children().attr(
+			'aria-label',
+			mw.message( "bs-extendedsearch-remove-button-label", cfg.label ).text()
+		);
 	}
 
 	OO.initClass( bs.extendedSearch.mixin.FilterRemoveButton );
