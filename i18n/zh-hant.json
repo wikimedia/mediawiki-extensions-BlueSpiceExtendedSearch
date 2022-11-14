@@ -3,6 +3,7 @@
 		"authors": [
 			"Cwlin0416",
 			"Kly",
+			"Willy1018",
 			"Xiplus"
 		]
 	},
@@ -171,5 +172,6 @@
 	"bs-extendedsearch-statistics-report-search-terms": "搜尋項",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "各使用者搜尋項",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "使用者的搜尋僅會回傳該使用者所使用語言的結果。使用者可以在他們的偏好設定中更改他們的語言。",
-	"bs-extendedsearch-pref-compact-ac-paths-help": "顯示搜尋選單的簡潔自動完成陳列（一欄陳列，無縮圖預覽）。"
+	"bs-extendedsearch-pref-compact-ac-paths-help": "顯示搜尋選單的簡潔自動完成陳列（一欄陳列，無縮圖預覽）。",
+	"bs-extendedsearch-remove-button-label": "刪除$1過濾器"
 }
