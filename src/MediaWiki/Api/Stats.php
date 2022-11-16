@@ -20,8 +20,7 @@ class Stats extends \ApiBase {
 
 		try {
 			$stats = $this->makeBackendStats( $this->backend );
-		}
-		catch ( \Exception $ex ) {
+		} catch ( \Exception $ex ) {
 			$stats = [
 				'error' => $ex->getMessage()
 			];

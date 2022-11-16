@@ -36,8 +36,7 @@ class ESSimilarPages extends JSConfigVariable {
 			}
 
 			return FormatJson::encode( $pageLinks );
-		}
-		catch ( Exception $e ) {
+		} catch ( Exception $e ) {
 			wfDebugLog( 'BSExtendedSearch', "AddSimilarPages: {$e->getMessage()}" );
 
 			return null;
