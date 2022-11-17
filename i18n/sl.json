@@ -20,5 +20,13 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "Podobne strani",
 	"bs-extendedsearch-remove-button-label": "Odstrani filter »$1«",
 	"bs-extendedsearch-search-center-filter-has-hidden": "... {{PLURAL:$1|in še $1}}",
-	"bs-extendedsearch-close-search-button-aria-label": "Zapri iskalno polje"
+	"bs-extendedsearch-close-search-button-aria-label": "Zapri iskalno polje",
+	"right-extendedsearch-search-specialpage": "Iskanje posebnih strani",
+	"right-extendedsearch-search-wikipage": "Iskanje strani",
+	"right-extendedsearch-search-repofile": "Iskanje datotek",
+	"right-extendedsearch-search-externalfile": "Iskanje zunanjih datotek",
+	"action-extendedsearch-search-specialpage": "iskanje posebnih strani",
+	"action-extendedsearch-search-wikipage": "iskanje strani",
+	"action-extendedsearch-search-repofile": "iskanje datotek",
+	"action-extendedsearch-search-externalfile": "iskanje zunanjih datotek"
 }
