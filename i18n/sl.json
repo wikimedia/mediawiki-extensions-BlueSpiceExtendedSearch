@@ -20,5 +20,13 @@
 	"bs-extendedsearch-filter-add-button-label": "Dodajte filter",
 	"bs-extendedsearch-remove-button-label": "Odstrani filter »$1«",
 	"bs-extendedsearch-flyout-similar-pages-title": "Podobne strani",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Imenski prostor(i)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Imenski prostor(i)",
+	"right-extendedsearch-search-specialpage": "Iskanje posebnih strani",
+	"right-extendedsearch-search-wikipage": "Iskanje strani",
+	"right-extendedsearch-search-repofile": "Iskanje datotek",
+	"right-extendedsearch-search-externalfile": "Iskanje zunanjih datotek",
+	"action-extendedsearch-search-specialpage": "iskanje posebnih strani",
+	"action-extendedsearch-search-wikipage": "iskanje strani",
+	"action-extendedsearch-search-repofile": "iskanje datotek",
+	"action-extendedsearch-search-externalfile": "iskanje zunanjih datotek"
 }
