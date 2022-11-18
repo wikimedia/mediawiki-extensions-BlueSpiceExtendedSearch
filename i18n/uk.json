@@ -5,7 +5,8 @@
 			"Ice bulldog",
 			"Piramidion",
 			"Vlad5250",
-			"Ата"
+			"Ата",
+			"Пан Хаунд"
 		]
 	},
 	"bs-extsearch-extensionname": "Розширений пошук BlueSpice",
@@ -32,6 +33,7 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "Повертає релевантність результатів пошуку",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "JSON-декодований рядок, що містить додаткову інформацію про контекст пошуку",
 	"apihelp-bs-extendedsearch-type-store-summary": "Повертає зареєстровані типи пошуку",
+	"bs-extendedsearch-close-search-button-aria-label": "Закрити вікно пошуку",
 	"bs-extendedsearch-search-button-title": "Почати пошук",
 	"bs-extendedsearch-search-button-aria-label": "Почати пошук",
 	"bs-extendedsearch-search-input-placeholder": "Знайти...",
@@ -134,6 +136,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Додати фільтр",
 	"bs-extendedsearch-options-button-label": "Параметри пошуку",
 	"bs-extendedsearch-export-button-label": "Експортувати пошукові результати",
+	"bs-extendedsearch-remove-button-label": "Видалити фільтр \" $1 \"",
 	"bs-extendedsearch-flyout-similar-pages-title": "Схожі сторінки",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Подібні сторінки не знайдено",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Використовується на сторінках",
