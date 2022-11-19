@@ -5,7 +5,8 @@
 			"Ice bulldog",
 			"Piramidion",
 			"Vlad5250",
-			"Ата"
+			"Ата",
+			"Пан Хаунд"
 		]
 	},
 	"bs-extsearch-extensionname": "Розширений пошук BlueSpice",
@@ -176,5 +177,7 @@
 	"bs-extendedsearch-statistics-report-search-terms": "Пошукові терміни",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Пошукові терміни для кожного користувача",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Повертає результати пошуку користувача лише мовою користувача. Користувачі можуть вибирати свою мову відповідно до своїх уподобань.",
-	"bs-extendedsearch-pref-compact-ac-paths-help": "Показувати компактний макет автозаповнення меню пошуку (макет з одним стовпцем, без попереднього перегляду ескізів)."
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Показувати компактний макет автозаповнення меню пошуку (макет з одним стовпцем, без попереднього перегляду ескізів).",
+	"bs-extendedsearch-close-search-button-aria-label": "Закрити вікно пошуку",
+	"bs-extendedsearch-remove-button-label": "Видалити фільтр \" $1 \""
 }
