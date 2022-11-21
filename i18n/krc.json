@@ -4,6 +4,7 @@
 			"Къарачайлы"
 		]
 	},
+	"bs-extendedsearch-close-search-button-aria-label": "Излеу терезени джаб",
 	"bs-extendedsearch-search-center-filter-has-hidden": "... {{PLURAL:$1|дагъыда $1}}",
 	"bs-extendedsearch-remove-button-label": "\"$1\" фильтрни къорат"
 }
