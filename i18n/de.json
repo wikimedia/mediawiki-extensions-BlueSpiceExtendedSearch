@@ -184,5 +184,6 @@
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Kompaktes Autocomplete Layout des Suchmenüs (einspaltig, ohne Vorschauen)",
 	"bs-extendedsearch-statistics-report-search-terms": "Suchbegriffe",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Suchbegriffe pro Nutzer",
-	"bs-extendedsearch-remove-button-label": "Entferne Filter \"$1\""
+	"bs-extendedsearch-remove-button-label": "Entferne Filter \"$1\"",
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Anzahl der Suchanfragen"
 }

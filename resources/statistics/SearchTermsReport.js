@@ -21,4 +21,10 @@
 		return new bs.aggregatedStatistics.charts.Barchart();
 	};
 
+	bs.extendedsearch.report.SearchTermsReport.prototype.getAxisLabels = function () {
+		return {
+			value: mw.message( 'bs-extendedsearch-statistics-report-search-terms-axis-label' ).text()
+		};
+	};
+
 } )( mediaWiki, jQuery , blueSpice);
