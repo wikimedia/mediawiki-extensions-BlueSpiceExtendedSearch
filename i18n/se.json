@@ -4,5 +4,10 @@
 			"Yupik"
 		]
 	},
-	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Gilkorat:"
+	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Gilkorat:",
+	"bs-extendedsearch-search-center-filter-namespace_text-label": "Nammagomuvuohta",
+	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Nammagomuvuohta:",
+	"bs-extendedsearch-search-center-result-namespace_text-label": "Nammagomuvuohta:",
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nammagomuvuohta",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Nammagomuvuođat"
 }
