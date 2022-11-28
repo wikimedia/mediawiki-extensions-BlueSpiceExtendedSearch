@@ -180,5 +180,6 @@
 	"bs-extendedsearch-statistics-report-search-terms": "Statistics report name",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Statistics report name",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Description for config variable \"ESAutoSetLangFilter\"",
-	"bs-extendedsearch-pref-compact-ac-paths-help": "Description for config variable \"ESCompactAutocomplete\""
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Description for config variable \"ESCompactAutocomplete\"",
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Label for axis for statistics report"
 }
