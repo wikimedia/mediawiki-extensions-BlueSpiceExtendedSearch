@@ -185,5 +185,6 @@
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Renvoie les résultats de recherche pour un utilisateur seulement dans sa langue. Les utilisateurs peuvent définir leur langue dans leurs préférences.",
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Afficher le menu de recherche dans une disposition compacte de complétion automatique (une seule colonne, pas d’aperçu de vignette).",
 	"bs-extendedsearch-remove-button-label": "Enlever le filtre « $1 »",
-	"bs-extendedsearch-close-search-button-aria-label": "Fermer la boîte de recherche"
+	"bs-extendedsearch-close-search-button-aria-label": "Fermer la boîte de recherche",
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Nombre de requêtes de recherche"
 }
