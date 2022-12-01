@@ -5,22 +5,22 @@
 			"Skalcaa"
 		]
 	},
+	"bs-extendedsearch-close-search-button-aria-label": "Zapri iskalno polje",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Imenski prostor",
 	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Imenski prostor:",
 	"bs-extendedsearch-search-center-result-namespace_text-label": "Imenski prostor:",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Prekliči",
-	"bs-extendedsearch-searchcenter-sort-field-namespace": "Imenski prostor",
-	"prefs-extendedsearch": "Razširjeno iskanje",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Imenski prostor(i)",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Uporabi",
 	"bs-extendedsearch-search-center-options-page-size": "Vnosov na stran",
 	"bs-extendedsearch-search-center-options-sort-by": "Razvrsti po",
 	"bs-extendedsearch-searchcenter-sort-field-size": "Velikost",
-	"bs-extendedsearch-filter-add-button-label": "Dodajte filter",
-	"bs-extendedsearch-flyout-similar-pages-title": "Podobne strani",
-	"bs-extendedsearch-remove-button-label": "Odstrani filter »$1«",
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "Imenski prostor",
 	"bs-extendedsearch-search-center-filter-has-hidden": "... {{PLURAL:$1|in še $1}}",
-	"bs-extendedsearch-close-search-button-aria-label": "Zapri iskalno polje",
+	"prefs-extendedsearch": "Razširjeno iskanje",
+	"bs-extendedsearch-filter-add-button-label": "Dodajte filter",
+	"bs-extendedsearch-remove-button-label": "Odstrani filter »$1«",
+	"bs-extendedsearch-flyout-similar-pages-title": "Podobne strani",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Imenski prostor(i)",
 	"right-extendedsearch-search-specialpage": "Iskanje posebnih strani",
 	"right-extendedsearch-search-wikipage": "Iskanje strani",
 	"right-extendedsearch-search-repofile": "Iskanje datotek",
@@ -28,5 +28,6 @@
 	"action-extendedsearch-search-specialpage": "iskanje posebnih strani",
 	"action-extendedsearch-search-wikipage": "iskanje strani",
 	"action-extendedsearch-search-repofile": "iskanje datotek",
-	"action-extendedsearch-search-externalfile": "iskanje zunanjih datotek"
+	"action-extendedsearch-search-externalfile": "iskanje zunanjih datotek",
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Število iskalnih poizvedb"
 }

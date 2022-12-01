@@ -39,6 +39,7 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "Renvoie la pertinence des résultats de recherche",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "Chaîne JSON décodée contenant les informations supplémentaires du contexte de la recherche",
 	"apihelp-bs-extendedsearch-type-store-summary": "Renvoie les types de recherches enregistrés",
+	"bs-extendedsearch-close-search-button-aria-label": "Fermer la boîte de recherche",
 	"bs-extendedsearch-search-button-title": "Commencer la recherche",
 	"bs-extendedsearch-search-button-aria-label": "Commencer la recherche",
 	"bs-extendedsearch-search-input-placeholder": "Trouver…",
@@ -143,6 +144,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Ajouter un filtre",
 	"bs-extendedsearch-options-button-label": "Options de recherche",
 	"bs-extendedsearch-export-button-label": "Exporter les résultats de recherche",
+	"bs-extendedsearch-remove-button-label": "Enlever le filtre « $1 »",
 	"bs-extendedsearch-flyout-similar-pages-title": "Pages similaires",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Aucune page similaire trouvée",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Utilisé sur les pages",
@@ -184,6 +186,5 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Termes de recherche par utilisateur",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Renvoie les résultats de recherche pour un utilisateur seulement dans sa langue. Les utilisateurs peuvent définir leur langue dans leurs préférences.",
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Afficher le menu de recherche dans une disposition compacte de complétion automatique (une seule colonne, pas d’aperçu de vignette).",
-	"bs-extendedsearch-remove-button-label": "Enlever le filtre « $1 »",
-	"bs-extendedsearch-close-search-button-aria-label": "Fermer la boîte de recherche"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Nombre de requêtes de recherche"
 }
