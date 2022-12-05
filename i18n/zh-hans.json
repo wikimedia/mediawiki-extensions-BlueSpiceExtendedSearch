@@ -25,7 +25,8 @@
 			"神樂坂秀吉",
 			"科劳",
 			"落花有意12138",
-			"铁桶"
+			"铁桶",
+			"飞小RAN"
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch搜索后端",
@@ -192,5 +193,9 @@
 	"bs-extendedsearch-statistics-report-search-terms": "搜索关键词",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "各用户的搜索项",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "仅以用户的语言返回用户的搜索结果。 用户可以在他们的首选项中设置他们的语言。",
-	"bs-extendedsearch-remove-button-label": "删除过滤器“ $1 ”"
+	"bs-extendedsearch-remove-button-label": "删除过滤器“ $1 ”",
+	"bs-extendedsearch-close-search-button-aria-label": "关闭搜索框",
+	"bs-extendedsearch-pref-externalfilepaths-help": "用来扫描档案与索引档案出处的外部位置。这些位置以键/值对的形式输入。",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "显示搜索菜单的紧凑自动完成布局（单列布局，无缩略图预览）。",
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "搜索次数"
 }
