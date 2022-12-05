@@ -34,6 +34,7 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "Laat de relevantie van zoekresultaten zien",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "Gedecodeerde JSON-tekenreeks met aanvullende informatie over de context van de zoekopdracht",
 	"apihelp-bs-extendedsearch-type-store-summary": "Laat de geregistreerde zoektypen zien",
+	"bs-extendedsearch-close-search-button-aria-label": "Het zoekvak sluiten",
 	"bs-extendedsearch-search-button-title": "Beginnen met zoeken",
 	"bs-extendedsearch-search-button-aria-label": "Beginnen met zoeken",
 	"bs-extendedsearch-search-input-placeholder": "Zoeken...",
@@ -136,6 +137,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Een filter toevoegen",
 	"bs-extendedsearch-options-button-label": "Zoekopties",
 	"bs-extendedsearch-export-button-label": "Exporteren zoekresultaten",
+	"bs-extendedsearch-remove-button-label": "Filter \"$1\" verwijderen",
 	"bs-extendedsearch-flyout-similar-pages-title": "Vergelijkbare pagina's",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Geen vergelijkbare pagina's gevonden",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Gebruikt op pagina's",
@@ -176,5 +178,6 @@
 	"bs-extendedsearch-statistics-report-search-terms": "Zoektermen",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Zoektermen per gebruiker",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Toont voor een gebruiker alleen de zoekresultaten in de taal van die gebruiker. Gebruikers kunnen hun taal instellen in hun voorkeuren.",
-	"bs-extendedsearch-pref-compact-ac-paths-help": "Het automatisch aanvullen in het zoekmenu in een beknopte opmaak weergeven (éénkolomsopmaak zonder miniatuurvoorvertoning)."
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Het automatisch aanvullen in het zoekmenu in een beknopte opmaak weergeven (éénkolomsopmaak zonder miniatuurvoorvertoning).",
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Aantal zoekopdrachten"
 }

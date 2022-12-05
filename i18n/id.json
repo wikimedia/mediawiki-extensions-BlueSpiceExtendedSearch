@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Arifin.wijaya"
+			"Arifin.wijaya",
+			"DARMAS BUDI SANTOSO"
 		]
 	},
-	"prefs-extendedsearch": "Pencarian lebih lanjut"
+	"prefs-extendedsearch": "Pencarian lebih lanjut",
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Number of search queries"
 }
