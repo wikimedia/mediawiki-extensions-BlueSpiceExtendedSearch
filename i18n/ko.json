@@ -134,5 +134,6 @@
 	"bs-extendedsearch-search-button-title": "검색 시작",
 	"bs-extendedsearch-search-button-aria-label": "검색 시작",
 	"bs-extendedsearch-statistics-report-search-terms": "검색어",
-	"bs-extendedsearch-close-search-button-aria-label": "검색 상자 닫기"
+	"bs-extendedsearch-close-search-button-aria-label": "검색 상자 닫기",
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "검색 쿼리 수"
 }
