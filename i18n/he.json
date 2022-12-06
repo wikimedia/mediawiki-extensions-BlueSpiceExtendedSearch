@@ -130,6 +130,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "קטגוריה/יות",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "ממלא מקום",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "סוג",
+	"bs-extendedsearch-collection-type-searchhistory": "היסטוריית חיפוש",
 	"bs-extendedsearch-collection-var-searchterm": "ביטוי",
 	"bs-extendedsearch-collection-var-numbersearched": "חיפושים",
 	"right-extendedsearch-search-specialpage": "חיפוש אחר דפים מיוחדים",
@@ -140,5 +141,6 @@
 	"action-extendedsearch-search-wikipage": "חיפוש אחר דפים",
 	"action-extendedsearch-search-repofile": "חיפוש אחר קבצים",
 	"action-extendedsearch-search-externalfile": "חיפוש אחר קבצים חיצוניים",
-	"bs-extendedsearch-suggest-operator": "התכוונת לחפש אחר <b>$1</b>?"
+	"bs-extendedsearch-suggest-operator": "התכוונת לחפש אחר <b>$1</b>?",
+	"bs-extendedsearch-statistics-report-search-terms": "ביטויים לחיפוש"
 }
