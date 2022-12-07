@@ -249,6 +249,10 @@
 			.addClass( 'bs-extendedsearch-filter-add-widget tools-button' )
 			.append( this.$button )
 			.on( 'click', { cfg: cfg, parent: this }, this.openAddWidgetDialog );
+			this.$element.children().attr(
+				'aria-label',
+				mw.message( 'bs-extendedsearch-filter-add-button-label' ).text()
+			);
 	}
 
 	OO.inheritClass( bs.extendedSearch.FilterAddWidget, OO.ui.ButtonWidget );
