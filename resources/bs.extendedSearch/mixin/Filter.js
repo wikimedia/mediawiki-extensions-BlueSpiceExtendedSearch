@@ -20,7 +20,7 @@
 		this.$removeButton.attr( 'title', mw.message( "bs-extendedsearch-remove-button-label", cfg.label ).text() );
 		this.$removeButton.children().attr(
 			'aria-label',
-			mw.message( "bs-extendedsearch-remove-button-label", cfg.label ).text()
+			mw.message( "bs-extendedsearch-remove-button-label", cfg.label ).text().replaceAll('"', '')
 		);
 	}
 
