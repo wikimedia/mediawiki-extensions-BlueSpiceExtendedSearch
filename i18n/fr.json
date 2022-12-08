@@ -144,7 +144,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Ajouter un filtre",
 	"bs-extendedsearch-options-button-label": "Options de recherche",
 	"bs-extendedsearch-export-button-label": "Exporter les résultats de recherche",
-	"bs-extendedsearch-remove-button-label": "Enlever le filtre « $1 »",
+	"bs-extendedsearch-remove-button-label": "Retirer le filtre « $1 »",
 	"bs-extendedsearch-flyout-similar-pages-title": "Pages similaires",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Aucune page similaire trouvée",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Utilisé sur les pages",
@@ -186,10 +186,5 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Termes de recherche par utilisateur",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Renvoie les résultats de recherche pour un utilisateur seulement dans sa langue. Les utilisateurs peuvent définir leur langue dans leurs préférences.",
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Afficher le menu de recherche dans une disposition compacte de complétion automatique (une seule colonne, pas d’aperçu de vignette).",
-<<<<<<< HEAD
-	"bs-extendedsearch-remove-button-label": "Enlever le filtre « $1 »",
-	"bs-extendedsearch-close-search-button-aria-label": "Fermer la boîte de recherche",
-=======
->>>>>>> 53518abd609c697249d0051541d0bcc2807e94dd
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Nombre de requêtes de recherche"
 }

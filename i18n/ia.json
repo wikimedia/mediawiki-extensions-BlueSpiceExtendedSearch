@@ -27,6 +27,7 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "Retorna le relevantia de resultatos de recerca",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "Catena JSON decodificate que contine additional information sur le contexto del recerca",
 	"apihelp-bs-extendedsearch-type-store-summary": "Retorna le typos registrate de recerca",
+	"bs-extendedsearch-close-search-button-aria-label": "Clauder le quadro de recerca",
 	"bs-extendedsearch-search-button-title": "Comenciar le recerca",
 	"bs-extendedsearch-search-button-aria-label": "Comenciar le recerca",
 	"bs-extendedsearch-search-input-placeholder": "Cercar ...",
@@ -129,6 +130,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Adder un filtro",
 	"bs-extendedsearch-options-button-label": "Optiones de recerca",
 	"bs-extendedsearch-export-button-label": "Exportar resultatos de recerca",
+	"bs-extendedsearch-remove-button-label": "Remover filtro \"$1\"",
 	"bs-extendedsearch-flyout-similar-pages-title": "Paginas similar",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Nulle paginas similar trovate",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Usate sur paginas",
@@ -170,6 +172,5 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Terminos de recerca per usator",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Retorna resultatos de recerca pro un usator solmente in le lingua del usator. Usatores pote configurar lor lingua in lor preferentias.",
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Monstra un disposition compacte de autocompletion del menu de recerca (disposition unicolumnar sin previsualisation in miniatura).",
-	"bs-extendedsearch-remove-button-label": "Remover filtro \"$1\"",
-	"bs-extendedsearch-close-search-button-aria-label": "Clauder le quadro de recerca"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Numero de consultas de recerca"
 }

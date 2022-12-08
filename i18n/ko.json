@@ -14,6 +14,7 @@
 	"apihelp-bs-extendedsearch-stats-param-stats": "반환되어야 하는 통계 목록",
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "쿼리의 추가 변수",
 	"apihelp-bs-extendedsearch-query-param-search-term": "검색을 수행할 대상이 되는 용어",
+	"bs-extendedsearch-close-search-button-aria-label": "검색 상자 닫기",
 	"bs-extendedsearch-search-button-title": "검색 시작",
 	"bs-extendedsearch-search-button-aria-label": "검색 시작",
 	"bs-extendedsearch-search-input-placeholder": "찾기 ...",
@@ -134,5 +135,5 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "\"$1\"에서 결과 표시",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "\"$1\"에서 검색 중",
 	"bs-extendedsearch-statistics-report-search-terms": "검색어",
-	"bs-extendedsearch-close-search-button-aria-label": "검색 상자 닫기"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "검색 쿼리 수"
 }

@@ -174,10 +174,5 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Termos a pesquisar por utilizador",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Devolve resultados de pesquisa para um utilizador somente na língua do utilizador. Os utilizadores podem definir a sua língua nas preferências.",
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Mostrar um formato de preenchimento automático compacto do menu de pesquisa (formato de uma coluna, sem antevisão de miniaturas).",
-<<<<<<< HEAD
-	"bs-extendedsearch-remove-button-label": "Remover o filtro \"$1\"",
-	"bs-extendedsearch-close-search-button-aria-label": "Fechar caixa de pesquisa",
-=======
->>>>>>> 53518abd609c697249d0051541d0bcc2807e94dd
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Número de consultas de pesquisa"
 }
