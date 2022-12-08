@@ -249,6 +249,8 @@
 			.addClass( 'bs-extendedsearch-filter-add-widget tools-button' )
 			.append( this.$button )
 			.on( 'click', { cfg: cfg, parent: this }, this.openAddWidgetDialog );
+			this.$label.addClass( 'bs-extendedsearch-filter-button-label' )
+			.text( mw.message( 'bs-extendedsearch-filter-add-button-label' ).text() );
 			this.$element.children().attr(
 				'aria-label',
 				mw.message( 'bs-extendedsearch-filter-add-button-label' ).text()
