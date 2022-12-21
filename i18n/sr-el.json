@@ -46,9 +46,9 @@
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Otkaži",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Primeni",
 	"bs-extendedsearch-search-center-options-page-size": "Unosi po stranici",
-	"bs-extendedsearch-search-center-options-sort-by": "Sortiraj po",
-	"bs-extendedsearch-search-center-options-sort-order": "Redosled sortiranja",
-	"bs-extendedsearch-autocomplete-result-type": "Tip: $1",
+	"bs-extendedsearch-search-center-options-sort-by": "Poređaj po",
+	"bs-extendedsearch-search-center-options-sort-order": "Način ređanja",
+	"bs-extendedsearch-autocomplete-result-type": "Vrsta: $1",
 	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Možda tražite i…",
 	"bs-extendedsearch-search-center-result-help": "Otkucajte nešto u traci za pretragu iznad…",
 	"bs-extendedsearch-searchcenter-filter-or-label": "ili",
@@ -95,5 +95,13 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tip",
 	"bs-extendedsearch-collection-type-searchhistory": "Istorija pretrage",
 	"bs-extendedsearch-collection-var-searchterm": "Pojam",
-	"bs-extendedsearch-collection-var-numbersearched": "Pretrage"
+	"bs-extendedsearch-collection-var-numbersearched": "Pretrage",
+	"right-extendedsearch-search-specialpage": "pretraga posebnih stranica",
+	"right-extendedsearch-search-wikipage": "pretraga stranica",
+	"right-extendedsearch-search-repofile": "pretraga datoteka",
+	"right-extendedsearch-search-externalfile": "pretraga spoljašnjih datoteka",
+	"action-extendedsearch-search-specialpage": "pretražujete posebne stranice",
+	"action-extendedsearch-search-wikipage": "pretražujete stranice",
+	"action-extendedsearch-search-repofile": "pretražujete datoteke",
+	"action-extendedsearch-search-externalfile": "pretražujete spoljašnje datoteke"
 }
