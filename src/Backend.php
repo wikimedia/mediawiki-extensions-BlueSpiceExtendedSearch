@@ -5,6 +5,7 @@ namespace BS\ExtendedSearch;
 use BS\ExtendedSearch\Source\Base as SourceBase;
 use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
 use BS\ExtendedSearch\Source\WikiPages;
+use Config;
 use Elastica\Client;
 use Elastica\Exception\ResponseException;
 use Elastica\Index;
@@ -12,11 +13,13 @@ use Elastica\ResultSet;
 use Elastica\Search;
 use Exception;
 use FormatJson;
+use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
 use MWException;
 use RequestContext;
 use stdClass;
 use WikiMap;
+use Wikimedia\Rdbms\LoadBalancer;
 
 class Backend {
 	public const SPELLCHECK_ACTION_IGNORE = 'ignore';
@@ -37,6 +40,11 @@ class Backend {
 	 * @var \Wikimedia\Rdbms\LoadBalancer
 	 */
 	protected $lb = null;
+
+	/**
+	 * @var HookContainer
+	 */
+	protected $hookContainer;
 
 	/**
 	 *
@@ -70,13 +78,16 @@ class Backend {
 
 	/**
 	 * @param Config $config
-	 * @param \Wikimedia\Rdbms\LoadBalancer $lb
+	 * @param LoadBalancer $lb
+	 * @param HookContainer $hookContainer
 	 * @param SourceFactory $sourceFactory
 	 * @param LookupModifierFactory $lookupModifierFactory
 	 * @param array $legacyConfig
 	 */
-	public function __construct( $config, $lb, $sourceFactory, $lookupModifierFactory,
-		array $legacyConfig = [] ) {
+	public function __construct(
+		$config, $lb, HookContainer $hookContainer,
+		$sourceFactory, $lookupModifierFactory, array $legacyConfig = []
+	) {
 		if ( !isset( $legacyConfig['index'] ) ) {
 			$legacyConfig['index'] = strtolower( WikiMap::getCurrentWikiId() );
 		}
@@ -91,6 +102,7 @@ class Backend {
 		$this->legacyConfig = new \HashConfig( $legacyConfig );
 		$this->config = new \MultiConfig( [ $config, $this->legacyConfig ] );
 		$this->lb = $lb;
+		$this->hookContainer = $hookContainer;
 		$this->sourceFactory = $sourceFactory;
 		$this->lookupModifierFactory = $lookupModifierFactory;
 	}
@@ -277,17 +289,27 @@ class Backend {
 			throw new MWException( "Source \"$sourceKey\" does not exist!" );
 		}
 		$source = $this->sources[$sourceKey];
+
+		$mappingProvider = $source->getMappingProvider();
 		$indexSettings = $source->getIndexSettings();
+		$mappingProperties = $mappingProvider->getPropertyConfig();
+		$this->hookContainer->run(
+			'BSExtendedSearchBeforeCreateIndex',
+			[
+				$source,
+				&$indexSettings,
+				&$mappingProperties
+			]
+		);
 
 		$index = $this->getIndexByType( $source->getTypeKey() );
-		$response = $index->create( $indexSettings );
+		$index->create( $indexSettings );
 
 		$type = $index->getType( $source->getTypeKey() );
 
 		$mapping = new \Elastica\Type\Mapping();
 		$mapping->setType( $type );
-		$mappingProvider = $source->getMappingProvider();
-		$mapping->setProperties( $mappingProvider->getPropertyConfig() );
+		$mapping->setProperties( $mappingProperties );
 
 		$sourceConfig = $mappingProvider->getSourceConfig();
 		if ( !empty( $sourceConfig ) ) {
