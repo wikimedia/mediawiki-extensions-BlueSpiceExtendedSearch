@@ -7,6 +7,7 @@ use BS\ExtendedSearch\ExternalIndexFactory;
 use BS\ExtendedSearch\IExternalIndex;
 use BS\ExtendedSearch\Source\Base;
 use Exception;
+use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
 use MWException;
 use Status;
@@ -150,7 +151,7 @@ abstract class UpdateBase extends \Job {
 	protected function shouldSkipProcessing() {
 		$job = $this;
 		$skip = $this->skipProcessing();
-		MediaWikiServices::getInstance()->getHookContainer()->run(
+		$this->getHookContainer()->run(
 			'BSExtendedSearchIndexDocumentSkip',
 			[
 				$job,
@@ -159,6 +160,13 @@ abstract class UpdateBase extends \Job {
 		);
 
 		return $skip;
+	}
+
+	/**
+	 * @return HookContainer
+	 */
+	protected function getHookContainer() {
+		return MediaWikiServices::getInstance()->getHookContainer();
 	}
 
 	/**
