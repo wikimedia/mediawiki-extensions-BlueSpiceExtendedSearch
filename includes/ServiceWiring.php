@@ -62,6 +62,7 @@ return [
 		return new $backendClass(
 			$config,
 			$services->getDBLoadBalancer(),
+			$services->getHookContainer(),
 			$services->getService( 'BSExtendedSearchSourceFactory' ),
 			$services->getService( 'BSExtendedSearchLookupModifierFactory' ),
 			$legacyConfig
