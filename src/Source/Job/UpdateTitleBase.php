@@ -36,6 +36,15 @@ class UpdateTitleBase extends UpdateBase {
 			$this->getDocumentProviderUri(),
 			$providerSource
 		);
+		$this->getHookContainer()->run(
+			'BSExtendedSearchGetDocumentData',
+			[
+				$this->dp,
+				&$aDC,
+				$this->getDocumentProviderUri(),
+				$providerSource
+			]
+		);
 		$this->getSource()->addDocumentsToIndex( [ $aDC ] );
 
 		return $aDC;
