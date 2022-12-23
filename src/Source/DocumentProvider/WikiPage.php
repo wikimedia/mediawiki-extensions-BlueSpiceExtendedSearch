@@ -262,27 +262,29 @@ class WikiPage extends DecoratorBase {
 
 	/**
 	 *
+	 * @param Title|null $title
 	 * @return string
 	 */
-	protected function getDisplayTitle() {
-		if ( !$this->isLatestRevision() ) {
+	protected function getDisplayTitle( $title = null ) {
+		if ( !$title && !$this->isLatestRevision() ) {
 			return $this->title->getPrefixedText();
 		}
-		$displayTitle = $this->getPageProps( $this->title, 'displaytitle' );
+		$title = $title ?? $this->title;
+		$displayTitle = $this->getPageProps( $title, 'displaytitle' );
 		if ( $displayTitle ) {
 			return $displayTitle;
 		}
-		if ( $this->title->getNamespace() === NS_USER ) {
-			$user = User::newFromName( $this->title->getDBkey() );
+		if ( $title->getNamespace() === NS_USER ) {
+			$user = User::newFromName( $title->getDBkey() );
 			if ( $user instanceof User ) {
 				if ( $user->isRegistered() && $user->getRealName() !== '' ) {
 					return $user->getRealName();
 				}
 			}
 			// Fall back to username
-			return $this->title->getText();
+			return $title->getText();
 		}
-		return $this->title->getPrefixedText();
+		return $title->getPrefixedText();
 	}
 
 	/**
