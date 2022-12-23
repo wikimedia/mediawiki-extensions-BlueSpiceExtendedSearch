@@ -29,5 +29,6 @@
 	"action-extendedsearch-search-wikipage": "iskanje strani",
 	"action-extendedsearch-search-repofile": "iskanje datotek",
 	"action-extendedsearch-search-externalfile": "iskanje zunanjih datotek",
-	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Število iskalnih poizvedb"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Število iskalnih poizvedb",
+	"bs-extendedsearch-loadmore-label": "Naloži več zadetkov"
 }
