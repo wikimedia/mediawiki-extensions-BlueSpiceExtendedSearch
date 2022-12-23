@@ -4,6 +4,11 @@ use BlueSpice\ExtensionAttributeBasedRegistry;
 use BS\ExtendedSearch\LookupModifierFactory;
 use MediaWiki\MediaWikiServices;
 
+// PHP unit does not understand code coverage for this file
+// as the @covers annotation cannot cover a specific file
+// This is fully tested in ServiceWiringTest.php
+// @codeCoverageIgnoreStart
+
 return [
 	'BSExtendedSearchSourceFactory' => static function ( MediaWikiServices $services ) {
 		return new \BS\ExtendedSearch\SourceFactory(
@@ -69,3 +74,5 @@ return [
 		);
 	},
 ];
+
+// @codeCoverageIgnoreEnd
