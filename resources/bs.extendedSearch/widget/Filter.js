@@ -35,7 +35,8 @@
 
 		this.$button
 			.addClass( 'bs-extendedsearch-filter-button-button' )
-			.append( this.$label );
+			.append( this.$label )
+			.attr( 'tabindex', 0 );
 
 		this.connect( this, { click: 'onShowOptions' } );
 
