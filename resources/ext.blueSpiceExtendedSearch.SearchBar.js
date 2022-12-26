@@ -264,7 +264,7 @@
 		} );
 		clearButton.$button.attr( 'aria-label', mw.msg( 'bs-extendedsearch-close-search-button-aria-label' ) );
 		clearButton.$button.on( 'click', this.onClearSearch.bind( this ) );
-		clearButton.$button.on( 'keydown', this.onClearSearch.bind( this ) );
+		clearButton.$button.on( 'keydown', this.onClearSearchKeyDown.bind( this ) );
 
 		var sbW = this.$searchBox.outerWidth();
 
@@ -378,6 +378,13 @@
 		this.toggleClearButton( '' );
 
 		this.emit( 'clearSearch', e );
+		this.$searchBox.focus();
+	};
+
+	bs.extendedSearch.SearchBar.prototype.onClearSearchKeyDown = function( e ) {
+		if( e.which == 13 ) {
+			this.onClearSearch();
+		}
 	};
 
 	bs.extendedSearch.SearchBar.prototype.setValue = function( value ) {
