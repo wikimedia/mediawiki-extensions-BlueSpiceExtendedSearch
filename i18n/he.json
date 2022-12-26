@@ -109,6 +109,7 @@
 	"bs-extendedsearch-pref-external-file-paths-path-help": "נתיב אחסון. עבור כוננים מורכבים, למשל: X:\\Documents",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "כל הקבצים שנוספו מהמיקום הפיזי הממופתח מקבלים תחילית בתוצאות החיפוש. יש להשתמש בו אם קבצים זמינים משרת וב. כברירת מחדל, תחילית ה־URL מוגדרת לאותו ערך כמו הנתיב הפיזי.",
 	"bs-extendedsearch-autocomplete-modified-time-label": "שונה לאחרונה: $1",
+	"bs-extendedseach-wikipage-section-more-text": "... עוד $1",
 	"bs-extendedsearch-pref-compact-ac-paths": "להשתמש בהשלמה אוטומטית פשוטה",
 	"bs-extendedsearch-search-center-result-redirects-label": "הופנה מהדף:",
 	"bs-extendedsearch-redirect-target-label": "הפניות לדף:",
