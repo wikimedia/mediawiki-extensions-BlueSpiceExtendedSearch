@@ -142,5 +142,6 @@
 	"bs-extendedsearch-search-center-hitcount-suggest": "האם התכוונת לחפש $1 ({{PLURAL:$2|תוצאה אחת|$2 תוצאות}})?",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "כל הקבצים שנוספו מהמיקום הפיזי הממופתח מקבלים תחילית בתוצאות החיפוש. יש להשתמש בו אם קבצים זמינים משרת וב. כברירת מחדל, תחילית ה־URL מוגדרת לאותו ערך כמו הנתיב הפיזי.",
 	"bs-extendedsearch-collection-type-searchhistory": "היסטוריית חיפוש",
-	"bs-extendedsearch-statistics-report-search-terms": "ביטויים לחיפוש"
+	"bs-extendedsearch-statistics-report-search-terms": "ביטויים לחיפוש",
+	"bs-extendedseach-wikipage-section-more-text": "... עוד $1"
 }
