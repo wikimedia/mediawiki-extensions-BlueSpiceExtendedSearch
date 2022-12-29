@@ -30,5 +30,7 @@
 	"action-extendedsearch-search-repofile": "iskanje datotek",
 	"action-extendedsearch-search-externalfile": "iskanje zunanjih datotek",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Število iskalnih poizvedb",
-	"bs-extendedsearch-loadmore-label": "Naloži več zadetkov"
+	"bs-extendedsearch-loadmore-label": "Naloži več zadetkov",
+	"bs-extendedsearch-search-center-options-sort-order": "Vrstni red",
+	"bs-extendedsearch-pref-auto-set-lang-filter": "Samodejno nastavi jezikovni filter"
 }
