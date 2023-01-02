@@ -9,5 +9,6 @@
 	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Nammagomuvuohta:",
 	"bs-extendedsearch-search-center-result-namespace_text-label": "Nammagomuvuohta:",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nammagomuvuohta",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Nammagomuvuođat"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Nammagomuvuođat",
+	"bs-extendedsearch-collection-type-searchhistory": "Ohcanhistorjá"
 }
