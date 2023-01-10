@@ -34,5 +34,10 @@
 	},
 	"extra": {
 		"installer-name": "BlueSpiceExtendedSearch"
+	},
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true
+		}
 	}
 }
