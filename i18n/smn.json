@@ -13,5 +13,6 @@
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Nommâ",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Majemustáá nubástittum: $1",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Jooskâ",
-	"bs-extendedsearch-collection-type-searchhistory": "Uuccâmhistorjá"
+	"bs-extendedsearch-collection-type-searchhistory": "Uuccâmhistorjá",
+	"bs-extendedsearch-search-center-addfilter-dialog-title": "Lasseet sillee"
 }
