@@ -4,7 +4,8 @@
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
 			"Felipe L. Ewald",
-			"Juan90264"
+			"Juan90264",
+			"Mello25"
 		]
 	},
 	"bs-extsearch-desc": "Motor de pesquisa Elasticsearch",
@@ -133,6 +134,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Acrescentar um filtro",
 	"bs-extendedsearch-options-button-label": "Opções de pesquisa",
 	"bs-extendedsearch-export-button-label": "Exportar resultados da pesquisa",
+	"bs-extendedsearch-remove-button-label": "Remove o filtro \"$1\"",
 	"bs-extendedsearch-flyout-similar-pages-title": "Páginas similares",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Nenhuma página semelhante encontrada",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Usado em páginas",
@@ -173,5 +175,6 @@
 	"bs-extendedsearch-statistics-report-search-terms": "Termos de pesquisa",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Termos de pesquisa por usuário",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Retorna resultados de pesquisa para um usuário apenas no idioma do usuário. Os usuários podem definir seu idioma em suas preferências.",
-	"bs-extendedsearch-pref-compact-ac-paths-help": "Mostra um layout de preenchimento automático compacto do menu de pesquisa (layout de uma coluna, sem visualização em miniatura)."
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Mostra um layout de preenchimento automático compacto do menu de pesquisa (layout de uma coluna, sem visualização em miniatura).",
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Número de consultas de pesquisa"
 }

@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kimberli Mäkäräinen (WMNO)",
 			"Yupik"
 		]
 	},
+	"bs-extendedsearch-search-center-addfilter-dialog-title": "Lasit silli",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Nammagomuvuohta",
 	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Nammagomuvuohta:",
 	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Gilkorat:",
