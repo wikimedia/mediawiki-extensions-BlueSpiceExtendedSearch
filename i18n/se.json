@@ -12,5 +12,6 @@
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nammagomuvuohta",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Nammagomuvuođat",
 	"bs-extendedsearch-collection-type-searchhistory": "Ohcanhistorjá",
-	"bs-extendedsearch-search-center-addfilter-dialog-title": "Lasit silli"
+	"bs-extendedsearch-search-center-addfilter-dialog-title": "Lasit silli",
+	"bs-extendedsearch-admin-label-error": "Meattáhus"
 }
