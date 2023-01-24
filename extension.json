@@ -538,6 +538,7 @@
 		},
 		"ext.blueSpiceExtendedSearch.TagSearch": {
 			"scripts": "ext.blueSpiceExtendedSearch.TagSearch.js",
+			"styles": "ext.blueSpiceExtendedSearch.contentdroplets.css",
 			"dependencies": [
 				"ext.blueSpiceExtendedSearch.Autocomplete"
 			]

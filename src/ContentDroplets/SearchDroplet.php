@@ -6,34 +6,28 @@ namespace BS\ExtendedSearch\ContentDroplets;
 
 use MediaWiki\Extension\ContentDroplets\Droplet\TagDroplet;
 use Message;
-use RawMessage;
 
 class SearchDroplet extends TagDroplet {
-
-	/**
-	 */
-	public function __construct() {
-	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function getName(): Message {
-		return new RawMessage( 'Search' );
+		return Message::newFromKey( 'bs-extendedsearch-droplet-search-name' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function getDescription(): Message {
-		return new RawMessage( "Insert search" );
+		return Message::newFromKey( 'bs-extendedsearch-droplet-search-description' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function getIcon(): string {
-		return 'search';
+		return 'droplet-tag-search';
 	}
 
 	/**
