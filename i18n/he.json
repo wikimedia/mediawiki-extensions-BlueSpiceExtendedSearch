@@ -119,7 +119,7 @@
 	"apihelp-bs-extendedsearch-triggerupdate-param-title": "כותרת הדף שהעדכון אמור להיות מופעל עליו",
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "פרמטרים נוספים לשאילתה",
 	"apihelp-bs-extendedsearch-generic-param-backend": "מפתח השרת המוגדר שיש לבצע שאילתה עליו",
-	"apihelp-bs-extendedsearch-generic-param-sources": "מקור אחד או יותר בתוך השרת שצוין, מופרד על־ידי קו אנכי. אם זה ריק, תישלח שאילתה לכל המקורות הזמינים.",
+	"apihelp-bs-extendedsearch-generic-param-sources": "מקור אחד או יותר בתוך השרת שצוין, מופרד על־ידי קו ניצב. אם זה ריק, תישלח שאילתה לכל המקורות הזמינים.",
 	"apihelp-bs-extendedsearch-query-param-search-term": "המונח שעבורו מתבצע החיפוש",
 	"apihelp-bs-extendedsearch-autocomplete-summary": "החזרת תוצאות של השלמה אוטומטית משאילתה נתונה",
 	"apihelp-bs-extendedsearch-query-param-search-data": "מחרוזת מפוענחת של JSON המכילה מידע נוסף על ההקשר של החיפוש",
@@ -143,5 +143,8 @@
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "כל הקבצים שנוספו מהמיקום הפיזי הממופתח מקבלים תחילית בתוצאות החיפוש. יש להשתמש בו אם קבצים זמינים משרת וב. כברירת מחדל, תחילית ה־URL מוגדרת לאותו ערך כמו הנתיב הפיזי.",
 	"bs-extendedsearch-collection-type-searchhistory": "היסטוריית חיפוש",
 	"bs-extendedsearch-statistics-report-search-terms": "ביטויים לחיפוש",
-	"bs-extendedseach-wikipage-section-more-text": "... עוד $1"
+	"bs-extendedseach-wikipage-section-more-text": "... עוד $1",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "רשימה של שמות מרחבי שמות תקינים או מזהים מופרדים בקו ניצב (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "רשימה של שמות קטגוריות תקינים מופרדים בקו ניצב (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "רשימה של סוגי תוצאות חוקיים מופרדים בקו ניצב (|)"
 }
