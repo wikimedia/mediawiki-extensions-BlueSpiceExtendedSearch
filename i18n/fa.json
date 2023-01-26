@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"0PAWN0",
 			"Alirezaaa",
 			"Amirsara",
 			"Beginneruser",
@@ -107,6 +108,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "رده(ها)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "فهرست نام‌های معتبر رده‌ها، جداشده با لوله (|)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "رده ۱|رده۲|...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "برای جستجو تایپ کنید...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "نوع",
 	"bs-extendedsearch-collection-type-searchhistory": "تاریخچهٔ جستجو",
 	"bs-extendedsearch-collection-var-searchterm": "عبارت",
