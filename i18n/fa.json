@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"0PAWN0",
 			"Alirezaaa",
 			"Amirsara",
 			"Beginneruser",
@@ -123,5 +124,6 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "نمایش نتایج سراسری",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "جستجو در «$1»",
 	"bs-extendedsearch-statistics-report-search-terms": "عبارت‌های جستجو",
-	"bs-extendedsearch-statistics-report-search-term-by-user": "عبارت‌های جستجو به‌ازای کاربر"
+	"bs-extendedsearch-statistics-report-search-term-by-user": "عبارت‌های جستجو به‌ازای کاربر",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "برای جستجو تایپ کنید..."
 }
