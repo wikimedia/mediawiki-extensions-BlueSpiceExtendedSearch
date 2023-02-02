@@ -146,5 +146,11 @@
 	"bs-extendedseach-wikipage-section-more-text": "... עוד $1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "רשימה של שמות מרחבי שמות תקינים או מזהים מופרדים בקו ניצב (|)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "רשימה של שמות קטגוריות תקינים מופרדים בקו ניצב (|)",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "רשימה של סוגי תוצאות חוקיים מופרדים בקו ניצב (|)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "רשימה של סוגי תוצאות חוקיים מופרדים בקו ניצב (|)",
+	"bs-extendedsearch-search-center-filter-has-hidden": "... {{PLURAL:$1|ועוד $1}}",
+	"bs-extendedsearch-pref-external-file-paths-excludes": "לא לכלול את התבניות",
+	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "הביטוי הרגולרי אינו תקין",
+	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "לא לכלול ביטוי רגולרי",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "נא להקליד לחיפוש...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "אופרטור חיפוש"
 }
