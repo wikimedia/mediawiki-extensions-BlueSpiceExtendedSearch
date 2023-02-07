@@ -62,7 +62,7 @@
 	"bs-extendedsearch-search-center-filter-tags-with-values-label": "タグ:",
 	"bs-extendedsearch-search-center-filter-categories-with-values-label": "カテゴリ:",
 	"bs-extendedsearch-search-center-filter-type-with-values-label": "種類:",
-	"bs-extendedsearch-search-center-filter-no-options-label": "有効なアバターがありません。",
+	"bs-extendedsearch-search-center-filter-no-options-label": "利用可能な値がありません",
 	"bs-extendedsearch-search-center-result-namespace_text-label": "名前空間:",
 	"bs-extendedsearch-search-center-result-categories-label": "カテゴリ:",
 	"bs-extendedsearch-search-center-result-author-label": "作者:",
