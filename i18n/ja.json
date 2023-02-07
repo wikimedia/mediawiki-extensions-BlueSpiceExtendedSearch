@@ -92,7 +92,7 @@
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "保留中の更新ジョブ",
 	"bs-extendedsearch-search-center-hitcount-widget": "$2に対して$1{{PLURAL:$1|ヒット}}",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "フィルターを追加",
-	"bs-extendedsearch-search-center-filter-no-options-label": "有効なアバターがありません。",
+	"bs-extendedsearch-search-center-filter-no-options-label": "利用可能な値がありません",
 	"bs-extendedsearch-search-center-result-ctime-label": "作成:",
 	"bs-extendedsearch-search-center-result-mtime-label": "変更:",
 	"bs-extendedsearch-search-center-result-no-results": "指定された用語は見つかりませんでした。",
