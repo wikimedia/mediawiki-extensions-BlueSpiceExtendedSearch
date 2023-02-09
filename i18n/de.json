@@ -185,5 +185,7 @@
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Zeigt nur Suchergebnisse in der Sprache des Benutzers an. Benutzer können ihre Sprache in ihren Einstellungen festlegen.",
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Kompaktes Autocomplete Layout des Suchmenüs (einspaltig, ohne Vorschauen)",
 	"bs-extendedsearch-remove-button-label": "Entferne Filter \"$1\"",
-	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Anzahl der Suchanfragen"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Anzahl der Suchanfragen",
+	"bs-extendedsearch-droplet-search-name": "Suchfeld",
+	"bs-extendedsearch-droplet-search-description": "Suchfeld zum Seiteninhalt hinzufügen"
 }
