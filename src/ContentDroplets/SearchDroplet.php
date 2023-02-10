@@ -33,8 +33,8 @@ class SearchDroplet extends TagDroplet {
 	/**
 	 * @inheritDoc
 	 */
-	public function getRLModule(): string {
-		return 'ext.blueSpiceExtendedSearch.TagSearch';
+	public function getRLModules(): array {
+		return [ 'ext.blueSpiceExtendedSearch.TagSearch' ];
 	}
 
 	/**
