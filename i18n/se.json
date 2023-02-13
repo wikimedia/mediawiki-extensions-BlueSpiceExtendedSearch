@@ -13,5 +13,9 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Nammagomuvuođat",
 	"bs-extendedsearch-collection-type-searchhistory": "Ohcanhistorjá",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Lasit silli",
-	"bs-extendedsearch-admin-label-error": "Meattáhus"
+	"bs-extendedsearch-admin-label-error": "Meattáhus",
+	"bs-extendedsearch-source-label-specialpage": "Doaibmasiidu",
+	"bs-extendedsearch-source-type-specialpage-label": "Doaibmasiidu",
+	"right-extendedsearch-search-specialpage": "ohcat doaibmasiidduid",
+	"action-extendedsearch-search-specialpage": "ohcat doaibmasiidduid"
 }
