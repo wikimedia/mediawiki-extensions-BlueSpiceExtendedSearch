@@ -2,9 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Elisardojm",
-			"Iváns"
+			"Iváns",
+			"Xabier Cid"
 		]
 	},
+	"bs-extendedsearch-admin-label-error": "Erro",
+	"bs-extendedsearch-admin-heading-sources-documentscount": "Documentos",
 	"bs-extendedsearch-search-center-pagesize-dialog-title": "Resultados por páxina",
 	"bs-extendedsearch-search-center-sort-order-asc": "Ascendente",
 	"bs-extendedsearch-search-center-sort-order-desc": "Descendente",
