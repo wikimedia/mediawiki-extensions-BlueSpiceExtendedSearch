@@ -23,7 +23,8 @@
 		if( $.isEmptyObject( this.pageCreateData ) === false ) {
 			var createPageButton = new OO.ui.ButtonWidget( {
 				framed: false,
-				label: '',
+				label: mw.message( 'bs-extendedsearch-search-center-create-page-link', this.pageCreateData.title )
+				.text().replaceAll( '"', '' ),
 				href: this.pageCreateData.url
 			} );
 			createPageButton.$element.addClass( 'bs-extendedsearch-create-page-button tools-button' );
@@ -31,6 +32,10 @@
 				'title',
 				mw.message( 'bs-extendedsearch-search-center-create-page-link', this.pageCreateData.title ).text()
 			);
+			createPageButton.$label.addClass( "bs-extendedsearch-filter-button-label" );
+			createPageButton.$element.children().attr( 'aria-label',
+			mw.message( 'bs-extendedsearch-search-center-create-page-link', this.pageCreateData.title )
+			.text().replaceAll( '"', '' ) );
 			createPageButton.$element.on( 'click', { url: this.pageCreateData.url }, function( e ) {
 				window.location.href = e.data.url;
 			} );
