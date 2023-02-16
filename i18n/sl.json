@@ -117,7 +117,7 @@
 	"bs-extendedsearch-pref-compact-ac-paths": "Uporabi preprosto samodokončanje",
 	"bs-extendedsearch-compact-ac-paths-desc": "Ali naj se uporablja preprosto pojavno okno za samodokončanje",
 	"bs-extendedsearch-search-center-result-redirects-label": "Preusmerjeno iz:",
-	"bs-extendedsearch-default-filters-desc": "Niz filtrov, ki naj bodo privzeto nastavljeni",
+	"bs-extendedsearch-default-filters-desc": "Matrika filtrov, ki naj bodo privzeto nastavljeni",
 	"bs-extendedsearch-redirect-target-label": "Preusmerja na:",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Jezik strani",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Jezik strani:",
