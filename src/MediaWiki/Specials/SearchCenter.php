@@ -44,9 +44,10 @@ class SearchCenter extends SpecialPage {
 		// we must use raw_term to set the lookup
 		if ( $rawTerm !== '' ) {
 			// If raw term is contained in the query string, it means lookup did have time to update
-			$rawTermIsPartial = $this->isRawTermPartial( $queryString['query'], $rawTerm );
+			$originalQS = $queryString['query'] ?? '';
+			$rawTermIsPartial = $this->isRawTermPartial( $originalQS, $rawTerm );
 
-			if ( $queryString['query'] === '' || ( $queryString['query'] !== $rawTerm && !$rawTermIsPartial ) ) {
+			if ( $originalQS === '' || ( $originalQS !== $rawTerm && !$rawTermIsPartial ) ) {
 				$queryString['query'] = $rawTerm;
 				$lookup->setQueryString( $queryString );
 			}
