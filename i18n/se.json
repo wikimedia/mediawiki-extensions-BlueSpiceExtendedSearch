@@ -12,10 +12,13 @@
 	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Nammagomuvuohta:",
 	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Gilkorat:",
 	"bs-extendedsearch-search-center-result-namespace_text-label": "Nammagomuvuohta:",
+	"bs-extendedsearch-search-center-pagesize-dialog-title": "Bohtosat siiddus",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Šluhtte",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nammagomuvuohta",
 	"bs-extendedsearch-source-type-specialpage-label": "Doaibmasiidu",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Nammagomuvuođat",
 	"bs-extendedsearch-collection-type-searchhistory": "Ohcanhistorjá",
 	"right-extendedsearch-search-specialpage": "ohcat doaibmasiidduid",
+	"right-extendedsearch-search-repofile": "Ohcat fiillaid",
 	"action-extendedsearch-search-specialpage": "ohcat doaibmasiidduid"
 }
