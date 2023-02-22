@@ -45,5 +45,10 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Luokat",
 	"bs-extendedsearch-search-button-title": "Aloita haku",
 	"bs-extendedsearch-search-button-aria-label": "Aloita haku",
-	"bs-extendedsearch-admin-heading-sources-documentscount": "Asiakirjoja"
+	"bs-extendedsearch-admin-heading-sources-documentscount": "Asiakirjoja",
+	"bs-extendedsearch-search-center-sort-order-asc": "Nouseva",
+	"bs-extendedsearch-search-center-sort-order-desc": "Laskeva",
+	"bs-extendedsearch-search-center-options-sort-order": "Lajittelujärjestys",
+	"bs-extendedsearch-source-type-repofile-label": "Paikallinen tiedosto",
+	"bs-extendedsearch-source-type-specialpage-label": "Toimintosivu"
 }
