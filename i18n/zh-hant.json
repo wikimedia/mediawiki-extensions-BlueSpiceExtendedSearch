@@ -30,6 +30,7 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "回傳搜尋結果的關聯內容",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "JSON 解碼字串包含搜尋上下文的額外資訊",
 	"apihelp-bs-extendedsearch-type-store-summary": "回傳已註冊搜尋類型",
+	"bs-extendedsearch-close-search-button-aria-label": "關閉搜尋框",
 	"bs-extendedsearch-search-button-title": "開始搜尋",
 	"bs-extendedsearch-search-button-aria-label": "開始搜尋",
 	"bs-extendedsearch-search-input-placeholder": "尋找...",
@@ -173,5 +174,6 @@
 	"bs-extendedsearch-statistics-report-search-terms": "搜尋項",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "各使用者搜尋項",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "使用者的搜尋僅會回傳該使用者所使用語言的結果。使用者可以在他們的偏好設定中更改他們的語言。",
-	"bs-extendedsearch-pref-compact-ac-paths-help": "顯示搜尋選單的簡潔自動完成陳列（一欄陳列，無縮圖預覽）。"
+	"bs-extendedsearch-pref-compact-ac-paths-help": "顯示搜尋選單的簡潔自動完成陳列（一欄陳列，無縮圖預覽）。",
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "搜尋查詢次數目"
 }
