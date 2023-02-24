@@ -7,6 +7,7 @@
 			"Kokage si",
 			"MathXplore",
 			"Otokoume",
+			"Ryoya3",
 			"Shirayuki",
 			"Waki285",
 			"背番号4のエース"
@@ -91,6 +92,7 @@
 	"bs-extendedsearch-searchcenter-sort-field-ctime": "作成時間",
 	"bs-extendedsearch-searchcenter-sort-field-size": "サイズ",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "名前空間",
+	"bs-extendedsearch-autocomplete-create-page-link": "ページ「$1」を作成",
 	"bs-extendedsearch-loadmore-label": "結果をもっと読み込む",
 	"bs-extendedsearch-loadmore-error": "これ以上の結果を取得できません",
 	"bs-extendedsearch-search-center-result-typetext-label": "種類:",
