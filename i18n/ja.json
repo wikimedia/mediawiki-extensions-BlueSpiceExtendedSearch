@@ -7,6 +7,7 @@
 			"Kokage si",
 			"MathXplore",
 			"Otokoume",
+			"Ryoya3",
 			"Shirayuki",
 			"Waki285",
 			"背番号4のエース"
@@ -110,5 +111,6 @@
 	"bs-extendedsearch-loadmore-error": "これ以上の結果を取得できません",
 	"bs-extendedsearch-search-center-result-typetext-label": "種類:",
 	"bs-extendedsearch-source-type-repofile-label": "ファイルの読み込み",
-	"bs-extendedsearch-autocomplete-fulltext-search-button": "全文検索"
+	"bs-extendedsearch-autocomplete-fulltext-search-button": "全文検索",
+	"bs-extendedsearch-autocomplete-create-page-link": "ページ「$1」を作成"
 }
