@@ -2,8 +2,10 @@
 
 namespace BS\ExtendedSearch\Source\Updater;
 
+use BS\ExtendedSearch\Source\Job\UpdateWikiPage;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Permissions\Authority;
 use MediaWiki\Revision\RevisionStoreRecord;
 use MediaWiki\Storage\EditResult;
 use Title;
@@ -31,6 +33,12 @@ class WikiPage extends Base {
 		$hookContainer->register(
 			'AfterImportPage', [ $this, 'onAfterImportPage' ]
 		);
+		$hookContainer->register(
+			'ContentStabilizationStablePointAdded', [ $this, 'onStablePointAdded' ]
+		);
+		$hookContainer->register(
+			'ContentStabilizationStablePointRemoved', [ $this, 'onStablePointRemoved' ]
+		);
 
 		parent::init( $hookContainer );
 	}
@@ -49,7 +57,7 @@ class WikiPage extends Base {
 	public function onPageSaveComplete( MWWikiPage $wikiPage, User $user, string $summary,
 		int $flags, RevisionStoreRecord $revisionRecord, EditResult $editResult ) {
 		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
-			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage( $wikiPage->getTitle() )
+			new UpdateWikiPage( $wikiPage->getTitle() )
 		);
 		return true;
 	}
@@ -66,7 +74,7 @@ class WikiPage extends Base {
 	 */
 	public function onArticleDeleteComplete( &$article, \User &$user, $reason, $id, ?\Content $content, \LogEntry $logEntry ) {
 		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
-			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage( $article->getTitle() )
+			new UpdateWikiPage( $article->getTitle() )
 		);
 		return true;
 	}
@@ -81,7 +89,7 @@ class WikiPage extends Base {
 	 */
 	public function onArticleUndelete( Title $title, $create, $comment, $oldPageId ) {
 		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
-			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage( $title )
+			new UpdateWikiPage( $title )
 		);
 		return true;
 	}
@@ -95,10 +103,10 @@ class WikiPage extends Base {
 	 */
 	public function onTitleMoveComplete( $title, $newtitle, $user ) {
 		$jobs = [
-			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage(
+			new UpdateWikiPage(
 				Title::newFromLinkTarget( $title )
 			),
-			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage(
+			new UpdateWikiPage(
 				Title::newFromLinkTarget( $newtitle )
 			),
 		];
@@ -120,8 +128,33 @@ class WikiPage extends Base {
 			return true;
 		}
 		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
-			new \BS\ExtendedSearch\Source\Job\UpdateWikiPage( $title )
+			new UpdateWikiPage( $title )
 		);
 		return true;
+	}
+
+	/**
+	 * @param StablePoint $stablePoint
+	 *
+	 * @return void
+	 */
+	public function onStablePointAdded( $stablePoint ) {
+		$title = Title::castFromPageIdentity( $stablePoint->getPage() );
+		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
+			new UpdateWikiPage( $title )
+		);
+	}
+
+	/**
+	 * @param StablePoint $stablePoint
+	 * @param Authority $authority
+	 *
+	 * @return void
+	 */
+	public function onStablePointRemoved( $stablePoint, Authority $authority ) {
+		$title = Title::castFromPageIdentity( $stablePoint->getPage() );
+		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
+			new UpdateWikiPage( $title )
+		);
 	}
 }
