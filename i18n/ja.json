@@ -10,6 +10,7 @@
 			"Ryoya3",
 			"Shirayuki",
 			"Waki285",
+			"もなー(偽物)",
 			"背番号4のエース"
 		]
 	},
@@ -168,5 +169,10 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "ユーザーあたりの検索語句",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "ユーザーの言語のみでユーザーの検索結果を返します。ユーザーはプリファレンスで言語を設定できます。",
 	"bs-extendedsearch-pref-compact-ac-paths-help": "検索メニューのコンパクトなオートコンプリート レイアウトを表示します (1 列のレイアウト、サムネイル プレビューなし)。",
-	"bs-extendedsearch-statistics-report-search-terms-axis-label": "検索クエリ数"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "検索クエリ数",
+	"bs-extendedsearch-search-center-hitcount-replaced": "$1の結果を表示しています。({{PLURAL:$3|$3 hit|$3 hits}})の代わりに$2を検索してください",
+	"bs-extendedsearch-search-center-hitcount-suggest": "もしかして: $1 ({{PLURAL:$2|$2 hit|$2 hits}})?",
+	"bs-extendedsearch-pref-external-file-paths-path-help": "ストレージのパスです。例: (マウント済みドライブの場合) X:\\Documents",
+	"bs-extendedsearch-wikipage-title-original": "(元のタイトル: $1)",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "ページ$1 : テキスト: $2"
 }
