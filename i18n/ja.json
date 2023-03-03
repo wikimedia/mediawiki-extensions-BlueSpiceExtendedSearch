@@ -174,5 +174,9 @@
 	"bs-extendedsearch-search-center-hitcount-suggest": "もしかして: $1 ({{PLURAL:$2|$2 hit|$2 hits}})?",
 	"bs-extendedsearch-pref-external-file-paths-path-help": "ストレージのパスです。例: (マウント済みドライブの場合) X:\\Documents",
 	"bs-extendedsearch-wikipage-title-original": "(元のタイトル: $1)",
-	"bs-extendedsearch-privacy-transparency-content-highlight": "ページ$1 : テキスト: $2"
+	"bs-extendedsearch-privacy-transparency-content-highlight": "ページ$1 : テキスト: $2",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "パイプ (|) で区切られた有効な名前空間名または ID のリスト",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "パイプ (|) で区切られた有効なカテゴリ名のリスト",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "パイプ (|) で区切られた有効な結果の種類のリスト",
+	"bs-extendedsearch-suggest-operator": "もしかして:<b>$1</b>"
 }
