@@ -53,6 +53,7 @@
 	"bs-extendedsearch-admin-heading-sources-documentscount": "ドキュメント",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "保留中の更新ジョブ",
 	"bs-extendedsearch-search-center-hitcount-widget": "$2に対して$1{{PLURAL:$1|ヒット}}",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "$2に対して約$1件ヒット",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "フィルターを追加",
 	"bs-extendedsearch-search-center-filter-extension-label": "拡張機能",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "名前空間",
