@@ -178,5 +178,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "パイプ (|) で区切られた有効な名前空間名または ID のリスト",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "パイプ (|) で区切られた有効なカテゴリ名のリスト",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "パイプ (|) で区切られた有効な結果の種類のリスト",
-	"bs-extendedsearch-suggest-operator": "もしかして:<b>$1</b>"
+	"bs-extendedsearch-suggest-operator": "もしかして:<b>$1</b>",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "$2に対して約$1件ヒット"
 }
