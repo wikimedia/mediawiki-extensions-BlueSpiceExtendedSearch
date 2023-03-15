@@ -694,6 +694,10 @@
 			},
 			"public": false
 		},
+		"ESSharedRepofileIndex": {
+			"description": "Index name to used as a shared index of type repofile",
+			"value": null
+		},
 		"TagSearchSearchFieldTemplatePath": {
 			"value": "/resources/templates",
 			"path": true

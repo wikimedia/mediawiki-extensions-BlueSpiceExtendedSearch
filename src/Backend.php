@@ -968,7 +968,16 @@ class Backend {
 	 */
 	protected function addAllIndexesForQuery( Search &$search ) {
 		foreach ( $this->getSources() as $key => $source ) {
-			$search->addIndex( $this->getConfig()->get( 'index' ) . '_' . $key );
+			$indexName = $this->getConfig()->get( 'index' ) . '_' . $key;
+			if ( $key === 'repofile' ) {
+				// If using setup to have a shared upload instance, we need to use the shared index
+				// to avoid indexing same content in multiple wikis
+				$sharedIndex = $this->getConfig()->get( 'ESSharedRepofileIndex' );
+				if ( is_string( $sharedIndex ) && !empty( $sharedIndex ) ) {
+					$indexName = $sharedIndex;
+				}
+			}
+			$search->addIndex( $indexName );
 		}
 	}
 }
