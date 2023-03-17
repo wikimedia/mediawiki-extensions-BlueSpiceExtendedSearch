@@ -185,5 +185,7 @@
 	"bs-extendedsearch-statistics-report-search-terms": "Suchbegriffe",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Suchbegriffe pro Nutzer",
 	"bs-extendedsearch-remove-button-label": "Entferne Filter \"$1\"",
-	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Anzahl der Suchanfragen"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Anzahl der Suchanfragen",
+	"bs-extendedsearch-droplet-search-name": "Suchfeld",
+	"bs-extendedsearch-droplet-search-description": "Suchfeld zum Seiteninhalt hinzufügen"
 }
