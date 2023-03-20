@@ -197,5 +197,7 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "各用户的搜索项",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "仅以用户的语言返回用户的搜索结果。 用户可以在他们的首选项中设置他们的语言。",
 	"bs-extendedsearch-pref-compact-ac-paths-help": "显示搜索菜单的紧凑自动完成布局（单列布局，无缩略图预览）。",
-	"bs-extendedsearch-statistics-report-search-terms-axis-label": "搜索次数"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "搜索次数",
+	"bs-extendedsearch-droplet-search-name": "搜索区",
+	"bs-extendedsearch-droplet-search-description": "向页面内容添加一个搜索区"
 }

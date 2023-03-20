@@ -179,5 +179,7 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Zoektermen per gebruiker",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Toont voor een gebruiker alleen de zoekresultaten in de taal van die gebruiker. Gebruikers kunnen hun taal instellen in hun voorkeuren.",
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Het automatisch aanvullen in het zoekmenu in een beknopte opmaak weergeven (éénkolomsopmaak zonder miniatuurvoorvertoning).",
-	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Aantal zoekopdrachten"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Aantal zoekopdrachten",
+	"bs-extendedsearch-droplet-search-name": "Zoekveld",
+	"bs-extendedsearch-droplet-search-description": "Voegt een zoekveld toe aan de pagina-inhoud"
 }

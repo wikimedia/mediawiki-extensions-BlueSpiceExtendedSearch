@@ -173,5 +173,7 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Iskalni izrazi na uporabnika",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Vrne zadetke iskanja za uporabnika samo v jeziku uporabnika. Uporabniki lahko jezik nastavijo v svojih prilagoditvah.",
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Prikaži strnjeno postavitev samodokončanja iskalnega menija (postavitev z enim stolpcem, brez predogleda sličic).",
-	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Število iskalnih poizvedb"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Število iskalnih poizvedb",
+	"bs-extendedsearch-droplet-search-name": "Iskalno polje",
+	"bs-extendedsearch-droplet-search-description": "Vsebini strani doda iskalno polje"
 }
