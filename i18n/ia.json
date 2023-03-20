@@ -172,5 +172,7 @@
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Monstra un disposition compacte de autocompletion del menu de recerca (disposition unicolumnar sin previsualisation in miniatura).",
 	"bs-extendedsearch-remove-button-label": "Remover filtro \"$1\"",
 	"bs-extendedsearch-close-search-button-aria-label": "Clauder le quadro de recerca",
-	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Numero de consultas de recerca"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Numero de consultas de recerca",
+	"bs-extendedsearch-droplet-search-name": "Campo de recerca",
+	"bs-extendedsearch-droplet-search-description": "Adde un campo de recerca al contento del pagina"
 }
