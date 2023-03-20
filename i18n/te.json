@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"V Bhavya",
 			"Veeven"
 		]
 	},
@@ -30,5 +31,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "వర్గము(లు)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "వర్గం1|వర్గం2|...",
 	"bs-extendedsearch-collection-type-searchhistory": "వెతుకుడు చరిత్ర",
-	"bs-extendedsearch-suggest-operator": "మీరు <b>$1</b> కోసం వెతకాలనుకున్నారా?"
+	"bs-extendedsearch-suggest-operator": "మీరు <b>$1</b> కోసం వెతకాలనుకున్నారా?",
+	"bs-extendedsearch-droplet-search-name": "శోధన ఫీల్డ్",
+	"bs-extendedsearch-droplet-search-description": "పేజీ కంటెంట్‌కి శోధన ఫీల్డ్‌ను జోడిస్తుంది"
 }

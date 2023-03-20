@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Abuluntu",
+			"EdoAug",
 			"Jon Harald Søby"
 		]
 	},
@@ -169,5 +170,6 @@
 	"bs-extendedsearch-search-button-aria-label": "Begynn søk",
 	"bs-extendedsearch-statistics-report-search-terms": "Søkeord",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Søkeord per bruker",
-	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Returnerer søkeresultater for en bruker kun på brukerens språk. Brukerne kan velge språket sitt i innstillingene."
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Returnerer søkeresultater for en bruker kun på brukerens språk. Brukerne kan velge språket sitt i innstillingene.",
+	"bs-extendedsearch-droplet-search-name": "Søkefelt"
 }

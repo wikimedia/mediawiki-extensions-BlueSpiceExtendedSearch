@@ -197,5 +197,7 @@
 	"bs-extendedsearch-close-search-button-aria-label": "关闭搜索框",
 	"bs-extendedsearch-pref-externalfilepaths-help": "用来扫描档案与索引档案出处的外部位置。这些位置以键/值对的形式输入。",
 	"bs-extendedsearch-pref-compact-ac-paths-help": "显示搜索菜单的紧凑自动完成布局（单列布局，无缩略图预览）。",
-	"bs-extendedsearch-statistics-report-search-terms-axis-label": "搜索次数"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "搜索次数",
+	"bs-extendedsearch-droplet-search-name": "搜索区",
+	"bs-extendedsearch-droplet-search-description": "向页面内容添加一个搜索区"
 }
