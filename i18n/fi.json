@@ -55,5 +55,6 @@
 	"bs-extendedsearch-source-label-specialpage": "Toimintosivu",
 	"bs-extendedsearch-search-center-filter-categories-label": "Luokka",
 	"bs-extendedsearch-search-center-filter-type-label": "Tyyppi",
-	"bs-extendedsearch-source-type-wikipage-label": "Wikisivu"
+	"bs-extendedsearch-source-type-wikipage-label": "Wikisivu",
+	"prefs-extendedsearch": "Laajennettu haku"
 }
