@@ -44,6 +44,7 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Wikisivu",
 	"bs-extendedsearch-source-type-repofile-label": "Paikallinen tiedosto",
 	"bs-extendedsearch-source-type-specialpage-label": "Toimintosivu",
+	"prefs-extendedsearch": "Laajennettu haku",
 	"bs-extendedseach-wikipage-section-more-text": "... $1 lisää",
 	"bs-extendedsearch-redirect-target-label": "Ohjaa sivulle:",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Sivun kieli",
