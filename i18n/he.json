@@ -176,5 +176,7 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "מונחי חיפוש לכל משתמש",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "החזרת תוצאות חיפוש עבור משתמש רק בשפת המשתמש. משתמשים יכולים להגדיר את השפה שלהם בהעדפות שלהם.",
 	"bs-extendedsearch-pref-compact-ac-paths-help": "הצגת פריסת השלמה אוטומטית קומפקטית של תפריט החיפוש (פריסת עמודה אחת, ללא תצוגה מקדימה של תמונות ממוזערות).",
-	"bs-extendedsearch-statistics-report-search-terms-axis-label": "מספר שאילתות החיפוש"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "מספר שאילתות החיפוש",
+	"bs-extendedsearch-droplet-search-name": "שדה חיפוש",
+	"bs-extendedsearch-droplet-search-description": "הוספת שדה חיפוש לתוכן הדף"
 }
