@@ -4,8 +4,8 @@ namespace BS\ExtendedSearch\Privacy;
 
 use BlueSpice\Privacy\IPrivacyHandler;
 use BlueSpice\Privacy\Module\Transparency;
-use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
+use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\IDatabase;
 
 class Handler implements IPrivacyHandler {
@@ -89,7 +89,7 @@ class Handler implements IPrivacyHandler {
 		] );
 		$lookup->addSourceField( 'prefixed_title' );
 
-		$searchBackend = Backend::instance();
+		$searchBackend = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchBackend' );
 
 		$client = $searchBackend->getClient();
 		$search = new \Elastica\Search( $client );

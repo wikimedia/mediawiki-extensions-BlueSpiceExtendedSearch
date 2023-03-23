@@ -226,15 +226,6 @@ class Backend {
 	}
 
 	/**
-	 * @deprecated since version 3.1.13 - use service BSExtendedSearchBackend instead
-	 * @return Backend
-	 */
-	public static function instance() {
-		wfDebugLog( 'bluespice-deprecations', __METHOD__, 'private' );
-		return MediaWikiServices::getInstance()->getService( 'BSExtendedSearchBackend' );
-	}
-
-	/**
 	 * Deletes all indexes of all types existing
 	 * for this index prefix
 	 *

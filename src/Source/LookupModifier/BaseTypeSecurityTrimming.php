@@ -32,13 +32,14 @@ class BaseTypeSecurityTrimming extends Base {
 	public function apply() {
 		$typesToBlock = [];
 
-		$backend = \BS\ExtendedSearch\Backend::instance();
+		$services = MediaWikiServices::getInstance();
+		$backend = $services->getService( 'BSExtendedSearchBackend' );
 		foreach ( $backend->getSources() as $key => $source ) {
 			$searchPermission = $source->getSearchPermission();
 			if ( !$searchPermission ) {
 				continue;
 			}
-			$isAllowed = MediaWikiServices::getInstance()->getPermissionManager()->userHasRight(
+			$isAllowed = $services->getPermissionManager()->userHasRight(
 				$this->user,
 				$searchPermission
 			);

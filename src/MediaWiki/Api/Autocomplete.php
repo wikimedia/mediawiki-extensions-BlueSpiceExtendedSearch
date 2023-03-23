@@ -152,7 +152,7 @@ class Autocomplete extends \ApiBase {
 	protected $suggestions;
 
 	protected function lookUpResults() {
-		$backend = \BS\ExtendedSearch\Backend::instance( $this->backend );
+		$backend = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchBackend' );
 		if ( $this->secondaryRequestData ) {
 			$this->suggestions = $backend->runAutocompleteSecondaryLookup(
 				$this->lookup,
