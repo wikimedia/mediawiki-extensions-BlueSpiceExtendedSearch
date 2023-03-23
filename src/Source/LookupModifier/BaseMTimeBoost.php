@@ -9,6 +9,7 @@ use Elastica\Client;
 use Elastica\Result;
 use Elastica\ResultSet;
 use Elastica\Search;
+use MediaWiki\MediaWikiServices;
 
 class BaseMTimeBoost extends Base {
 
@@ -30,7 +31,7 @@ class BaseMTimeBoost extends Base {
 	public function __construct( &$lookup, \IContextSource $context ) {
 		parent::__construct( $lookup, $context );
 
-		$this->config = Backend::instance()->getConfig();
+		$this->config = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchBackend' );
 		$this->setSearch();
 	}
 

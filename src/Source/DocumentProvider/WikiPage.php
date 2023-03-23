@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\Source\DocumentProvider;
 
 use Content;
 use FatalError;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MWException;
 use ParserOptions;
@@ -106,8 +107,7 @@ class WikiPage extends DecoratorBase {
 	 */
 	public function getPageProps( Title $title, $prop = null, $default = null ) {
 		if ( $this->pageProps === null ) {
-			$this->pageProps = $this->services->getService( 'BSUtilityFactory' )
-				->getPagePropHelper( $title )->getPageProps();
+			$this->pageProps = MediaWikiServices::getInstance()->getPageProps()->getAllProperties( $title );
 		}
 
 		if ( $prop !== null ) {

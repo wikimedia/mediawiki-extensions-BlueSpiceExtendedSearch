@@ -11,7 +11,7 @@ class TypeStore extends \BSApiExtJSStoreBase {
 	 */
 	protected function makeData( $sQuery = '' ) {
 		$aData = [];
-		$backend = \BS\ExtendedSearch\Backend::instance();
+		$backend = $this->services->getService( 'BSExtendedSearchBackend' );
 		$sources = $backend->getSources();
 		foreach ( $sources as $source ) {
 			$aData[] = $source->getTypeKey();

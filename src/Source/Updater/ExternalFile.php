@@ -25,7 +25,7 @@ class ExternalFile extends RunJobsTriggerHandler {
 	public function __construct( $config, $loadBalancer, $notifier ) {
 		parent::__construct( $config, $loadBalancer, $notifier );
 
-		$this->backend = \BS\ExtendedSearch\Backend::instance();
+		$this->backend = $this->services->getService( 'BSExtendedSearchBackend' );
 		$this->index = $this->backend->getIndexByType( $this->sourceKey );
 	}
 

@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch\Param\Validator;
 
+use MediaWiki\MediaWikiServices;
 use ValueValidators\PackagePrivate\ValueValidatorBase;
 
 class SearchResultTypeValidator extends ValueValidatorBase {
@@ -39,7 +40,7 @@ class SearchResultTypeValidator extends ValueValidatorBase {
 	 */
 	protected function getSourceTypeKeys() {
 		$sourceTypeKeys = [];
-		$backend = \BS\ExtendedSearch\Backend::instance();
+		$backend = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchBackend' );
 		$sources = $backend->getSources();
 		foreach ( $sources as $source ) {
 			$sourceTypeKeys[] = $source->getTypeKey();

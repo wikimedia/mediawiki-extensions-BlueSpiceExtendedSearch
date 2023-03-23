@@ -2,7 +2,6 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Specials;
 
-use BS\ExtendedSearch\Backend as SearchBackend;
 use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\Source\Base;
 use FormatJson;
@@ -24,8 +23,9 @@ class SearchCenter extends SpecialPage {
 	public function execute( $subPage ) {
 		$this->setHeaders();
 
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
-		$pm = MediaWikiServices::getInstance()->getPermissionManager();
+		$serivces = MediaWikiServices::getInstance();
+		$config = $serivces->getConfigFactory()->makeConfig( 'bsg' );
+		$pm = $serivces->getPermissionManager();
 
 		$returnTo = $this->getRequest()->getText( 'returnto' );
 		$title = Title::newFromText( $returnTo );
@@ -56,7 +56,7 @@ class SearchCenter extends SpecialPage {
 		$out = $this->getOutput();
 		$out->addModules( "ext.blueSpiceExtendedSearch.SearchCenter" );
 
-		$localBackend = SearchBackend::instance();
+		$localBackend = $serivces->getService( 'BSExtendedSearchBackend' );
 		$defaultResultStructure = $localBackend->getDefaultResultStructure();
 
 		$base = new Base( $localBackend, [] );

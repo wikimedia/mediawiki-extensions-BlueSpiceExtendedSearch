@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
+use MediaWiki\MediaWikiServices;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class Query extends \ApiBase {
@@ -88,7 +89,7 @@ class Query extends \ApiBase {
 	protected $resultSet;
 
 	protected function lookUpResults() {
-		$oBackend = \BS\ExtendedSearch\Backend::instance( $this->sBackend );
+		$oBackend = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchBackend' );
 		$this->resultSet = $oBackend->runLookup( $this->oLookup );
 	}
 
