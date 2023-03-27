@@ -56,5 +56,7 @@
 	"bs-extendedsearch-search-center-filter-categories-label": "Luokka",
 	"bs-extendedsearch-search-center-filter-type-label": "Tyyppi",
 	"bs-extendedsearch-source-type-wikipage-label": "Wikisivu",
-	"prefs-extendedsearch": "Laajennettu haku"
+	"prefs-extendedsearch": "Laajennettu haku",
+	"bs-extendedsearch-autocomplete-create-page-link": "Luo sivu \"$1\"",
+	"bs-extendedsearch-search-center-create-page-link": "Luo sivu \"$1\""
 }
