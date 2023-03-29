@@ -114,14 +114,14 @@ class Autocomplete extends \ApiBase {
 			$pageName = ucfirst( $pageName );
 		}
 
-		$title = \Title::makeTitle(
+		$title = \Title::makeTitleSafe(
 			$this->searchData['namespace'],
 			$pageName
 		);
 		$user = $this->getUser();
 		$pm = MediaWikiServices::getInstance()->getPermissionManager();
 
-		if ( $title->exists() == false &&
+		if ( $title && $title->exists() == false &&
 			$pm->userCan( 'createpage', $user, $title ) &&
 			$pm->userCan( 'edit', $user, $title )
 		) {
