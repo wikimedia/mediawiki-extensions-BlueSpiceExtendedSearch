@@ -179,5 +179,7 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "ユーザーあたりの検索語句",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "ユーザーの言語のみでユーザーの検索結果を返します。ユーザーはプリファレンスで言語を設定できます。",
 	"bs-extendedsearch-pref-compact-ac-paths-help": "検索メニューのコンパクトなオートコンプリート レイアウトを表示します (1 列のレイアウト、サムネイル プレビューなし)。",
-	"bs-extendedsearch-statistics-report-search-terms-axis-label": "検索クエリ数"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "検索クエリ数",
+	"bs-extendedsearch-droplet-search-name": "検索欄",
+	"bs-extendedsearch-droplet-search-description": "ページのコンテンツに検索欄を追加"
 }
