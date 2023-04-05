@@ -98,7 +98,7 @@
 	};
 
 	bs.extendedSearch.SearchBar.prototype.detectSubpage = function( value ) {
-		if ( this.mainpage ) {
+		if ( this.mainpage && !this.namespace ) {
 			value = [ this.mainpage, value ].join( '/' );
 		}
 		var parts = value.split( '/' );
