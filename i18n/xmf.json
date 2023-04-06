@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Narazeni"
+		]
+	},
+	"bs-extendedsearch-source-label-wikipage": "ვიკი ხასჷლა",
+	"bs-extendedsearch-search-center-result-ctime-label": "გიჭყჷ:",
+	"bs-extendedsearch-searchcenter-sort-field-ctime": "გოჭყაფაშ ბორჯი",
+	"bs-extendedsearch-autocomplete-create-page-link": "გაჭყი ხასჷლა „$1\"",
+	"bs-extendedsearch-source-type-specialpage-label": "გჷშაკერძაფილი ხასჷლა",
+	"bs-extendedsearch-search-center-filter-page_language-label": "ხასჷლაშ ნინა",
+	"bs-extendedsearch-search-center-create-page-link": "გაჭყი ხასჷლა „$1\"",
+	"bs-extendedsearch-flyout-similar-pages-title": "მოგვენი ხასჷლეფი"
+}
