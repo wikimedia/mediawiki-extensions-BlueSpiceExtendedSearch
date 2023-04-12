@@ -116,6 +116,10 @@ class BlueSpiceSearch extends \SearchEngine {
 
 		$search = new \Elastica\Search( $this->backend->getClient() );
 		$search->addIndex( $this->backend->getConfig()->get( 'index' ) . '_wikipage' );
+		$sharedPrefix = $this->backend->getSharedUploadsIndexPrefix();
+		if ( $sharedPrefix ) {
+			$search->addIndex( $sharedPrefix . '_wikipage' );
+		}
 
 		$results = $search->search( $lookup->getQueryDSL() );
 

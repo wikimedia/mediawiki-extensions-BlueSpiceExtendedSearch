@@ -968,16 +968,35 @@ class Backend {
 	 */
 	protected function addAllIndexesForQuery( Search &$search ) {
 		foreach ( $this->getSources() as $key => $source ) {
-			$indexName = $this->getConfig()->get( 'index' ) . '_' . $key;
-			if ( $key === 'repofile' ) {
-				// If using setup to have a shared upload instance, we need to use the shared index
-				// to avoid indexing same content in multiple wikis
-				$sharedIndex = $this->getConfig()->get( 'ESSharedRepofileIndex' );
-				if ( is_string( $sharedIndex ) && !empty( $sharedIndex ) ) {
-					$indexName = $sharedIndex;
-				}
-			}
-			$search->addIndex( $indexName );
+			$search->addIndex( $this->getConfig()->get( 'index' ) . '_' . $key );
+			$this->maybeAddSharedIndex( $search, $key );
 		}
+	}
+
+	/**
+	 * @param Search &$search
+	 * @param string $key
+	 *
+	 * @return void
+	 */
+	private function maybeAddSharedIndex( Search &$search, string $key ) {
+		$prefix = $this->getSharedUploadsIndexPrefix();
+		if ( !$prefix || !in_array( $key, [ 'wikipage', 'repofile' ] ) ) {
+			return;
+		}
+		$indexName = $prefix . '_' . $key;
+		$search->addIndex( $indexName );
+	}
+
+	/**
+	 * @return string|null
+	 */
+	public function getSharedUploadsIndexPrefix(): ?string {
+		$useSharedUploads = $this->getConfig()->get( 'ESUseSharedUploads' );
+		$indexPrefix = $this->getConfig()->get( 'ESSharedUploadsIndexPrefix' );
+		if ( !$useSharedUploads || !$indexPrefix ) {
+			return null;
+		}
+		return $indexPrefix;
 	}
 }
