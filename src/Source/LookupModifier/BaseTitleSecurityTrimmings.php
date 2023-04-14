@@ -3,24 +3,44 @@
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Backend;
+use BS\ExtendedSearch\Lookup;
+use Elastica\ResultSet;
+use IContextSource;
+use MediaWiki\MediaWikiServices;
 
 class BaseTitleSecurityTrimmings extends Base {
+	/** @var Backend */
+	protected $backend;
 	/** @var \Config */
 	protected $config;
 	/** @var \Elastica\Search */
 	protected $search;
+	/** @var string|null */
+	protected $sharedIndex = null;
+
+	/**
+	 * @param MediaWikiServices $services
+	 * @param Lookup $lookup
+	 * @param IContextSource $context
+	 * @return Base
+	 */
+	public static function factory( MediaWikiServices $services, Lookup $lookup, IContextSource $context ) {
+		return new static( $services->getService( 'BSExtendedSearchBackend' ), $lookup, $context );
+	}
 
 	/**
 	 *
-	 * @param \BS\ExtendedSearch\Lookup &$lookup
+	 * @param Backend $backend
+	 * @param Lookup &$lookup
 	 * @param \IContextSource $context
 	 */
-	public function __construct( &$lookup, \IContextSource $context ) {
+	public function __construct( Backend $backend, &$lookup, \IContextSource $context ) {
 		parent::__construct( $lookup, $context );
 
-		// Should be injected
-		$this->config = Backend::instance()->getConfig();
+		$this->backend = $backend;
+		$this->config = $this->backend->getConfig();
 		$this->setSearch();
+		$this->setSharedIndices();
 	}
 
 	public function setSearch() {
@@ -97,6 +117,12 @@ class BaseTitleSecurityTrimmings extends Base {
 
 			foreach ( $results->getResults() as $resultObject ) {
 				$data = $resultObject->getData();
+				if ( $this->sharedIndex && $resultObject->getIndex() === $this->sharedIndex ) {
+					if ( $data['namespace'] !== NS_FILE ) {
+						$excludes[] = $resultObject->getId();
+					}
+					continue;
+				}
 
 				if ( isset( $data['namespace'] ) == false ) {
 					// If result has no namespace set, \Title creation is N/A
@@ -150,7 +176,7 @@ class BaseTitleSecurityTrimmings extends Base {
 	 * Runs preprocessor query
 	 *
 	 * @param Lookup $lookup
-	 * @return array|false if no results are retrieved
+	 * @return ResultSet|false if no results are retrieved
 	 */
 	protected function runPrepQuery( $lookup ) {
 		try {
@@ -187,5 +213,14 @@ class BaseTitleSecurityTrimmings extends Base {
 			Backend::QUERY_TYPE_AUTOCOMPLETE,
 			Backend::QUERY_TYPE_SEARCH
 		];
+	}
+
+	private function setSharedIndices() {
+		$prefix = $this->backend->getSharedUploadsIndexPrefix();
+		if ( !$prefix ) {
+			return;
+		}
+		$this->sharedIndex = $prefix . '_wikipage';
+		$this->search->addIndex( $this->sharedIndex );
 	}
 }

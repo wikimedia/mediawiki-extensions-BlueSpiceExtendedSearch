@@ -694,9 +694,13 @@
 			},
 			"public": false
 		},
-		"ESSharedRepofileIndex": {
-			"description": "Index name to used as a shared index of type repofile",
-			"value": null
+		"ESUseSharedUploads": {
+			"description": "If `$wgUseSharedUploads` is set to true, this setting will allow to search for files in the shared upload directory",
+			"value": false
+		},
+		"ESSharedUploadsIndexPrefix": {
+			"description": "Prefix for the search index in the shared uploads wiki",
+			"value": false
 		},
 		"TagSearchSearchFieldTemplatePath": {
 			"value": "/resources/templates",
