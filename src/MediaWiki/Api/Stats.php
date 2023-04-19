@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
+use MediaWiki\MediaWikiServices;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class Stats extends \ApiBase {
@@ -16,7 +17,7 @@ class Stats extends \ApiBase {
 		$result = $this->getResult();
 		$stats = [];
 
-		$this->backend = \BS\ExtendedSearch\Backend::instance();
+		$this->backend = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchBackend' );
 
 		try {
 			$stats = $this->makeBackendStats( $this->backend );

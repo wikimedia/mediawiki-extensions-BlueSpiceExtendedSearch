@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 require_once "elasticScriptBase.php";
 
 class rebuildIndex extends elasticScriptBase {
@@ -18,7 +20,7 @@ class rebuildIndex extends elasticScriptBase {
 			$this->countDown( 5 );
 		}
 
-		$backend = \BS\ExtendedSearch\Backend::instance();
+		$backend = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchBackend' );
 		$sources = $backend->getSources();
 		foreach ( $sources as $source ) {
 			$sourceKey = $source->getTypeKey();

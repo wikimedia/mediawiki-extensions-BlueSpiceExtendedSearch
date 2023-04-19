@@ -3,7 +3,6 @@
 namespace BS\ExtendedSearch\JSConfigVariable;
 
 use BlueSpice\JSConfigVariable;
-use BS\ExtendedSearch\Backend;
 use Exception;
 use FormatJson;
 use MediaWiki\MediaWikiServices;
@@ -15,14 +14,13 @@ class ESSimilarPages extends JSConfigVariable {
 	 */
 	public function getValue() {
 		try {
+			$services = MediaWikiServices::getInstance();
 			$title = $this->getContext()->getTitle();
 			// Execution time for entire code here,
 			// on ~1000 pages index => 102ms
-			$similarPages = Backend::instance()->getSimilarPages(
-				$title
-			);
+			$similarPages = $services->getService( 'BSExtendedSearchBackend' )->getSimilarPages( $title );
 
-			$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
+			$linkRenderer = $services->getLinkRenderer();
 
 			$pageLinks = [];
 			foreach ( $similarPages as $title ) {

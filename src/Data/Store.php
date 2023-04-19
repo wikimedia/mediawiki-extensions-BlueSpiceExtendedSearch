@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Data;
 
 use BS\ExtendedSearch\Backend;
+use MediaWiki\MediaWikiServices;
 use MWStake\MediaWiki\Component\DataStore\IStore;
 
 abstract class Store implements IStore {
@@ -29,9 +30,7 @@ abstract class Store implements IStore {
 		if ( $this->searchBackend ) {
 			return $this->searchBackend;
 		}
-		$this->searchBackend = Backend::instance(
-			$this->getSearchBackendKey()
-		);
+		$this->searchBackend = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchBackend' );
 		return $this->searchBackend;
 	}
 
