@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Proabscorp!"
+			"Proabscorp!",
+			"IND-ANP"
 		]
 	},
+	"bs-extendedsearch-admin-label-error": "त्रुटि",
 	"bs-extendedsearch-search-center-filter-tags-with-values-label": "टैग सिनी"
 }
