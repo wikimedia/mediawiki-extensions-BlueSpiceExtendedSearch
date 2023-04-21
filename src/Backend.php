@@ -16,6 +16,7 @@ use FormatJson;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
 use MWException;
+use MWStake\MediaWiki\Component\ManifestRegistry\ManifestRegistryFactory;
 use RequestContext;
 use stdClass;
 use WikiMap;
@@ -603,6 +604,9 @@ class Backend {
 			return $spellcheckResult;
 		}
 		$spellCheckConfig = $this->getSpellCheckConfig();
+		if ( !( $spellCheckConfig['enabled'] ?? false ) ) {
+			return $spellcheckResult;
+		}
 
 		$origTermLookup = $lookup;
 		$origHitCount = $search->count( $origTermLookup->getQueryDSL() );
@@ -788,10 +792,10 @@ class Backend {
 	 * @return array
 	 */
 	public function getSpellCheckConfig() {
-		$spellCheckConfig = \ExtensionRegistry::getInstance()
-			->getAttribute( 'BlueSpiceExtendedSearchSpellCheck' );
-
-		return $spellCheckConfig;
+		/** @var ManifestRegistryFactory $factory */
+		$factory = $this->getService( 'MWStakeManifestRegistryFactory' );
+		$registry = $factory->get( 'BlueSpiceExtendedSearchSpellCheck' );
+		return $registry->getAllValues();
 	}
 
 	/**
