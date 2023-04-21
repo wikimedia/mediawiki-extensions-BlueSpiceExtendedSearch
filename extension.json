@@ -208,6 +208,7 @@
 				"fields": [ "categories" ]
 			},
 			"SpellCheck": {
+				"enabled": true,
 				"suggestField": "basename",
 				"replaceThreshold": 0.01,
 				"suggestThreshold": 0.3
