@@ -1,0 +1,76 @@
+[
+	{
+		"name": "bs_extendedsearch_history",
+		"columns": [
+			{
+				"name": "esh_id",
+				"type": "integer",
+				"options": {
+					"notnull": true,
+					"autoincrement": true
+				}
+			},
+			{
+				"name": "esh_user",
+				"type": "integer",
+				"options": {
+					"length": 6,
+					"notnull": true
+				}
+			},
+			{
+				"name": "esh_term",
+				"type": "string",
+				"options": {
+					"length": 255,
+					"notnull": true
+				}
+			},
+			{
+				"name": "esh_hits",
+				"type": "integer",
+				"options": {
+					"notnull": true,
+					"default": 0
+				}
+			},
+			{
+				"name": "esh_hits_approximated",
+				"type": "smallint",
+				"options": {
+					"length": 1,
+					"notnull": true,
+					"default": 0
+				}
+			},
+			{
+				"name": "esh_timestamp",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": false
+				}
+			},
+			{
+				"name": "esh_autocorrected",
+				"type": "smallint",
+				"options": {
+					"length": 1,
+					"notnull": true,
+					"default": 0
+				}
+			},
+			{
+				"name": "esh_lookup",
+				"type": "text",
+				"options": {
+					"length": 65535,
+					"notnull": false
+				}
+			}
+		],
+		"indexes": [],
+		"pk": [
+			"esh_id"
+		]
+	}
+]

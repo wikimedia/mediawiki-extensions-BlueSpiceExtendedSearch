@@ -1,0 +1,44 @@
+[
+	{
+		"name": "bs_extendedsearch_relevance",
+		"columns": [
+			{
+				"name": "esr_user",
+				"type": "integer",
+				"options": {
+					"length": 6,
+					"notnull": true
+				}
+			},
+			{
+				"name": "esr_result",
+				"type": "string",
+				"options": {
+					"length": 100,
+					"notnull": true
+				}
+			},
+			{
+				"name": "esr_value",
+				"type": "smallint",
+				"options": {
+					"length": 1,
+					"notnull": true,
+					"default": 0
+				}
+			},
+			{
+				"name": "esr_timestamp",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": false
+				}
+			}
+		],
+		"indexes": [],
+		"pk": [
+			"esr_user",
+			"esr_result"
+		]
+	}
+]
