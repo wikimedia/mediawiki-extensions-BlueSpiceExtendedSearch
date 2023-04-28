@@ -107,7 +107,8 @@ class WikiPage extends DecoratorBase {
 	 */
 	public function getPageProps( Title $title, $prop = null, $default = null ) {
 		if ( $this->pageProps === null ) {
-			$this->pageProps = MediaWikiServices::getInstance()->getPageProps()->getAllProperties( $title );
+			$pageProps = MediaWikiServices::getInstance()->getPageProps()->getAllProperties( $title );
+			$this->pageProps = $pageProps[$title->getArticleID()] ?? [];
 		}
 
 		if ( $prop !== null ) {
