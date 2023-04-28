@@ -31,7 +31,7 @@ class BaseMTimeBoost extends Base {
 	public function __construct( &$lookup, \IContextSource $context ) {
 		parent::__construct( $lookup, $context );
 
-		$this->config = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchBackend' );
+		$this->config = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchBackend' )->getConfig();
 		$this->setSearch();
 	}
 
