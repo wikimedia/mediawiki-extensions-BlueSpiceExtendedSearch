@@ -29,6 +29,7 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "Returnerer søkeresultatenes relevans",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "JSON-dekodet streng som inneholder ekstra informasjon om søkets kontekst",
 	"apihelp-bs-extendedsearch-type-store-summary": "Returnerer registrerte søketyper",
+	"bs-extendedsearch-close-search-button-aria-label": "Lukk søkeboks",
 	"bs-extendedsearch-search-button-title": "Begynn søk",
 	"bs-extendedsearch-search-button-aria-label": "Begynn søk",
 	"bs-extendedsearch-search-input-placeholder": "Finn …",
