@@ -2,7 +2,6 @@
 
 namespace BS\ExtendedSearch;
 
-use BS\ExtendedSearch\MediaWiki\Backend\BlueSpiceSearch;
 use MediaWiki\MediaWikiServices;
 use QuickTemplate;
 use SpecialPage;
@@ -20,9 +19,6 @@ class Setup {
 				MediaWikiServices::getInstance()->getHookContainer()
 			);
 		}
-
-		// Set ExtendedSearch backend as default MW engine
-		$GLOBALS['wgSearchType'] = BlueSpiceSearch::class;
 	}
 
 	// TODO: Move hooks to proper classes
@@ -79,7 +75,8 @@ class Setup {
 	 */
 	public static function getSearchEngineClass( ILoadBalancer $lb ) {
 		$seFactory = MediaWikiServices::getInstance()->getSearchEngineFactory();
-		return $seFactory::getSearchEngineClass( $lb );
+		$class = $seFactory::getSearchEngineClass( $lb );
+		return new $class( $lb );
 	}
 
 	/**
