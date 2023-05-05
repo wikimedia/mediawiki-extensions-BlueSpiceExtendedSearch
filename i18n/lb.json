@@ -54,5 +54,12 @@
 	"action-extendedsearch-search-repofile": "no Fichiere sichen",
 	"action-extendedsearch-search-externalfile": "no externe Fichiere sichen",
 	"bs-extendedsearch-suggest-operator": "Wollt Dir no <b>$1</b> sichen?",
-	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Global Resultater weisen"
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Global Resultater weisen",
+	"bs-extendedsearch-source-label-repofile": "Fichier eroplueden",
+	"bs-extendedsearch-admin-heading-sources-documentscount": "Dokumenter",
+	"bs-extendedsearch-search-center-result-author-label": "Auteur:",
+	"bs-extendedsearch-search-center-result-sections-label": "Abschnitter:",
+	"bs-extendedsearch-flyout-similar-pages-title": "Änlech Säiten",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Keng änlech Säite fonnt",
+	"bs-extendedsearch-search-center-result-file-usage-label": "Op Säite benotzt"
 }
