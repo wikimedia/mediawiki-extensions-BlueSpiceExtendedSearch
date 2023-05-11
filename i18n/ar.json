@@ -6,7 +6,8 @@
 			"Meno25",
 			"Omda4wady",
 			"ديفيد",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"Alshamiri1"
 		]
 	},
 	"bs-extsearch-extensionname": "بحث بلو سبيس الممتد",
@@ -177,5 +178,6 @@
 	"bs-extendedsearch-statistics-report-search-terms": "مصطلحات البحث",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "مصطلحات البحث لكل مستخدم",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "يعرض نتائج البحث لمستخدم بلغة المستخدم فقط. يمكن للمستخدمين تعيين لغتهم في تفضيلاتهم.",
-	"bs-extendedsearch-pref-compact-ac-paths-help": "إظهار تخطيط الإكمال التلقائي المضغوط لقائمة البحث (تخطيط من عمود واحد ، بدون معاينة الصورة المصغرة)."
+	"bs-extendedsearch-pref-compact-ac-paths-help": "إظهار تخطيط الإكمال التلقائي المضغوط لقائمة البحث (تخطيط من عمود واحد ، بدون معاينة الصورة المصغرة).",
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "عدد استعلامات البحث"
 }
