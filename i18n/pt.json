@@ -174,5 +174,7 @@
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Mostrar um formato de preenchimento automático compacto do menu de pesquisa (formato de uma coluna, sem antevisão de miniaturas).",
 	"bs-extendedsearch-remove-button-label": "Remover o filtro \"$1\"",
 	"bs-extendedsearch-close-search-button-aria-label": "Fechar caixa de pesquisa",
-	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Número de consultas de pesquisa"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Número de consultas de pesquisa",
+	"bs-extendedsearch-droplet-search-name": "Campo de pesquisa",
+	"bs-extendedsearch-droplet-search-description": "Adiciona um campo de pesquisa ao conteúdo da página"
 }
