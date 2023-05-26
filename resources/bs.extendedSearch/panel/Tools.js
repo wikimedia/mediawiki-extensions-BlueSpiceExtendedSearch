@@ -57,7 +57,13 @@
 		this.optionsButton.$element.children().attr( 'aria-label', mw.message( "bs-extendedsearch-options-button-label" ).text() );
 		this.setSearchOptionsConfig();
 
-		this.optionsButton.$element.on( 'click', { options: this.searchOptionsConfig }, this.openOptionsDialog.bind( this ) );
+		this.optionsButton.$element
+			.on( 'click', { options: this.searchOptionsConfig }, this.openOptionsDialog.bind( this ) )
+			.on( 'keydown', { options: this.searchOptionsConfig }, function( e ) {
+				if ( e.which === OO.ui.Keys.ENTER ) {
+					this.openOptionsDialog( e );
+				}
+			}.bind( this ) );
 
 		this.$filtersContainer = $( '<div>' ).attr( 'id', 'bs-es-tools-filters' );
 		this.$toolsContainer.append(
@@ -75,7 +81,13 @@
 			this.exportButton.$label.addClass('bs-extendedsearch-filter-button-label')
 			.text( mw.message( "bs-extendedsearch-export-button-label" ).text() );
 			this.exportButton.$element.children().attr( 'aria-label', mw.message( "bs-extendedsearch-export-button-label" ).text() );
-			this.exportButton.$element.on( 'click', this.showExportSearchDialog.bind( this ) );
+			this.exportButton.$element
+				.on( 'click', this.showExportSearchDialog.bind( this ) )
+				.on( 'keydown', function( e ) {
+					if ( e.which === OO.ui.Keys.ENTER ) {
+						this.showExportSearchDialog( e );
+					}
+				}.bind( this ) );
 			this.$toolsContainer.append( this.exportButton.$element );
 		}
 
