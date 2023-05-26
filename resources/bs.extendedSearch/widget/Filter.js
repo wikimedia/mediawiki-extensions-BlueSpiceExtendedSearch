@@ -247,9 +247,15 @@
 		this.$element
 			.attr( 'id', 'bs-extendedsearch-filter-add-button' )
 			.attr( 'title', mw.message( 'bs-extendedsearch-filter-add-button-label' ).text() )
+			.attr( 'aria-label', mw.message( 'bs-extendedsearch-filter-add-button-label' ).text() )
 			.addClass( 'bs-extendedsearch-filter-add-widget tools-button' )
 			.append( this.$button )
-			.on( 'click', { cfg: cfg, parent: this }, this.openAddWidgetDialog );
+			.on( 'click', { cfg: cfg, parent: this }, this.openAddWidgetDialog )
+			.on( 'keydown', { cfg: cfg, parent: this }, function( e ) {
+				if ( e.which === OO.ui.Keys.ENTER ) {
+					this.openAddWidgetDialog( e );
+				}
+			}.bind( this ) );
 			this.$label.addClass( 'bs-extendedsearch-filter-button-label' )
 			.text( mw.message( 'bs-extendedsearch-filter-add-button-label' ).text() );
 			this.$element.children().attr(

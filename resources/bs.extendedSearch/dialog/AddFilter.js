@@ -106,12 +106,19 @@
 		OO.ui.mixin.ButtonElement.call( this, cfg );
 		OO.ui.mixin.LabelElement.call( this, cfg );
 
-		this.$button.append( this.$label );
+		this.$button
+			.append( this.$label )
+			.attr( 'tabindex', 0 );
 
 		this.$element
 			.addClass( 'bs-extendedsearch-filter-add-dialog-item' )
 			.append( this.$button )
-			.on( 'click', { cfg: cfg, window: window }, this.filterToAddSelected );
+			.on( 'click', { cfg: cfg, window: window }, this.filterToAddSelected )
+			.on( 'keydown',  { cfg: cfg, window: window }, function( e ) {
+				if ( e.which === OO.ui.Keys.ENTER ) {
+					this.filterToAddSelected( e );
+				}
+			}.bind( this ) );
 	}
 
 	OO.inheritClass( bs.extendedSearch.FilterAddDialogItem, OO.ui.Widget );
@@ -120,7 +127,7 @@
 	OO.mixinClass( bs.extendedSearch.FilterAddDialogItem, OO.ui.mixin.LabelElement );
 
 	bs.extendedSearch.FilterAddDialogItem.prototype.filterToAddSelected = function( e ) {
-		if ( !e.data.cfg.disabled && e.which === OO.ui.MouseButtons.LEFT ) {
+		if ( !e.data.cfg.disabled && ( e.which === OO.ui.MouseButtons.LEFT || e.which === OO.ui.Keys.ENTER ) ) {
 			e.data.window.parentButton.trigger( 'widgetToAddSelected', { cfg: e.data.cfg.filter, window: e.data.window } );
 		}
 	}
@@ -137,13 +144,21 @@
 		OO.ui.mixin.LabelElement.call( this, cfg );
 		OO.ui.mixin.IndicatorElement.call( this, cfg );
 
-		this.$button.append( this.$label );
-		this.$button.append( this.$indicator );
+		this.$button
+			.append( this.$label )
+			.append( this.$indicator )
+			.attr( 'tabindex', 0 );
 
 		this.$element
 			.addClass( 'bs-extendedsearch-filter-add-dialog-group' )
 			.append( this.$button )
-			.on( 'click', { window: window }, this.toggleGroup.bind( this ) );
+			.on( 'click', { window: window }, this.toggleGroup.bind( this ) )
+			.on( 'keydown',  { window: window }, function( e ) {
+				if ( e.which === OO.ui.Keys.ENTER ) {
+					console.log('enter')
+					this.toggleGroup( e );
+				}
+			}.bind( this ) );
 	}
 
 	OO.inheritClass( bs.extendedSearch.FilterAddDialogGroup, OO.ui.Widget );
@@ -153,7 +168,7 @@
 	OO.mixinClass( bs.extendedSearch.FilterAddDialogGroup, OO.ui.mixin.IndicatorElement );
 
 	bs.extendedSearch.FilterAddDialogGroup.prototype.toggleGroup = function( e ) {
-		if ( e.which === OO.ui.MouseButtons.LEFT ) {
+		if ( e.which === OO.ui.MouseButtons.LEFT || e.which === OO.ui.Keys.ENTER ) {
 			var $items = this.$element.find( ".bs-extendedsearch-addfilter-group-items" );
 
 			var currentWindowHeight = e.data.window.$frame.outerHeight();
