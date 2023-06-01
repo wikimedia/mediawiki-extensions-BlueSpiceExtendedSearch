@@ -5,6 +5,7 @@
 			"Yupik"
 		]
 	},
+	"bs-extendedsearch-source-label-specialpage": "Toimâsijđo",
 	"bs-extendedsearch-source-label-user": "Kevttee",
 	"bs-extendedsearch-admin-label-error": "Feilâ",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Lasseet sillee",
@@ -15,5 +16,7 @@
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Nommâ",
 	"bs-extendedsearch-source-type-specialpage-label": "Toimâsijđo",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Majemustáá nubástittum: $1",
+	"bs-extendedsearch-search-center-filter-page_language-label": "Siijđo kielâ",
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Siijđo kielâ:",
 	"bs-extendedsearch-collection-type-searchhistory": "Uuccâmhistorjá"
 }

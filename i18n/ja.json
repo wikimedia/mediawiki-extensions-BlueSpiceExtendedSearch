@@ -11,7 +11,8 @@
 			"Shirayuki",
 			"Waki285",
 			"もなー(偽物)",
-			"背番号4のエース"
+			"背番号4のエース",
+			"Anonymoususer12321"
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch検索バックエンド",
@@ -53,7 +54,7 @@
 	"bs-extendedsearch-admin-heading-sources-documentscount": "ドキュメント",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "保留中の更新ジョブ",
 	"bs-extendedsearch-search-center-hitcount-widget": "$2に対して$1{{PLURAL:$1|ヒット}}",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "$2に対して約$1件ヒット",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "$2に対して約$1件{{PLURAL:$1|ヒット}}",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "フィルターを追加",
 	"bs-extendedsearch-search-center-filter-extension-label": "拡張機能",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "名前空間",
@@ -95,6 +96,7 @@
 	"bs-extendedsearch-searchcenter-sort-field-ctime": "作成時間",
 	"bs-extendedsearch-searchcenter-sort-field-size": "サイズ",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "名前空間",
+	"bs-extendedsearch-search-center-filter-has-hidden": "...{{PLURAL:$1|他$1件}}",
 	"bs-extendedsearch-search-center-result-exception": "クエリを実行できません。検索語を変更してください。",
 	"bs-extendedsearch-autocomplete-create-page-link": "ページ「$1」を作成",
 	"bs-extendedsearch-search-center-hitcount-replaced": "$1の結果を表示しています。({{PLURAL:$3|$3 hit|$3 hits}})の代わりに$2を検索してください",
@@ -134,6 +136,8 @@
 	"bs-extendedsearch-pref-auto-set-lang-filter": "言語フィルターを自動的に設定する",
 	"bs-extendedsearch-search-center-create-page-link": "ページ「$1」を作成",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "ページ$1 : テキスト: $2",
+	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpiceExtendedSearch - 検索履歴: 期間 (検索回数): $1",
+	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch - {{PLURAL:$1|$1ページ}}が関連する検索{{PLURAL:$1|結果}}としてマークされて{{GENDER:$2|います}}",
 	"bs-extendedsearch-filter-add-button-label": "フィルターを追加",
 	"bs-extendedsearch-options-button-label": "検索オプション",
 	"bs-extendedsearch-export-button-label": "検索がヒットしませんでした",
