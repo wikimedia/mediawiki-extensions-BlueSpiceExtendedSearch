@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\Privacy;
 
 use BlueSpice\Privacy\IPrivacyHandler;
 use BlueSpice\Privacy\Module\Transparency;
+use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\IDatabase;
@@ -89,13 +90,10 @@ class Handler implements IPrivacyHandler {
 		] );
 		$lookup->addSourceField( 'prefixed_title' );
 
+		/** @var Backend $searchBackend */
 		$searchBackend = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchBackend' );
 
-		$client = $searchBackend->getClient();
-		$search = new \Elastica\Search( $client );
-		$index = $searchBackend->getIndexByType( 'wikipage' );
-		$search->addIndex( $index );
-		$results = $search->search( $lookup->getQueryDSL() );
+		$results = $searchBackend->runRawQuery( $lookup, [ 'wikipage' ] );
 		foreach ( $results->getResults() as $resultObject ) {
 			$prefixedTitle = $resultObject->getData()['prefixed_title'];
 			$title = \Title::newFromText( $prefixedTitle );
@@ -106,7 +104,7 @@ class Handler implements IPrivacyHandler {
 			$data[] = wfMessage(
 				'bs-extendedsearch-privacy-transparency-content-highlight',
 				$title->getPrefixedText(),
-				$this->getFormattedHighlights( $resultObject->getHighlights() )
+				$this->getFormattedHighlights( $resultObject->getParam( 'highlight' ) )
 			)->plain();
 		}
 

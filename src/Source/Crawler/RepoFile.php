@@ -2,24 +2,48 @@
 
 namespace BS\ExtendedSearch\Source\Crawler;
 
-use MediaWiki\MediaWikiServices;
+use Config;
+use JobQueueGroup;
+use RepoGroup;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 class RepoFile extends File {
-	/** @var Wikimedia\Rdbms */
+	/** @var string */
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateRepoFile';
 
+	/**
+	 *
+	 * @var RepoGroup
+	 */
+	protected $repoGroup = null;
+
+	/**
+	 * @param ILoadBalancer $lb
+	 * @param RepoGroup $repoGroup
+	 * @param JobQueueGroup $jobQueueGroup
+	 * @param Config $sourceConfig
+	 */
+	public function __construct(
+		ILoadBalancer $lb, RepoGroup $repoGroup, JobQueueGroup $jobQueueGroup, Config $sourceConfig
+	) {
+		parent::__construct( $lb, $jobQueueGroup, $sourceConfig );
+		$this->repoGroup = $repoGroup;
+	}
+
+	/**
+	 * @return void
+	 */
 	public function crawl() {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = $this->lb->getConnection( DB_REPLICA );
 		$res = $dbr->select(
 			[ 'page' ],
 			[ 'page_id' ],
 			$this->makeQueryConditions()
 		);
 
-		$repoGroup = MediaWikiServices::getInstance()->getRepoGroup();
 		foreach ( $res as $row ) {
 			$title = \Title::newFromID( $row->page_id );
-			$file = $repoGroup->findFile( $title );
+			$file = $this->repoGroup->findFile( $title );
 			if ( $file instanceof \LocalFile === false ) {
 				continue;
 			}
@@ -32,6 +56,9 @@ class RepoFile extends File {
 		}
 	}
 
+	/**
+	 * @return array
+	 */
 	protected function makeQueryConditions() {
 		return [
 			'page_namespace' => NS_FILE

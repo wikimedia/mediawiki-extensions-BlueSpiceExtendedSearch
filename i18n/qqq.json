@@ -103,6 +103,7 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Label for Wikipage source type",
 	"bs-extendedsearch-source-type-repofile-label": "Label for Local file source type",
 	"bs-extendedsearch-source-type-specialpage-label": "Label for Special page source type",
+	"bs-extendedsearch-source-type-externalfile-label": "Label for external file source type",
 	"bs-extendedsearch-result-relevance-relevant": "Tooltip text for button enabling users to increase relevance (score) of a result for them",
 	"bs-extendedsearch-result-relevance-not-relevant": "Tooltip text for button enabling users to decrease relevance (score) of a result for them",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "Text for the button leading to SearchCenter special page - equivalent to user pressing enter key",
@@ -182,5 +183,6 @@
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Description for config variable \"ESCompactAutocomplete\"",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Label for axis for statistics report",
 	"bs-extendedsearch-droplet-search-name": "Title of droplet for tag Search",
-	"bs-extendedsearch-droplet-search-description": "Description of droplet for tag Search"
+	"bs-extendedsearch-droplet-search-description": "Description of droplet for tag Search",
+	"bs-extendedsearch-source-label-externalfile": "Label for heading of a section that lists hits from the source 'externalfile'"
 }

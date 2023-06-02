@@ -4,12 +4,12 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Backend;
 
-class BaseAutocompleteSourceFields extends Base {
+class BaseAutocompleteSourceFields extends LookupModifier {
 
 	public function apply() {
-		$this->oLookup->addSourceField( 'basename' );
-		$this->oLookup->addSourceField( 'uri' );
-		$this->oLookup->addSourceField( 'filename' );
+		$this->lookup->addSourceField( 'basename' );
+		$this->lookup->addSourceField( 'uri' );
+		$this->lookup->addSourceField( 'filename' );
 	}
 
 	public function undo() {

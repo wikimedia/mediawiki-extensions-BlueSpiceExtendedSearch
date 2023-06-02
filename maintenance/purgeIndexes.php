@@ -2,9 +2,9 @@
 
 use MediaWiki\MediaWikiServices;
 
-require_once "elasticScriptBase.php";
+require_once "searchScriptBase.php";
 
-class purgeIndexes extends elasticScriptBase {
+class purgeIndexes extends searchScriptBase {
 	/**
 	 * @var string
 	 */
@@ -24,7 +24,7 @@ class purgeIndexes extends elasticScriptBase {
 				continue;
 			}
 			$backend->deleteIndex( $sourceKey );
-			$this->output( "\nIndex deleted: {$backend->getIndexByType( $sourceKey )->getName()}" );
+			$this->output( "\nIndex deleted: {$backend->getIndexName( $sourceKey)}" );
 		}
 	}
 }

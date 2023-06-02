@@ -89,15 +89,15 @@ class SearchAdmin extends \SpecialPage {
 	 * @param array $aBackedStats
 	 */
 	protected function renderStats( $aBackedStats ) {
-		$this->renderAllDocumentsCount( $aBackedStats['all_documents_count'] );
+		$this->renderBackendStats( $aBackedStats );
 		$this->renderSources( $aBackedStats['sources'] );
 	}
 
 	/**
 	 *
-	 * @param int $iAllDocumentsCount
+	 * @param array $stats
 	 */
-	protected function renderAllDocumentsCount( $iAllDocumentsCount ) {
+	protected function renderBackendStats( array $stats ) {
 		$this->getOutput()->addHTML( \Html::rawElement(
 			'div',
 			[],
@@ -109,7 +109,11 @@ class SearchAdmin extends \SpecialPage {
 			\Html::element(
 				'span',
 				[ 'class' => 'bs-es-admin-all-documents-count-value' ],
-				$iAllDocumentsCount
+				$stats['all_documents_count']
+			) .
+			\Html::rawElement(
+				'span', [],
+				\Html::element( 'pre', [], json_encode( $stats['backend_info'], JSON_PRETTY_PRINT ) )
 			)
 		) );
 	}

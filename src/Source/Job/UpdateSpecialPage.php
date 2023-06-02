@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
+use Title;
+
 class UpdateSpecialPage extends UpdateTitleBase {
 
 	/** @inheritDoc */
@@ -30,11 +32,12 @@ class UpdateSpecialPage extends UpdateTitleBase {
 		// We need to override UpdateTitleBase::run because as SpecialPage
 		// title does never "exist" in the database
 		$oDP = $this->getSource()->getDocumentProvider();
-		$aDC = $oDP->getDataConfig(
+		$aDC = $oDP->getDocumentData(
 			$this->getDocumentProviderUri(),
+			$this->getDocumentId( $this->getDocumentProviderUri() ),
 			$this->getDocumentProviderSource()
 		);
-		$this->getSource()->addDocumentsToIndex( [ $aDC ] );
+		$this->getSource()->addDocumentToIndex( $aDC );
 		return $aDC;
 	}
 

@@ -4,17 +4,17 @@ namespace BS\ExtendedSearch\Source\PostProcessor;
 
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
+use BS\ExtendedSearch\SearchResult;
 use ConfigException;
-use Elastica\Result;
 
 class WikiPage extends Base {
 
 	/**
 	 *
-	 * @param Result &$result
+	 * @param SearchResult &$result
 	 * @param Lookup $lookup
 	 */
-	public function process( Result &$result, Lookup $lookup ) {
+	public function process( SearchResult &$result, Lookup $lookup ) {
 		parent::process( $result, $lookup );
 
 		if ( !$this->isScoreSorting( $lookup ) ) {
@@ -22,15 +22,15 @@ class WikiPage extends Base {
 			return;
 		}
 		if ( $this->mTimeBoost( $result, $lookup ) ) {
-			$this->base->requestReSort();
+			$this->postProcessorRunner->requestReSort();
 		}
 		if ( $this->supressFilePages( $result ) ) {
-			$this->base->requestReSort();
+			$this->postProcessorRunner->requestReSort();
 		}
 	}
 
 	/**
-	 * @param Result $result
+	 * @param SearchResult $result
 	 * @return string
 	 */
 	protected function getTitleFieldName( $result ) {
@@ -45,16 +45,16 @@ class WikiPage extends Base {
 	 * Boost the result based on its modification time.
 	 * More recent results get more boost.
 	 *
-	 * @param Result $result
+	 * @param SearchResult $result
 	 * @param Lookup $lookup
 	 * @return bool
 	 * @throws ConfigException
 	 */
-	protected function mTimeBoost( Result $result, Lookup $lookup ) {
+	protected function mTimeBoost( SearchResult $result, Lookup $lookup ) {
 		if ( $result->getType() !== 'wikipage' ) {
 			return false;
 		}
-		$portionOfScore = ( $this->base->getType() === Backend::QUERY_TYPE_SEARCH ) ? 1 : 0.3;
+		$portionOfScore = ( $this->postProcessorRunner->getType() === Backend::QUERY_TYPE_SEARCH ) ? 1 : 0.3;
 		$mTime = $result->getData()['mtime'];
 		$mTime = wfTimestamp( TS_UNIX, $mTime );
 		$now = wfTimestamp();
@@ -68,7 +68,7 @@ class WikiPage extends Base {
 		$relevance = 1 - ( round( ( $diff - 0 ) / ( 43801 - 0 ), 3 ) );
 		// Portion of score controls how much of the score can be boosted
 		// This is different for AC and fulltext due to how scoring is determined
-		$boostFactor = (float)$this->base->getConfig()->get( 'ESRecentBoostFactor' );
+		$boostFactor = (float)$this->postProcessorRunner->getConfig()->get( 'ESRecentBoostFactor' );
 		if ( $boostFactor === 0 ) {
 			// Would produce 0 score
 			return true;
@@ -82,11 +82,11 @@ class WikiPage extends Base {
 	/**
 	 * Reduce score pages in NS_FILE
 	 *
-	 * @param Result $result
+	 * @param SearchResult $result
 	 *
 	 * @return bool
 	 */
-	private function supressFilePages( Result $result ) {
+	private function supressFilePages( SearchResult $result ) {
 		if ( $result->getType() !== 'wikipage' ) {
 			return false;
 		}

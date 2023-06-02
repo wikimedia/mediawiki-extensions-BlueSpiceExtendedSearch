@@ -2,39 +2,45 @@
 
 namespace BS\ExtendedSearch\Source\DocumentProvider;
 
-class File extends DecoratorBase {
+use MimeAnalyzer;
+
+class File extends Base {
 
 	/**
-	 *
-	 * @param string $sUri
-	 * @param \SplFileInfo $oFile
-	 * @return array
+	 * @var MimeAnalyzer
 	 */
-	public function getDataConfig( $sUri, $oFile ) {
+	protected $mimeAnalyzer = null;
+
+	/**
+	 * @param MimeAnalyzer $mimeAnalyzer
+	 */
+	public function __construct( MimeAnalyzer $mimeAnalyzer ) {
+		$this->mimeAnalyzer = $mimeAnalyzer;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getDocumentData( $sUri, string $documentId, $oFile ): array {
 		$contents = file_get_contents(
 			$oFile->getPathname()
 		);
 		$contents = base64_encode( $contents );
 
-		$aDC = $this->oDecoratedDP->getDataConfig( $sUri, $oFile );
-		$magic = $this->services->getMimeAnalyzer();
+		$aDC = parent::getDocumentData( $sUri, $documentId, $oFile );
 		$name = $this->removeArchiveName( $oFile->getBasename() );
-		$aDC = array_merge( $aDC, [
+
+		return array_merge( $aDC, [
 			'basename' => $name,
 			'basename_exact' => $name,
 			'extension' => $oFile->getExtension(),
-			'mime_type' => $magic->guessMimeType( $oFile->getPathname() ),
+			'mime_type' => $this->mimeAnalyzer->guessMimeType( $oFile->getPathname() ),
 			'mtime' => $oFile->getMTime(),
 			'ctime' => $oFile->getCTime(),
 			'size' => $oFile->getSize(),
 			'source_file_path' => $oFile->getPathname(),
 			'the_file' => $contents
 		] );
-
-		$contents = null;
-		unset( $contents );
-
-		return $aDC;
 	}
 
 	/**

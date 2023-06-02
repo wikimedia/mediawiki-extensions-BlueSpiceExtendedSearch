@@ -3,18 +3,25 @@
 namespace BS\ExtendedSearch\Source\DocumentProvider;
 
 use Content;
-use FatalError;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Content\Renderer\ContentRenderer;
+use MediaWiki\HookContainer\HookContainer;
+use MediaWiki\Page\RedirectLookup;
+use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\User\UserFactory;
 use MWException;
-use ParserOptions;
+use PageProps;
+use Parser;
 use ParserOutput;
 use TextContent;
 use Title;
 use User;
 use WikiPage as WikiPageObject;
 
-class WikiPage extends DecoratorBase {
+class WikiPage extends Base {
+
+	/** @var HookContainer */
+	protected $hookContainer;
 	/** @var WikiPageObject */
 	protected $wikipage;
 	/** @var Content */
@@ -25,17 +32,49 @@ class WikiPage extends DecoratorBase {
 	protected $title;
 	/** @var RevisionRecord */
 	protected $revision;
-	/** @var array */
+	/** @var array|null */
 	protected $pageProps = null;
+	/** @var PageProps */
+	protected $pagePropsProvider;
+	/** @var Parser */
+	protected $parser;
+	/** @var RedirectLookup */
+	protected $redirectLookup;
+	/** @var UserFactory */
+	protected $userFactory;
+
+	/** @var ContentRenderer */
+	protected $contentRenderer;
+	/** @var RevisionLookup */
+	protected $revisionLookup;
 
 	/**
-	 * @param string $sUri
-	 * @param WikiPageObject|null $wikiPage
-	 * @return array
-	 * @throws MWException
+	 * @param HookContainer $hookContainer
+	 * @param ContentRenderer $contentRenderer
+	 * @param RevisionLookup $revisionLookup
+	 * @param PageProps $pageProps
+	 * @param Parser $parser
+	 * @param RedirectLookup $redirectLookup
+	 * @param UserFactory $userFactory
 	 */
-	public function getDataConfig( $sUri, $wikiPage ) {
-		$aDC = $this->oDecoratedDP->getDataConfig( $sUri, null );
+	public function __construct(
+		HookContainer $hookContainer, ContentRenderer $contentRenderer, RevisionLookup $revisionLookup,
+		PageProps $pageProps, Parser $parser, RedirectLookup $redirectLookup, UserFactory $userFactory
+	) {
+		$this->hookContainer = $hookContainer;
+		$this->contentRenderer = $contentRenderer;
+		$this->revisionLookup = $revisionLookup;
+		$this->pagePropsProvider = $pageProps;
+		$this->parser = $parser;
+		$this->redirectLookup = $redirectLookup;
+		$this->userFactory = $userFactory;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getDocumentData( $sUri, string $documentId, $wikiPage ): array {
+		$aDC = parent::getDocumentData( $sUri, $documentId, null );
 		$this->wikipage = $wikiPage;
 		$this->assertWikiPage();
 		$this->title = $this->wikipage->getTitle();
@@ -43,11 +82,9 @@ class WikiPage extends DecoratorBase {
 		$this->assertRevision();
 
 		$this->content = $this->revision->getContent( 'main' );
-		$contentRenderer = $this->services->getContentRenderer();
-		$this->parserOutput = $contentRenderer->getParserOutput( $this->content, $this->title );
+		$this->parserOutput = $this->contentRenderer->getParserOutput( $this->content, $this->title );
 
-		$firstRev = $this->services->getRevisionLookup()
-			->getFirstRevision( $this->title->toPageIdentity() );
+		$firstRev = $this->revisionLookup->getFirstRevision( $this->title->toPageIdentity() );
 
 		if ( $firstRev === null ) {
 			return $aDC;
@@ -87,18 +124,6 @@ class WikiPage extends DecoratorBase {
 	}
 
 	/**
-	 * Destroy variables used while getting the document values
-	 */
-	public function __destruct() {
-		parent::__destruct();
-		$this->parserOutput = null;
-		$this->content = null;
-		if ( $this->services->getParser()->getOptions() instanceof ParserOptions ) {
-			$this->services->getParser()->clearState();
-		}
-	}
-
-	/**
 	 *
 	 * @param Title $title
 	 * @param string|null $prop
@@ -107,7 +132,7 @@ class WikiPage extends DecoratorBase {
 	 */
 	public function getPageProps( Title $title, $prop = null, $default = null ) {
 		if ( $this->pageProps === null ) {
-			$pageProps = MediaWikiServices::getInstance()->getPageProps()->getAllProperties( $title );
+			$pageProps = $this->pagePropsProvider->getAllProperties( $title );
 			$this->pageProps = $pageProps[$title->getArticleID()] ?? [];
 		}
 
@@ -197,7 +222,7 @@ class WikiPage extends DecoratorBase {
 	protected function getTags() {
 		$res = [];
 
-		$registeredTags = $this->services->getParser()->getTags();
+		$registeredTags = $this->parser->getTags();
 		$pageTags = $this->parseWikipageForTags();
 		foreach ( $pageTags as $pageTag ) {
 			if ( in_array( $pageTag, $registeredTags ) ) {
@@ -237,7 +262,7 @@ class WikiPage extends DecoratorBase {
 			return '';
 		}
 
-		$redirTarget = $this->services->getRedirectLookup()->getRedirectTarget( $this->wikipage );
+		$redirTarget = $this->redirectLookup->getRedirectTarget( $this->wikipage );
 		$redirTitle = Title::castFromLinkTarget( $redirTarget );
 		if ( $redirTitle instanceof Title ) {
 			return $this->getDisplayTitle();
@@ -274,7 +299,7 @@ class WikiPage extends DecoratorBase {
 			return $displayTitle;
 		}
 		if ( $this->title->getNamespace() === NS_USER ) {
-			$user = $this->services->getUserFactory()->newFromName( $title->getDBkey() );
+			$user = $this->userFactory->newFromName( $title->getDBkey() );
 			if ( $user instanceof User ) {
 				if ( $user->isRegistered() && $user->getRealName() !== '' ) {
 					return $user->getRealName();
@@ -296,13 +321,11 @@ class WikiPage extends DecoratorBase {
 
 	/**
 	 * @return RevisionRecord|null
-	 * @throws FatalError
 	 * @throws MWException
 	 */
 	protected function getRevision() {
-		$revision = $this->services->getRevisionStore()
-			->getRevisionByTitle( $this->title );
-		$this->services->getHookContainer()->run(
+		$revision = $this->revisionLookup->getRevisionByTitle( $this->title );
+		$this->hookContainer->run(
 			'BSExtendedSearchWikipageFetchRevision',
 			[ $this->title, &$revision ]
 		);

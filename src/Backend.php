@@ -2,25 +2,30 @@
 
 namespace BS\ExtendedSearch;
 
-use BS\ExtendedSearch\Source\Base as SourceBase;
-use BS\ExtendedSearch\Source\LookupModifier\Base as LookupModifier;
+use BS\ExtendedSearch\Plugin\IFilterModifier;
+use BS\ExtendedSearch\Plugin\IFormattingModifier;
+use BS\ExtendedSearch\Plugin\ILookupModifier;
+use BS\ExtendedSearch\Plugin\IMappingModifier;
+use BS\ExtendedSearch\Plugin\ISearchPlugin;
 use BS\ExtendedSearch\Source\WikiPages;
 use Config;
-use Elastica\Client;
-use Elastica\Exception\ResponseException;
-use Elastica\Index;
-use Elastica\ResultSet;
-use Elastica\Search;
 use Exception;
 use FormatJson;
+use HashConfig;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
+use MultiConfig;
 use MWException;
 use MWStake\MediaWiki\Component\ManifestRegistry\ManifestRegistryFactory;
+use OpenSearch\Client;
+use OpenSearch\ClientBuilder;
 use RequestContext;
+use RuntimeException;
 use stdClass;
+use Throwable;
+use Title;
 use WikiMap;
-use Wikimedia\Rdbms\LoadBalancer;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 class Backend {
 	public const SPELLCHECK_ACTION_IGNORE = 'ignore';
@@ -30,155 +35,76 @@ class Backend {
 	public const QUERY_TYPE_SEARCH = 'search';
 	public const QUERY_TYPE_AUTOCOMPLETE = 'autocomplete';
 
-	/**
-	 *
-	 * @var Config
-	 */
-	protected $config = null;
+	/** @var MultiConfig */
+	protected $config;
 
-	/**
-	 *
-	 * @var \Wikimedia\Rdbms\LoadBalancer
-	 */
-	protected $lb = null;
+	/** @var ILoadBalancer */
+	protected $lb;
 
-	/**
-	 * @var HookContainer
-	 */
+	/** @var HookContainer */
 	protected $hookContainer;
 
-	/**
-	 *
-	 * @var Config
-	 */
-	protected $legacyConfig = null;
+	/** @var SourceFactory */
+	protected $sourceFactory;
 
-	/**
-	 *
-	 * @var SourceFactory
-	 */
-	protected $sourceFactory = null;
+	/** @var array */
+	protected $plugins;
 
-	/**
-	 *
-	 * @var LookupModifierFactory
-	 */
-	protected $lookupModifierFactory = null;
-
-	/**
-	 *
-	 * @var SourceBase[]
-	 */
+	/** @var array */
 	protected $sources = [];
 
-	/**
-	 *
-	 * @var Client
-	 */
-	protected $client = null;
+	/** @var Client */
+	protected $client;
 
 	/**
 	 * @param Config $config
-	 * @param LoadBalancer $lb
+	 * @param ILoadBalancer $lb
 	 * @param HookContainer $hookContainer
 	 * @param SourceFactory $sourceFactory
-	 * @param LookupModifierFactory $lookupModifierFactory
-	 * @param array $legacyConfig
+	 * @param array $plugins
 	 */
 	public function __construct(
-		$config, $lb, HookContainer $hookContainer,
-		$sourceFactory, $lookupModifierFactory, array $legacyConfig = []
+		Config $config, ILoadBalancer $lb, HookContainer $hookContainer,
+		SourceFactory $sourceFactory, array $plugins
 	) {
-		if ( !isset( $legacyConfig['index'] ) ) {
-			$legacyConfig['index'] = strtolower( WikiMap::getCurrentWikiId() );
-		}
 		$indexPrefix = $config->get( 'ESIndexPrefix' );
-		if ( !empty( $indexPrefix ) ) {
-			// Using the `legacyConfig` here is odd, but the only reasonable
-			// alternative would be to refactor `'index'` to `'ESIndexPrefix'`
-			// within the codebase, which has more potential to break things
-			$legacyConfig['index'] = $indexPrefix;
+		if ( empty( $indexPrefix ) ) {
+			$indexPrefix = strtolower( WikiMap::getCurrentWikiId() );
 		}
-
-		$this->legacyConfig = new \HashConfig( $legacyConfig );
-		$this->config = new \MultiConfig( [ $config, $this->legacyConfig ] );
+		$specialConfig = [ 'index' => $indexPrefix ];
+		$this->config = new MultiConfig( [ $config, new HashConfig( $specialConfig ) ] );
 		$this->lb = $lb;
 		$this->hookContainer = $hookContainer;
 		$this->sourceFactory = $sourceFactory;
-		$this->lookupModifierFactory = $lookupModifierFactory;
+		$this->plugins = $plugins;
 	}
 
 	/**
 	 *
 	 * @param string $sourceKey
-	 * @return SourceBase
+	 * @return ISearchSource
 	 * @throws Exception
 	 */
 	public function getSource( $sourceKey ) {
+		if ( isset( $this->sources[$sourceKey] ) ) {
+			return $this->sources[$sourceKey];
+		}
 		$source = $this->sourceFactory->makeSource( $sourceKey, $this );
-		MediaWikiServices::getInstance()->getHookContainer()->run(
-			'BSExtendedSearchMakeSource',
-			[
-				$this,
-				$sourceKey,
-				&$source
-			]
-		);
-
 		$this->sources[$sourceKey] = $source;
 
 		return $this->sources[$sourceKey];
 	}
 
 	/**
-	 * @param string $sourceKey
-	 */
-	public function destroySource( $sourceKey ) {
-		unset( $this->sources[$sourceKey] );
-		$this->sourceFactory->destroySource( $sourceKey );
-	}
-
-	/**
 	 *
-	 * @return SourceBase[]
+	 * @return ISearchSource[]
+	 * @throws Exception
 	 */
 	public function getSources() {
-		foreach ( $this->legacyConfig->get( 'sources' ) as $sourceKey ) {
+		foreach ( $this->sourceFactory->getSourceKeys() as $sourceKey ) {
 			$this->getSource( $sourceKey );
 		}
 		return $this->sources;
-	}
-
-	/**
-	 * Check if Elasticsearch is up
-	 *
-	 * @return bool
-	 */
-	public function testConnection() {
-		try {
-			$this->getClient()->getStatus()->getIndexNames();
-			return true;
-		} catch ( Exception $e ) {
-			return false;
-		}
-	}
-
-	/**
-	 * Check if search is initialized for use with the wiki
-	 *
-	 * @return bool
-	 */
-	public function hasIndices() {
-		$should = array_map( function ( $sourceKey ) {
-			return $this->getIndexByType( $sourceKey )->getName();
-		}, array_keys( $this->getSources() ) );
-
-		$is = $this->getClient()->getStatus()->getIndexNames();
-		if ( array_intersect( $should, $is ) === $should ) {
-			return false;
-		}
-
-		return true;
 	}
 
 	/**
@@ -188,18 +114,16 @@ class Backend {
 	 */
 	public function isReadOnly() {
 		foreach ( $this->getSources() as $key => $source ) {
-			if (
-				$this->getIndexByType( $key )->getSettings()->getReadOnly()
-			) {
-				return true;
-			}
+			$settings = $this->getClient()->indices()->getSettings( [
+				'index' => $this->getIndexName( $key )
+			] );
+			return isset( $settings['blocks']['read_only'] );
 		}
 
 		return false;
 	}
 
 	/**
-	 * TODO: ClientFactory!
 	 * @return Client
 	 */
 	public function getClient() {
@@ -210,40 +134,28 @@ class Backend {
 			$backendPassword = $this->getConfig()->get( 'ESBackendPassword' );
 			$backendTransport = $this->getConfig()->get( 'ESBackendTransport' );
 
-			$config = [
-				'host' => $backendHost,
-				'port' => $backendPort,
-				'transport' => $backendTransport
-			];
-
-			if ( !empty( $backendUsername ) ) {
-				$config['username'] = $backendUsername;
-				$config['password'] = $backendPassword;
+			$clientBuilder = new ClientBuilder();
+			$clientBuilder->setHosts( [ "$backendTransport://$backendHost:$backendPort" ] );
+			$clientBuilder->setRetries( 2 );
+			if ( $backendUsername && $backendPassword ) {
+				$clientBuilder->setBasicAuthentication( $backendUsername, $backendPassword );
 			}
-			$this->client = new Client( $config );
+
+			$this->client = $clientBuilder->build();
 		}
 
 		return $this->client;
 	}
 
 	/**
-	 * Deletes all indexes of all types existing
-	 * for this index prefix
-	 *
-	 * DELETE /wiki_id_*
-	 */
-	public function deleteAllIndexes() {
-		$indexes = $this->getIndexByType( '*' );
-		$indexes->delete();
-	}
-
-	/**
-	 * @throws MWException
+	 * @return void
 	 */
 	public function deleteIndexes() {
 		foreach ( $this->sources as $source ) {
 			$sourceKey = $source->getTypeKey();
-			$this->deleteIndex( $sourceKey );
+			if ( !$this->deleteIndex( $sourceKey ) ) {
+				throw new RuntimeException( "Failed to delete index for source $sourceKey" );
+			}
 		}
 	}
 
@@ -251,30 +163,24 @@ class Backend {
 	 * Deletes all indexes
 	 *
 	 * @param string $sourceKey
-	 * @throws ResponseException
-	 */
-	public function deleteIndex( $sourceKey ) {
-		$index = $this->getIndexByType( $sourceKey );
-		if ( $index->exists() ) {
-			$index->delete();
-		}
-	}
-
-	/**
-	 * Creates all indexes
 	 *
-	 * @throws MWException
+	 * @return bool
 	 */
-	public function createIndexes() {
-		foreach ( $this->sources as $key => $source ) {
-			$this->createIndex( $key );
+	public function deleteIndex( string $sourceKey ): bool {
+		$client = $this->getClient();
+		$index = $this->getIndexName( $sourceKey );
+		if ( $client->indices()->exists( [ 'index' => $index ] ) ) {
+			$res = $client->indices()->delete( [ 'index' => $index ] );
+			return is_array( $res ) && isset( $res['acknowledged'] ) && $res['acknowledged'];
 		}
+		return false;
 	}
 
 	/**
 	 * @param string $sourceKey
+	 *
+	 * @return bool
 	 * @throws MWException
-	 * @throws ResponseException
 	 */
 	public function createIndex( $sourceKey ) {
 		if ( !isset( $this->sources[$sourceKey] ) ) {
@@ -284,45 +190,38 @@ class Backend {
 
 		$mappingProvider = $source->getMappingProvider();
 		$indexSettings = $source->getIndexSettings();
-		$mappingProperties = $mappingProvider->getPropertyConfig();
-		$this->hookContainer->run(
-			'BSExtendedSearchBeforeCreateIndex',
-			[
-				$source,
-				&$indexSettings,
-				&$mappingProperties
-			]
-		);
-
-		$index = $this->getIndexByType( $source->getTypeKey() );
-		$index->create( $indexSettings );
-
-		$type = $index->getType( $source->getTypeKey() );
-
-		$mapping = new \Elastica\Type\Mapping();
-		$mapping->setType( $type );
-		$mapping->setProperties( $mappingProperties );
-
-		$sourceConfig = $mappingProvider->getSourceConfig();
-		if ( !empty( $sourceConfig ) ) {
-			$mapping->setSource( $sourceConfig );
+		$mappingProperties = [
+			'properties' => $mappingProvider->getPropertyConfig(),
+		];
+		$providerSource = $mappingProvider->getSourceConfig();
+		if ( $providerSource ) {
+			$mappingProperties['_source'] = $providerSource;
 		}
 
-		$response2 = $mapping->send( [
-			// Necessary if more than one type has a 'attachment' field from 'mapper-attachments'
-			'update_all_types' => ''
-		] );
+		$plugins = $this->getPluginsForInterface( IMappingModifier::class );
+		/** @var IMappingModifier $plugin */
+		foreach ( $plugins as $plugin ) {
+			$plugin->modifyMapping( $source, $indexSettings, $mappingProperties );
+		}
 
-		$source->runAdditionalSetupRequests( $this->getClient() );
+		$res = $this->getClient()->indices()->create( [
+			'index' => $this->getIndexName( $source->getTypeKey() ),
+			'body' => array_merge( $indexSettings, [
+				'mappings' => $mappingProperties,
+			] ),
+		] );
+		$success = is_array( $res ) && isset( $res['acknowledged'] ) && $res['acknowledged'];
+
+		return $success && $source->runAdditionalSetupRequests( $this->getClient() );
 	}
 
 	/**
 	 *
 	 * @param string $type
-	 * @return Index
+	 * @return string
 	 */
-	public function getIndexByType( $type ) {
-		return $this->getClient()->getIndex( $this->getConfig()->get( 'index' ) . '_' . $type );
+	public function getIndexName( $type ) {
+		return $this->getConfig()->get( 'index' ) . '_' . $type;
 	}
 
 	/**
@@ -346,20 +245,35 @@ class Backend {
 	 *
 	 * @param Lookup $lookup
 	 * @param string $type
-	 * @return array|LookupModifier[]
+	 * @return array|ILookupModifier[]
 	 */
 	public function getLookupModifiers( $lookup, $type ) {
-		$lookupModifiers = $this->lookupModifierFactory->getLookupModifiersForQueryType(
-			$type,
-			$lookup,
-			$this->getContext()
-		);
-		$lookupModifiers = array_merge(
-			$lookupModifiers,
-			$this->getLegacyLookupModifiers( $lookup, $type )
-		);
+		$lookupModifiers = [];
 
-		uasort( $lookupModifiers, static function ( $a, $b ) {
+		foreach ( $this->sources as $source ) {
+			$lookupModifiers = array_merge(
+				$lookupModifiers, $source->getLookupModifiers( $lookup, $this->getContext() )
+			);
+		}
+		$plugins = $this->getPluginsForInterface( ILookupModifierProvider::class );
+		/** @var ILookupModifierProvider $plugin */
+		foreach ( $plugins as $plugin ) {
+			$lookupModifiers = array_merge(
+				$lookupModifiers, $plugin->getLookupModifiers( $lookup, $this->getContext() )
+			);
+		}
+
+		// Deduplicate based on get_class
+		$deduplicated = [];
+		foreach ( $lookupModifiers as $modifier ) {
+			$deduplicated[get_class( $modifier )] = $modifier;
+		}
+		$lookupModifiers = array_values( $deduplicated );
+		$lookupModifiers = array_filter( $lookupModifiers, static function ( $lookupModifier ) use ( $type ) {
+			return in_array( $type, $lookupModifier->getSearchTypes() );
+		} );
+
+		usort( $lookupModifiers, static function ( $a, $b ) {
 			if ( $a->getPriority() === $b->getPriority() ) {
 				return 0;
 			}
@@ -370,50 +284,24 @@ class Backend {
 	}
 
 	/**
-	 * @deprecated since version 3.1.13 - Use registry instead and implement
-	 * ILookupModifier.
-	 * @param Lookup $lookup
-	 * @param string $type
-	 * @return LookupModifier[]
-	 */
-	private function getLegacyLookupModifiers( $lookup, $type ) {
-		wfDebugLog( 'bluespice-deprecations', __METHOD__, 'private' );
-		$lookupModifiers = [];
-		foreach ( $this->sources as $sourceKey => $source ) {
-			$lookupModifiers += $source->getLookupModifiers(
-				$lookup,
-				$this->getContext(),
-				$type
-			);
-		}
-		return $lookupModifiers;
-	}
-
-	/**
-	 * Runs quick query agains ElasticSearch
+	 * Runs quick query against backend
 	 *
 	 * @param Lookup $lookup
 	 * @param array $searchData
 	 * @return array
+	 * @throws Exception
 	 */
 	public function runAutocompleteLookup( Lookup $lookup, $searchData ) {
-		$search = new Search( $this->getClient() );
-		$this->addAllIndexesForQuery( $search );
-
 		$lookupModifiers = $this->getLookupModifiers( $lookup, static::QUERY_TYPE_AUTOCOMPLETE );
-		foreach ( $lookupModifiers as $sLMKey => $lookupModifier ) {
+		foreach ( $lookupModifiers as $lookupModifier ) {
 			$lookupModifier->apply();
 		}
-
-		$results = $search->search( $lookup->getQueryDSL() );
-
+		$results = $this->runRawQuery( $lookup );
 		$resultData = $results->getResults();
 		$postProcessor = $this->getPostProcessor( static::QUERY_TYPE_AUTOCOMPLETE );
 		$postProcessor->process( $resultData, $lookup );
 
-		$results = $this->formatQuerySuggestions( $resultData, $searchData );
-
-		return $results;
+		return $this->formatQuerySuggestions( $resultData, $searchData );
 	}
 
 	/**
@@ -421,7 +309,9 @@ class Backend {
 	 * @param \BS\ExtendedSearch\Lookup $lookup
 	 * @param array $searchData
 	 * @param array $secondaryRequestData
+	 *
 	 * @return array
+	 * @throws Exception
 	 */
 	public function runAutocompleteSecondaryLookup( Lookup $lookup, $searchData, $secondaryRequestData ) {
 		$results = $this->runAutocompleteLookup( $lookup, $searchData );
@@ -433,7 +323,9 @@ class Backend {
 	 *
 	 * @param array $resultData
 	 * @param array $searchData
+	 *
 	 * @return array
+	 * @throws Exception
 	 */
 	protected function formatQuerySuggestions( $resultData, $searchData ) {
 		$results = array_values( $this->getQuerySuggestionList( $resultData ) );
@@ -444,15 +336,24 @@ class Backend {
 	 *
 	 * @param array $results
 	 * @param array $searchData
+	 *
 	 * @return array
+	 * @throws Exception
+	 * @throws Exception
 	 */
 	protected function formatSuggestions( $results, $searchData ) {
 		$searchData['value'] = strtolower( $searchData['value'] );
 
-		foreach ( $this->getSources() as $sourceKey => $source ) {
+		foreach ( $this->getSources() as $source ) {
 			$source->getFormatter()->rankAutocompleteResults( $results, $searchData );
 			// when results are ranked based on original data, it can be modified
 			$source->getFormatter()->formatAutocompleteResults( $results, $searchData );
+		}
+
+		$plugins = $this->getPluginsForInterface( IFormattingModifier::class );
+		/** @var IFormattingModifier $plugin */
+		foreach ( $plugins as $plugin ) {
+			$plugin->formatAutocompleteResults( $results, $searchData );
 		}
 
 		usort( $results, static function ( $e1, $e2 ) {
@@ -481,7 +382,7 @@ class Backend {
 				"is_ranked" => false
 			];
 
-			$item = array_merge( $item, $suggestion->getSource() );
+			$item = array_merge( $item, $suggestion->getData() );
 
 			$res[$suggestion->getId()] = $item;
 		}
@@ -490,33 +391,75 @@ class Backend {
 	}
 
 	/**
-	 * Runs query against ElasticSearch and formats returned values
+	 * @param Lookup $lookup
+	 * @param array|null $limitToSources
+	 *
+	 * @return SearchResultSet
+	 * @throws Exception
+	 */
+	public function runRawQuery( Lookup $lookup, ?array $limitToSources = null ): SearchResultSet {
+		$limitToSources = $lookup['searchInTypes'] ?? $limitToSources;
+		$indices = $this->getAllIndicesForQuery( $limitToSources );
+		$excludeTypes = $lookup['excludeTypes'] ?? null;
+		if ( !empty( $excludeTypes ) ) {
+			$indices = array_diff( $indices, $this->getAllIndicesForQuery( $excludeTypes ) );
+		}
+		$query = $lookup->getQueryDSL();
+		if ( isset( $query['indices_boost'] ) ) {
+			$replaced = [];
+			foreach ( $query['indices_boost'] as $boost ) {
+				foreach ( $boost as $index => $boostFactor ) {
+					// Do source type to index name conversion
+					$replaced[$this->getIndexName( $index )] = $boostFactor;
+				}
+			}
+			$query['indices_boost'] = $replaced;
+		}
+		return $this->runRawQueryFromData( [
+			'index' => implode( ',', $indices ),
+			'body' => $query,
+			'_source' => $query['_source'] ?? [],
+			'from' => $lookup->getFrom(),
+			'size' => $lookup->getSize(),
+		] );
+	}
+
+	/**
+	 * @param array $data
+	 *
+	 * @return SearchResultSet
+	 */
+	public function runRawQueryFromData( array $data ): SearchResultSet {
+		$raw = $this->getClient()->search( $data );
+		return new SearchResultSet( $raw, $this );
+	}
+
+	/**
+	 * Runs query against OpenSearch and formats returned values
 	 *
 	 * @param Lookup $lookup
+	 *
 	 * @return stdClass
+	 * @throws Exception
 	 */
 	public function runLookup( $lookup ) {
-		$search = new Search( $this->getClient() );
-		$this->addAllIndexesForQuery( $search );
-
 		$origQS = $lookup->getQueryString();
 		$origTerm = $origQS['query'];
 
 		$lookupModifiers = $this->getLookupModifiers( $lookup, static::QUERY_TYPE_SEARCH );
-		foreach ( $lookupModifiers as $sLMKey => $lookupModifier ) {
+		foreach ( $lookupModifiers as $lookupModifier ) {
 			$lookupModifier->apply();
 		}
 
 		wfDebugLog(
 			'BSExtendedSearch',
 			'Query by ' . $this->getContext()->getUser()->getName() . ': '
-				. FormatJson::encode( $lookup, true )
+			. FormatJson::encode( $lookup, true )
 		);
-
 		try {
-			$spellcheck = $this->spellCheck( $lookup, $search, $origTerm );
-			$results = $search->search( $lookup->getQueryDSL() );
-		} catch ( \RuntimeException $ex ) {
+			$spellcheck = $this->spellCheck( $lookup, $origTerm );
+			$results = $this->runRawQuery( $lookup );
+		} catch ( Throwable $ex ) {
 			wfDebugLog(
 				'BSExtendedSearch',
 				__METHOD__ . " error: {$ex->getMessage()}"
@@ -531,19 +474,20 @@ class Backend {
 			return $ret;
 		}
 
-		foreach ( $lookupModifiers as $sLMKey => $lookupModifier ) {
+		foreach ( $lookupModifiers as $lookupModifier ) {
 			$lookupModifier->undo();
 		}
 
-		$totalApproximated = $lookup->getSize() > $this->getTotal( $results ) ? false : true;
+		// TODO: This can now possibly be retrieved from the results object
+		$totalApproximated = $lookup->getSize() > $results->getTotalHits() ? false : true;
 
 		$resultData = $results->getResults();
+
 		$postProcessor = $this->getPostProcessor( static::QUERY_TYPE_SEARCH );
 		$postProcessor->process( $resultData, $lookup );
-
 		$formattedResultSet = new stdClass();
 		$formattedResultSet->results = $this->formatResults( $resultData, $lookup );
-		$formattedResultSet->total = $this->getTotal( $results );
+		$formattedResultSet->total = $results->getTotalHits();
 		$formattedResultSet->filters = $this->getFilterConfig( $results );
 		$formattedResultSet->spellcheck = $spellcheck;
 		$formattedResultSet->total_approximated = $totalApproximated ? 1 : 0;
@@ -552,7 +496,7 @@ class Backend {
 			$searchHistoryInfo = [
 				'user' => $this->getContext()->getUser()->getId(),
 				'term' => $origTerm,
-				'total' => $this->getTotal( $results ),
+				'total' => $results->getTotalHits(),
 				'total_approximated' => $totalApproximated,
 				'lookup' => $lookup,
 				'timestamp' => wfTimestamp( TS_MW ),
@@ -578,19 +522,24 @@ class Backend {
 	 * TODO: Implement multi-field suggestions
 	 *
 	 * @param Lookup $lookup
-	 * @param Search $search
 	 * @param string $origTerm
 	 * @return array
 	 */
-	public function spellCheck( $lookup, $search, $origTerm ) {
+	public function spellCheck( $lookup, $origTerm ) {
 		$spellcheckResult = [
 			"action" => static::SPELLCHECK_ACTION_IGNORE
 		];
+
+		if ( $lookup->getForceTerm() ) {
+			$lookup->removeForceTerm();
+			return $spellcheckResult;
+		}
 
 		// Do not spellcheck regex
 		if ( strpos( $origTerm, '/' ) === 0 && substr( $origTerm, -1 ) === '/' ) {
 			return $spellcheckResult;
 		}
+
 		if ( strpos( $origTerm, '*' ) !== false ) {
 			return $spellcheckResult;
 		}
@@ -599,25 +548,36 @@ class Backend {
 			return $spellcheckResult;
 		}
 
-		if ( $lookup->getForceTerm() ) {
-			$lookup->removeForceTerm();
-			return $spellcheckResult;
-		}
 		$spellCheckConfig = $this->getSpellCheckConfig();
 		if ( !( $spellCheckConfig['enabled'] ?? false ) ) {
 			return $spellcheckResult;
 		}
 
 		$origTermLookup = $lookup;
-		$origHitCount = $search->count( $origTermLookup->getQueryDSL() );
+		try {
+			$query = $origTermLookup->getQueryDSL();
+			unset( $query['from'] );
+			unset( $query['size'] );
+			unset( $query['sort'] );
+			unset( $query['indices_boost'] );
+			unset( $query['aggs'] );
+			unset( $query['_source'] );
+			unset( $query['highlight'] );
+			$origHitCount = $this->getClient()->count( [
+				'index' => implode( ',', $this->getAllIndicesForQuery() ),
+				'body' => $query
+			] );
+			$origHitCount = $origHitCount['count'] ?? 0;
+		} catch ( Exception $ex ) {
+			return $spellcheckResult;
+		}
 
 		// What is our best alternative
 		$suggestLookup = new Lookup();
 		$suggestLookup->addSuggest( $spellCheckConfig['suggestField'], $origTerm );
-		$suggestResults = $search->search( [ 'suggest' => $suggestLookup->getQueryDSL() ] );
-
+		$suggestResults = $this->runRawQuery( $suggestLookup );
 		$suggestedTerm = [];
-		$suggestions = $suggestResults->getSuggests()[$spellCheckConfig['suggestField']];
+		$suggestions = $suggestResults->getSuggest()['spell-check'];
 
 		foreach ( $suggestions as $suggestion ) {
 			if ( count( $suggestion['options'] ) == 0 ) {
@@ -640,7 +600,19 @@ class Backend {
 		$escapedOrigTerm = str_replace( '/', '\/', $origTerm );
 		$suggestQueryString['query'] = preg_replace( '/' . $escapedOrigTerm . '/', $suggestedTerm, $suggestQueryString['query'] );
 		$suggestLookup->setQueryString( $suggestQueryString );
-		$suggestedHitCount = $search->count( $suggestLookup->getQueryDSL() );
+		$query = $suggestLookup->getQueryDSL();
+		unset( $query['from'] );
+		unset( $query['size'] );
+		unset( $query['sort'] );
+		unset( $query['indices_boost'] );
+		unset( $query['aggs'] );
+		unset( $query['_source'] );
+		unset( $query['highlight'] );
+		$suggestedHitCount = $this->getClient()->count( [
+			'index' => implode( ',', $this->getAllIndicesForQuery() ),
+			'body' => $query
+		] );
+		$suggestedHitCount = $suggestedHitCount['count'] ?? 0;
 
 		// Decide if we will replace original term with suggested one
 		if ( $suggestedHitCount <= $origHitCount ) {
@@ -687,19 +659,26 @@ class Backend {
 	 * Runs each result in result set through
 	 * each source's formatter
 	 *
-	 * @param ResultSet $results
+	 * @param SearchResult[] $results
 	 * @param Lookup $lookup
+	 *
 	 * @return array
+	 * @throws Exception
 	 */
-	protected function formatResults( $results, $lookup ) {
+	protected function formatResults( array $results, Lookup $lookup ): array {
 		$formattedResults = [];
 
 		foreach ( $results as $resultObject ) {
 			$result = $resultObject->getData();
-			foreach ( $this->getSources() as $sourceKey => $source ) {
+			foreach ( $this->getSources() as $source ) {
 				$formatter = $source->getFormatter();
 				$formatter->setLookup( $lookup );
 				$formatter->format( $result, $resultObject );
+				$plugins = $this->getPluginsForInterface( IFormattingModifier::class );
+				/** @var IFormattingModifier $plugin */
+				foreach ( $plugins as $plugin ) {
+					$plugin->formatFulltextResult( $result, $resultObject, $source, $lookup );
+				}
 			}
 
 			$formattedResults[] = $result;
@@ -710,17 +689,10 @@ class Backend {
 
 	/**
 	 *
-	 * @param ResultSet $results
-	 * @return int
-	 */
-	protected function getTotal( $results ) {
-		return $results->getTotalHits();
-	}
-
-	/**
+	 * @param SearchResultSet $results
 	 *
-	 * @param ResultSet $results
 	 * @return array
+	 * @throws Exception
 	 */
 	protected function getFilterConfig( $results ) {
 		// Fields that have "AND/OR" option enabled. Would be better if this could
@@ -739,13 +711,21 @@ class Backend {
 		$filterCfg = [];
 
 		// Let sources modify the filters if needed
-		foreach ( $this->getSources() as $sourceKey => $source ) {
+		foreach ( $this->getSources() as $source ) {
 			$formatter = $source->getFormatter();
 			$formatter->formatFilters( $aggs, $filterCfg, $fieldsWithANDEnabled );
+			$plugins = $this->getPluginsForInterface( IFilterModifier::class );
+			/** @var IFilterModifier $plugin */
+			foreach ( $plugins as $plugin ) {
+				$plugin->modifyFilters( $aggs, $filterCfg, $fieldsWithANDEnabled, $source );
+			}
 		}
 
 		// Ultimately, the Base formatter should handle this, but for now its here
 		foreach ( $aggs as $filterName => $agg ) {
+			if ( empty( $agg['buckets'] ) ) {
+				continue;
+			}
 			$fieldName = substr( $filterName, 6 );
 			$filterCfg[$fieldName] = [
 				'buckets' => $agg['buckets'],
@@ -818,7 +798,7 @@ class Backend {
 	 * @return bool
 	 */
 	protected function isHistoryTrackingEnabled() {
-		$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'bsg' );
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
 		return $config->get( 'ESEnableSearchHistoryTracking' );
 	}
 
@@ -849,10 +829,10 @@ class Backend {
 	 * TODO: Whether hard-coded values here should go to configs
 	 * depends on fine-tuning, then we will know if it makes sense
 	 *
-	 * @param \Title $title
+	 * @param Title $title
 	 * @return array
 	 */
-	public function getSimilarPages( \Title $title ) {
+	public function getSimilarPages( Title $title ) {
 		$wikipageSource = $this->getSource( 'wikipage' );
 		if ( $wikipageSource instanceof WikiPages === false ) {
 			return [];
@@ -864,7 +844,6 @@ class Backend {
 			return [];
 		}
 
-		$index = $this->getIndexByType( $wikipageSource->getTypeKey() );
 		$lookup = new Lookup();
 		$lookup->setMLTQuery(
 			$docId,
@@ -874,14 +853,12 @@ class Backend {
 				// If it cannot find enough similar docs, it will return basically random results.
 				"min_doc_freq" => 1
 			],
-			$index->getName()
+			$this->getIndexName( 'wikipage' )
 		);
 		$lookup->addSourceField( 'prefixed_title' );
 		$lookup->setSize( 10 );
-
-		$search = new \Elastica\Search( $this->getClient() );
-		$search->addIndex( $index );
-		$results = $search->search( $lookup->getQueryDSL() );
+		$lookup->addSearchInTypes( [ 'wikipage' ] );
+		$results = $this->runRawQuery( $lookup );
 
 		$results = $results->getResults();
 		$topScore = 0;
@@ -917,15 +894,12 @@ class Backend {
 	/**
 	 * Get indexed _id of the given Title
 	 *
-	 * @param \Title $title
+	 * @param Title $title
+	 *
 	 * @return string|null if page not indexed
+	 * @throws Exception
 	 */
-	protected function getDocIdForTitle( \Title $title ) {
-		$wikipageSource = $this->getSource( 'wikipage' );
-
-		$search = new \Elastica\Search( $this->getClient() );
-		$search->addIndex( $this->getIndexByType( $wikipageSource->getTypeKey() ) );
-
+	protected function getDocIdForTitle( Title $title ) {
 		$lookup = new Lookup( [
 			"query" => [
 				"term" => [
@@ -936,15 +910,17 @@ class Backend {
 		$lookup->setSize( 1 );
 		$lookup->addSourceField( "prefixed_title" );
 
-		$results = $search->search( $lookup->getQueryDSL() );
+		$results = $this->runRawQuery( $lookup, [ 'wikipage' ] );
 
-		if ( $results->count() === 0 ) {
+		if ( $results->getTotalHits() === 0 ) {
 			return null;
 		}
 
 		foreach ( $results->getResults() as $result ) {
 			return $result->getId();
 		}
+
+		return null;
 	}
 
 	/**
@@ -957,31 +933,43 @@ class Backend {
 	}
 
 	/**
-	 * Add index for each source
+	 * Get all indices
 	 *
-	 * @param Search &$search
-	 * @throws \ConfigException
+	 * @param array|null $limitToSources
+	 *
+	 * @return array
+	 * @throws Exception
 	 */
-	protected function addAllIndexesForQuery( Search &$search ) {
+	public function getAllIndicesForQuery( ?array $limitToSources = null ): array {
+		$indices = [];
 		foreach ( $this->getSources() as $key => $source ) {
-			$search->addIndex( $this->getConfig()->get( 'index' ) . '_' . $key );
-			$this->maybeAddSharedIndex( $search, $key );
+			if ( $limitToSources !== null && !in_array( $key, $limitToSources ) ) {
+				continue;
+			}
+			$indices[] = $this->getIndexName( $key );
+			$this->maybeAddSharedIndex( $indices, $key );
 		}
+		return $indices;
 	}
 
 	/**
-	 * @param Search &$search
+	 * @param array &$indices
 	 * @param string $key
+	 * @param array|null $limitToSources
 	 *
 	 * @return void
 	 */
-	private function maybeAddSharedIndex( Search &$search, string $key ) {
+	private function maybeAddSharedIndex( array &$indices, string $key, ?array $limitToSources = null ) {
 		$prefix = $this->getSharedUploadsIndexPrefix();
-		if ( !$prefix || !in_array( $key, [ 'wikipage', 'repofile' ] ) ) {
+		$available = [ 'wikifile', 'repofile' ];
+		if ( is_array( $limitToSources ) ) {
+			$available = array_intersect( $available, $limitToSources );
+		}
+		if ( !$prefix || !in_array( $key, $available ) ) {
 			return;
 		}
 		$indexName = $prefix . '_' . $key;
-		$search->addIndex( $indexName );
+		$indices[] = $indexName;
 	}
 
 	/**
@@ -994,5 +982,53 @@ class Backend {
 			return null;
 		}
 		return $indexPrefix;
+	}
+
+	/**
+	 * @param string $index
+	 *
+	 * @return bool
+	 */
+	public function isSharedIndex( string $index ): bool {
+		$sharedIndex = $this->getSharedUploadsIndexPrefix();
+		if ( !$sharedIndex ) {
+			return false;
+		}
+		return strpos( $index, $this->getSharedUploadsIndexPrefix() ) === 0;
+	}
+
+	/**
+	 * @param string $index
+	 *
+	 * @return string
+	 */
+	public function typeFromIndexName( string $index ): string {
+		$prefix = [ $this->getConfig()->get( 'index' ) . '_' ];
+		$sharedPrefix = $this->getSharedUploadsIndexPrefix();
+		if ( $sharedPrefix ) {
+			$prefix[] = $sharedPrefix . '_';
+		}
+
+		foreach ( $prefix as $p ) {
+			if ( strpos( $index, $p ) === 0 ) {
+				return substr( $index, strlen( $p ) );
+			}
+		}
+		return $index;
+	}
+
+	/**
+	 * @param string $class
+	 *
+	 * @return ISearchPlugin[]
+	 */
+	public function getPluginsForInterface( string $class ): array {
+		$plugins = [];
+		foreach ( $this->plugins as $plugin ) {
+			if ( $plugin instanceof $class ) {
+				$plugins[] = $plugin;
+			}
+		}
+		return $plugins;
 	}
 }

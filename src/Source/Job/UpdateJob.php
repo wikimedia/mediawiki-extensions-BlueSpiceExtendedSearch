@@ -5,14 +5,16 @@ namespace BS\ExtendedSearch\Source\Job;
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\ExternalIndexFactory;
 use BS\ExtendedSearch\IExternalIndex;
-use BS\ExtendedSearch\Source\Base;
+use BS\ExtendedSearch\ISearchDocumentProvider;
+use BS\ExtendedSearch\ISearchSource;
 use Exception;
+use Job;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
 use MWException;
 use Status;
 
-abstract class UpdateBase extends \Job {
+abstract class UpdateJob extends Job {
 	public const ACTION_DELETE = 'delete';
 	public const ACTION_UPDATE = 'update';
 
@@ -25,7 +27,7 @@ abstract class UpdateBase extends \Job {
 	protected $sSourceKey = '';
 
 	/**
-	 * @var \BS\ExtendedSearch\Source\DocumentProvider\Base
+	 * @var ISearchDocumentProvider
 	 */
 	protected $dp;
 
@@ -50,10 +52,6 @@ abstract class UpdateBase extends \Job {
 				$this->setLastError( $status->getMessage() );
 			}
 		}
-		$dC = null;
-		unset( $dC );
-		$this->destroyDP();
-		$this->destroySource();
 
 		return true;
 	}
@@ -70,15 +68,11 @@ abstract class UpdateBase extends \Job {
 
 	/**
 	 *
-	 * @return Base
+	 * @return ISearchSource
 	 * @throws Exception
 	 */
 	protected function getSource() {
 		return $this->getBackend()->getSource( $this->getSourceKey() );
-	}
-
-	protected function destroySource() {
-		$this->getBackend()->destroySource( $this->getSourceKey() );
 	}
 
 	/**
@@ -134,7 +128,6 @@ abstract class UpdateBase extends \Job {
 				$status->error( $e );
 			}
 		}
-		$dC = null;
 		return $status;
 	}
 
@@ -177,9 +170,13 @@ abstract class UpdateBase extends \Job {
 		return false;
 	}
 
-	protected function destroyDP() {
-		$this->dp = null;
-		unset( $this->dp );
+	/**
+	 * @param string $identifier
+	 *
+	 * @return string
+	 */
+	protected function getDocumentId( string $identifier ): string {
+		return md5( $identifier );
 	}
 
 }

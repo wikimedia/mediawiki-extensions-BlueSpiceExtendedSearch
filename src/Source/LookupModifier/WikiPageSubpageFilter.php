@@ -5,7 +5,7 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 use ConfigException;
 use MediaWiki\MediaWikiServices;
 
-class WikiPageSubpageFilter extends Base {
+class WikiPageSubpageFilter extends LookupModifier {
 	/** @var string */
 	protected $originalQuery;
 	/** @var string */
@@ -17,7 +17,7 @@ class WikiPageSubpageFilter extends Base {
 	 * If so configured and terms matches, search only inside parent page
 	 */
 	public function apply() {
-		$this->originalQuery = $this->oLookup->getQueryString()['query'];
+		$this->originalQuery = $this->lookup->getQueryString()['query'];
 		if ( $this->shouldSkip() ) {
 			$this->skip = true;
 		} else {
@@ -50,13 +50,13 @@ class WikiPageSubpageFilter extends Base {
 	 * Split and set new query and filters
 	 */
 	protected function setSubpageSearch() {
-		$queryString = $this->oLookup->getQueryString();
+		$queryString = $this->lookup->getQueryString();
 		$parts = explode( '/', $this->originalQuery );
 		$pageQuery = array_pop( $parts );
 		$this->basePage = implode( '/', $parts );
 		$queryString['query'] = $pageQuery;
-		$this->oLookup->setQueryString( $queryString );
-		$this->oLookup->addTermFilter( 'basename_exact', $this->basePage );
+		$this->lookup->setQueryString( $queryString );
+		$this->lookup->addTermFilter( 'basename_exact', $this->basePage );
 	}
 
 	/**
@@ -66,9 +66,9 @@ class WikiPageSubpageFilter extends Base {
 		if ( $this->skip ) {
 			return;
 		}
-		$queryString = $this->oLookup->getQueryString();
+		$queryString = $this->lookup->getQueryString();
 		$queryString['query'] = $this->originalQuery;
-		$this->oLookup->setQueryString( $queryString );
-		$this->oLookup->removeTermFilter( 'basename_exact', $this->basePage );
+		$this->lookup->setQueryString( $queryString );
+		$this->lookup->removeTermFilter( 'basename_exact', $this->basePage );
 	}
 }

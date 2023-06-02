@@ -8,9 +8,9 @@ class RepoFile extends File {
 	 *
 	 * @return array
 	 */
-	public function getPropertyConfig() {
-		$aPC = $this->oDecoratedMP->getPropertyConfig();
-		$aPC = array_merge( $aPC, [
+	public function getPropertyConfig(): array {
+		$config = parent::getPropertyConfig();
+		return array_merge( $config, [
 			'namespace' => [
 				'type' => 'integer'
 			],
@@ -19,6 +19,5 @@ class RepoFile extends File {
 				'copy_to' => 'congregated'
 			],
 		] );
-		return $aPC;
 	}
 }

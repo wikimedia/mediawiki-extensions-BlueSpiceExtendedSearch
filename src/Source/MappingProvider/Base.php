@@ -2,14 +2,19 @@
 
 namespace BS\ExtendedSearch\Source\MappingProvider;
 
-class Base {
+use BS\ExtendedSearch\ISearchMappingProvider;
+
+class Base implements ISearchMappingProvider {
 
 	/**
 	 *
 	 * @return array
 	 */
-	public function getPropertyConfig() {
+	public function getPropertyConfig(): array {
 		return [
+			'id' => [
+				'type' => 'text'
+			],
 			'sortable_id' => [
 				'type' => 'keyword',
 				'doc_values' => true
@@ -17,17 +22,15 @@ class Base {
 			'congregated' => [
 				'type' => 'text'
 			],
-			'ac_ngram' => [
-				'type' => 'text',
-				'analyzer' => 'autocomplete',
-				'search_analyzer' => 'standard'
+			'suggestions' => [
+				'type' => 'search_as_you_type',
 			],
 			'uri' => [
 				'type' => 'text'
 			],
 			'basename' => [
 				'type' => 'text',
-				'copy_to' => [ 'congregated', 'ac_ngram' ],
+				'copy_to' => [ 'congregated', 'suggestions' ],
 				// required in order to be sortable
 				'fielddata' => true
 			],
@@ -62,7 +65,7 @@ class Base {
 	 *
 	 * @return array
 	 */
-	public function getSourceConfig() {
+	public function getSourceConfig(): array {
 		return [];
 	}
 
@@ -71,7 +74,7 @@ class Base {
 	 *
 	 * @return array
 	 */
-	final public function getSortableFields() {
+	public function getSortableFields(): array {
 		return [
 			'basename',
 			'mtime',

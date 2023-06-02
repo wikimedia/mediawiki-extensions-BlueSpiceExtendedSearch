@@ -4,7 +4,7 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Backend;
 
-class WikiPageSecurityTrimming extends Base {
+class WikiPageSecurityTrimming extends LookupModifier {
 
 	/** @var int[] */
 	protected $namespaceIdBlacklist = [];
@@ -25,7 +25,7 @@ class WikiPageSecurityTrimming extends Base {
 	 * See, https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html
 	 */
 	public function apply() {
-		$aNamespaceIds = $this->oContext->getLanguage()->getNamespaceIds();
+		$aNamespaceIds = $this->context->getLanguage()->getNamespaceIds();
 		$this->namespaceIdBlacklist = [];
 
 		foreach ( $aNamespaceIds as $sNsText => $iNsId ) {
@@ -35,7 +35,7 @@ class WikiPageSecurityTrimming extends Base {
 		}
 
 		if ( !empty( $this->namespaceIdBlacklist ) ) {
-			$this->oLookup->addBoolMustNotTerms( 'namespace', $this->namespaceIdBlacklist );
+			$this->lookup->addBoolMustNotTerms( 'namespace', $this->namespaceIdBlacklist );
 		}
 	}
 
@@ -48,7 +48,7 @@ class WikiPageSecurityTrimming extends Base {
 		$oTitle = \Title::makeTitle( $iNsId, 'Dummy' );
 		return !\MediaWiki\MediaWikiServices::getInstance()
 			->getPermissionManager()
-			->userCan( 'read', $this->oContext->getUser(), $oTitle );
+			->userCan( 'read', $this->context->getUser(), $oTitle );
 	}
 
 	public function undo() {

@@ -2,13 +2,13 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
-class BaseTagsAggregation extends Base {
+class BaseTagsAggregation extends LookupModifier {
 
 	public function apply() {
-		$this->oLookup->setBucketTermsAggregation( 'tags' );
+		$this->lookup->setBucketTermsAggregation( 'tags' );
 	}
 
 	public function undo() {
-		$this->oLookup->removeBucketTermsAggregation( 'tags' );
+		$this->lookup->removeBucketTermsAggregation( 'tags' );
 	}
 }

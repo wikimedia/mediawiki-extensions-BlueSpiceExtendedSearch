@@ -8,7 +8,7 @@ class LinkedFiles extends Files {
 	 *
 	 * @return string
 	 */
-	public function getTypeKey() {
+	public function getTypeKey(): string {
 		return 'linkedfile';
 	}
 }

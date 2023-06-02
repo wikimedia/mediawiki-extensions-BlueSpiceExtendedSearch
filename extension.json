@@ -32,9 +32,6 @@
 			"AdminToolRegistry": {
 				"bs-extended-search": "BS\\ExtendedSearch\\AdminTool"
 			},
-			"RunJobsTriggerHandlerRegistry": {
-				"bs-extendedsearch-update-external-files": "BS\\ExtendedSearch\\Source\\Updater\\ExternalFile::factory"
-			},
 			"PermissionRegistry": {
 				"extendedsearch-search-specialpage": {
 					"type": "global",
@@ -122,40 +119,24 @@
 		},
 		"BlueSpiceExtendedSearch": {
 			"Sources": {
-				"wikipage": "BS\\ExtendedSearch\\Source\\WikiPages::create",
-				"specialpage": "BS\\ExtendedSearch\\Source\\SpecialPages::create",
-				"repofile": "BS\\ExtendedSearch\\Source\\RepoFiles::create",
-				"externalfile": "BS\\ExtendedSearch\\Source\\ExternalFiles::create"
+				"wikipage": {
+					"class": "BS\\ExtendedSearch\\Source\\WikiPages",
+					"services": [ "ObjectFactory" ]
+				},
+				"specialpage": {
+					"class": "BS\\ExtendedSearch\\Source\\SpecialPages",
+					"services": [ "ObjectFactory" ]
+				},
+				"repofile": {
+					"class": "BS\\ExtendedSearch\\Source\\RepoFiles",
+					"services": [ "ObjectFactory" ]
+				},
+				"externalfile": {
+					"class": "BS\\ExtendedSearch\\Source\\ExternalFiles",
+					"services": [ "ObjectFactory" ]
+				}
 			},
-			"LookupModifierRegistry": {
-				"base-extensionaggregation": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\BaseExtensionAggregation::factory",
-				"base-tagsaggregation": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\BaseTagsAggregation::factory",
-				"base-simpleqsfields": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\BaseSimpleQSFields::factory",
-				"base-wildcarder": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\BaseWildcarder::factory",
-				"base-idsort": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\BaseSortByID::factory",
-				"base-userrelevance": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\BaseUserRelevance::factory",
-				"base-typesecuritytrimmings": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\BaseTypeSecurityTrimming::factory",
-				"base-titlesecuritytrimmings": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\BaseTitleSecurityTrimmings::factory",
-				"base-mtimeboost": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\BaseMTimeBoost::factory",
-				"base-acsourcefields": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\BaseAutocompleteSourceFields::factory",
-				"wikipage-namespacetextaggregation": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageNamespaceTextAggregation::factory",
-				"wikipage-userpreferences": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageUserPreferences::factory",
-				"wikipage-namespaceprefixresolver": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageNamespacePrefixResolver::factory",
-				"wikipage-securitytrimming": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageSecurityTrimming::factory",
-				"wikipage-categoriesaggregation": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageCategoriesAggregation::factory",
-				"wikipage-renderedcontenthighlight": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageRenderedContentHighlight::factory",
-				"wikipage-qssourcefields": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageQSSourceFields::factory",
-				"wikipage-boosters": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageBoosters::factory",
-				"wikipage-subpagefilter": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageSubpageFilter::factory",
-				"wikipage-unwanted": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageRemoveUnwanted::factory",
-				"wikipage-pagelangaggregation": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageLanguageAggregation::factory",
-				"wikipage-langfilter": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageLanguageFilter::factory",
-				"wikipage-acunwanted": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageAutocompleteRemoveUnwanted::factory",
-				"wikipage-acsourcefields": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\WikiPageAutocompleteSourceFields::factory",
-				"file-content": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\FileContent::factory",
-				"regexp-quoter": "\\BS\\ExtendedSearch\\Source\\LookupModifier\\RegExpQuoter::factory"
-			},
-			"AdditionalLookupModifiers": {},
+			"PluginRegistry": {},
 			"DefaultResultStructure": {
 				"headerText": "basename",
 				"headerUri": "uri",
@@ -180,7 +161,7 @@
 				"featured": []
 			},
 			"Autocomplete": {
-				"SuggestField": "ac_ngram",
+				"SuggestField": "suggestions",
 				"DisplayLimits": {
 					"normal": 7,
 					"top": 1,
@@ -209,7 +190,7 @@
 			},
 			"SpellCheck": {
 				"enabled": true,
-				"suggestField": "basename",
+				"suggestField": "suggestions",
 				"replaceThreshold": 0.01,
 				"suggestThreshold": 0.3
 			},
@@ -331,7 +312,8 @@
 		"BSUEModulePDFBeforeCreatePDF": "\\BS\\ExtendedSearch\\Hook\\BSUEModulePDFBeforeCreatePDF\\RemoveTagSearch::callback",
 		"NamespaceManager::editNamespace": "\\BS\\ExtendedSearch\\Hook\\NamespaceManagerEditNamespace\\ReindexNamespace::callback",
 		"UserMergeAccountFields": "\\BS\\ExtendedSearch\\Hook\\UserMergeAccountFields\\MergeExtendedSearchDBFields::callback",
-		"MWStakeCommonUIRegisterSkinSlotComponents": [ "extendedsearchform" ]
+		"MWStakeCommonUIRegisterSkinSlotComponents": [ "extendedsearchform" ],
+		"MWStakeRunJobsTriggerRegisterHandlers": "\\BS\\ExtendedSearch\\Hook\\MWStakeRunJobsTriggerRegisterHandlers\\RegisterExternalFileUpdater::callback"
 	},
 	"SpecialPages": {
 		"BSSearchCenter": "BS\\ExtendedSearch\\MediaWiki\\Specials\\SearchCenter",
@@ -495,6 +477,7 @@
 				"bs-extendedsearch-source-type-wikipage-label",
 				"bs-extendedsearch-source-type-specialpage-label",
 				"bs-extendedsearch-source-type-repofile-label",
+				"bs-extendedsearch-source-type-externalfile-label",
 				"bs-extendedsearch-result-relevance-relevant",
 				"bs-extendedsearch-result-relevance-not-relevant",
 				"bs-extendedsearch-search-center-result-redirects-label",
@@ -621,7 +604,7 @@
 			"value": "9200"
 		},
 		"ESBackendTransport": {
-			"value": "http"
+			"value": "https"
 		},
 		"ESBackendUsername": {
 			"value": ""

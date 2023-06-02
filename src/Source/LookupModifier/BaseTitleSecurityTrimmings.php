@@ -4,25 +4,22 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
-use Elastica\ResultSet;
+use BS\ExtendedSearch\SearchResultSet;
+use Config;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
 
-class BaseTitleSecurityTrimmings extends Base {
+class BaseTitleSecurityTrimmings extends LookupModifier {
 	/** @var Backend */
 	protected $backend;
-	/** @var \Config */
+	/** @var Config */
 	protected $config;
-	/** @var \Elastica\Search */
-	protected $search;
-	/** @var string|null */
-	protected $sharedIndex = null;
 
 	/**
 	 * @param MediaWikiServices $services
 	 * @param Lookup $lookup
 	 * @param IContextSource $context
-	 * @return Base
+	 * @return LookupModifier
 	 */
 	public static function factory( MediaWikiServices $services, Lookup $lookup, IContextSource $context ) {
 		return new static( $services->getService( 'BSExtendedSearchBackend' ), $lookup, $context );
@@ -36,21 +33,8 @@ class BaseTitleSecurityTrimmings extends Base {
 	 */
 	public function __construct( Backend $backend, &$lookup, \IContextSource $context ) {
 		parent::__construct( $lookup, $context );
-
 		$this->backend = $backend;
 		$this->config = $this->backend->getConfig();
-		$this->setSearch();
-		$this->setSharedIndices();
-	}
-
-	public function setSearch() {
-		$client = new \Elastica\Client(
-			$this->config->get( 'connection' )
-		);
-		$search = new \Elastica\Search( $client );
-		$search->addIndex( $this->config->get( 'index' ) . '_*' );
-
-		$this->search = $search;
 	}
 
 	/**
@@ -67,12 +51,12 @@ class BaseTitleSecurityTrimmings extends Base {
 	 * unless there are not enough valid results for this query to fill the page
 	 *
 	 * Logically this is LookupModifier, but since it runs query, and needs
-	 * resources unavaialable to LookupModifier, its implemented here
+	 * resources unavailable to LookupModifier, its implemented here
 	 */
 	public function apply() {
-		$prepLookup = clone $this->oLookup;
+		$prepLookup = new Lookup( $this->lookup->getQueryDSL() );
 
-		$size = $this->oLookup->getSize();
+		$size = $this->lookup->getSize();
 
 		// Prepare preprocessor query
 		$prepLookup->setSize( $size );
@@ -80,6 +64,8 @@ class BaseTitleSecurityTrimmings extends Base {
 		$prepLookup->addSourceField( 'basename' );
 		$prepLookup->addSourceField( 'namespace' );
 		$prepLookup->addSourceField( 'prefixed_title' );
+		$prepLookup->removeSearchAfter();
+		$prepLookup->removeForceTerm();
 
 		$excludes = [];
 
@@ -90,11 +76,11 @@ class BaseTitleSecurityTrimmings extends Base {
 		}
 
 		// Add result _ids to exclude from the search
-		$this->oLookup->addBoolMustNotTerms( '_id', $excludes );
+		$this->lookup->addBoolMustNotTerms( '_id', $excludes );
 	}
 
 	/**
-	 * Runs page-sized queries until there are enought allowed results
+	 * Runs page-sized queries until there are enough allowed results
 	 * to fill a page, or until there are no more results to go over
 	 *
 	 * @param Lookup $prepLookup
@@ -117,7 +103,7 @@ class BaseTitleSecurityTrimmings extends Base {
 
 			foreach ( $results->getResults() as $resultObject ) {
 				$data = $resultObject->getData();
-				if ( $this->sharedIndex && $resultObject->getIndex() === $this->sharedIndex ) {
+				if ( $this->backend->isSharedIndex( $resultObject->getIndex() ) ) {
 					if ( $data['namespace'] !== NS_FILE ) {
 						$excludes[] = $resultObject->getId();
 					}
@@ -176,33 +162,33 @@ class BaseTitleSecurityTrimmings extends Base {
 	 * Runs preprocessor query
 	 *
 	 * @param Lookup $lookup
-	 * @return ResultSet|false if no results are retrieved
+	 * @return SearchResultSet|null
 	 */
 	protected function runPrepQuery( $lookup ) {
 		try {
-			$results = $this->search->search( $lookup->getQueryDSL() );
+			$results = $this->backend->runRawQuery( $lookup );
 		} catch ( \RuntimeException $ex ) {
 			// If query is invalid, let main query run catch it
-			return false;
+			return null;
 		}
 
 		$totalCount = $results->getTotalHits();
 		if ( $totalCount == 0 ) {
 			// No results at all for this query
-			return false;
+			return null;
 		}
 
 		$pageCount = count( $results->getResults() );
 		if ( $pageCount == 0 ) {
 			// No results on page
-			return false;
+			return null;
 		}
 
 		return $results;
 	}
 
 	public function undo() {
-		$this->oLookup->removeBoolMustNot( '_id' );
+		$this->lookup->removeBoolMustNot( '_id' );
 	}
 
 	/**
@@ -213,14 +199,5 @@ class BaseTitleSecurityTrimmings extends Base {
 			Backend::QUERY_TYPE_AUTOCOMPLETE,
 			Backend::QUERY_TYPE_SEARCH
 		];
-	}
-
-	private function setSharedIndices() {
-		$prefix = $this->backend->getSharedUploadsIndexPrefix();
-		if ( !$prefix ) {
-			return;
-		}
-		$this->sharedIndex = $prefix . '_wikipage';
-		$this->search->addIndex( $this->sharedIndex );
 	}
 }

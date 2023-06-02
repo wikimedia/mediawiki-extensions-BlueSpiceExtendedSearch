@@ -30,27 +30,16 @@ GET _ingest/pipeline/attachment
 Sample queries
 
 # Fuzzy AC
-GET _search
+GET {index}/_search
 {
-  "_source": "prefixed_title",
   "query": {
-    "bool": {
-      "must": {
-        "match": {
-          "ac_ngram": {
-            "query": "test AC",
-            "prefix_length": 2
-          }
-        }
-      },
-      "must_not": [
-        {
-          "terms": {
-            "namespace": [
-                1, 3, 5, 7, 9
-              ]
-          }
-        }
+    "multi_match": {
+      "query": "tw one",
+      "type": "bool_prefix",
+      "fields": [
+        "suggestions",
+        "suggestions._2gram",
+        "suggestions._3gram"
       ]
     }
   }

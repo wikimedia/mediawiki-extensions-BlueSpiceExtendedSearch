@@ -2,6 +2,7 @@
 namespace BS\ExtendedSearch\MediaWiki\Backend;
 
 use BS\ExtendedSearch\Lookup;
+use BS\ExtendedSearch\Setup;
 use MediaWiki\MediaWikiServices;
 use SearchResult;
 use SearchSuggestionSet;
@@ -40,7 +41,7 @@ class BlueSpiceSearch extends \SearchEngine {
 			return $this->fullSearchWrapper( $term );
 		}
 
-		$res = $this->runNGramSearch( $term );
+		$res = $this->runAutocompleteSearch( $term );
 		$searchResultSet = new SearchResultSet( $this->searchContainedSyntax( $term ) );
 		foreach ( $res as $title ) {
 			$searchResultSet->add(
@@ -94,7 +95,7 @@ class BlueSpiceSearch extends \SearchEngine {
 	 * @return \SearchSuggestionSet
 	 */
 	protected function completionSearchBackend( $search ) {
-		$results = $this->runNGramSearch( trim( $search ) );
+		$results = $this->runAutocompleteSearch( trim( $search ) );
 		return \SearchSuggestionSet::fromTitles( $results );
 	}
 
@@ -103,7 +104,7 @@ class BlueSpiceSearch extends \SearchEngine {
 	 * @param string $search
 	 * @return \Title[]
 	 */
-	protected function runNGramSearch( $search ) {
+	protected function runAutocompleteSearch( $search ) {
 		if ( $search === '' ) {
 			return [];
 		}
@@ -112,17 +113,9 @@ class BlueSpiceSearch extends \SearchEngine {
 		$suggestField = $acConfig['SuggestField'];
 
 		$lookup = $this->getLookup();
-		$lookup->setBoolMatchQueryString( $suggestField, $search );
+		$lookup->setMatchQueryString( $suggestField, $search );
 
-		$search = new \Elastica\Search( $this->backend->getClient() );
-		$search->addIndex( $this->backend->getConfig()->get( 'index' ) . '_wikipage' );
-		$sharedPrefix = $this->backend->getSharedUploadsIndexPrefix();
-		if ( $sharedPrefix ) {
-			$search->addIndex( $sharedPrefix . '_wikipage' );
-		}
-
-		$results = $search->search( $lookup->getQueryDSL() );
-
+		$results = $this->backend->runRawQuery( $lookup, [ 'wikipage' ] );
 		$titles = [];
 		foreach ( $results->getResults() as $item ) {
 			$data = $item->getData();
@@ -242,7 +235,7 @@ class BlueSpiceSearch extends \SearchEngine {
 	protected function getFallbackSearchEngine() {
 		if ( $this->fallbackSearchEngine === null ) {
 			$lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
-			$class = \BS\ExtendedSearch\Setup::getSearchEngineClass( $lb );
+			$class = Setup::getSearchEngineClass( $lb );
 			$this->fallbackSearchEngine = new $class( $lb );
 		}
 		return $this->fallbackSearchEngine;
@@ -259,7 +252,7 @@ class BlueSpiceSearch extends \SearchEngine {
 
 		$lookup->setSize( $this->limit );
 		$lookup->setFrom( $this->offset );
-		$lookup->addTermFilter( '_type', 'wikipage' );
+		$lookup->addSearchInTypes( [ 'wikipage' ] );
 		$lookup->addSort( '_score', Lookup::SORT_DESC );
 
 		return $lookup;

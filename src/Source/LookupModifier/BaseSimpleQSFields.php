@@ -2,13 +2,18 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
-class BaseSimpleQSFields extends Base {
+class BaseSimpleQSFields extends LookupModifier {
 
 	/**
 	 * Adds fields that will be searched including query-time boosting
 	 */
 	public function apply() {
-		$simpleQS = $this->oLookup->getQueryString();
+		$this->lookup->addSourceField( 'basename' );
+		$this->lookup->addSourceField( 'congregated' );
+		$this->lookup->addSourceField( 'ctime' );
+		$this->lookup->addSourceField( 'mtime' );
+
+		$simpleQS = $this->lookup->getQueryString();
 		$fields = [ 'basename^4', 'congregated' ];
 		if ( isset( $simpleQS['fields'] ) && is_array( $simpleQS['fields'] ) ) {
 			$simpleQS['fields'] = array_merge( $simpleQS['fields'], $fields );
@@ -16,17 +21,22 @@ class BaseSimpleQSFields extends Base {
 			$simpleQS['fields'] = $fields;
 		}
 
-		$this->oLookup->setQueryString( $simpleQS );
+		$this->lookup->setQueryString( $simpleQS );
 	}
 
 	public function undo() {
-		$simpleQS = $this->oLookup->getQueryString();
+		$simpleQS = $this->lookup->getQueryString();
 
 		if ( isset( $simpleQS['fields'] ) && is_array( $simpleQS['fields'] ) ) {
 			$simpleQS['fields'] = array_diff( $simpleQS['fields'], [ 'basename^4', 'congregated' ] );
 		}
 
-		$this->oLookup->setQueryString( $simpleQS );
+		$this->lookup->setQueryString( $simpleQS );
+
+		$this->lookup->removeSourceField( 'basename' );
+		$this->lookup->removeSourceField( 'congregated' );
+		$this->lookup->removeSourceField( 'ctime' );
+		$this->lookup->removeSourceField( 'mtime' );
 	}
 
 }

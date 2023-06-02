@@ -10,7 +10,7 @@
 		if ( !mw.config.get( 'bsgESEnableTypeFilter' ) ) {
 			return [];
 		}
-		var availableTypes = mw.config.get( 'bsgESAvailbleTypes' );
+		var availableTypes = mw.config.get( 'bsgESAvailableTypes' );
 
 		if( availableTypes.length === 0 ) {
 			return [];

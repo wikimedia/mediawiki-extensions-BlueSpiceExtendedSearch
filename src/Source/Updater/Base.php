@@ -2,35 +2,39 @@
 
 namespace BS\ExtendedSearch\Source\Updater;
 
-use MediaWiki\HookContainer\HookContainer;
+use BS\ExtendedSearch\ISearchSource;
+use BS\ExtendedSearch\ISearchUpdater;
 use MediaWiki\MediaWikiServices;
+use Title;
 
-class Base {
+class Base implements ISearchUpdater {
 
 	/** @var string */
 	protected $sUpdateJobClass = '';
+	/** @var ISearchSource */
+	protected $source;
 
 	/**
 	 *
-	 * @param \BS\ExtendedSearch\Source\Base $oSource
+	 * @param ISearchSource $source
 	 */
-	public function __construct( $oSource ) {
-		// TODO: Proceed here
+	public function __construct( ISearchSource $source ) {
+		$this->source = $source;
 	}
 
 	/**
 	 *
-	 * @param HookContainer $hookContainer
+	 * @param MediaWikiServices $services
 	 */
-	public function init( $hookContainer ) {
-		$hookContainer->register(
+	public function init( MediaWikiServices $services ): void {
+		$services->getHookContainer()->register(
 			'BSExtendedSearchTriggerUpdate', [ $this, 'onBSExtendedSearchTriggerUpdate' ]
 		);
 	}
 
 	/**
 	 *
-	 * @param \Title $oTitle
+	 * @param Title $oTitle
 	 * @param array $aParams
 	 * @return void
 	 */
@@ -44,7 +48,7 @@ class Base {
 	}
 
 	/**
-	 * @param \Title $oTitle
+	 * @param Title $oTitle
 	 * @param array $aParams
 	 * @return \BS\ExtendedSearch\Source\Updater\Base|null
 	 */
@@ -62,7 +66,7 @@ class Base {
 	 *
 	 * @param string $sBackendKey
 	 * @param string $sSourceKey
-	 * @param \Title $oTitle
+	 * @param Title $oTitle
 	 * @param array $aParams
 	 * @return bool
 	 */

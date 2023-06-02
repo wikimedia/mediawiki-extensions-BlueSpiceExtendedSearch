@@ -4,7 +4,7 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Backend;
 
-class WikiPageRemoveUnwanted extends Base {
+class WikiPageRemoveUnwanted extends LookupModifier {
 
 	public function apply() {
 		// Its empty for now, but not removed yet

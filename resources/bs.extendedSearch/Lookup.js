@@ -18,7 +18,6 @@ OO.initClass( bs.extendedSearch.Lookup );
 
 bs.extendedSearch.Lookup.SORT_ASC = 'asc';
 bs.extendedSearch.Lookup.SORT_DESC = 'desc';
-bs.extendedSearch.Lookup.TYPE_FIELD_NAME = '_type';
 
 /**
  *
@@ -103,6 +102,24 @@ bs.extendedSearch.Lookup.prototype.setBoolMatchQueryString = function( field, q 
 
 	return this;
 }
+
+bs.extendedSearch.Lookup.prototype.setMultiMatchQuery = function( field, q ) {
+	this.ensurePropertyPath( 'query.bool.must', {} );
+
+	this.query.bool.must.multi_match = {
+		query: q,
+		type: 'bool_prefix',
+		fields: [
+			field,
+			field + '._2gram',
+			field + '._3gram'
+		]
+	};
+
+	return this;
+};
+
+
 
 /**
  * @see https://www.elastic.co/guide/en/elasticsearch/reference/5.x/query-dsl-query-string-query.html
@@ -874,7 +891,7 @@ bs.extendedSearch.Lookup.prototype.setSearchAfter = function( values ) {
 	}
 
 	//From and search_after cannot coexist in the same query
-	delete( this.from );
+	this.from = 0;
 
 	this.search_after = values;
 

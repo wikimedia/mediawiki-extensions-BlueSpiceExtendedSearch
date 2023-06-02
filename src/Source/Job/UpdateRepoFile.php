@@ -96,7 +96,7 @@ class UpdateRepoFile extends UpdateTitleBase {
 		}
 		$this->canonicalURL = $file->getCanonicalURL();
 		$hookContainer = $services->getHookContainer();
-		$hookContainer->run( 'BSExtendedSearchRepoFileGetRepoFile', [
+		$hookContainer->run( 'BSExtendedSearchRepoFileGetFile', [
 			&$file
 		] );
 

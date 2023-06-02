@@ -23,12 +23,10 @@ class UpdateWikiPage extends UpdateTitleBase {
 	protected function doRun() {
 		$this->dp = $this->getSource()->getDocumentProvider();
 		if ( $this->isNoIndex() ) {
-			$this->getSource()->deleteDocumentsFromIndex(
-				[ $this->dp->getDocumentId( $this->getDocumentProviderUri() ) ]
-			);
-			$id = $this->dp->getDocumentId( $this->getDocumentProviderUri() );
+			$documentId = $this->getDocumentId( $this->getDocumentProviderUri() );
+			$this->getSource()->deleteDocumentFromIndex( $documentId );
 
-			return [ 'id' => $id ];
+			return [ 'id' => $documentId ];
 		}
 
 		return parent::doRun();
@@ -37,6 +35,7 @@ class UpdateWikiPage extends UpdateTitleBase {
 	/**
 	 *
 	 * @return bool
+	 * @throws \Exception
 	 */
 	protected function skipProcessing() {
 		return in_array(

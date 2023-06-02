@@ -96,6 +96,7 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Wikipage",
 	"bs-extendedsearch-source-type-repofile-label": "Local file",
 	"bs-extendedsearch-source-type-specialpage-label": "Special page",
+	"bs-extendedsearch-source-type-externalfile-label": "External file",
 	"bs-extendedsearch-result-relevance-relevant": "This result is important for me",
 	"bs-extendedsearch-result-relevance-not-relevant": "This result is not important for me",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "Search full text",
@@ -175,5 +176,6 @@
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Show a compact autocomplete layout of the search menu (one-column layout, no thumbnail preview).",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Number of search queries",
 	"bs-extendedsearch-droplet-search-name": "Search field",
-	"bs-extendedsearch-droplet-search-description": "Adds a search field to the page content"
+	"bs-extendedsearch-droplet-search-description": "Adds a search field to the page content",
+	"bs-extendedsearch-source-label-externalfile": "External file"
 }

@@ -4,10 +4,10 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Backend;
 
-class WikiPageAutocompleteSourceFields extends Base {
+class WikiPageAutocompleteSourceFields extends LookupModifier {
 
 	public function apply() {
-		$this->oLookup->addSourceField( [ 'namespace', 'namespace_text', 'prefixed_title', 'mtime', 'display_title' ] );
+		$this->lookup->addSourceField( [ 'namespace', 'namespace_text', 'prefixed_title', 'mtime', 'display_title' ] );
 	}
 
 	public function undo() {

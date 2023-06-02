@@ -1,6 +1,6 @@
 <?php
 
-namespace BS\ExtendedSearch;
+namespace BS\ExtendedSearch\Plugin;
 
 interface ILookupModifier {
 	/**

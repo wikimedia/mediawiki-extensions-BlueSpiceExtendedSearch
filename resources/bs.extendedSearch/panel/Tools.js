@@ -266,7 +266,7 @@
 		this.lookup = bs.extendedSearch.SearchCenter.getLookupObject();
 
 		if( params.filterId == 'type' ) {
-			params.filterId = bs.extendedSearch.Lookup.TYPE_FIELD_NAME;
+			params.filterId = '_type';
 		}
 
 		for( var i = 0; i < params.options.length; i++ ) {
@@ -290,21 +290,21 @@
 		$( e.target ).remove();
 
 		if( params.filterId == 'type' ) {
-			params.filterId = bs.extendedSearch.Lookup.TYPE_FIELD_NAME;
+			params.filterId = '_type';
 		}
 
 		this.lookup.clearFilter( params.filterId );
 
 		this.lookup.setFrom( 0 );
 		bs.extendedSearch.SearchCenter.updateQueryHash();
-	}
+	};
 
 	bs.extendedSearch.ToolsPanel.prototype.onWidgetToAddSelected = function( e, data ) {
 		var cfg = data.cfg;
 		var filter = this.addFilterWidget( cfg );
 		data.window.close();
 		filter.showOptions();
-	}
+	};
 
 	/**
 	 * Reads in filters currently set in Lookup object
@@ -323,7 +323,7 @@
 					continue;
 				}
 				var filterValues = queryFilter[filterId];
-				if( filterId == bs.extendedSearch.Lookup.TYPE_FIELD_NAME ) {
+				if( filterId === '_type' ) {
 					filterId = 'type';
 				}
 				for( var i = 0; i < this.filterData.length; i++ ) {

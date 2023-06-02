@@ -4,47 +4,67 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use MediaWiki\MediaWikiServices;
 
-class WikiPageQSSourceFields extends Base {
+class WikiPageQSSourceFields extends LookupModifier {
 
-	/**
-	 * Adds fields that will be searched including query-time boosting
-	 */
 	public function apply() {
-		$queryString = $this->oLookup->getQueryString();
+		foreach ( $this->getSource() as $field ) {
+			$this->lookup->addSourceField( $field );
+		}
+		$queryString = $this->lookup->getQueryString();
 
-		$fields = $this->getFields();
+		$fields = $this->getFieldsToSearchIn();
 		if ( isset( $queryString['fields'] ) && is_array( $queryString['fields'] ) ) {
 			$queryString['fields'] = array_merge( $queryString['fields'], $fields );
 		} else {
 			$queryString['fields'] = $fields;
 		}
 
-		$this->oLookup->setQueryString( $queryString );
+		$this->lookup->setQueryString( $queryString );
 	}
 
 	public function undo() {
-		$queryString = $this->oLookup->getQueryString();
+		$queryString = $this->lookup->getQueryString();
 
 		if ( isset( $queryString['fields'] ) && is_array( $queryString['fields'] ) ) {
 			$queryString['fields'] = array_diff(
 				$queryString['fields'],
-				$this->getFields()
+				$this->getFieldsToSearchIn()
 			);
 		}
 
-		$this->oLookup->setQueryString( $queryString );
+		$this->lookup->setQueryString( $queryString );
+		foreach ( $this->getSource() as $field ) {
+			$this->lookup->removeSourceField( $field );
+		}
 	}
 
 	/**
 	 * @return string[]
 	 */
-	private function getFields() {
+	private function getFieldsToSearchIn() {
 		$fields = [ 'rendered_content', 'prefixed_title', 'display_title^2' ];
 		if ( $this->shouldSearchInRaw() ) {
 			$fields[] = 'source_content';
 		}
 
 		return $fields;
+	}
+
+	/**
+	 * @return string[]
+	 */
+	private function getSource() {
+		return [
+			'rendered_content',
+			'prefixed_title',
+			'display_title',
+			'namespace',
+			'namespace_text',
+			'sections',
+			'categories',
+			'is_redirect',
+			'redirects_to'
+		];
 	}
 
 	private function shouldSearchInRaw() {

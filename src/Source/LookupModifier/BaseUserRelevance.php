@@ -4,7 +4,7 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\ResultRelevance;
 
-class BaseUserRelevance extends Base {
+class BaseUserRelevance extends LookupModifier {
 	/** @var array */
 	protected $relevanceValues = [];
 	/** @var array */
@@ -16,14 +16,9 @@ class BaseUserRelevance extends Base {
 	 *
 	 * @param \BS\ExtendedSearch\Lookup &$lookup
 	 * @param \IContextSource $context
-	 * @return BaseUserRelevance
 	 */
 	public function __construct( &$lookup, $context ) {
 		parent::__construct( $lookup, $context );
-
-		if ( $context->getUser()->isRegistered() == false ) {
-			return;
-		}
 
 		$resultRelevanceManager = new ResultRelevance(
 			$context->getUser()
@@ -32,6 +27,9 @@ class BaseUserRelevance extends Base {
 	}
 
 	public function apply() {
+		if ( $this->context->getUser()->isRegistered() ) {
+			return;
+		}
 		if ( $this->relevanceValues == [] ) {
 			return;
 		}
@@ -48,11 +46,11 @@ class BaseUserRelevance extends Base {
 		}
 
 		if ( !empty( $this->positiveBoosts ) ) {
-			$this->oLookup->addShouldTerms( '_id', $this->positiveBoosts, 2, false );
+			$this->lookup->addShouldTerms( '_id', $this->positiveBoosts, 2, false );
 		}
 
 		if ( !empty( $this->negativeBoosts ) ) {
-			$this->oLookup->addShouldTerms( '_id', $this->negativeBoosts, -3, false );
+			$this->lookup->addShouldTerms( '_id', $this->negativeBoosts, -3, false );
 		}
 	}
 
@@ -61,7 +59,7 @@ class BaseUserRelevance extends Base {
 			return;
 		}
 
-		$this->oLookup->removeShouldTerms( '_id', array_merge( $this->positiveBoosts, $this->negativeBoosts ) );
+		$this->lookup->removeShouldTerms( '_id', array_merge( $this->positiveBoosts, $this->negativeBoosts ) );
 	}
 
 }
