@@ -2,12 +2,9 @@
 
 namespace BS\ExtendedSearch;
 
-use BS\ExtendedSearch\Source\Base as SourceBase;
 use Config;
-use Elastica\Result;
 use Exception;
 use MediaWiki\MediaWikiServices;
-use MWException;
 
 class PostProcessor {
 
@@ -39,7 +36,9 @@ class PostProcessor {
 	/**
 	 * @param string $type
 	 * @param Backend $backend
+	 *
 	 * @return PostProcessor
+	 * @throws Exception
 	 */
 	public static function factory( $type, $backend ) {
 		$postProcessor = new static(
@@ -48,10 +47,14 @@ class PostProcessor {
 			MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' )
 		);
 		$processors = [];
-		foreach ( $backend->getSources() as $key => $source ) {
-			$processors[$key] = $source->getPostProcessor( $postProcessor );
+		foreach ( $backend->getSources() as $source ) {
+			$processors = array_merge( $processors, $source->getPostProcessors( $postProcessor ) );
 		}
-		$postProcessor->addProcessors( $processors );
+		/** @var IPostProcessorProvider $plugin */
+		foreach ( $backend->getPluginsForInterface( IPostProcessorProvider::class ) as $plugin ) {
+			$processors = array_merge( $processors, $plugin->getPostProcessors( $postProcessor ) );
+		}
+		$postProcessor->setProcessors( $processors );
 		return $postProcessor;
 	}
 
@@ -77,26 +80,8 @@ class PostProcessor {
 	 * @param array $processors
 	 * @throws Exception
 	 */
-	public function addProcessors( array $processors ) {
-		foreach ( $processors as $sourceKey => $processor ) {
-			$this->addProcessor( $sourceKey, $processor );
-		}
-	}
-
-	/**
-	 * @param string $sourceKey
-	 * @param IPostProcessor $processor
-	 * @throws Exception
-	 * @throws MWException
-	 */
-	public function addProcessor( $sourceKey, IPostProcessor $processor ) {
-		if ( $this->backend->getSource( $sourceKey ) instanceof SourceBase ) {
-			$this->processors[$sourceKey] = $processor;
-		} else {
-			throw new MWException(
-				"Postprocessor " . get_class( $processor ) . " is not an instance of " . IPostProcessor::class
-			);
-		}
+	public function setProcessors( array $processors ) {
+		$this->processors = $processors;
 	}
 
 	/**
@@ -116,7 +101,7 @@ class PostProcessor {
 	}
 
 	/**
-	 * @param Result[] &$results
+	 * @param SearchResult[] &$results
 	 * @param Lookup $lookup
 	 */
 	public function process( &$results, $lookup ) {
@@ -124,9 +109,8 @@ class PostProcessor {
 			return;
 		}
 		foreach ( $results as &$result ) {
-			$type = $result->getType();
-			if ( isset( $this->processors[$type] ) ) {
-				$this->processors[$type]->process( $result, $lookup );
+			foreach ( $this->processors as $processor ) {
+				$processor->process( $result, $lookup );
 			}
 		}
 

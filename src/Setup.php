@@ -16,7 +16,7 @@ class Setup {
 			->getService( 'BSExtendedSearchBackend' )->getSources();
 		foreach ( $sources as $source ) {
 			$source->getUpdater()->init(
-				MediaWikiServices::getInstance()->getHookContainer()
+				MediaWikiServices::getInstance()
 			);
 		}
 	}

@@ -2,42 +2,20 @@
 
 namespace BS\ExtendedSearch\Source\DocumentProvider;
 
-use MediaWiki\MediaWikiServices;
+use BS\ExtendedSearch\ISearchDocumentProvider;
 
-class Base {
-
-	/** @var MediaWikiServices */
-	protected $services = null;
-
-	public function __construct() {
-		$this->services = MediaWikiServices::getInstance();
-	}
+class Base implements ISearchDocumentProvider {
 
 	/**
-	 *
-	 * @param string $sUri
-	 * @return string
+	 * @inheritDoc
 	 */
-	public function getDocumentId( $sUri ) {
-		return md5( $sUri );
-	}
-
-	/**
-	 *
-	 * @param string $sUri
-	 * @param mixed $mDataItem
-	 * @return array
-	 */
-	public function getDataConfig( $sUri, $mDataItem ) {
+	public function getDocumentData( string $uri, string $documentId, $dataItem ): array {
 		return [
-			'id' => $this->getDocumentId( $sUri ),
-			'sortable_id' => $this->getDocumentId( $sUri ),
-			'uri' => $sUri,
-			'basename' => wfBaseName( $sUri ),
-			'basename_exact' => wfBaseName( $sUri )
+			'id' => $documentId,
+			'sortable_id' => $documentId,
+			'uri' => $uri,
+			'basename' => wfBaseName( $uri ),
+			'basename_exact' => wfBaseName( $uri )
 		];
-	}
-
-	public function __destruct() {
 	}
 }

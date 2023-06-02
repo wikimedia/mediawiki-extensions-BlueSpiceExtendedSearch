@@ -7,7 +7,7 @@ use BS\ExtendedSearch\Wildcarder;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
 
-class BaseWildcarder extends Base {
+class BaseWildcarder extends LookupModifier {
 	/**
 	 * @var array
 	 */
@@ -22,12 +22,12 @@ class BaseWildcarder extends Base {
 
 	/**
 	 *
-	 * @param Lookup $oLookup
+	 * @param Lookup $lookup
 	 * @param IContextSource $oContext
 	 * @param string $defaultOperator
 	 */
-	public function __construct( $oLookup, $oContext, $defaultOperator ) {
-		parent::__construct( $oLookup, $oContext );
+	public function __construct( $lookup, $oContext, $defaultOperator ) {
+		parent::__construct( $lookup, $oContext );
 		$this->defaultOperator = $defaultOperator;
 	}
 
@@ -35,7 +35,7 @@ class BaseWildcarder extends Base {
 	 * @param MediaWikiServices $services
 	 * @param Lookup $lookup
 	 * @param IContextSource $context
-	 * @return Base
+	 * @return LookupModifier
 	 */
 	public static function factory(
 		MediaWikiServices $services, Lookup $lookup, IContextSource $context
@@ -46,7 +46,7 @@ class BaseWildcarder extends Base {
 	}
 
 	public function apply() {
-		$this->queryString = $this->oLookup->getQueryString();
+		$this->queryString = $this->lookup->getQueryString();
 		$this->originalQuery = trim( strip_tags( $this->queryString['query'] ) );
 
 		$wildcarder = Wildcarder::factory( $this->originalQuery );
@@ -60,13 +60,13 @@ class BaseWildcarder extends Base {
 	protected function setWildcarded( $wildcarded ) {
 		$this->queryString['query'] = $wildcarded;
 		$this->queryString['default_operator'] = $this->defaultOperator;
-		$this->oLookup->setQueryString( $this->queryString );
+		$this->lookup->setQueryString( $this->queryString );
 	}
 
 	public function undo() {
-		$this->queryString = $this->oLookup->getQueryString();
+		$this->queryString = $this->lookup->getQueryString();
 		$this->queryString['query'] = $this->originalQuery;
-		$this->oLookup->setQueryString( $this->queryString );
+		$this->lookup->setQueryString( $this->queryString );
 	}
 
 	/**

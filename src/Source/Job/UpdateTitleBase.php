@@ -2,7 +2,9 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
-class UpdateTitleBase extends UpdateBase {
+use BS\ExtendedSearch\Plugin\IDocumentDataModifier;
+
+class UpdateTitleBase extends UpdateJob {
 
 	/**
 	 * TODO: In order to be able to index multiple versions of the page,
@@ -20,11 +22,9 @@ class UpdateTitleBase extends UpdateBase {
 	protected function doRun() {
 		$this->dp = $this->getSource()->getDocumentProvider();
 		if ( $this->isDeletion() ) {
-			$this->getSource()->deleteDocumentsFromIndex(
-				[ $this->dp->getDocumentId( $this->getDocumentProviderUri() ) ]
-			);
-			$id = $this->dp->getDocumentId( $this->getDocumentProviderUri() );
-			return [ 'id' => $id ];
+			$documentId = $this->getDocumentId( $this->getDocumentProviderUri() );
+			$this->getSource()->deleteDocumentFromIndex( $documentId );
+			return [ 'id' => $documentId ];
 		}
 
 		$providerSource = $this->getDocumentProviderSource();
@@ -32,20 +32,16 @@ class UpdateTitleBase extends UpdateBase {
 			return [];
 		}
 
-		$aDC = $this->dp->getDataConfig(
+		$aDC = $this->dp->getDocumentData(
 			$this->getDocumentProviderUri(),
+			$this->getDocumentId( $this->getDocumentProviderUri() ),
 			$providerSource
 		);
-		$this->getHookContainer()->run(
-			'BSExtendedSearchGetDocumentData',
-			[
-				$this->dp,
-				&$aDC,
-				$this->getDocumentProviderUri(),
-				$providerSource
-			]
-		);
-		$this->getSource()->addDocumentsToIndex( [ $aDC ] );
+		$plugins = $this->getBackend()->getPluginsForInterface( IDocumentDataModifier::class );
+		foreach ( $plugins as $plugin ) {
+			$plugin->modifyDocumentData( $this->dp, $aDC, $this->getDocumentProviderUri(), $providerSource );
+		}
+		$this->getSource()->addDocumentToIndex( $aDC );
 
 		return $aDC;
 	}

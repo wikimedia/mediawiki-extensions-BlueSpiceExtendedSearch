@@ -2,17 +2,13 @@
 
 use MediaWiki\MediaWikiServices;
 
-require_once "elasticScriptBase.php";
+require_once "searchScriptBase.php";
 
-class rebuildIndex extends elasticScriptBase {
+class rebuildIndex extends searchScriptBase {
 	/**
 	 * @var string
 	 */
 	protected $sourcesOptionHelp = 'List of pipe separate source keys to be rebuilt';
-	/**
-	 * @var array
-	 */
-	protected $oIndices = [];
 
 	public function execute() {
 		if ( !$this->hasOption( 'quick' ) ) {
@@ -35,7 +31,7 @@ class rebuildIndex extends elasticScriptBase {
 			$this->output( " done: " . $crawler->getNumberOfPendingJobs() );
 		}
 
-		global $IP;
+		$IP = $GLOBALS['IP'];
 		$this->output( "\n\nYou should now run 'php $IP/maintenance/runJobs.php'" );
 	}
 }

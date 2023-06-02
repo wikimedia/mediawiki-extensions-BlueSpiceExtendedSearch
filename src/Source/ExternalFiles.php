@@ -2,49 +2,39 @@
 
 namespace BS\ExtendedSearch\Source;
 
+use BS\ExtendedSearch\ISearchCrawler;
+use BS\ExtendedSearch\ISearchResultFormatter;
 use BS\ExtendedSearch\Source\Crawler\ExternalFile as ExternalFileCrawler;
-use BS\ExtendedSearch\Source\DocumentProvider\File as FileDocumentProvider;
 use BS\ExtendedSearch\Source\Formatter\ExternalFileFormatter;
 
 class ExternalFiles extends Files {
 
 	/**
-	 * @param Base $base
-	 * @return ExternalFiles
-	 */
-	public static function create( $base ) {
-		return new self( $base );
-	}
-
-	/**
 	 *
 	 * @return ExternalFileCrawler
 	 */
-	public function getCrawler() {
-		return new ExternalFileCrawler( $this->getConfig() );
-	}
-
-	/**
-	 *
-	 * @return FileDocumentProvider
-	 */
-	public function getDocumentProvider() {
-		return new FileDocumentProvider(
-			$this->oDecoratedSource->getDocumentProvider()
-		);
+	public function getCrawler(): ISearchCrawler {
+		return $this->makeObjectFromSpec( [
+			'class' => ExternalFileCrawler::class,
+			'args' => [ $this->config ],
+			'services' => [ 'DBLoadBalancer', 'JobQueueGroup', 'TitleFactory', 'ConfigFactory' ]
+		] );
 	}
 
 	/**
 	 * @return ExternalFileFormatter
 	 */
-	public function getFormatter() {
-		return new ExternalFileFormatter( $this );
+	public function getFormatter(): ISearchResultFormatter {
+		return $this->makeObjectFromSpec( [
+			'class' => ExternalFileFormatter::class,
+			'args' => [ $this ]
+		] );
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getSearchPermission() {
+	public function getSearchPermission(): string {
 		return 'extendedsearch-search-externalfile';
 	}
 }

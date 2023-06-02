@@ -1,19 +1,19 @@
 <?php
 namespace BS\ExtendedSearch\Source\Updater;
 
-use MediaWiki\HookContainer\HookContainer;
+use MediaWiki\MediaWikiServices;
 
 class SpecialPage extends Base {
 	/**
 	 *
-	 * @param HookContainer $hookContainer
+	 * @param MediaWikiServices $services
 	 */
-	public function init( $hookContainer ) {
-		$hookContainer->register(
+	public function init( MediaWikiServices $services ): void {
+		$services->getHookContainer()->register(
 			'LoadExtensionSchemaUpdates', [ $this, 'onLoadExtensionSchemaUpdates' ]
 		);
 
-		parent::init( $hookContainer );
+		parent::init( $services );
 	}
 
 	/**
@@ -21,8 +21,8 @@ class SpecialPage extends Base {
 	 * @param \DatabaseUpdater $updater Updater
 	 * @return bool Always true
 	 */
-	public static function onLoadExtensionSchemaUpdates( $updater ) {
-		$oCrawler = new \BS\ExtendedSearch\Source\Crawler\SpecialPage();
+	public function onLoadExtensionSchemaUpdates( $updater ) {
+		$oCrawler = $this->source->getCrawler();
 		$oCrawler->crawl();
 		return true;
 	}

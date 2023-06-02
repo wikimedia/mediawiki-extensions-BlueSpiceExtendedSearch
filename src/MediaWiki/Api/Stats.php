@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
+use BS\ExtendedSearch\Backend;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\ParamValidator\ParamValidator;
 
@@ -9,14 +10,12 @@ class Stats extends \ApiBase {
 
 	/**
 	 *
-	 * @var \BS\ExtendedSearch\Backend
+	 * @var Backend
 	 */
 	protected $backend = [];
 
 	public function execute() {
 		$result = $this->getResult();
-		$stats = [];
-
 		$this->backend = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchBackend' );
 
 		try {
@@ -67,15 +66,19 @@ class Stats extends \ApiBase {
 
 	/**
 	 *
-	 * @param \BS\ExtendedSearch\Backend $bac
+	 * @param Backend $backend
+	 *
 	 * @return array The stats
+	 * @throws \Exception
 	 */
-	protected function makeBackendStats( $bac ) {
+	protected function makeBackendStats( Backend $backend ): array {
+		$countStats = $this->getCountStats( $backend->getIndexName( '*' ), $backend );
 		$stats = [
-			'all_documents_count' => $this->backend->getIndexByType( '*' )->count(),
+			'all_documents_count' => $countStats['count'] ?? -1,
+			'shards' => $countStats['_shards'] ?? [],
 			'sources' => []
 		];
-		$sources = $this->backend->getSources();
+		$sources = $backend->getSources();
 
 		foreach ( $sources as $source ) {
 			$typeKey = $source->getTypeKey();
@@ -87,10 +90,21 @@ class Stats extends \ApiBase {
 				// bs-extendedsearch-source-label-repofile
 				'label' => wfMessage( 'bs-extendedsearch-source-label-' . $typeKey )->plain(),
 				'pending_update_jobs' => $source->getCrawler()->getNumberOfPendingJobs(),
-				'documents_count' => $this->backend->getIndexByType( $typeKey )->count()
+				'documents_count' => $this->getCountStats( $backend->getIndexName( $typeKey ), $backend )['count'] ?? -1
 			];
 		}
+		$stats['backend_info'] = $backend->getClient()->info();
 
 		return $stats;
+	}
+
+	/**
+	 * @param string $index
+	 * @param Backend $backend
+	 *
+	 * @return array
+	 */
+	protected function getCountStats( $index, Backend $backend ): array {
+		return $backend->getClient()->count( [ 'index' => $index ] );
 	}
 }

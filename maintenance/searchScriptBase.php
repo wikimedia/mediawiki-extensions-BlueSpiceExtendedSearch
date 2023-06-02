@@ -4,7 +4,7 @@ $IP = dirname( dirname( dirname( __DIR__ ) ) );
 
 require_once "$IP/maintenance/Maintenance.php";
 
-abstract class elasticScriptBase extends Maintenance {
+abstract class searchScriptBase extends Maintenance {
 	/**
 	 * @var string
 	 */

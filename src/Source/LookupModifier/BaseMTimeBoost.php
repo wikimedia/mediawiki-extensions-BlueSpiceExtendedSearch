@@ -4,45 +4,25 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
-use Config;
-use Elastica\Client;
-use Elastica\Result;
-use Elastica\ResultSet;
-use Elastica\Search;
+use IContextSource;
 use MediaWiki\MediaWikiServices;
 
-class BaseMTimeBoost extends Base {
+class BaseMTimeBoost extends LookupModifier {
 
 	/**
-	 * @var Config
+	 * @var Backend
 	 */
-	protected $config;
-
-	/**
-	 * @var Search
-	 */
-	protected $search;
+	protected $backend;
 
 	/**
 	 *
-	 * @param \BS\ExtendedSearch\Lookup &$lookup
-	 * @param \IContextSource $context
+	 * @param \BS\ExtendedSearch\Lookup $lookup
+	 * @param IContextSource $context
 	 */
-	public function __construct( &$lookup, \IContextSource $context ) {
+	public function __construct( $lookup, IContextSource $context ) {
 		parent::__construct( $lookup, $context );
 
-		$this->config = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchBackend' )->getConfig();
-		$this->setSearch();
-	}
-
-	public function setSearch() {
-		$client = new Client(
-			$this->config->get( 'connection' )
-		);
-		$search = new \Elastica\Search( $client );
-		$search->addIndex( $this->config->get( 'index' ) . '_*' );
-
-		$this->search = $search;
+		$this->backend = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchBackend' );
 	}
 
 	/**
@@ -54,32 +34,30 @@ class BaseMTimeBoost extends Base {
 	}
 
 	public function apply() {
-		$prepLookup = clone $this->oLookup;
+		if ( !$this->lookup ) {
+			return;
+		}
+		$prepLookup = new Lookup( $this->lookup->getQueryDSL() );
 
 		$prepLookup->clearSourceField();
-		$prepLookup->addSourceField( 'mtime' );
 		$prepLookup->setSort( [ 'mtime' => Lookup::SORT_DESC ] );
+		$prepLookup->removeSearchAfter();
+		$prepLookup->removeForceTerm();
+		$prepLookup->addSourceField( [ 'mtime' ] );
+		$ids = $this->runPrepQuery( $prepLookup );
 
-		$results = $this->runPrepQuery( $prepLookup );
-
-		$ids = [];
-		/** @var Result $result */
-		foreach ( $results as $result ) {
-			$ids[] = $result->getId();
-		}
-
-		$this->oLookup->addShouldTerms( '_id', $ids, 2, false );
+		$this->lookup->addShouldTerms( '_id', $ids, 2, false );
 	}
 
 	/**
 	 * Runs preprocessor query
 	 *
 	 * @param Lookup $lookup
-	 * @return ResultSet
+	 * @return array
 	 */
-	protected function runPrepQuery( $lookup ) {
+	protected function runPrepQuery( $lookup ): array {
 		try {
-			$results = $this->search->search( $lookup->getQueryDSL() );
+			$results = $this->backend->runRawQuery( $lookup );
 		} catch ( \RuntimeException $ex ) {
 			// If query is invalid, let main query run catch it
 			return [];
@@ -91,11 +69,13 @@ class BaseMTimeBoost extends Base {
 			return [];
 		}
 
-		return $results;
+		return array_map( static function ( $result ) {
+			return $result->getId();
+		}, $results->getResults() );
 	}
 
 	public function undo() {
-		$this->oLookup->removeShouldTerms( '_id' );
+		$this->lookup->removeShouldTerms( '_id' );
 	}
 
 	/**

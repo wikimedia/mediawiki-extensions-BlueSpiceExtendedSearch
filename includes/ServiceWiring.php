@@ -1,7 +1,9 @@
 <?php
 
 use BlueSpice\ExtensionAttributeBasedRegistry;
-use BS\ExtendedSearch\LookupModifierFactory;
+use BS\ExtendedSearch\ExternalIndexFactory;
+use BS\ExtendedSearch\Plugin\ISearchPlugin;
+use BS\ExtendedSearch\SourceFactory;
 use MediaWiki\MediaWikiServices;
 
 // PHP unit does not understand code coverage for this file
@@ -11,10 +13,9 @@ use MediaWiki\MediaWikiServices;
 
 return [
 	'BSExtendedSearchSourceFactory' => static function ( MediaWikiServices $services ) {
-		return new \BS\ExtendedSearch\SourceFactory(
-			// deprecated since version 3.1.13
-			null,
-			$services->getConfigFactory()->makeConfig( 'bsg' )
+		return new SourceFactory(
+			$services->getConfigFactory()->makeConfig( 'bsg' ),
+			$services->getObjectFactory()
 		);
 	},
 
@@ -22,55 +23,37 @@ return [
 		$registry = new ExtensionAttributeBasedRegistry(
 			'BlueSpiceExtendedSearchExternalIndexRegistry'
 		);
-		return new \BS\ExtendedSearch\ExternalIndexFactory(
+		return new ExternalIndexFactory(
 			$services->getConfigFactory()->makeConfig( 'bsg' ),
 			$registry
-		);
-	},
-
-	'BSExtendedSearchLookupModifierFactory' => static function ( MediaWikiServices $services ) {
-		$registry = new ExtensionAttributeBasedRegistry(
-			'BlueSpiceExtendedSearchLookupModifierRegistry'
-		);
-		$legacyRegistry = new ExtensionAttributeBasedRegistry(
-			'BlueSpiceExtendedSearchAdditionalLookupModifiers'
-		);
-		return new LookupModifierFactory(
-			$services->getConfigFactory()->makeConfig( 'bsg' ),
-			$registry,
-			$legacyRegistry
 		);
 	},
 
 	'BSExtendedSearchBackend' => static function ( MediaWikiServices $services ) {
 		$config = $services->getConfigFactory()->makeConfig( 'bsg' );
 
+		$pluginInstances = [];
+		$plugins = ExtensionRegistry::getInstance()->getAttribute( 'BlueSpiceExtendedSearchPluginRegistry' );
+		foreach ( $plugins as $spec ) {
+			$instance = $services->getObjectFactory()->createObject( $spec );
+			$pluginInstances[] = $instance;
+		}
+		$services->getHookContainer()->run( 'BSExtendedSearchRegisterPlugin', [ &$pluginInstances ] );
+		foreach ( $pluginInstances as $plugin ) {
+			if ( !( $plugin instanceof ISearchPlugin ) ) {
+				throw new Exception(
+					'Search plugin must implement ' . ISearchPlugin::class . ', got ' . get_class( $plugin )
+				);
+			}
+		}
+
 		$backendClass = $config->get( 'ESBackendClass' );
-		$backendHost = $config->get( 'ESBackendHost' );
-		$backendPort = $config->get( 'ESBackendPort' );
-		$backendTransport = $config->get( 'ESBackendTransport' );
-		$sourceRegistry = new ExtensionAttributeBasedRegistry(
-			'BlueSpiceExtendedSearchSources'
-		);
-		$sources = $sourceRegistry->getAllKeys();
-
-		// deprecated since version 3.1.13
-		$legacyConfig = [
-			'connection' => [
-				'host' => $backendHost,
-				'port' => $backendPort,
-				'transport' => $backendTransport
-			],
-			'sources' => $sources
-		];
-
 		return new $backendClass(
 			$config,
 			$services->getDBLoadBalancer(),
 			$services->getHookContainer(),
 			$services->getService( 'BSExtendedSearchSourceFactory' ),
-			$services->getService( 'BSExtendedSearchLookupModifierFactory' ),
-			$legacyConfig
+			$pluginInstances
 		);
 	},
 ];

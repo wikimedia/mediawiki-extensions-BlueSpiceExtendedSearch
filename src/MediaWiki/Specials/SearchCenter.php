@@ -2,8 +2,10 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Specials;
 
+use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
-use BS\ExtendedSearch\Source\Base;
+use BS\ExtendedSearch\Plugin\IFormattingModifier;
+use BS\ExtendedSearch\Source\GenericSource;
 use FormatJson;
 use MediaWiki\MediaWikiServices;
 use SpecialPage;
@@ -23,9 +25,9 @@ class SearchCenter extends SpecialPage {
 	public function execute( $subPage ) {
 		$this->setHeaders();
 
-		$serivces = MediaWikiServices::getInstance();
-		$config = $serivces->getConfigFactory()->makeConfig( 'bsg' );
-		$pm = $serivces->getPermissionManager();
+		$services = MediaWikiServices::getInstance();
+		$config = $services->getConfigFactory()->makeConfig( 'bsg' );
+		$pm = $services->getPermissionManager();
 
 		$returnTo = $this->getRequest()->getText( 'returnto' );
 		$title = Title::newFromText( $returnTo );
@@ -56,10 +58,11 @@ class SearchCenter extends SpecialPage {
 		$out = $this->getOutput();
 		$out->addModules( "ext.blueSpiceExtendedSearch.SearchCenter" );
 
-		$localBackend = $serivces->getService( 'BSExtendedSearchBackend' );
+		/** @var Backend $localBackend */
+		$localBackend = $services->getService( 'BSExtendedSearchBackend' );
 		$defaultResultStructure = $localBackend->getDefaultResultStructure();
 
-		$base = new Base( $localBackend, [] );
+		$base = new GenericSource( $services->getObjectFactory() );
 		$sortableFields = $base->getMappingProvider()->getSortableFields();
 		// Add _score manually, as its not a real field
 		array_unshift( $sortableFields, '_score' );
@@ -67,8 +70,13 @@ class SearchCenter extends SpecialPage {
 		$availableTypes = [];
 		$resultStructures = [];
 
-		foreach ( $localBackend->getSources() as $sourceKey => $source ) {
+		foreach ( $localBackend->getSources() as $source ) {
 			$resultStructure = $source->getFormatter()->getResultStructure( $defaultResultStructure );
+			$plugins = $localBackend->getPluginsForInterface( IFormattingModifier::class );
+			/** @var IFormattingModifier $plugin */
+			foreach ( $plugins as $plugin ) {
+				$plugin->modifyResultStructure( $resultStructure, $source );
+			}
 			$resultStructures[$source->getTypeKey()] = $resultStructure;
 
 			$searchPermission = $source->getSearchPermission();
@@ -81,17 +89,14 @@ class SearchCenter extends SpecialPage {
 		$out->addHTML( \Html::element( 'div', [ 'id' => 'bs-es-tools' ] ) );
 		$out->addHTML( \Html::element( 'div', [ 'id' => 'bs-es-alt-search' ] ) );
 		$out->addHTML( \Html::element( 'div', [ 'id' => 'bs-es-results' ] ) );
-
-		if ( $lookup ) {
-			$out->addJsConfigVars( 'bsgLookupConfig', FormatJson::encode( $lookup ) );
-		}
+		$out->addJsConfigVars( 'bsgLookupConfig', FormatJson::encode( $lookup ) );
 
 		// Structure of the result displayed in UI, decorated by each source
 		$out->addJsConfigVars( 'bsgESResultStructures', $resultStructures );
 		// Array of fields available for sorting
 		$out->addJsConfigVars( 'bsgESSortableFields', $sortableFields );
 		// Array of each source's types.
-		$out->addJsConfigVars( 'bsgESAvailbleTypes', $availableTypes );
+		$out->addJsConfigVars( 'bsgESAvailableTypes', $availableTypes );
 		$out->addJsConfigVars( 'bsgESResultsPerPage', 25 );
 		$out->addJsConfigVars(
 			'ESSearchCenterDefaultFilters', $config->get( 'ESSearchCenterDefaultFilters' )

@@ -2,102 +2,116 @@
 
 namespace BS\ExtendedSearch\Source;
 
+use BS\ExtendedSearch\ISearchDocumentProvider;
+use BS\ExtendedSearch\ISearchMappingProvider;
+use BS\ExtendedSearch\Lookup;
+use BS\ExtendedSearch\Source\DocumentProvider\File;
+use BS\ExtendedSearch\Source\LookupModifier\FileContent;
 use BS\ExtendedSearch\Source\MappingProvider\File as FileMappingProvider;
-use Elastica\Bulk;
-use Elastica\Bulk\ResponseSet;
-use Elastica\Client as ElasticaClient;
-use Elastica\Document;
-use Elastica\Exception\Bulk\ResponseException;
-use Elastica\Index;
-use Elastica\Request as ElasticaRequest;
+use Exception;
+use IContextSource;
+use OpenSearch\Client;
 
-class Files extends DecoratorBase {
-
-	/**
-	 * @param Base $base
-	 * @return Files
-	 */
-	public static function create( $base ) {
-		return new static( $base );
-	}
+class Files extends GenericSource {
+	/** @var bool */
+	private $noPipeline = false;
+	/** @var bool */
+	private $failedOnce = false;
 
 	/**
 	 *
 	 * @return FileMappingProvider
 	 */
-	public function getMappingProvider() {
-		return new FileMappingProvider(
-			$this->oDecoratedSource->getMappingProvider()
-		);
+	public function getMappingProvider(): ISearchMappingProvider {
+		return new FileMappingProvider();
 	}
 
 	/**
 	 *
-	 * @param array $documentConfigs
-	 * @return ResponseSet
+	 * @param array $document
+	 *
+	 * @return bool
+	 * @throws Exception
 	 */
-	public function addDocumentsToIndex( $documentConfigs ) {
-		/** @var $elasticaIndex $elasticaIndex */
-		$elasticaIndex = $this->getBackend()->getIndexByType( $this->getTypeKey() );
-		$docs = [];
-		foreach ( $documentConfigs as $dc ) {
-			$document = new Document( $dc['id'], $dc );
-			$docs[] = $document;
-		}
-
+	public function addDocumentToIndex( $document ): bool {
 		try {
-			// Try normal index, with content
-			$result = $this->runBulk( $elasticaIndex, $docs, true );
-		} catch ( ResponseException $exception ) {
+			return parent::addDocumentToIndex( $document );
+		} catch ( Exception $ex ) {
 			if ( !$this->getConfig()->get( 'ESAllowIndexingDocumentsWithoutContent' ) ) {
-				throw $exception;
+				throw $ex;
 			}
-			// If it failed, try indexing without content
-			$result = $this->runBulk( $elasticaIndex, $docs );
+			if ( $this->failedOnce ) {
+				throw $ex;
+			}
+			$this->failedOnce = true;
+			// Temp disable settings pipeline to allow indexing without file content
+			$this->noPipeline = true;
+			$res = $this->addDocumentToIndex( $document );
+			$this->noPipeline = false;
+			return $res;
 		}
-
-		if ( !$result->isOk() ) {
-			wfDebugLog(
-				'BSExtendedSearch',
-				"Adding documents failed: {$result->getError()}"
-			);
-		}
-		$elasticaIndex->refresh();
-
-		return $result;
 	}
 
 	/**
-	 * @param Index $index
-	 * @param array $docs
-	 * @param bool $includeContent
-	 * @return ResponseSet
+	 *
+	 * @return ISearchDocumentProvider
 	 */
-	protected function runBulk( $index, $docs, $includeContent = false ) {
-		$bulk = new Bulk( $index->getClient() );
-		$bulk->setType( $index->getType( $this->getTypeKey() ) );
-		if ( $includeContent ) {
-			$bulk->setRequestParam( 'pipeline', 'file_data' );
-		}
-		$bulk->addDocuments( $docs );
-		return $bulk->send();
+	public function getDocumentProvider(): ISearchDocumentProvider {
+		return $this->makeObjectFromSpec( [
+			'class' => File::class,
+			'services' => [ 'MimeAnalyzer' ]
+		] );
 	}
 
 	/**
-	 * @param ElasticaClient $client
+	 * @param string $action
+	 * @param array &$params
+	 *
+	 * @return void
 	 */
-	public function runAdditionalSetupRequests( ElasticaClient $client ) {
-		$client->request(
-			"_ingest/pipeline/file_data",
-			ElasticaRequest::PUT,
-			[
-				"description" => "Extract file information",
-				"processors" => [ [
-					"attachment" => [
-						"field" => "the_file"
+	protected function modifyRequestParams( string $action, array &$params ) {
+		if ( !in_array( $action, [ 'add', 'update' ] ) || $this->noPipeline ) {
+			return;
+		}
+		// Set pipeline on indexing calls
+		if ( $action === 'add' ) {
+			$params['body']['pipeline'] = 'file_data';
+		} else {
+			$params['body']['doc']['pipeline'] = 'file_data';
+		}
+	}
+
+	/**
+	 * Register ingest pipeline
+	 * @param Client $client
+	 *
+	 * @return bool
+	 */
+	public function runAdditionalSetupRequests( Client $client ): bool {
+		$res = $client->ingest()->putPipeline( [
+			'id' => 'file_data',
+			'body' => [
+				'description' => 'Extract file information',
+				'processors' => [ [
+					'attachment' => [
+						'field' => 'the_file'
 					]
 				] ]
 			]
-		);
+		] );
+
+		return is_array( $res ) && isset( $res['acknowledged'] ) && $res['acknowledged'];
+	}
+
+	/**
+	 * @param Lookup $lookup
+	 * @param IContextSource $context
+	 *
+	 * @return array
+	 */
+	public function getLookupModifiers( Lookup $lookup, IContextSource $context ): array {
+		$parent = parent::getLookupModifiers( $lookup, $context );
+		$parent[] = new FileContent( $lookup, $context );
+		return $parent;
 	}
 }

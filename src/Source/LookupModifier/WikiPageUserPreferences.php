@@ -5,7 +5,7 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 use BS\ExtendedSearch\Backend;
 use MediaWiki\MediaWikiServices;
 
-class WikiPageUserPreferences extends Base {
+class WikiPageUserPreferences extends LookupModifier {
 	/** @var int[] */
 	protected $namespacesToBoost;
 
@@ -13,7 +13,7 @@ class WikiPageUserPreferences extends Base {
 		$services = MediaWikiServices::getInstance();
 		$userOptionsLookup = $services->getUserOptionsLookup();
 		$permManager = $services->getPermissionManager();
-		$user = $this->oContext->getUser();
+		$user = $this->context->getUser();
 		$options = $userOptionsLookup->getOptions( $user );
 
 		$namespacesToBoost = [];
@@ -36,12 +36,12 @@ class WikiPageUserPreferences extends Base {
 
 		$this->namespacesToBoost = $namespacesToBoost;
 		if ( !empty( $this->namespacesToBoost ) ) {
-			$this->oLookup->addShouldTerms( 'namespace', $this->namespacesToBoost, 8, false );
+			$this->lookup->addShouldTerms( 'namespace', $this->namespacesToBoost, 8, false );
 		}
 	}
 
 	public function undo() {
-		$this->oLookup->removeShouldTerms( 'namespace', $this->namespacesToBoost );
+		$this->lookup->removeShouldTerms( 'namespace', $this->namespacesToBoost );
 	}
 
 	/**

@@ -3,19 +3,19 @@
 namespace BS\ExtendedSearch;
 
 /**
- * Represents a query that gets send to Elastic Search
+ * Represents a query that gets send to OpenSearch
  */
 class Lookup extends \ArrayObject {
 
 	public const SORT_ASC = 'asc';
 	public const SORT_DESC = 'desc';
-	public const TYPE_FIELD_NAME = '_type';
 
 	/**
 	 *
 	 * @param array $aConfig
 	 */
 	public function __construct( $aConfig = [] ) {
+		parent::__construct( [] );
 		if ( is_array( $aConfig ) ) {
 			foreach ( $aConfig as $sKey => $mValue ) {
 				$this[$sKey] = $mValue;
@@ -50,7 +50,10 @@ class Lookup extends \ArrayObject {
 	 * @return array
 	 */
 	public function getQueryDSL() {
-		return (array)$this;
+		$query = (array)$this;
+		unset( $query['searchInTypes'] );
+		unset( $query['excludeTypes'] );
+		return $query;
 	}
 
 	/**
@@ -589,9 +592,31 @@ class Lookup extends \ArrayObject {
 			$value = [ $value ];
 		}
 
-		unset( $this->from );
+		$this['from'] = 0;
 
-		$this->search_after = $value;
+		$this['search_after'] = $value;
+
+		return $this;
+	}
+
+	/**
+	 * @return $this
+	 */
+	public function removeSize() {
+		$this->ensurePropertyPath( 'size', [] );
+
+		unset( $this['size'] );
+
+		return $this;
+	}
+
+	/**
+	 * @return $this
+	 */
+	public function removeFrom() {
+		$this->ensurePropertyPath( 'from', [] );
+
+		unset( $this['from'] );
 
 		return $this;
 	}
@@ -600,10 +625,10 @@ class Lookup extends \ArrayObject {
 	 *
 	 * @return Lookup
 	 */
-	public function remoteSearchAfter() {
+	public function removeSearchAfter() {
 		$this->ensurePropertyPath( 'search_after', [] );
 
-		unset( $this->search_after );
+		unset( $this['search_after'] );
 
 		return $this;
 	}
@@ -646,7 +671,7 @@ class Lookup extends \ArrayObject {
 	/**
 	 *
 	 * @param string $field
-	 * @param string $value
+	 * @param array|string $value
 	 * @param int $boost
 	 * @param bool $append
 	 * @return Lookup
@@ -691,7 +716,7 @@ class Lookup extends \ArrayObject {
 	 *
 	 * @param string $field
 	 * @param string $value
-	 * @param bínt $boost
+	 * @param int|null $boost
 	 * @return Lookup
 	 */
 	public function addShouldMatch( $field, $value, $boost = 1 ) {
@@ -718,6 +743,37 @@ class Lookup extends \ArrayObject {
 		];
 
 		return $this;
+	}
+
+	/**
+	 * Boost source type (index
+	 *
+	 * @param string $indexName
+	 * @param int $boost
+	 *
+	 * @return void
+	 */
+	public function boostSourceType( string $indexName, int $boost ) {
+		$this->ensurePropertyPath( 'indices_boost', [] );
+
+		$this['indices_boost'][] = [ $indexName => $boost ];
+	}
+
+	/**
+	 * @param string $indexName
+	 *
+	 * @return void
+	 */
+	public function removeSourceTypeBoost( string $indexName ) {
+		$this->ensurePropertyPath( 'indices_boost', [] );
+
+		$newBoosts = [];
+		foreach ( $this['indices_boost'] as $boost ) {
+			if ( !isset( $boost[$indexName] ) ) {
+				$newBoosts[] = $boost;
+			}
+		}
+		$this['indices_boost'] = $newBoosts;
 	}
 
 	/**
@@ -795,7 +851,7 @@ class Lookup extends \ArrayObject {
 	 * "aggs": {
 	 *  "field__type": {
 	 *    "terms": {
-	 *      "field": "_type"
+	 *      "field": "basename"
 	 *    },
 	 *    "aggs": {
 	 *     "field_extension" : {
@@ -880,6 +936,8 @@ class Lookup extends \ArrayObject {
 		foreach ( $aFieldNames as $sFieldNamePart ) {
 			if ( !isset( $aBase['highlight'] ) ) {
 				$aBase['highlight'] = [];
+				$aBase['highlight']['pre_tags'] = [ "<b>" ];
+				$aBase['highlight']['post_tags'] = [ "</b>" ];
 			}
 			if ( !isset( $aBase['highlight']['fields'] ) ) {
 				$aBase['highlight']['fields'] = [];
@@ -889,8 +947,6 @@ class Lookup extends \ArrayObject {
 				'matched_fields' => [
 					$sFieldNamePart
 				],
-				'pre_tags' => [ "<b>" ],
-				'post_tags' => [ "</b>" ]
 			];
 		}
 
@@ -922,19 +978,19 @@ class Lookup extends \ArrayObject {
 	 */
 	public function setSize( $size ) {
 		$aBase = $this;
-		$aBase['size'] = $size;
+		$aBase['size'] = (int)$size;
 		return $this;
 	}
 
 	/**
 	 *
-	 * @return bool|int
+	 * @return int
 	 */
 	public function getSize() {
 		if ( isset( $this['size'] ) ) {
-			return (int)$this['size'];
+			return $this['size'];
 		}
-		return false;
+		return 0;
 	}
 
 	/**
@@ -1007,19 +1063,19 @@ class Lookup extends \ArrayObject {
 	 */
 	public function setFrom( $from ) {
 		$aBase = $this;
-		$aBase['from'] = $from;
+		$aBase['from'] = (int)$from;
 		return $this;
 	}
 
 	/**
 	 *
-	 * @return bool|\BS\ExtendedSearch\Lookup
+	 * @return int
 	 */
 	public function getFrom() {
 		if ( isset( $this['from'] ) ) {
 			return $this['from'];
 		}
-		return false;
+		return 0;
 	}
 
 	/**
@@ -1030,30 +1086,14 @@ class Lookup extends \ArrayObject {
 	 */
 	public function addSuggest( $field, $value ) {
 		$base = $this;
-		$base->ensurePropertyPath( 'suggest', [] );
+		$base->ensurePropertyPath( 'suggest.spell-check', [] );
 
-		$base['suggest'][$field] = [
+		$base['suggest']['spell-check'] = [
 			'text' => $value,
 			'term' => [
 				'field' => $field
 			]
 		];
-
-		return $this;
-	}
-
-	/**
-	 *
-	 * @param string $field
-	 * @return Lookup
-	 */
-	public function removeSuggest( $field ) {
-		$base = $this;
-		$base->ensurePropertyPath( 'suggest', [] );
-
-		if ( isset( $base['suggest'][$field] ) ) {
-			unset( $base['suggest'][$field] );
-		}
 
 		return $this;
 	}
@@ -1113,11 +1153,32 @@ class Lookup extends \ArrayObject {
 	}
 
 	/**
+	 * @param string $field
+	 * @param string $value
+	 *
+	 * @return Lookup
+	 */
+	public function setMultiMatchQuery( $field, $value ) {
+		$this->ensurePropertyPath( 'query.bool.must', [] );
+		$this['query']['bool']['must']['multi_match'] = [
+			'query' => $value,
+			'type' => 'bool_prefix',
+			'fields' => [
+				$field,
+				$field . '._2gram',
+				$field . '._3gram'
+			]
+		];
+
+		return $this;
+	}
+
+	/**
 	 * Adds context field to autocomplete suggester
 	 * Context serves as a filter
 	 *
 	 * @param string $acField
-	 * @param sting $contextField
+	 * @param string $contextField
 	 * @param array|string $value
 	 * @return \BS\ExtendedSearch\Lookup
 	 */
@@ -1341,5 +1402,57 @@ class Lookup extends \ArrayObject {
 		}
 
 		return $this;
+	}
+
+	/**
+	 * @param array $types
+	 *
+	 * @return $this
+	 */
+	public function addSearchInTypes( array $types ) {
+		$this->ensurePropertyPath( 'searchInTypes', [] );
+		$this['searchInTypes'] = array_merge( $this['searchInTypes'], $types );
+		return $this;
+	}
+
+	/**
+	 * @param array $types
+	 *
+	 * @return $this
+	 */
+	public function addExcludeTypes( array $types ) {
+		$this->ensurePropertyPath( 'excludeTypes', [] );
+		$this['excludeTypes'] = array_merge( $this['excludeTypes'], $types );
+		return $this;
+	}
+
+	/**
+	 * @return $this
+	 */
+	public function clearTypeExclusionList() {
+		unset( $this['excludeTypes'] );
+		return $this;
+	}
+
+	/**
+	 * @return $this
+	 */
+	public function clearTypeWhitelist() {
+		unset( $this['searchInTypes'] );
+		return $this;
+	}
+
+	public function __clone() {
+		foreach ( $this as $key => $value ) {
+			if ( is_array( $value ) ) {
+				$this[$key] = array_merge( [], $value );
+				continue;
+			}
+			if ( is_object( $value ) ) {
+				$this[$key] = clone $value;
+				continue;
+			}
+			$this[$key] = $value;
+		}
 	}
 }

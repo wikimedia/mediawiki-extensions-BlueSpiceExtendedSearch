@@ -2,13 +2,13 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
-class WikiPageLanguageAggregation extends Base {
+class WikiPageLanguageAggregation extends LookupModifier {
 
 	public function apply() {
-		$this->oLookup->setBucketTermsAggregation( 'page_language' );
+		$this->lookup->setBucketTermsAggregation( 'page_language' );
 	}
 
 	public function undo() {
-		$this->oLookup->removeBucketTermsAggregation( 'page_language' );
+		$this->lookup->removeBucketTermsAggregation( 'page_language' );
 	}
 }

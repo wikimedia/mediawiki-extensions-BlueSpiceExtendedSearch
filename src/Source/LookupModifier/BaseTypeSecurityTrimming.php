@@ -5,7 +5,7 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 use BS\ExtendedSearch\Backend;
 use MediaWiki\MediaWikiServices;
 
-class BaseTypeSecurityTrimming extends Base {
+class BaseTypeSecurityTrimming extends LookupModifier {
 	/**
 	 *
 	 * @var \User
@@ -50,14 +50,14 @@ class BaseTypeSecurityTrimming extends Base {
 		}
 
 		if ( !empty( $typesToBlock ) ) {
-			$this->oLookup->addBoolMustNotTerms( '_type', $typesToBlock );
+			$this->lookup->addExcludeTypes( $typesToBlock );
 			$this->blockedTypes = $typesToBlock;
 		}
 	}
 
 	public function undo() {
 		if ( !empty( $this->blockedTypes ) ) {
-			$this->oLookup->removeBoolMustNot( '_type' );
+			$this->lookup->clearTypeExclusionList();
 		}
 	}
 

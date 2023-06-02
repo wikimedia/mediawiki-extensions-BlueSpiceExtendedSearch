@@ -2,22 +2,56 @@
 
 namespace BS\ExtendedSearch\Source\Crawler;
 
-use MediaWiki\MediaWikiServices;
+use Config;
+use ConfigFactory;
+use JobQueueGroup;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use SplFileInfo;
+use TitleFactory;
 use UnexpectedValueException;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 class ExternalFile extends File {
-	/** @var Wikimedia\Rdbms */
+
+	/**
+	 * @var Config
+	 */
+	protected $bsgConfig = null;
+
+	/**
+	 * @var TitleFactory
+	 */
+	protected $titleFactory = null;
+
+	/**
+	 * @param ILoadBalancer $lb
+	 * @param JobQueueGroup $jobQueueGroup
+	 * @param TitleFactory $titleFactory
+	 * @param ConfigFactory $configFactory
+	 * @param Config $sourceConfig
+	 */
+	public function __construct(
+		ILoadBalancer $lb, JobQueueGroup $jobQueueGroup, TitleFactory $titleFactory,
+		ConfigFactory $configFactory, Config $sourceConfig
+	) {
+		parent::__construct( $lb, $jobQueueGroup, $sourceConfig );
+		$this->bsgConfig = $configFactory->makeConfig( 'bsg' );
+		$this->titleFactory = $titleFactory;
+	}
+
+	/** @var string */
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateExternalFile';
 
+	/**
+	 * @return void
+	 */
 	public function crawl() {
-		$dummyTitle = \Title::makeTitle( NS_SPECIAL, 'Dummy title for external file' );
+		parent::crawl();
+		$dummyTitle = $this->titleFactory->makeTitle( NS_SPECIAL, 'Dummy title for external file' );
 
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
-		$paths = $config->get( 'ESExternalFilePaths' );
-		$excludePatterns = (array)$config->get(
+		$paths = $this->bsgConfig->get( 'ESExternalFilePaths' );
+		$excludePatterns = (array)$this->bsgConfig->get(
 			'ExtendedSearchExternalFilePathsExcludes'
 		);
 
@@ -52,7 +86,7 @@ class ExternalFile extends File {
 				}
 
 				$this->addToJobQueue( $dummyTitle, [
-					'source' => $this->oConfig->get( 'sourcekey' ),
+					'source' => $this->sourceConfig->get( 'sourcekey' ),
 					'src' => $file->getPathname(),
 					'dest' => $this->makeDestFileName( $uriPrefix, $file, $sourceFileInfo )
 				] );

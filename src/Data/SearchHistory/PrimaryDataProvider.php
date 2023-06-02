@@ -21,7 +21,7 @@ class PrimaryDataProvider extends PrimaryDatabaseDataProvider {
 
 	/**
 	 *
-	 * @return string
+	 * @return array
 	 */
 	protected function getTableNames() {
 		return [ Schema::TABLE_NAME ];

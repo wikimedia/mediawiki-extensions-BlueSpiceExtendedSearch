@@ -5,7 +5,6 @@ namespace BS\ExtendedSearch\Source\Updater;
 use Article;
 use BS\ExtendedSearch\Source\Job\UpdateRepoFile;
 use File;
-use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
@@ -16,29 +15,29 @@ class RepoFile extends Base {
 
 	/**
 	 *
-	 * @param HookContainer $hookContainer
+	 * @param MediaWikiServices $services
 	 */
-	public function init( $hookContainer ) {
-		$hookContainer->register(
+	public function init( MediaWikiServices $services ): void {
+		parent::init( $services );
+
+		$services->getHookContainer()->register(
 			'FileUpload', [ $this, 'onFileUpload' ]
 		);
-		$hookContainer->register(
+		$services->getHookContainer()->register(
 			'FileDeleteComplete', [ $this, 'onFileDeleteComplete' ]
 		);
-		$hookContainer->register(
+		$services->getHookContainer()->register(
 			'FileUndeleteComplete', [ $this, 'onFileUndeleteComplete' ]
 		);
-		$hookContainer->register(
+		$services->getHookContainer()->register(
 			'TitleMove', [ $this, 'onTitleMove' ]
 		);
-		$hookContainer->register(
+		$services->getHookContainer()->register(
 			'PageMoveComplete', [ $this, 'onTitleMoveComplete' ]
 		);
-		$hookContainer->register(
+		$services->getHookContainer()->register(
 			'WebDAVPublishToWikiDone', [ $this, 'onWebDAVPublishToWikiDone' ]
 		);
-
-		parent::init( $hookContainer );
 	}
 
 	/**

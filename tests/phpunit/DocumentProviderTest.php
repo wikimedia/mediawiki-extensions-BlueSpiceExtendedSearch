@@ -21,13 +21,13 @@ class DocumentProviderTest extends \MediaWikiIntegrationTestCase {
 
 	/**
 	 * @group Database
-	 * @covers \BS\ExtendedSearch\Source\DocumentProvider\Base::getDataConfig
+	 * @covers \BS\ExtendedSearch\Source\DocumentProvider\Base::getDocumentData
 	 */
 	public function testBaseDocumentProvider() {
 		$oDP = new \BS\ExtendedSearch\Source\DocumentProvider\Base();
 		$sTestUri = 'http://some.server.tld/with/a/file.html';
 		$sTestUriMD5 = md5( $sTestUri );
-		$aDC = $oDP->getDataConfig( $sTestUri, null );
+		$aDC = $oDP->getDocumentData( $sTestUri, $sTestUriMD5, null );
 
 		$this->assertNotEmpty( $aDC['id'] );
 		$this->assertEquals( $sTestUriMD5, $aDC['id'] );
@@ -35,11 +35,17 @@ class DocumentProviderTest extends \MediaWikiIntegrationTestCase {
 
 	/**
 	 * @group Database
-	 * @covers \BS\ExtendedSearch\Source\DocumentProvider\WikiPage::getDataConfig
+	 * @covers \BS\ExtendedSearch\Source\DocumentProvider\WikiPage::getDocumentData
 	 */
 	public function testWikiPageDocumentProvider() {
 		$oDP = new \BS\ExtendedSearch\Source\DocumentProvider\WikiPage(
-			new \BS\ExtendedSearch\Source\DocumentProvider\Base()
+			$this->getServiceContainer()->getHookContainer(),
+			$this->getServiceContainer()->getContentRenderer(),
+			$this->getServiceContainer()->getRevisionLookup(),
+			$this->getServiceContainer()->getPageProps(),
+			$this->getServiceContainer()->getParser(),
+			$this->getServiceContainer()->getRedirectLookup(),
+			$this->getServiceContainer()->getUserFactory()
 		);
 
 		$title = \Title::makeTitle( NS_HELP, 'Dummy title' );
@@ -48,7 +54,7 @@ class DocumentProviderTest extends \MediaWikiIntegrationTestCase {
 		$sTestUri = $oWikiPage->getTitle()->getCanonicalURL();
 		$sTestUriMD5 = md5( $sTestUri );
 
-		$aDC = $oDP->getDataConfig( $sTestUri, $oWikiPage );
+		$aDC = $oDP->getDocumentData( $sTestUri, $sTestUriMD5, $oWikiPage );
 		$this->assertNotEmpty( $aDC['id'] );
 		$this->assertEquals( $sTestUriMD5, $aDC['id'] );
 		$this->assertEquals( $oWikiPage->getTitle()->getBaseText(), $aDC['basename'] );
@@ -60,18 +66,18 @@ class DocumentProviderTest extends \MediaWikiIntegrationTestCase {
 
 	/**
 	 * @group Database
-	 * @covers \BS\ExtendedSearch\Source\DocumentProvider\File::getDataConfig
+	 * @covers \BS\ExtendedSearch\Source\DocumentProvider\File::getDocumentData
 	 */
 	public function testFileDocumentProvider() {
 		$oDP = new \BS\ExtendedSearch\Source\DocumentProvider\File(
-			new \BS\ExtendedSearch\Source\DocumentProvider\Base()
+			$this->getServiceContainer()->getMimeAnalyzer()
 		);
 
 		$oFile = new \SplFileInfo( __DIR__ . '/data/Test.txt' );
 		$sTestUri = 'file:///' . $oFile->getPathname();
 		$sTestUriMD5 = md5( $sTestUri );
 
-		$aDC = $oDP->getDataConfig( $sTestUri, $oFile );
+		$aDC = $oDP->getDocumentData( $sTestUri, $sTestUriMD5, $oFile );
 		$this->assertNotEmpty( $aDC['id'] );
 		$this->assertEquals( $sTestUriMD5, $aDC['id'] );
 		$this->assertEquals( $oFile->getBasename(), $aDC['basename'] );

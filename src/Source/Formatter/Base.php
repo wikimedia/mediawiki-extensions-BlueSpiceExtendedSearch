@@ -2,12 +2,16 @@
 
 namespace BS\ExtendedSearch\Source\Formatter;
 
+use BS\ExtendedSearch\ISearchResultFormatter;
+use BS\ExtendedSearch\ISearchSource;
+use BS\ExtendedSearch\SearchResult;
 use BS\ExtendedSearch\Wildcarder;
 use ConfigException;
+use IContextSource;
 use MediaWiki\Linker\LinkRenderer;
 use MWException;
 
-class Base {
+class Base implements ISearchResultFormatter {
 	/**
 	 * Used to separate multiple values in arrays
 	 * when they are displayed in the UI
@@ -26,7 +30,7 @@ class Base {
 
 	/**
 	 *
-	 * @var \BS\ExtendedSearch\Source\Base
+	 * @var ISearchSource
 	 */
 	protected $source;
 
@@ -43,7 +47,7 @@ class Base {
 
 	/**
 	 *
-	 * @param \BS\ExtendedSearch\Source\Base $source
+	 * @param ISearchSource $source
 	 */
 	public function __construct( $source ) {
 		$this->source = $source;
@@ -57,14 +61,14 @@ class Base {
 	 *
 	 * @param \BS\ExtendedSearch\Lookup $lookup
 	 */
-	public function setLookup( $lookup ) {
+	public function setLookup( $lookup ): void {
 		$this->lookup = $lookup;
 	}
 
 	/**
 	 * Convenience function - returns RequestContext object
 	 *
-	 * @return \RequestContext
+	 * @return IContextSource
 	 */
 	public function getContext() {
 		return $this->source->getBackend()->getContext();
@@ -77,7 +81,7 @@ class Base {
 	 * @param array $defaultResultStructure
 	 * @return array
 	 */
-	public function getResultStructure( $defaultResultStructure = [] ) {
+	public function getResultStructure( $defaultResultStructure = [] ): array {
 		return $defaultResultStructure;
 	}
 
@@ -85,39 +89,40 @@ class Base {
 	 * Allows sources to modify data returned by ES,
 	 * before it goes to the client-side
 	 *
-	 * @param array &$result
-	 * @param \Elastica\Result $resultObject
+	 * @param array &$resultData
+	 * @param SearchResult $resultObject
 	 */
-	public function format( &$result, $resultObject ) {
+	public function format( &$resultData, $resultObject ): void {
 		// Base class format must work with original values
 		// because it might be called multiple times
 		$originalValues = $resultObject->getData();
-		$result['type'] = $resultObject->getType();
-		$result['score'] = $resultObject->getScore();
+		$resultData['type'] = $resultObject->getType();
+		$resultData['score'] = $resultObject->getScore();
 
 		// Experimental
 		$user = $this->getContext()->getUser();
 		if ( $user->isRegistered() ) {
 			$resultRelevance = new \BS\ExtendedSearch\ResultRelevance( $user, $resultObject->getId() );
-			$result['user_relevance'] = $resultRelevance->getValue();
+			$resultData['user_relevance'] = $resultRelevance->getValue();
 		} else {
-			$result['user_relevance'] = 0;
+			$resultData['user_relevance'] = 0;
 		}
 		// End Experimental
 
-		$type = $result['type'];
-		$result['typetext'] = $this->getTypeText( $type );
+		$type = $resultData['type'];
+		$resultData['typetext'] = $this->getTypeText( $type );
 
-		if ( $this->isFeatured( $result ) ) {
-			$result['featured'] = 1;
+		if ( $this->isFeatured( $resultData ) ) {
+			$resultData['featured'] = 1;
 		}
+		$resultData['search_more'] = $resultObject->getParam( 'sort' );
 
 		if ( !isset( $originalValues['ctime'] ) || !isset( $originalValues['mtime'] ) ) {
 			// Not all types have these
 			return;
 		}
-		$result['ctime'] = $this->getContext()->getLanguage()->date( $originalValues['ctime'] );
-		$result['mtime'] = $this->getContext()->getLanguage()->date( $originalValues['mtime'] );
+		$resultData['ctime'] = $this->getContext()->getLanguage()->date( $originalValues['ctime'] );
+		$resultData['mtime'] = $this->getContext()->getLanguage()->date( $originalValues['mtime'] );
 	}
 
 	/**
@@ -126,7 +131,7 @@ class Base {
 	 * @param array &$results
 	 * @param array $searchData
 	 */
-	public function formatAutocompleteResults( &$results, $searchData ) {
+	public function formatAutocompleteResults( &$results, $searchData ): void {
 		foreach ( $results as &$result ) {
 			// For some reason _keys are not transmitted to client
 			$result['id'] = $result['_id'];
@@ -162,10 +167,10 @@ class Base {
 	 * @param array &$results
 	 * @param array $searchData
 	 */
-	public function rankAutocompleteResults( &$results, $searchData ) {
+	public function rankAutocompleteResults( &$results, $searchData ): void {
 		$top = $this->getACHighestScored( $results );
 		foreach ( $results as &$result ) {
-			if ( $result['is_ranked'] == true ) {
+			if ( $result['is_ranked'] === true ) {
 				return;
 			}
 
@@ -217,7 +222,7 @@ class Base {
 		}
 
 		$queryString = $this->lookup->getQueryString();
-		if ( isset( $queryString['query'] ) == false ) {
+		if ( !isset( $queryString['query'] ) ) {
 			return false;
 		}
 
@@ -225,6 +230,8 @@ class Base {
 		if ( strtolower( $term ) == strtolower( $result['basename'] ) ) {
 			return true;
 		}
+
+		return false;
 	}
 
 	/**
@@ -234,7 +241,7 @@ class Base {
 	 * @param array &$filterCfg
 	 * @param bool $fieldsWithANDEnabled
 	 */
-	public function formatFilters( &$aggs, &$filterCfg, $fieldsWithANDEnabled = false ) {
+	public function formatFilters( &$aggs, &$filterCfg, $fieldsWithANDEnabled = false ): void {
 	}
 
 	/**

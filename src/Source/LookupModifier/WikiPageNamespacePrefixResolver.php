@@ -5,7 +5,7 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 /**
  * TODO: Revisit this implementaion, it will mess with wildcarding
  */
-class WikiPageNamespacePrefixResolver extends Base {
+class WikiPageNamespacePrefixResolver extends LookupModifier {
 
 	/**
 	 *
@@ -55,7 +55,7 @@ class WikiPageNamespacePrefixResolver extends Base {
 	}
 
 	protected function setSimpleQS() {
-		$aQueryString = $this->oLookup->getQueryString();
+		$aQueryString = $this->lookup->getQueryString();
 		if ( !isset( $aQueryString['query'] ) ) {
 			return null;
 		}
@@ -97,15 +97,15 @@ class WikiPageNamespacePrefixResolver extends Base {
 
 	protected function resetNamespaceFilter() {
 		// We reset all namespace filters
-		$this->oLookup->clearFilter( 'namespace_text' );
+		$this->lookup->clearFilter( 'namespace_text' );
 	}
 
 	public function setNewNamespaceFilterAndQuery() {
 		$this->simpleQS['query'] = $this->title->getText();
-		$this->oLookup->setQueryString( $this->simpleQS );
+		$this->lookup->setQueryString( $this->simpleQS );
 		// We use namespace name, because "namespace_name" is available filter on front-end
 		$nsText = \BsNamespaceHelper::getNamespaceName( $this->title->getNamespace() );
-		$this->oLookup->addTermsFilter( 'namespace_text', $nsText );
+		$this->lookup->addTermsFilter( 'namespace_text', $nsText );
 	}
 
 	public function undo() {

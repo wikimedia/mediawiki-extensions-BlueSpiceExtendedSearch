@@ -2,36 +2,38 @@
 
 namespace BS\ExtendedSearch\Source\Formatter;
 
+use BS\ExtendedSearch\SearchResult;
+
 class FileFormatter extends Base {
 
 	/**
 	 *
-	 * @param array &$result
-	 * @param \Elastica\Result $resultObject
+	 * @param array &$resultData
+	 * @param SearchResult $resultObject
 	 */
-	public function format( &$result, $resultObject ) {
+	public function format( &$resultData, $resultObject ): void {
 		if ( $this->source->getTypeKey() != $resultObject->getType() ) {
 			return;
 		}
 
-		$result['image_uri'] = $this->getImage( $result );
-		parent::format( $result, $resultObject );
-		$result['highlight'] = $this->getHighlight( $resultObject );
+		$resultData['image_uri'] = $this->getImage( $resultData );
+		parent::format( $resultData, $resultObject );
+		$resultData['highlight'] = $this->getHighlight( $resultObject );
 	}
 
 	/**
 	 *
-	 * @param array $result
+	 * @param array $resultData
 	 * @return string
 	 */
-	protected function getImage( $result ) {
-		$mimeType = $result['mime_type'];
+	protected function getImage( $resultData ) {
+		$mimeType = $resultData['mime_type'];
 		if ( strpos( $mimeType, 'image' ) === 0 ) {
 			// Show actual image
-			return $this->getActualImageUrl( $result );
+			return $this->getActualImageUrl( $resultData );
 		}
 
-		$extension = strtolower( $result['extension'] );
+		$extension = strtolower( $resultData['extension'] );
 		$fileIcons = \ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchIcons' );
 
@@ -43,19 +45,20 @@ class FileFormatter extends Base {
 	}
 
 	/**
-	 * @param array $result
+	 * @param array $resultData
 	 * @return string
 	 */
-	protected function getActualImageUrl( $result ) {
-		return $result['uri'];
+	protected function getActualImageUrl( $resultData ): string {
+		return $resultData['uri'];
 	}
 
 	/**
 	 *
 	 * @param array $defaultResultStructure
-	 * @return string
+	 *
+	 * @return array
 	 */
-	public function getResultStructure( $defaultResultStructure = [] ) {
+	public function getResultStructure( $defaultResultStructure = [] ): array {
 		$resultStructure = $defaultResultStructure;
 		$resultStructure['imageUri'] = "image_uri";
 		$resultStructure['highlight'] = "highlight";
@@ -71,11 +74,11 @@ class FileFormatter extends Base {
 
 	/**
 	 *
-	 * @param \Elastica\Result $resultObject
+	 * @param SearchResult $resultObject
 	 * @return string
 	 */
 	protected function getHighlight( $resultObject ) {
-		$highlights = $resultObject->getHighlights();
+		$highlights = $resultObject->getParam( 'highlight' );
 		if ( isset( $highlights['attachment.content'] ) ) {
 			return implode( ' ', $highlights['attachment.content'] );
 		}

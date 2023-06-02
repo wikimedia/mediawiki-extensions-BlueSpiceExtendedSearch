@@ -10,7 +10,7 @@ class ResultRelevance {
 	protected $user;
 
 	/**
-	 * ID of result in Elastic's index
+	 * ID of result in OS's index
 	 *
 	 * @var string
 	 */

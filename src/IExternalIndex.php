@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch;
 
-use BS\ExtendedSearch\Source\Job\UpdateBase;
+use BS\ExtendedSearch\Source\Job\UpdateJob;
 use Config;
 use MediaWiki\MediaWikiServices;
 use Status;
@@ -18,7 +18,7 @@ interface IExternalIndex {
 	 * @param string $action
 	 * @return Status
 	 */
-	public function push( $action = UpdateBase::ACTION_UPDATE );
+	public function push( $action = UpdateJob::ACTION_UPDATE );
 
 	/**
 	 *

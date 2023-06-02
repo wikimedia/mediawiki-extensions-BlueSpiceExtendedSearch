@@ -2,15 +2,15 @@
 
 namespace BS\ExtendedSearch\Source\MappingProvider;
 
-class SpecialPage extends DecoratorBase {
+class SpecialPage extends Base {
 
 	/**
 	 *
 	 * @return array
 	 */
-	public function getPropertyConfig() {
-		$aPC = $this->oDecoratedMP->getPropertyConfig();
-		$aPC = array_merge( $aPC, [
+	public function getPropertyConfig(): array {
+		$config = parent::getPropertyConfig();
+		return array_merge( $config, [
 			'prefixed_title' => [
 				'type' => 'text',
 				'copy_to' => [ 'congregated' ]
@@ -27,6 +27,5 @@ class SpecialPage extends DecoratorBase {
 				'copy_to' => 'congregated'
 			],
 		] );
-		return $aPC;
 	}
 }

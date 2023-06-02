@@ -3,158 +3,129 @@
 namespace BS\ExtendedSearch\Source\Updater;
 
 use BS\ExtendedSearch\Source\Job\UpdateWikiPage;
-use MediaWiki\HookContainer\HookContainer;
+use JobQueueGroup;
+use ManualLogEntry;
+use MediaWiki\Extension\ContentStabilization\StablePoint;
+use MediaWiki\Hook\AfterImportPageHook;
+use MediaWiki\Hook\PageMoveCompletingHook;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\Hook\ArticleUndeleteHook;
+use MediaWiki\Page\Hook\PageDeleteCompleteHook;
+use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Permissions\Authority;
-use MediaWiki\Revision\RevisionStoreRecord;
-use MediaWiki\Storage\EditResult;
+use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use Title;
-use User;
-use WikiPage as MWWikiPage;
 
-class WikiPage extends Base {
+class WikiPage extends Base implements
+	PageSaveCompleteHook,
+	PageDeleteCompleteHook,
+	ArticleUndeleteHook,
+	PageMoveCompletingHook,
+	AfterImportPageHook
+{
+
+	/**
+	 * @var JobQueueGroup
+	 */
+	private $jobQueueGroup;
+
 	/**
 	 *
-	 * @param HookContainer $hookContainer
+	 * @param MediaWikiServices $services
 	 */
-	public function init( $hookContainer ) {
-		$hookContainer->register(
+	public function init( MediaWikiServices $services ): void {
+		$services->getHookContainer()->register(
 			'PageSaveComplete', [ $this, 'onPageSaveComplete' ]
 		);
-		$hookContainer->register(
-			'ArticleDeleteComplete', [ $this, 'onArticleDeleteComplete' ]
+		$services->getHookContainer()->register(
+			'PageDeleteComplete', [ $this, 'onPageDeleteComplete' ]
 		);
-		$hookContainer->register(
+		$services->getHookContainer()->register(
 			'ArticleUndelete', [ $this, 'onArticleUndelete' ]
 		);
-		$hookContainer->register(
-			'PageMoveComplete', [ $this, 'onTitleMoveComplete' ]
+		$services->getHookContainer()->register(
+			'PageMoveCompleting', [ $this, 'onPageMoveCompleting' ]
 		);
-		$hookContainer->register(
+		$services->getHookContainer()->register(
 			'AfterImportPage', [ $this, 'onAfterImportPage' ]
 		);
-		$hookContainer->register(
-			'ContentStabilizationStablePointAdded', [ $this, 'onStablePointAdded' ]
+		$services->getHookContainer()->register(
+			'ContentStabilizationStablePointAdded', [ $this, 'onContentStabilizationStablePointAdded' ]
 		);
-		$hookContainer->register(
-			'ContentStabilizationStablePointRemoved', [ $this, 'onStablePointRemoved' ]
+		$services->getHookContainer()->register(
+			'ContentStabilizationStablePointRemoved', [ $this, 'onContentStabilizationStablePointRemoved' ]
 		);
+		$this->jobQueueGroup = $services->getJobQueueGroup();
 
-		parent::init( $hookContainer );
+		parent::init( $services );
 	}
 
 	/**
-	 * Update index on article change.
-	 *
-	 * @param MWWikiPage $wikiPage
-	 * @param User $user
-	 * @param string $summary
-	 * @param int $flags
-	 * @param RevisionStoreRecord $revisionRecord
-	 * @param EditResult $editResult
-	 * @return bool
+	 * @inheritDoc
 	 */
-	public function onPageSaveComplete( MWWikiPage $wikiPage, User $user, string $summary,
-		int $flags, RevisionStoreRecord $revisionRecord, EditResult $editResult ) {
-		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
-			new UpdateWikiPage( $wikiPage->getTitle() )
-		);
+	public function onPageSaveComplete( $wikiPage, $user, $summary, $flags, $revisionRecord, $editResult ) {
+		$this->jobQueueGroup->push( new UpdateWikiPage( $wikiPage->getTitle() ) );
 		return true;
 	}
 
 	/**
-	 * Delete search index entry on article deletion
-	 * @param \WikiPage &$article
-	 * @param \User &$user
-	 * @param string $reason
-	 * @param int $id
-	 * @param \Content|null $content
-	 * @param \LogEntry $logEntry
-	 * @return bool
+	 * @inheritDoc
 	 */
-	public function onArticleDeleteComplete( &$article, \User &$user, $reason, $id, ?\Content $content, \LogEntry $logEntry ) {
-		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
-			new UpdateWikiPage( $article->getTitle() )
-		);
-		return true;
+	public function onPageDeleteComplete(
+		ProperPageIdentity $page, Authority $deleter, string $reason, int $pageID,
+		RevisionRecord $deletedRev, ManualLogEntry $logEntry, int $archivedRevisionCount
+	) {
+		$title = Title::castFromPageIdentity( $page );
+		$this->jobQueueGroup->push( new UpdateWikiPage( $title ) );
 	}
 
 	/**
-	 * Update index on article undelete
-	 * @param Title $title
-	 * @param bool $create
-	 * @param string $comment
-	 * @param int $oldPageId
-	 * @return bool
+	 * @inheritDoc
 	 */
-	public function onArticleUndelete( Title $title, $create, $comment, $oldPageId ) {
-		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
-			new UpdateWikiPage( $title )
-		);
-		return true;
+	public function onArticleUndelete( $title, $create, $comment, $oldPageId, $restoredPages ) {
+		$this->jobQueueGroup->push( new UpdateWikiPage( $title ) );
 	}
 
 	/**
-	 * Update search index when an article is moved.
-	 * @param LinkTarget $title Old title of the moved article.
-	 * @param LinkTarget $newtitle New title of the moved article.
-	 * @param UserIdentity $user User that moved the article.
-	 * @return bool
+	 * @inheritDoc
 	 */
-	public function onTitleMoveComplete( $title, $newtitle, $user ) {
-		$jobs = [
-			new UpdateWikiPage(
-				Title::newFromLinkTarget( $title )
-			),
-			new UpdateWikiPage(
-				Title::newFromLinkTarget( $newtitle )
-			),
-		];
-		MediaWikiServices::getInstance()->getJobQueueGroup()->push( $jobs );
-		return true;
-	}
-
-	/**
-	 *
-	 * @param Title $title
-	 * @param string $origTitle
-	 * @param int $revCount
-	 * @param int $sRevCount
-	 * @param array $pageInfo
-	 * @return bool
-	 */
-	public function onAfterImportPage( $title, $origTitle, $revCount, $sRevCount, $pageInfo ) {
+	public function onAfterImportPage( $title, $foreignTitle, $revCount, $sRevCount, $pageInfo ) {
 		if ( empty( $sRevCount ) ) {
 			return true;
 		}
-		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
-			new UpdateWikiPage( $title )
-		);
+		$this->jobQueueGroup->push( new UpdateWikiPage( $title ) );
 		return true;
 	}
 
 	/**
-	 * @param StablePoint $stablePoint
-	 *
-	 * @return void
+	 * @inheritDoc
 	 */
-	public function onStablePointAdded( $stablePoint ) {
+	public function onContentStabilizationStablePointAdded( StablePoint $stablePoint ): void {
 		$title = Title::castFromPageIdentity( $stablePoint->getPage() );
-		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
-			new UpdateWikiPage( $title )
-		);
+		$this->jobQueueGroup->push( new UpdateWikiPage( $title ) );
 	}
 
 	/**
-	 * @param StablePoint $stablePoint
-	 * @param Authority $authority
-	 *
-	 * @return void
+	 * @inheritDoc
 	 */
-	public function onStablePointRemoved( $stablePoint, Authority $authority ) {
-		$title = Title::castFromPageIdentity( $stablePoint->getPage() );
-		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
-			new UpdateWikiPage( $title )
-		);
+	public function onContentStabilizationStablePointRemoved( StablePoint $removedPoint, Authority $remover ): void {
+		$title = Title::castFromPageIdentity( $removedPoint->getPage() );
+		$this->jobQueueGroup->push( new UpdateWikiPage( $title ) );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onPageMoveCompleting( $old, $new, $user, $pageid, $redirid, $reason, $revision ) {
+		$jobs = [
+			new UpdateWikiPage(
+				Title::newFromLinkTarget( $old )
+			),
+			new UpdateWikiPage(
+				Title::newFromLinkTarget( $new )
+			),
+		];
+		$this->jobQueueGroup->push( $jobs );
 	}
 }

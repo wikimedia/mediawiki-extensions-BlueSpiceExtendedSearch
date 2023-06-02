@@ -3,9 +3,7 @@
 namespace BS\ExtendedSearch\Data;
 
 use BS\ExtendedSearch\Backend;
-use Elastica\Client;
-use Elastica\Index;
-use Elastica\Search;
+use BS\ExtendedSearch\SearchResult;
 use Exception;
 use FormatJson;
 use MWStake\MediaWiki\Component\DataStore\FieldType;
@@ -82,22 +80,6 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 	}
 
 	/**
-	 *
-	 * @return Client
-	 */
-	public function getSearchClient() {
-		return $this->getSearchBackend()->getClient();
-	}
-
-	/**
-	 *
-	 * @return Index
-	 */
-	public function getSearchIndex() {
-		return $this->getSearchBackend()->getIndexByType( $this->getIndexType() );
-	}
-
-	/**
 	 * @return string
 	 */
 	abstract protected function getIndexType();
@@ -109,19 +91,6 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 
 	/**
 	 *
-	 * @return Search
-	 */
-	protected function getSearch() {
-		$search = new Search( $this->getSearchClient() );
-		$search->addIndex( $this->getSearchIndex() );
-		$search->addType(
-			new \Elastica\Type( $this->getSearchIndex(), $this->getIndexType() )
-		);
-		return $search;
-	}
-
-	/**
-	 *
 	 * @param ReaderParams $params
 	 * @return Record[]
 	 */
@@ -129,15 +98,17 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 		$query = [];
 		$query = $this->makePreFilterConds( $params, $query );
 		$query = $this->makePreOptionConds( $params, $query );
-		$queryJSON = FormatJson::encode( $query, true );
+		$query['_source'] = true;
 
-		wfDebugLog(
-			"BlueSpiceExtendedSearch-{$this->getTypeName()}",
-			__METHOD__ . ":\n" . $queryJSON
-		);
 		do {
+			$queryJSON = FormatJson::encode( $query, true );
 			try {
-				$result = $this->getSearch()->search( $query );
+				$result = $this->searchBackend->runRawQueryFromData( [
+					'index' => implode( ',', $this->searchBackend->getAllIndicesForQuery(
+						[ $this->getIndexType() ]
+					) ),
+					'body' => $queryJSON
+				] );
 			} catch ( Exception $ex ) {
 				// When there is no document in the index yet, a query may
 				// crash with "Fielddata access on the _id field is disallowed"
@@ -149,10 +120,10 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 				return $this->data;
 			}
 
-			if ( $result->count() < 1 ) {
+			if ( $result->getTotalHits() < 1 ) {
 				return $this->data;
 			}
-			foreach ( $result as $row ) {
+			foreach ( $result->getResults() as $row ) {
 				$this->appendRowToData( $row );
 				if ( $params->getLimit() === $params::LIMIT_INFINITE ) {
 					continue;
@@ -160,15 +131,14 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 				if ( count( $this->data ) >= $params->getLimit() ) {
 					return $this->data;
 				}
+				// because OS search cant handle from + size larger than
+				// 10000 -.-
+				// see: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-search-after.html
+				$query['from'] = -1;
+				$query['search_after'] = $row->getSourceParam( 'sort' );
 			}
-			// because elastic search cant handle from + size larger than
-			// 10000 -.-
-			// see: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-search-after.html
-			$query['from'] = -1;
-			$query['search_after'] = $row->getHit()['sort'];
-		} while ( true );
 
-		return $this->data;
+		} while ( true );
 	}
 
 	/**
@@ -324,9 +294,9 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 
 	/**
 	 *
-	 * @param \Elastica\Result $row
+	 * @param SearchResult $row
 	 * @return null
 	 */
-	abstract protected function appendRowToData( \Elastica\Result $row );
+	abstract protected function appendRowToData( SearchResult $row );
 
 }

@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\Source\Formatter;
 
 use BlueSpice\DynamicFileDispatcher\ArticlePreviewImage;
 use BlueSpice\DynamicFileDispatcher\Params;
+use BS\ExtendedSearch\SearchResult;
 use MediaWiki\MediaWikiServices;
 
 class WikiPageFormatter extends Base {
@@ -13,7 +14,7 @@ class WikiPageFormatter extends Base {
 	 * @param array $defaultResultStructure
 	 * @return array
 	 */
-	public function getResultStructure( $defaultResultStructure = [] ) {
+	public function getResultStructure( $defaultResultStructure = [] ): array {
 		$resultStructure = $defaultResultStructure;
 		$resultStructure['page_anchor'] = 'page_anchor';
 		$resultStructure['original_title'] = 'original_title';
@@ -43,37 +44,37 @@ class WikiPageFormatter extends Base {
 
 	/**
 	 *
-	 * @param array &$result
-	 * @param \Elastica\Result $resultObject
+	 * @param array &$resultData
+	 * @param SearchResult $resultObject
 	 */
-	public function format( &$result, $resultObject ) {
+	public function format( &$resultData, $resultObject ): void {
 		if ( $this->source->getTypeKey() != $resultObject->getType() ) {
 			return;
 		}
 
-		parent::format( $result, $resultObject );
+		parent::format( $resultData, $resultObject );
 
-		if ( $result['is_redirect'] === true ) {
-			$this->formatRedirect( $result );
+		if ( $resultData['is_redirect'] === true ) {
+			$this->formatRedirect( $resultData );
 			return;
 		}
-		$result['categories'] = $this->formatCategories( $result['categories'] );
-		$result['highlight'] = $this->getHighlight( $resultObject );
-		$result['sections'] = $this->getSections( $result );
-		$result['redirects'] = $this->formatRedirectedFrom( $result );
-		$result['rendered_content_snippet'] = $this->getRenderedContentSnippet( $result['rendered_content'] );
+		$resultData['categories'] = $this->formatCategories( $resultData['categories'] );
+		$resultData['highlight'] = $this->getHighlight( $resultObject );
+		$resultData['sections'] = $this->getSections( $resultData );
+		$resultData['redirects'] = $this->formatRedirectedFrom( $resultData );
+		$resultData['rendered_content_snippet'] = $this->getRenderedContentSnippet( $resultData['rendered_content'] );
 
-		if ( $result['display_title'] !== '' ) {
-			$result['basename'] = $result['display_title'];
+		if ( $resultData['display_title'] !== '' ) {
+			$resultData['basename'] = $resultData['display_title'];
 		}
-		$result['original_title'] = $this->getOriginalTitleText( $result );
+		$resultData['original_title'] = $this->getOriginalTitleText( $resultData );
 
-		$result['file-usage'] = '';
-		if ( $result['namespace'] === NS_FILE ) {
-			$result['file-usage'] = $this->getFileUsage( $result['prefixed_title'] );
+		$resultData['file-usage'] = '';
+		if ( $resultData['namespace'] === NS_FILE ) {
+			$resultData['file-usage'] = $this->getFileUsage( $resultData['prefixed_title'] );
 		}
 
-		$this->addAnchorAndImageUri( $result );
+		$this->addAnchorAndImageUri( $resultData );
 	}
 
 	/**
@@ -258,12 +259,11 @@ class WikiPageFormatter extends Base {
 
 	/**
 	 *
-	 * @param \Elastica\Result $resultObject
+	 * @param SearchResult $resultObject
 	 * @return string
 	 */
 	protected function getHighlight( $resultObject ) {
-		$highlights = $resultObject->getHighlights();
-		$highlightParts = [];
+		$highlights = $resultObject->getParam( 'highlight' );
 		if ( isset( $highlights['rendered_content'] ) ) {
 			return implode( ' ', $highlights['rendered_content'] );
 		}
@@ -365,7 +365,7 @@ class WikiPageFormatter extends Base {
 	 * @param array &$results
 	 * @param array $searchData
 	 */
-	public function formatAutocompleteResults( &$results, $searchData ) {
+	public function formatAutocompleteResults( &$results, $searchData ): void {
 		parent::formatAutocompleteResults( $results, $searchData );
 
 		foreach ( $results as &$result ) {
@@ -389,7 +389,7 @@ class WikiPageFormatter extends Base {
 	 * @param array &$results
 	 * @param array $searchData
 	 */
-	public function rankAutocompleteResults( &$results, $searchData ) {
+	public function rankAutocompleteResults( &$results, $searchData ): void {
 		$top = $this->getACHighestScored( $results );
 		foreach ( $results as &$result ) {
 			if ( $result['type'] !== $this->source->getTypeKey() ) {
@@ -436,7 +436,7 @@ class WikiPageFormatter extends Base {
 			$result['rank'] = self::AC_RANK_TOP;
 		} elseif ( $this->matchTokenized( $lcTitle, $lcSearchTerm ) ) {
 			$result['rank'] = self::AC_RANK_NORMAL;
-		} elseif ( !isset( $result['rank'] ) ) {
+		} elseif ( !$result['rank'] ) {
 			$result['rank'] = self::AC_RANK_SECONDARY;
 		}
 	}

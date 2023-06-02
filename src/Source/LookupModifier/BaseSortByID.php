@@ -4,14 +4,14 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Lookup;
 
-class BaseSortByID extends Base {
+class BaseSortByID extends LookupModifier {
 
 	public function apply() {
-		$this->oLookup->addSort( 'sortable_id', Lookup::SORT_DESC );
+		$this->lookup->addSort( 'sortable_id', Lookup::SORT_DESC );
 	}
 
 	public function undo() {
-		$this->oLookup->removeSort( 'sortable_id' );
+		$this->lookup->removeSort( 'sortable_id' );
 	}
 
 }

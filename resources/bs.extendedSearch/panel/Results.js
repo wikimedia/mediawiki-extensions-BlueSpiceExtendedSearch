@@ -69,7 +69,7 @@
 	};
 
 	bs.extendedSearch.ResultsPanel.prototype.getLastShown = function() {
-		if( this.displayedResults == {} ) {
+		if( this.displayedResults === {} ) {
 			return null;
 		}
 
@@ -86,25 +86,9 @@
 			return;
 		}
 
-		var searchAfter = [];
-
-		//We dont want to touch original lookup set in the URL hash
+		//We don't want to touch original lookup set in the URL hash
 		var loadMoreLookup = $.extend( true, {}, this.lookup );
-		var sortFields = loadMoreLookup.getSort();
-		for( var i = 0; i < sortFields.length; i++ ) {
-			for( var field in sortFields[i] ) {
-				if ( !sortFields[i].hasOwnProperty( field ) ) {
-					continue;
-				}
-				if( field.charAt( 0 ) === '_' ) {
-					field = field.slice( 1 );
-				}
-
-				searchAfter.push( lastShown[field] );
-			}
-		}
-		searchAfter.push( lastShown.id );
-		loadMoreLookup.setSearchAfter( searchAfter );
+		loadMoreLookup.setSearchAfter( lastShown.search_more );
 
 		var newResultsPromise = bs.extendedSearch.SearchCenter.runApiCall( {
 			q: JSON.stringify( loadMoreLookup )

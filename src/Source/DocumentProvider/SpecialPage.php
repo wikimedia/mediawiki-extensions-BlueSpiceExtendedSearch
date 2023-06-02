@@ -2,17 +2,19 @@
 
 namespace BS\ExtendedSearch\Source\DocumentProvider;
 
-class SpecialPage extends DecoratorBase {
+class SpecialPage extends Base {
 
 	/**
 	 *
 	 * @param string $sUri
+	 * @param string $documentId
 	 * @param \SpecialPage $oSpecialPage
+	 *
 	 * @return array
 	 */
-	public function getDataConfig( $sUri, $oSpecialPage ) {
-		$aDC = $this->oDecoratedDP->getDataConfig( $sUri, $oSpecialPage );
-		$aDC = array_merge( $aDC, [
+	public function getDocumentData( $sUri, string $documentId, $oSpecialPage ): array {
+		$aDC = parent::getDocumentData( $sUri, $documentId, $oSpecialPage );
+		return array_merge( $aDC, [
 			'basename' => $oSpecialPage->getPageTitle()->getBaseText(),
 			'basename_exact' => $oSpecialPage->getPageTitle()->getBaseText(),
 			'extension' => 'special',
@@ -22,7 +24,5 @@ class SpecialPage extends DecoratorBase {
 			'namespace' => $oSpecialPage->getPageTitle()->getNamespace(),
 			'namespace_text' => $oSpecialPage->getPageTitle()->getNsText()
 		] );
-
-		return $aDC;
 	}
 }

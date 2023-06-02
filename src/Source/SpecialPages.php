@@ -2,49 +2,46 @@
 
 namespace BS\ExtendedSearch\Source;
 
-class SpecialPages extends DecoratorBase {
+use BS\ExtendedSearch\ISearchCrawler;
+use BS\ExtendedSearch\ISearchDocumentProvider;
+use BS\ExtendedSearch\ISearchMappingProvider;
+use BS\ExtendedSearch\ISearchResultFormatter;
 
-	/**
-	 * @param Base $base
-	 * @return SpecialPages
-	 */
-	public static function create( $base ) {
-		return new self( $base );
-	}
+class SpecialPages extends GenericSource {
 
 	/**
 	 *
-	 * @return \BS\ExtendedSearch\Source\Crawler\SpecialPage
+	 * @return ISearchCrawler
 	 */
-	public function getCrawler() {
-		return new Crawler\SpecialPage( $this->getConfig() );
+	public function getCrawler(): ISearchCrawler {
+		return $this->makeObjectFromSpec( [
+			'class' => Crawler\SpecialPage::class,
+			'args' => [ $this->config ],
+			'services' => [ 'DBLoadBalancer', 'JobQueueGroup', 'SpecialPageFactory' ]
+		] );
 	}
 
 	/**
 	 *
 	 * @return \BS\ExtendedSearch\Source\DocumentProvider\SpecialPage
 	 */
-	public function getDocumentProvider() {
-		return new DocumentProvider\SpecialPage(
-			$this->oDecoratedSource->getDocumentProvider()
-		);
+	public function getDocumentProvider(): ISearchDocumentProvider {
+		return new DocumentProvider\SpecialPage();
 	}
 
 	/**
 	 *
 	 * @return MappingProvider\SpecialPage
 	 */
-	public function getMappingProvider() {
-		return new MappingProvider\SpecialPage(
-			$this->oDecoratedSource->getMappingProvider()
-		);
+	public function getMappingProvider(): ISearchMappingProvider {
+		return new MappingProvider\SpecialPage();
 	}
 
 	/**
 	 *
 	 * @return Formatter\SpecialPageFormatter
 	 */
-	public function getFormatter() {
+	public function getFormatter(): ISearchResultFormatter {
 		return new Formatter\SpecialPageFormatter( $this );
 	}
 
@@ -52,7 +49,7 @@ class SpecialPages extends DecoratorBase {
 	 *
 	 * @return string
 	 */
-	public function getSearchPermission() {
+	public function getSearchPermission(): string {
 		return 'extendedsearch-search-specialpage';
 	}
 }

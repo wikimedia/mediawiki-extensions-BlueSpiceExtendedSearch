@@ -563,15 +563,13 @@ class LookupTest extends \MediaWikiIntegrationTestCase {
 				"fields" => [
 					"someField" => [
 						"matched_fields" => [ "someField" ],
-						"pre_tags" => [ '<b>' ],
-						"post_tags" => [ '</b>' ]
 						],
 					"anotherField" => [
 						"matched_fields" => [ "anotherField" ],
-						"pre_tags" => [ '<b>' ],
-						"post_tags" => [ '</b>' ]
 					]
-				]
+				],
+				"pre_tags" => [ '<b>' ],
+				"post_tags" => [ '</b>' ]
 			]
 		];
 

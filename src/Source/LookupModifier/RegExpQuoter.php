@@ -2,9 +2,10 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
+use BS\ExtendedSearch\Lookup;
 use MediaWiki\MediaWikiServices;
 
-class RegExpQuoter extends Base {
+class RegExpQuoter extends LookupModifier {
 
 	/**
 	 * @var array
@@ -21,7 +22,7 @@ class RegExpQuoter extends Base {
 	 * @return void
 	 */
 	public function apply() {
-		$this->queryString = $this->oLookup->getQueryString();
+		$this->queryString = $this->lookup->getQueryString();
 		$this->originalQuery = $this->queryString['query'];
 
 		/*
@@ -30,7 +31,7 @@ class RegExpQuoter extends Base {
 		 * */
 		$patterns = $this->getPatterns();
 		$this->queryString['query'] = $this->quoteQueryByPattern( $this->queryString['query'], $patterns );
-		$this->oLookup->setQueryString( $this->queryString );
+		$this->lookup->setQueryString( $this->queryString );
 	}
 
 	/**
@@ -38,17 +39,17 @@ class RegExpQuoter extends Base {
 	 * @return void
 	 */
 	public function undo() {
-		$this->queryString = $this->oLookup->getQueryString();
+		$this->queryString = $this->lookup->getQueryString();
 		$this->queryString['query'] = $this->originalQuery;
-		$this->oLookup->setQueryString( $this->queryString );
+		$this->lookup->setQueryString( $this->queryString );
 	}
 
 	/**
 	 *
-	 * @return BS\ExtendedSearch\Lookup
+	 * @return Lookup
 	 */
 	public function getLookup() {
-		return $this->oLookup;
+		return $this->lookup;
 	}
 
 	/**

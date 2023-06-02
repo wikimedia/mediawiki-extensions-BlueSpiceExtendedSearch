@@ -2,18 +2,18 @@
 
 namespace BS\ExtendedSearch\Source\MappingProvider;
 
-class WikiPage extends DecoratorBase {
+class WikiPage extends Base {
 
 	/**
 	 *
 	 * @return array
 	 */
-	public function getPropertyConfig() {
-		$aPC = $this->oDecoratedMP->getPropertyConfig();
-		$aPC = array_merge( $aPC, [
+	public function getPropertyConfig(): array {
+		$config = parent::getPropertyConfig();
+		return array_merge( $config, [
 			'prefixed_title' => [
 				'type' => 'text',
-				'copy_to' => [ 'congregated', 'ac_ngram', 'prefixed_title_exact' ],
+				'copy_to' => [ 'congregated', 'suggestions', 'prefixed_title_exact' ],
 			],
 			'prefixed_title_exact' => [
 				'type' => 'keyword'
@@ -59,13 +59,11 @@ class WikiPage extends DecoratorBase {
 			],
 			'display_title' => [
 				'type' => 'keyword',
-				'copy_to' => [ 'congregated', 'ac_ngram' ]
+				'copy_to' => [ 'congregated', 'suggestions' ]
 			],
 			'used_files' => [
 				'type' => 'keyword'
 			]
 		] );
-
-		return $aPC;
 	}
 }

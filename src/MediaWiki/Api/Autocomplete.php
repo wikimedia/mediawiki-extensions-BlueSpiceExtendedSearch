@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
+use BS\ExtendedSearch\Backend;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\ParamValidator\ParamValidator;
 
@@ -152,6 +153,7 @@ class Autocomplete extends \ApiBase {
 	protected $suggestions;
 
 	protected function lookUpResults() {
+		/** @var Backend $backend */
 		$backend = MediaWikiServices::getInstance()->getService( 'BSExtendedSearchBackend' );
 		if ( $this->secondaryRequestData ) {
 			$this->suggestions = $backend->runAutocompleteSecondaryLookup(

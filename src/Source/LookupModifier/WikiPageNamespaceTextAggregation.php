@@ -2,13 +2,13 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
-class WikiPageNamespaceTextAggregation extends Base {
+class WikiPageNamespaceTextAggregation extends LookupModifier {
 
 	public function apply() {
-		$this->oLookup->setBucketTermsAggregation( 'namespace_text' );
+		$this->lookup->setBucketTermsAggregation( 'namespace_text' );
 	}
 
 	public function undo() {
-		$this->oLookup->removeBucketTermsAggregation( 'namespace_text' );
+		$this->lookup->removeBucketTermsAggregation( 'namespace_text' );
 	}
 }

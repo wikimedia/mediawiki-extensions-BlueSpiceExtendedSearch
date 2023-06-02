@@ -66,7 +66,7 @@ class TagSearchHandler extends Handler {
 		$this->handleCategories( $lookup, TagSearch::PARAM_CATEGORY_FULLNAME );
 
 		if ( count( $this->processedArgs[TagSearch::PARAM_TYPE] ) > 0 ) {
-			$lookup->addTermsFilter( '_type', $this->processedArgs[TagSearch::PARAM_TYPE] );
+			$lookup->addSearchInTypes( [ $this->processedArgs[TagSearch::PARAM_TYPE] ] );
 		}
 
 		$lookup = \FormatJson::encode( $lookup );

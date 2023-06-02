@@ -16,22 +16,23 @@ class RepoFile extends FileBase {
 	/**
 	 *
 	 * @param string $sUri
+	 * @param string $documentId
 	 * @param array $mDataItem
+	 *
 	 * @return array
 	 */
-	public function getDataConfig( $sUri, $mDataItem ) {
+	public function getDocumentData( $sUri, string $documentId, $mDataItem ): array {
 		$this->file = $mDataItem['fsFile'];
 
-		$dc = parent::getDataConfig( $sUri, $this->file );
+		$dc = parent::getDocumentData( $sUri, $documentId, $this->file );
 		$filename = $mDataItem['title'];
 		$fileTitle = Title::newFromText( $filename );
-		$dc = array_merge( $dc, [
+
+		return array_merge( $dc, [
 			'filename' => $filename,
 			'namespace' => $fileTitle ? $fileTitle->getNamespace() : 0,
 			'namespace_text' => $this->getNamespaceText( $fileTitle ),
 		] );
-
-		return $dc;
 	}
 
 	/**

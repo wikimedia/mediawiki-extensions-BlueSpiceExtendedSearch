@@ -2,13 +2,13 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
-class WikiPageRenderedContentHighlight extends Base {
+class WikiPageRenderedContentHighlight extends LookupModifier {
 
 	public function apply() {
-		$this->oLookup->addHighlighter( 'rendered_content' );
+		$this->lookup->addHighlighter( 'rendered_content' );
 	}
 
 	public function undo() {
-		$this->oLookup->removeHighlighter( 'rendered_content' );
+		$this->lookup->removeHighlighter( 'rendered_content' );
 	}
 }

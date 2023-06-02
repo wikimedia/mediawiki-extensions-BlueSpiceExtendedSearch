@@ -2,13 +2,13 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
-class WikiPageCategoriesAggregation extends Base {
+class WikiPageCategoriesAggregation extends LookupModifier {
 
 	public function apply() {
-		$this->oLookup->setBucketTermsAggregation( 'categories' );
+		$this->lookup->setBucketTermsAggregation( 'categories' );
 	}
 
 	public function undo() {
-		$this->oLookup->removeBucketTermsAggregation( 'categories' );
+		$this->lookup->removeBucketTermsAggregation( 'categories' );
 	}
 }

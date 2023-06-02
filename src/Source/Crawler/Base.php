@@ -2,36 +2,60 @@
 
 namespace BS\ExtendedSearch\Source\Crawler;
 
-use MediaWiki\MediaWikiServices;
+use BS\ExtendedSearch\ISearchCrawler;
+use Config;
+use Job;
+use JobQueueGroup;
+use Title;
+use Wikimedia\Rdbms\ILoadBalancer;
 
-class Base {
+class Base implements ISearchCrawler {
 
 	/** @var string */
 	protected $sJobClass = '';
 
 	/**
 	 *
-	 * @var \Config
+	 * @var Config
 	 */
-	protected $oConfig = null;
+	protected $sourceConfig = null;
 
 	/**
 	 *
-	 * @param \Config $oConfig
+	 * @var ILoadBalancer
 	 */
-	public function __construct( $oConfig ) {
-		$this->oConfig = $oConfig;
+	protected $lb = null;
+
+	/**
+	 *
+	 * @var JobQueueGroup
+	 */
+	protected $jobQueueGroup = null;
+
+	/**
+	 *
+	 * @param ILoadBalancer $lb
+	 * @param JobQueueGroup $jobQueueGroup
+	 * @param Config $sourceConfig
+	 */
+	public function __construct( ILoadBalancer $lb, JobQueueGroup $jobQueueGroup, Config $sourceConfig ) {
+		$this->sourceConfig = $sourceConfig;
+		$this->lb = $lb;
+		$this->jobQueueGroup = $jobQueueGroup;
 	}
 
+	/**
+	 * @return void
+	 */
 	public function crawl() {
 		// Needs to be implemented by sublasses; but not abstract as this may serve as a stub
 	}
 
 	/**
 	 *
-	 * @param \Title $oTitle
+	 * @param Title $oTitle
 	 * @param array $aParams
-	 * @return \Job|null
+	 * @return Job|null
 	 */
 	protected function addToJobQueue( $oTitle, $aParams = [] ) {
 		if ( empty( $this->sJobClass ) ) {
@@ -39,7 +63,7 @@ class Base {
 		}
 
 		$oJob = new $this->sJobClass( $oTitle, $aParams );
-		MediaWikiServices::getInstance()->getJobQueueGroup()->push( $oJob );
+		$this->jobQueueGroup->push( $oJob );
 		return $oJob;
 	}
 
@@ -47,13 +71,13 @@ class Base {
 	 *
 	 * @return int
 	 */
-	public function getNumberOfPendingJobs() {
+	public function getNumberOfPendingJobs(): int {
 		if ( empty( $this->sJobClass ) ) {
 			return -1;
 		}
 
-		$oDummyJob = new $this->sJobClass( \Title::newMainPage(), [] );
-		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
+		$oDummyJob = new $this->sJobClass( Title::newMainPage(), [] );
+		$dbr = $this->lb->getConnection( DB_REPLICA );
 		$res = $dbr->selectRow(
 			'job',
 			'COUNT(*) AS count',
@@ -67,13 +91,13 @@ class Base {
 	 *
 	 * @return bool
 	 */
-	public function clearPendingJobs() {
+	public function clearPendingJobs(): bool {
 		if ( empty( $this->sJobClass ) ) {
 			return false;
 		}
 
-		$oDummyJob = new $this->sJobClass( \Title::newMainPage(), [] );
-		$dbw = wfGetDB( DB_PRIMARY );
+		$oDummyJob = new $this->sJobClass( Title::newMainPage(), [] );
+		$dbw = $this->lb->getConnection( DB_PRIMARY );
 		$res = $dbw->delete(
 			'job',
 			[ 'job_cmd' => $oDummyJob->getType() ]

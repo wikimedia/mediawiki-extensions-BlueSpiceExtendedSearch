@@ -188,7 +188,7 @@
 		var lookup = new bs.extendedSearch.Lookup( this.lookupConfig );
 		this.suggestField = this.autocompleteConfig['SuggestField'];
 
-		lookup.setBoolMatchQueryString( this.suggestField, this.searchBar.value );
+		lookup.setMultiMatchQuery( this.suggestField, this.searchBar.value );
 		if( $.isEmptyObject( this.searchBar.namespace ) === false ) {
 			lookup.addTermFilter( 'namespace', this.searchBar.namespace.id );
 		}

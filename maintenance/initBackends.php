@@ -2,9 +2,9 @@
 
 use MediaWiki\MediaWikiServices;
 
-require_once "elasticScriptBase.php";
+require_once "searchScriptBase.php";
 
-class initBackends extends elasticScriptBase {
+class initBackends extends searchScriptBase {
 	/**
 	 * @var string
 	 */
@@ -25,7 +25,7 @@ class initBackends extends elasticScriptBase {
 			}
 			$backend->deleteIndex( $sourceKey );
 			$backend->createIndex( $sourceKey );
-			$this->output( "\nIndex created: {$backend->getIndexByType( $sourceKey)->getName()}" );
+			$this->output( "\nIndex created: {$backend->getIndexName( $sourceKey)}" );
 		}
 	}
 }

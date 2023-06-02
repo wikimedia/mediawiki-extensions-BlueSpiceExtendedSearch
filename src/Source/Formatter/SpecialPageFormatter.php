@@ -2,20 +2,22 @@
 
 namespace BS\ExtendedSearch\Source\Formatter;
 
+use BS\ExtendedSearch\SearchResult;
+
 class SpecialPageFormatter extends Base {
 
 	/**
 	 *
-	 * @param array &$result
-	 * @param \Elastica\Result $resultObject
+	 * @param array &$resultData
+	 * @param SearchResult $resultObject
 	 */
-	public function format( &$result, $resultObject ) {
+	public function format( &$resultData, $resultObject ): void {
 		if ( $this->source->getTypeKey() != $resultObject->getType() ) {
 			return;
 		}
-		parent::format( $result, $resultObject );
+		parent::format( $resultData, $resultObject );
 
-		$result['basename'] = $result['prefixed_title'];
+		$resultData['basename'] = $resultData['prefixed_title'];
 	}
 
 	/**
@@ -40,7 +42,7 @@ class SpecialPageFormatter extends Base {
 	 * @param array &$results
 	 * @param array $searchData
 	 */
-	public function formatAutocompleteResults( &$results, $searchData ) {
+	public function formatAutocompleteResults( &$results, $searchData ): void {
 		parent::formatAutocompleteResults( $results, $searchData );
 
 		foreach ( $results as &$result ) {

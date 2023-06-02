@@ -2,14 +2,13 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
-class BaseExtensionAggregation extends Base {
+class BaseExtensionAggregation extends LookupModifier {
 
 	public function apply() {
-		$this->oLookup->setBucketTermsAggregation( 'extension' );
+		$this->lookup->setBucketTermsAggregation( 'extension' );
 	}
 
 	public function undo() {
-		$this->oLookup->removeBucketTermsAggregation( 'extension' );
+		$this->lookup->removeBucketTermsAggregation( 'extension' );
 	}
-
 }

@@ -2,9 +2,10 @@
 
 namespace BS\ExtendedSearch;
 
-use BlueSpice\ExtensionAttributeBasedRegistry;
-use BlueSpice\IRegistry;
-use BS\ExtendedSearch\Source\Base;
+use ExtensionRegistry;
+use HashConfig;
+use UnexpectedValueException;
+use Wikimedia\ObjectFactory\ObjectFactory;
 
 class SourceFactory {
 
@@ -31,44 +32,59 @@ class SourceFactory {
 	protected $sources = [];
 
 	/**
-	 * @var IRegistry
+	 * @var array
 	 */
 	protected $sourceRegistry = null;
 
 	/**
-	 * SourceFactory constructor.
-	 * @param null $backend - deprecated since version 3.1.13
-	 * @param \Config $config
+	 * @var ObjectFactory
 	 */
-	public function __construct( $backend, $config ) {
+	protected $objectFactory = null;
+
+	/**
+	 * @param \Config $config
+	 * @param ObjectFactory $objectFactory
+	 */
+	public function __construct( \Config $config, ObjectFactory $objectFactory ) {
 		$this->config = $config;
+		$this->objectFactory = $objectFactory;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getSourceKeys(): array {
+		if ( $this->sourceRegistry === null ) {
+			$this->sourceRegistry = ExtensionRegistry::getInstance()->getAttribute( 'BlueSpiceExtendedSearchSources' );
+		}
+		return array_keys( $this->sourceRegistry );
 	}
 
 	/**
 	 *
 	 * @param string $sourceKey
 	 * @param Backend $backend
-	 * @return Base
-	 * @throws \UnexpectedValueException
+	 * @return ISearchSource
+	 * @throws UnexpectedValueException
 	 */
 	public function makeSource( $sourceKey, $backend ) {
 		if ( isset( $this->sources[$sourceKey] ) ) {
 			return $this->sources[$sourceKey];
 		}
 
-		$this->assertSourceFactoryFunction( $sourceKey );
+		$spec = $this->getSpecFromAttibute( $sourceKey );
 		$this->assertSourceConfig( $sourceKey );
 
-		$base = new Base( $backend, $this->configs[$sourceKey] );
-
-		$source = call_user_func( $this->factoryFunction[$sourceKey], $base );
-
-		if ( $source instanceof Base ) {
-			$this->sources[$sourceKey] = $source;
-		} else {
-			throw new \UnexpectedValueException( "Factory for $sourceKey returned invalid source object!" );
+		$source = $this->objectFactory->createObject( $spec );
+		if ( !( $source instanceof ISearchSource ) ) {
+			throw new UnexpectedValueException( "Factory for $sourceKey returned invalid source object!" );
 		}
-
+		$source->setBackend( $backend );
+		$source->setSourceConfig( new \MultiConfig( [
+			$this->config,
+			new HashConfig( $this->configs[$sourceKey] )
+		] ) );
+		$this->sources[$sourceKey] = $source;
 		return $this->sources[$sourceKey];
 	}
 
@@ -84,36 +100,26 @@ class SourceFactory {
 
 	/**
 	 * @param string $sourceKey
-	 * @throws \InvalidArgumentException
-	 */
-	protected function assertSourceFactoryFunction( $sourceKey ) {
-		if ( isset( $this->factoryFunction[$sourceKey] ) ) {
-			return;
-		}
-
-		$func = $this->getFactoryFunctionFromAttribute( $sourceKey );
-		if ( !is_callable( $func ) ) {
-			throw new \InvalidArgumentException( "Invalid callback supplied for source \"$sourceKey\"" );
-		}
-
-		$this->factoryFunction[$sourceKey] = $func;
-	}
-
-	/**
-	 * @param string $sourceKey
 	 * @return string
 	 * @throws \InvalidArgumentException
 	 */
-	protected function getFactoryFunctionFromAttribute( $sourceKey ) {
+	protected function getSpecFromAttibute( $sourceKey ) {
 		if ( $this->sourceRegistry === null ) {
-			$this->sourceRegistry = new ExtensionAttributeBasedRegistry( 'BlueSpiceExtendedSearchSources' );
+			$this->sourceRegistry = ExtensionRegistry::getInstance()->getAttribute( 'BlueSpiceExtendedSearchSources' );
 		}
 
-		if ( in_array( $sourceKey, $this->sourceRegistry->getAllKeys() ) ) {
-			return $this->sourceRegistry->getValue( $sourceKey );
+		if ( isset( $this->sourceRegistry[$sourceKey] ) ) {
+			$spec = $this->sourceRegistry[$sourceKey];
+			if ( isset( $spec['class'] ) && is_array( $spec['class'] ) ) {
+				$spec['class'] = end( $spec['class'] );
+			}
+			if ( isset( $spec['factory'] ) && is_array( $spec['factory'] ) ) {
+				$spec['factory'] = end( $spec['factory'] );
+			}
+			return $spec;
 		}
 
-		throw new \InvalidArgumentException( "No registered factory method for source \"$sourceKey\"" );
+		throw new \InvalidArgumentException( "No object specification registered for \"$sourceKey\"" );
 	}
 
 	/**
