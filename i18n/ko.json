@@ -135,5 +135,6 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "\"$1\"에서 결과 표시",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "\"$1\"에서 검색 중",
 	"bs-extendedsearch-statistics-report-search-terms": "검색어",
-	"bs-extendedsearch-statistics-report-search-terms-axis-label": "검색 쿼리 수"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "검색 쿼리 수",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "플레이스홀더"
 }

@@ -172,5 +172,6 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Søkeord per bruker",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Returnerer søkeresultater for en bruker kun på brukerens språk. Brukerne kan velge språket sitt i innstillingene.",
 	"bs-extendedsearch-droplet-search-name": "Søkefelt",
-	"bs-extendedsearch-close-search-button-aria-label": "Lukk søkeboks"
+	"bs-extendedsearch-close-search-button-aria-label": "Lukk søkeboks",
+	"bs-extendedsearch-remove-button-label": "Fjerne filteret «$1»"
 }
