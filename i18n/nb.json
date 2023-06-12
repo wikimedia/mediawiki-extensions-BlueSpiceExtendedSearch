@@ -132,6 +132,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Legg til et filter",
 	"bs-extendedsearch-options-button-label": "Søkealternativer",
 	"bs-extendedsearch-export-button-label": "Eksporter søkeresultater",
+	"bs-extendedsearch-remove-button-label": "Fjerne filteret «$1»",
 	"bs-extendedsearch-flyout-similar-pages-title": "Lignende sider",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Ingen lignende sider funnet",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Bruk i sider",
