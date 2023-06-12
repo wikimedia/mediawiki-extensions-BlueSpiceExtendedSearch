@@ -26,7 +26,7 @@ class WikiPageLanguageFilter extends Base {
 			return;
 		}
 		$filterValue = $this->oLookup->getFilters()['terms']['page_language'];
-		if ( count( $filterValue ) !== 1 ) {
+		if ( $filterValue && count( $filterValue ) !== 1 ) {
 			if ( $autoSetLangFilter ) {
 				$autoLangCode = $this->getAutoLangCode();
 				$this->oLookup->removeTermsFilter( 'page_language', $filterValue );
