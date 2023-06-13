@@ -1,0 +1,39 @@
+[
+	{
+		"name": "bs_extendedsearch_trace",
+		"columns": [
+			{
+				"name": "est_title",
+				"type": "string",
+				"options": { "length": 255, "notnull": true }
+			},
+			{
+				"name": "est_namespace",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "est_user",
+				"type": "integer",
+				"options": { "length": 6, "notnull": true }
+			},
+			{
+				"name": "est_type",
+				"type": "string",
+				"options": { "length": 255, "notnull": true }
+			},
+			{
+				"name": "est_count",
+				"type": "integer",
+				"options": { "default": 0, "notnull": true }
+			},
+			{
+				"name": "est_last_view",
+				"type": "mwtimestamp",
+				"options": { "notnull": true }
+			}
+		],
+		"indexes": [],
+		"pk": [ "est_title", "est_namespace", "est_user" ]
+	}
+]

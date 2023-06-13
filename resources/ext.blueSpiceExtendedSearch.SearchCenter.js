@@ -331,6 +331,7 @@
 			} );
 			$resultCnt.append( resultPanel.$element );
 
+			bs.extendedSearch._registerTrackableLinks();
 			$resultCnt.trigger( 'resultsReady', [ resultPanel ] );
 			search.removeLoading();
 		}.bind( this ) );

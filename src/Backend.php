@@ -339,7 +339,6 @@ class Backend {
 	 *
 	 * @return array
 	 * @throws Exception
-	 * @throws Exception
 	 */
 	protected function formatSuggestions( $results, $searchData ) {
 		$searchData['value'] = strtolower( $searchData['value'] );

@@ -227,6 +227,10 @@
 	bs.extendedSearch.mixin.FullTextSearchButton = function( cfg ) {
 		cfg = cfg || {};
 
+		if ( cfg.hasOwnProperty( 'canFulltextSearch' ) && !cfg.canFulltextSearch ) {
+			return;
+		}
+
 		var cnt = this.$specialResults;
 		if( this.mobile || this.compact ) {
 			cnt = this.$primaryResults;
