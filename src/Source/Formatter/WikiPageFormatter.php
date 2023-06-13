@@ -120,7 +120,7 @@ class WikiPageFormatter extends Base {
 	protected function addAnchorAndImageUri( &$result ) {
 		$title = \Title::newFromText( $result['prefixed_title'] );
 		if ( $title instanceof \Title && $title->getNamespace() == $result['namespace'] ) {
-			$result['page_anchor'] = $this->getPageAnchor( $title, $result['display_title'] );
+			$result['page_anchor'] = $this->getTraceablePageAnchor( $title, $result['display_title'] );
 			if ( $title->exists() ) {
 				$result['image_uri'] = $this->getImageUri( $result['prefixed_title'], 150 );
 			}
@@ -315,16 +315,6 @@ class WikiPageFormatter extends Base {
 
 	/**
 	 *
-	 * @param \Title $title
-	 * @param string $text
-	 * @return string
-	 */
-	protected function getPageAnchor( $title, $text ) {
-		return $this->linkRenderer->makeLink( $title, $text );
-	}
-
-	/**
-	 *
 	 * @param array &$result
 	 */
 	protected function formatRedirect( &$result ) {
@@ -334,8 +324,8 @@ class WikiPageFormatter extends Base {
 			return;
 		}
 		$result['is_redirect'] = 1;
-		$result['page_anchor'] = $this->getPageAnchor( $title, $result['display_title'] );
-		$result['redirect_target_anchor'] = $this->getPageAnchor( $redirTarget, $result['redirects_to'] );
+		$result['page_anchor'] = $this->getTraceablePageAnchor( $title, $result['display_title'] );
+		$result['redirect_target_anchor'] = $this->getTraceablePageAnchor( $redirTarget, $result['redirects_to'] );
 
 		$icons = \ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchIcons' );
@@ -436,7 +426,7 @@ class WikiPageFormatter extends Base {
 			$result['rank'] = self::AC_RANK_TOP;
 		} elseif ( $this->matchTokenized( $lcTitle, $lcSearchTerm ) ) {
 			$result['rank'] = self::AC_RANK_NORMAL;
-		} elseif ( !$result['rank'] ) {
+		} elseif ( !isset( $result['rank'] ) || !$result['rank'] ) {
 			$result['rank'] = self::AC_RANK_SECONDARY;
 		}
 	}

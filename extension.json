@@ -287,8 +287,7 @@
 		"includes/ServiceWiring.php"
 	],
 	"ExtensionMessagesFiles": {
-		"BlueSpiceExtendedSearchAdminAlias": "languages/BSSearchAdmin.alias.php",
-		"BlueSpiceExtendedSearchCenterAlias": "languages/BSSearchCenter.alias.php"
+		"BlueSpiceExtendedSearchSpecial": "languages/BlueSpiceExtendedSearch.special.alias.php"
 	},
 	"ExtensionFunctions": [
 		"BS\\ExtendedSearch\\Setup::init"
@@ -305,7 +304,8 @@
 		],
 		"LoadExtensionSchemaUpdates": [
 			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddRelevanceTable::callback",
-			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddHistoryTable::callback"
+			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddHistoryTable::callback",
+			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddTraceTable::callback"
 		],
 		"GetPreferences": "BS\\ExtendedSearch\\Hook\\GetPreferences\\AddUserPreferredNamespaces::callback",
 		"BSUEModulePDFBeforeCreatePDF": "\\BS\\ExtendedSearch\\Hook\\BSUEModulePDFBeforeCreatePDF\\RemoveTagSearch::callback",
@@ -835,6 +835,19 @@
 	"TestAutoloadNamespaces": {
 		"BS\\ExtendedSearch\\Tests\\": "tests/phpunit/"
 	},
+	"RestRoutes": [
+		{
+			"method": "POST",
+			"path": "/bluespice/extendedsearch/track",
+			"class": "BS\\ExtendedSearch\\MediaWiki\\Rest\\InsertSearchTraceHandler",
+			"services": [ "BSExtendedSearchTracker" ]
+		},
+		{
+			"path": "/bluespice/extendedsearch/recentlyfound",
+			"class": "BS\\ExtendedSearch\\MediaWiki\\Rest\\RecentlyFoundHandler",
+			"services": [ "BSExtendedSearchTracker", "LinkRenderer" ]
+		}
+	],
 	"load_composer_autoloader": true,
 	"manifest_version": 2
 }

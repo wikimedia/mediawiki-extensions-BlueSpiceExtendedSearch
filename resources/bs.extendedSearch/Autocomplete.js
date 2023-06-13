@@ -15,6 +15,7 @@
 		this.searchBar.on( 'beforeValueChanged', this.beforeValueChanged.bind( this ) );
 		this.searchBar.on( 'valueChanged', this.onValueChanged.bind( this ) );
 		this.searchBar.on( 'clearSearch', this.onClearSearch.bind( this ) );
+		this.searchBar.on( 'emptyFocus', this.onEmptyFocus.bind( this ) );
 		$( window ).on( 'click', this.onWindowClick.bind( this ) );
 	}
 
@@ -110,6 +111,9 @@
 	}
 
 	function _onValueChanged() {
+		if ( this.searchBar.value === '' ) {
+			return this.onEmptyFocus();
+		}
 		this.removePopup();
 		this.showPopup( this.searchBar.value );
 	}
@@ -125,6 +129,13 @@
 	//Clear all search params
 	function _onClearSearch() {
 		this.removePopup();
+	}
+
+	function _onEmptyFocus() {
+		this.removePopup();
+		bs.extendedSearch._getRecentlyFound().done( function( response ) {
+			this.makePopup( response.suggestions, { creatable: false } );
+		}.bind( this ) );
 	}
 
 	function _getPopupWidth() {
@@ -171,6 +182,7 @@
 		var wrapperId = this.searchBar.$searchBoxWrapper.attr( 'id' );
 		this.popup.$element.insertAfter( $( '#' + wrapperId ) );
 
+		bs.extendedSearch._registerTrackableLinks();
 		this.searchBar.suppressQuietSubpage( 'arm' );
 	}
 
@@ -239,6 +251,7 @@
 
 			me.getSecondaryResults( response.suggestions ).done( function( response ) {
 				me.addSecondaryToPopup( response.suggestions );
+				bs.extendedSearch._registerTrackableLinks();
 			} );
 		} );
 	}
@@ -264,11 +277,11 @@
 		var lookup = new bs.extendedSearch.Lookup( this.lookupConfig );
 		var suggestField = this.autocompleteConfig['SuggestField'];
 
-		lookup.setBoolMatchQueryString( this.suggestField, this.searchBar.value );
+		lookup.setBoolMatchQueryString( suggestField, this.searchBar.value );
 		if( this.searchBar.namespace.id ) {
 			if( primarySuggestions.length === 0 ) {
 				//If we are in NS and there are no primary results, look for fuzzy in this NS
-				lookup.setBoolMatchQueryFuzziness( this.suggestField, 2, { prefix_length: 1 } );
+				lookup.setBoolMatchQueryFuzziness( suggestField, 2, { prefix_length: 1 } );
 				lookup.addTermFilter( 'namespace', this.searchBar.namespace.id );
 			} else {
 				//Search for non-fuzzy matches in other namespaces
@@ -276,9 +289,9 @@
 				lookup.setSize( this.autocompleteConfig['DisplayLimits']['secondary'] );
 			}
 		} else {
-			lookup.setBoolMatchQueryFuzziness( this.suggestField, 2, { prefix_length: 1 } );
+			lookup.setBoolMatchQueryFuzziness( suggestField, 2, { prefix_length: 1 } );
 			//Do not find non-fuzzy matches
-			lookup.addBoolMustNotTerms( this.suggestField, this.searchBar.value );
+			lookup.addBoolMustNotTerms( suggestField, this.searchBar.value );
 			lookup.setSize( this.autocompleteConfig['DisplayLimits']['secondary'] );
 		}
 
@@ -378,6 +391,7 @@
 	bs.extendedSearch.Autocomplete.prototype.getPopupWidth = _getPopupWidth;
 	bs.extendedSearch.Autocomplete.prototype.onClearSearch = _onClearSearch;
 	bs.extendedSearch.Autocomplete.prototype.onValueChanged = _onValueChanged;
+	bs.extendedSearch.Autocomplete.prototype.onEmptyFocus = _onEmptyFocus;
 	bs.extendedSearch.Autocomplete.prototype.onSubmit = _onSubmit;
 	bs.extendedSearch.Autocomplete.prototype.beforeValueChanged = _beforeValueChanged;
 	bs.extendedSearch.Autocomplete.prototype.onWindowClick = _onWindowClick;

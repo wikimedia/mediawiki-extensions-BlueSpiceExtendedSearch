@@ -3,8 +3,20 @@
 namespace BS\ExtendedSearch\Source\Formatter;
 
 use BS\ExtendedSearch\SearchResult;
+use MediaWiki\MediaWikiServices;
 
 class SpecialPageFormatter extends Base {
+
+	/**
+	 *
+	 * @param array $defaultResultStructure
+	 * @return array
+	 */
+	public function getResultStructure( $defaultResultStructure = [] ): array {
+		$defaultResultStructure['page_anchor'] = 'page_anchor';
+
+		return $defaultResultStructure;
+	}
 
 	/**
 	 *
@@ -16,7 +28,12 @@ class SpecialPageFormatter extends Base {
 			return;
 		}
 		parent::format( $resultData, $resultObject );
-
+		$page = MediaWikiServices::getInstance()->getSpecialPageFactory()->getPage( $resultData['basename'] );
+		if ( $page ) {
+			$resultData['page_anchor'] = $this->getTraceablePageAnchor(
+				$page->getPageTitle(), $resultData['prefixed_title']
+			);
+		}
 		$resultData['basename'] = $resultData['prefixed_title'];
 	}
 
@@ -58,7 +75,7 @@ class SpecialPageFormatter extends Base {
 
 			$title = \Title::makeTitle( NS_SPECIAL, $origBasename );
 			if ( $title instanceof \Title ) {
-				$result['page_anchor'] = $this->linkRenderer->makeLink( $title, $result['prefixed_title'] );
+				$result['page_anchor'] = $this->getTraceablePageAnchor( $title, $result['prefixed_title'] );
 			}
 		}
 	}
