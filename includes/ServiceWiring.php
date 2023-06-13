@@ -56,6 +56,13 @@ return [
 			$pluginInstances
 		);
 	},
+	'BSExtendedSearchTracker' => static function ( MediaWikiServices $services ) {
+		return new \BS\ExtendedSearch\SearchTracker(
+			$services->getDBLoadBalancer(),
+			$services->getTitleFactory(),
+			$services->getSpecialPageFactory()
+		);
+	},
 ];
 
 // @codeCoverageIgnoreEnd

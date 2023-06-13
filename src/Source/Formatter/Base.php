@@ -10,6 +10,7 @@ use ConfigException;
 use IContextSource;
 use MediaWiki\Linker\LinkRenderer;
 use MWException;
+use Title;
 
 class Base implements ISearchResultFormatter {
 	/**
@@ -258,5 +259,26 @@ class Base implements ISearchResultFormatter {
 		}
 
 		return $highest;
+	}
+
+	/**
+	 * Get page anchor that can be traced
+	 * @param Title $title
+	 * @param string $text
+	 *
+	 * @return string
+	 */
+	protected function getTraceablePageAnchor( Title $title, $text ): string {
+		$data = [
+			'dbkey' => $title->getDBkey(),
+			'namespace' => $title->getNamespace(),
+			'url' => $title->getFullURL()
+		];
+
+		return \Html::element( 'a', [
+			'href' => $title->getLocalURL(),
+			'class' => 'bs-traceable-link',
+			'data-bs-traceable-page' => json_encode( $data )
+		], $text );
 	}
 }
