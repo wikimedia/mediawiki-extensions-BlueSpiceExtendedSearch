@@ -3,7 +3,8 @@
 		"authors": [
 			"Chrumps",
 			"Msz2001",
-			"Rail"
+			"Rail",
+			"WaldiSt"
 		]
 	},
 	"apihelp-bs-extendedsearch-query-param-params": "Dodatkowe parametry dla zapytania",
@@ -11,6 +12,7 @@
 	"bs-extendedsearch-search-input-aria-label": "Pole wyszukiwania",
 	"bs-extendedsearch-source-label-wikipage": "Strona wiki",
 	"bs-extendedsearch-source-label-specialpage": "Strona specjalna",
+	"bs-extendedsearch-source-label-repofile": "Prześlij plik",
 	"bs-extendedsearch-source-label-user": "Użytkownik",
 	"bs-extendedsearch-admin-label-error": "Błąd",
 	"bs-extendedsearch-admin-heading-sources": "Źródła",
@@ -70,6 +72,8 @@
 	"bs-extendedsearch-filter-add-button-label": "Dodaj filtr",
 	"bs-extendedsearch-options-button-label": "Opcje wyszukiwania",
 	"bs-extendedsearch-flyout-similar-pages-title": "Podobne strony",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Przestrzenie nazw",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategoria(e)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Kategoria1|Kategoria2|...",
 	"bs-extendedsearch-collection-type-searchhistory": "Historia wyszukiwania",
 	"bs-extendedsearch-collection-var-searchterm": "Słowo klucz"
