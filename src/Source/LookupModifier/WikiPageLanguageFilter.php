@@ -19,27 +19,25 @@ class WikiPageLanguageFilter extends Base {
 	protected $filterValue;
 
 	public function apply() {
+		$this->filterValue = null;
 		$filters = $this->oLookup->getFilters();
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
 		$autoSetLangFilter = $config->get( 'ESAutoSetLangFilter' );
-		if ( !isset( $filters['terms']['page_language'] ) && !$autoSetLangFilter ) {
-			return;
-		}
-		$filterValue = $this->oLookup->getFilters()['terms']['page_language'];
-		if ( $filterValue && count( $filterValue ) !== 1 ) {
-			if ( $autoSetLangFilter ) {
-				$autoLangCode = $this->getAutoLangCode();
-				$this->oLookup->removeTermsFilter( 'page_language', $filterValue );
-				$this->oLookup->addTermsFilter( 'page_language', $autoLangCode );
-				$this->filterValue = $autoLangCode;
-			} else {
-				// ATM multiple selected languages are not supported
-				return;
-			}
-		} else {
-			$this->filterValue = $filterValue[0];
+		$filterValue = null;
+		if ( isset( $filters['terms']['page_language'] ) ) {
+			$filterValue = $filters['terms']['page_language'];
 		}
 
+		// If nothing is explicitly set, and can auto-set, do it
+		if ( !$filterValue && $autoSetLangFilter ) {
+			$autoLangCode = $this->getAutoLangCode();
+			$this->oLookup->removeTermsFilter( 'page_language', $filterValue );
+			$this->oLookup->addTermsFilter( 'page_language', $autoLangCode );
+			$this->filterValue = $autoLangCode;
+		} elseif ( $filterValue ) {
+			// Explicitly set filter
+			$this->filterValue = $filterValue[0];
+		}
 		if ( !$this->filterValue ) {
 			// Just to be sure
 			return;
