@@ -4,5 +4,8 @@
 			"Rooiratel"
 		]
 	},
-	"bs-extendedsearch-close-search-button-aria-label": "Maak soekkassie toe"
+	"bs-extendedsearch-close-search-button-aria-label": "Maak soekkassie toe",
+	"bs-extendedsearch-search-center-filter-categories-label": "Kategorie",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Kategorie:",
+	"bs-extendedsearch-search-center-result-categories-label": "Kategorie:"
 }
