@@ -8,7 +8,6 @@
 	"bssearchadmin": "Paieškos administravimas",
 	"bssearchadmin-desc": "Suteikia paieškos valdymo sąsają",
 	"bssearchcenter": "Paieškos centras",
-	"apihelp-bs-extendedsearch-query-description": "Ieškoti indekse",
 	"apihelp-bs-extendedsearch-query-summary": "Ieškoti indekse",
 	"apihelp-bs-extendedsearch-query-param-q": "Užklausos terminas",
 	"apihelp-bs-extendedsearch-query-param-params": "Papildomi užklausos parametrai",

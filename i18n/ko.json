@@ -8,7 +8,6 @@
 	"bs-extsearch-desc": "일래스틱서치 검색 백엔드",
 	"bssearchadmin-desc": "검색을 위한 관리 인터페이스를 제공합니다",
 	"bssearchcenter": "검색 센터",
-	"apihelp-bs-extendedsearch-query-description": "색인 검색",
 	"apihelp-bs-extendedsearch-query-summary": "색인 검색",
 	"apihelp-bs-extendedsearch-query-param-params": "쿼리의 추가 변수",
 	"apihelp-bs-extendedsearch-stats-param-stats": "반환되어야 하는 통계 목록",

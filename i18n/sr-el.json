@@ -5,7 +5,6 @@
 	"bssearchadmin": "Pretraga administatora",
 	"bssearchadmin-desc": "Pruža interfejs za upravljanje pretragom",
 	"bssearchcenter": "Centar za pretraživanje",
-	"apihelp-bs-extendedsearch-query-description": "Pretraga indeksa",
 	"apihelp-bs-extendedsearch-query-summary": "Pretraga indeksa",
 	"apihelp-bs-extendedsearch-query-param-q": "Termin upita",
 	"apihelp-bs-extendedsearch-query-param-params": "Dodatni parametri za upit",

@@ -12,7 +12,6 @@
 	},
 	"bssearchadmin": "مدیر جستجو",
 	"bssearchcenter": "مرکز جستجو",
-	"apihelp-bs-extendedsearch-query-description": "جستجو در نمایه",
 	"apihelp-bs-extendedsearch-query-summary": "جستجو در نمایه",
 	"apihelp-bs-extendedsearch-query-param-q": "عبارت پرسمان",
 	"apihelp-bs-extendedsearch-query-param-params": "پارامترهای بیشتر برای پرسمان",

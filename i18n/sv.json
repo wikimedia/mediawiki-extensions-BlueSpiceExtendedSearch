@@ -12,7 +12,6 @@
 	"bssearchadmin": "Sök admin",
 	"bssearchadmin-desc": "Tillhandahåller ett hanteringsgränssnitt för sökningen",
 	"bssearchcenter": "Sökcenter",
-	"apihelp-bs-extendedsearch-query-description": "Sök i indexet",
 	"apihelp-bs-extendedsearch-query-summary": "Sök i indexet",
 	"apihelp-bs-extendedsearch-query-param-q": "Söktermen",
 	"apihelp-bs-extendedsearch-query-param-params": "Ytterligare parametrar för frågan",

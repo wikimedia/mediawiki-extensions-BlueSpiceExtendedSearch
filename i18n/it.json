@@ -12,7 +12,6 @@
 	},
 	"bssearchadmin": "Amministrazione della ricerca",
 	"bssearchcenter": "Centro ricerca",
-	"apihelp-bs-extendedsearch-query-description": "Cerca nell'indice",
 	"apihelp-bs-extendedsearch-query-summary": "Cerca nell'indice",
 	"apihelp-bs-extendedsearch-query-param-q": "Il termine di ricerca",
 	"apihelp-bs-extendedsearch-query-param-params": "Parametri aggiuntivi per la ricerca",
