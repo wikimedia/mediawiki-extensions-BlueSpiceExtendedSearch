@@ -173,5 +173,8 @@
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Returnerer søkeresultater for en bruker kun på brukerens språk. Brukerne kan velge språket sitt i innstillingene.",
 	"bs-extendedsearch-droplet-search-name": "Søkefelt",
 	"bs-extendedsearch-close-search-button-aria-label": "Lukk søkeboks",
-	"bs-extendedsearch-remove-button-label": "Fjerne filteret «$1»"
+	"bs-extendedsearch-remove-button-label": "Fjerne filteret «$1»",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Vis et kompakt autofullføringsoppsett av søkemenyen (oppsett med én kolonne, ingen forhåndsvisning av miniatyrbilder).",
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Antall søk",
+	"bs-extendedsearch-droplet-search-description": "Legger til et søkefelt i sideinnholdet"
 }
