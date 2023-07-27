@@ -4,6 +4,7 @@
 			"1233qwer1234qwer4",
 			"DDPAT",
 			"Ice bulldog",
+			"Kareyac",
 			"Katunchik",
 			"Okras",
 			"Pacha Tchernof",
@@ -73,6 +74,7 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Вики-страница",
 	"bs-extendedsearch-source-type-repofile-label": "Локальный файл",
 	"bs-extendedsearch-source-type-specialpage-label": "Служебная страница",
+	"bs-extendedsearch-source-type-externalfile-label": "Внешний файл",
 	"bs-extendedsearch-result-relevance-relevant": "Этот результат важен для меня",
 	"bs-extendedsearch-result-relevance-not-relevant": "Этот результат не важен для меня",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "Полнотекстовый поиск",
@@ -109,5 +111,6 @@
 	"bs-extendedsearch-collection-var-numbersearched": "Поиски",
 	"right-extendedsearch-search-wikipage": "Поиск страниц",
 	"right-extendedsearch-search-repofile": "Поиск файлов",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Поиск в «$1»"
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Поиск в «$1»",
+	"bs-extendedsearch-source-label-externalfile": "Внешний файл"
 }

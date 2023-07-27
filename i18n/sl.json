@@ -95,6 +95,7 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Viki stran",
 	"bs-extendedsearch-source-type-repofile-label": "Lokalna datoteka",
 	"bs-extendedsearch-source-type-specialpage-label": "Posebna stran",
+	"bs-extendedsearch-source-type-externalfile-label": "Zunanja datoteka",
 	"bs-extendedsearch-result-relevance-relevant": "Ta zadetek je zame pomemben",
 	"bs-extendedsearch-result-relevance-not-relevant": "Ta zadetek zame ni pomemben",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "Preišči vse besedilo",
@@ -173,5 +174,6 @@
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Prikaži strnjeno postavitev samodokončanja iskalnega menija (postavitev z enim stolpcem, brez predogleda sličic).",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Število iskalnih poizvedb",
 	"bs-extendedsearch-droplet-search-name": "Iskalno polje",
-	"bs-extendedsearch-droplet-search-description": "Vsebini strani doda iskalno polje"
+	"bs-extendedsearch-droplet-search-description": "Vsebini strani doda iskalno polje",
+	"bs-extendedsearch-source-label-externalfile": "Zunanja datoteka"
 }

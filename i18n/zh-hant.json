@@ -97,6 +97,7 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Wiki 頁面",
 	"bs-extendedsearch-source-type-repofile-label": "本地檔案",
 	"bs-extendedsearch-source-type-specialpage-label": "特殊頁面",
+	"bs-extendedsearch-source-type-externalfile-label": "外部檔案",
 	"bs-extendedsearch-result-relevance-relevant": "這個結果對我很重要",
 	"bs-extendedsearch-result-relevance-not-relevant": "這個結果對我不重要",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "搜尋全文",
@@ -173,5 +174,8 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "各使用者搜尋項",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "使用者的搜尋僅會回傳該使用者所使用語言的結果。使用者可以在他們的偏好設定中更改他們的語言。",
 	"bs-extendedsearch-pref-compact-ac-paths-help": "顯示搜尋選單的簡潔自動完成陳列（一欄陳列，無縮圖預覽）。",
-	"bs-extendedsearch-statistics-report-search-terms-axis-label": "搜尋查詢次數目"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "搜尋查詢次數目",
+	"bs-extendedsearch-droplet-search-name": "搜尋欄位",
+	"bs-extendedsearch-droplet-search-description": "對頁面內容增加搜尋欄位",
+	"bs-extendedsearch-source-label-externalfile": "外部檔案"
 }

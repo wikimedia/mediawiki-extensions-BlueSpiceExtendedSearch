@@ -105,6 +105,7 @@
 	"bs-extendedsearch-source-type-wikipage-label": "ウィキページ",
 	"bs-extendedsearch-source-type-repofile-label": "ファイルの読み込み",
 	"bs-extendedsearch-source-type-specialpage-label": "特別ページ",
+	"bs-extendedsearch-source-type-externalfile-label": "外部ファイル",
 	"bs-extendedsearch-result-relevance-relevant": "この結果は私にとって重要です",
 	"bs-extendedsearch-result-relevance-not-relevant": "この結果は私にとって重要ではない",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "全文検索",
@@ -183,5 +184,6 @@
 	"bs-extendedsearch-pref-compact-ac-paths-help": "検索メニューのコンパクトなオートコンプリート レイアウトを表示します (1 列のレイアウト、サムネイル プレビューなし)。",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "検索クエリ数",
 	"bs-extendedsearch-droplet-search-name": "検索欄",
-	"bs-extendedsearch-droplet-search-description": "ページのコンテンツに検索欄を追加"
+	"bs-extendedsearch-droplet-search-description": "ページのコンテンツに検索欄を追加",
+	"bs-extendedsearch-source-label-externalfile": "外部ファイル"
 }
