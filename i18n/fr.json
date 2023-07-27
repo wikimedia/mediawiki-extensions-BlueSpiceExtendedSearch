@@ -188,5 +188,7 @@
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Afficher le menu de recherche dans une disposition compacte de complétion automatique (une seule colonne, pas d’aperçu de vignette).",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Nombre de requêtes de recherche",
 	"bs-extendedsearch-droplet-search-name": "Champ de recherche",
-	"bs-extendedsearch-droplet-search-description": "Ajoute un champ de recherche au contenu de la page"
+	"bs-extendedsearch-droplet-search-description": "Ajoute un champ de recherche au contenu de la page",
+	"bs-extendedsearch-source-type-externalfile-label": "Fichier externe",
+	"bs-extendedsearch-source-label-externalfile": "Fichier externe"
 }
