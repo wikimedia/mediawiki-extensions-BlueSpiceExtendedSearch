@@ -188,5 +188,7 @@
 	"bs-extendedsearch-close-search-button-aria-label": "Fermer la boîte de recherche",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Nombre de requêtes de recherche",
 	"bs-extendedsearch-droplet-search-name": "Champ de recherche",
-	"bs-extendedsearch-droplet-search-description": "Ajoute un champ de recherche au contenu de la page"
+	"bs-extendedsearch-droplet-search-description": "Ajoute un champ de recherche au contenu de la page",
+	"bs-extendedsearch-source-type-externalfile-label": "Fichier externe",
+	"bs-extendedsearch-source-label-externalfile": "Fichier externe"
 }

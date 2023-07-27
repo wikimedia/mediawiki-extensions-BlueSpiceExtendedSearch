@@ -175,5 +175,9 @@
 	"bs-extendedsearch-pref-compact-ac-paths-help": "顯示搜尋選單的簡潔自動完成陳列（一欄陳列，無縮圖預覽）。",
 	"bs-extendedsearch-remove-button-label": "刪除$1過濾器",
 	"bs-extendedsearch-close-search-button-aria-label": "關閉搜尋框",
-	"bs-extendedsearch-statistics-report-search-terms-axis-label": "搜尋查詢次數目"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "搜尋查詢次數目",
+	"bs-extendedsearch-source-type-externalfile-label": "外部檔案",
+	"bs-extendedsearch-droplet-search-name": "搜尋欄位",
+	"bs-extendedsearch-droplet-search-description": "對頁面內容增加搜尋欄位",
+	"bs-extendedsearch-source-label-externalfile": "外部檔案"
 }

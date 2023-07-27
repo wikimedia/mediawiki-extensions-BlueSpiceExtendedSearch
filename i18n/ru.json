@@ -4,6 +4,7 @@
 			"1233qwer1234qwer4",
 			"DDPAT",
 			"Ice bulldog",
+			"Kareyac",
 			"Katunchik",
 			"Okras",
 			"Pacha Tchernof",
@@ -111,5 +112,7 @@
 	"bs-extendedsearch-collection-var-numbersearched": "Поиски",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Поиск в «$1»",
 	"right-extendedsearch-search-wikipage": "Поиск страниц",
-	"right-extendedsearch-search-repofile": "Поиск файлов"
+	"right-extendedsearch-search-repofile": "Поиск файлов",
+	"bs-extendedsearch-source-type-externalfile-label": "Внешний файл",
+	"bs-extendedsearch-source-label-externalfile": "Внешний файл"
 }

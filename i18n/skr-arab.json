@@ -58,5 +58,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "وکیل",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "قسم",
 	"bs-extendedsearch-close-search-button-aria-label": "ڳولݨ ݙٻہ بند کرو",
-	"bs-extendedsearch-droplet-search-name": "ڳولݨ خانہ"
+	"bs-extendedsearch-droplet-search-name": "ڳولݨ خانہ",
+	"bs-extendedsearch-source-type-externalfile-label": "ٻاہرلی فائل",
+	"bs-extendedsearch-source-label-externalfile": "ٻاہرلی فائل"
 }
