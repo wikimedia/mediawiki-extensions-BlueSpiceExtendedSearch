@@ -96,6 +96,7 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Wikiside",
 	"bs-extendedsearch-source-type-repofile-label": "Lokal fil",
 	"bs-extendedsearch-source-type-specialpage-label": "Spesialside",
+	"bs-extendedsearch-source-type-externalfile-label": "Ekstern fil",
 	"bs-extendedsearch-result-relevance-relevant": "Dette resultatet er viktig for meg",
 	"bs-extendedsearch-result-relevance-not-relevant": "Dette resultatet er ikke viktig for meg",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "Søk i full tekst",
@@ -174,5 +175,6 @@
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Vis et kompakt autofullføringsoppsett av søkemenyen (oppsett med én kolonne, ingen forhåndsvisning av miniatyrbilder).",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Antall søk",
 	"bs-extendedsearch-droplet-search-name": "Søkefelt",
-	"bs-extendedsearch-droplet-search-description": "Legger til et søkefelt i sideinnholdet"
+	"bs-extendedsearch-droplet-search-description": "Legger til et søkefelt i sideinnholdet",
+	"bs-extendedsearch-source-label-externalfile": "Ekstern fil"
 }

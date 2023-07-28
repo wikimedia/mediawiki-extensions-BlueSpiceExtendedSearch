@@ -98,6 +98,7 @@
 	"bs-extendedsearch-source-type-wikipage-label": "דף ויקי",
 	"bs-extendedsearch-source-type-repofile-label": "קובץ מקומי",
 	"bs-extendedsearch-source-type-specialpage-label": "דף מיוחד",
+	"bs-extendedsearch-source-type-externalfile-label": "קובץ חיצוני",
 	"bs-extendedsearch-result-relevance-relevant": "התוצאה הזאת חשובה לי",
 	"bs-extendedsearch-result-relevance-not-relevant": "התוצאה הזאת לא חשובה לי",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "חיפוש טקסט מלא",
@@ -176,5 +177,6 @@
 	"bs-extendedsearch-pref-compact-ac-paths-help": "הצגת פריסת השלמה אוטומטית קומפקטית של תפריט החיפוש (פריסת עמודה אחת, ללא תצוגה מקדימה של תמונות ממוזערות).",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "מספר שאילתות החיפוש",
 	"bs-extendedsearch-droplet-search-name": "שדה חיפוש",
-	"bs-extendedsearch-droplet-search-description": "הוספת שדה חיפוש לתוכן הדף"
+	"bs-extendedsearch-droplet-search-description": "הוספת שדה חיפוש לתוכן הדף",
+	"bs-extendedsearch-source-label-externalfile": "קובץ חיצוני"
 }
