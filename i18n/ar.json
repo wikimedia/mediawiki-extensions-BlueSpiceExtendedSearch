@@ -181,5 +181,7 @@
 	"bs-extendedsearch-close-search-button-aria-label": "إغلاق مربع البحث",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "عدد استعلامات البحث",
 	"bs-extendedsearch-droplet-search-name": "مجال البحث",
-	"bs-extendedsearch-droplet-search-description": "يضيف حقل بحث إلى محتوى الصفحة"
+	"bs-extendedsearch-droplet-search-description": "يضيف حقل بحث إلى محتوى الصفحة",
+	"bs-extendedsearch-source-type-externalfile-label": "ملف خارجي",
+	"bs-extendedsearch-source-label-externalfile": "ملف خارجي"
 }
