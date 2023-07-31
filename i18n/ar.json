@@ -101,6 +101,7 @@
 	"bs-extendedsearch-source-type-wikipage-label": "صفحة الويكي",
 	"bs-extendedsearch-source-type-repofile-label": "ملف محلي",
 	"bs-extendedsearch-source-type-specialpage-label": "صفحة خاصة",
+	"bs-extendedsearch-source-type-externalfile-label": "ملف خارجي",
 	"bs-extendedsearch-result-relevance-relevant": "هذه النتيجة مهمة بالنسبة لي",
 	"bs-extendedsearch-result-relevance-not-relevant": "هذه النتيجة ليست مهمة بالنسبة لي",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "البحث في النص الكامل",
@@ -179,5 +180,6 @@
 	"bs-extendedsearch-pref-compact-ac-paths-help": "إظهار تخطيط الإكمال التلقائي المضغوط لقائمة البحث (تخطيط من عمود واحد ، بدون معاينة الصورة المصغرة).",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "عدد استعلامات البحث",
 	"bs-extendedsearch-droplet-search-name": "مجال البحث",
-	"bs-extendedsearch-droplet-search-description": "يضيف حقل بحث إلى محتوى الصفحة"
+	"bs-extendedsearch-droplet-search-description": "يضيف حقل بحث إلى محتوى الصفحة",
+	"bs-extendedsearch-source-label-externalfile": "ملف خارجي"
 }

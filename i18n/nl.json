@@ -101,6 +101,7 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Wikibase",
 	"bs-extendedsearch-source-type-repofile-label": "Lokaal bestand",
 	"bs-extendedsearch-source-type-specialpage-label": "Speciale pagina",
+	"bs-extendedsearch-source-type-externalfile-label": "Extern bestand",
 	"bs-extendedsearch-result-relevance-relevant": "Dit resultaat is belangrijk",
 	"bs-extendedsearch-result-relevance-not-relevant": "Dit resultaat is niet belangrijk",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "Volledige tekst doorzoeken",
@@ -179,5 +180,6 @@
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Het automatisch aanvullen in het zoekmenu in een beknopte opmaak weergeven (éénkolomsopmaak zonder miniatuurvoorvertoning).",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Aantal zoekopdrachten",
 	"bs-extendedsearch-droplet-search-name": "Zoekveld",
-	"bs-extendedsearch-droplet-search-description": "Voegt een zoekveld toe aan de pagina-inhoud"
+	"bs-extendedsearch-droplet-search-description": "Voegt een zoekveld toe aan de pagina-inhoud",
+	"bs-extendedsearch-source-label-externalfile": "Extern bestand"
 }
