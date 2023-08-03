@@ -119,6 +119,7 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Wiki页面",
 	"bs-extendedsearch-source-type-repofile-label": "本地文件",
 	"bs-extendedsearch-source-type-specialpage-label": "特殊页面",
+	"bs-extendedsearch-source-type-externalfile-label": "外部文件",
 	"bs-extendedsearch-result-relevance-relevant": "此结果对我而言重要",
 	"bs-extendedsearch-result-relevance-not-relevant": "此结果对我而言不重要",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "搜索全文",
@@ -197,5 +198,6 @@
 	"bs-extendedsearch-pref-compact-ac-paths-help": "显示搜索菜单的紧凑自动完成布局（单列布局，无缩略图预览）。",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "搜索次数",
 	"bs-extendedsearch-droplet-search-name": "搜索区",
-	"bs-extendedsearch-droplet-search-description": "向页面内容添加一个搜索区"
+	"bs-extendedsearch-droplet-search-description": "向页面内容添加一个搜索区",
+	"bs-extendedsearch-source-label-externalfile": "外部文件"
 }
