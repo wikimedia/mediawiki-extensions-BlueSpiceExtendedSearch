@@ -3,7 +3,8 @@
 		"authors": [
 			"Patriot Kor",
 			"Patriot Kur",
-			"Yusifmv"
+			"Yusifmv",
+			"Гусейн"
 		]
 	},
 	"bs-extendedsearch-source-label-user": "Okoədə",
@@ -12,5 +13,7 @@
 	"bs-extendedsearch-search-center-result-namespace_text-label": "Nomico:",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Ləğv karde",
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Nom",
-	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nomico"
+	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nomico",
+	"bs-extendedsearch-source-type-externalfile-label": "Bešemonə fajl",
+	"bs-extendedsearch-source-label-externalfile": "Bešemonə fajl"
 }
