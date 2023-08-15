@@ -11,16 +11,6 @@ namespace BS\ExtendedSearch\Tests;
 class DocumentProviderTest extends \MediaWikiIntegrationTestCase {
 
 	/**
-	 * @return bool
-	 * @since 1.18
-	 */
-	public function needsDB() {
-		// If the test says it uses database tables, it needs the database
-		return true;
-	}
-
-	/**
-	 * @group Database
 	 * @covers \BS\ExtendedSearch\Source\DocumentProvider\Base::getDocumentData
 	 */
 	public function testBaseDocumentProvider() {
@@ -34,7 +24,6 @@ class DocumentProviderTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @group Database
 	 * @covers \BS\ExtendedSearch\Source\DocumentProvider\WikiPage::getDocumentData
 	 */
 	public function testWikiPageDocumentProvider() {
@@ -65,7 +54,6 @@ class DocumentProviderTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @group Database
 	 * @covers \BS\ExtendedSearch\Source\DocumentProvider\File::getDocumentData
 	 */
 	public function testFileDocumentProvider() {
