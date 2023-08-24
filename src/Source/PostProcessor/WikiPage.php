@@ -73,9 +73,13 @@ class WikiPage extends Base {
 			// Would produce 0 score
 			return true;
 		}
-		$boostValue = round( ( $result->getScore() * $portionOfScore ) * ( $relevance * $boostFactor ), 2 );
+		$score = $result->getScore();
+		if ( !is_int( $score ) ) {
+				$score = 1;
+		}
+		$boostValue = round( ( $score * $portionOfScore ) * ( $relevance * $boostFactor ), 2 );
 
-		$result->setParam( '_score', $result->getScore() + $boostValue );
+		$result->setParam( '_score', $score + $boostValue );
 		return true;
 	}
 
