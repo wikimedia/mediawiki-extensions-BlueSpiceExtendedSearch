@@ -5,5 +5,7 @@
 		]
 	},
 	"bs-extendedsearch-source-label-repofile": "Ehupi marandurenda",
-	"bs-extendedsearch-suggest-operator": "Oiméne piko rehekase <b>$1</b>?"
+	"bs-extendedsearch-suggest-operator": "Oiméne piko rehekase <b>$1</b>?",
+	"bs-extendedsearch-search-center-filter-extension-label": "Jepysokue",
+	"bs-extendedsearch-search-center-filter-extension-with-values-label": "Jepysokue:"
 }
