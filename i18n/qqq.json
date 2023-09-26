@@ -143,7 +143,6 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "Title for the flyout section showing pages similar to the current page",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Text for the flyout section when there are no similar pages available",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Only for pages in NS_FILE. Label for the field in the result showing links to pages that use this file.",
-	"bs-extendedsearch-tagsearch-extension-description": "Description text for $oDescriptor",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Placeholder text for the search field",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Error message text when given search result type is invalid. $1 - name of the given type",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "Title of VE inspector for TagSearch tag",
