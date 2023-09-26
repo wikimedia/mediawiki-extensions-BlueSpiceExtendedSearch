@@ -138,7 +138,6 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "Similar pages",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "No similar pages found",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Used on pages",
-	"bs-extendedsearch-tagsearch-extension-description": "Add a search form to {{GENDER:your}} content",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Type to search...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Invalid search result type: $1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",
