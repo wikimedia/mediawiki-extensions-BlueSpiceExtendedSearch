@@ -74,7 +74,7 @@ class WikiPage extends Base {
 			return true;
 		}
 		$score = $result->getScore();
-		if ( !is_int( $score ) ) {
+		if ( !is_numeric( $score ) ) {
 				$score = 1;
 		}
 		$boostValue = round( ( $score * $portionOfScore ) * ( $relevance * $boostFactor ), 2 );
