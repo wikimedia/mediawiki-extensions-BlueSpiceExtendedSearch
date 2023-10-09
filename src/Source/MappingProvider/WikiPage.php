@@ -63,7 +63,10 @@ class WikiPage extends DecoratorBase {
 			],
 			'used_files' => [
 				'type' => 'keyword'
-			]
+			],
+			'page_id' => [
+				'type' => 'integer'
+			],
 		] );
 
 		return $aPC;
