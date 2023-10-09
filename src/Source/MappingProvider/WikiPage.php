@@ -63,7 +63,10 @@ class WikiPage extends Base {
 			],
 			'used_files' => [
 				'type' => 'keyword'
-			]
+			],
+			'page_id' => [
+				'type' => 'integer'
+			],
 		] );
 	}
 }
