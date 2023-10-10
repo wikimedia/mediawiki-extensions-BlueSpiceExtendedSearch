@@ -140,7 +140,6 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "Vergelijkbare pagina's",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Geen vergelijkbare pagina's gevonden",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Gebruikt op pagina's",
-	"bs-extendedsearch-tagsearch-extension-description": "Voeg een zoekformulier toe aan {{GENDER:uw}} tekst",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Invoeren om te zoeken...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Ongeldig type zoekresultaat: $1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "Label zoeken",

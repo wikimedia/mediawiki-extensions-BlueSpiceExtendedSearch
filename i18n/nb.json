@@ -135,7 +135,6 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "Lignende sider",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Ingen lignende sider funnet",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Bruk i sider",
-	"bs-extendedsearch-tagsearch-extension-description": "Legg til et søkeskjema til innholdet {{GENDER:|ditt}}",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Skriv for å søke …",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Ugyldig søkeresultattype: $1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "Taggsøk",

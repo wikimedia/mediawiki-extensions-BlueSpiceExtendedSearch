@@ -140,7 +140,6 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "Páginas similares",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "No se encontró ninguna página similar",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Utilizado en páginas",
-	"bs-extendedsearch-tagsearch-extension-description": "Añadir un formulario de búsqueda al contenido de {{GENDER:your}}",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Escribe para buscar…",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "El tipo de resultado de búsqueda no es válido: $1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "EtiquetaBúsqueda",

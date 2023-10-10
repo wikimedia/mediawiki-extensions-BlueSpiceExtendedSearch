@@ -140,7 +140,6 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "صفحات مماثلة",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "لا توجد صفحات مماثلة",
 	"bs-extendedsearch-search-center-result-file-usage-label": "مستخدم في الصفحات",
-	"bs-extendedsearch-tagsearch-extension-description": "أضف نموذج بحث إلى {{GENDER:محتواك}}",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "اكتب للبحث...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "نوع نتائج البحث غير صالح: $1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",

@@ -134,7 +134,6 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "Podobne strani",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Ni najdenih podobnih strani",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Uporabljeno na straneh",
-	"bs-extendedsearch-tagsearch-extension-description": "Dodajte {{GENDER:svoji}} vsebini iskalni obrazec",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Vnesite iskalni niz ...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Neveljavna vrsta iskalnih zadetkov: $1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",

@@ -158,7 +158,6 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "相似页面",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "未找到相似页面",
 	"bs-extendedsearch-search-center-result-file-usage-label": "在多个页面上使用",
-	"bs-extendedsearch-tagsearch-extension-description": "向 {{GENDER:your}} 内容添加搜索表单",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "输入什么就能搜索了……",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "无效的搜索结果类型：$1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",

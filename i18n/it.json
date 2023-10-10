@@ -111,7 +111,6 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "Pagine simili",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Nessuna pagine simile trovata",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Usato nelle pagine",
-	"bs-extendedsearch-tagsearch-extension-description": "Aggiungere un modulo di ricerca al {{GENDER:tuo}} contenuto",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Scrivi per ricercare ...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Namespace",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "Elenco di nomi o ID validi di namespace separati dalla barra verticale (|)",

@@ -144,7 +144,6 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "類似したページ",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "類似のページは見つかりませんでした",
 	"bs-extendedsearch-search-center-result-file-usage-label": "ページで使用",
-	"bs-extendedsearch-tagsearch-extension-description": "{{GENDER:your}}コンテンツに検索フォームを追加",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "入力して検索",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "無効な検索結果タイプ:$1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "タグ検索",
