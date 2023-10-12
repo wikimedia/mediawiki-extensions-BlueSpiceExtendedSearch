@@ -80,7 +80,8 @@ class WikiPage extends DecoratorBase {
 			'redirected_from' => $this->getRedirects(),
 			'page_language' => $this->title->getPageLanguage()->getCode(),
 			'display_title' => $this->getDisplayTitle(),
-			'used_files' => $this->getUsedFiles()
+			'used_files' => $this->getUsedFiles(),
+			'page_id' => $this->title->getArticleID()
 		] );
 
 		return $aDC;
