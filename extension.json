@@ -627,7 +627,7 @@
 		"ESCompactAutocomplete": {
 			"descriptionmsg": "bs-extendedsearch-compact-ac-paths-desc",
 			"public": true,
-			"value": false
+			"value": true
 		},
 		"ESSearchCenterDefaultFilters": {
 			"descriptionmsg": "bs-extendedsearch-default-filters-desc",
