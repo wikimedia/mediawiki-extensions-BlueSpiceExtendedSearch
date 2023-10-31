@@ -186,5 +186,8 @@
 	"bs-extendedsearch-droplet-search-name": "Title of droplet for tag Search",
 	"bs-extendedsearch-droplet-search-description": "Description of droplet for tag Search",
 	"bs-extendedsearch-source-type-externalfile-label": "Label for external file source type",
-	"bs-extendedsearch-source-label-externalfile": "Label for heading of a section that lists hits from the source 'externalfile'"
+	"bs-extendedsearch-source-label-externalfile": "Label for heading of a section that lists hits from the source 'externalfile'",
+	"searchtrace": "Special page name for Special:SearchTrace",
+	"bs-extendedsearch-trace-error-invalid-data": "Error message when invalid data is given to Special:SearchTrace",
+	"apihelp-bs-extendedsearch-recently-found-pages-summary": "{{doc-apihelp-description|bs-extendedsearch-recently-found-pages-summary}}"
 }
