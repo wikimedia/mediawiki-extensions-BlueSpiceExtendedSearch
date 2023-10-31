@@ -179,5 +179,7 @@
 	"bs-extendedsearch-droplet-search-name": "Search field",
 	"bs-extendedsearch-droplet-search-description": "Adds a search field to the page content",
 	"bs-extendedsearch-source-type-externalfile-label": "External file",
-	"bs-extendedsearch-source-label-externalfile": "External file"
+	"bs-extendedsearch-source-label-externalfile": "External file",
+	"bs-extendedsearch-trace-error-invalid-data": "Trace data not provided or invalid. Do not access this page directly.",
+	"apihelp-bs-extendedsearch-recently-found-pages-summary": "Lists pages user recently navigated to from the search results"
 }
