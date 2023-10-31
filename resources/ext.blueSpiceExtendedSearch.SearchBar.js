@@ -58,6 +58,7 @@
 		this.$searchBox.on( 'keydown', this.onKeyDown.bind( this ) );
 		this.$searchBox.on( 'keyup', this.onKeyUp.bind( this ) );
 		this.$searchBox.on( 'paste', this.onPaste.bind( this ) );
+		this.$searchBox.on( 'focus', this.onFocus.bind( this ) );
 
 		if ( this.masterFilter ) {
 			this.useNamespacePills = false;
@@ -448,5 +449,12 @@
 			this.mainpage = this.masterFilter.title;
 			this.namespace = this.masterFilter.namespace;
 		}
-	}
+	};
+
+	bs.extendedSearch.SearchBar.prototype.onFocus = function() {
+		if ( this.$searchBox.val() ) {
+			return;
+		}
+		this.emit( 'emptyFocus' );
+	};
 } )( mediaWiki, jQuery, blueSpice, document );

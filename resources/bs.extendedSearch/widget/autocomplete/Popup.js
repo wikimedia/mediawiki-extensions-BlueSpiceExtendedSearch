@@ -27,10 +27,11 @@
 
 		bs.extendedSearch.mixin.AutocompleteResults.call( this, cfg );
 		bs.extendedSearch.mixin.AutocompleteCreatePageLink.call( this, cfg.pageCreateInfo );
-		bs.extendedSearch.mixin.FullTextSearchButton.call( this, {} );
+		bs.extendedSearch.mixin.FullTextSearchButton.call( this, { canFulltextSearch: !!this.searchTerm } );
 
-
-		this.fullTextSearchButton.on( 'click', this.onFullTextClick.bind( this ) );
+		if ( this.fullTextSearchButton ) {
+			this.fullTextSearchButton.on( 'click', this.onFullTextClick.bind( this ) );
+		}
 
 		this.$element.addClass( 'bs-extendedsearch-autocomplete-popup' );
 
