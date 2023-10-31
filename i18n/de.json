@@ -9,6 +9,7 @@
 			"Mschlindwein",
 			"Peter Böhm <boehm@hallowelt.com>",
 			"TMg",
+			"ThisCarthing",
 			"Tiin",
 			"Umherirrender",
 			"Umlaut",
@@ -105,6 +106,7 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Seite",
 	"bs-extendedsearch-source-type-repofile-label": "Lokale Datei",
 	"bs-extendedsearch-source-type-specialpage-label": "Spezialseite",
+	"bs-extendedsearch-source-type-externalfile-label": "Externe Datei",
 	"bs-extendedsearch-result-relevance-relevant": "Dieses Ergebnis ist wichtig für mich.",
 	"bs-extendedsearch-result-relevance-not-relevant": "Dieses Ergebnis ist nicht wichtig für mich.",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "Volltextsuche",
@@ -182,5 +184,6 @@
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Kompaktes Autocomplete Layout des Suchmenüs (einspaltig, ohne Vorschauen)",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Anzahl der Suchanfragen",
 	"bs-extendedsearch-droplet-search-name": "Suchfeld",
-	"bs-extendedsearch-droplet-search-description": "Suchfeld zum Seiteninhalt hinzufügen"
+	"bs-extendedsearch-droplet-search-description": "Suchfeld zum Seiteninhalt hinzufügen",
+	"bs-extendedsearch-source-label-externalfile": "Externe Datei"
 }
