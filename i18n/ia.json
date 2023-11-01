@@ -173,5 +173,7 @@
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Numero de consultas de recerca",
 	"bs-extendedsearch-droplet-search-name": "Campo de recerca",
 	"bs-extendedsearch-droplet-search-description": "Adde un campo de recerca al contento del pagina",
-	"bs-extendedsearch-source-label-externalfile": "File externe"
+	"bs-extendedsearch-source-label-externalfile": "File externe",
+	"bs-extendedsearch-trace-error-invalid-data": "Data de tracia non fornite o non valide. Non accede directemente a iste pagina.",
+	"apihelp-bs-extendedsearch-recently-found-pages-summary": "Lista le paginas al quales le usator ha recentemente navigate a partir del resultatos de recerca"
 }

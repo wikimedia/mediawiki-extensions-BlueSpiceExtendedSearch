@@ -180,5 +180,7 @@
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Aantal zoekopdrachten",
 	"bs-extendedsearch-droplet-search-name": "Zoekveld",
 	"bs-extendedsearch-droplet-search-description": "Voegt een zoekveld toe aan de pagina-inhoud",
-	"bs-extendedsearch-source-label-externalfile": "Extern bestand"
+	"bs-extendedsearch-source-label-externalfile": "Extern bestand",
+	"bs-extendedsearch-trace-error-invalid-data": "Traceergegevens niet verstrekt of ongeldig. Ga niet rechtstreeks naar deze pagina.",
+	"apihelp-bs-extendedsearch-recently-found-pages-summary": "Geeft een overzicht van de pagina’s waar de gebruiker onlangs naartoe heeft genavigeerd vanuit de zoekresultaten"
 }
