@@ -180,5 +180,7 @@
 	"bs-extendedsearch-droplet-search-name": "שדה חיפוש",
 	"bs-extendedsearch-droplet-search-description": "הוספת שדה חיפוש לתוכן הדף",
 	"bs-extendedsearch-source-type-externalfile-label": "קובץ חיצוני",
-	"bs-extendedsearch-source-label-externalfile": "קובץ חיצוני"
+	"bs-extendedsearch-source-label-externalfile": "קובץ חיצוני",
+	"bs-extendedsearch-trace-error-invalid-data": "נתוני העקבה לא סופקו או שהם בלתי־תקינים. אין לגשת ישירות לדף הזה.",
+	"apihelp-bs-extendedsearch-recently-found-pages-summary": "רשימת דפים שמשתמש ניווט אליהם לאחרונה מתוצאות החיפוש"
 }
