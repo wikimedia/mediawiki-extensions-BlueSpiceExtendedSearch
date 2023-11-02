@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ankan",
+			"Borhan",
 			"Md. Golam Mukit Khan",
 			"আফতাবুজ্জামান"
 		]
@@ -22,5 +23,6 @@
 	"bs-extendedsearch-searchcenter-sort-field-basename": "নাম",
 	"bs-extendedsearch-searchcenter-sort-field-size": "আকার",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "নামস্থান",
-	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "\"$1\"-এর ফলাফল দেখানো হচ্ছে"
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "\"$1\"-এর ফলাফল দেখানো হচ্ছে",
+	"bs-extendedsearch-trace-error-invalid-data": "ট্রেস ডেটা অবৈধ বা সরবরাহ করা হয়নি। সরাসরি এই পৃষ্ঠায় প্রবেশ করবেন না।"
 }
