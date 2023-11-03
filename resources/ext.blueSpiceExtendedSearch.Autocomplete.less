@@ -253,6 +253,13 @@
 	&.compact {
 		height: auto !important;
 		max-height: 380px;
+		padding-bottom: 10px;
+		.bs-extendedsearch-autocomplete-popup-actions {
+			border-top: 1px solid #bebebe;
+			&:empty {
+				display: none;
+			}
+		}
 		.bs-extendedsearch-autocomplete-popup-primary {
 			font-size: 1em;
 			width: 100%;
