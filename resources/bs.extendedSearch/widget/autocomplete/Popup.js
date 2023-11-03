@@ -34,15 +34,17 @@
 
 		this.$element.addClass( 'bs-extendedsearch-autocomplete-popup' );
 
-		if( this.compact ) {
-			this.$element.addClass( 'compact' );
-		}
-
 		this.$primaryResults.append( this.$quietSubpage );
 		this.$element.append( this.$primaryResults );
 
 		if( !this.mobile && !this.compact ) {
+			this.$specialResults.append( this.$actions );
 			this.$element.append( this.$specialResults );
+		}
+
+		if( this.compact ) {
+			this.$element.addClass( 'compact' );
+			this.$element.append( this.$actions );
 		}
 	};
 

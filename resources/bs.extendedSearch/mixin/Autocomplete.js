@@ -6,6 +6,7 @@
 
 		//Init containers for each result type
 		this.$primaryResults = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-primary' );
+		this.$actions = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-actions' );
 		this.$secondaryResults = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-secondary' );
 
 		this.namespaceId = cfg.namespaceId;
@@ -204,20 +205,14 @@
 	bs.extendedSearch.mixin.AutocompleteCreatePageLink = function( cfg ) {
 		cfg = cfg || {};
 
-		if( cfg.creatable === 0 ) {
+		if( !cfg.creatable ) {
 			return;
 		}
 
-		var cnt = this.$specialResults;
-		if( this.mobile || this.compact ) {
-			cnt = this.$primaryResults;
-		}
-
-		var $anchor = cfg.anchor;
 		this.$createPageLink = $( '<div>' )
 			.addClass( 'bs-extendedsearch-autocomplete-popup-create-page-link' )
-			.append( $anchor );
-		cnt.append(
+			.append( cfg.anchor );
+		this.$actions.append(
 			this.$createPageLink
 		);
 	};
@@ -227,9 +222,8 @@
 	bs.extendedSearch.mixin.FullTextSearchButton = function( cfg ) {
 		cfg = cfg || {};
 
-		var cnt = this.$specialResults;
-		if( this.mobile || this.compact ) {
-			cnt = this.$primaryResults;
+		if ( cfg.hasOwnProperty( 'canFulltextSearch' ) && !cfg.canFulltextSearch ) {
+			return;
 		}
 
 		this.fullTextSearchButton = new OO.ui.ButtonWidget( {
@@ -238,7 +232,7 @@
 		} );
 		this.fullTextSearchButton.$element.addClass( 'bs-extendedsearch-autocomplete-popup-fulltext-search-button' );
 
-		cnt.append(
+		this.$actions.append(
 			this.fullTextSearchButton.$element
 		);
 	};
