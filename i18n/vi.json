@@ -4,11 +4,13 @@
 			"Ioe2015",
 			"Leduyquang753",
 			"Minh Nguyen",
-			"Nhatminh01"
+			"Nhatminh01",
+			"Pisceskaze"
 		]
 	},
 	"bs-extendedsearch-redirect-target-label": "Đổi hướng đến:",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Trang $1: Văn bản: $2",
 	"bs-extendedsearch-searchcenter-sort-field-_score": "Độ phù hợp",
-	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Dạng mẫu biểu thức chính quy không hợp lệ."
+	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Dạng mẫu biểu thức chính quy không hợp lệ.",
+	"bs-extendedsearch-trace-error-invalid-data": "Dữ liệu theo dõi không được cung cấp hoặc không hợp lệ. Không truy cập trực tiếp vào trang này."
 }
