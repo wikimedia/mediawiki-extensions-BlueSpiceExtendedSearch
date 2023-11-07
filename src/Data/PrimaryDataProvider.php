@@ -131,12 +131,16 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 				if ( count( $this->data ) >= $params->getLimit() ) {
 					return $this->data;
 				}
-				// because OS search cant handle from + size larger than
-				// 10000 -.-
-				// see: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-search-after.html
-				$query['from'] = -1;
-				$query['search_after'] = $row->getSourceParam( 'sort' );
 			}
+			// Because OS search can't handle from + size larger than 10000
+			// see: https://opensearch.org/docs/2.11/search-plugins/searching-data/paginate/#scroll-search
+			$searchAfter = $row->getParam( 'sort' ) ?? '';
+			if ( is_array( $searchAfter ) ) {
+				$firstKey = array_key_first( $searchAfter );
+				$searchAfter = $searchAfter[$firstKey];
+			}
+			$query['from'] = -1;
+			$query['search_after'] = $searchAfter;
 
 		} while ( true );
 	}
