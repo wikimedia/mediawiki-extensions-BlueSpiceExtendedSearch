@@ -187,5 +187,7 @@
 	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpiceExtendedSearch - 検索履歴: 期間 (検索回数): $1",
 	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch - {{PLURAL:$1|$1ページ}}が関連する検索{{PLURAL:$1|結果}}としてマークされて{{GENDER:$2|います}}",
 	"bs-extendedsearch-source-type-externalfile-label": "外部ファイル",
-	"bs-extendedsearch-source-label-externalfile": "外部ファイル"
+	"bs-extendedsearch-source-label-externalfile": "外部ファイル",
+	"bs-extendedsearch-trace-error-invalid-data": "トレース データが提供されていないか無効です。このページに直接アクセスしないでください。",
+	"apihelp-bs-extendedsearch-recently-found-pages-summary": "利用者が最近検索結果から閲覧したページをリスト表示します。"
 }
