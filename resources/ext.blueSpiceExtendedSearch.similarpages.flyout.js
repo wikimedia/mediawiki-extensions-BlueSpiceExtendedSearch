@@ -17,7 +17,7 @@
 							linkList: similarPages,
 							storeField: 'page_anchor',
 							title: mw.message( 'bs-extendedsearch-flyout-similar-pages-title' ).plain(),
-							emptyText: mw.message( 'bs-extendedsearch-flyout-similar-pages-emptytext' ).plain(),
+							emptyText: mw.message( 'bs-extendedsearch-flyout-similar-pages-emptytext' ).escaped(),
 							listType: 'pills'
 						} ),
 					]
