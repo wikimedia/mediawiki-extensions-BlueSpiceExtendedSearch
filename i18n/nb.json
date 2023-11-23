@@ -178,5 +178,7 @@
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Antall søk",
 	"bs-extendedsearch-droplet-search-description": "Legger til et søkefelt i sideinnholdet",
 	"bs-extendedsearch-source-type-externalfile-label": "Ekstern fil",
-	"bs-extendedsearch-source-label-externalfile": "Ekstern fil"
+	"bs-extendedsearch-source-label-externalfile": "Ekstern fil",
+	"bs-extendedsearch-trace-error-invalid-data": "Sporingsdata er ikke oppgitt eller er ugyldige. Ikke gå direkte til denne siden.",
+	"apihelp-bs-extendedsearch-recently-found-pages-summary": "Lister opp sider brukeren nylig har besøkt fra søkeresultatene"
 }

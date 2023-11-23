@@ -9,6 +9,7 @@
 			"Mschlindwein",
 			"Peter Böhm <boehm@hallowelt.com>",
 			"TMg",
+			"ThisCarthing",
 			"Tiin",
 			"Umherirrender",
 			"Umlaut",
@@ -187,5 +188,7 @@
 	"bs-extendedsearch-remove-button-label": "Entferne Filter \"$1\"",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Anzahl der Suchanfragen",
 	"bs-extendedsearch-droplet-search-name": "Suchfeld",
-	"bs-extendedsearch-droplet-search-description": "Suchfeld zum Seiteninhalt hinzufügen"
+	"bs-extendedsearch-droplet-search-description": "Suchfeld zum Seiteninhalt hinzufügen",
+	"bs-extendedsearch-source-type-externalfile-label": "Externe Datei",
+	"bs-extendedsearch-source-label-externalfile": "Externe Datei"
 }
