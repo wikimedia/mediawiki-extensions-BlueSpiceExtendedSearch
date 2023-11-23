@@ -172,5 +172,13 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Søkeord per bruker",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Returnerer søkeresultater for en bruker kun på brukerens språk. Brukerne kan velge språket sitt i innstillingene.",
 	"bs-extendedsearch-droplet-search-name": "Søkefelt",
-	"bs-extendedsearch-close-search-button-aria-label": "Lukk søkeboks"
+	"bs-extendedsearch-close-search-button-aria-label": "Lukk søkeboks",
+	"bs-extendedsearch-source-type-externalfile-label": "Ekstern fil",
+	"bs-extendedsearch-remove-button-label": "Fjerne filteret «$1»",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Vis et kompakt autofullføringsoppsett av søkemenyen (oppsett med én kolonne, ingen forhåndsvisning av miniatyrbilder).",
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Antall søk",
+	"bs-extendedsearch-droplet-search-description": "Legger til et søkefelt i sideinnholdet",
+	"bs-extendedsearch-source-label-externalfile": "Ekstern fil",
+	"bs-extendedsearch-trace-error-invalid-data": "Sporingsdata er ikke oppgitt eller er ugyldige. Ikke gå direkte til denne siden.",
+	"apihelp-bs-extendedsearch-recently-found-pages-summary": "Lister opp sider brukeren nylig har besøkt fra søkeresultatene"
 }

@@ -183,5 +183,9 @@
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Description for config variable \"ESCompactAutocomplete\"",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Label for axis for statistics report",
 	"bs-extendedsearch-droplet-search-name": "Title of droplet for tag Search",
-	"bs-extendedsearch-droplet-search-description": "Description of droplet for tag Search"
+	"bs-extendedsearch-droplet-search-description": "Description of droplet for tag Search",
+	"bs-extendedsearch-source-type-externalfile-label": "Label for external file source type",
+	"bs-extendedsearch-source-label-externalfile": "Label for heading of a section that lists hits from the source 'externalfile'",
+	"bs-extendedsearch-trace-error-invalid-data": "Error message when invalid data is given to Special:SearchTrace",
+	"apihelp-bs-extendedsearch-recently-found-pages-summary": "{{doc-apihelp-summary|bs-extendedsearch-recently-found-pages-summary}}"
 }

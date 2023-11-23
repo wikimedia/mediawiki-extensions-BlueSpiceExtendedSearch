@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"P. S. F. Freitas"
+		]
+	},
+	"bs-extendedsearch-source-label-repofile": "Ehupi marandurenda",
+	"bs-extendedsearch-search-center-filter-extension-label": "Jepysokue",
+	"bs-extendedsearch-search-center-filter-extension-with-values-label": "Jepysokue:",
+	"bs-extendedsearch-search-center-filter-page_language-label": "Kuatia ñe'ẽ",
+	"bs-extendedsearch-suggest-operator": "Oiméne piko rehekase <b>$1</b>?"
+}
