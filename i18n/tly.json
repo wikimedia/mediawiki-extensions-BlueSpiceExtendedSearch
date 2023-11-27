@@ -15,5 +15,8 @@
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Nom",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nomico",
 	"bs-extendedsearch-source-type-externalfile-label": "Bešemonə fajl",
-	"bs-extendedsearch-source-label-externalfile": "Bešemonə fajl"
+	"bs-extendedsearch-source-label-externalfile": "Bešemonə fajl",
+	"bs-extendedsearch-search-center-filter-categories-label": "Kategorijə",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Kategorijə:",
+	"bs-extendedsearch-search-center-result-categories-label": "Kategorijə:"
 }
