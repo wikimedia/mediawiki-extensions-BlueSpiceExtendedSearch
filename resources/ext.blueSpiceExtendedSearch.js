@@ -7,21 +7,53 @@
 				var $a = $( this ),
 					data = $a.data( 'bs-traceable-page' );
 
-				$a.on( 'click', function ( e ) {
-					e.preventDefault();
-					var $el = $( this );
+				function doTrack( $el ) {
 					bs.extendedSearch._trackLink( data ).done( function() {
 						window.location = $el.attr( 'href' );
 					} ).fail ( function( e ) {
 						console.error( e );
 						window.location = $el.attr( 'href' );
 					} );
-
+				}
+				if ( $a.hasClass( 'bs-recently-found-suggestion' ) ) {
+					var ignoreButton = new OO.ui.ButtonWidget( {
+						framed: false,
+						icon: 'close',
+						classes: [ 'bs-extendedsearch-recentlyfound-ignore-button' ],
+						title: mw.message( 'bs-extendedsearch-recentlyfound-ignore' ).plain(),
+						data: data
+					} );
+					ignoreButton.connect( ignoreButton, {
+						click: function() {
+							this.setDisabled( true );
+							bs.extendedSearch._untrackLink( data ).done( function() {
+								this.$element.parent().fadeOut( 'normal', function() { $( this ).remove(); } );
+							}.bind( this ) ).fail ( function( e ) {
+								console.error( e );
+							} );
+						}
+					} );
+					ignoreButton.$element.insertAfter( $a );
+				}
+				$a.on( 'click', function ( e ) {
+					e.preventDefault();
+					e.stopPropagation();
+					doTrack( $a );
+				} );
+				$a.parent().on( 'click', function ( e ) {
+					if ( $( this ).hasClass( 'bs-extendedsearch-result-header-container' ) ) {
+						return;
+					}
+					e.preventDefault();
+					doTrack( $( this ).find( 'a.bs-traceable-link' ) );
 				} );
 			} );
 		},
 		_trackLink: function ( data ) {
 			return bs.extendedSearch._rest( 'track', JSON.stringify( data ), 'POST' );
+		},
+		_untrackLink: function ( data ) {
+			return bs.extendedSearch._rest( 'track', JSON.stringify( data ), 'DELETE' );
 		},
 		_getRecentlyFound: function () {
 			return bs.extendedSearch._rest( 'recentlyfound' );

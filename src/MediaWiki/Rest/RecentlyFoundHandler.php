@@ -7,6 +7,7 @@ use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
 use RequestContext;
+use Title;
 use User;
 
 class RecentlyFoundHandler extends SimpleHandler {
@@ -37,7 +38,7 @@ class RecentlyFoundHandler extends SimpleHandler {
 	/**
 	 * @param User $user
 	 *
-	 * @return array|\Title[]
+	 * @return array|Title[]
 	 */
 	private function getRecentTitles( User $user ): array {
 		if ( !$user->isRegistered() ) {
@@ -59,10 +60,29 @@ class RecentlyFoundHandler extends SimpleHandler {
 				"type" => $t->isSpecialPage() ? 'specialpage' : 'wikipage',
 				"score" => 1,
 				"rank" => 'normal',
-				'page_anchor' => $this->linkRenderer->makeLink( $t ),
+				'page_anchor' => $this->getTraceablePageAnchor( $t )
 			];
 		}
 
 		return $this->getResponseFactory()->createJson( [ 'suggestions' => $suggestions ] );
+	}
+
+	/**
+	 * @param Title $title
+	 *
+	 * @return string
+	 */
+	protected function getTraceablePageAnchor( Title $title ): string {
+		$data = [
+			'dbkey' => $title->getDBkey(),
+			'namespace' => $title->getNamespace(),
+			'url' => $title->getFullURL()
+		];
+
+		return \Html::element( 'a', [
+			'href' => $title->getLocalURL(),
+			'class' => 'bs-traceable-link bs-recently-found-suggestion',
+			'data-bs-traceable-page' => json_encode( $data )
+		], $title->getPrefixedText() );
 	}
 }

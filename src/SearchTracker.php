@@ -3,9 +3,9 @@
 namespace BS\ExtendedSearch;
 
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\User\UserIdentity;
 use Title;
 use TitleFactory;
-use User;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class SearchTracker {
@@ -41,11 +41,11 @@ class SearchTracker {
 	/**
 	 * @param int $namespace
 	 * @param string $dbKey
-	 * @param User $user
+	 * @param UserIdentity $user
 	 *
 	 * @return bool
 	 */
-	public function trace( int $namespace, string $dbKey, User $user ): bool {
+	public function trace( int $namespace, string $dbKey, UserIdentity $user ): bool {
 		$data = [
 			'est_namespace' => $namespace,
 			'est_title' => $dbKey,
@@ -84,11 +84,30 @@ class SearchTracker {
 	}
 
 	/**
-	 * @param User $user
+	 * @param int $namespace
+	 * @param string $dbKey
+	 * @param UserIdentity $user
+	 *
+	 * @return bool
+	 */
+	public function remove( int $namespace, string $dbKey, UserIdentity $user ): bool {
+		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
+		return $dbw->delete(
+			'bs_extendedsearch_trace', [
+				'est_namespace' => $namespace,
+				'est_title' => $dbKey,
+				'est_user' => $user->getId(),
+			],
+			__METHOD__
+		);
+	}
+
+	/**
+	 * @param UserIdentity $user
 	 *
 	 * @return Title[]
 	 */
-	public function getForUser( User $user ): array {
+	public function getForUser( UserIdentity $user ): array {
 		// Get most viewed pages in last 2 weeks
 		$res = $this->queryForUser( [
 			'est_user' => $user->getId()
@@ -139,7 +158,7 @@ class SearchTracker {
 			[ 'est_namespace', 'est_title', 'est_type' ],
 			$conds,
 			__METHOD__,
-			[ 'ORDER BY' => 'est_count DESC', 'LIMIT' => 10 ]
+			[ 'ORDER BY' => 'est_last_view DESC', 'LIMIT' => 10 ]
 		);
 		$result = [];
 		foreach ( $res as $row ) {
