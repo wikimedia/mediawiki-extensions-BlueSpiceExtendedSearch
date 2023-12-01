@@ -843,6 +843,12 @@
 			"services": [ "BSExtendedSearchTracker" ]
 		},
 		{
+			"method": "DELETE",
+			"path": "/bluespice/extendedsearch/track",
+			"class": "BS\\ExtendedSearch\\MediaWiki\\Rest\\RemoveSearchTraceHandler",
+			"services": [ "BSExtendedSearchTracker" ]
+		},
+		{
 			"path": "/bluespice/extendedsearch/recentlyfound",
 			"class": "BS\\ExtendedSearch\\MediaWiki\\Rest\\RecentlyFoundHandler",
 			"services": [ "BSExtendedSearchTracker", "LinkRenderer" ]

@@ -3,10 +3,8 @@
 namespace BS\ExtendedSearch\MediaWiki\Rest;
 
 use MediaWiki\User\UserIdentity;
-use Message;
 
-class InsertSearchTraceHandler extends TraceHandler {
-
+class RemoveSearchTraceHandler extends TraceHandler {
 	/**
 	 * @param int $ns
 	 * @param string $dbkey
@@ -15,13 +13,13 @@ class InsertSearchTraceHandler extends TraceHandler {
 	 * @return bool
 	 */
 	protected function doExecute( int $ns, string $dbkey, UserIdentity $user ): bool {
-		return $this->getTracker()->trace( $ns, $dbkey, $user );
+		return $this->getTracker()->remove( $ns, $dbkey, $user );
 	}
 
 	/**
 	 * @return string
 	 */
 	protected function getGenericFailureMessage(): string {
-		return Message::newFromKey( 'bs-extendedsearch-rest-trace-insert-failure' )->text();
+		return \Message::newFromKey( 'bs-extendedsearch-rest-trace-remove-failure' )->text();
 	}
 }
