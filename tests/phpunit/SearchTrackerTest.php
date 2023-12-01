@@ -99,7 +99,7 @@ class SearchTrackerTest extends TestCase {
 	public function testGetForUser() {
 		$tracker = $this->getSearchTrackerForRetrieval( [ 'est_namespace', 'est_title', 'est_type' ], [
 			'est_user' => 1,
-		], 'queryForUser', [ 'ORDER BY' => 'est_count DESC', 'LIMIT' => 10 ] );
+		], 'queryForUser', [ 'ORDER BY' => 'est_last_view DESC', 'LIMIT' => 10 ] );
 
 		$result = $tracker->getForUser( $this->getUserMock() );
 
