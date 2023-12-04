@@ -174,5 +174,7 @@
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Število iskalnih poizvedb",
 	"bs-extendedsearch-droplet-search-name": "Iskalno polje",
 	"bs-extendedsearch-droplet-search-description": "Vsebini strani doda iskalno polje",
-	"bs-extendedsearch-source-label-externalfile": "Zunanja datoteka"
+	"bs-extendedsearch-source-label-externalfile": "Zunanja datoteka",
+	"bs-extendedsearch-trace-error-invalid-data": "Podatki o sledenju niso posredovani ali so neveljavni. Do te strani ne dostopajte neposredno.",
+	"apihelp-bs-extendedsearch-recently-found-pages-summary": "Navede strani, do katerih je uporabnik pred kratkim dostopal iz zadetkov iskanja"
 }
