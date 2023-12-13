@@ -56,6 +56,7 @@
 	"bs-extendedsearch-search-center-result-typetext-label": "Typ:",
 	"bs-extendedsearch-source-type-repofile-label": "Plik lokalny",
 	"bs-extendedsearch-source-type-specialpage-label": "Strona specjalna",
+	"bs-extendedsearch-source-type-externalfile-label": "Plik zewnętrzny",
 	"bs-extendedsearch-result-relevance-relevant": "Ten wynik jest dla mnie ważny",
 	"bs-extendedsearch-result-relevance-not-relevant": "Ten wynik nie jest dla mnie ważny",
 	"prefs-extendedsearch": "Wyszukiwanie zaawansowane",
@@ -77,5 +78,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Kategoria1|Kategoria2|...",
 	"bs-extendedsearch-collection-type-searchhistory": "Historia wyszukiwania",
 	"bs-extendedsearch-collection-var-searchterm": "Słowo klucz",
-	"bs-extendedsearch-droplet-search-name": "Szukaj plików"
+	"bs-extendedsearch-droplet-search-name": "Szukaj plików",
+	"bs-extendedsearch-source-label-externalfile": "Plik zewnętrzny"
 }
