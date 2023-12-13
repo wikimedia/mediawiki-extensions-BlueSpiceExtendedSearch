@@ -77,5 +77,7 @@
 	"bs-extendedsearch-droplet-search-name": "Szukaj plików",
 	"bs-extendedsearch-source-label-repofile": "Prześlij plik",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Przestrzenie nazw",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategoria(e)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategoria(e)",
+	"bs-extendedsearch-source-type-externalfile-label": "Plik zewnętrzny",
+	"bs-extendedsearch-source-label-externalfile": "Plik zewnętrzny"
 }
