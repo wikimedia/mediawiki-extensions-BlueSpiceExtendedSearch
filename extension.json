@@ -356,8 +356,12 @@
 			]
 		},
 		"ext.blueSpiceExtendedSearch.SearchFieldAutocomplete": {
-			"scripts": [
-				"ext.blueSpiceExtendedSearch.Autocomplete.js"
+			"packageFiles": [
+				"ext.blueSpiceExtendedSearch.Autocomplete.js",
+				{
+					"name": "config.json",
+					"callback": "\\BS\\ExtendedSearch\\ClientConfig::makeConfigJson"
+				}
 			],
 			"dependencies": [
 				"ext.blueSpiceExtendedSearch.Autocomplete"
