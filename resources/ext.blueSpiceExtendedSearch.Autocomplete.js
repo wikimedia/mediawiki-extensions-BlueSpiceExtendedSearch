@@ -7,8 +7,9 @@
 		] ).done( function( response ) {
 			//Create new autocomplete and searchBar instance and bind them together
 			var autocomplete = new bs.extendedSearch.Autocomplete();
+			var useSubpagePillsAutocomplete = require( './config.json' ).useSubpagePillsAutocomplete;
 			var searchBar = new bs.extendedSearch.SearchBar( {
-				useSubpagePills: mw.config.get( 'ESUseSubpagePillsAutocomplete' ),
+				useSubpagePills: useSubpagePillsAutocomplete,
 				masterFilter: mw.config.get( 'ESMasterFilter' )
 			} );
 			autocomplete.init( {
