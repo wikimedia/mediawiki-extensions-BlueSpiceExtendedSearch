@@ -28,7 +28,6 @@ class WikiPageLanguageFilter extends LookupModifier {
 			$filterValue = $filters['terms']['page_language'];
 		}
 
-		$filterValue = $this->lookup->getFilters()['terms']['page_language'];
 		if ( $filterValue && count( $filterValue ) !== 1 ) {
 			if ( $autoSetLangFilter ) {
 				$autoLangCode = $this->getAutoLangCode();
@@ -40,7 +39,7 @@ class WikiPageLanguageFilter extends LookupModifier {
 				return;
 			}
 		} else {
-			$this->filterValue = $filterValue[0];
+			$this->filterValue = $filterValue[0] ?? null;
 		}
 		if ( !$this->filterValue ) {
 			// Just to be sure
