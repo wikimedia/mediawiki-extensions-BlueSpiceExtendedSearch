@@ -708,18 +708,6 @@ class Backend {
 		$aggs = $results->getAggregations();
 
 		$filterCfg = [];
-
-		// Let sources modify the filters if needed
-		foreach ( $this->getSources() as $source ) {
-			$formatter = $source->getFormatter();
-			$formatter->formatFilters( $aggs, $filterCfg, $fieldsWithANDEnabled );
-			$plugins = $this->getPluginsForInterface( IFilterModifier::class );
-			/** @var IFilterModifier $plugin */
-			foreach ( $plugins as $plugin ) {
-				$plugin->modifyFilters( $aggs, $filterCfg, $fieldsWithANDEnabled, $source );
-			}
-		}
-
 		// Ultimately, the Base formatter should handle this, but for now its here
 		foreach ( $aggs as $filterName => $agg ) {
 			if ( empty( $agg['buckets'] ) ) {
@@ -736,6 +724,17 @@ class Backend {
 			}
 			if ( in_array( $fieldName, $singleSelectFitlers ) ) {
 				$filterCfg[$fieldName]['multiSelect'] = 0;
+			}
+		}
+
+		// Let sources modify the filters if needed
+		foreach ( $this->getSources() as $source ) {
+			$formatter = $source->getFormatter();
+			$formatter->formatFilters( $aggs, $filterCfg, $fieldsWithANDEnabled );
+			$plugins = $this->getPluginsForInterface( IFilterModifier::class );
+			/** @var IFilterModifier $plugin */
+			foreach ( $plugins as $plugin ) {
+				$plugin->modifyFilters( $aggs, $filterCfg, $fieldsWithANDEnabled, $source );
 			}
 		}
 
