@@ -8,6 +8,7 @@
 			"Fitoschido",
 			"Francodiaz7",
 			"Jakeukalane",
+			"Jmabel",
 			"Joanmp17",
 			"Madamebiblio",
 			"SpikeShroom",
@@ -179,5 +180,7 @@
 	"bs-extendedsearch-search-center-hitcount-replaced": "Mostrando resultados para $1, busque $2 en su lugar ( {{PLURAL:$3|$3 hit|$3 hits}})",
 	"bs-extendedsearch-search-center-hitcount-suggest": "¿Quiso decir $1 ({{PLURAL:$2|$2 hits|$2 hits}})?",
 	"bs-extendedsearch-close-search-button-aria-label": "Cerrar cuadro de búsqueda",
-	"bs-extendedsearch-remove-button-label": "Eliminar filtro \"$1\""
+	"bs-extendedsearch-remove-button-label": "Eliminar filtro \"$1\"",
+	"bs-extendedsearch-source-type-externalfile-label": "Archivo external",
+	"bs-extendedsearch-source-label-externalfile": "Archivo external"
 }
