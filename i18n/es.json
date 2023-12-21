@@ -8,6 +8,7 @@
 			"Fitoschido",
 			"Francodiaz7",
 			"Jakeukalane",
+			"Jmabel",
 			"Joanmp17",
 			"Madamebiblio",
 			"SpikeShroom",
@@ -179,5 +180,7 @@
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Devuelve los resultados de la búsqueda de un usuario sólo en su idioma. Los usuarios pueden establecer su idioma en sus preferencias.",
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Mostrar un diseño compacto de autocompletar del menú de búsqueda (diseño de una columna, sin vista previa de miniaturas).",
 	"bs-extendedsearch-close-search-button-aria-label": "Cerrar cuadro de búsqueda",
-	"bs-extendedsearch-remove-button-label": "Eliminar filtro \"$1\""
+	"bs-extendedsearch-remove-button-label": "Eliminar filtro \"$1\"",
+	"bs-extendedsearch-source-type-externalfile-label": "Archivo external",
+	"bs-extendedsearch-source-label-externalfile": "Archivo external"
 }
