@@ -12,6 +12,7 @@ class BaseSimpleQSFields extends LookupModifier {
 		$this->lookup->addSourceField( 'congregated' );
 		$this->lookup->addSourceField( 'ctime' );
 		$this->lookup->addSourceField( 'mtime' );
+		$this->lookup->addSourceField( 'uri' );
 
 		$simpleQS = $this->lookup->getQueryString();
 		$fields = [ 'basename^4', 'congregated' ];
@@ -37,6 +38,7 @@ class BaseSimpleQSFields extends LookupModifier {
 		$this->lookup->removeSourceField( 'congregated' );
 		$this->lookup->removeSourceField( 'ctime' );
 		$this->lookup->removeSourceField( 'mtime' );
+		$this->lookup->removeSourceField( 'uri' );
 	}
 
 }

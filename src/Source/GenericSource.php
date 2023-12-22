@@ -28,7 +28,6 @@ use Config;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
 use OpenSearch\Client;
-use Throwable;
 use Wikimedia\ObjectFactory\ObjectFactory;
 
 class GenericSource implements ISearchSource {
@@ -172,43 +171,19 @@ class GenericSource implements ISearchSource {
 		if ( $this->backend->isReadOnly() ) {
 			return false;
 		}
-		$id = $document['id'];
-		try {
-			$exists = $this->getBackend()->getClient()->exists( [
-				'index' => $this->getBackend()->getIndexName( $this->getTypeKey() ),
-				'id' => $id
-			] );
-		} catch ( Throwable $ex ) {
-			$exists = false;
-		}
 		$params = [
 			'index' => $this->getBackend()->getIndexName( $this->getTypeKey() ),
-			'id' => $id,
-			'body' => $document
+			'id' => $document['id'],
+			'refresh' => true,
+			'body' => $document,
 		];
 
-		if ( $exists ) {
-			// Update requires [ 'doc' => $document ] instead of $document
-			$params['body'] = [ 'doc' => $document ];
-			$this->modifyRequestParams( 'update', $params );
-			$res = $this->getBackend()->getClient()->update( $params );
-		} else {
-			$this->modifyRequestParams( 'add', $params );
-			$res = $this->getBackend()->getClient()->create( $params );
-		}
+		$this->modifyRequestParams( 'add', $params );
+		$res = $this->getBackend()->getClient()->index( $params );
 
-		if (
-			!is_array( $res ) ||
-			!isset( $res['result'] ) ||
-			( $res['result'] !== 'created' && $res['result'] !== 'updated' )
-		) {
-			return false;
-		}
-
-		$this->getBackend()->getClient()->indices()->refresh( [
-			'index' => $this->getBackend()->getIndexName( $this->getTypeKey() )
-		] );
-		return true;
+		return is_array( $res ) &&
+			isset( $res['result'] ) &&
+			( $res['result'] === 'created' || $res['result'] === 'updated' );
 	}
 
 	/**
@@ -224,10 +199,8 @@ class GenericSource implements ISearchSource {
 		$indexName = $this->getBackend()->getIndexName( $this->getTypeKey() );
 		$res = $this->getBackend()->getClient()->delete( [
 			'index' => $indexName,
-			'id' => $documentId
-		] );
-		$this->getBackend()->getClient()->indices()->refresh( [
-			'index' => $indexName
+			'id' => $documentId,
+			'refresh' => true,
 		] );
 		return is_array( $res ) && isset( $res['result'] ) && $res['result'] === 'deleted';
 	}

@@ -8,6 +8,7 @@ class FileContent extends LookupModifier {
 		$this->lookup->addSourceField( 'filename' );
 		$this->lookup->addSourceField( 'extension' );
 		$this->lookup->addSourceField( 'mime_type' );
+		$this->lookup->addSourceField( 'attachment.content' );
 		$this->lookup->addHighlighter( 'attachment.content' );
 
 		// 1. - Add searching in file content field
@@ -39,7 +40,7 @@ class FileContent extends LookupModifier {
 		$this->lookup->removeSourceField( 'filename' );
 		$this->lookup->removeSourceField( 'extension' );
 		$this->lookup->removeSourceField( 'mime_type' );
-		$this->lookup->removeHighlighter( 'attachment.content' );
+		$this->lookup->removeSourceField( 'attachment.content' );
 	}
 
 }
