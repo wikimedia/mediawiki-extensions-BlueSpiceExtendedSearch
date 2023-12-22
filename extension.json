@@ -109,14 +109,6 @@
 				"ext.bluespice.tagsearch.visualEditor"
 			]
 		},
-		"BlueSpiceArticleInfo": {
-			"FlyoutModules": {
-				"similar-pages": {
-					"module": "ext.blueSpiceExtendedSearch.similarpages.flyout",
-					"make-items-callback": "bs.extendedsearch.flyout.makeSimilarPages"
-				}
-			}
-		},
 		"BlueSpiceExtendedSearch": {
 			"Sources": {
 				"wikipage": {
@@ -500,18 +492,6 @@
 		"ext.blueSpiceExtendedSearch.SearchAdmin.styles": {
 			"styles": [
 				"ext.blueSpiceExtendedSearch.SearchAdmin.less"
-			]
-		},
-		"ext.blueSpiceExtendedSearch.similarpages.flyout": {
-			"scripts": [
-				"ext.blueSpiceExtendedSearch.similarpages.flyout.js"
-			],
-			"messages": [
-				"bs-extendedsearch-flyout-similar-pages-title",
-				"bs-extendedsearch-flyout-similar-pages-emptytext"
-			],
-			"dependencies": [
-				"ext.bluespice.extjs"
 			]
 		},
 		"ext.blueSpiceExtendedSearch.TagSearch.styles": {
