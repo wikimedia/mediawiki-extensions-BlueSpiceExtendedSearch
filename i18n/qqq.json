@@ -140,8 +140,6 @@
 	"bs-extendedsearch-options-button-label": "Tooltip text for a button that opens search options dialog",
 	"bs-extendedsearch-export-button-label": "Tooltip text for a button that opens a dialog to export the search results",
 	"bs-extendedsearch-remove-button-label": "Tooltip text for a button to remove a set search filter. $1 - name of the filter",
-	"bs-extendedsearch-flyout-similar-pages-title": "Title for the flyout section showing pages similar to the current page",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Text for the flyout section when there are no similar pages available",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Only for pages in NS_FILE. Label for the field in the result showing links to pages that use this file.",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Placeholder text for the search field",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Error message text when given search result type is invalid. $1 - name of the given type",
