@@ -12,7 +12,8 @@
 			"Madamebiblio",
 			"SpikeShroom",
 			"Vanbasten 23",
-			"Whovian Biologist"
+			"Whovian Biologist",
+			"Jmabel"
 		]
 	},
 	"bs-extsearch-desc": "Motor de búsquedas Elasticsearch",
@@ -36,6 +37,7 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "Devuelve la relevancia de los resultados de la búsqueda",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "Cadena decodificada JSON que contiene información adicional del contexto de la búsqueda",
 	"apihelp-bs-extendedsearch-type-store-summary": "Devuelve los tipos de búsqueda registrados",
+	"bs-extendedsearch-close-search-button-aria-label": "Cerrar cuadro de búsqueda",
 	"bs-extendedsearch-search-button-title": "Iniciar búsqueda",
 	"bs-extendedsearch-search-button-aria-label": "Iniciar búsqueda",
 	"bs-extendedsearch-search-input-placeholder": "Encuentra ...",
@@ -137,6 +139,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Añadir un filtro",
 	"bs-extendedsearch-options-button-label": "Opciones de búsqueda",
 	"bs-extendedsearch-export-button-label": "Exportar resultados de búsqueda",
+	"bs-extendedsearch-remove-button-label": "Eliminar filtro \"$1\"",
 	"bs-extendedsearch-flyout-similar-pages-title": "Páginas similares",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "No se encontró ninguna página similar",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Utilizado en páginas",
@@ -178,6 +181,6 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Términos de búsqueda por usuario",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Devuelve los resultados de la búsqueda de un usuario sólo en su idioma. Los usuarios pueden establecer su idioma en sus preferencias.",
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Mostrar un diseño compacto de autocompletar del menú de búsqueda (diseño de una columna, sin vista previa de miniaturas).",
-	"bs-extendedsearch-close-search-button-aria-label": "Cerrar cuadro de búsqueda",
-	"bs-extendedsearch-remove-button-label": "Eliminar filtro \"$1\""
+	"bs-extendedsearch-source-type-externalfile-label": "Archivo external",
+	"bs-extendedsearch-source-label-externalfile": "Archivo external"
 }
