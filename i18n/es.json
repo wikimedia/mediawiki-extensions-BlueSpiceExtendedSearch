@@ -11,6 +11,7 @@
 			"Jmabel",
 			"Joanmp17",
 			"Madamebiblio",
+			"Rodney Araujo",
 			"SpikeShroom",
 			"Vanbasten 23",
 			"Whovian Biologist"
@@ -178,7 +179,7 @@
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Mostrar un diseño compacto de autocompletar del menú de búsqueda (diseño de una columna, sin vista previa de miniaturas).",
 	"apihelp-bs-extendedsearch-generic-param-backend": "Key of the configured backend that should be queried",
 	"bs-extendedsearch-search-center-hitcount-replaced": "Mostrando resultados para $1, busque $2 en su lugar ( {{PLURAL:$3|$3 hit|$3 hits}})",
-	"bs-extendedsearch-search-center-hitcount-suggest": "¿Quiso decir $1 ({{PLURAL:$2|$2 hits|$2 hits}})?",
+	"bs-extendedsearch-search-center-hitcount-suggest": "¿Quisiste decir $1 ({{PLURAL:$2|$2 hits|$2 hits}})?",
 	"bs-extendedsearch-close-search-button-aria-label": "Cerrar cuadro de búsqueda",
 	"bs-extendedsearch-remove-button-label": "Eliminar filtro \"$1\"",
 	"bs-extendedsearch-source-type-externalfile-label": "Archivo external",
