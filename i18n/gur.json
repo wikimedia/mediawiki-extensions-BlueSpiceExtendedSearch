@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Adignyoke"
+			"Adignyoke",
+			"Baba Ayɛ'ɛra"
 		]
 	},
-	"bs-extendedsearch-statistics-report-search-terms": "Ɛ lɔgerɔ"
+	"bs-extendedsearch-statistics-report-search-terms": "Ɛ lɔgerɔ",
+	"bs-extendedsearch-rest-trace-insert-failure": "A ka nyaŋɛ Dikɛ deeta la iŋɛ bivi",
+	"bs-extendedsearch-rest-trace-remove-failure": "A ka nyaŋɛ yese deeta la bini"
 }
