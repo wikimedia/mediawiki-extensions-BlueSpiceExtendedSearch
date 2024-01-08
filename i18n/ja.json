@@ -141,8 +141,6 @@
 	"bs-extendedsearch-options-button-label": "検索オプション",
 	"bs-extendedsearch-export-button-label": "検索がヒットしませんでした",
 	"bs-extendedsearch-remove-button-label": "フィルタ\"$1\"を削除",
-	"bs-extendedsearch-flyout-similar-pages-title": "類似したページ",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "類似のページは見つかりませんでした",
 	"bs-extendedsearch-search-center-result-file-usage-label": "ページで使用",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "入力して検索",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "無効な検索結果タイプ:$1",

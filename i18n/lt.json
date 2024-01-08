@@ -95,8 +95,6 @@
 	"bs-extendedsearch-options-button-label": "Paieškos nustatymai",
 	"bs-extendedsearch-export-button-label": "Eksportuoti paieškos rezultatus",
 	"bs-extendedsearch-remove-button-label": "Pašalinti filtrą „$1“",
-	"bs-extendedsearch-flyout-similar-pages-title": "Panašūs puslapiai",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Panašių puslapių nerasta",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Naudotas puslapiuose",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Įveskite norėdami ieškoti...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Neteisingas paieškos rezultato tipas: $1",

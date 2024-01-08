@@ -54,8 +54,6 @@
 	"bs-extendedsearch-pref-auto-set-lang-filter": "Aseta kielisuodatin automaattisesti",
 	"bs-extendedsearch-search-center-create-page-link": "Luo sivu \"$1\"",
 	"bs-extendedsearch-filter-add-button-label": "Lisää suodatin",
-	"bs-extendedsearch-flyout-similar-pages-title": "Samankaltaiset sivut",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Samankaltaisia sivuja ei löytynyt",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Käytössä sivuilla",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Nimiavaruudet",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Luokat"

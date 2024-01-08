@@ -131,8 +131,6 @@
 	"bs-extendedsearch-options-button-label": "Opções de pesquisa",
 	"bs-extendedsearch-export-button-label": "Exportar resultados da pesquisa",
 	"bs-extendedsearch-remove-button-label": "Remover o filtro \"$1\"",
-	"bs-extendedsearch-flyout-similar-pages-title": "Páginas semelhantes",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Não foram encontradas páginas semelhantes",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Usado nas páginas",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Escreva texto a pesquisar...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Tipo de resultado de pesquisa inválido: $1",

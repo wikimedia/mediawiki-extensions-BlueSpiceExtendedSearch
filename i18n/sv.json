@@ -104,8 +104,6 @@
 	"bs-extendedsearch-filter-add-button-label": "Lägg till ett filter",
 	"bs-extendedsearch-options-button-label": "Sökalternativ",
 	"bs-extendedsearch-export-button-label": "Exportera sökresultat",
-	"bs-extendedsearch-flyout-similar-pages-title": "Liknande sidor",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Inga liknande sidor hittades.",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Används på sidor",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Skriv för att söka...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Ogiltig typ av sökresultat: $1",

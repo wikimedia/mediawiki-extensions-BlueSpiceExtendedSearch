@@ -133,8 +133,6 @@
 	"bs-extendedsearch-options-button-label": "搜尋選項",
 	"bs-extendedsearch-export-button-label": "匯出搜尋結果",
 	"bs-extendedsearch-remove-button-label": "刪除$1過濾器",
-	"bs-extendedsearch-flyout-similar-pages-title": "相似的頁面",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "查無相似的頁面",
 	"bs-extendedsearch-search-center-result-file-usage-label": "使用於頁面",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "要搜尋的類型…",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "無效搜尋結果類型：$1",

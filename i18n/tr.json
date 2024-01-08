@@ -134,8 +134,6 @@
 	"bs-extendedsearch-filter-add-button-label": "Filtre ekle",
 	"bs-extendedsearch-options-button-label": "Arama seçenekleri",
 	"bs-extendedsearch-export-button-label": "Arama sonuçlarını dışa aktar",
-	"bs-extendedsearch-flyout-similar-pages-title": "Benzer sayfalar",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Benzer sayfa bulunamadı",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Sayfalarda kullanılır",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Aramak için yazın...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Geçersiz arama sonucu türü: $1",

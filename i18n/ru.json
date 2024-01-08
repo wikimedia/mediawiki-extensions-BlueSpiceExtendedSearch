@@ -96,8 +96,6 @@
 	"bs-extendedsearch-filter-add-button-label": "Добавить фильтр",
 	"bs-extendedsearch-options-button-label": "Настройки поиска",
 	"bs-extendedsearch-export-button-label": "Экспортировать результаты поиска",
-	"bs-extendedsearch-flyout-similar-pages-title": "Похожие страницы",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Похожие страницы не найдены",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Используется на страницах",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Введите для поиска…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "Поиск тегов",

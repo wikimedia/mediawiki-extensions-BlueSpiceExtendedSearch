@@ -131,8 +131,6 @@
 	"bs-extendedsearch-options-button-label": "Možnosti iskanja",
 	"bs-extendedsearch-export-button-label": "Izvozite iskalne zadetke",
 	"bs-extendedsearch-remove-button-label": "Odstrani filter »$1«",
-	"bs-extendedsearch-flyout-similar-pages-title": "Podobne strani",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Ni najdenih podobnih strani",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Uporabljeno na straneh",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Vnesite iskalni niz ...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Neveljavna vrsta iskalnih zadetkov: $1",

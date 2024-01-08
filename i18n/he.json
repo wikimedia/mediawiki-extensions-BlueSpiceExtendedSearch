@@ -134,8 +134,6 @@
 	"bs-extendedsearch-options-button-label": "אפשרויות חיפוש",
 	"bs-extendedsearch-export-button-label": "יצוא תוצאות חיפוש",
 	"bs-extendedsearch-remove-button-label": "הסרת מסנן \"$1\"",
-	"bs-extendedsearch-flyout-similar-pages-title": "דפים דומים",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "לא נמצאו דפים דומים",
 	"bs-extendedsearch-search-center-result-file-usage-label": "דפים המשתמשים בקובץ",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "נא להקליד לחיפוש...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "סוג תוצאת חיפוש לא תקין: $1",

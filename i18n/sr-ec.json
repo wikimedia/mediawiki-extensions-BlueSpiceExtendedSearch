@@ -86,8 +86,6 @@
 	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpice проширена претрага — {{GENDER:$2|Имате}} {{PLURAL:$1|1=једну страницу означену|$1 страницу означену|$1 странице означене|$1 страница означених}} као {{PLURAL:$1|1=релевантан резултат претраге|релевантан резултат претраге|релевантни резултати претраге}}",
 	"bs-extendedsearch-options-button-label": "Опције претраге",
 	"bs-extendedsearch-export-button-label": "Извези резултате претраге",
-	"bs-extendedsearch-flyout-similar-pages-title": "Сличне странице",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Нису пронађене сличне странице",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Коришћено на страницама",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Унесите да би сте претражили...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Некоректан тип претраге: $1",

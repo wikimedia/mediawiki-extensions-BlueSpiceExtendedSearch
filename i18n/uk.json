@@ -135,8 +135,6 @@
 	"bs-extendedsearch-options-button-label": "Параметри пошуку",
 	"bs-extendedsearch-export-button-label": "Експортувати пошукові результати",
 	"bs-extendedsearch-remove-button-label": "Видалити фільтр \" $1 \"",
-	"bs-extendedsearch-flyout-similar-pages-title": "Схожі сторінки",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Подібні сторінки не знайдено",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Використовується на сторінках",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Введіть для пошуку...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Недійсний тип результату пошуку: $1",
