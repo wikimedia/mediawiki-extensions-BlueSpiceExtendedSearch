@@ -60,6 +60,8 @@
 		this.$searchBox.on( 'paste', this.onPaste.bind( this ) );
 		this.$searchBox.on( 'focus', this.onFocus.bind( this ) );
 
+		this.$searchBox.attr( 'title', mw.msg( 'bs-extendedsearch-autocomplete-input-title' ) );
+
 		if ( this.masterFilter ) {
 			this.useNamespacePills = false;
 			this.useSubpagePills = false;
@@ -330,7 +332,7 @@
 
 	bs.extendedSearch.SearchBar.prototype.onKeyUp = function( e ) {
 		var value = e.target.value;
-		var isChanged = this.valueBefore !== value;
+		var isChanged = ( this.valueBefore || '' ) !== value;
 		var shouldAbort = { abort: false };
 		this.emit( 'beforeValueChanged', e, shouldAbort );
 		if( shouldAbort.abort === true ) {
@@ -455,6 +457,7 @@
 		if ( this.$searchBox.val() ) {
 			return;
 		}
+
 		this.emit( 'emptyFocus' );
 	};
 } )( mediaWiki, jQuery, blueSpice, document );

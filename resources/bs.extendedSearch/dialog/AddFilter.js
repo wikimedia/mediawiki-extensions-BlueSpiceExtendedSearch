@@ -155,7 +155,6 @@
 			.on( 'click', { window: window }, this.toggleGroup.bind( this ) )
 			.on( 'keydown',  { window: window }, function( e ) {
 				if ( e.which === OO.ui.Keys.ENTER ) {
-					console.log('enter')
 					this.toggleGroup( e );
 				}
 			}.bind( this ) );
