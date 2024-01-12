@@ -178,5 +178,7 @@
 	"bs-extendedsearch-trace-error-invalid-data": "Trace data not provided or invalid. Do not access this page directly.",
 	"apihelp-bs-extendedsearch-recently-found-pages-summary": "Lists pages user recently navigated to from the search results",
 	"bs-extendedsearch-rest-trace-insert-failure": "Failed to insert trace data",
-	"bs-extendedsearch-rest-trace-remove-failure": "Failed to remove trace data"
+	"bs-extendedsearch-rest-trace-remove-failure": "Failed to remove trace data",
+	"bs-extendedsearch-recently-found-header": "Recently viewed",
+	"bs-extendedsearch-autocomplete-input-title": "Search (type '/')"
 }
