@@ -182,5 +182,7 @@
 	"bs-extendedsearch-rest-trace-insert-failure": "Failed to insert trace data",
 	"bs-extendedsearch-rest-trace-remove-failure": "Failed to remove trace data",
 	"bs-extendedsearch-flyout-similar-pages-title": "Similar pages",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "No similar pages found"
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "No similar pages found",
+	"bs-extendedsearch-recently-found-header": "Recently viewed",
+	"bs-extendedsearch-autocomplete-input-title": "Search (type '/')"
 }

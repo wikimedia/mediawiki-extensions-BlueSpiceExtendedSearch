@@ -4,10 +4,18 @@
 	bs.extendedSearch.mixin.AutocompleteResults = function( cfg ) {
 		cfg = cfg || {};
 
+		this.headerText = cfg.headerText || false;
+
 		//Init containers for each result type
 		this.$primaryResults = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-primary' );
 		this.$actions = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-actions' );
 		this.$secondaryResults = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-secondary' );
+
+		if ( this.headerText ) {
+			this.$primaryResults.append(
+				new OO.ui.LabelWidget( { label: this.headerText } ).$element
+			);
+		}
 
 		this.namespaceId = cfg.namespaceId;
 

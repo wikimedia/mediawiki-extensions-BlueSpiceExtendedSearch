@@ -18,6 +18,14 @@
 				autocompleteConfig: response.AutocompleteConfig,
 				sourceIcons: response.SourceIcons
 			} );
+
+			$( document ).on( 'keydown', function ( e ) {
+				if( e.key === '/' ) {
+					e.preventDefault();
+					searchBar.$searchBox.focus();
+				}
+
+			});
 		} );
 	} );
 } )( mediaWiki, jQuery, blueSpice, document );
