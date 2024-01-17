@@ -268,7 +268,7 @@ class Base implements ISearchResultFormatter {
 	 *
 	 * @return string
 	 */
-	protected function getTraceablePageAnchor( Title $title, $text ): string {
+	public function getTraceablePageAnchor( Title $title, $text ): string {
 		$data = [
 			'dbkey' => $title->getDBkey(),
 			'namespace' => $title->getNamespace(),
