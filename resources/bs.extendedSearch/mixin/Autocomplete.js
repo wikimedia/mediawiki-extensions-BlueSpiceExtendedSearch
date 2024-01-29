@@ -127,16 +127,6 @@
 			this.basename = this.basename.replace( regex, '' );
 		}
 
-		var popupWidth = this.popup.searchForm.width();
-		if ( !this.popup.searchForm.is( 'form#bs-extendedsearch-box' )
-			|| window.innerWidth > 1200 ) {
-				popupWidth = ( !this.popup.mobile && !this.popup.compact ) ? popupWidth / 2 : popupWidth;
-		}
-		var snippetLength = popupWidth > 0 ? popupWidth / 7 : 30;
-		snippetLength = this.popup.mobile ? snippetLength * 0.7 : snippetLength;
-		snippetLength = Math.round( snippetLength );
-		this.basename = this.getSnippet( this.basename, snippetLength, this.searchTerm );
-
 		this.boldSearchTerm();
 
 		//If backend provided an anchor use it, otherwise create it
@@ -156,35 +146,6 @@
 
 	OO.mixinClass( bs.extendedSearch.mixin.AutocompleteHeader, bs.extendedSearch.mixin.ResultOriginalTitle );
 	OO.initClass( bs.extendedSearch.mixin.AutocompleteHeader );
-
-	bs.extendedSearch.mixin.AutocompleteHeader.prototype.getSnippet = function( text, length, mustContain ) {
-		var hasMoreText = '...';
-		if( text.length <= length ) {
-			return text;
-		}
-
-		length = length - 3; // To fit in the dots
-
-		mustContain = mustContain || '';
-		var startsWithMustContain = text.indexOf( mustContain ) === 0;
-		if( mustContain === '' || startsWithMustContain ) {
-			return text.substring( 0, length ) + hasMoreText;
-		}
-
-		var mustContainLen = mustContain.length;
-		if( mustContainLen >= length ) {
-			return mustContain.substring( 0, length ) + hasMoreText;
-		}
-
-		var restAfterMustContainLen = length - mustContainLen;
-		if( restAfterMustContainLen >= 6 ) {
-			var endsWithMustContain = text.slice( -mustContainLen ) === mustContain;
-			if( endsWithMustContain ) {
-				return text.substring( 0, restAfterMustContainLen ) + hasMoreText + mustContain;
-			}
-			return text.substring( 0, restAfterMustContainLen - 3 ) + hasMoreText + mustContain + hasMoreText + text.slice( -3 );
-		}
-	};
 
 	//Bolds out search term in the result title
 	bs.extendedSearch.mixin.AutocompleteHeader.prototype.boldSearchTerm = function() {
