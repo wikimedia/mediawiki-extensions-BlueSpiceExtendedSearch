@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Cedric31"
+			"Cedric31",
+			"Lhanars"
 		]
 	},
-	"prefs-extendedsearch": "Recèrca avançada"
+	"prefs-extendedsearch": "Recèrca avançada",
+	"bs-extendedsearch-search-center-result-redirects-label": "Redirigit dempuèi:"
 }
