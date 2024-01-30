@@ -134,7 +134,11 @@
 	function _onEmptyFocus() {
 		this.removePopup();
 		bs.extendedSearch._getRecentlyFound().done( function( response ) {
-			this.makePopup( response.suggestions, { creatable: false } );
+			this.makePopup(
+				response.suggestions,
+				{ creatable: false },
+				mw.msg( 'bs-extendedsearch-recently-found-header' )
+			);
 		}.bind( this ) );
 	}
 
@@ -151,7 +155,7 @@
 		}
 	}
 
-	function _makePopup( suggestions, pageCreateInfo ) {
+	function _makePopup( suggestions, pageCreateInfo, headerText ) {
 		if( this.popup ) {
 			this.removePopup();
 		}
@@ -166,7 +170,8 @@
 			pageCreateInfo: pageCreateInfo,
 			compact: this.compact,
 			quietSubpage: this.searchBar.getMasterFilterPage(),
-			autocomplete: this
+			autocomplete: this,
+			headerText: headerText
 		};
 
 		this.popup = new bs.extendedSearch.AutocompletePopup( popupCfg );
