@@ -184,5 +184,7 @@
 	"bs-extendedsearch-trace-error-invalid-data": "נתוני העקבה לא סופקו או שהם בלתי־תקינים. אין לגשת ישירות לדף הזה.",
 	"apihelp-bs-extendedsearch-recently-found-pages-summary": "רשימת דפים שמשתמש ניווט אליהם לאחרונה מתוצאות החיפוש",
 	"bs-extendedsearch-rest-trace-insert-failure": "לא היה אפשר להכניס את נתוני העקבה",
-	"bs-extendedsearch-rest-trace-remove-failure": "לא היה אפשר להסיר את נתוני העקבה"
+	"bs-extendedsearch-rest-trace-remove-failure": "לא היה אפשר להסיר את נתוני העקבה",
+	"bs-extendedsearch-recently-found-header": "הוצגו לאחרונה",
+	"bs-extendedsearch-autocomplete-input-title": "חיפוש (יש להקליד קו נטוי: \"/\")"
 }
