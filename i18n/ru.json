@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"1233qwer1234qwer4",
+			"Butko",
 			"DDPAT",
 			"Ice bulldog",
 			"Kareyac",
@@ -114,5 +115,6 @@
 	"right-extendedsearch-search-wikipage": "Поиск страниц",
 	"right-extendedsearch-search-repofile": "Поиск файлов",
 	"bs-extendedsearch-source-type-externalfile-label": "Внешний файл",
-	"bs-extendedsearch-source-label-externalfile": "Внешний файл"
+	"bs-extendedsearch-source-label-externalfile": "Внешний файл",
+	"bs-extendedsearch-recently-found-header": "Недавно просмотрено"
 }
