@@ -75,6 +75,11 @@
 		overflow-y: auto;
 		overflow-x: hidden;
 		display: inline-block;
+		> label {
+			font-variant-caps: all-petite-caps;
+			letter-spacing: 0.15rem;
+			padding-bottom: 10px;
+		}
 		.bs-extendedsearch-autocomplete-popup-primary-item{
 			padding: 5px 5px 5px 8px;
 			position: relative;
@@ -147,8 +152,9 @@
 			position: absolute;
 			top: 0;
 			right: 0;
-			a span.oo-ui-iconElement-icon {
-				background-size: 15px;
+			a span.oo-ui-iconElement-icon.oo-ui-icon-close {
+				background-size: 14px;
+				opacity: 0.6;
 			}
 		}
 		.bs-recently-found-suggestion {
@@ -272,6 +278,18 @@
 			&:empty {
 				display: none;
 			}
+			.bs-extendedsearch-autocomplete-popup-fulltext-search-button {
+				height: 30px;
+				a {
+					height: 30px;
+					padding: 5px;
+
+					&:focus {
+						box-shadow: none;
+						text-decoration: underline;
+					}
+				}
+			}
 		}
 		.bs-extendedsearch-autocomplete-popup-primary {
 			font-size: 1em;
@@ -280,7 +298,6 @@
 			.bs-extendedsearch-autocomplete-popup-primary-item {
 				padding: 5px;
 				position: relative;
-				overflow-x: hidden;
 				&.bs-autocomplete-result-selected {
 					background-color: @autocomplete-selected-background-color;
 				}
@@ -296,6 +313,9 @@
 				a {
 					height: 30px;
 					padding: 5px;
+					&:focus {
+						text-decoration: underline;
+					}
 				}
 			}
 			.bs-extendedsearch-autocomplete-popup-fulltext-search-button {
@@ -303,6 +323,11 @@
 				a {
 					height: 30px;
 					padding: 5px;
+
+					&:focus {
+						box-shadow: none;
+						text-decoration: underline;
+					}
 				}
 			}
 		}
@@ -333,4 +358,8 @@
 /* height for autocomplete popup calumma skin */
 .p-search .searchbar-autocomplete-results {
 	height: 600px;
+}
+
+#bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup a.bs-extendedsearch-autocomplete-popup-primary-item-header:focus {
+	text-decoration: underline;
 }

@@ -329,6 +329,9 @@
 				"ext.blueSpiceExtendedSearch.utils.js",
 				"bs.extendedSearch/Lookup.js"
 			],
+			"messages": [
+				"bs-extendedsearch-recentlyfound-ignore"
+			],
 			"dependencies": [
 				"ext.bluespice",
 				"mediawiki.api",

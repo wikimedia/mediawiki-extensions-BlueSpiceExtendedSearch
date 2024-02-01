@@ -191,5 +191,6 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "Title for the flyout section showing pages similar to the current page",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Text for the flyout section when there are no similar pages available",
 	"bs-extendedsearch-recently-found-header": "Header for section that lists recently found pages",
-	"bs-extendedsearch-autocomplete-input-title": "Tooltip for the search input field"
+	"bs-extendedsearch-autocomplete-input-title": "Tooltip for the search input field",
+	"bs-extendedsearch-recentlyfound-ignore": "Title for button to remove element from recently viewed list"
 }

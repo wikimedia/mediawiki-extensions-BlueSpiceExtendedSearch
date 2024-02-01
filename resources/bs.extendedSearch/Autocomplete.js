@@ -179,6 +179,9 @@
 			quietSubpageRemoved: function() {
 				this.searchBar.suppressQuietSubpage( 'suppress' );
 				this.searchBar.changeValue( this.searchBar.$searchBox.val() );
+			},
+			closePopup: function () {
+				this.removePopup();
 			}
 		} );
 
