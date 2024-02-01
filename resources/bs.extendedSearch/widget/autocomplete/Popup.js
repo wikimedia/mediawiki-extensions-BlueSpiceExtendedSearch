@@ -47,6 +47,13 @@
 			this.$element.addClass( 'compact' );
 			this.$element.append( this.$actions );
 		}
+		$( this.$element ).on( 'focusout', function ( e ) {
+			var relatedTarget = e.relatedTarget;
+			if ( this.$element[0].contains( relatedTarget ) ) {
+				return;
+			}
+			this.emit( 'closePopup' );
+		}.bind( this ) );
 	};
 
 	OO.inheritClass( bs.extendedSearch.AutocompletePopup, OO.ui.Widget );
