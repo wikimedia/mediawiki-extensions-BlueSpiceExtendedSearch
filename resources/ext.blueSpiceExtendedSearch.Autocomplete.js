@@ -20,6 +20,15 @@
 			} );
 
 			$( document ).on( 'keydown', function ( e ) {
+				// See if is an input or a textarea
+				if ( $( e.target ).is( 'input, textarea' ) ) {
+					return;
+				}
+				// or the parents (+ exception for VE)
+				if ( $( e.target ).parents( 'input, textarea, .ve-init-target' ).length > 0 ) {
+					return;
+				}
+
 				if( e.key === '/' ) {
 					e.preventDefault();
 					searchBar.$searchBox.focus();
