@@ -185,5 +185,6 @@
 	"bs-extendedsearch-rest-trace-insert-failure": "Failed to insert trace data",
 	"bs-extendedsearch-rest-trace-remove-failure": "Failed to remove trace data",
 	"bs-extendedsearch-recently-found-header": "Recently viewed",
-	"bs-extendedsearch-autocomplete-input-title": "Search (type '/')"
+	"bs-extendedsearch-autocomplete-input-title": "Search (type '/')",
+	"bs-extendedsearch-recentlyfound-ignore": "Remove"
 }
