@@ -99,6 +99,9 @@ form .bs-extendedsearch-searchbar-clear {
 	color: var(--new-link-fg);
 	height: auto;
 }
+#bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup-create-page-link a:focus {
+	text-decoration: underline;
+}
 
 @media ( max-width: 1199.98px ) {
 
