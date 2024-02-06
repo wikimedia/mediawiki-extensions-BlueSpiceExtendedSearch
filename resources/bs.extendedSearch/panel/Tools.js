@@ -382,9 +382,9 @@
 		var headers = $( '.bs-extendedsearch-result-header' );
 		var pages = [];
 		$.each( headers, function( k, value ) {
-			var title = $( value ).data( 'bs-title' );
-			if( title ) {
-				pages.push( title );
+			var data = $( value ).data( 'bs-traceable-page' );
+			if( data && data.dbkey ) {
+				pages.push( data.dbkey );
 			}
 		} );
 
