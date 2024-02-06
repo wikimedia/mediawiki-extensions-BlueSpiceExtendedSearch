@@ -70,15 +70,10 @@ class Files extends GenericSource {
 	 * @return void
 	 */
 	protected function modifyRequestParams( string $action, array &$params ) {
-		if ( !in_array( $action, [ 'add', 'update' ] ) || $this->noPipeline ) {
+		if ( $action !== 'add' || $this->noPipeline ) {
 			return;
 		}
-		// Set pipeline on indexing calls
-		if ( $action === 'add' ) {
-			$params['body']['pipeline'] = 'file_data';
-		} else {
-			$params['body']['doc']['pipeline'] = 'file_data';
-		}
+		$params['pipeline'] = 'file_data';
 	}
 
 	/**
