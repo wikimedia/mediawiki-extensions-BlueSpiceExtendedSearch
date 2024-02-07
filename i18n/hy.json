@@ -18,5 +18,6 @@
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Անուն",
 	"bs-extendedsearch-searchcenter-sort-field-size": "Չափ",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Անվանատարածք",
-	"bs-extendedsearch-source-type-wikipage-label": "Վիքիէջ"
+	"bs-extendedsearch-source-type-wikipage-label": "Վիքիէջ",
+	"bs-extendedsearch-recentlyfound-ignore": "Հեռացնել"
 }
