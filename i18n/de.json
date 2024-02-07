@@ -191,5 +191,6 @@
 	"bs-extendedsearch-droplet-search-description": "Suchfeld zum Seiteninhalt hinzufügen",
 	"bs-extendedsearch-source-type-externalfile-label": "Externe Datei",
 	"bs-extendedsearch-source-label-externalfile": "Externe Datei",
-	"bs-extendedsearch-recentlyfound-ignore": "Entfernen"
+	"bs-extendedsearch-recentlyfound-ignore": "Entfernen",
+	"bs-extendedsearch-recently-found-header": "Zuletzt angesehen"
 }

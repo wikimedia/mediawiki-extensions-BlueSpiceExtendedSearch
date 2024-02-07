@@ -3,6 +3,7 @@
 		"authors": [
 			"BadDog",
 			"Kizule",
+			"Milicevic01",
 			"Zoranzoki21"
 		]
 	},
@@ -107,5 +108,6 @@
 	"action-extendedsearch-search-specialpage": "претражујете посебне странице",
 	"action-extendedsearch-search-wikipage": "претражујете странице",
 	"action-extendedsearch-search-repofile": "претражујете датотеке",
-	"action-extendedsearch-search-externalfile": "претражујете спољашње датотеке"
+	"action-extendedsearch-search-externalfile": "претражујете спољашње датотеке",
+	"bs-extendedsearch-recentlyfound-ignore": "Уклони"
 }

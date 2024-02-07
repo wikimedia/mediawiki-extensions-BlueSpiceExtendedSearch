@@ -142,5 +142,6 @@
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Ricerca in \"$1\"",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Restituisce i risultati della ricerca per un utente solo nella lingua dell'utente. Gli utenti possono impostare la loro lingua nelle loro preferenze.",
 	"bs-extendedsearch-source-type-externalfile-label": "File esterno",
-	"bs-extendedsearch-source-label-externalfile": "File esterno"
+	"bs-extendedsearch-source-label-externalfile": "File esterno",
+	"bs-extendedsearch-recentlyfound-ignore": "Rimuovi"
 }
