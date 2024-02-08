@@ -6,6 +6,7 @@
 			"Goefie",
 			"Mainframe98",
 			"McDutchie",
+			"Mitsjol",
 			"Rots61",
 			"Siebrand",
 			"Sjoerddebruin"
@@ -187,5 +188,7 @@
 	"bs-extendedsearch-trace-error-invalid-data": "Traceergegevens niet verstrekt of ongeldig. Ga niet rechtstreeks naar deze pagina.",
 	"apihelp-bs-extendedsearch-recently-found-pages-summary": "Geeft een overzicht van de pagina’s waar de gebruiker onlangs naartoe heeft genavigeerd vanuit de zoekresultaten",
 	"bs-extendedsearch-rest-trace-insert-failure": "Kan traceergegevens niet invoegen",
-	"bs-extendedsearch-rest-trace-remove-failure": "Kan traceergegevens niet verwijderen"
+	"bs-extendedsearch-rest-trace-remove-failure": "Kan traceergegevens niet verwijderen",
+	"bs-extendedsearch-recently-found-header": "Onlangs bekeken",
+	"bs-extendedsearch-recentlyfound-ignore": "Verwijderen"
 }
