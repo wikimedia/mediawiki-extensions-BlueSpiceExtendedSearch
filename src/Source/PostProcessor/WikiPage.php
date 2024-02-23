@@ -34,6 +34,9 @@ class WikiPage extends Base {
 	 * @return string
 	 */
 	protected function getTitleFieldName( $result ) {
+		if ( $result->getType() !== 'wikipage' ) {
+			return parent::getTitleFieldName( $result );
+		}
 		$data = $result->getData();
 		if ( $data['display_title'] !== '' ) {
 			return 'display_title';
