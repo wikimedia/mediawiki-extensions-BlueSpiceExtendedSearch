@@ -54,22 +54,12 @@ class BaseTitleSecurityTrimmings extends LookupModifier {
 	 * resources unavailable to LookupModifier, its implemented here
 	 */
 	public function apply() {
-		$prepLookup = new Lookup( $this->lookup->getQueryDSL() );
-
-		$size = $this->lookup->getSize();
-
-		// Prepare preprocessor query
-		$prepLookup->setSize( $size );
-		$prepLookup->clearSourceField();
-		$prepLookup->addSourceField( 'basename' );
-		$prepLookup->addSourceField( 'namespace' );
-		$prepLookup->addSourceField( 'prefixed_title' );
-		$prepLookup->removeSearchAfter();
-		$prepLookup->removeForceTerm();
-
 		$excludes = [];
-
-		$this->getExcludesForCurrentPage( $prepLookup, $size, $excludes );
+		$lookup = clone $this->lookup;
+		if ( $lookup->getSearchAfter() ) {
+			$lookup->setFrom( 0 );
+		}
+		$this->getExcludesForCurrentPage( $lookup, $excludes );
 
 		if ( empty( $excludes ) ) {
 			return;
@@ -84,24 +74,25 @@ class BaseTitleSecurityTrimmings extends LookupModifier {
 	 * to fill a page, or until there are no more results to go over
 	 *
 	 * @param Lookup $prepLookup
-	 * @param int $size
 	 * @param array &$excludes
 	 */
-	protected function getExcludesForCurrentPage( $prepLookup, $size, &$excludes ) {
+	protected function getExcludesForCurrentPage( $prepLookup, &$excludes ): void {
 		$validCount = 0;
 		$user = \RequestContext::getMain()->getUser();
 		$services = \MediaWiki\MediaWikiServices::getInstance();
 		$spFactory = $services->getSpecialPageFactory();
 		$permManager = $services->getPermissionManager();
 
-		while ( $validCount < $size ) {
+		while ( $validCount < (int)$prepLookup->getSize() ) {
 			$results = $this->runPrepQuery( $prepLookup );
 			if ( !$results ) {
 				// No (more) results can be retrieved
 				break;
 			}
 
+			$searchAfter = [];
 			foreach ( $results->getResults() as $resultObject ) {
+				$searchAfter = $resultObject->getSort();
 				$data = $resultObject->getData();
 				if ( $this->backend->isSharedIndex( $resultObject->getIndex() ) ) {
 					if ( $data['namespace'] !== NS_FILE ) {
@@ -146,7 +137,7 @@ class BaseTitleSecurityTrimmings extends LookupModifier {
 					}
 				}
 
-				if ( $permManager->userCan( 'read', $user, $title ) == false ) {
+				if ( !$permManager->userCan( 'read', $user, $title ) ) {
 					$excludes[] = $resultObject->getId();
 				}
 
@@ -154,7 +145,7 @@ class BaseTitleSecurityTrimmings extends LookupModifier {
 			}
 
 			// Get next page of results from preprocessor lookup
-			$prepLookup->setFrom( $prepLookup->getFrom() + $prepLookup->getSize() );
+			$prepLookup->setSearchAfter( $searchAfter );
 		}
 	}
 
