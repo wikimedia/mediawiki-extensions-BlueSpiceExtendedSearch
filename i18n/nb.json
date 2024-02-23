@@ -181,5 +181,9 @@
 	"bs-extendedsearch-source-label-externalfile": "Ekstern fil",
 	"bs-extendedsearch-trace-error-invalid-data": "Sporingsdata er ikke oppgitt eller er ugyldige. Ikke gå direkte til denne siden.",
 	"apihelp-bs-extendedsearch-recently-found-pages-summary": "Lister opp sider brukeren nylig har besøkt fra søkeresultatene",
-	"bs-extendedsearch-recentlyfound-ignore": "Fjern"
+	"bs-extendedsearch-recentlyfound-ignore": "Fjern",
+	"bs-extendedsearch-rest-trace-insert-failure": "Kunne ikke sette inn sporingsdata",
+	"bs-extendedsearch-rest-trace-remove-failure": "Kunne ikke fjerne sporingsdata",
+	"bs-extendedsearch-recently-found-header": "Nylig vist",
+	"bs-extendedsearch-autocomplete-input-title": "Søk (skriv «/»)"
 }
