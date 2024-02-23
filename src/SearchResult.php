@@ -53,6 +53,13 @@ class SearchResult {
 	}
 
 	/**
+	 * @return array
+	 */
+	public function getSort(): array {
+		return $this->data['sort'];
+	}
+
+	/**
 	 * @param string $name
 	 * @param mixed $value
 	 *
