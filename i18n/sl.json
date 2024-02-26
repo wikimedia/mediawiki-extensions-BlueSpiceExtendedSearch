@@ -178,7 +178,7 @@
 	"bs-extendedsearch-droplet-search-description": "Vsebini strani doda iskalno polje",
 	"bs-extendedsearch-source-type-externalfile-label": "Zunanja datoteka",
 	"bs-extendedsearch-source-label-externalfile": "Zunanja datoteka",
-	"bs-extendedsearch-trace-error-invalid-data": "Podatki o sledenju niso posredovani ali so neveljavni. Do te strani ne dostopajte neposredno.",
+	"bs-extendedsearch-trace-error-invalid-data": "Podatki o sledenju niso bili posredovani ali so neveljavni. Do te strani ne dostopajte neposredno.",
 	"apihelp-bs-extendedsearch-recently-found-pages-summary": "Navede strani, do katerih je uporabnik pred kratkim dostopal iz zadetkov iskanja",
 	"bs-extendedsearch-rest-trace-insert-failure": "Podatkov o sledenju ni bilo mogoče vstaviti",
 	"bs-extendedsearch-rest-trace-remove-failure": "Podatkov o sledenju ni bilo mogoče odstraniti",
