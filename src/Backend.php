@@ -435,6 +435,8 @@ class Backend {
 	 */
 	public function runRawQueryFromData( array $data ): SearchResultSet {
 		$raw = $this->getClient()->search( $data );
+		wfDebugLog( 'BSExtendedSearch', 'Raw Query: ' . FormatJson::encode( $data, true ) );
+		wfDebugLog( 'BSExtendedSearch', 'Raw Result: ' . FormatJson::encode( $raw, true ) );
 		return new SearchResultSet( $raw, $this );
 	}
 
