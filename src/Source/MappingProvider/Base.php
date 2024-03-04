@@ -24,6 +24,8 @@ class Base implements ISearchMappingProvider {
 			],
 			'suggestions' => [
 				'type' => 'search_as_you_type',
+				'analyzer' => 'simple',
+				'search_analyzer' => 'whitespace'
 			],
 			'uri' => [
 				'type' => 'text'
