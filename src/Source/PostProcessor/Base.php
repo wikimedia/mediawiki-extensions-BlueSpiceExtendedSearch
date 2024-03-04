@@ -169,7 +169,8 @@ class Base implements IPostProcessor {
 	protected function getTitleFieldValue( $result ) {
 		$configField = $this->postProcessorRunner->getConfig()->get( 'ESMatchPercentTitleField' );
 		$fieldName = $configField ?: $this->getTitleFieldName( $result );
-		return $result->getData()[$fieldName];
+		$data = $result->getData();
+		return $data[$fieldName] ?? 'basename';
 	}
 
 	/**
