@@ -8,6 +8,7 @@ class BaseSimpleQSFields extends LookupModifier {
 	 * Adds fields that will be searched including query-time boosting
 	 */
 	public function apply() {
+		$this->lookup->addSourceField( 'uri' );
 		$this->lookup->addSourceField( 'basename' );
 		$this->lookup->addSourceField( 'congregated' );
 		$this->lookup->addSourceField( 'ctime' );
@@ -34,6 +35,7 @@ class BaseSimpleQSFields extends LookupModifier {
 
 		$this->lookup->setQueryString( $simpleQS );
 
+		$this->lookup->removeSourceField( 'uri' );
 		$this->lookup->removeSourceField( 'basename' );
 		$this->lookup->removeSourceField( 'congregated' );
 		$this->lookup->removeSourceField( 'ctime' );
