@@ -528,6 +528,9 @@ class Backend {
 		$spellcheckResult = [
 			"action" => static::SPELLCHECK_ACTION_IGNORE
 		];
+		if ( $lookup->getSearchAfter() ) {
+			return $spellcheckResult;
+		}
 
 		if ( $lookup->getForceTerm() ) {
 			$lookup->removeForceTerm();

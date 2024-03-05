@@ -1455,4 +1455,17 @@ class Lookup extends \ArrayObject {
 			$this[$key] = $value;
 		}
 	}
+
+	/**
+	 * Get the search_after value.
+	 *
+	 * @return array|null The search_after value if it's set, otherwise null.
+	 */
+	public function getSearchAfter(): ?array {
+		if ( isset( $this['search_after'] ) ) {
+			return $this['search_after'];
+		}
+		return null;
+	}
+
 }
