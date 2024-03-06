@@ -56,7 +56,7 @@ class SearchResult {
 	 * @return array
 	 */
 	public function getSort(): array {
-		return $this->data['sort'];
+		return $this->data['sort'] ?? [];
 	}
 
 	/**
