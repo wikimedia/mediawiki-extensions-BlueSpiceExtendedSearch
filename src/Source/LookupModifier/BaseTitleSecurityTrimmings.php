@@ -145,7 +145,9 @@ class BaseTitleSecurityTrimmings extends LookupModifier {
 			}
 
 			// Get next page of results from preprocessor lookup
-			$prepLookup->setSearchAfter( $searchAfter );
+			if ( $searchAfter ) {
+				$prepLookup->setSearchAfter( $searchAfter );
+			}
 		}
 	}
 
