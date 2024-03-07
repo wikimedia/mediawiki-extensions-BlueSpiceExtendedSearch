@@ -8,6 +8,7 @@
 			"Eneelk",
 			"Fany",
 			"Gomoko",
+			"MacOS Weed",
 			"Thibaut120094",
 			"Urhixidur",
 			"Verdy p",
@@ -185,5 +186,7 @@
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Nombre de requêtes de recherche",
 	"bs-extendedsearch-droplet-search-name": "Champ de recherche",
 	"bs-extendedsearch-droplet-search-description": "Ajoute un champ de recherche au contenu de la page",
-	"bs-extendedsearch-source-label-externalfile": "Fichier externe"
+	"bs-extendedsearch-source-label-externalfile": "Fichier externe",
+	"bs-extendedsearch-autocomplete-input-title": "Rechercher (taper « / »)",
+	"bs-extendedsearch-recentlyfound-ignore": "Retirer"
 }
