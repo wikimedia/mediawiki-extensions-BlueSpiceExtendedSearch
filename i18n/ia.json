@@ -175,5 +175,8 @@
 	"bs-extendedsearch-trace-error-invalid-data": "Data de tracia non fornite o non valide. Non accede directemente a iste pagina.",
 	"apihelp-bs-extendedsearch-recently-found-pages-summary": "Lista le paginas al quales le usator ha recentemente navigate a partir del resultatos de recerca",
 	"bs-extendedsearch-rest-trace-insert-failure": "Error durante le insertion del datos de traciamento",
-	"bs-extendedsearch-rest-trace-remove-failure": "Error durante le deletion del datos de traciamento"
+	"bs-extendedsearch-rest-trace-remove-failure": "Error durante le deletion del datos de traciamento",
+	"bs-extendedsearch-recently-found-header": "Recentemente legite",
+	"bs-extendedsearch-autocomplete-input-title": "Cercar (digita ‘/’)",
+	"bs-extendedsearch-recentlyfound-ignore": "Remover"
 }
