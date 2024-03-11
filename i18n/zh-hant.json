@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Arielyurusova",
 			"Cwlin0416",
 			"Kly",
 			"Willy1018",
@@ -182,5 +183,10 @@
 	"bs-extendedsearch-droplet-search-description": "對頁面內容增加搜尋欄位",
 	"bs-extendedsearch-source-label-externalfile": "外部檔案",
 	"bs-extendedsearch-recently-found-header": "近期檢視",
-	"bs-extendedsearch-autocomplete-input-title": "搜尋（輸入「/」）"
+	"bs-extendedsearch-autocomplete-input-title": "搜尋（輸入「/」）",
+	"bs-extendedsearch-trace-error-invalid-data": "未提供追蹤資料或追蹤資料無效。請勿直接造訪此頁面。",
+	"apihelp-bs-extendedsearch-recently-found-pages-summary": "列出使用者最近從搜尋結果導航到的頁面",
+	"bs-extendedsearch-rest-trace-insert-failure": "插入追蹤資料失敗",
+	"bs-extendedsearch-rest-trace-remove-failure": "無法刪除追蹤數據",
+	"bs-extendedsearch-recentlyfound-ignore": "移除"
 }
