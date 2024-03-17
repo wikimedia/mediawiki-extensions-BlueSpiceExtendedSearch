@@ -50,7 +50,7 @@ class PrimaryDataProvider implements IPrimaryDataProvider {
 	 */
 	public function makeData( $params ) {
 		$this->data = [];
-		try{
+		try {
 			$res = $this->db->select(
 				'bs_extendedsearch_history',
 				[ Record::NAME => 'esh_term', Record::COUNT => 'COUNT( esh_term )' ],
@@ -59,7 +59,7 @@ class PrimaryDataProvider implements IPrimaryDataProvider {
 				$this->makePreOptionConds( $params )
 			);
 		} catch ( \Exception $e ) {
-			wfDebugLog( 'BSExtendedSearch',  'Error in query: ' . $this->db->lastQuery() );
+			wfDebugLog( 'BSExtendedSearch', 'Error in query: ' . $this->db->lastQuery() );
 		}
 
 		foreach ( $res as $row ) {
