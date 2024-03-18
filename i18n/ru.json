@@ -10,7 +10,8 @@
 			"Okras",
 			"Pacha Tchernof",
 			"Romanko Mikhail",
-			"Vlad5250"
+			"Vlad5250",
+			"Yurina Tatiana"
 		]
 	},
 	"bssearchadmin": "Поиск администратора",
@@ -116,5 +117,10 @@
 	"right-extendedsearch-search-repofile": "Поиск файлов",
 	"bs-extendedsearch-source-type-externalfile-label": "Внешний файл",
 	"bs-extendedsearch-source-label-externalfile": "Внешний файл",
-	"bs-extendedsearch-recently-found-header": "Недавно просмотрено"
+	"bs-extendedsearch-recently-found-header": "Недавно просмотрено",
+	"bs-extendedsearch-close-search-button-aria-label": "Закрыть окно поиска",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Заполнитель",
+	"bs-extendedsearch-droplet-search-name": "Поле поиска",
+	"bs-extendedsearch-autocomplete-input-title": "Поиск (введите '/')",
+	"bs-extendedsearch-recentlyfound-ignore": "Удалить"
 }
