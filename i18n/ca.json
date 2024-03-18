@@ -12,5 +12,7 @@
 	"bs-extendedsearch-search-center-create-page-link": "Crea la pàgina \"$1\"",
 	"bs-extendedsearch-flyout-similar-pages-title": "Pàgines similars",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "No s’ha trobat cap pàgina similar",
-	"bs-extendedsearch-droplet-search-name": "Cerca un camp"
+	"bs-extendedsearch-droplet-search-name": "Cerca un camp",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "Nom",
+	"bs-extendedsearch-searchcenter-sort-field-size": "Mida"
 }

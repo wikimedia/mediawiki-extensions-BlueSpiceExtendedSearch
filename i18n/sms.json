@@ -33,5 +33,6 @@
 	"action-extendedsearch-search-specialpage": "ooccâd tuåimmseeidaid",
 	"action-extendedsearch-search-wikipage": "ooccâd seeidaid",
 	"action-extendedsearch-search-repofile": "ooccâd teâttõõzzid",
-	"bs-extendedsearch-suggest-operator": "Juʹrddiǩ-a ton <b>$1</b>?"
+	"bs-extendedsearch-suggest-operator": "Juʹrddiǩ-a ton <b>$1</b>?",
+	"bs-extendedsearch-source-label-user": "Õõʹnni"
 }
