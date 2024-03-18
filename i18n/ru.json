@@ -10,7 +10,8 @@
 			"Okras",
 			"Pacha Tchernof",
 			"Romanko Mikhail",
-			"Vlad5250"
+			"Vlad5250",
+			"Yurina Tatiana"
 		]
 	},
 	"bssearchadmin": "Поиск администратора",
@@ -20,6 +21,7 @@
 	"apihelp-bs-extendedsearch-query-param-params": "Дополнительные параметры запроса",
 	"apihelp-bs-extendedsearch-stats-summary": "Возвращает статистические данные о зарегистрированных бэкэндах и их сконфигурированных источниках",
 	"apihelp-bs-extendedsearch-stats-param-stats": "Список статистических данных, который должен быть возвращён",
+	"bs-extendedsearch-close-search-button-aria-label": "Закрыть окно поиска",
 	"bs-extendedsearch-search-button-title": "Начать поиск",
 	"bs-extendedsearch-search-button-aria-label": "Начать поиск",
 	"bs-extendedsearch-search-input-placeholder": "Найти ...",
@@ -103,6 +105,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Пространства имён",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Категрии",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Категория1|Категория2|…",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Заполнитель",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Введите для поиска…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип",
 	"bs-extendedsearch-collection-type-searchhistory": "История поиска",
@@ -111,6 +114,9 @@
 	"right-extendedsearch-search-wikipage": "Поиск страниц",
 	"right-extendedsearch-search-repofile": "Поиск файлов",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Поиск в «$1»",
+	"bs-extendedsearch-droplet-search-name": "Поле поиска",
 	"bs-extendedsearch-source-label-externalfile": "Внешний файл",
-	"bs-extendedsearch-recently-found-header": "Недавно просмотрено"
+	"bs-extendedsearch-recently-found-header": "Недавно просмотрено",
+	"bs-extendedsearch-autocomplete-input-title": "Поиск (введите '/')",
+	"bs-extendedsearch-recentlyfound-ignore": "Удалить"
 }
