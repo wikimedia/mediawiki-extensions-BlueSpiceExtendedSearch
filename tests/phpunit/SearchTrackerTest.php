@@ -55,7 +55,7 @@ class SearchTrackerTest extends TestCase {
 		$db->expects( $this->once() )
 			->method( 'insert' )
 			->with(
-				$this->equalTo( 'bs_extendedsearch_trace' ),
+				'bs_extendedsearch_trace',
 				$this->equalTo( [
 					'est_namespace' => 0,
 					'est_title' => 'Test',
@@ -64,14 +64,14 @@ class SearchTrackerTest extends TestCase {
 					'est_last_view' => '123',
 					'est_type' => 'wikipage'
 				] ),
-				$this->equalTo( SearchTracker::class . '::trace' )
+				SearchTracker::class . '::trace'
 			)
 			->willReturn( true );
 
 		$db->expects( $this->once() )
 			->method( 'update' )
 			->with(
-				$this->equalTo( 'bs_extendedsearch_trace' ),
+				'bs_extendedsearch_trace',
 				$this->equalTo( [
 					'est_count' => 2,
 					'est_last_view' => '123',
@@ -81,7 +81,7 @@ class SearchTrackerTest extends TestCase {
 					'est_title' => 'Test',
 					'est_user' => 1,
 				] ),
-				$this->equalTo( SearchTracker::class . '::trace' )
+				SearchTracker::class . '::trace'
 			)
 			->willReturn( true );
 
@@ -118,7 +118,7 @@ class SearchTrackerTest extends TestCase {
 			'GROUP BY' => 'est_title, est_namespace, est_type',
 			'ORDER BY' => 'est_last_view DESC, count DESC',
 			'LIMIT' => 10
-		] );
+			] );
 		$result = $tracker->getForAnonymous();
 
 		foreach ( $result as $res ) {
@@ -140,11 +140,11 @@ class SearchTrackerTest extends TestCase {
 		$db->expects( $this->once() )
 			->method( 'select' )
 			->with(
-				$this->equalTo( 'bs_extendedsearch_trace' ),
-				$this->equalTo( $fields ),
-				$this->equalTo( $conds ),
-				$this->equalTo( SearchTracker::class . "::$method" ),
-				$this->equalTo( $options )
+				'bs_extendedsearch_trace',
+				$fields,
+				$conds,
+				SearchTracker::class . "::$method",
+				$options
 			)
 			->willReturn( new \FakeResultWrapper( [
 				[
@@ -163,15 +163,15 @@ class SearchTrackerTest extends TestCase {
 
 		$tf = $this->createMock( TitleFactory::class );
 		$tf->expects( $this->once() )->method( 'makeTitle' )->with(
-			$this->equalTo( 0 ),
-			$this->equalTo( 'Test' )
+			0,
+			'Test'
 		)->willReturn( $this->createMock( Title::class ) );
 
 		$spf = $this->createMock( SpecialPageFactory::class );
 		$spMock = $this->createMock( SpecialPage::class );
 		$spMock->method( 'getPageTitle' )->willReturn( $this->createMock( Title::class ) );
 		$spf->expects( $this->once() )->method( 'getPage' )->with(
-			$this->equalTo( 'DummySpecial' )
+			'DummySpecial'
 		)->willReturn( $spMock );
 
 		return new SearchTracker( $lb, $tf, $spf );

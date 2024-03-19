@@ -328,7 +328,7 @@ class Lookup extends \ArrayObject {
 
 			// Append
 			if ( isset( $aFilter['terms'] ) && isset( $aFilter['terms'][$sFieldName] ) ) {
-				$aFilter['terms'][$sFieldName] = array_merge( $aFilter['terms'][$sFieldName],  $mValue );
+				$aFilter['terms'][$sFieldName] = array_merge( $aFilter['terms'][$sFieldName], $mValue );
 				$aFilter['terms'][$sFieldName] = array_unique( $aFilter['terms'][$sFieldName] );
 				// reset indices
 				$aFilter['terms'][$sFieldName] = array_values( $aFilter['terms'][$sFieldName] );

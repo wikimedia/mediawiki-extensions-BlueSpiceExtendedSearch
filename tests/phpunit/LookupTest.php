@@ -187,7 +187,7 @@ class LookupTest extends \MediaWikiIntegrationTestCase {
 				"bool" => [
 					"filter" => [ [
 						"terms" => [ "someField" => [ 'someValue1', 'someValue2', 'someValue3' ] ]
-					],[
+					], [
 						"terms" => [ "someOtherField" => [ 'someValue1' ], "anotherField" => [ 'someValue2', 'someValue3' ] ]
 					],
 					[
@@ -222,7 +222,7 @@ class LookupTest extends \MediaWikiIntegrationTestCase {
 				"bool" => [
 					"filter" => [ [
 						"terms" => [ "someField" => [ 'someValue1', 'someValue2', 'someValue3' ] ]
-					],[
+					], [
 						"terms" => [ "someOtherField" => [ 'someValue1' ], "someField" => [ 'someValue4' ] ]
 					],
 					[
