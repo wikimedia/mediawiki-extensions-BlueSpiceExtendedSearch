@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Arielyurusova",
+			"Cookai1205",
 			"Cwlin0416",
 			"Kly",
 			"Willy1018",
@@ -89,7 +90,7 @@
 	"bs-extendedsearch-searchcenter-sort-field-ctime": "建立時間",
 	"bs-extendedsearch-searchcenter-sort-field-size": "大小",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "命名空間",
-	"bs-extendedsearch-search-center-filter-has-hidden": "...以及更多 {{PLURAL:$1|$1|$1}} 個",
+	"bs-extendedsearch-search-center-filter-has-hidden": "... 以及更多 {{PLURAL:$1|$1}} 個",
 	"bs-extendedsearch-search-center-result-exception": "查詢無法執行，請更改搜尋項。",
 	"bs-extendedsearch-autocomplete-create-page-link": "建立頁面「$1」",
 	"bs-extendedsearch-search-center-hitcount-replaced": "顯示取代$2的$1搜尋結果（{{PLURAL:$3|$3|$3}} 次觸發）",
