@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch;
 
+use MediaWiki\MediaWikiServices;
+
 class ResultRelevance {
 	/**
 	 *
@@ -35,6 +37,9 @@ class ResultRelevance {
 	 */
 	protected $queryConditions;
 
+	/** @var MediaWikiServices */
+	protected $services;
+
 	/**
 	 *
 	 * @param \User $user
@@ -45,6 +50,7 @@ class ResultRelevance {
 		$this->user = $user;
 		$this->resultId = $resultId;
 		$this->value = is_int( $value ) ? $value : 0;
+		$this->services = MediaWikiServices::getInstance();
 	}
 
 	/**
@@ -53,7 +59,8 @@ class ResultRelevance {
 	 * @return array
 	 */
 	public function getAllValuesForUser() {
-		$result = wfGetDB( DB_REPLICA )->select(
+		$dbr = $this->services->getDBLoadBalancer()->getConnection( DB_REPLICA );
+		$result = $dbr->select(
 			'bs_extendedsearch_relevance',
 			[ 'esr_result', 'esr_value' ],
 			$this->queryConditions
@@ -79,7 +86,8 @@ class ResultRelevance {
 
 		$this->setConditions();
 
-		$result = wfGetDB( DB_REPLICA )->selectRow(
+		$dbr = $this->services->getDBLoadBalancer()->getConnection( DB_REPLICA );
+		$result = $dbr->selectRow(
 			'bs_extendedsearch_relevance',
 			[ 'esr_value' ],
 			$this->queryConditions
@@ -102,7 +110,7 @@ class ResultRelevance {
 			return false;
 		}
 
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = $this->services->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 		$this->setConditions();
 
 		if ( $this->value == 0 ) {
