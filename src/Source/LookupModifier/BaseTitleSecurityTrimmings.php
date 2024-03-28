@@ -59,6 +59,7 @@ class BaseTitleSecurityTrimmings extends LookupModifier {
 		if ( $lookup->getSearchAfter() ) {
 			$lookup->setFrom( 0 );
 		}
+		$lookup->removeForceTerm();
 		$this->getExcludesForCurrentPage( $lookup, $excludes );
 
 		if ( empty( $excludes ) ) {
