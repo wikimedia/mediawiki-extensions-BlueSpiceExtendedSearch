@@ -481,6 +481,7 @@ class Backend {
 		$totalApproximated = $lookup->getSize() > $results->getTotalHits() ? false : true;
 
 		$resultData = $results->getResults();
+		$searchAfter = $this->getSearchAfterFromResults( $resultData );
 
 		$postProcessor = $this->getPostProcessor( static::QUERY_TYPE_SEARCH );
 		$postProcessor->process( $resultData, $lookup );
@@ -488,6 +489,7 @@ class Backend {
 		$formattedResultSet->results = $this->formatResults( $resultData, $lookup );
 		$formattedResultSet->total = $results->getTotalHits();
 		$formattedResultSet->filters = $this->getFilterConfig( $results );
+		$formattedResultSet->search_after = $searchAfter;
 		$formattedResultSet->spellcheck = $spellcheck;
 		$formattedResultSet->total_approximated = $totalApproximated ? 1 : 0;
 
@@ -1032,4 +1034,23 @@ class Backend {
 		}
 		return $plugins;
 	}
+
+	/**
+	 * @param array $rawResultData
+	 * @return array
+	 */
+	private function getSearchAfterFromResults( array $rawResultData ): array {
+		/** @var SearchResult $lastResult */
+		$lastResult = end( $rawResultData );
+		if ( !$lastResult ) {
+			return [];
+		}
+
+		$sort = $lastResult->getSort();
+		if ( !$sort ) {
+			return [];
+		}
+		return $sort;
+	}
+
 }
