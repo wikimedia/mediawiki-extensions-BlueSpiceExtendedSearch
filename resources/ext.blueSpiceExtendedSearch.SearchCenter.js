@@ -324,7 +324,8 @@
 				spellcheck: response.spellcheck,
 				caller: search,
 				total_approximated: response.total_approximated,
-				mobile: bs.extendedSearch.utils.isMobile()
+				mobile: bs.extendedSearch.utils.isMobile(),
+				searchAfter: response.search_after || []
 			} );
 			resultPanel.on( 'resultsAdded', function( resultsAdded ) {
 				$resultCnt.trigger( 'resultsUpdated', [ resultPanel, resultsAdded ] );

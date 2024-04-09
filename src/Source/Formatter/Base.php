@@ -97,6 +97,7 @@ class Base implements ISearchResultFormatter {
 		// Base class format must work with original values
 		// because it might be called multiple times
 		$originalValues = $resultObject->getData();
+		$resultData['id'] = $resultObject->getId();
 		$resultData['type'] = $resultObject->getType();
 		$resultData['score'] = $resultObject->getScore();
 
