@@ -112,6 +112,7 @@ class Query extends \ApiBase {
 		$oResult->addValue( null, 'spellcheck', $this->resultSet->spellcheck );
 		$oResult->addValue( null, 'lookup', \FormatJson::encode( $this->oLookup ) );
 		$oResult->addValue( null, 'total_approximated', $this->resultSet->total_approximated );
+		$oResult->addValue( null, 'search_after', $this->resultSet->search_after );
 		if ( !empty( $this->pageCreateData ) ) {
 			$oResult->addValue( null, 'page_create_data', $this->pageCreateData );
 		}
