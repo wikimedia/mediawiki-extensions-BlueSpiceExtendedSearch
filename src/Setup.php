@@ -3,8 +3,6 @@
 namespace BS\ExtendedSearch;
 
 use MediaWiki\MediaWikiServices;
-use QuickTemplate;
-use SpecialPage;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class Setup {
@@ -22,51 +20,6 @@ class Setup {
 	}
 
 	// TODO: Move hooks to proper classes
-
-	/**
-	 * @param \Skin &$skin
-	 * @param QuickTemplate &$template
-	 * @return bool
-	 * @throws \ConfigException
-	 * @throws \MWException
-	 */
-	public static function onSkinTemplateOutputPageBeforeExec( &$skin, &$template ) {
-		$template->set( 'bs_search_id', 'bs-extendedsearch-box' );
-		$template->set(
-			'bs_search_input',
-			[
-				'id' => 'bs-extendedsearch-input',
-				'type' => 'text',
-				'name' => 'raw_term',
-				'placeholder' => wfMessage( 'bs-extendedsearch-search-input-placeholder' )->plain(),
-				'aria-label' => wfMessage( 'bs-extendedsearch-search-input-aria-label' )->plain()
-			]
-		);
-
-		$template->set( 'bs_search_method', 'GET' );
-
-		$template->set( 'bs_search_mobile_id', 'bs-extendedsearch-mobile-box' );
-		$template->set(
-			'bs_search_mobile_input',
-			[
-				'id' => 'bs-extendedsearch-mobile-input',
-				'type' => 'text',
-				'name' => 'raw_term',
-				'placeholder' => wfMessage( 'bs-extendedsearch-search-input-placeholder' )->plain(),
-				'aria-label' => wfMessage( 'bs-extendedsearch-search-input-aria-label' )->plain()
-			]
-		);
-
-		$template->set( 'bs_search_target', [
-			'page_name' => SpecialPage::getTitleFor( 'BSSearchCenter' )->getPrefixedDBkey()
-		] );
-
-		$template->set(
-			'bs_search_action',
-			$skin->getConfig()->get( 'Script' )
-		);
-		return true;
-	}
 
 	/**
 	 *
