@@ -20,7 +20,7 @@ class UpdateSpecialPage extends UpdateTitleBase {
 
 	/**
 	 *
-	 * @return \SpecialPage
+	 * @return \SpecialPage|null
 	 */
 	protected function getDocumentProviderSource() {
 		return \MediaWiki\MediaWikiServices::getInstance()
