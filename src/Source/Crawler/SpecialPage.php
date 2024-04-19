@@ -32,7 +32,11 @@ class SpecialPage extends Base {
 	public function crawl() {
 		$aCanonicalNames = $this->specialPageFactory->getNames();
 		foreach ( $aCanonicalNames as $sCanonicalName ) {
-			$this->addToJobQueue( $this->specialPageFactory->getPage( $sCanonicalName )->getPageTitle() );
+			$specialPage = $this->specialPageFactory->getPage( $sCanonicalName );
+			if ( !$specialPage ) {
+				continue;
+			}
+			$this->addToJobQueue( $specialPage->getPageTitle() );
 		}
 	}
 }
