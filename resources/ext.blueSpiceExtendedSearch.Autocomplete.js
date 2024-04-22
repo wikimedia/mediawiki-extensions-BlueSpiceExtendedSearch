@@ -24,8 +24,12 @@
 				if ( $( e.target ).is( 'input, textarea' ) ) {
 					return;
 				}
-				// or the parents (+ exception for VE)
-				if ( $( e.target ).parents( 'input, textarea, .ve-init-target' ).length > 0 ) {
+				// or the parents
+				if ( $( e.target ).parents( 'input, textarea' ).length > 0 ) {
+					return;
+				}
+				// + exception for VE and CollabPad
+				if ( $( e.target ).hasClass( 've-ce-branchNode' ) ) {
 					return;
 				}
 
