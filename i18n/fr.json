@@ -13,7 +13,8 @@
 			"Urhixidur",
 			"Verdy p",
 			"Wladek92",
-			"Zarisi"
+			"Zarisi",
+			"Alien333"
 		]
 	},
 	"bs-extsearch-extensionname": "BlueSpiceExtendedSearch",
@@ -187,6 +188,10 @@
 	"bs-extendedsearch-droplet-search-name": "Champ de recherche",
 	"bs-extendedsearch-droplet-search-description": "Ajoute un champ de recherche au contenu de la page",
 	"bs-extendedsearch-source-label-externalfile": "Fichier externe",
+	"bs-extendedsearch-trace-error-invalid-data": "Données de traçage non fournies ou invalides. N'accédez pas directement à cette page.",
+	"bs-extendedsearch-rest-trace-insert-failure": "Échec de l'insertion des données de traçage",
+	"bs-extendedsearch-rest-trace-remove-failure": "Échec de la suppression des données de traçage",
+	"bs-extendedsearch-recently-found-header": "Consulté récemment",
 	"bs-extendedsearch-autocomplete-input-title": "Rechercher (taper « / »)",
 	"bs-extendedsearch-recentlyfound-ignore": "Retirer"
 }
