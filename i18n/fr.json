@@ -13,7 +13,8 @@
 			"Urhixidur",
 			"Verdy p",
 			"Wladek92",
-			"Zarisi"
+			"Zarisi",
+			"Alien333"
 		]
 	},
 	"bs-extsearch-extensionname": "BlueSpiceExtendedSearch",
@@ -110,6 +111,7 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Page wiki",
 	"bs-extendedsearch-source-type-repofile-label": "Fichier local",
 	"bs-extendedsearch-source-type-specialpage-label": "Page spéciale",
+	"bs-extendedsearch-source-type-externalfile-label": "Fichier externe",
 	"bs-extendedsearch-result-relevance-relevant": "Ce résultat est important pour moi",
 	"bs-extendedsearch-result-relevance-not-relevant": "Ce résultat n’est pas important pour moi",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "Rechercher en texte intégral",
@@ -146,10 +148,7 @@
 	"bs-extendedsearch-options-button-label": "Options de recherche",
 	"bs-extendedsearch-export-button-label": "Exporter les résultats de recherche",
 	"bs-extendedsearch-remove-button-label": "Retirer le filtre « $1 »",
-	"bs-extendedsearch-flyout-similar-pages-title": "Pages similaires",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Aucune page similaire trouvée",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Utilisé sur les pages",
-	"bs-extendedsearch-tagsearch-extension-description": "Ajouter un formulaire de recherche pour {{GENDER:}}votre contenu",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Saisir pour rechercher...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Type de résultat de recherche non valide : $1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",
@@ -190,8 +189,13 @@
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Nombre de requêtes de recherche",
 	"bs-extendedsearch-droplet-search-name": "Champ de recherche",
 	"bs-extendedsearch-droplet-search-description": "Ajoute un champ de recherche au contenu de la page",
-	"bs-extendedsearch-source-type-externalfile-label": "Fichier externe",
 	"bs-extendedsearch-source-label-externalfile": "Fichier externe",
+	"bs-extendedsearch-trace-error-invalid-data": "Données de traçage non fournies ou invalides. N'accédez pas directement à cette page.",
+	"bs-extendedsearch-rest-trace-insert-failure": "Échec de l'insertion des données de traçage",
+	"bs-extendedsearch-rest-trace-remove-failure": "Échec de la suppression des données de traçage",
+	"bs-extendedsearch-flyout-similar-pages-title": "Pages similaires",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Aucune page similaire trouvée",
+	"bs-extendedsearch-recently-found-header": "Consulté récemment",
 	"bs-extendedsearch-autocomplete-input-title": "Rechercher (taper « / »)",
 	"bs-extendedsearch-recentlyfound-ignore": "Retirer"
 }
