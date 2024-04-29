@@ -124,7 +124,7 @@
 	"bs-extendedsearch-search-center-filter-page_language-label": "Page language",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Page language:",
 	"bs-extendedsearch-wikipage-title-original": "(original title: $1)",
-	"bs-extendedsearch-auto-set-lang-filter-desc": "Whether to set page language filter automatically based on user/wiki language",
+	"bs-extendedsearch-auto-set-lang-filter-desc": "Whether to set page language filter automatically based on user\/wiki language",
 	"bs-extendedsearch-pref-auto-set-lang-filter": "Automatically set language filter",
 	"bs-extendedsearch-search-center-create-page-link": "Create page \"$1\"",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Page $1: Text: $2",
@@ -164,8 +164,8 @@
 	"action-extendedsearch-search-wikipage": "search for pages",
 	"action-extendedsearch-search-repofile": "search for files",
 	"action-extendedsearch-search-externalfile": "search for external files",
-	"bs-extendedsearch-pref-externalfilepaths-help": "External locations to scan for files and index files from. These locations are entered in key/value pairs.",
-	"bs-extendedsearch-suggest-operator": "Did you mean to search for <b>$1</b>?",
+	"bs-extendedsearch-pref-externalfilepaths-help": "External locations to scan for files and index files from. These locations are entered in key\/value pairs.",
+	"bs-extendedsearch-suggest-operator": "Did you mean to search for <b>$1<\/b>?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Showing results in \"$1\"",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Show global results",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Searching in \"$1\"",
@@ -182,6 +182,6 @@
 	"bs-extendedsearch-rest-trace-insert-failure": "Failed to insert trace data",
 	"bs-extendedsearch-rest-trace-remove-failure": "Failed to remove trace data",
 	"bs-extendedsearch-recently-found-header": "Recently viewed",
-	"bs-extendedsearch-autocomplete-input-title": "Search (type '/')",
+	"bs-extendedsearch-autocomplete-input-title": "Search (type '\/')",
 	"bs-extendedsearch-recentlyfound-ignore": "Remove"
 }
