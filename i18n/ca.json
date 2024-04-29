@@ -7,11 +7,11 @@
 		]
 	},
 	"bs-extendedsearch-search-center-result-ctime-label": "Creat:",
-	"bs-extendedsearch-searchcenter-sort-field-ctime": "Temps de creació",
-	"bs-extendedsearch-autocomplete-create-page-link": "Crea la pàgina \"$1\"",
-	"bs-extendedsearch-search-center-create-page-link": "Crea la pàgina \"$1\"",
-	"bs-extendedsearch-flyout-similar-pages-title": "Pàgines similars",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "No s’ha trobat cap pàgina similar",
+	"bs-extendedsearch-searchcenter-sort-field-ctime": "Temps de creaci\u00f3",
+	"bs-extendedsearch-autocomplete-create-page-link": "Crea la p\u00e0gina \"$1\"",
+	"bs-extendedsearch-search-center-create-page-link": "Crea la p\u00e0gina \"$1\"",
+	"bs-extendedsearch-flyout-similar-pages-title": "P\u00e0gines similars",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "No s\u2019ha trobat cap p\u00e0gina similar",
 	"bs-extendedsearch-droplet-search-name": "Cerca un camp",
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Nom",
 	"bs-extendedsearch-searchcenter-sort-field-size": "Mida"

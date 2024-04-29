@@ -4,10 +4,10 @@
 			"Saimawnkham"
 		]
 	},
-	"bs-extendedsearch-search-center-filter-categories-label": "ပိူင်ထၢၼ်ႈ",
-	"bs-extendedsearch-search-center-filter-categories-with-values-label": "ပိူင်ထၢၼ်ႈ:",
-	"bs-extendedsearch-search-center-result-categories-label": "ပိူင်ထၢၼ်ႈ:",
-	"bs-extendedsearch-search-center-filter-page_language-label": "ၽႃႇသႃႇၵႂၢမ်း ၼႃႈလိၵ်ႈ",
-	"bs-extendedsearch-pref-auto-set-lang-filter": "မၵ်းမၼ်ႈတူဝ်ထွင် ၽႃႇသႃၵႂၢမ်းႁင်းတူဝ်",
-	"bs-extendedsearch-search-center-dialog-button-cancel-label": "ယုၵ်ႉလိူၵ်ႈ"
+	"bs-extendedsearch-search-center-filter-categories-label": "\u1015\u102d\u1030\u1004\u103a\u1011\u1062\u107c\u103a\u1088",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "\u1015\u102d\u1030\u1004\u103a\u1011\u1062\u107c\u103a\u1088:",
+	"bs-extendedsearch-search-center-result-categories-label": "\u1015\u102d\u1030\u1004\u103a\u1011\u1062\u107c\u103a\u1088:",
+	"bs-extendedsearch-search-center-filter-page_language-label": "\u107d\u1083\u1087\u101e\u1083\u1087\u1075\u1082\u1062\u1019\u103a\u1038 \u107c\u1083\u1088\u101c\u102d\u1075\u103a\u1088",
+	"bs-extendedsearch-pref-auto-set-lang-filter": "\u1019\u1075\u103a\u1038\u1019\u107c\u103a\u1088\u1010\u1030\u101d\u103a\u1011\u103d\u1004\u103a \u107d\u1083\u1087\u101e\u1083\u1075\u1082\u1062\u1019\u103a\u1038\u1081\u1004\u103a\u1038\u1010\u1030\u101d\u103a",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "\u101a\u102f\u1075\u103a\u1089\u101c\u102d\u1030\u1075\u103a\u1088"
 }
