@@ -4,19 +4,19 @@
 			"Patriot Kor",
 			"Patriot Kur",
 			"Yusifmv",
-			"\u0413\u0443\u0441\u0435\u0439\u043d"
+			"Гусейн"
 		]
 	},
-	"bs-extendedsearch-source-label-user": "Oko\u0259d\u0259",
-	"bs-extendedsearch-search-center-filter-tags-label": "N\u0131\u015fon",
+	"bs-extendedsearch-source-label-user": "Okoədə",
+	"bs-extendedsearch-search-center-filter-tags-label": "Nışon",
 	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Tegon:",
 	"bs-extendedsearch-search-center-result-namespace_text-label": "Nomico:",
-	"bs-extendedsearch-search-center-dialog-button-cancel-label": "L\u0259\u011fv karde",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Ləğv karde",
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Nom",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nomico",
-	"bs-extendedsearch-source-type-externalfile-label": "Be\u0161emon\u0259 fajl",
-	"bs-extendedsearch-source-label-externalfile": "Be\u0161emon\u0259 fajl",
-	"bs-extendedsearch-search-center-filter-categories-label": "Kategorij\u0259",
-	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Kategorij\u0259:",
-	"bs-extendedsearch-search-center-result-categories-label": "Kategorij\u0259:"
+	"bs-extendedsearch-source-type-externalfile-label": "Bešemonə fajl",
+	"bs-extendedsearch-source-label-externalfile": "Bešemonə fajl",
+	"bs-extendedsearch-search-center-filter-categories-label": "Kategorijə",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Kategorijə:",
+	"bs-extendedsearch-search-center-result-categories-label": "Kategorijə:"
 }

@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kimberli M\u00e4k\u00e4r\u00e4inen (WMNO)",
+			"Kimberli Mäkäräinen (WMNO)",
 			"Yupik"
 		]
 	},
@@ -10,10 +10,10 @@
 	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Nammagomuvuohta:",
 	"bs-extendedsearch-search-center-result-namespace_text-label": "Nammagomuvuohta:",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nammagomuvuohta",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Nammagomuvuo\u0111at",
-	"bs-extendedsearch-collection-type-searchhistory": "Ohcanhistorj\u00e1",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Nammagomuvuođat",
+	"bs-extendedsearch-collection-type-searchhistory": "Ohcanhistorjá",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Lasit silli",
-	"bs-extendedsearch-admin-label-error": "Meatt\u00e1hus",
+	"bs-extendedsearch-admin-label-error": "Meattáhus",
 	"bs-extendedsearch-source-label-specialpage": "Doaibmasiidu",
 	"bs-extendedsearch-source-type-specialpage-label": "Doaibmasiidu",
 	"right-extendedsearch-search-specialpage": "ohcat doaibmasiidduid",
@@ -23,6 +23,6 @@
 	"right-extendedsearch-search-repofile": "Ohcat fiillaid",
 	"bs-extendedsearch-search-center-filter-tags-label": "Gilkor",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Geavat",
-	"bs-extendedsearch-source-type-repofile-label": "B\u00e1ikk\u00e1la\u0161 fiila",
+	"bs-extendedsearch-source-type-repofile-label": "Báikkálaš fiila",
 	"bs-extendedsearch-source-label-user": "Geavaheaddji"
 }
