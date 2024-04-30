@@ -6,17 +6,17 @@
 		]
 	},
 	"bs-extendedsearch-source-label-user": "Kevttee",
-	"bs-extendedsearch-admin-label-error": "Feil\u00e2",
+	"bs-extendedsearch-admin-label-error": "Feilâ",
 	"bs-extendedsearch-search-center-filter-categories-label": "Luokka",
 	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Kilgoleh:",
 	"bs-extendedsearch-search-center-result-categories-label": "Luokka:",
-	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Joosk\u00e2",
-	"bs-extendedsearch-searchcenter-sort-field-basename": "Nomm\u00e2",
-	"bs-extendedsearch-autocomplete-modified-time-label": "Majemust\u00e1\u00e1 nub\u00e1stittum: $1",
-	"bs-extendedsearch-collection-type-searchhistory": "Uucc\u00e2mhistorj\u00e1",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Jooskâ",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "Nommâ",
+	"bs-extendedsearch-autocomplete-modified-time-label": "Majemustáá nubástittum: $1",
+	"bs-extendedsearch-collection-type-searchhistory": "Uuccâmhistorjá",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Lasseet sillee",
-	"bs-extendedsearch-source-type-specialpage-label": "Toim\u00e2sij\u0111o",
-	"bs-extendedsearch-source-label-specialpage": "Toim\u00e2sij\u0111o",
-	"bs-extendedsearch-search-center-filter-page_language-label": "Siij\u0111o kiel\u00e2",
-	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Siij\u0111o kiel\u00e2:"
+	"bs-extendedsearch-source-type-specialpage-label": "Toimâsijđo",
+	"bs-extendedsearch-source-label-specialpage": "Toimâsijđo",
+	"bs-extendedsearch-search-center-filter-page_language-label": "Siijđo kielâ",
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Siijđo kielâ:"
 }

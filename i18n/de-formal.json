@@ -5,12 +5,12 @@
 			"Mglaser"
 		]
 	},
-	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Keine g\u00fcltigen \u00dcbereinstimmungen f\u00fcr Ihre Anfrage",
+	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Keine gültigen Übereinstimmungen für Ihre Anfrage",
 	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Vielleicht suchen Sie auch nach...",
 	"bs-extendedsearch-search-center-result-help": "Geben Sie etwas in die Suchleiste oben ein....",
-	"bs-extendedsearch-search-center-result-exception": "Anfrage kann nicht ausgef\u00fchrt werden, bitte \u00e4ndern Sie den Suchbegriff.",
+	"bs-extendedsearch-search-center-result-exception": "Anfrage kann nicht ausgeführt werden, bitte ändern Sie den Suchbegriff.",
 	"bs-extendedsearch-search-center-hitcount-suggest": "Meinten Sie $1 ({{PLURAL:$2|Ein|$2}} Treffer)?",
-	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch \u2013 {{GENDER:$2|Sie}} haben {{PLURAL:$1|eine Seite|$1 Seiten}} als {{PLURAL:$1|relevantes Suchergebnis|relevante Suchergebnisse}} markiert",
-	"bs-extendedsearch-tagsearch-extension-description": "{{GENDER:|Ihrem}} Inhalt ein Suchformular hinzuf\u00fcgen",
-	"bs-extendedsearch-suggest-operator": "Wollten Sie nach <b>$1<\/b> suchen?"
+	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch – {{GENDER:$2|Sie}} haben {{PLURAL:$1|eine Seite|$1 Seiten}} als {{PLURAL:$1|relevantes Suchergebnis|relevante Suchergebnisse}} markiert",
+	"bs-extendedsearch-tagsearch-extension-description": "{{GENDER:|Ihrem}} Inhalt ein Suchformular hinzufügen",
+	"bs-extendedsearch-suggest-operator": "Wollten Sie nach <b>$1</b> suchen?"
 }
