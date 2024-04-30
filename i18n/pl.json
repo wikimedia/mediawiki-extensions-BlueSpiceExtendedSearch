@@ -79,5 +79,11 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Przestrzenie nazw",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategoria(e)",
 	"bs-extendedsearch-source-type-externalfile-label": "Plik zewnętrzny",
-	"bs-extendedsearch-source-label-externalfile": "Plik zewnętrzny"
+	"bs-extendedsearch-source-label-externalfile": "Plik zewnętrzny",
+	"bs-extendedsearch-close-search-button-aria-label": "Zamknij pole wyszukiwania",
+	"bs-extendedsearch-search-button-title": "Zacznij szukać",
+	"bs-extendedsearch-search-button-aria-label": "Zacznij szukać",
+	"bs-extendedseach-wikipage-section-more-text": "... $1 więcej",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Typ",
+	"bs-extendedsearch-recentlyfound-ignore": "Usuń"
 }
