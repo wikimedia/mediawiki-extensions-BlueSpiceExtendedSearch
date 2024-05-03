@@ -6,6 +6,12 @@ use MediaWiki\MediaWikiServices;
 
 class AddResources extends \BlueSpice\Hook\BeforePageDisplay {
 
+	protected function skipProcessing() {
+		if ( !$this->out->getTitle() ) {
+			return true;
+		}
+	}
+
 	protected function doProcess() {
 		$title = $this->out->getTitle();
 		if ( $title->equals( \SpecialPage::getTitleFor( 'BSSearchCenter' ) ) === false ) {
