@@ -181,7 +181,11 @@ class SearchTracker {
 			case 'wikipage':
 				return $this->titleFactory->makeTitle( $ns, $title );
 			case 'specialpage':
-				return $this->specialPageFactory->getPage( $title )->getPageTitle();
+				$specialPage = $this->specialPageFactory->getPage( $title );
+				if ( !$specialPage ) {
+					return null;
+				}
+				return $specialPage->getPageTitle();
 		}
 		return null;
 	}
