@@ -185,5 +185,6 @@
 	"bs-extendedsearch-rest-trace-insert-failure": "Kan traceergegevens niet invoegen",
 	"bs-extendedsearch-rest-trace-remove-failure": "Kan traceergegevens niet verwijderen",
 	"bs-extendedsearch-recently-found-header": "Onlangs bekeken",
+	"bs-extendedsearch-autocomplete-input-title": "Zoeken (typ ‘/’)",
 	"bs-extendedsearch-recentlyfound-ignore": "Verwijderen"
 }
