@@ -8,15 +8,15 @@
 		]
 	},
 	"bs-extendedsearch-source-label-user": "Okoədə",
-	"bs-extendedsearch-search-center-filter-tags-label": "Nışon",
+	"bs-extendedsearch-search-center-filter-tags-label": "Nyšon",
+	"bs-extendedsearch-search-center-filter-categories-label": "Kategorijə",
 	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Tegon:",
-	"bs-extendedsearch-search-center-result-namespace_text-label": "Nomico:",
-	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Ləğv karde",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Kategorijə:",
+	"bs-extendedsearch-search-center-result-namespace_text-label": "Nomičo:",
+	"bs-extendedsearch-search-center-result-categories-label": "Kategorijə:",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Ləǧv karde",
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Nom",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nomico",
 	"bs-extendedsearch-source-type-externalfile-label": "Bešemonə fajl",
-	"bs-extendedsearch-source-label-externalfile": "Bešemonə fajl",
-	"bs-extendedsearch-search-center-filter-categories-label": "Kategorijə",
-	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Kategorijə:",
-	"bs-extendedsearch-search-center-result-categories-label": "Kategorijə:"
+	"bs-extendedsearch-source-label-externalfile": "Bešemonə fajl"
 }
