@@ -56,6 +56,9 @@ abstract class UpdateJob extends Job {
 		return true;
 	}
 
+	/**
+	 * @return mixed
+	 */
 	abstract protected function isDeletion();
 
 	/**
