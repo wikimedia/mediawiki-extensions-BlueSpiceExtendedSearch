@@ -1,8 +1,8 @@
 <?php
 
-namespace BS\ExtendedSearch\SimpleFarmer\CommandDescription;
+namespace BS\ExtendedSearch\WikiFarm\CommandDescription;
 
-use BlueSpice\SimpleFarmer\CommandDescriptionBase;
+use BlueSpice\WikiFarm\CommandDescriptionBase;
 
 class DeleteIndices extends CommandDescriptionBase {
 

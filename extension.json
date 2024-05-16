@@ -196,13 +196,13 @@
 				"searchstats": "\\BS\\ExtendedSearch\\Data\\TagCloud\\Searchstats\\Store"
 			}
 		},
-		"BlueSpiceSimpleFarmer": {
+		"BlueSpiceWikiFarm": {
 			"PostInstanceCreationCommandFactories": {
-				"initbackend": "BS\\ExtendedSearch\\SimpleFarmer\\CommandDescription\\InitBackend::factory",
-				"rebuildindex": "BS\\ExtendedSearch\\SimpleFarmer\\CommandDescription\\RebuildIndex::factory"
+				"initbackend": "BS\\ExtendedSearch\\WikiFarm\\CommandDescription\\InitBackend::factory",
+				"rebuildindex": "BS\\ExtendedSearch\\WikiFarm\\CommandDescription\\RebuildIndex::factory"
 			},
 			"PreInstanceDeletionCommandFactories": {
-				"deleteindices": "BS\\ExtendedSearch\\SimpleFarmer\\CommandDescription\\DeleteIndices::factory"
+				"deleteindices": "BS\\ExtendedSearch\\WikiFarm\\CommandDescription\\DeleteIndices::factory"
 			}
 		},
 		"BlueSpicePrivacy": {
