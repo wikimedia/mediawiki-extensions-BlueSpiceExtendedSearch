@@ -48,6 +48,9 @@ class RepoFile extends Base {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onFileUpload( $oFile, $bReupload = false, $bHasDescription = false ) {
+		if ( $this->shouldSkip( $oFile ) ) {
+			return true;
+		}
 		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
 			new UpdateRepoFile( $oFile->getTitle() )
 		);
@@ -81,6 +84,10 @@ class RepoFile extends Base {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onFileUndeleteComplete( $oTitle, $aFileVersions, $oUser, $sReason ) {
+		$newFile = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $oTitle );
+		if ( !$newFile || $this->shouldSkip( $newFile ) ) {
+			return true;
+		}
 		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
 			new UpdateRepoFile( $oTitle )
 		);
@@ -90,9 +97,9 @@ class RepoFile extends Base {
 	/**
 	 * Holds instance of file before its moved
 	 *
-	 * @var \File
+	 * @var \File|null
 	 */
-	protected $titleMoveOrigFile;
+	protected $titleMoveOrigFile = null;
 
 	/**
 	 *
@@ -102,12 +109,17 @@ class RepoFile extends Base {
 	 * @return bool
 	 */
 	public function onTitleMove( $title, $newtitle, $user ) {
+		$this->titleMoveOrigFile = null;
 		if ( $title->getNamespace() !== NS_FILE ) {
 			return true;
 		}
-
 		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
 		$this->titleMoveOrigFile = $file;
+
+		$newFile = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $newtitle );
+		if ( !$newFile || $this->shouldSkip( $newFile ) ) {
+			return true;
+		}
 		return true;
 	}
 
@@ -122,31 +134,45 @@ class RepoFile extends Base {
 		if ( $oTitle->getNamespace() !== NS_FILE ) {
 			return true;
 		}
+		if ( $this->titleMoveOrigFile ) {
+			// Remove old file
+			MediaWikiServices::getInstance()->getJobQueueGroup()->push(
+				new \BS\ExtendedSearch\Source\Job\UpdateRepoFile(
+					Title::newFromLinkTarget( $oTitle ),
+					[
+						'filedata' => $this->getFileData( $this->titleMoveOrigFile ),
+						'action' => UpdateRepoFile::ACTION_DELETE
+					]
+				)
+			);
+		}
+		$newFile = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $oNewtitle );
+		if ( !$newFile || $this->shouldSkip( $newFile ) ) {
+			return true;
+		}
+		// Index new file
+		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
+			new UpdateRepoFile( Title::newFromLinkTarget( $oNewtitle ) )
+		);
 
-		$jobs = [
-			new \BS\ExtendedSearch\Source\Job\UpdateRepoFile(
-				Title::newFromLinkTarget( $oTitle ),
-				[
-					'filedata' => $this->getFileData( $this->titleMoveOrigFile ),
-					'action' => UpdateRepoFile::ACTION_DELETE
-				]
-			),
-			new UpdateRepoFile( Title::newFromLinkTarget( $oNewtitle ) ),
-		];
-		MediaWikiServices::getInstance()->getJobQueueGroup()->push( $jobs );
 		return true;
 	}
 
 	/**
 	 * @param File $repoFile
 	 * @param string $sourceFilePath
+	 * @return bool
 	 */
 	public function onWebDAVPublishToWikiDone( $repoFile, $sourceFilePath ) {
+		if ( $this->shouldSkip( $repoFile ) ) {
+			return true;
+		}
 		if ( $repoFile->getTitle() instanceof Title ) {
 			MediaWikiServices::getInstance()->getJobQueueGroup()->push(
 				new UpdateRepoFile( $repoFile->getTitle() )
 			);
 		}
+		return true;
 	}
 
 	/**
@@ -161,5 +187,22 @@ class RepoFile extends Base {
 				'src' => $oFile->getPath()
 			] )
 		];
+	}
+
+	/**
+	 *
+	 * @param File $file
+	 * @return bool
+	 */
+	protected function shouldSkip( $file ) {
+		$extensionBlacklist = $this->source->getConfig()->has( 'extension_blacklist' ) ?
+			$this->source->getConfig()->get( 'extension_blacklist' ) :
+			[];
+		$lcExt = strtolower( $file->getExtension() );
+		if ( in_array( $lcExt, $extensionBlacklist ) ) {
+			return true;
+		}
+
+		return $file->getSize() && $file->getSize() > $this->source->getConfig()->get( 'max_size' );
 	}
 }
