@@ -133,6 +133,9 @@
 
 	function _onEmptyFocus() {
 		this.removePopup();
+		if ( !this.searchBar.showRecentlyFound ) {
+			return;
+		}
 		bs.extendedSearch._getRecentlyFound().done( function( response ) {
 			this.makePopup(
 				response.suggestions,

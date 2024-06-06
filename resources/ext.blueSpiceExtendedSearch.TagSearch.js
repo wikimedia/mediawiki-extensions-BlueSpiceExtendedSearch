@@ -14,7 +14,8 @@
 			var searchBar = new bs.extendedSearch.SearchBar( {
 				useNamespacePills: false,
 				cntId: $searchField.attr( 'id' ),
-				inputId: $searchInput.attr( 'id' )
+				inputId: $searchInput.attr( 'id' ),
+				showRecentlyFound: false,
 			} );
 
 			autocomplete.init( {

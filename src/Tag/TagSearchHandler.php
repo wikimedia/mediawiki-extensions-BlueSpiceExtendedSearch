@@ -68,6 +68,7 @@ class TagSearchHandler extends Handler {
 		if ( count( $this->processedArgs[TagSearch::PARAM_TYPE] ) > 0 ) {
 			$lookup->addSearchInTypes( [ $this->processedArgs[TagSearch::PARAM_TYPE] ] );
 		}
+		$this->modifyLookup( $lookup );
 
 		$lookup = \FormatJson::encode( $lookup );
 
@@ -88,6 +89,14 @@ class TagSearchHandler extends Handler {
 			'TagSearchField',
 			$params
 		);
+	}
+
+	/**
+	 * @param Lookup $lookup
+	 * @return void
+	 */
+	protected function modifyLookup( Lookup $lookup ) {
+		// NOOP
 	}
 
 	/**
