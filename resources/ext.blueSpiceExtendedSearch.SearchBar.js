@@ -15,6 +15,7 @@
 		this.value = '';
 		this.namespace = {};
 		this.masterFilter = cfg.masterFilter || null;
+		this.showRecentlyFound = typeof cfg.showRecentlyFound !== 'undefined' ? cfg.showRecentlyFound : true;
 
 		this.useNamespacePills = true;
 		if( cfg.hasOwnProperty( 'useNamespacePills' ) && cfg.useNamespacePills === false ) {
