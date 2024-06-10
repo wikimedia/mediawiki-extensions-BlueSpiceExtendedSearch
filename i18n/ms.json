@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Anakmalaysia"
+			"Anakmalaysia",
+			"Hakimi97"
 		]
 	},
+	"bs-extendedsearch-search-center-result-author-label": "Pengarang:",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Semua fail yang diindeks dari lokasi fizikal terindeks didahulukan dalam hasil carian. Ia harus digunakan jika fail-fail berkenaan terdapat di pelayan web. Secara lalai, awalan URL ditetapkan pada nilai yang sama seperti laluan Fizikal.",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Bahasa halaman"
 }
