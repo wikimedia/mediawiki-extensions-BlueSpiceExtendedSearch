@@ -96,11 +96,13 @@ class Wildcarder {
 	 * Replace all separators with a given replacement
 	 *
 	 * @param string $replacement
+	 * @param array $additionalSeparators
 	 * @return string
 	 */
-	public function replaceSeparators( $replacement = '' ) {
+	public function replaceSeparators( $replacement = '', ?array $additionalSeparators = [] ) {
 		$term = $this->original;
-		foreach ( $this->wildcardingSeparators as $separator ) {
+		$separators = array_merge( $additionalSeparators, $this->wildcardingSeparators );
+		foreach ( $separators as $separator ) {
 			$term = str_replace( $separator, $replacement, $term );
 		}
 		return $term;

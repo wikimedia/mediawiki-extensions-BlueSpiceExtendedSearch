@@ -81,8 +81,13 @@ class Base implements IPostProcessor {
 			return false;
 		}
 		$matchPercent = $this->getMatchPercent( $result, $lookup );
-		$boostFactor = (float)$this->postProcessorRunner->getConfig()->get( 'ESMatchPercentBoostFactor' );
-		$factor = $matchPercent * $boostFactor;
+		if ( (int)$matchPercent === 1 ) {
+			// 100% match, extra boost, exact match always to top
+			$factor = 10;
+		} else {
+			$boostFactor = (float)$this->postProcessorRunner->getConfig()->get( 'ESMatchPercentBoostFactor' );
+			$factor = $matchPercent * $boostFactor;
+		}
 
 		$result->setParam( '_score', $score + ( $score * $factor ) );
 
@@ -95,41 +100,37 @@ class Base implements IPostProcessor {
 	 * @return int
 	 */
 	private function getMatchPercent( $result, $lookup ) {
-		$title = strtolower( $this->getTitleFieldValue( $result ) );
-		$tokens = $this->getSearchTermTokens( $lookup );
-		if ( empty( $tokens ) ) {
+		$titleTokens = $this->tokenizeString( $this->getTitleFieldValue( $result ) );
+		$searchTokens = $this->getSearchTermTokens( $lookup );
+		if ( empty( $searchTokens ) || empty( $titleTokens ) ) {
 			return 0;
 		}
 
-		$matchCount = 0;
-		foreach ( $tokens as $token ) {
-			if ( $token == '' ) {
-				continue;
-			}
-			if ( strpos( $title, $token ) !== false ) {
-				$matchCount += strlen( $token );
-			}
-		}
-		if ( $matchCount >= strlen( $title ) ) {
-			return 1;
-		}
-		if ( $matchCount === 0 ) {
-			return 0;
-		}
+		$matched = array_intersect( $titleTokens, $searchTokens );
+		$totalLen = array_sum( array_map( 'strlen', $titleTokens ) );
+		$matchLen = array_sum( array_map( 'strlen', $matched ) );
 
-		return $matchCount / strlen( $title );
+		return (float)( $matchLen / $totalLen );
 	}
 
 	/**
 	 * @param Lookup $lookup
 	 * @return array
 	 */
-	private function getSearchTermTokens( $lookup ): array {
+	private function getSearchTermTokens( Lookup $lookup ): array {
 		$term = $this->getTermFromLookup( $lookup );
-		$wildcarder = Wildcarder::factory( $term );
-		$term = $wildcarder->replaceSeparators( ' ' );
-		$term = strtolower( $term );
-		return explode( ' ', $term );
+		return $this->tokenizeString( $term );
+	}
+
+	/**
+	 * @param string $string
+	 * @return array
+	 */
+	private function tokenizeString( string $string ): array {
+		$wildcarder = Wildcarder::factory( $string );
+		$string = $wildcarder->replaceSeparators( ' ', [ ':', '/' ] );
+		$string = strtolower( $string );
+		return explode( ' ', $string );
 	}
 
 	/**
