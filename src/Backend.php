@@ -403,6 +403,7 @@ class Backend {
 		if ( !empty( $excludeTypes ) ) {
 			$indices = array_diff( $indices, $this->getAllIndicesForQuery( $excludeTypes ) );
 		}
+
 		$query = $lookup->getQueryDSL();
 		if ( isset( $query['indices_boost'] ) ) {
 			$replaced = [];

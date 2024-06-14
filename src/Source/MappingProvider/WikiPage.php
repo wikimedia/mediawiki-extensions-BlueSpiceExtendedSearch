@@ -13,7 +13,7 @@ class WikiPage extends Base {
 		return array_merge( $config, [
 			'prefixed_title' => [
 				'type' => 'text',
-				'copy_to' => [ 'congregated', 'suggestions', 'prefixed_title_exact' ],
+				'copy_to' => [ 'congregated', 'prefixed_title_exact' ],
 			],
 			'prefixed_title_exact' => [
 				'type' => 'keyword'
@@ -59,7 +59,7 @@ class WikiPage extends Base {
 			],
 			'display_title' => [
 				'type' => 'keyword',
-				'copy_to' => [ 'congregated', 'suggestions' ]
+				'copy_to' => [ 'congregated' ]
 			],
 			'used_files' => [
 				'type' => 'keyword'

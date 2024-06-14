@@ -101,7 +101,7 @@ bs.extendedSearch.Lookup.prototype.setBoolMatchQueryString = function( field, q 
 	this.query.bool.must = must;
 
 	return this;
-}
+};
 
 bs.extendedSearch.Lookup.prototype.setMultiMatchQuery = function( field, q ) {
 	this.ensurePropertyPath( 'query.bool.must', {} );
@@ -112,14 +112,15 @@ bs.extendedSearch.Lookup.prototype.setMultiMatchQuery = function( field, q ) {
 		fields: [
 			field,
 			field + '._2gram',
-			field + '._3gram'
+			field + '._3gram',
+			field + '_extra',
+			field + '_extra._2gram',
+			field + '_extra._3gram',
 		]
 	};
 
 	return this;
 };
-
-
 
 /**
  * @see https://www.elastic.co/guide/en/elasticsearch/reference/5.x/query-dsl-query-string-query.html

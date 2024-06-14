@@ -23,14 +23,21 @@ class Base implements ISearchMappingProvider {
 				'type' => 'text'
 			],
 			'suggestions' => [
-				'type' => 'search_as_you_type',
+				'type' => 'text',
+				'analyzer' => 'autocomplete',
+				'search_analyzer' => 'autocomplete_search'
+			],
+			'suggestions_extra' => [
+				'type' => 'text',
+				'analyzer' => 'autocomplete',
+				'search_analyzer' => 'autocomplete_search'
 			],
 			'uri' => [
 				'type' => 'text'
 			],
 			'basename' => [
 				'type' => 'text',
-				'copy_to' => [ 'congregated', 'suggestions' ],
+				'copy_to' => [ 'congregated' ],
 				// required in order to be sortable
 				'fielddata' => true
 			],
