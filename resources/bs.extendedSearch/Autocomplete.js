@@ -212,12 +212,15 @@
 		this.suggestField = this.autocompleteConfig['SuggestField'];
 
 		lookup.setMultiMatchQuery( this.suggestField, this.searchBar.value );
+		// We are setting excessive size here due to how autocomplete ranking works,
+		// It will not focus on returning "best" matches necessarily, but rather
+		// the first ones that match the query. This is why we need to get a lot of results,
+		// to be able to do our own ranking on a larger set of results.
+		// Difference in performance: 10 results = 0.1s, 100 results = 0.3s
+		lookup.setSize( 100 );
 		if( $.isEmptyObject( this.searchBar.namespace ) === false ) {
 			lookup.addTermFilter( 'namespace', this.searchBar.namespace.id );
 		}
-		var primaryCount = this.autocompleteConfig['DisplayLimits']['normal'] +
-			this.autocompleteConfig['DisplayLimits']['top']
-		lookup.setSize( primaryCount );
 
 		if( this.searchBar.mainpage ) {
 			var mainpage = this.searchBar.mainpage;

@@ -118,7 +118,9 @@ class WikiPage extends Base {
 			'page_language' => $this->title->getPageLanguage()->getCode(),
 			'display_title' => $this->getDisplayTitle(),
 			'used_files' => $this->getUsedFiles(),
-			'page_id' => $this->title->getArticleID()
+			'page_id' => $this->title->getArticleID(),
+			'suggestions' => $this->title->getPrefixedText(),
+			'suggestions_extra' => $this->getDisplayTitle(),
 		] );
 
 		return $aDC;
