@@ -15,7 +15,8 @@ class Base implements ISearchDocumentProvider {
 			'sortable_id' => $documentId,
 			'uri' => $uri,
 			'basename' => wfBaseName( $uri ),
-			'basename_exact' => wfBaseName( $uri )
+			'basename_exact' => wfBaseName( $uri ),
+			'suggestions' => wfBaseName( $uri ),
 		];
 	}
 }

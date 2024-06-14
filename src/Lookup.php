@@ -1166,7 +1166,10 @@ class Lookup extends \ArrayObject {
 			'fields' => [
 				$field,
 				$field . '._2gram',
-				$field . '._3gram'
+				$field . '._3gram',
+				$field . '_extra',
+				$field . '_extra._2gram',
+				$field . '_extra._3gram',
 			]
 		];
 
