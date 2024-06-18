@@ -5,7 +5,6 @@ namespace BS\ExtendedSearch\MediaWiki\Rest;
 use BS\ExtendedSearch\SearchTracker;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\SimpleHandler;
-use MediaWiki\Rest\Validator\JsonBodyValidator;
 use MediaWiki\User\UserIdentity;
 use RequestContext;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -63,25 +62,19 @@ abstract class TraceHandler extends SimpleHandler {
 	 */
 	abstract protected function getGenericFailureMessage(): string;
 
-	/**
-	 * @param string $contentType
-	 *
-	 * @return JsonBodyValidator
-	 * @throws HttpException
-	 */
-	public function getBodyValidator( $contentType ) {
-		if ( $contentType === 'application/json' ) {
-			return new JsonBodyValidator( [
-				'dbkey' => [
-					ParamValidator::PARAM_REQUIRED => true,
-					ParamValidator::PARAM_TYPE => 'string'
-				],
-				'namespace' => [
-					ParamValidator::PARAM_REQUIRED => true,
-					ParamValidator::PARAM_TYPE => 'int'
-				]
-			] );
-		}
-		throw new HttpException( 'Body content must be json' );
+	/** @inheritDoc */
+	public function getBodyParamSettings(): array {
+		return [
+			'dbkey' => [
+				static::PARAM_SOURCE => 'body',
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'string'
+			],
+			'namespace' => [
+				static::PARAM_SOURCE => 'body',
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'int'
+			]
+		];
 	}
 }
