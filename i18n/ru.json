@@ -122,5 +122,16 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Заполнитель",
 	"bs-extendedsearch-droplet-search-name": "Поле поиска",
 	"bs-extendedsearch-autocomplete-input-title": "Поиск (введите '/')",
-	"bs-extendedsearch-recentlyfound-ignore": "Удалить"
+	"bs-extendedsearch-recentlyfound-ignore": "Удалить",
+	"bs-extendedsearch-remove-button-label": "Удалить фильтр «$1»",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "Пространство имён1|Пространство имён2|...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "Список допустимых названий категорий, разделенных вертикальной чертой (|)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Оператор поиска",
+	"right-extendedsearch-search-specialpage": "Поиск служебных страниц",
+	"right-extendedsearch-search-externalfile": "Поиск внешних файлов",
+	"action-extendedsearch-search-specialpage": "поиск служебных страниц",
+	"action-extendedsearch-search-wikipage": "поиск страниц",
+	"action-extendedsearch-search-repofile": "поиск файлов",
+	"action-extendedsearch-search-externalfile": "поиск внешних файлов",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Показать глобальные результаты"
 }

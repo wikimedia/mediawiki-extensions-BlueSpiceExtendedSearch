@@ -9,6 +9,7 @@
 			"Eneelk",
 			"Fany",
 			"Gomoko",
+			"Graineahumus",
 			"MacOS Weed",
 			"Thibaut120094",
 			"Urhixidur",
@@ -198,5 +199,6 @@
 	"bs-extendedsearch-trace-error-invalid-data": "Données de traçage non fournies ou invalides. N'accédez pas directement à cette page.",
 	"bs-extendedsearch-rest-trace-insert-failure": "Échec de l'insertion des données de traçage",
 	"bs-extendedsearch-rest-trace-remove-failure": "Échec de la suppression des données de traçage",
-	"bs-extendedsearch-recently-found-header": "Consulté récemment"
+	"bs-extendedsearch-recently-found-header": "Consulté récemment",
+	"apihelp-bs-extendedsearch-recently-found-pages-summary": "Répertorie les pages vers lesquelles l'utilisateur a récemment accédé à partir des résultats de recherche"
 }
