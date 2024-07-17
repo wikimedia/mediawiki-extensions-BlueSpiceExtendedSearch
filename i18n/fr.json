@@ -9,6 +9,7 @@
 			"Eneelk",
 			"Fany",
 			"Gomoko",
+			"Graineahumus",
 			"MacOS Weed",
 			"Thibaut120094",
 			"Urhixidur",
@@ -197,5 +198,6 @@
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Aucune page similaire trouvée",
 	"bs-extendedsearch-recently-found-header": "Consulté récemment",
 	"bs-extendedsearch-autocomplete-input-title": "Rechercher (taper « / »)",
-	"bs-extendedsearch-recentlyfound-ignore": "Retirer"
+	"bs-extendedsearch-recentlyfound-ignore": "Retirer",
+	"apihelp-bs-extendedsearch-recently-found-pages-summary": "Répertorie les pages vers lesquelles l'utilisateur a récemment accédé à partir des résultats de recherche"
 }

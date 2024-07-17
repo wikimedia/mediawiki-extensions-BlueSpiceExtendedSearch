@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"GolyatGeri",
 			"Mirzali"
 		]
 	},
@@ -32,5 +33,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Operatorê cıgeyrayışi",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Babet",
 	"bs-extendedsearch-collection-var-searchterm": "Dewr",
-	"bs-extendedsearch-collection-var-numbersearched": "Cıgeyrayışi"
+	"bs-extendedsearch-collection-var-numbersearched": "Cıgeyrayışi",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Neticey \"$1\" mocniyeno"
 }
