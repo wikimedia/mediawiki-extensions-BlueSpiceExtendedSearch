@@ -5,6 +5,9 @@
 		this.term = cfg.term || '';
 		this.count = cfg.count || 0;
 		this.total_approximated = cfg.total_approximated;
+		if ( cfg.spellCheck && cfg.spellCheck.action === 'replaced' ) {
+			this.term = cfg.spellCheck.alternative.term;
+		}
 
 		var messageKey = 'bs-extendedsearch-search-center-hitcount-widget';
 		if( this.total_approximated ) {
