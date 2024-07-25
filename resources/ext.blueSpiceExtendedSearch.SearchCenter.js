@@ -278,7 +278,8 @@
 			var hitCount =  new bs.extendedSearch.HitCountWidget( {
 				term: term,
 				count: response.total,
-				total_approximated: response.total_approximated
+				total_approximated: response.total_approximated,
+				spellCheck: response.spellcheck || false
 			} );
 
 			var spellCheck = new bs.extendedSearch.SpellcheckWidget( response.spellcheck );
