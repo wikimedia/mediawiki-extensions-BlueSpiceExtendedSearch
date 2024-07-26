@@ -170,7 +170,7 @@
 	"bs-extendedsearch-pref-externalfilepaths-help": "Externe locaties om naar bestanden te zoeken en te indexeren. Geef de locaties op in paren van sleutel en waarde.",
 	"bs-extendedsearch-suggest-operator": "Had u willen zoeken naar <b>$1</b>?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Er zijn resultaten in \"$1\"",
-	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Globale resultaten tonen",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Globale resultaten weergeven",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Er wordt gezocht in \"$1\"",
 	"bs-extendedsearch-statistics-report-search-terms": "Zoektermen",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Zoektermen per gebruiker",
