@@ -33,7 +33,7 @@ abstract class TraceHandler extends SimpleHandler {
 		try {
 			$res = $this->doExecute( (int)$data['namespace'], $data['dbkey'], $user );
 		} catch ( \Throwable $exception ) {
-			throw new HttpException( $exception->getMessage(), $exception->getCode() );
+			throw new HttpException( $exception->getMessage(), 500 );
 		}
 		if ( $res ) {
 			return $this->getResponseFactory()->createJson( [ 'success' => true ] );
