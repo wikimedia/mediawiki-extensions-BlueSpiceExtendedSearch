@@ -185,5 +185,7 @@
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "No similar pages found",
 	"bs-extendedsearch-recently-found-header": "Recently viewed",
 	"bs-extendedsearch-autocomplete-input-title": "Search (type '/')",
-	"bs-extendedsearch-recentlyfound-ignore": "Remove"
+	"bs-extendedsearch-recentlyfound-ignore": "Remove",
+	"bs-extendedsearch-tagsearch-btn-aria-label": "Start search",
+	"bs-extendedsearch-tagsearch-input-aria-label": "Search"
 }
