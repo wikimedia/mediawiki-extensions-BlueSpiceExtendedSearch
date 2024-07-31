@@ -583,7 +583,9 @@ class Backend {
 		$suggestResults = $this->runRawQuery( $suggestLookup );
 		$suggestedTerm = [];
 		$suggestions = $suggestResults->getSuggest()['spell-check'];
-
+		if ( empty( $suggestions ) ) {
+			return $spellcheckResult;
+		}
 		foreach ( $suggestions as $suggestion ) {
 			if ( count( $suggestion['options'] ) == 0 ) {
 				// Word is already best it can be
