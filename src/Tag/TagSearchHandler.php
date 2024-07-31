@@ -6,6 +6,7 @@ use BlueSpice\Tag\Handler;
 use BS\ExtendedSearch\Lookup;
 use Config;
 use ConfigException;
+use Message;
 use MWException;
 use Parser;
 use PPFrame;
@@ -77,7 +78,9 @@ class TagSearchHandler extends Handler {
 			"action" => \SpecialPage::getTitleFor( 'SearchCenter' )->getLocalURL(),
 			"lookup_object" => $lookup,
 			"id_number" => $this->tagIdNumber,
-			"returnto" => ""
+			"returnto" => "",
+			"input-aria-label" => Message::newFromKey( 'bs-extendedsearch-tagsearch-input-aria-label' )->text(),
+			"button-aria-label" => Message::newFromKey( 'bs-extendedsearch-tagsearch-btn-aria-label' )->text()
 		];
 
 		$title = \RequestContext::getMain()->getTitle();

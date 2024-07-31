@@ -188,5 +188,7 @@
 	"bs-extendedsearch-rest-trace-remove-failure": "REST error message when trace data could not be removed",
 	"bs-extendedsearch-recently-found-header": "Header for section that lists recently found pages",
 	"bs-extendedsearch-autocomplete-input-title": "Tooltip for the search input field",
-	"bs-extendedsearch-recentlyfound-ignore": "Title for button to remove element from recently viewed list"
+	"bs-extendedsearch-recentlyfound-ignore": "Title for button to remove element from recently viewed list",
+	"bs-extendedsearch-tagsearch-btn-aria-label": "Aria-label for submit button in search form",
+	"bs-extendedsearch-tagsearch-input-aria-label": "Aria-label for search input field"
 }

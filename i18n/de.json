@@ -191,5 +191,7 @@
 	"bs-extendedsearch-rest-trace-remove-failure": "Trace-Daten konnten nicht entfernt werden",
 	"bs-extendedsearch-recently-found-header": "Zuletzt angesehen",
 	"bs-extendedsearch-autocomplete-input-title": "Suchen (gib '/' ein)",
-	"bs-extendedsearch-recentlyfound-ignore": "Entfernen"
+	"bs-extendedsearch-recentlyfound-ignore": "Entfernen",
+	"bs-extendedsearch-tagsearch-btn-aria-label": "Suche starten",
+	"bs-extendedsearch-tagsearch-input-aria-label": "Suche"
 }
