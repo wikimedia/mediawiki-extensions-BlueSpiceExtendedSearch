@@ -268,7 +268,7 @@ class WikiPage extends Base {
 		$redirTarget = $this->redirectLookup->getRedirectTarget( $this->wikipage );
 		$redirTitle = Title::castFromLinkTarget( $redirTarget );
 		if ( $redirTitle instanceof Title ) {
-			return $this->getDisplayTitle();
+			return $this->getDisplayTitle( $redirTitle );
 		}
 		return '';
 	}
