@@ -24,7 +24,10 @@ class UpdateTitleBase extends UpdateJob {
 		if ( $this->isDeletion() ) {
 			$documentId = $this->getDocumentId( $this->getDocumentProviderUri() );
 			$this->getSource()->deleteDocumentFromIndex( $documentId );
-			return [ 'id' => $documentId ];
+			return [
+				'id' => $documentId,
+				'prefixed_title' => $this->getTitle()->getPrefixedDBkey()
+			];
 		}
 
 		$providerSource = $this->getDocumentProviderSource();
