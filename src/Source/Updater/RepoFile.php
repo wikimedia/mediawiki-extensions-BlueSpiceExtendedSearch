@@ -67,6 +67,11 @@ class RepoFile extends Base {
 	 * @return bool allow other hooked methods to be executed. Always true.
 	 */
 	public function onFileDeleteComplete( $oFile, $oOldimage, $oArticle, $oUser, $sReason ) {
+		// Do not create job if only an old revision was deleted
+		if ( $oOldimage ) {
+			return true;
+		}
+
 		MediaWikiServices::getInstance()->getJobQueueGroup()->push(
 			new UpdateRepoFile( $oFile->getTitle(), [
 				'filedata' => $this->getFileData( $oFile )
