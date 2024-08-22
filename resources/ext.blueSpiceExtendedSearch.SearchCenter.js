@@ -176,7 +176,7 @@
 	}
 
 	/**
-	 * Creates config objects for secondary informaions
+	 * Creates config objects for secondary informations
 	 *
 	 * @param {Array} items
 	 * @param {Array} result
