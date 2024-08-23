@@ -184,5 +184,7 @@
 	"bs-extendedsearch-rest-trace-remove-failure": "移除追蹤資料失敗",
 	"bs-extendedsearch-recently-found-header": "近期檢視",
 	"bs-extendedsearch-autocomplete-input-title": "搜尋（輸入「/」）",
-	"bs-extendedsearch-recentlyfound-ignore": "移除"
+	"bs-extendedsearch-recentlyfound-ignore": "移除",
+	"bs-extendedsearch-tagsearch-btn-aria-label": "開始搜尋",
+	"bs-extendedsearch-tagsearch-input-aria-label": "搜尋"
 }
