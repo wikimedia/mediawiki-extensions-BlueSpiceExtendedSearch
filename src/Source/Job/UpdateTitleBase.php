@@ -23,7 +23,13 @@ class UpdateTitleBase extends UpdateJob {
 		$this->dp = $this->getSource()->getDocumentProvider();
 		if ( $this->isDeletion() ) {
 			$documentId = $this->getDocumentId( $this->getDocumentProviderUri() );
-			$this->getSource()->deleteDocumentFromIndex( $documentId );
+
+			try {
+				$this->getSource()->deleteDocumentFromIndex( $documentId );
+			} catch ( \Exception $e ) {
+				$this->setLastError( $e->getMessage() );
+			}
+
 			return [
 				'id' => $documentId,
 				'prefixed_title' => $this->getTitle()->getPrefixedDBkey()
@@ -44,8 +50,8 @@ class UpdateTitleBase extends UpdateJob {
 		foreach ( $plugins as $plugin ) {
 			$plugin->modifyDocumentData( $this->dp, $aDC, $this->getDocumentProviderUri(), $providerSource );
 		}
-		$this->getSource()->addDocumentToIndex( $aDC );
 
+		$this->getSource()->addDocumentToIndex( $aDC );
 		return $aDC;
 	}
 
