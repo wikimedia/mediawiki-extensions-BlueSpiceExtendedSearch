@@ -34,7 +34,8 @@ class DocumentProviderTest extends \MediaWikiIntegrationTestCase {
 			$this->getServiceContainer()->getPageProps(),
 			$this->getServiceContainer()->getParser(),
 			$this->getServiceContainer()->getRedirectLookup(),
-			$this->getServiceContainer()->getUserFactory()
+			$this->getServiceContainer()->getUserFactory(),
+			$this->getServiceContainer()->getRevisionRenderer()
 		);
 
 		$title = \Title::makeTitle( NS_HELP, 'Dummy title' );

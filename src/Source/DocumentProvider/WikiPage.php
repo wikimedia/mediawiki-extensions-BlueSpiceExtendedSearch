@@ -8,6 +8,7 @@ use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Revision\RevisionRenderer;
 use MediaWiki\User\UserFactory;
 use MWException;
 use PageProps;
@@ -47,6 +48,8 @@ class WikiPage extends Base {
 	protected $contentRenderer;
 	/** @var RevisionLookup */
 	protected $revisionLookup;
+	/** @var RevisionRenderer */
+	private $revisionRenderer;
 
 	/**
 	 * @param HookContainer $hookContainer
@@ -56,10 +59,12 @@ class WikiPage extends Base {
 	 * @param Parser $parser
 	 * @param RedirectLookup $redirectLookup
 	 * @param UserFactory $userFactory
+	 * @param RevisionRenderer $revisionRenderer
 	 */
 	public function __construct(
 		HookContainer $hookContainer, ContentRenderer $contentRenderer, RevisionLookup $revisionLookup,
-		PageProps $pageProps, Parser $parser, RedirectLookup $redirectLookup, UserFactory $userFactory
+		PageProps $pageProps, Parser $parser, RedirectLookup $redirectLookup, UserFactory $userFactory,
+		RevisionRenderer $revisionRenderer
 	) {
 		$this->hookContainer = $hookContainer;
 		$this->contentRenderer = $contentRenderer;
@@ -68,6 +73,7 @@ class WikiPage extends Base {
 		$this->parser = $parser;
 		$this->redirectLookup = $redirectLookup;
 		$this->userFactory = $userFactory;
+		$this->revisionRenderer = $revisionRenderer;
 	}
 
 	/**
@@ -151,17 +157,12 @@ class WikiPage extends Base {
 	 * @return array
 	 */
 	protected function getCategories() {
-		if ( !$this->isLatestRevision() ) {
-			// Not supported in older revisions
-			return [];
-		}
-		$catTitles = $this->wikipage->getCategories();
+		$renderedRevision = $this->revisionRenderer->getRenderedRevision( $this->revision );
+		$cats = $renderedRevision->getRevisionParserOutput()->getCategoryNames();
 
 		$categories = [];
-		foreach ( $catTitles as $catTitle ) {
-			if ( $catTitle instanceof Title ) {
-				$categories[] = $catTitle->getText();
-			}
+		foreach ( $cats as $cat ) {
+			$categories[] = Title::newFromDBkey( $cat )->getText();
 		}
 
 		return $categories;
