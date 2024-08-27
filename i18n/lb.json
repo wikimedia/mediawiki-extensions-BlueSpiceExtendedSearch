@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"bs-extendedsearch-search-input-placeholder": "Fannen ...",
@@ -59,5 +60,6 @@
 	"action-extendedsearch-search-repofile": "no Fichiere sichen",
 	"action-extendedsearch-search-externalfile": "no externe Fichiere sichen",
 	"bs-extendedsearch-suggest-operator": "Wollt Dir no <b>$1</b> sichen?",
-	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Global Resultater weisen"
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Global Resultater weisen",
+	"bs-extendedsearch-tagsearch-input-aria-label": "Sichen"
 }
