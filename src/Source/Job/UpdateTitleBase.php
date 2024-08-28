@@ -32,7 +32,7 @@ class UpdateTitleBase extends UpdateJob {
 
 			return [
 				'id' => $documentId,
-				'prefixed_title' => $this->getTitle()->getPrefixedDBkey()
+				'prefixed_title' => $this->getTitle()->getPrefixedText()
 			];
 		}
 
