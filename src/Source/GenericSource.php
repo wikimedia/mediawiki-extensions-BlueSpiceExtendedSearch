@@ -153,7 +153,7 @@ class GenericSource implements ISearchSource {
 							"filter" => [ "lowercase" ]
 						],
 						"autocomplete_search" => [
-							"tokenizer" => "lowercase",
+							"tokenizer" => "autocomplete",
 						],
 					],
 					"tokenizer" => [
