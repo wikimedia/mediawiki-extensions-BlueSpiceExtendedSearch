@@ -6,6 +6,7 @@
 	},
 	"bssearchadmin": "ڳولݨ ایڈمن",
 	"bssearchcenter": "ڳولݨ مرکز",
+	"bs-extendedsearch-close-search-button-aria-label": "ڳولݨ ݙٻہ بند کرو",
 	"bs-extendedsearch-search-input-placeholder": "لبھو۔۔۔",
 	"bs-extendedsearch-source-label-wikipage": "وکی ورقہ",
 	"bs-extendedsearch-source-label-specialpage": "خاص ورقہ",
@@ -47,6 +48,7 @@
 	"bs-extendedsearch-search-center-result-typetext-label": "قسم:",
 	"bs-extendedsearch-source-type-wikipage-label": "وکی ورقہ",
 	"bs-extendedsearch-source-type-repofile-label": "لوکیل فائل",
+	"bs-extendedsearch-source-type-externalfile-label": "ٻاہرلی فائل",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "پوری عبارت ڳولو",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "یوآرایل سابقہ",
 	"bs-extendedsearch-search-center-filter-page_language-label": "ورقے دی زبان",
@@ -57,8 +59,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "ونکی(اں)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "وکیل",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "قسم",
-	"bs-extendedsearch-close-search-button-aria-label": "ڳولݨ ݙٻہ بند کرو",
 	"bs-extendedsearch-droplet-search-name": "ڳولݨ خانہ",
-	"bs-extendedsearch-source-type-externalfile-label": "ٻاہرلی فائل",
-	"bs-extendedsearch-source-label-externalfile": "ٻاہرلی فائل"
+	"bs-extendedsearch-source-label-externalfile": "ٻاہرلی فائل",
+	"bs-extendedsearch-tagsearch-btn-aria-label": "ڳولݨ شروع کرو",
+	"bs-extendedsearch-tagsearch-input-aria-label": "ڳولو"
 }

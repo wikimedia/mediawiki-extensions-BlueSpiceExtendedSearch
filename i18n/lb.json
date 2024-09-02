@@ -1,15 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"bs-extendedsearch-search-input-placeholder": "Fannen ...",
 	"bs-extendedsearch-search-input-aria-label": "Sich-Këscht",
 	"bs-extendedsearch-source-label-specialpage": "Spezialsäit",
+	"bs-extendedsearch-source-label-repofile": "Fichier eroplueden",
 	"bs-extendedsearch-source-label-user": "Benotzer",
 	"bs-extendedsearch-admin-label-error": "Feeler",
 	"bs-extendedsearch-admin-heading-sources": "Quellen",
+	"bs-extendedsearch-admin-heading-sources-documentscount": "Dokumenter",
 	"bs-extendedsearch-search-center-filter-extension-label": "Erweiderung",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Nummraum",
 	"bs-extendedsearch-search-center-filter-categories-label": "Kategorie",
@@ -20,6 +23,8 @@
 	"bs-extendedsearch-search-center-filter-type-with-values-label": "Typ:",
 	"bs-extendedsearch-search-center-result-namespace_text-label": "Nummraum:",
 	"bs-extendedsearch-search-center-result-categories-label": "Kategorie:",
+	"bs-extendedsearch-search-center-result-author-label": "Auteur:",
+	"bs-extendedsearch-search-center-result-sections-label": "Abschnitter:",
 	"bs-extendedsearch-search-center-pagesize-dialog-title": "Resultater pro Säit",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Ofbriechen",
 	"bs-extendedsearch-search-center-options-page-size": "Elementer pro Säit",
@@ -40,6 +45,7 @@
 	"bs-extendedsearch-wikipage-title-original": "(Originaltitel: $1)",
 	"bs-extendedsearch-search-center-create-page-link": "Säit \"$1\" uleeën",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Säit $1: Text: $2",
+	"bs-extendedsearch-search-center-result-file-usage-label": "Op Säite benotzt",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Tippe fir ze sichen...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Nummraum/Nummraim",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategorie(n)",
@@ -55,11 +61,7 @@
 	"action-extendedsearch-search-externalfile": "no externe Fichiere sichen",
 	"bs-extendedsearch-suggest-operator": "Wollt Dir no <b>$1</b> sichen?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Global Resultater weisen",
-	"bs-extendedsearch-source-label-repofile": "Fichier eroplueden",
-	"bs-extendedsearch-admin-heading-sources-documentscount": "Dokumenter",
-	"bs-extendedsearch-search-center-result-author-label": "Auteur:",
-	"bs-extendedsearch-search-center-result-sections-label": "Abschnitter:",
 	"bs-extendedsearch-flyout-similar-pages-title": "Änlech Säiten",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Keng änlech Säite fonnt",
-	"bs-extendedsearch-search-center-result-file-usage-label": "Op Säite benotzt"
+	"bs-extendedsearch-tagsearch-input-aria-label": "Sichen"
 }
