@@ -54,11 +54,12 @@ class BaseTitleSecurityTrimmings extends Base {
 	}
 
 	/**
+	 * This modifier should be applied last
 	 *
 	 * @return int
 	 */
 	public function getPriority() {
-		return 100;
+		return 999999;
 	}
 
 	/**
