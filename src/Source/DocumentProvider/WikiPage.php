@@ -5,6 +5,7 @@ namespace BS\ExtendedSearch\Source\DocumentProvider;
 use Content;
 use MediaWiki\Content\Renderer\ContentRenderer;
 use MediaWiki\HookContainer\HookContainer;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
@@ -59,12 +60,12 @@ class WikiPage extends Base {
 	 * @param Parser $parser
 	 * @param RedirectLookup $redirectLookup
 	 * @param UserFactory $userFactory
-	 * @param RevisionRenderer $revisionRenderer
+	 * @param RevisionRenderer|null $revisionRenderer
 	 */
 	public function __construct(
 		HookContainer $hookContainer, ContentRenderer $contentRenderer, RevisionLookup $revisionLookup,
 		PageProps $pageProps, Parser $parser, RedirectLookup $redirectLookup, UserFactory $userFactory,
-		RevisionRenderer $revisionRenderer
+		?RevisionRenderer $revisionRenderer = null
 	) {
 		$this->hookContainer = $hookContainer;
 		$this->contentRenderer = $contentRenderer;
@@ -73,7 +74,7 @@ class WikiPage extends Base {
 		$this->parser = $parser;
 		$this->redirectLookup = $redirectLookup;
 		$this->userFactory = $userFactory;
-		$this->revisionRenderer = $revisionRenderer;
+		$this->revisionRenderer = $revisionRenderer ?? MediaWikiServices::getInstance()->getRevisionRenderer();
 	}
 
 	/**
