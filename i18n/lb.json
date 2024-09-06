@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"bs-extendedsearch-search-input-placeholder": "Fannen ...",
@@ -61,5 +62,6 @@
 	"bs-extendedsearch-search-center-result-sections-label": "Abschnitter:",
 	"bs-extendedsearch-flyout-similar-pages-title": "Änlech Säiten",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Keng änlech Säite fonnt",
-	"bs-extendedsearch-search-center-result-file-usage-label": "Op Säite benotzt"
+	"bs-extendedsearch-search-center-result-file-usage-label": "Op Säite benotzt",
+	"bs-extendedsearch-tagsearch-input-aria-label": "Sichen"
 }
