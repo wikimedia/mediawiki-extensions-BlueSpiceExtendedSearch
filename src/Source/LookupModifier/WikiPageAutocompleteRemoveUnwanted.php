@@ -19,14 +19,6 @@ class WikiPageAutocompleteRemoveUnwanted extends WikiPageRemoveUnwanted {
 		$toExclude = array_unique( $toExclude );
 
 		$this->lookup->addBoolMustNotTerms( 'namespace', $toExclude );
-		$this->lookup->addBoolMustNotTerms( 'is_redirect', [ true ] );
 	}
 
-	/**
-	 * @return void
-	 */
-	public function undo() {
-		parent::undo();
-		$this->lookup->removeBoolMustNot( 'is_redirect' );
-	}
 }

@@ -323,8 +323,21 @@ class WikiPageFormatter extends Base {
 		if ( $redirTarget instanceof \Title === false ) {
 			return;
 		}
-		$result['is_redirect'] = 1;
+
 		$result['page_anchor'] = $this->getTraceablePageAnchor( $title, $result['display_title'] );
+		$this->addRedirectAttributes( $result );
+	}
+
+	/**
+	 * @param array &$result
+	 * @return void
+	 */
+	protected function addRedirectAttributes( array &$result ) {
+		$redirTarget = \Title::newFromText( $result['redirects_to'] );
+		if ( $redirTarget instanceof \Title === false ) {
+			return;
+		}
+		$result['is_redirect'] = 1;
 		$result['redirect_target_anchor'] = $this->getTraceablePageAnchor( $redirTarget, $result['redirects_to'] );
 
 		$icons = \ExtensionRegistry::getInstance()
@@ -368,6 +381,9 @@ class WikiPageFormatter extends Base {
 				$result['original_title'] = $this->getOriginalTitleText( $result );
 			} else {
 				$result['display_text'] = $result['prefixed_title'];
+			}
+			if ( $result['is_redirect'] === true ) {
+				$this->addRedirectAttributes( $result );
 			}
 
 			$this->addAnchorAndImageUri( $result );
