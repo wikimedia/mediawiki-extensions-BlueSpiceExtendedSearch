@@ -211,7 +211,8 @@
 		var lookup = new bs.extendedSearch.Lookup( this.lookupConfig );
 		this.suggestField = this.autocompleteConfig['SuggestField'];
 
-		lookup.setMultiMatchQuery( this.suggestField, this.searchBar.value );
+		// We set the AC query term to lowercase always, as that will work with tokenizer
+		lookup.setMultiMatchQuery( this.suggestField, this.searchBar.value.toLowerCase() );
 		// We are setting excessive size here due to how autocomplete ranking works,
 		// It will not focus on returning "best" matches necessarily, but rather
 		// the first ones that match the query. This is why we need to get a lot of results,

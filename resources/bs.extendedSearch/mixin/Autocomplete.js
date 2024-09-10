@@ -149,6 +149,18 @@
 			this.$header.append( this.$originalTitle );
 		}
 
+		if ( cfg.is_redirect ) {
+			var redirLayout = new OO.ui.HorizontalLayout( {
+				items: [
+					new OO.ui.IconWidget( {
+						icon: 'articleRedirect'
+					} )
+				]
+			} );
+			redirLayout.$element.append( cfg.redirect_target_anchor );
+			this.$header.append( redirLayout.$element );
+		}
+
 		this.$header.addClass( 'bs-extendedsearch-autocomplete-popup-primary-item-header' );
 	};
 
