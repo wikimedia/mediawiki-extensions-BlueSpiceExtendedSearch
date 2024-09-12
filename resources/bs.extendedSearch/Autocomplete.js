@@ -241,6 +241,7 @@
 
 		var me = this;
 		this.runLookup( lookup ).done( function( response ) {
+			$( d ).trigger( 'BSExtendedSearchAutocompleteSuggestionsRetrieved', [ response.suggestions || [] ] );
 			me.makePopup( response.suggestions, response.page_create_info );
 
 			if( me.compact || me.searchBar.mobile ) {
