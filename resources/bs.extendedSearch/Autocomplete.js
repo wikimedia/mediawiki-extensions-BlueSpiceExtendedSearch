@@ -17,6 +17,7 @@
 		this.searchBar.on( 'clearSearch', this.onClearSearch.bind( this ) );
 		this.searchBar.on( 'emptyFocus', this.onEmptyFocus.bind( this ) );
 		$( window ).on( 'click', this.onWindowClick.bind( this ) );
+		this._initComplete = true;
 	}
 
 	//If user has navigated using arrows to a result,
@@ -137,10 +138,14 @@
 			return;
 		}
 		bs.extendedSearch._getRecentlyFound().done( function( response ) {
+			if ( response.suggestions.length === 0 ) {
+				return;
+			}
 			this.makePopup(
 				response.suggestions,
 				{ creatable: false },
-				mw.msg( 'bs-extendedsearch-recently-found-header' )
+				mw.msg( 'bs-extendedsearch-recently-found-header' ),
+				mw.msg( 'bs-extendedsearch-recently-found-header-aria' )
 			);
 		}.bind( this ) );
 	}
@@ -158,7 +163,7 @@
 		}
 	}
 
-	function _makePopup( suggestions, pageCreateInfo, headerText ) {
+	function _makePopup( suggestions, pageCreateInfo, headerText, ariaAnnouncerText ) {
 		if( this.popup ) {
 			this.removePopup();
 		}
@@ -192,6 +197,9 @@
 		this.popup.$element.addClass( 'searchbar-autocomplete-results' );
 		var wrapperId = this.searchBar.$searchBoxWrapper.attr( 'id' );
 		this.popup.$element.insertAfter( $( '#' + wrapperId ) );
+		if ( ariaAnnouncerText ) {
+			this.popup.announce( ariaAnnouncerText );
+		}
 
 		bs.extendedSearch._registerTrackableLinks();
 		this.searchBar.suppressQuietSubpage( 'arm' );
@@ -242,7 +250,10 @@
 		var me = this;
 		this.runLookup( lookup ).done( function( response ) {
 			$( d ).trigger( 'BSExtendedSearchAutocompleteSuggestionsRetrieved', [ response.suggestions || [] ] );
-			me.makePopup( response.suggestions, response.page_create_info );
+			me.makePopup(
+				response.suggestions,
+				response.page_create_info
+			);
 
 			if( me.compact || me.searchBar.mobile ) {
 				//In mobile and compact view there are only primary results
@@ -389,7 +400,15 @@
 		this.popup.addSecondary( suggestions );
 	}
 
+	function _focusSearchBox() {
+		if ( this._initComplete === false ) {
+			return;
+		}
+		this.searchBar.$searchBox.focus();
+	}
+
 	bs.extendedSearch.Autocomplete = function() {
+		this._initComplete = false;
 	};
 
 	bs.extendedSearch.Autocomplete.prototype.init = _init;
@@ -411,6 +430,7 @@
 	bs.extendedSearch.Autocomplete.prototype.beforeValueChanged = _beforeValueChanged;
 	bs.extendedSearch.Autocomplete.prototype.onWindowClick = _onWindowClick;
 	bs.extendedSearch.Autocomplete.prototype.setLookupToSubmit = _setLookupToSubmit;
+	bs.extendedSearch.Autocomplete.prototype.focusSearchBox = _focusSearchBox;
 	bs.extendedSearch.Autocomplete.AC_RANK_TOP = 'top';
 	bs.extendedSearch.Autocomplete.AC_RANK_SECONDARY = 'secondary';
 	bs.extendedSearch.Autocomplete.AC_RANK_NORMAL = 'normal';

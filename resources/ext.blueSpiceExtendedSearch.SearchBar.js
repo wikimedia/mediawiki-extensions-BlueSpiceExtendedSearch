@@ -61,8 +61,6 @@
 		this.$searchBox.on( 'paste', this.onPaste.bind( this ) );
 		this.$searchBox.on( 'focus', this.onFocus.bind( this ) );
 
-		this.$searchBox.attr( 'title', mw.msg( 'bs-extendedsearch-autocomplete-input-title' ) );
-
 		if ( this.masterFilter ) {
 			this.useNamespacePills = false;
 			this.useSubpagePills = false;
@@ -70,6 +68,7 @@
 			this.namespace = this.masterFilter.namespace;
 			this.generateMasterFilterPill();
 		}
+		this.isSearchCenter = cfg.isSearchCenter || false;
 	};
 
 	bs.extendedSearch.SearchBar.prototype.detectNamespace = function( value ) {
@@ -278,6 +277,21 @@
 
 		this.setSearchBoxWidthInline( sbW - cbW );
 		this.$searchContainer.addClass( 'clear-present' );
+
+		if ( this.isSearchCenter ) {
+			// Manually make sure that if this button is in focus, next target for tab starts in `.bs-es-tools` container
+			clearButton.$element.on( 'keydown', function( e ) {
+				var $tools = $( '.bs-es-tools' );
+				if ( $tools.length === 0 ) {
+					return;
+				}
+				if ( e.which === 9 && !e.shiftKey ) {
+					e.preventDefault();
+					// First first focusable element in ( '.bs-es-tools' )
+					$tools.find( 'button, a, input' ).first().focus();
+				}
+			} );
+		}
 	};
 
 	bs.extendedSearch.SearchBar.prototype.removeClearButton = function() {

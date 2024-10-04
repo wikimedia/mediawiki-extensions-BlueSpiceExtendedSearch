@@ -7,6 +7,7 @@
 		] ).done( function( response ) {
 			//Create new autocomplete and searchBar instance and bind them together
 			var autocomplete = new bs.extendedSearch.Autocomplete();
+			bs.extendedSearch.Autocomplete._instance = autocomplete;
 			var useSubpagePillsAutocomplete = require( './config.json' ).useSubpagePillsAutocomplete;
 			var searchBar = new bs.extendedSearch.SearchBar( {
 				useSubpagePills: useSubpagePillsAutocomplete,

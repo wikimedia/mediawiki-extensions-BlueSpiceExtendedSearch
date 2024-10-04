@@ -42,9 +42,9 @@
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "JSON dekodierter String, der zusätzliche Informationen über den Kontext der Suche enthält",
 	"apihelp-bs-extendedsearch-type-store-summary": "Gibt die registrierten Suchtypen zurück",
 	"bs-extendedsearch-close-search-button-aria-label": "Suchfeld schließen",
-	"bs-extendedsearch-search-button-title": "Suche starten",
-	"bs-extendedsearch-search-button-aria-label": "Suche starten",
-	"bs-extendedsearch-search-input-placeholder": "Finde …",
+	"bs-extendedsearch-search-button-title": "Zur Volltextsuche wechseln",
+	"bs-extendedsearch-search-button-aria-label": "Zur Volltextsuche wechseln",
+	"bs-extendedsearch-search-input-placeholder": "Suchen (gib '/' ein)",
 	"bs-extendedsearch-search-input-aria-label": "Suchfeld",
 	"bs-extendedsearch-source-label-wikipage": "Wiki-Seite",
 	"bs-extendedsearch-source-label-specialpage": "Spezialseite",
@@ -200,5 +200,13 @@
 	"apihelp-bs-extendedsearch-recently-found-pages-summary": "Listet die Seiten auf, zu denen der Benutzer zuletzt von den Suchergebnissen aus navigiert hat",
 	"bs-extendedsearch-rest-trace-insert-failure": "Einfügen von Trace-Daten fehlgeschlagen",
 	"bs-extendedsearch-rest-trace-remove-failure": "Trace-Daten konnten nicht entfernt werden",
-	"bs-extendedsearch-autocomplete-input-title": "Suchen (gib '/' ein)"
+	"bs-extendedsearch-flyout-similar-pages-title": "Ähnliche Seiten",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Keine ähnlichen Seiten gefunden",
+	"bs-extendedsearch-autocomplete-input-title": "Suchen (gib '/' ein)",
+	"bs-extendedsearch-tagsearch-btn-aria-label": "Suche starten",
+	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|Ein Ergebnis|$1 Ergebnisse}} verfügbar",
+	"bs-extendedsearch-recently-found-header-aria": "Zuletzt angesehene Treffer vorhanden",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 von $2",
+	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Primäre Ergebnisse",
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Sekundäre Ergebnisse"
 }

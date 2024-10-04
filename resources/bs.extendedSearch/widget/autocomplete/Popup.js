@@ -75,7 +75,7 @@
 
 		this.clearSelected();
 
-		if( typeof this.currentColumn === 'undefined' ) {
+		if ( typeof this.currentColumn === 'undefined' ) {
 			this.currentColumn = 0;
 		}
 
@@ -105,15 +105,13 @@
 	bs.extendedSearch.AutocompletePopup.prototype.getGrid = function() {
 		var leftColumn = [];
 		this.$primaryResults.children().each( function( k, el ) {
+			if ( !$( el ).hasClass( 'bs-extendedsearch-autocomplete-popup-primary-item' ) ) {
+				return;
+			}
 			leftColumn.push( el );
 		} );
 
 		var rightColumn = [];
-		if( this.$createPageLink ) {
-			rightColumn.push( this.$createPageLink );
-		}
-		rightColumn.push( this.fullTextSearchButton.$element );
-
 		this.$secondaryResults.children().each( function( k, el ) {
 			rightColumn.push( el );
 		} );
@@ -124,7 +122,9 @@
 	bs.extendedSearch.AutocompletePopup.prototype.toggleColumn = function() {
 		if( this.currentColumn === 1 ) {
 			this.currentColumn = 0;
+			this.announce( mw.msg( 'bs-extendedsearch-autocomplete-popup-primary-results-aria' ) );
 		} else {
+			this.announce( mw.msg( 'bs-extendedsearch-autocomplete-popup-secondary-results-aria' ) );
 			this.currentColumn = 1;
 		}
 
@@ -141,6 +141,11 @@
 	bs.extendedSearch.AutocompletePopup.prototype.selectCurrent = function() {
 		var selectedItem = this.popupGrid[this.currentColumn][this.currentIndex];
 		$( selectedItem ).addClass( 'bs-autocomplete-result-selected' );
+		this.announce( mw.msg(
+			'bs-extendedsearch-autocomplete-popup-select-announcement',
+			this.currentIndex + 1,
+			this.popupGrid[this.currentColumn].length
+		) );
 		return selectedItem;
 	};
 

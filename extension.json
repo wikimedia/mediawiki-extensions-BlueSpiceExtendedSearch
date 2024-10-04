@@ -397,7 +397,12 @@
 				"bs-extendedsearch-searchbar-master-filter-tooltip",
 				"bs-extendedsearch-wikipage-title-original",
 				"bs-extendedsearch-recently-found-header",
-				"bs-extendedsearch-autocomplete-input-title"
+				"bs-extendedsearch-autocomplete-input-title",
+				"bs-extendedsearch-autocomplete-header-aria",
+				"bs-extendedsearch-recently-found-header-aria",
+				"bs-extendedsearch-autocomplete-popup-select-announcement",
+				"bs-extendedsearch-autocomplete-popup-primary-results-aria",
+				"bs-extendedsearch-autocomplete-popup-secondary-results-aria"
 			],
 			"dependencies": [
 				"ext.blueSpiceExtendedSearch.SearchBar",
