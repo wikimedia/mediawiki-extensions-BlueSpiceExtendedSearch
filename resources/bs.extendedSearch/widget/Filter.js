@@ -79,7 +79,8 @@
 			this.popup.toggle();
 			this.isOpen = true;
 		}
-	}
+	};
+
 	bs.extendedSearch.FilterWidget.prototype.applyFilter = function() {
 		if( this.selectedOptions.length == 0 ) {
 			return this.removeFilter();

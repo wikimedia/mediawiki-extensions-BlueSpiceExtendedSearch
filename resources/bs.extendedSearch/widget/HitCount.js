@@ -9,6 +9,14 @@
 			this.term = cfg.spellCheck.alternative.term;
 		}
 
+		this.$element = $( '<div>' )
+			.addClass( 'bs-extendedsearch-search-center-hitcount' )
+			.attr( 'aria-live', 'polite' )
+	};
+
+	OO.inheritClass( bs.extendedSearch.HitCountWidget, OO.ui.Widget );
+
+	bs.extendedSearch.HitCountWidget.prototype.init = function() {
 		var messageKey = 'bs-extendedsearch-search-center-hitcount-widget';
 		if( this.total_approximated ) {
 			messageKey = 'bs-extendedsearch-search-center-hitcount-widget-approximately';
@@ -19,12 +27,7 @@
 			this.count
 		).escaped();
 		message = message.replace( '$2', "<b>" + mw.html.escape( this.term ) + "</b>" );
-		this.$counter = $( '<p>' )
-			.html( message );
-
-		this.$element = $( '<div>' ).addClass( 'bs-extendedsearch-search-center-hitcount' ).append( this.$counter );
+		this.$element.html( message );
 	};
-
-	OO.inheritClass( bs.extendedSearch.HitCountWidget, OO.ui.Widget );
 
 } )( mediaWiki, jQuery, blueSpice, document );

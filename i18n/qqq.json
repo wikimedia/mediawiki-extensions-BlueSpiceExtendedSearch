@@ -191,8 +191,12 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "Title for the flyout section showing pages similar to the current page",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Text for the flyout section when there are no similar pages available",
 	"bs-extendedsearch-recently-found-header": "Header for section that lists recently found pages",
-	"bs-extendedsearch-autocomplete-input-title": "Tooltip for the search input field",
 	"bs-extendedsearch-recentlyfound-ignore": "Title for button to remove element from recently viewed list",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "Aria-label for submit button in search form",
-	"bs-extendedsearch-tagsearch-input-aria-label": "Aria-label for search input field"
+	"bs-extendedsearch-tagsearch-input-aria-label": "Aria-label for search input field",
+	"bs-extendedsearch-autocomplete-header-aria": "Aria-label for autocomplete search input field in header area\n$1 - number of results found",
+	"bs-extendedsearch-recently-found-header-aria": "Aria-label for recently found section in autocomplete search",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "Used to have make a screen reader announce the selected result",
+	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Aria-label a section in the autocomplete search result list",
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Aria-label a section in the autocomplete search result list"
 }

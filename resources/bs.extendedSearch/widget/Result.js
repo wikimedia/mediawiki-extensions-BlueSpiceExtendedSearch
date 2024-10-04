@@ -136,11 +136,13 @@
 	bs.extendedSearch.ResultWidget.prototype.onRelevant = function( e ) {
 		this.userRelevance = this.userRelevance == 1 ? 0 : 1;
 		this.makeChangeRelevanceCall();
+		this.updateRelevanceButtons();
 	}
 
 	bs.extendedSearch.ResultWidget.prototype.onNotRelevant = function( e ) {
 		this.userRelevance = this.userRelevance == -1 ? 0 : -1;
 		this.makeChangeRelevanceCall();
+		this.updateRelevanceButtons();
 	}
 
 	bs.extendedSearch.ResultWidget.prototype.makeChangeRelevanceCall = function() {
@@ -151,29 +153,25 @@
 			} )
 		}
 
-		var promise = bs.extendedSearch.SearchCenter.runApiCall(
+		bs.extendedSearch.SearchCenter.runApiCall(
 			queryData,
 			'bs-extendedsearch-resultrelevance'
 		);
-
-		var me = this;
-		promise.done( function( response ) {
-			if( response.status && response.status == 1 ) {
-				me.updateRelevanceButtons();
-			}
-		} );
 	}
 
 	bs.extendedSearch.ResultWidget.prototype.updateRelevanceButtons = function() {
 		if( this.userRelevance == -1 ) {
 			//this.notRelevantButton.setIcon( 'unBlock' );
 			this.relevantButton.setIcon( 'star' );
+			this.relevantButton.$element.attr( 'aria-pressed', 'false' );
 		} else if ( this.userRelevance == 1 ) {
 			//this.notRelevantButton.setIcon( 'block' );
 			this.relevantButton.setIcon( 'unStar' );
+			this.relevantButton.$element.attr( 'aria-pressed', 'true' );
 		} else {
 			//this.notRelevantButton.setIcon( 'block' );
 			this.relevantButton.setIcon( 'star' );
+			this.relevantButton.$element.attr( 'aria-pressed', 'false' );
 		}
 	}
 	//End Experimental

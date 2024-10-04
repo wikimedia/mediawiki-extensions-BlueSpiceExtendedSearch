@@ -275,7 +275,7 @@
 			search.makeLookup( JSON.parse( response.lookup ) );
 
 			var term = this.getLookupObject().getQueryString().query || '';
-			var hitCount =  new bs.extendedSearch.HitCountWidget( {
+			var hitCount = new bs.extendedSearch.HitCountWidget( {
 				term: term,
 				count: response.total,
 				total_approximated: response.total_approximated,
@@ -336,6 +336,8 @@
 			bs.extendedSearch._registerTrackableLinks();
 			$resultCnt.trigger( 'resultsReady', [ resultPanel ] );
 			search.removeLoading();
+			// Done afterwards to announce properly
+			hitCount.init();
 		}.bind( this ) );
 	}
 
@@ -459,7 +461,8 @@
 		searchBar = new bs.extendedSearch.SearchBar( {
 			useNamespacePills: false,
 			useSubpagePills: false,
-			typingDoneInterval: 1000
+			typingDoneInterval: 1000,
+			isSearchCenter: true
 		} );
 
 		searchBar.$searchForm.on( 'submit', function (e) {
