@@ -107,8 +107,10 @@
 			icon: relevantIcon,
 			title: mw.message( 'bs-extendedsearch-result-relevance-relevant' ).plain()
 		} );
-
-		this.relevantButton.$element.on( 'click', this.onRelevant.bind( this ) );
+		this.relevantButton.$element.attr( 'aria-pressed', parseInt( this.userRelevance ) === 1 );
+		this.relevantButton.connect( this, {
+			click: 'onRelevant'
+		} );
 
 		/*this.notRelevantButton = new OO.ui.ButtonWidget( {
 			framed: false,

@@ -27,7 +27,10 @@
 						click: function() {
 							this.setDisabled( true );
 							bs.extendedSearch._untrackLink( data ).done( function() {
-								this.$element.parent().fadeOut( 'normal', function() { $( this ).remove(); } );
+								bs.extendedSearch.Autocomplete._instance.focusSearchBox();
+								this.$element.parent().fadeOut( 'normal', function() {
+									$( this ).remove();
+								} );
 							}.bind( this ) ).fail ( function( e ) {
 								console.error( e );
 							} );

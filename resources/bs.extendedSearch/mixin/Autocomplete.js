@@ -10,6 +10,11 @@
 		this.$primaryResults = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-primary' );
 		this.$actions = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-actions' );
 		this.$secondaryResults = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-secondary' );
+		this.$announcer = $( '<div>' )
+			.addClass( 'bs-extendedsearch-autocomplete-popup-announcer' )
+			.attr( 'aria-live', 'polite' )
+			.css( 'display', 'none' );
+		this.$primaryResults.append( this.$announcer );
 
 		if ( this.headerText ) {
 			this.$primaryResults.append(
@@ -69,10 +74,11 @@
 			this.displayedResults.normal.push( suggestion );
 		}
 
-		//If there are no primary results, display "no results" in primary section
-		//Fuzzy results will be displayed
+		// If there are no primary results, display "no results" in primary section
+		// Fuzzy results will be displayed
 		if( this.displayedResults.top.length === 0
 			&& this.displayedResults.normal.length === 0 ) {
+			this.announce( mw.msg( 'bs-extendedsearch-autocomplete-result-primary-no-results-label' ) );
 			this.$primaryResults.append(
 				$( '<div>' )
 					.addClass( 'bs-extendedsearch-autocomplete-popup-primary-no-results' )
@@ -81,6 +87,9 @@
 		} else {
 			this.$primaryResults.append( topResultElements );
 			this.$primaryResults.append( normalResultElements );
+			var cnt = this.displayedResults.normal.length + this.displayedResults.top.length;
+			this.announce( mw.msg( 'bs-extendedsearch-autocomplete-header-aria', cnt ) );
+
 		}
 
 		//"Right column" container, holding top and fuzzy results
@@ -89,6 +98,10 @@
 		this.$secondaryResultsLabel = $( '<span>' )
 			.addClass( 'bs-extendedsearch-autocomplete-popup-special-item-label' )
 			.html( mw.message( 'bs-extendedsearch-autocomplete-result-secondary-results-label' ).plain() );
+	};
+
+	bs.extendedSearch.mixin.AutocompleteResults.prototype.announce = function( ariaLabel ) {
+		this.$announcer.text( ariaLabel );
 	};
 
 	bs.extendedSearch.mixin.AutocompleteResults.prototype.fillSecondaryResults = function( suggestions ) {
@@ -140,10 +153,12 @@
 		//If backend provided an anchor use it, otherwise create it
 		if( this.pageAnchor ) {
 			this.$header = this.$pageAnchor.html( this.basename );
+			this.$header.attr( 'tabindex', '-1' );
 		} else {
 			this.$header = $( '<a>' )
 				.attr( 'href', this.uri )
-				.html( this.basename );
+				.html( this.basename )
+				.attr( 'tabindex', '-1' );
 		}
 		if ( cfg.original_title ) {
 			this.$header.append( this.$originalTitle );

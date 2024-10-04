@@ -27,9 +27,9 @@
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "JSON decoded string containing additional information of the context of the search",
 	"apihelp-bs-extendedsearch-type-store-summary": "Returns registered search types",
 	"bs-extendedsearch-close-search-button-aria-label": "Close search box",
-	"bs-extendedsearch-search-button-title": "Start search",
-	"bs-extendedsearch-search-button-aria-label": "Start search",
-	"bs-extendedsearch-search-input-placeholder": "Find ...",
+	"bs-extendedsearch-search-button-title": "Switch to fulltext search",
+	"bs-extendedsearch-search-button-aria-label": "Switch to fulltext search",
+	"bs-extendedsearch-search-input-placeholder": "Search (type '/')",
 	"bs-extendedsearch-search-input-aria-label": "Search box",
 	"bs-extendedsearch-source-label-wikipage": "Wiki page",
 	"bs-extendedsearch-source-label-specialpage": "Special page",
@@ -180,8 +180,12 @@
 	"bs-extendedsearch-rest-trace-insert-failure": "Failed to insert trace data",
 	"bs-extendedsearch-rest-trace-remove-failure": "Failed to remove trace data",
 	"bs-extendedsearch-recently-found-header": "Recently viewed",
-	"bs-extendedsearch-autocomplete-input-title": "Search (type '/')",
 	"bs-extendedsearch-recentlyfound-ignore": "Remove",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "Start search",
-	"bs-extendedsearch-tagsearch-input-aria-label": "Search"
+	"bs-extendedsearch-tagsearch-input-aria-label": "Search",
+	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|One result|$1 results}} found",
+	"bs-extendedsearch-recently-found-header-aria": "Recently viewed results available",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 of $2",
+	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Primary results",
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Secondary results"
 }
