@@ -178,5 +178,7 @@
 	"bs-extendedsearch-rest-trace-remove-failure": "Error durante le deletion del datos de traciamento",
 	"bs-extendedsearch-recently-found-header": "Recentemente legite",
 	"bs-extendedsearch-autocomplete-input-title": "Cercar (digita ‘/’)",
-	"bs-extendedsearch-recentlyfound-ignore": "Remover"
+	"bs-extendedsearch-recentlyfound-ignore": "Remover",
+	"bs-extendedsearch-tagsearch-btn-aria-label": "Comenciar le recerca",
+	"bs-extendedsearch-tagsearch-input-aria-label": "Cercar"
 }
