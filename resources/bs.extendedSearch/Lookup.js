@@ -109,6 +109,7 @@ bs.extendedSearch.Lookup.prototype.setMultiMatchQuery = function( field, q ) {
 	this.query.bool.must.multi_match = {
 		query: q,
 		type: 'bool_prefix',
+		analyzer: 'autocomplete',
 		fields: [
 			field,
 			field + '._2gram',
