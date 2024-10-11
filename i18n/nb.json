@@ -179,6 +179,5 @@
 	"bs-extendedsearch-rest-trace-insert-failure": "Kunne ikke sette inn sporingsdata",
 	"bs-extendedsearch-rest-trace-remove-failure": "Kunne ikke fjerne sporingsdata",
 	"bs-extendedsearch-recently-found-header": "Nylig vist",
-	"bs-extendedsearch-autocomplete-input-title": "Søk (skriv «/»)",
 	"bs-extendedsearch-recentlyfound-ignore": "Fjern"
 }

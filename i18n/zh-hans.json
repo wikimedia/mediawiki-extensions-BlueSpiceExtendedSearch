@@ -199,6 +199,5 @@
 	"bs-extendedsearch-droplet-search-description": "向页面内容添加一个搜索区",
 	"bs-extendedsearch-source-label-externalfile": "外部文件",
 	"bs-extendedsearch-recently-found-header": "近期浏览",
-	"bs-extendedsearch-autocomplete-input-title": "搜索（输入“/”）",
 	"bs-extendedsearch-recentlyfound-ignore": "移除"
 }

@@ -178,6 +178,5 @@
 	"bs-extendedsearch-rest-trace-insert-failure": "Podatkov o sledenju ni bilo mogoče vstaviti",
 	"bs-extendedsearch-rest-trace-remove-failure": "Podatkov o sledenju ni bilo mogoče odstraniti",
 	"bs-extendedsearch-recently-found-header": "Nedavno ogledano",
-	"bs-extendedsearch-autocomplete-input-title": "Iskanje (vnesite »/«)",
 	"bs-extendedsearch-recentlyfound-ignore": "Odstrani"
 }

@@ -186,6 +186,5 @@
 	"bs-extendedsearch-source-label-externalfile": "外部ファイル",
 	"bs-extendedsearch-trace-error-invalid-data": "トレース データが提供されていないか無効です。このページに直接アクセスしないでください。",
 	"apihelp-bs-extendedsearch-recently-found-pages-summary": "利用者が最近検索結果から閲覧したページをリスト表示します。",
-	"bs-extendedsearch-autocomplete-input-title": "検索 ('/' と入力)",
 	"bs-extendedsearch-recentlyfound-ignore": "除去"
 }

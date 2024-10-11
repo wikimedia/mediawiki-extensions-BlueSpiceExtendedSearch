@@ -194,6 +194,5 @@
 	"bs-extendedsearch-rest-trace-insert-failure": "Échec de l'insertion des données de traçage",
 	"bs-extendedsearch-rest-trace-remove-failure": "Échec de la suppression des données de traçage",
 	"bs-extendedsearch-recently-found-header": "Consulté récemment",
-	"bs-extendedsearch-autocomplete-input-title": "Rechercher (taper « / »)",
 	"bs-extendedsearch-recentlyfound-ignore": "Retirer"
 }
