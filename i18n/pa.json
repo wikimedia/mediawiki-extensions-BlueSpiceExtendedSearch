@@ -4,5 +4,7 @@
 			"Cabal"
 		]
 	},
-	"bs-extendedsearch-source-label-user": "ਵਰਤੋਂਕਾਰ"
+	"bs-extendedsearch-source-label-user": "ਵਰਤੋਂਕਾਰ",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$2 ਵਿੱਚੋਂ $1",
+	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "ਮੁੱਢਲੇ ਨਤੀਜੇ"
 }

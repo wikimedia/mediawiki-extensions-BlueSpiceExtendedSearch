@@ -40,7 +40,7 @@
 	"bs-extendedsearch-close-search-button-aria-label": "検索ボックスを閉じる",
 	"bs-extendedsearch-search-button-title": "検索を開始",
 	"bs-extendedsearch-search-button-aria-label": "検索を開始",
-	"bs-extendedsearch-search-input-placeholder": "探す ...",
+	"bs-extendedsearch-search-input-placeholder": "検索 (「/」を入力)",
 	"bs-extendedsearch-search-input-aria-label": "検索ボックス",
 	"bs-extendedsearch-source-label-wikipage": "ウィキページ",
 	"bs-extendedsearch-source-label-specialpage": "特別ページ",
