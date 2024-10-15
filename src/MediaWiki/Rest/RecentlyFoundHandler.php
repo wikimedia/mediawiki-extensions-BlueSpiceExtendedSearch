@@ -82,7 +82,8 @@ class RecentlyFoundHandler extends SimpleHandler {
 		return \Html::element( 'a', [
 			'href' => $title->getLocalURL(),
 			'class' => 'bs-traceable-link bs-recently-found-suggestion',
-			'data-bs-traceable-page' => json_encode( $data )
+			'data-bs-traceable-page' => json_encode( $data ),
+			'data-title' => $title->getPrefixedText()
 		], $title->getPrefixedText() );
 	}
 }

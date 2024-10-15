@@ -336,6 +336,7 @@
 			bs.extendedSearch._registerTrackableLinks();
 			$resultCnt.trigger( 'resultsReady', [ resultPanel ] );
 			search.removeLoading();
+			$( resultPanel.$element.children()[0] ).find( 'a' )[0].focus();
 			// Done afterwards to announce properly
 			hitCount.init();
 		}.bind( this ) );

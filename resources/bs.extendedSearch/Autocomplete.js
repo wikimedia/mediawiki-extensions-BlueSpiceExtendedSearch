@@ -145,7 +145,7 @@
 				response.suggestions,
 				{ creatable: false },
 				mw.msg( 'bs-extendedsearch-recently-found-header' ),
-				mw.msg( 'bs-extendedsearch-recently-found-header-aria' )
+				mw.msg( 'bs-extendedsearch-recently-found-header-aria', response.suggestions.length )
 			);
 		}.bind( this ) );
 	}
