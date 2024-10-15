@@ -141,12 +141,21 @@
 	bs.extendedSearch.AutocompletePopup.prototype.selectCurrent = function() {
 		var selectedItem = this.popupGrid[this.currentColumn][this.currentIndex];
 		$( selectedItem ).addClass( 'bs-autocomplete-result-selected' );
-		this.announce( mw.msg(
-			'bs-extendedsearch-autocomplete-popup-select-announcement',
-			this.currentIndex + 1,
-			this.popupGrid[this.currentColumn].length
-		) );
+		this.enableIgnoreButtons();
+		var itemLink = $( selectedItem ).find( 'a' )[0];
+		if ( !itemLink ) {
+			return selectedItem;
+		}
+		var titleText = $( itemLink ).attr( 'data-title' );
+		this.announce( titleText );
 		return selectedItem;
+	};
+
+	bs.extendedSearch.AutocompletePopup.prototype.enableIgnoreButtons = function() {
+		var $ignoreBtns = $( '.bs-extendedsearch-recentlyfound-ignore-button a' );
+		for ( var i = 0; i < $ignoreBtns.length; i++ ) {
+			$( $ignoreBtns[ i ] ).attr( 'tabindex', 0 );
+		}
 	};
 
 	bs.extendedSearch.AutocompletePopup.prototype.clearSelected = function() {

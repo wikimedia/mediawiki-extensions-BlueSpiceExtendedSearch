@@ -11,9 +11,8 @@
 		this.$actions = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-actions' );
 		this.$secondaryResults = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-secondary' );
 		this.$announcer = $( '<div>' )
-			.addClass( 'bs-extendedsearch-autocomplete-popup-announcer' )
-			.attr( 'aria-live', 'polite' )
-			.css( 'display', 'none' );
+			.addClass( 'bs-extendedsearch-autocomplete-popup-announcer visually-hidden' )
+			.attr( 'aria-live', 'polite' );
 		this.$primaryResults.append( this.$announcer );
 
 		if ( this.headerText ) {
@@ -172,6 +171,9 @@
 
 	//Bolds out search term in the result title
 	bs.extendedSearch.mixin.AutocompleteHeader.prototype.boldSearchTerm = function() {
+		if ( this.searchTerm.length < 1 ) {
+			return;
+		}
 		var re = new RegExp( "(" + this.searchTerm + ")", "gi" );
 		this.basename = this.basename.replace( re, "<b>$1</b>" );
 	};
