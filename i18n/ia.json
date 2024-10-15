@@ -179,5 +179,10 @@
 	"bs-extendedsearch-recently-found-header": "Recentemente legite",
 	"bs-extendedsearch-recentlyfound-ignore": "Remover",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "Comenciar le recerca",
-	"bs-extendedsearch-tagsearch-input-aria-label": "Cercar"
+	"bs-extendedsearch-tagsearch-input-aria-label": "Cercar",
+	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|Un resultato|$1 resultatos}} trovate",
+	"bs-extendedsearch-recently-found-header-aria": "Resultatos recentemente examinate disponibile",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 de $2",
+	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Resultatos primari",
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Resultatos secundari"
 }
