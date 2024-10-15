@@ -21,7 +21,8 @@
 						icon: 'close',
 						classes: [ 'bs-extendedsearch-recentlyfound-ignore-button' ],
 						title: mw.message( 'bs-extendedsearch-recentlyfound-ignore' ).plain(),
-						data: data
+						data: data,
+						tabIndex: -1
 					} );
 					ignoreButton.connect( ignoreButton, {
 						click: function() {

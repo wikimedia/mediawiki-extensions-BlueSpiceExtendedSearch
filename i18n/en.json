@@ -29,7 +29,7 @@
 	"bs-extendedsearch-close-search-button-aria-label": "Close search box",
 	"bs-extendedsearch-search-button-title": "Switch to fulltext search",
 	"bs-extendedsearch-search-button-aria-label": "Switch to fulltext search",
-	"bs-extendedsearch-search-input-placeholder": "Search (type '/')",
+	"bs-extendedsearch-search-input-placeholder": "Find ...",
 	"bs-extendedsearch-search-input-aria-label": "Search box",
 	"bs-extendedsearch-source-label-wikipage": "Wiki page",
 	"bs-extendedsearch-source-label-specialpage": "Special page",
@@ -184,7 +184,7 @@
 	"bs-extendedsearch-tagsearch-btn-aria-label": "Start search",
 	"bs-extendedsearch-tagsearch-input-aria-label": "Search",
 	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|One result|$1 results}} found",
-	"bs-extendedsearch-recently-found-header-aria": "Recently viewed results available",
+	"bs-extendedsearch-recently-found-header-aria": "{{PLURAL:$1|One|$1}} recently viewed {{PLURAL:$1|result|results}} available",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 of $2",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Primary results",
 	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Secondary results"

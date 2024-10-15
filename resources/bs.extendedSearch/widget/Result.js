@@ -163,15 +163,15 @@
 		if( this.userRelevance == -1 ) {
 			//this.notRelevantButton.setIcon( 'unBlock' );
 			this.relevantButton.setIcon( 'star' );
-			this.relevantButton.$element.attr( 'aria-pressed', 'false' );
+			this.relevantButton.$button.attr( 'aria-pressed', 'false' );
 		} else if ( this.userRelevance == 1 ) {
 			//this.notRelevantButton.setIcon( 'block' );
 			this.relevantButton.setIcon( 'unStar' );
-			this.relevantButton.$element.attr( 'aria-pressed', 'true' );
+			this.relevantButton.$button.attr( 'aria-pressed', 'true' );
 		} else {
 			//this.notRelevantButton.setIcon( 'block' );
 			this.relevantButton.setIcon( 'star' );
-			this.relevantButton.$element.attr( 'aria-pressed', 'false' );
+			this.relevantButton.$button.attr( 'aria-pressed', 'false' );
 		}
 	}
 	//End Experimental
