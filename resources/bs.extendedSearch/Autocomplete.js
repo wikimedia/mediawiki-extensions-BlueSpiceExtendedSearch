@@ -16,6 +16,7 @@
 		this.searchBar.on( 'valueChanged', this.onValueChanged.bind( this ) );
 		this.searchBar.on( 'clearSearch', this.onClearSearch.bind( this ) );
 		this.searchBar.on( 'emptyFocus', this.onEmptyFocus.bind( this ) );
+		this.searchBar.$searchForm.on( 'focusout', this.onFocusOut.bind( this ) );
 		$( window ).on( 'click', this.onWindowClick.bind( this ) );
 		this._initComplete = true;
 	}
@@ -129,6 +130,16 @@
 
 	//Clear all search params
 	function _onClearSearch() {
+		this.removePopup();
+	}
+
+
+	//Close popup on tab to new button
+	function _onFocusOut( e ) {
+		if( this.searchBar.$searchContainer[0] &&
+			$.contains( this.searchBar.$searchContainer[0], e.relatedTarget ) ) {
+			return;
+		}
 		this.removePopup();
 	}
 
@@ -426,6 +437,7 @@
 	bs.extendedSearch.Autocomplete.prototype.onClearSearch = _onClearSearch;
 	bs.extendedSearch.Autocomplete.prototype.onValueChanged = _onValueChanged;
 	bs.extendedSearch.Autocomplete.prototype.onEmptyFocus = _onEmptyFocus;
+	bs.extendedSearch.Autocomplete.prototype.onFocusOut = _onFocusOut;
 	bs.extendedSearch.Autocomplete.prototype.onSubmit = _onSubmit;
 	bs.extendedSearch.Autocomplete.prototype.beforeValueChanged = _beforeValueChanged;
 	bs.extendedSearch.Autocomplete.prototype.onWindowClick = _onWindowClick;
