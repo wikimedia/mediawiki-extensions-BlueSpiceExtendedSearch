@@ -1,6 +1,6 @@
 <div id="bs-tagsearch-cnt-{{id_number}}" class="bs-tagsearch-cnt p-search">
 	<form action="{{action}}" method="POST" class="bs-tagsearch-form" autocomplete="off">
-		<button class="btn btn-default" type="submit" {{#button-aria-label}} aria-label="{{{.}}}"{{/button-aria-label}}><i class="p-search-icon"></i></button><input id="bs-tagsearch-searchfield-{{id_number}}" name="raw_term" class="bs-tagsearch-searchfield" type="text" placeholder="{{placeholder}}" {{#input-aria-label}} aria-label="{{{.}}}"{{/input-aria-label}}>
+		<input id="bs-tagsearch-searchfield-{{id_number}}" name="raw_term" class="bs-tagsearch-searchfield" role="searchbox" type="text" placeholder="{{placeholder}}" {{#input-aria-label}} aria-label="{{{.}}}"{{/input-aria-label}}>
 		<input type="hidden" name="lookup" value="{{lookup_object}}">
 		<input type="hidden" name="returnto" value="{{returnto}}">
 	</form>
