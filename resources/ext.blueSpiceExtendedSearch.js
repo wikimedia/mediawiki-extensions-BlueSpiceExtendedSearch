@@ -7,14 +7,23 @@
 				var $a = $( this ),
 					data = $a.data( 'bs-traceable-page' );
 
-				function doTrack( $el ) {
-					bs.extendedSearch._trackLink( data ).done( function() {
-						window.location = $el.attr( 'href' );
-					} ).fail ( function( e ) {
-						console.error( e );
-						window.location = $el.attr( 'href' );
+				function openLink( url, inNew ) {
+					if ( inNew ) {
+						window.open( url, '_blank' );
+					} else {
+						window.location = url;
+					}
+				}
+				function doTrack( e ) {
+					bs.extendedSearch._trackLink( data ).then( function() {
+						openLink( $a.attr( 'href' ), shouldOpenInNew( e ) );
 					} );
 				}
+
+				function shouldOpenInNew( e ) {
+					return e.ctrlKey || e.metaKey;
+				}
+
 				if ( $a.hasClass( 'bs-recently-found-suggestion' ) ) {
 					var ignoreButton = new OO.ui.ButtonWidget( {
 						framed: false,
@@ -42,14 +51,14 @@
 				$a.on( 'click', function ( e ) {
 					e.preventDefault();
 					e.stopPropagation();
-					doTrack( $a );
+					doTrack( e );
 				} );
 				$a.parent().on( 'click', function ( e ) {
 					if ( $( this ).hasClass( 'bs-extendedsearch-result-header-container' ) ) {
 						return;
 					}
 					e.preventDefault();
-					doTrack( $( this ).find( 'a.bs-traceable-link' ) );
+					doTrack( e );
 				} );
 			} );
 		},
