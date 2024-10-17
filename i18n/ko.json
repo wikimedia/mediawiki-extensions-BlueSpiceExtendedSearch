@@ -14,9 +14,9 @@
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "쿼리의 추가 변수",
 	"apihelp-bs-extendedsearch-query-param-search-term": "검색을 수행할 대상이 되는 용어",
 	"bs-extendedsearch-close-search-button-aria-label": "검색 상자 닫기",
-	"bs-extendedsearch-search-button-title": "검색 시작",
-	"bs-extendedsearch-search-button-aria-label": "검색 시작",
-	"bs-extendedsearch-search-input-placeholder": "찾기 ...",
+	"bs-extendedsearch-search-button-title": "전문 검색으로 전환",
+	"bs-extendedsearch-search-button-aria-label": "전문 검색으로 전환",
+	"bs-extendedsearch-search-input-placeholder": "찾기 ('/' 입력)",
 	"bs-extendedsearch-search-input-aria-label": "검색 상자",
 	"bs-extendedsearch-source-label-wikipage": "위키 페이지",
 	"bs-extendedsearch-source-label-specialpage": "특수 문서",
@@ -133,5 +133,9 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "\"$1\"에서 결과 표시",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "\"$1\"에서 검색 중",
 	"bs-extendedsearch-statistics-report-search-terms": "검색어",
-	"bs-extendedsearch-statistics-report-search-terms-axis-label": "검색 쿼리 수"
+	"bs-extendedsearch-statistics-report-search-terms-axis-label": "검색 쿼리 수",
+	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|$1개 결과}}를 찾았습니다",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$2 중 $1",
+	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "1차 결과",
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "2차 결과"
 }

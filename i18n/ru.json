@@ -25,7 +25,7 @@
 	"bs-extendedsearch-close-search-button-aria-label": "Закрыть окно поиска",
 	"bs-extendedsearch-search-button-title": "Переключится на поиск по всему тексту",
 	"bs-extendedsearch-search-button-aria-label": "Переключиться на полнотекстовый поиск",
-	"bs-extendedsearch-search-input-placeholder": "Поиск (введите '/')",
+	"bs-extendedsearch-search-input-placeholder": "Найти ...",
 	"bs-extendedsearch-search-input-aria-label": "Строка поиска",
 	"bs-extendedsearch-source-label-wikipage": "Вики-страница",
 	"bs-extendedsearch-source-label-specialpage": "Служебная страница",
