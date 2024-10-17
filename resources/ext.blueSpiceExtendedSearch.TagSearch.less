@@ -30,47 +30,43 @@
 				border-radius: 0 2px 2px 0;
 				text-align: center;
 				width: 31px;
+				height: 25px;
+				min-height: 25px;
 
 				a {
 					padding-top: 0;
 					vertical-align: baseline;
+					height: 25px;
+					min-height: 25px;
+					top: 2px;
+					.oo-ui-indicator-clear {
+						height: 100%;
+						left: 0;
+						right: 0;
+					}
 				}
 			}
 		}
 		input {
 			display: inline-block;
 			border: 1px solid #cccccc;
-			border-left: none;
-			border-radius: 0 2px 2px 0;
-			padding-left: 10px;
+			border-radius: 2px 2px 2px 2px;
+			padding-left: 15px;
 			height: 31px;
 			width: 250px;
 			vertical-align: middle;
 			&:focus {
 				outline: 0;
 				box-shadow: none;
+				border: 1px solid #3e5389;
 			}
-		}
-		.btn{
-			padding: 4px 6px 2px 4px;
-			vertical-align: middle;
-			border-radius: 2px 0 0 2px;
-			border: 1px solid #cccccc;
-			border-right: none;
-			height: 31px;
-		}
-		.btn::before {
-			font-family: 'entypo';
-			font-style: normal;
-			font-size: 15px;
-			content: "\e9d9";
 		}
 		.bs-extendedsearch-autocomplete-popup {
 			&.compact {
 				top: 36px !important;
 				left: 5px;
-				/* search button width=28px + clear button width=28px */
-				width: calc(~"250px + 28px + 28px ") !important;
+				/* clear button width=28px */
+				width: calc(~"250px + 28px ") !important;
 
 				.bs-extendedsearch-autocomplete-popup-primary-item {
 					padding: 4px;
@@ -81,6 +77,13 @@
 	&.clear-present {
 		input {
 			border-right: none;
+			border-radius: 2px 0 0 2px;
+			&:focus {
+				border-right: none;
+				~ .bs-extendedsearch-searchbar-clear {
+					border-color: #3e5389;
+				}
+			}
 		}
 	}
 }
