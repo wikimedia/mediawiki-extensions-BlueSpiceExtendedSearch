@@ -28,9 +28,9 @@
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "Catena JSON decodificate que contine additional information sur le contexto del recerca",
 	"apihelp-bs-extendedsearch-type-store-summary": "Retorna le typos registrate de recerca",
 	"bs-extendedsearch-close-search-button-aria-label": "Clauder le quadro de recerca",
-	"bs-extendedsearch-search-button-title": "Comenciar le recerca",
-	"bs-extendedsearch-search-button-aria-label": "Comenciar le recerca",
-	"bs-extendedsearch-search-input-placeholder": "Cercar ...",
+	"bs-extendedsearch-search-button-title": "Cambiar al recerca de texto complete",
+	"bs-extendedsearch-search-button-aria-label": "Cambiar al recerca de texto complete",
+	"bs-extendedsearch-search-input-placeholder": "Cercar…",
 	"bs-extendedsearch-search-input-aria-label": "Quadro de recerca",
 	"bs-extendedsearch-source-label-wikipage": "Pagina wiki",
 	"bs-extendedsearch-source-label-specialpage": "Pagina special",
@@ -183,5 +183,12 @@
 	"bs-extendedsearch-rest-trace-remove-failure": "Error durante le deletion del datos de traciamento",
 	"bs-extendedsearch-recently-found-header": "Recentemente legite",
 	"bs-extendedsearch-autocomplete-input-title": "Cercar (digita ‘/’)",
-	"bs-extendedsearch-recentlyfound-ignore": "Remover"
+	"bs-extendedsearch-recentlyfound-ignore": "Remover",
+	"bs-extendedsearch-tagsearch-btn-aria-label": "Comenciar le recerca",
+	"bs-extendedsearch-tagsearch-input-aria-label": "Cercar",
+	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|Un resultato|$1 resultatos}} trovate",
+	"bs-extendedsearch-recently-found-header-aria": "{{PLURAL:$1|Un resultato|$1 resultatos}} recentemente examinate disponibile",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 de $2",
+	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Resultatos primari",
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Resultatos secundari"
 }
