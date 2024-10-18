@@ -18,7 +18,7 @@
 	"apihelp-bs-extendedsearch-query-param-params": "Parametri aggiuntivi per la ricerca",
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Parametri addizionali per la query",
 	"apihelp-bs-extendedsearch-query-param-search-term": "Termine per il quale viene condotta la ricerca",
-	"bs-extendedsearch-search-input-placeholder": "Cerca (digita '/')",
+	"bs-extendedsearch-search-input-placeholder": "Trova ...",
 	"bs-extendedsearch-search-input-aria-label": "Casella di ricerca",
 	"bs-extendedsearch-source-label-wikipage": "Pagina wiki",
 	"bs-extendedsearch-source-label-specialpage": "Pagina speciale",
