@@ -15,7 +15,11 @@
 					}
 				}
 				function doTrack( e ) {
-					bs.extendedSearch._trackLink( data ).then( function() {
+					if ( mw.user.isAnon() ) {
+						openLink( $a.attr( 'href' ), shouldOpenInNew( e ) );
+						return;
+					}
+					bs.extendedSearch._trackLink( data ).always( function() {
 						openLink( $a.attr( 'href' ), shouldOpenInNew( e ) );
 					} );
 				}
