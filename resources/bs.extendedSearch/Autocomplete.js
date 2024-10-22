@@ -227,6 +227,7 @@
 	}
 
 	function _getSuggestions() {
+		this.searchBar.setPending();
 		var lookup = new bs.extendedSearch.Lookup( this.lookupConfig );
 		this.suggestField = this.autocompleteConfig['SuggestField'];
 
@@ -260,6 +261,7 @@
 
 		var me = this;
 		this.runLookup( lookup ).done( function( response ) {
+			me.searchBar.clearPending();
 			$( d ).trigger( 'BSExtendedSearchAutocompleteSuggestionsRetrieved', [ response.suggestions || [] ] );
 			me.makePopup(
 				response.suggestions,
@@ -290,7 +292,9 @@
 				me.addSecondaryToPopup( response.suggestions );
 				bs.extendedSearch._registerTrackableLinks();
 			} );
-		} );
+		} ).fail( function() {
+			this.searchBar.clearPending();
+		}.bind( this ) );
 	}
 
 	function getSuggestionsByRank( suggestions, rank ) {
