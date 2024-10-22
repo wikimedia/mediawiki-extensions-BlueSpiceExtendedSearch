@@ -36,6 +36,6 @@
 		if( $anchor ) {
 			window.location = $anchor.attr( 'href' );
 		}
-	}
+	};
 
 } )( mediaWiki, jQuery, blueSpice, document );
