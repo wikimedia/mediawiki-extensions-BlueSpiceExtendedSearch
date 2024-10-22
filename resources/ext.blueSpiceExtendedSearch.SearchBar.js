@@ -475,4 +475,12 @@
 
 		this.emit( 'emptyFocus' );
 	};
+
+	bs.extendedSearch.SearchBar.prototype.setPending = function() {
+		this.$searchBox.addClass( 'oo-ui-pendingElement-pending' );
+	};
+
+	bs.extendedSearch.SearchBar.prototype.clearPending = function() {
+		this.$searchBox.removeClass( 'oo-ui-pendingElement-pending' );
+	};
 } )( mediaWiki, jQuery, blueSpice, document );
