@@ -8,7 +8,8 @@ class WikiPageAutocompleteSourceFields extends LookupModifier {
 
 	public function apply() {
 		$this->lookup->addSourceField( [
-			'namespace', 'namespace_text', 'prefixed_title', 'mtime', 'display_title', 'page_id'
+			'namespace', 'namespace_text', 'prefixed_title', 'mtime',
+			'display_title', 'page_id', 'is_redirect', 'redirects_to'
 		] );
 	}
 
