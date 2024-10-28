@@ -16,7 +16,7 @@
 	"bs-extendedsearch-close-search-button-aria-label": "검색 상자 닫기",
 	"bs-extendedsearch-search-button-title": "전문 검색으로 전환",
 	"bs-extendedsearch-search-button-aria-label": "전문 검색으로 전환",
-	"bs-extendedsearch-search-input-placeholder": "찾기 ('/' 입력)",
+	"bs-extendedsearch-search-input-placeholder": "찾기 ...",
 	"bs-extendedsearch-search-input-aria-label": "검색 상자",
 	"bs-extendedsearch-source-label-wikipage": "위키 페이지",
 	"bs-extendedsearch-source-label-specialpage": "특수 문서",
