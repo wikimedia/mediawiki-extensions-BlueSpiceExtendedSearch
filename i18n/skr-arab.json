@@ -62,5 +62,6 @@
 	"bs-extendedsearch-droplet-search-name": "ڳولݨ خانہ",
 	"bs-extendedsearch-source-label-externalfile": "ٻاہرلی فائل",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "ڳولݨ شروع کرو",
-	"bs-extendedsearch-tagsearch-input-aria-label": "ڳولو"
+	"bs-extendedsearch-tagsearch-input-aria-label": "ڳولو",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$2 وچوں $1 واں"
 }
