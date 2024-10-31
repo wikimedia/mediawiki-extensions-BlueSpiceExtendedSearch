@@ -61,5 +61,6 @@
 	"action-extendedsearch-search-externalfile": "no externe Fichiere sichen",
 	"bs-extendedsearch-suggest-operator": "Wollt Dir no <b>$1</b> sichen?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Global Resultater weisen",
-	"bs-extendedsearch-tagsearch-input-aria-label": "Sichen"
+	"bs-extendedsearch-tagsearch-input-aria-label": "Sichen",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 vu(n) $2"
 }
