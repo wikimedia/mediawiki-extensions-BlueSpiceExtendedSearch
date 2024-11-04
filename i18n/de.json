@@ -18,7 +18,6 @@
 			"Brettchenweber"
 		]
 	},
-	"bs-extsearch-extensionname": "BlueSpiceExtendedSearch",
 	"bs-extsearch-desc": "Elasticsearch Suche Backend",
 	"bssearchadmin": "Suchverwaltung",
 	"bssearchadmin-desc": "Bietet eine Verwaltungsoberfläche für die Suche.",
@@ -107,7 +106,6 @@
 	"bs-extendedsearch-search-center-hitcount-suggest": "Meintest du $1 ({{PLURAL:$2|Ein|$2}} Treffer)?",
 	"bs-extendedsearch-loadmore-label": "Mehr Ergebnisse laden",
 	"bs-extendedsearch-loadmore-error": "Weitere Ergebnisse können nicht abgerufen werden.",
-	"bs-extendedsearch-filter-label-count-only": "($1)",
 	"bs-extendedsearch-search-center-result-typetext-label": "Typ:",
 	"bs-extendedsearch-source-type-wikipage-label": "Seite",
 	"bs-extendedsearch-source-type-repofile-label": "Lokale Datei",

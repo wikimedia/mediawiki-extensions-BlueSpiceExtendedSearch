@@ -34,8 +34,8 @@
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "JSON 解碼字串包含搜尋上下文的額外資訊",
 	"apihelp-bs-extendedsearch-type-store-summary": "回傳已註冊搜尋類型",
 	"bs-extendedsearch-close-search-button-aria-label": "關閉搜尋框",
-	"bs-extendedsearch-search-button-title": "開始搜尋",
-	"bs-extendedsearch-search-button-aria-label": "開始搜尋",
+	"bs-extendedsearch-search-button-title": "切換成全文搜尋",
+	"bs-extendedsearch-search-button-aria-label": "切換成全文搜尋",
 	"bs-extendedsearch-search-input-placeholder": "尋找...",
 	"bs-extendedsearch-search-input-aria-label": "搜尋框",
 	"bs-extendedsearch-source-label-wikipage": "wiki 頁面",
@@ -187,8 +187,12 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "相似的頁面",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "查無相似的頁面",
 	"bs-extendedsearch-recently-found-header": "近期檢視",
-	"bs-extendedsearch-autocomplete-input-title": "搜尋（輸入「/」）",
 	"bs-extendedsearch-recentlyfound-ignore": "移除",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "開始搜尋",
-	"bs-extendedsearch-tagsearch-input-aria-label": "搜尋"
+	"bs-extendedsearch-tagsearch-input-aria-label": "搜尋",
+	"bs-extendedsearch-autocomplete-header-aria": "找到 {{PLURAL:$1|1|$1}} 筆結果",
+	"bs-extendedsearch-recently-found-header-aria": "有 {{PLURAL:$1|1|$1}} 筆最近查看過的{{PLURAL:$1|結果}}可用",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 筆（共 $2 筆）",
+	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "主要結果",
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "次要結果"
 }

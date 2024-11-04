@@ -5,18 +5,18 @@
 			"Yupik"
 		]
 	},
+	"bs-extendedsearch-source-label-specialpage": "Toimâsijđo",
 	"bs-extendedsearch-source-label-user": "Kevttee",
 	"bs-extendedsearch-admin-label-error": "Feilâ",
+	"bs-extendedsearch-search-center-addfilter-dialog-title": "Lasseet sillee",
 	"bs-extendedsearch-search-center-filter-categories-label": "Luokka",
 	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Kilgoleh:",
 	"bs-extendedsearch-search-center-result-categories-label": "Luokka:",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Jooskâ",
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Nommâ",
-	"bs-extendedsearch-autocomplete-modified-time-label": "Majemustáá nubástittum: $1",
-	"bs-extendedsearch-collection-type-searchhistory": "Uuccâmhistorjá",
-	"bs-extendedsearch-search-center-addfilter-dialog-title": "Lasseet sillee",
 	"bs-extendedsearch-source-type-specialpage-label": "Toimâsijđo",
-	"bs-extendedsearch-source-label-specialpage": "Toimâsijđo",
+	"bs-extendedsearch-autocomplete-modified-time-label": "Majemustáá nubástittum: $1",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Siijđo kielâ",
-	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Siijđo kielâ:"
+	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Siijđo kielâ:",
+	"bs-extendedsearch-collection-type-searchhistory": "Uuccâmhistorjá"
 }

@@ -63,5 +63,6 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Global Resultater weisen",
 	"bs-extendedsearch-flyout-similar-pages-title": "Änlech Säiten",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Keng änlech Säite fonnt",
-	"bs-extendedsearch-tagsearch-input-aria-label": "Sichen"
+	"bs-extendedsearch-tagsearch-input-aria-label": "Sichen",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 vu(n) $2"
 }

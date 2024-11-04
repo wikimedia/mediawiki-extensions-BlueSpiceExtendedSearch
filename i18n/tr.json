@@ -136,10 +136,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Filtre ekle",
 	"bs-extendedsearch-options-button-label": "Arama seçenekleri",
 	"bs-extendedsearch-export-button-label": "Arama sonuçlarını dışa aktar",
-	"bs-extendedsearch-flyout-similar-pages-title": "Benzer sayfalar",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Benzer sayfa bulunamadı",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Sayfalarda kullanılır",
-	"bs-extendedsearch-tagsearch-extension-description": "Sizin içeriğinize bir arama formu ekleyin",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Aramak için yazın...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Geçersiz arama sonucu türü: $1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "EtiketArama",
@@ -175,5 +172,7 @@
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "\"$1\" içinde aranıyor",
 	"bs-extendedsearch-statistics-report-search-terms": "Arama terimleri",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Kişi başına arama terimleri",
-	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Bir kullanıcıya sadece kendi dilindeki arama sonuçlarını gösterir. Kullanıcılar tercihler bölümünde dili belirleyebilir."
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Bir kullanıcıya sadece kendi dilindeki arama sonuçlarını gösterir. Kullanıcılar tercihler bölümünde dili belirleyebilir.",
+	"bs-extendedsearch-flyout-similar-pages-title": "Benzer sayfalar",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Benzer sayfa bulunamadı"
 }

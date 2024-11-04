@@ -129,10 +129,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Aggiunge 'nu filtre",
 	"bs-extendedsearch-options-button-label": "Opziune de recerche",
 	"bs-extendedsearch-export-button-label": "Esporte le resultate d'a recerche",
-	"bs-extendedsearch-flyout-similar-pages-title": "Pàggene ca s'assemegghiane",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Nisciuna pàgene ca s'assemegghie ha state acchiate",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Ausate sus a le pàggene",
-	"bs-extendedsearch-tagsearch-extension-description": "Aggiunge 'nu module de recerche jndr'à 'u condenute {{GENDER:tune}}",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Scrive pe cercà...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Tipe d'u resultate d'a recerche invalide: $1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "TagSearch",
@@ -169,5 +166,7 @@
 	"bs-extendedsearch-statistics-report-search-terms": "Cirche le termine",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Cirche le termine pe utende",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Torne le resultate de recerche pe 'n'utende sulamende jndr'à lènghe de l'utende stesse. le utinde ponne 'mbostà 'a lènga lore jndr'à le preferenze.",
-	"bs-extendedsearch-pref-compact-ac-paths-help": "'Ndruche 'na disposizione combatte e autocomblete d'u menù de recerche (disposizione a 'na culonne, andeprime senze miniature)."
+	"bs-extendedsearch-pref-compact-ac-paths-help": "'Ndruche 'na disposizione combatte e autocomblete d'u menù de recerche (disposizione a 'na culonne, andeprime senze miniature).",
+	"bs-extendedsearch-flyout-similar-pages-title": "Pàggene ca s'assemegghiane",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Nisciuna pàgene ca s'assemegghie ha state acchiate"
 }

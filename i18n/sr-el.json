@@ -83,8 +83,6 @@
 	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpice proširena pretraga — {{GENDER:$2|Imate}} {{PLURAL:$1|1=jednu stranicu označenu|$1 stranicu označenu|$1 stranice označene|$1 stranica označenih}} kao {{PLURAL:$1|1=relevantan rezultat pretrage|relevantan rezultat pretrage|relevantni rezultati pretrage}}",
 	"bs-extendedsearch-options-button-label": "Opcije pretrage",
 	"bs-extendedsearch-export-button-label": "Izvezi rezultate pretrage",
-	"bs-extendedsearch-flyout-similar-pages-title": "Slične stranice",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Nisu pronađene slične stranice",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Korišćeno na stranicama",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Unesite da bi ste pretražili...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Nekorektan tip pretrage: $1",
@@ -103,5 +101,7 @@
 	"action-extendedsearch-search-specialpage": "pretražujete posebne stranice",
 	"action-extendedsearch-search-wikipage": "pretražujete stranice",
 	"action-extendedsearch-search-repofile": "pretražujete datoteke",
-	"action-extendedsearch-search-externalfile": "pretražujete spoljašnje datoteke"
+	"action-extendedsearch-search-externalfile": "pretražujete spoljašnje datoteke",
+	"bs-extendedsearch-flyout-similar-pages-title": "Slične stranice",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Nisu pronađene slične stranice"
 }

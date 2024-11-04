@@ -26,7 +26,6 @@
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Мова старонкі:",
 	"bs-extendedsearch-search-center-create-page-link": "Стварыць старонку «$1»",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Старонка $1: Тэкст: $2",
-	"bs-extendedsearch-flyout-similar-pages-title": "Падобныя старонкі",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Катэгорыя(-і)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Катэгорыя1|Катэгорыя2|...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Від",
@@ -35,5 +34,6 @@
 	"right-extendedsearch-search-repofile": "Пошук файлаў",
 	"action-extendedsearch-search-specialpage": "пошук адмысловых старонак",
 	"action-extendedsearch-search-wikipage": "пошук старонак",
-	"action-extendedsearch-search-repofile": "пошук файлаў"
+	"action-extendedsearch-search-repofile": "пошук файлаў",
+	"bs-extendedsearch-flyout-similar-pages-title": "Падобныя старонкі"
 }

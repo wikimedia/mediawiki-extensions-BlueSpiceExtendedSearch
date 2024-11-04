@@ -5,7 +5,6 @@
 			"Nokeoo"
 		]
 	},
-	"prefs-extendedsearch": "Išplėstinė paieška",
 	"bssearchadmin": "Paieškos administravimas",
 	"bssearchadmin-desc": "Suteikia paieškos valdymo sąsają",
 	"bssearchcenter": "Paieškos centras",
@@ -80,6 +79,7 @@
 	"bs-extendedsearch-result-relevance-relevant": "Šis rezultatas man svarbus",
 	"bs-extendedsearch-result-relevance-not-relevant": "Šis rezultatas man nėra svarbus",
 	"bs-extendedsearch-autocomplete-fulltext-search-button": "Ieškoti viso teksto",
+	"prefs-extendedsearch": "Išplėstinė paieška",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL priešdėlis",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Paskutinį kartą atnaujinta: $1",
 	"bs-extendedseach-wikipage-section-more-text": "... dar $1",
@@ -96,8 +96,6 @@
 	"bs-extendedsearch-options-button-label": "Paieškos nustatymai",
 	"bs-extendedsearch-export-button-label": "Eksportuoti paieškos rezultatus",
 	"bs-extendedsearch-remove-button-label": "Pašalinti filtrą „$1“",
-	"bs-extendedsearch-flyout-similar-pages-title": "Panašūs puslapiai",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Panašių puslapių nerasta",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Naudotas puslapiuose",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Įveskite norėdami ieškoti...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Neteisingas paieškos rezultato tipas: $1",
@@ -127,5 +125,7 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Paieškos terminai vienam naudotojui",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Paieškos užklausų skaičius",
 	"bs-extendedsearch-droplet-search-name": "Paieškos laukas",
-	"bs-extendedsearch-droplet-search-description": "Prie puslapio turinio pridedamas paieškos laukas"
+	"bs-extendedsearch-droplet-search-description": "Prie puslapio turinio pridedamas paieškos laukas",
+	"bs-extendedsearch-flyout-similar-pages-title": "Panašūs puslapiai",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Panašių puslapių nerasta"
 }

@@ -5,11 +5,5 @@
 			"Samwilson"
 		]
 	},
-	"bssearchcenter": "Search centre",
-	"bs-extendedsearch-autocomplete-create-page-link": "Create page '$1'",
-	"bs-extendedsearch-search-center-create-page-link": "Create page '$1'",
-	"bs-extendedsearch-remove-button-label": "Remove filter '$1'",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "This parameter is evaluated only in combination with 'category' parameter. Setting AND will match only results that are in all of the given categories, while OR value will match results that have at least one of the given categories set",
-	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Showing results in '$1'",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Searching in '$1'"
+	"bssearchcenter": "Search centre"
 }

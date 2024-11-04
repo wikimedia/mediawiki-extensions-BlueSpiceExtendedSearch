@@ -24,6 +24,7 @@
 	"bs-extendedsearch-search-center-filter-no-options-label": "Ingen værdier tilgængelig",
 	"bs-extendedsearch-search-center-result-namespace_text-label": "Navnerum:",
 	"bs-extendedsearch-search-center-result-categories-label": "Kategori:",
+	"bs-extendedsearch-search-center-result-sections-label": "Sektioner:",
 	"bs-extendedsearch-search-center-pagesize-dialog-title": "Resultater per side",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Annullér",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Anvend",
@@ -44,6 +45,7 @@
 	"bs-extendedsearch-source-type-specialpage-label": "Specialside",
 	"bs-extendedsearch-result-relevance-relevant": "Dette resultat er vigtigt for mig",
 	"bs-extendedsearch-result-relevance-not-relevant": "Dette resultat er ikke vigtigt for mig",
+	"prefs-extendedsearch": "Udvidet søgning",
 	"bs-extendedsearch-pref-external-file-paths-path": "Fysisk sti",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Ekskluder mønstre",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Sprog på side",
@@ -51,8 +53,6 @@
 	"bs-extendedsearch-search-center-create-page-link": "Opret siden \"$1\"",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Side $1: Tekst: $2",
 	"bs-extendedsearch-filter-add-button-label": "Tilføj et filter",
-	"bs-extendedsearch-flyout-similar-pages-title": "Lignende sider",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Ingen lignende sider fundet",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Navnerum",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategori(er)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Type",
@@ -66,6 +66,6 @@
 	"action-extendedsearch-search-wikipage": "søg efter sider",
 	"action-extendedsearch-search-repofile": "søg efter filer",
 	"action-extendedsearch-search-externalfile": "søg efter eksterne filer",
-	"bs-extendedsearch-search-center-result-sections-label": "Sektioner:",
-	"prefs-extendedsearch": "Udvidet søgning"
+	"bs-extendedsearch-flyout-similar-pages-title": "Lignende sider",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Ingen lignende sider fundet"
 }

@@ -7,6 +7,7 @@
 	"bs-extendedsearch-search-input-placeholder": "Ooʒʒ ...",
 	"bs-extendedsearch-source-label-specialpage": "Tuåimmseidd",
 	"bs-extendedsearch-source-label-repofile": "Ruõkk teâttõõzz",
+	"bs-extendedsearch-source-label-user": "Õõʹnni",
 	"bs-extendedsearch-admin-label-error": "Vââʹǩǩ",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Lââʹzzet siʹllʼjeei",
 	"bs-extendedsearch-search-center-filter-tags-label": "Ǩeâlǥal",
@@ -33,6 +34,5 @@
 	"action-extendedsearch-search-specialpage": "ooccâd tuåimmseeidaid",
 	"action-extendedsearch-search-wikipage": "ooccâd seeidaid",
 	"action-extendedsearch-search-repofile": "ooccâd teâttõõzzid",
-	"bs-extendedsearch-suggest-operator": "Juʹrddiǩ-a ton <b>$1</b>?",
-	"bs-extendedsearch-source-label-user": "Õõʹnni"
+	"bs-extendedsearch-suggest-operator": "Juʹrddiǩ-a ton <b>$1</b>?"
 }

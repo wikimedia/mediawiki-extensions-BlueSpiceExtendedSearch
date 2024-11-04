@@ -48,8 +48,6 @@
 	"bs-extendedsearch-search-center-create-page-link": "Crea la pàggina \"$1\"",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Pàggina $1: Testu: $2",
 	"bs-extendedsearch-filter-add-button-label": "Agghiunci nu filtru",
-	"bs-extendedsearch-flyout-similar-pages-title": "Pàggini sìmili",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Nudda pàggini sìmili attruvata",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Usatu ntî pàggini",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Tipu di risurtatu di l'arricerca nun vàlidu: $1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Namespace",
@@ -57,5 +55,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Catigurìa/i",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Catigurìa1|Catigurìa2|...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipu",
-	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Ammustra li risurtati glubbali"
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Ammustra li risurtati glubbali",
+	"bs-extendedsearch-flyout-similar-pages-title": "Pàggini sìmili",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Nudda pàggini sìmili attruvata"
 }

@@ -9,6 +9,7 @@
 	"bs-extendedsearch-search-input-placeholder": "ရှာဖွေပါ...",
 	"bs-extendedsearch-source-label-wikipage": "ဝီကီ စာမျက်နှာ",
 	"bs-extendedsearch-source-label-specialpage": "အထူး စာမျက်နှာ",
+	"bs-extendedsearch-source-label-repofile": "ဖိုင်​တင်​ရန်​",
 	"bs-extendedsearch-source-label-user": "အသုံးပြုသူ",
 	"bs-extendedsearch-admin-label-error": "အမှား",
 	"bs-extendedsearch-admin-heading-sources": "ရင်းမြစ်များ",
@@ -44,14 +45,13 @@
 	"bs-extendedsearch-source-type-specialpage-label": "အထူး စာမျက်နှာ",
 	"bs-extendedsearch-autocomplete-modified-time-label": "နောက်ဆုံး ပြုပြင်မှု : $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... $1 ပို၍",
+	"bs-extendedsearch-search-center-create-page-link": "\"$1\" စာမျက်နှာ ဖန်တီးရန်",
+	"bs-extendedsearch-collection-type-searchhistory": "ရှာဖွေမှုမှတ်တမ်း",
+	"bs-extendedsearch-collection-var-numbersearched": "ရှာဖွေမှုများ",
 	"right-extendedsearch-search-specialpage": "အထူးစာမျက်နှာများအတွက် ရှာဖွေရန်",
 	"right-extendedsearch-search-wikipage": "စာမျက်နှာများအတွက် ရှာဖွေရန်",
 	"right-extendedsearch-search-repofile": "ဖိုင်များကို ရှာရန်",
 	"right-extendedsearch-search-externalfile": "ပြင်ပဖိုင်များအတွက် ရှာဖွေရန်",
 	"action-extendedsearch-search-specialpage": "အထူးစာမျက်နှာများအတွက် ရှာဖွေရန်",
-	"action-extendedsearch-search-wikipage": "စာမျက်နှာများအတွက် ရှာဖွေရန်",
-	"bs-extendedsearch-source-label-repofile": "ဖိုင်​တင်​ရန်​",
-	"bs-extendedsearch-search-center-create-page-link": "\"$1\" စာမျက်နှာ ဖန်တီးရန်",
-	"bs-extendedsearch-collection-type-searchhistory": "ရှာဖွေမှုမှတ်တမ်း",
-	"bs-extendedsearch-collection-var-numbersearched": "ရှာဖွေမှုများ"
+	"action-extendedsearch-search-wikipage": "စာမျက်နှာများအတွက် ရှာဖွေရန်"
 }

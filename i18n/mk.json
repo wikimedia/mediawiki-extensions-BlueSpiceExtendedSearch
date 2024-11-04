@@ -71,8 +71,6 @@
 	"bs-extendedsearch-search-center-create-page-link": "Создади ја страницата „$1“",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Страница $1: Текст: $2",
 	"bs-extendedsearch-filter-add-button-label": "Додај филтер",
-	"bs-extendedsearch-flyout-similar-pages-title": "Слични страници",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Не се пронајдени слични страници",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Искористена на страниците",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Именски простор(и)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "Именски простор1|Именски простор2|...",
@@ -82,5 +80,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип",
 	"bs-extendedsearch-collection-type-searchhistory": "Историја на пребарувањето",
 	"bs-extendedsearch-collection-var-searchterm": "Поим",
-	"bs-extendedsearch-collection-var-numbersearched": "Пребарувања"
+	"bs-extendedsearch-collection-var-numbersearched": "Пребарувања",
+	"bs-extendedsearch-flyout-similar-pages-title": "Слични страници",
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Не се пронајдени слични страници"
 }
