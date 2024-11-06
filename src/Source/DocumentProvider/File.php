@@ -30,13 +30,16 @@ class File extends Base {
 		$aDC = parent::getDocumentData( $sUri, $documentId, $oFile );
 		$name = $this->removeArchiveName( $oFile->getBasename() );
 
+		// Fallback to the lesser of mtime and ctime due to inconsistent creation time storage
+		$cTime = min( $oFile->getMTime(), $oFile->getCTime() );
+
 		return array_merge( $aDC, [
 			'basename' => $name,
 			'basename_exact' => $name,
 			'extension' => $oFile->getExtension(),
 			'mime_type' => $this->mimeAnalyzer->guessMimeType( $oFile->getPathname() ),
 			'mtime' => $oFile->getMTime(),
-			'ctime' => $oFile->getCTime(),
+			'ctime' => $cTime,
 			'size' => $oFile->getSize(),
 			'source_file_path' => $oFile->getPathname(),
 			'the_file' => $contents
