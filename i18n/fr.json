@@ -11,6 +11,7 @@
 			"Gomoko",
 			"Graineahumus",
 			"MacOS Weed",
+			"Mahabarata",
 			"Thibaut120094",
 			"Urhixidur",
 			"Verdy p",
@@ -43,8 +44,8 @@
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "Chaîne JSON décodée contenant les informations supplémentaires du contexte de la recherche",
 	"apihelp-bs-extendedsearch-type-store-summary": "Renvoie les types de recherches enregistrés",
 	"bs-extendedsearch-close-search-button-aria-label": "Fermer la boîte de recherche",
-	"bs-extendedsearch-search-button-title": "Commencer la recherche",
-	"bs-extendedsearch-search-button-aria-label": "Commencer la recherche",
+	"bs-extendedsearch-search-button-title": "Passer à la recherche en texte intégral",
+	"bs-extendedsearch-search-button-aria-label": "Passer à la recherche en texte intégral",
 	"bs-extendedsearch-search-input-placeholder": "Trouver…",
 	"bs-extendedsearch-search-input-aria-label": "Boîte de recherche",
 	"bs-extendedsearch-source-label-wikipage": "Page du wiki",
@@ -199,5 +200,12 @@
 	"bs-extendedsearch-recently-found-header": "Consulté récemment",
 	"bs-extendedsearch-autocomplete-input-title": "Rechercher (taper « / »)",
 	"bs-extendedsearch-recentlyfound-ignore": "Retirer",
-	"apihelp-bs-extendedsearch-recently-found-pages-summary": "Répertorie les pages vers lesquelles l'utilisateur a récemment accédé à partir des résultats de recherche"
+	"apihelp-bs-extendedsearch-recently-found-pages-summary": "Répertorie les pages vers lesquelles l'utilisateur a récemment accédé à partir des résultats de recherche",
+	"bs-extendedsearch-tagsearch-btn-aria-label": "Lancer la recherche",
+	"bs-extendedsearch-tagsearch-input-aria-label": "Recherche",
+	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|Un résultat trouvé|$1 résultats trouvés}}",
+	"bs-extendedsearch-recently-found-header-aria": "{{PLURAL:$1|Un résultat|$1 résultats}} récemment consulté{{PLURAL:$1| disponible|s disponibles}}",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 sur $2",
+	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Résultats principaux",
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Résultats auxiliaires"
 }

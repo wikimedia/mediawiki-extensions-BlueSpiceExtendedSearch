@@ -10,5 +10,6 @@
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "ਪੁੱਛਗਿੱਛ ਦੀ ਖੋਜ ਗਿਣਤੀ",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$2 ਵਿੱਚੋਂ $1",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "ਮੁੱਢਲੇ ਨਤੀਜੇ",
-	"bs-extendedsearch-search-input-placeholder": "ਲੱਭੋ..."
+	"bs-extendedsearch-search-input-placeholder": "ਲੱਭੋ...",
+	"bs-extendedsearch-admin-label-all-documents-count": "ਤਤਕਰੇ ਵਿੱਚ ਲਿਖਤਾਂ ਦੀ ਕੁੱਲ ਗਿਣਤੀ"
 }

@@ -128,8 +128,8 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "החזרת הרלוונטיות של תוצאות החיפוש",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "מחרוזת מפוענחת של JSON המכילה מידע נוסף על ההקשר של החיפוש",
 	"apihelp-bs-extendedsearch-type-store-summary": "החזרת סוגי חיפוש רשומים",
-	"bs-extendedsearch-search-button-title": "להתחיל חיפוש",
-	"bs-extendedsearch-search-button-aria-label": "להתחיל חיפוש",
+	"bs-extendedsearch-search-button-title": "לעבור לחיפוש בטקסט מלא",
+	"bs-extendedsearch-search-button-aria-label": "לעבור לחיפוש בטקסט מלא",
 	"bs-extendedsearch-admin-label-all-documents-count": "מספר כולל של מסמכים במפתח",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "משימת עדכון ממתינות",
 	"bs-extendedsearch-search-center-hitcount-widget": "{{PLURAL:$1|תוצאה אחת|$1 תוצאות}} עבור $2",
@@ -190,5 +190,10 @@
 	"bs-extendedsearch-autocomplete-input-title": "חיפוש (יש להקליד קו נטוי: \"/\")",
 	"bs-extendedsearch-recentlyfound-ignore": "הסרה",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "להתחיל חיפוש",
-	"bs-extendedsearch-tagsearch-input-aria-label": "חיפוש"
+	"bs-extendedsearch-tagsearch-input-aria-label": "חיפוש",
+	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|נמצאה תוצאה אחת|נמצאו $1 תוצאות}}",
+	"bs-extendedsearch-recently-found-header-aria": "{{PLURAL:$1|זמינה תוצאה אחת שנצפתה|זמינות $1 תוצאות שנצפו}} לאחרונה",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 מתוך $2",
+	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "תוצאות ראשוניות",
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "תוצאות משניות"
 }
