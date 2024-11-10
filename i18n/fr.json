@@ -11,12 +11,12 @@
 			"Gomoko",
 			"Graineahumus",
 			"MacOS Weed",
+			"Mahabarata",
 			"Thibaut120094",
 			"Urhixidur",
 			"Verdy p",
 			"Wladek92",
-			"Zarisi",
-			"Mahabarata"
+			"Zarisi"
 		]
 	},
 	"bs-extsearch-extensionname": "BlueSpiceExtendedSearch",
@@ -199,5 +199,12 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "Pages similaires",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Aucune page similaire trouvée",
 	"bs-extendedsearch-recently-found-header": "Consulté récemment",
-	"bs-extendedsearch-recentlyfound-ignore": "Retirer"
+	"bs-extendedsearch-recentlyfound-ignore": "Retirer",
+	"bs-extendedsearch-tagsearch-btn-aria-label": "Lancer la recherche",
+	"bs-extendedsearch-tagsearch-input-aria-label": "Recherche",
+	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|Un résultat trouvé|$1 résultats trouvés}}",
+	"bs-extendedsearch-recently-found-header-aria": "{{PLURAL:$1|Un résultat|$1 résultats}} récemment consulté{{PLURAL:$1| disponible|s disponibles}}",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 sur $2",
+	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Résultats principaux",
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Résultats auxiliaires"
 }

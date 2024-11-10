@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Brettchenweber",
 			"Ferdinand0101",
 			"Hwboehm",
 			"Justman10000",
@@ -14,8 +15,7 @@
 			"Tiin",
 			"Umherirrender",
 			"Umlaut",
-			"Wolfdietmann",
-			"Brettchenweber"
+			"Wolfdietmann"
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch Suche Backend",

@@ -64,5 +64,14 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "Änlech Säiten",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Keng änlech Säite fonnt",
 	"bs-extendedsearch-tagsearch-input-aria-label": "Sichen",
-	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 vu(n) $2"
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 vu(n) $2",
+	"bs-extendedsearch-source-label-wikipage": "Wiki-Säit",
+	"bs-extendedsearch-search-center-result-ctime-label": "Ugeluecht:",
+	"bs-extendedsearch-search-center-result-mtime-label": "Geännert:",
+	"bs-extendedsearch-searchcenter-filter-and-label": "a(n)",
+	"bs-extendedsearch-autocomplete-create-page-link": "Säit „$1“ uleeën",
+	"bs-extendedsearch-source-type-repofile-label": "Lokale Fichier",
+	"bs-extendedsearch-source-type-externalfile-label": "Externe Fichier",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL-Prefix",
+	"bs-extendedsearch-recentlyfound-ignore": "Ewechhuelen"
 }
