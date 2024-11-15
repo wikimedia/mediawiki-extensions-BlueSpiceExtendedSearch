@@ -996,6 +996,12 @@ class Backend {
 	 * @return bool
 	 */
 	public function isSharedIndex( string $index ): bool {
+		$localRepofileIndexName = $this->getIndexName( 'repofile' );
+		$localWikipageIndexName = $this->getIndexName( 'wikipage' );
+		if ( in_array( $index, [ $localRepofileIndexName, $localWikipageIndexName ] ) ) {
+			// On the instance that shares the indices
+			return false;
+		}
 		$sharedIndex = $this->getSharedUploadsIndexPrefix();
 		if ( !$sharedIndex ) {
 			return false;
