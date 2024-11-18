@@ -189,5 +189,12 @@
 	"bs-extendedsearch-flyout-similar-pages-title": "Vergelijkbare pagina's",
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "Geen vergelijkbare pagina's gevonden",
 	"bs-extendedsearch-recently-found-header": "Onlangs bekeken",
-	"bs-extendedsearch-recentlyfound-ignore": "Verwijderen"
+	"bs-extendedsearch-recentlyfound-ignore": "Verwijderen",
+	"bs-extendedsearch-tagsearch-btn-aria-label": "Beginnen met zoeken",
+	"bs-extendedsearch-tagsearch-input-aria-label": "Zoeken",
+	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|Eén resultaat|$1 resultaten}} gevonden",
+	"bs-extendedsearch-recently-found-header-aria": "{{PLURAL:$1|Eén|$1}} onlangs bekeken {{PLURAL:$1|resultaat|resultaten}} beschikbaar",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 van $2",
+	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Primaire resultaten",
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Secundaire resultaten"
 }
