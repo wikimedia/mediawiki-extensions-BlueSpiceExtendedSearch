@@ -238,7 +238,7 @@
 		// the first ones that match the query. This is why we need to get a lot of results,
 		// to be able to do our own ranking on a larger set of results.
 		// Difference in performance: 10 results = 0.1s, 100 results = 0.3s
-		lookup.setSize( 100 );
+		lookup.setSize( 50 );
 		if( $.isEmptyObject( this.searchBar.namespace ) === false ) {
 			lookup.addTermFilter( 'namespace', this.searchBar.namespace.id );
 		}
