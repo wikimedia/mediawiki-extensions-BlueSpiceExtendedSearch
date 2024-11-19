@@ -967,7 +967,7 @@ class Backend {
 	 */
 	private function maybeAddSharedIndex( array &$indices, string $key, ?array $limitToSources = null ) {
 		$prefix = $this->getSharedUploadsIndexPrefix();
-		$available = [ 'wikifile', 'repofile' ];
+		$available = [ 'wikipage', 'repofile' ];
 		if ( is_array( $limitToSources ) ) {
 			$available = array_intersect( $available, $limitToSources );
 		}
