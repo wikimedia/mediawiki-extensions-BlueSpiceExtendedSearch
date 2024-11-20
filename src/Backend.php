@@ -6,6 +6,7 @@ use BS\ExtendedSearch\Plugin\IFilterModifier;
 use BS\ExtendedSearch\Plugin\IFormattingModifier;
 use BS\ExtendedSearch\Plugin\ILookupModifier;
 use BS\ExtendedSearch\Plugin\IMappingModifier;
+use BS\ExtendedSearch\Plugin\IRankingModifier;
 use BS\ExtendedSearch\Plugin\ISearchPlugin;
 use BS\ExtendedSearch\Source\WikiPages;
 use Config;
@@ -353,11 +354,16 @@ class Backend {
 			// when results are ranked based on original data, it can be modified
 			$source->getFormatter()->formatAutocompleteResults( $results, $searchData );
 		}
-		$plugins = $this->getPluginsForInterface( IFormattingModifier::class );
-		/** @var IFormattingModifier $plugin */
-		foreach ( $plugins as $plugin ) {
-			$plugin->formatAutocompleteResults( $results, $searchData );
+
+		$rankers = $this->pluginManager->getPluginsForInterface( IRankingModifier::class );
+		foreach ( $rankers as $ranker ) {
+			$ranker->rankAutocompleteResults( $results, $searchData );
 		}
+                $formatters = $this->getPluginsForInterface( IFormattingModifier::class );
+		/** @var IFormattingModifier $formatter */
+		foreach ( $formatters as $formatter ) {
+			$formatter->formatAutocompleteResults( $results, $searchData );
+                }
 
 		usort( $results, static function ( $e1, $e2 ) {
 			if ( $e1['score'] == $e2['score'] ) {
