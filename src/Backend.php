@@ -273,6 +273,11 @@ class Backend {
 			return in_array( $type, $lookupModifier->getSearchTypes() );
 		} );
 
+		$this->hookContainer->run(
+			'BSExtendedSearchGetLookupModifiers',
+			[ &$lookupModifiers, $lookup, $type ]
+		);
+
 		usort( $lookupModifiers, static function ( $a, $b ) {
 			if ( $a->getPriority() === $b->getPriority() ) {
 				return 0;
@@ -348,7 +353,6 @@ class Backend {
 			// when results are ranked based on original data, it can be modified
 			$source->getFormatter()->formatAutocompleteResults( $results, $searchData );
 		}
-
 		$plugins = $this->getPluginsForInterface( IFormattingModifier::class );
 		/** @var IFormattingModifier $plugin */
 		foreach ( $plugins as $plugin ) {
