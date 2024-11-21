@@ -134,6 +134,7 @@
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "\"$1\"에서 검색 중",
 	"bs-extendedsearch-statistics-report-search-terms": "검색어",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "검색 쿼리 수",
+	"bs-extendedsearch-recentlyfound-ignore": "제거",
 	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|$1개 결과}}를 찾았습니다",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$2 중 $1",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "1차 결과",
