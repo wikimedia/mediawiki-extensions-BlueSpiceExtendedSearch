@@ -637,7 +637,7 @@
 		},
 		"ESWildcardingSeparators": {
 			"public": false,
-			"value": [ ",", ".", ";", "-", "_" ]
+			"value": [ ",", ".", ";", "_" ]
 		},
 		"ESRecentBoostFactor": {
 			"description": "Value must be between 0 and 1. If set to 1, very recent pages will almost double their score",
