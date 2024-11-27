@@ -31,7 +31,7 @@ class WildcarderTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testWildcardMultiWordWithSeparators() {
 		// Extra spaces
-		$origin = '   Test-text;   dummy   ';
+		$origin = '   Test,text;   dummy   ';
 		$wildcarder = Wildcarder::factory( $origin );
 		$result = $wildcarder->getWildcarded();
 		$this->assertEquals(
