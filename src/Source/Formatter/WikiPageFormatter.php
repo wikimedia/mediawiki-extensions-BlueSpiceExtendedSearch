@@ -2,8 +2,6 @@
 
 namespace BS\ExtendedSearch\Source\Formatter;
 
-use BlueSpice\DynamicFileDispatcher\ArticlePreviewImage;
-use BlueSpice\DynamicFileDispatcher\Params;
 use BS\ExtendedSearch\SearchResult;
 use MediaWiki\MediaWikiServices;
 
