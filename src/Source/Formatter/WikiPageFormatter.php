@@ -294,23 +294,17 @@ class WikiPageFormatter extends Base {
 			return '';
 		}
 
-		$params = [
-			Params::MODULE => 'articlepreviewimage',
-			ArticlePreviewImage::WIDTH => $width,
-			ArticlePreviewImage::TITLETEXT => $title->getFullText(),
-		];
 		$dfdUrlBuilder = $this->source->getBackend()->getService(
-			'BSDynamicFileDispatcherUrlBuilder'
-		);
-		if ( $dfdUrlBuilder == null ) {
-			return '';
-		}
-
-		$url = $dfdUrlBuilder->build(
-			new Params( $params )
+			'MWStake.DynamicFileDispatcher.Factory'
 		);
 
-		return $url;
+		return $dfdUrlBuilder->getUrl(
+			'articlepreviewimage',
+			[
+				'width' => $width,
+				'titletext' => $title->getFullText(),
+			]
+		);
 	}
 
 	/**
