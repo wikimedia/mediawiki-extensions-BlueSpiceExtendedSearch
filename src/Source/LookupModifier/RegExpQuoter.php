@@ -85,6 +85,7 @@ class RegExpQuoter extends LookupModifier {
 			'#"(.*?)"#',
 			static function ( $matches ) use ( &$replaceCounter, &$mapping ) {
 				$placeholder = "###Q$replaceCounter###";
+				$replaceCounter++;
 				$mapping[$placeholder] = $matches[1];
 				return $placeholder;
 			},
