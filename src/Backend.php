@@ -608,8 +608,8 @@ class Backend {
 		// How many results would our best alternative yield
 		$suggestLookup = clone $origTermLookup;
 		$suggestQueryString = $origTermLookup->getQueryString();
-		$escapedOrigTerm = str_replace( '/', '\/', $origTerm );
-		$suggestQueryString['query'] = preg_replace( '/' . $escapedOrigTerm . '/', $suggestedTerm, $suggestQueryString['query'] );
+		$escapedTerm = preg_quote( $origTerm, '/' );
+		$suggestQueryString['query'] = preg_replace( '/' . $escapedTerm . '/', $suggestedTerm, $suggestQueryString['query'] );
 		$suggestLookup->setQueryString( $suggestQueryString );
 		$query = $suggestLookup->getQueryDSL();
 		unset( $query['from'] );
