@@ -13,6 +13,7 @@ class WikiPage extends Base {
 		return array_merge( $config, [
 			'prefixed_title' => [
 				'type' => 'text',
+				'analyzer' => 'content_analyzer',
 				'copy_to' => [ 'congregated', 'prefixed_title_exact' ],
 			],
 			'prefixed_title_exact' => [
@@ -24,12 +25,14 @@ class WikiPage extends Base {
 			],
 			'source_content' => [
 				'type' => 'text',
+				'analyzer' => 'content_analyzer'
 			],
 			'rendered_content' => [
 				'type' => 'text',
 				'copy_to' => 'congregated',
 				// required to be able to retrieve highlights
-				'store' => true
+				'store' => true,
+				'analyzer' => 'content_analyzer'
 			],
 			'namespace' => [
 				'type' => 'integer'
