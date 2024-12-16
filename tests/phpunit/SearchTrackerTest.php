@@ -3,12 +3,13 @@
 namespace BS\ExtendedSearch\Tests;
 
 use BS\ExtendedSearch\SearchTracker;
-use IDatabase;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use PHPUnit\Framework\TestCase;
 use SpecialPage;
 use Title;
 use TitleFactory;
+use Wikimedia\Rdbms\FakeResultWrapper;
+use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class SearchTrackerTest extends TestCase {
@@ -146,7 +147,7 @@ class SearchTrackerTest extends TestCase {
 				SearchTracker::class . "::$method",
 				$options
 			)
-			->willReturn( new \FakeResultWrapper( [
+			->willReturn( new FakeResultWrapper( [
 				[
 					'est_namespace' => 0,
 					'est_title' => 'Test',

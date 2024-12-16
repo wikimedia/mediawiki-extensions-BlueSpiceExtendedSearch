@@ -384,22 +384,20 @@
 		$.each( headers, function( k, value ) {
 			var data = $( value ).data( 'bs-traceable-page' );
 			if( data && data.dbkey ) {
-				pages.push( data.dbkey );
+				pages.push( { dbkey: data.dbkey, display: data.dbkey } );
 			}
 		} );
 
 		let term = this.caller.getLookupObject().getQueryString().query;
-		if ( this.dialog ) {
-			// Destroy previous instance to prevent double input rendering
-			this.dialog.destroy();
-		}
-		mw.loader.using( 'ext.bluespice.extjs', function() {
-			this.dialog = Ext.create( 'BS.dialog.PageExport', {
+		mw.loader.using( 'ext.bluespice.oojs.exportDialog', function() {
+			var title = mw.Title.newFromText( term );
+			const dialog = new bs.ui.dialog.ExportPagesDialog( {
 				pages: pages,
-				defaultName: term
-			});
-			this.dialog.show();
+				listName: title.getMainText()
+			} );
+			OO.ui.getWindowManager().addWindows( [ dialog ] );
+			OO.ui.getWindowManager().openWindow( dialog );
 		}.bind( this ) );
-	}
+	};
 
 } )( mediaWiki, jQuery, blueSpice, document );
