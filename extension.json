@@ -633,7 +633,7 @@
 		},
 		"ESWildcardingOperators": {
 			"public": false,
-			"value": [ "+", "|", "*", "(", ")", "~", "-" ]
+			"value": [ "+", "|", "*", "(", ")", "~", " -" ]
 		},
 		"ESWildcardingSeparators": {
 			"public": false,
