@@ -59,7 +59,8 @@ class SearchResultSet {
 	 * @return SearchResult[]
 	 */
 	public function getResults(): array {
-		return $this->results;
+		// Filter out nulls - even though it cannot happen
+		return array_filter( $this->results );
 	}
 
 	/**
