@@ -14,6 +14,7 @@ use FormatJson;
 use HashConfig;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use MultiConfig;
 use MWException;
 use MWStake\MediaWiki\Component\ManifestRegistry\ManifestRegistryFactory;
@@ -23,7 +24,6 @@ use RequestContext;
 use RuntimeException;
 use stdClass;
 use Throwable;
-use Title;
 use WikiMap;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -893,8 +893,8 @@ class Backend {
 			}
 
 			$data = $result->getData();
-			$title = \Title::newFromText( $data['prefixed_title'] );
-			if ( $title instanceof \Title === false || $title->exists() === false ) {
+			$title = Title::newFromText( $data['prefixed_title'] );
+			if ( $title instanceof Title === false || $title->exists() === false ) {
 				continue;
 			}
 			$pages[$title->getPrefixedText()] = $title;

@@ -9,8 +9,8 @@ use BS\ExtendedSearch\Wildcarder;
 use ConfigException;
 use IContextSource;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Title\Title;
 use MWException;
-use Title;
 
 class Base implements ISearchResultFormatter {
 	/**

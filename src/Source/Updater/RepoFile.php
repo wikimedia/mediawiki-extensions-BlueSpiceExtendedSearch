@@ -7,8 +7,8 @@ use BS\ExtendedSearch\Source\Job\UpdateRepoFile;
 use File;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
-use Title;
 use User;
 
 class RepoFile extends Base {

@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\Crawler;
 
+use MediaWiki\Title\Title;
+
 class WikiPage extends Base {
 	/** @var string */
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateWikiPage';
@@ -16,7 +18,7 @@ class WikiPage extends Base {
 		);
 
 		foreach ( $res as $row ) {
-			$title = \Title::newFromID( $row->page_id );
+			$title = Title::newFromID( $row->page_id );
 			if ( $title === null ) {
 				continue;
 			}

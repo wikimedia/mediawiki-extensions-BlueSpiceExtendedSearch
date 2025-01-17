@@ -4,9 +4,9 @@ namespace BS\ExtendedSearch\Tests;
 
 use BS\ExtendedSearch\SearchTracker;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\Title\Title;
 use PHPUnit\Framework\TestCase;
 use SpecialPage;
-use Title;
 use TitleFactory;
 use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\IDatabase;

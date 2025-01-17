@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\MediaWiki\Api;
 
 use BS\ExtendedSearch\Backend;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class Autocomplete extends \ApiBase {
@@ -115,7 +116,7 @@ class Autocomplete extends \ApiBase {
 			$pageName = ucfirst( $pageName );
 		}
 
-		$title = \Title::makeTitleSafe(
+		$title = Title::makeTitleSafe(
 			$this->searchData['namespace'],
 			$pageName
 		);

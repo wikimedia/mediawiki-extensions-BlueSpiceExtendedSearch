@@ -3,13 +3,14 @@
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class TriggerUpdate extends \ApiBase {
 	public function execute() {
 		$sBackendKey = $this->getParameter( 'backend' );
 		$sSourceKey = $this->getParameter( 'source' );
-		$oTitle = \Title::newFromText( $this->getParameter( 'title' ) );
+		$oTitle = Title::newFromText( $this->getParameter( 'title' ) );
 		$aParams = $this->getParameter( 'params' );
 
 		MediaWikiServices::getInstance()->getHookContainer()->run(

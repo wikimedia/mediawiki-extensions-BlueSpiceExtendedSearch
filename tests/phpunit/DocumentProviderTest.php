@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\Tests;
 
+use MediaWiki\Title\Title;
+
 /**
  * @group Database
  * @group BlueSpice
@@ -38,7 +40,7 @@ class DocumentProviderTest extends \MediaWikiIntegrationTestCase {
 			$this->getServiceContainer()->getRevisionRenderer()
 		);
 
-		$title = \Title::makeTitle( NS_HELP, 'Dummy title' );
+		$title = Title::makeTitle( NS_HELP, 'Dummy title' );
 		$this->insertPage( $title, 'Dummy text' );
 		$oWikiPage = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
 		$sTestUri = $oWikiPage->getTitle()->getCanonicalURL();

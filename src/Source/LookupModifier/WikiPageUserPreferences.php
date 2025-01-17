@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Backend;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 
 class WikiPageUserPreferences extends LookupModifier {
 	/** @var int[] */
@@ -28,7 +29,7 @@ class WikiPageUserPreferences extends LookupModifier {
 			}
 
 			$nsId = (int)substr( $optionName, strlen( 'searchNs' ) );
-			$oTitle = \Title::makeTitle( $nsId, 'Dummy' );
+			$oTitle = Title::makeTitle( $nsId, 'Dummy' );
 			if ( $permManager->userCan( 'read', $user, $oTitle ) ) {
 				$namespacesToBoost[] = $nsId;
 			}

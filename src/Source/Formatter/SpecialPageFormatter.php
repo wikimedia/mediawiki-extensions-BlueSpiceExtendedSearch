@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\Source\Formatter;
 
 use BS\ExtendedSearch\SearchResult;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 
 class SpecialPageFormatter extends Base {
 
@@ -73,8 +74,8 @@ class SpecialPageFormatter extends Base {
 				$result['basename'] = $result['prefixed_title'];
 			}
 
-			$title = \Title::makeTitle( NS_SPECIAL, $origBasename );
-			if ( $title instanceof \Title ) {
+			$title = Title::makeTitle( NS_SPECIAL, $origBasename );
+			if ( $title instanceof Title ) {
 				$result['page_anchor'] = $this->getTraceablePageAnchor( $title, $result['prefixed_title'] );
 			}
 		}

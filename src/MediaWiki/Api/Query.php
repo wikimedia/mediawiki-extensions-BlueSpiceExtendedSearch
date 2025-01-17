@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class Query extends \ApiBase {
@@ -128,9 +129,9 @@ class Query extends \ApiBase {
 			$pageName = ucfirst( $pageName );
 		}
 
-		$title = \Title::newFromText( $pageName );
+		$title = Title::newFromText( $pageName );
 
-		if ( $title instanceof \Title === false ) {
+		if ( $title instanceof Title === false ) {
 			return;
 		}
 		$user = $this->getUser();

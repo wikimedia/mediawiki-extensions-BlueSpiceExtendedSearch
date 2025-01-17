@@ -3,7 +3,7 @@
 namespace BS\ExtendedSearch\Source\Formatter;
 
 use MediaWiki\MediaWikiServices;
-use Title;
+use MediaWiki\Title\Title;
 
 class RepoFileFormatter extends FileFormatter {
 

@@ -3,7 +3,7 @@
 namespace BS\ExtendedSearch;
 
 use MediaWiki\MediaWikiServices;
-use Title;
+use MediaWiki\Title\Title;
 
 interface ISearchUpdater {
 	/**

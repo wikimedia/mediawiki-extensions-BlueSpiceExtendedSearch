@@ -6,7 +6,7 @@ use BlueSpice\NamespaceManager\Hook\NamespaceManagerEditNamespace;
 use BS\ExtendedSearch\Source\Job\UpdateRepoFile;
 use BS\ExtendedSearch\Source\Job\UpdateWikiPage;
 use MediaWiki\MediaWikiServices;
-use Title;
+use MediaWiki\Title\Title;
 
 class ReindexNamespace extends NamespaceManagerEditNamespace {
 	protected function skipProcessing() {

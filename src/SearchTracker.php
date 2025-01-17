@@ -3,8 +3,8 @@
 namespace BS\ExtendedSearch;
 
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
-use Title;
 use TitleFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
 

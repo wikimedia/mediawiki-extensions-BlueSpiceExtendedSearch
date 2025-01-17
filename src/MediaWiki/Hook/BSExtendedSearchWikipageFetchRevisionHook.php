@@ -3,7 +3,7 @@
 namespace BS\ExtendedSearch\MediaWiki\Hook;
 
 use MediaWiki\Revision\RevisionRecord;
-use Title;
+use MediaWiki\Title\Title;
 
 interface BSExtendedSearchWikipageFetchRevisionHook {
 	/**

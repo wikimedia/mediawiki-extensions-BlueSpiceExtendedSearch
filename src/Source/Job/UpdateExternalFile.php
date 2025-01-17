@@ -3,7 +3,7 @@
 namespace BS\ExtendedSearch\Source\Job;
 
 use Exception;
-use Title;
+use MediaWiki\Title\Title;
 
 class UpdateExternalFile extends UpdateJob {
 	/** @inheritDoc */

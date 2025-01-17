@@ -4,7 +4,7 @@ namespace BS\ExtendedSearch\Source\DocumentProvider;
 
 use BS\ExtendedSearch\Source\DocumentProvider\File as FileBase;
 use File;
-use Title;
+use MediaWiki\Title\Title;
 
 class RepoFile extends FileBase {
 

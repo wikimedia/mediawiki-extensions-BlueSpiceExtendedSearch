@@ -6,6 +6,7 @@ use BlueSpice\Tag\Handler;
 use BS\ExtendedSearch\Lookup;
 use Config;
 use ConfigException;
+use MediaWiki\Title\Title;
 use Message;
 use MWException;
 use Parser;
@@ -84,7 +85,7 @@ class TagSearchHandler extends Handler {
 		];
 
 		$title = \RequestContext::getMain()->getTitle();
-		if ( $title instanceof \Title ) {
+		if ( $title instanceof Title ) {
 			$params['returnto'] = $title->getPrefixedDBkey();
 		}
 

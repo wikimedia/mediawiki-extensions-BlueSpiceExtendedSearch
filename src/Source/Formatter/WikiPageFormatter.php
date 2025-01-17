@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\Source\Formatter;
 
 use BS\ExtendedSearch\SearchResult;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 
 class WikiPageFormatter extends Base {
 
@@ -116,8 +117,8 @@ class WikiPageFormatter extends Base {
 	 * @param array &$result
 	 */
 	protected function addAnchorAndImageUri( &$result ) {
-		$title = \Title::newFromText( $result['prefixed_title'] );
-		if ( $title instanceof \Title && $title->getNamespace() == $result['namespace'] ) {
+		$title = Title::newFromText( $result['prefixed_title'] );
+		if ( $title instanceof Title && $title->getNamespace() == $result['namespace'] ) {
 			$result['page_anchor'] = $this->getTraceablePageAnchor( $title, $result['display_title'] );
 			if ( $title->exists() ) {
 				$result['image_uri'] = $this->getImageUri( $result['prefixed_title'], 150 );
@@ -142,7 +143,7 @@ class WikiPageFormatter extends Base {
 				$moreCategories = true;
 				break;
 			}
-			$categoryTitle = \Title::makeTitle( NS_CATEGORY, $category );
+			$categoryTitle = Title::makeTitle( NS_CATEGORY, $category );
 			$formattedCategories[] = $this->linkRenderer->makeLink( $categoryTitle, $categoryTitle->getText() );
 		}
 		return implode( Base::VALUE_SEPARATOR, $formattedCategories ) . ( $moreCategories ? Base::MORE_VALUES_TEXT : '' );
@@ -201,7 +202,7 @@ class WikiPageFormatter extends Base {
 	 * @return string
 	 */
 	protected function formatSections( $result, $sectionsToAdd ) {
-		$title = \Title::newFromText( $result['prefixed_title'] );
+		$title = Title::newFromText( $result['prefixed_title'] );
 		$sections = [];
 		$moreSections = false;
 		foreach ( $sectionsToAdd as $idx => $section ) {
@@ -240,8 +241,8 @@ class WikiPageFormatter extends Base {
 
 		$redirs = [];
 		foreach ( $result[ 'redirected_from'] as $prefixedTitle ) {
-			$redirTitle = \Title::newFromText( $prefixedTitle );
-			if ( $redirTitle instanceof \Title === false ) {
+			$redirTitle = Title::newFromText( $prefixedTitle );
+			if ( $redirTitle instanceof Title === false ) {
 				continue;
 			}
 
@@ -287,8 +288,8 @@ class WikiPageFormatter extends Base {
 	 * @return string
 	 */
 	protected function getImageUri( $prefixedTitle, $width = 102 ) {
-		$title = \Title::newFromText( $prefixedTitle );
-		if ( !( $title instanceof \Title ) || $title->exists() == false ) {
+		$title = Title::newFromText( $prefixedTitle );
+		if ( !( $title instanceof Title ) || $title->exists() == false ) {
 			return '';
 		}
 
@@ -310,9 +311,9 @@ class WikiPageFormatter extends Base {
 	 * @param array &$result
 	 */
 	protected function formatRedirect( &$result ) {
-		$title = \Title::newFromText( $result['prefixed_title'] );
-		$redirTarget = \Title::newFromText( $result['redirects_to'] );
-		if ( $redirTarget instanceof \Title === false ) {
+		$title = Title::newFromText( $result['prefixed_title'] );
+		$redirTarget = Title::newFromText( $result['redirects_to'] );
+		if ( $redirTarget instanceof Title === false ) {
 			return;
 		}
 
@@ -325,8 +326,8 @@ class WikiPageFormatter extends Base {
 	 * @return void
 	 */
 	protected function addRedirectAttributes( array &$result ) {
-		$redirTarget = \Title::newFromText( $result['redirects_to'] );
-		if ( $redirTarget instanceof \Title === false ) {
+		$redirTarget = Title::newFromText( $result['redirects_to'] );
+		if ( $redirTarget instanceof Title === false ) {
 			return;
 		}
 		$result['is_redirect'] = 1;
@@ -455,7 +456,7 @@ class WikiPageFormatter extends Base {
 
 	/**
 	 *
-	 * @param \Title $title
+	 * @param Title $title
 	 * @return string
 	 */
 	protected function getFileUsage( $title ) {
@@ -463,7 +464,7 @@ class WikiPageFormatter extends Base {
 			->getConnection( DB_REPLICA );
 
 		// Would be nice to get this info from the index w/o running another query
-		$target = \Title::newFromText( $title );
+		$target = Title::newFromText( $title );
 		$res = $dbr->select(
 			[ 'imagelinks', 'page' ],
 			[ 'page_namespace', 'page_title', 'il_to' ],
@@ -477,7 +478,7 @@ class WikiPageFormatter extends Base {
 
 		$usedInPages = [];
 		foreach ( $res as $row ) {
-			$usedInPages[] = \Title::makeTitle(
+			$usedInPages[] = Title::makeTitle(
 				$row->page_namespace,
 				$row->page_title
 			);
