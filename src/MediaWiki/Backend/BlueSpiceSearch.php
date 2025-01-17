@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\MediaWiki\Backend;
 use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\Setup;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use SearchResult;
 use SearchSuggestionSet;
 
@@ -102,7 +103,7 @@ class BlueSpiceSearch extends \SearchEngine {
 	/**
 	 *
 	 * @param string $search
-	 * @return \Title[]
+	 * @return Title[]
 	 */
 	protected function runAutocompleteSearch( $search ) {
 		if ( $search === '' ) {
@@ -119,8 +120,8 @@ class BlueSpiceSearch extends \SearchEngine {
 		$titles = [];
 		foreach ( $results->getResults() as $item ) {
 			$data = $item->getData();
-			$title = \Title::newFromText( $data['prefixed_title'] );
-			if ( $title instanceof \Title ) {
+			$title = Title::newFromText( $data['prefixed_title'] );
+			if ( $title instanceof Title ) {
 				$titles[] = $title;
 			}
 		}
@@ -157,8 +158,8 @@ class BlueSpiceSearch extends \SearchEngine {
 			if ( !isset( $item['prefixed_title'] ) || !isset( $item['namespace' ] ) ) {
 				continue;
 			}
-			$title = \Title::newFromText( $item['prefixed_title'] );
-			if ( !( $title instanceof \Title ) ) {
+			$title = Title::newFromText( $item['prefixed_title'] );
+			if ( !( $title instanceof Title ) ) {
 				continue;
 			}
 			if (
@@ -180,7 +181,7 @@ class BlueSpiceSearch extends \SearchEngine {
 
 	/**
 	 * @param string $search
-	 * @param \Title $title
+	 * @param Title $title
 	 * @return bool
 	 */
 	private function containsSearchTerm( $search, $title ) {

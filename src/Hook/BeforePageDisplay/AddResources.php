@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Hook\BeforePageDisplay;
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 
 class AddResources extends \BlueSpice\Hook\BeforePageDisplay {
 
@@ -62,7 +63,7 @@ class AddResources extends \BlueSpice\Hook\BeforePageDisplay {
 		if ( $this->getConfig()->get( 'ESSubpageMasterFilterUseRootOnly' ) ) {
 			$titleBits = explode( '/', $this->out->getTitle()->getDBkey() );
 			$text = array_shift( $titleBits );
-			$newTitle = \Title::makeTitle( $this->out->getTitle()->getNamespace(), $text );
+			$newTitle = Title::makeTitle( $this->out->getTitle()->getNamespace(), $text );
 			$title = $newTitle->getDBkey();
 		}
 

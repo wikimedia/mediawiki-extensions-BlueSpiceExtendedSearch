@@ -6,7 +6,7 @@ use BS\ExtendedSearch\ISearchCrawler;
 use Config;
 use Job;
 use JobQueueGroup;
-use Title;
+use MediaWiki\Title\Title;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class Base implements ISearchCrawler {

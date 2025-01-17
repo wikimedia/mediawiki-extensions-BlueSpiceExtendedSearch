@@ -15,7 +15,7 @@ use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
-use Title;
+use MediaWiki\Title\Title;
 
 class WikiPage extends Base implements
 	PageSaveCompleteHook,

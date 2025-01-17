@@ -8,6 +8,7 @@ use BS\ExtendedSearch\SearchResultSet;
 use Config;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 
 class BaseTitleSecurityTrimmings extends LookupModifier {
 	/** @var Backend */
@@ -106,18 +107,18 @@ class BaseTitleSecurityTrimmings extends LookupModifier {
 				}
 
 				if ( isset( $data['namespace'] ) == false ) {
-					// If result has no namespace set, \Title creation is N/A
+					// If result has no namespace set, Title creation is N/A
 					// therefore we should allow user to see it
 					$validCount++;
 					continue;
 				}
 
 				if ( isset( $data['prefixed_title'] ) ) {
-					$title = \Title::newFromText( $data['prefixed_title'] );
+					$title = Title::newFromText( $data['prefixed_title'] );
 				} else {
-					$title = \Title::makeTitle( $data['namespace'], $data['basename'] );
+					$title = Title::makeTitle( $data['namespace'], $data['basename'] );
 				}
-				if ( !$title instanceof \Title ) {
+				if ( !$title instanceof Title ) {
 					if ( $title->isContentPage() && $title->exists() == false ) {
 						// I cant think of a good reason to show non-existing title in the search
 						$excludes[] = $resultObject->getId();

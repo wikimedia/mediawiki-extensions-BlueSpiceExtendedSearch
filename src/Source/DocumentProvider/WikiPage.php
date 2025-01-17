@@ -10,13 +10,13 @@ use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionRenderer;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserFactory;
 use MWException;
 use PageProps;
 use Parser;
 use ParserOutput;
 use TextContent;
-use Title;
 use User;
 use WikiPage as WikiPageObject;
 

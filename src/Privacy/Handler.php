@@ -7,6 +7,7 @@ use BlueSpice\Privacy\Module\Transparency;
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use Wikimedia\Rdbms\IDatabase;
 
 class Handler implements IPrivacyHandler {
@@ -96,8 +97,8 @@ class Handler implements IPrivacyHandler {
 		$results = $searchBackend->runRawQuery( $lookup, [ 'wikipage' ] );
 		foreach ( $results->getResults() as $resultObject ) {
 			$prefixedTitle = $resultObject->getData()['prefixed_title'];
-			$title = \Title::newFromText( $prefixedTitle );
-			if ( $title instanceof \Title === false ) {
+			$title = Title::newFromText( $prefixedTitle );
+			if ( $title instanceof Title === false ) {
 				continue;
 			}
 

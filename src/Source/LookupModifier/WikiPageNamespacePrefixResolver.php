@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
+use MediaWiki\Title\Title;
+
 /**
  * TODO: Revisit this implementaion, it will mess with wildcarding
  */
@@ -15,7 +17,7 @@ class WikiPageNamespacePrefixResolver extends LookupModifier {
 
 	/**
 	 *
-	 * @var \Title
+	 * @var Title
 	 */
 	protected $title = null;
 
@@ -73,12 +75,12 @@ class WikiPageNamespacePrefixResolver extends LookupModifier {
 
 	protected function setTitle() {
 		$titleName = trim( $this->titleText );
-		$this->title = \Title::newFromText( $titleName );
+		$this->title = Title::newFromText( $titleName );
 		if ( substr( $titleName, -1 ) === ':' ) {
 			// If search term is ending in a ":", presume
 			// user wants to see all results from given NS
 			// - set query text to "*"
-			$title = \Title::newFromText( "$titleName*" );
+			$title = Title::newFromText( "$titleName*" );
 			if ( $title->getNamespace() !== NS_MAIN ) {
 				$this->title = $title;
 			}
@@ -86,7 +88,7 @@ class WikiPageNamespacePrefixResolver extends LookupModifier {
 	}
 
 	protected function doesNotApply() {
-		if ( $this->title instanceof \Title === false ) {
+		if ( $this->title instanceof Title === false ) {
 			return true;
 		}
 

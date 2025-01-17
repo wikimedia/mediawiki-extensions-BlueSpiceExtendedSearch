@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
-use Title;
+use MediaWiki\Title\Title;
 
 class UpdateSpecialPage extends UpdateTitleBase {
 

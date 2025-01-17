@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Backend;
+use MediaWiki\Title\Title;
 
 class WikiPageSecurityTrimming extends LookupModifier {
 
@@ -45,7 +46,7 @@ class WikiPageSecurityTrimming extends LookupModifier {
 	 * @return bool
 	 */
 	protected function userCanNotRead( $iNsId ) {
-		$oTitle = \Title::makeTitle( $iNsId, 'Dummy' );
+		$oTitle = Title::makeTitle( $iNsId, 'Dummy' );
 		return !\MediaWiki\MediaWikiServices::getInstance()
 			->getPermissionManager()
 			->userCan( 'read', $this->context->getUser(), $oTitle );

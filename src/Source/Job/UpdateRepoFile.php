@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\Source\Job;
 
 use File;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 
 class UpdateRepoFile extends UpdateTitleBase {
 	/** @inheritDoc */
@@ -17,7 +18,7 @@ class UpdateRepoFile extends UpdateTitleBase {
 
 	/**
 	 *
-	 * @param \Title $title
+	 * @param Title $title
 	 * @param array $params
 	 */
 	public function __construct( $title, $params = [] ) {

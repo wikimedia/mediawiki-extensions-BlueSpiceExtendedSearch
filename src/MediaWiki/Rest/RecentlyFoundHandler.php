@@ -6,8 +6,8 @@ use BS\ExtendedSearch\SearchTracker;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
+use MediaWiki\Title\Title;
 use RequestContext;
-use Title;
 use User;
 
 class RecentlyFoundHandler extends SimpleHandler {

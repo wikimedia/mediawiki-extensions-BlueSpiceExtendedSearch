@@ -5,7 +5,7 @@ namespace BS\ExtendedSearch\Source\Updater;
 use BS\ExtendedSearch\ISearchSource;
 use BS\ExtendedSearch\ISearchUpdater;
 use MediaWiki\MediaWikiServices;
-use Title;
+use MediaWiki\Title\Title;
 
 class Base implements ISearchUpdater {
 

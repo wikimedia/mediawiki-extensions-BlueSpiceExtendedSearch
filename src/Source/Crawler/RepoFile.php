@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\Source\Crawler;
 
 use Config;
 use JobQueueGroup;
+use MediaWiki\Title\Title;
 use RepoGroup;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -42,7 +43,7 @@ class RepoFile extends File {
 		);
 
 		foreach ( $res as $row ) {
-			$title = \Title::newFromID( $row->page_id );
+			$title = Title::newFromID( $row->page_id );
 			$file = $this->repoGroup->findFile( $title );
 			if ( $file instanceof \LocalFile === false ) {
 				continue;
