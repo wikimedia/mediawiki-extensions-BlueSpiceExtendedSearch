@@ -3,11 +3,12 @@
 namespace BS\ExtendedSearch;
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\User;
 
 class ResultRelevance {
 	/**
 	 *
-	 * @var \User
+	 * @var User
 	 */
 	protected $user;
 
@@ -42,11 +43,11 @@ class ResultRelevance {
 
 	/**
 	 *
-	 * @param \User $user
+	 * @param User $user
 	 * @param string $resultId
 	 * @param int $value
 	 */
-	public function __construct( \User $user, $resultId = '', $value = 0 ) {
+	public function __construct( User $user, $resultId = '', $value = 0 ) {
 		$this->user = $user;
 		$this->resultId = $resultId;
 		$this->value = is_int( $value ) ? $value : 0;

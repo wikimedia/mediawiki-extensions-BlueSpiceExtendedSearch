@@ -5,6 +5,7 @@ namespace BS\ExtendedSearch\Tests;
 use BS\ExtendedSearch\SearchTracker;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use PHPUnit\Framework\TestCase;
 use SpecialPage;
 use TitleFactory;
@@ -189,10 +190,10 @@ class SearchTrackerTest extends TestCase {
 	}
 
 	/**
-	 * @return \PHPUnit\Framework\MockObject\MockObject|\User
+	 * @return \PHPUnit\Framework\MockObject\MockObject|User
 	 */
 	private function getUserMock() {
-		$user = $this->createMock( \User::class );
+		$user = $this->createMock( User::class );
 		$user->method( 'getId' )->willReturn( 1 );
 		return $user;
 	}

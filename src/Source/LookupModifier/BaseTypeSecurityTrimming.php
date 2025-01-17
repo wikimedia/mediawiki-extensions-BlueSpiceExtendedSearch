@@ -4,11 +4,12 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Backend;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\User;
 
 class BaseTypeSecurityTrimming extends LookupModifier {
 	/**
 	 *
-	 * @var \User
+	 * @var User
 	 */
 	protected $user;
 

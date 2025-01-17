@@ -7,8 +7,8 @@ use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use RequestContext;
-use User;
 
 class RecentlyFoundHandler extends SimpleHandler {
 	/**
