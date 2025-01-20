@@ -45,6 +45,7 @@ class WikiPageQSSourceFields extends LookupModifier {
 		$fields = [ 'rendered_content', 'prefixed_title', 'display_title^2' ];
 		if ( $this->shouldSearchInRaw() ) {
 			$fields[] = 'source_content';
+			$fields[] = 'source_content.raw';
 		}
 
 		return $fields;
@@ -56,6 +57,7 @@ class WikiPageQSSourceFields extends LookupModifier {
 	private function getSource() {
 		return [
 			'rendered_content',
+			'rendered_content.raw',
 			'prefixed_title',
 			'display_title',
 			'namespace',
