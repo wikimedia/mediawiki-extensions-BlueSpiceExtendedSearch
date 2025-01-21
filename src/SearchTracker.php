@@ -4,8 +4,8 @@ namespace BS\ExtendedSearch;
 
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
-use TitleFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class SearchTracker {
