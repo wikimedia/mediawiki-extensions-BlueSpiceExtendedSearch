@@ -7,6 +7,7 @@ use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\SearchResultSet;
 use Config;
 use IContextSource;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 
@@ -81,7 +82,7 @@ class BaseTitleSecurityTrimmings extends LookupModifier {
 	 */
 	protected function getExcludesForCurrentPage( $prepLookup, &$excludes ): void {
 		$validCount = 0;
-		$user = \RequestContext::getMain()->getUser();
+		$user = RequestContext::getMain()->getUser();
 		$services = \MediaWiki\MediaWikiServices::getInstance();
 		$spFactory = $services->getSpecialPageFactory();
 		$permManager = $services->getPermissionManager();

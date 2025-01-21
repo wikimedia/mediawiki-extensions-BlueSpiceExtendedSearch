@@ -6,6 +6,7 @@ use BlueSpice\Tag\Handler;
 use BS\ExtendedSearch\Lookup;
 use Config;
 use ConfigException;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Title\Title;
 use Message;
 use MWException;
@@ -84,7 +85,7 @@ class TagSearchHandler extends Handler {
 			"button-aria-label" => Message::newFromKey( 'bs-extendedsearch-tagsearch-btn-aria-label' )->text()
 		];
 
-		$title = \RequestContext::getMain()->getTitle();
+		$title = RequestContext::getMain()->getTitle();
 		if ( $title instanceof Title ) {
 			$params['returnto'] = $title->getPrefixedDBkey();
 		}
