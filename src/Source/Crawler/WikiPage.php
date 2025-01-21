@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\Crawler;
 
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Title\Title;
 
 class WikiPage extends Base {
@@ -30,7 +31,7 @@ class WikiPage extends Base {
 		$aConds = [];
 
 		if ( $this->sourceConfig->has( 'skip_namespaces' ) ) {
-			$aAllNamespaces = \RequestContext::getMain()->getLanguage()->getNamespaceIds();
+			$aAllNamespaces = RequestContext::getMain()->getLanguage()->getNamespaceIds();
 			$aOnlyIn = array_diff( $aAllNamespaces, $this->sourceConfig->get( 'skip_namespaces' ) );
 			$aConds['page_namespace'] = $aOnlyIn;
 		}

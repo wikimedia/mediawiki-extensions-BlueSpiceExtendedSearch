@@ -3,12 +3,12 @@
 namespace BS\ExtendedSearch\MediaWiki\Rest;
 
 use BS\ExtendedSearch\SearchTracker;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
-use RequestContext;
 
 class RecentlyFoundHandler extends SimpleHandler {
 	/**

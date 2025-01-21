@@ -3,10 +3,10 @@
 namespace BS\ExtendedSearch\MediaWiki\Rest;
 
 use BS\ExtendedSearch\SearchTracker;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\User\UserIdentity;
-use RequestContext;
 use Wikimedia\ParamValidator\ParamValidator;
 
 abstract class TraceHandler extends SimpleHandler {
