@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Rest;
 
+use MediaWiki\Message\Message;
 use MediaWiki\User\UserIdentity;
 
 class RemoveSearchTraceHandler extends TraceHandler {
@@ -20,6 +21,6 @@ class RemoveSearchTraceHandler extends TraceHandler {
 	 * @return string
 	 */
 	protected function getGenericFailureMessage(): string {
-		return \Message::newFromKey( 'bs-extendedsearch-rest-trace-remove-failure' )->text();
+		return Message::newFromKey( 'bs-extendedsearch-rest-trace-remove-failure' )->text();
 	}
 }

@@ -7,6 +7,7 @@ use BlueSpice\Privacy\Module\Transparency;
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Message\Message;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use Wikimedia\Rdbms\IDatabase;
@@ -155,7 +156,7 @@ class Handler implements IPrivacyHandler {
 	/**
 	 *
 	 * @param User $user
-	 * @return \Message[]
+	 * @return Message[]
 	 */
 	protected function getSearchHistory( $user ) {
 		$res = $this->db->select(
@@ -193,7 +194,7 @@ class Handler implements IPrivacyHandler {
 	/**
 	 *
 	 * @param User $user
-	 * @return \Message[]
+	 * @return Message[]
 	 */
 	protected function getSearchRelevance( $user ) {
 		// We can only show the number of relevant pages user has,
