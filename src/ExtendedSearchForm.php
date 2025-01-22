@@ -3,7 +3,7 @@
 namespace BS\ExtendedSearch;
 
 use MediaWiki\MediaWikiServices;
-use Message;
+use MediaWiki\Message\Message;
 use MWStake\MediaWiki\Component\CommonUserInterface\Component\Literal;
 use MWStake\MediaWiki\Component\CommonUserInterface\IRestrictedComponent;
 use SpecialPage;

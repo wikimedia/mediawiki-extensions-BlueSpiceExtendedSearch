@@ -2,8 +2,8 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Rest;
 
+use MediaWiki\Message\Message;
 use MediaWiki\User\UserIdentity;
-use Message;
 
 class InsertSearchTraceHandler extends TraceHandler {
 

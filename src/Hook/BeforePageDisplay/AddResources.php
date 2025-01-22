@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Hook\BeforePageDisplay;
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Message\Message;
 use MediaWiki\Title\Title;
 
 class AddResources extends \BlueSpice\Hook\BeforePageDisplay {
@@ -69,7 +70,7 @@ class AddResources extends \BlueSpice\Hook\BeforePageDisplay {
 
 		$namespace = $this->out->getTitle()->getNamespace();
 		if ( $namespace === NS_MAIN ) {
-			$namespaceText = \Message::newFromKey( 'bs-ns_main' )->text();
+			$namespaceText = Message::newFromKey( 'bs-ns_main' )->text();
 		} else {
 			$namespaceText = MediaWikiServices::getInstance()->getNamespaceInfo()
 				->getCanonicalName( $namespace );
