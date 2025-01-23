@@ -5,8 +5,8 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\SearchResultSet;
-use IContextSource;
 use MediaWiki\Config\Config;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
@@ -31,9 +31,9 @@ class BaseTitleSecurityTrimmings extends LookupModifier {
 	 *
 	 * @param Backend $backend
 	 * @param Lookup &$lookup
-	 * @param \IContextSource $context
+	 * @param IContextSource $context
 	 */
-	public function __construct( Backend $backend, &$lookup, \IContextSource $context ) {
+	public function __construct( Backend $backend, &$lookup, IContextSource $context ) {
 		parent::__construct( $lookup, $context );
 		$this->backend = $backend;
 		$this->config = $this->backend->getConfig();

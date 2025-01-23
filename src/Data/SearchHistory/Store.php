@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Data\SearchHistory;
 
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
 use MWStake\MediaWiki\Component\DataStore\IStore;

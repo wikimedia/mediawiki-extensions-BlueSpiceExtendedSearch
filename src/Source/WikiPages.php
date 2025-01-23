@@ -25,7 +25,7 @@ use BS\ExtendedSearch\Source\LookupModifier\WikiPageSecurityTrimming;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageSubpageFilter;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageUserPreferences;
 use BS\ExtendedSearch\Source\PostProcessor\WikiPage as WikiPagePostProcessor;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 
 class WikiPages extends GenericSource {
 

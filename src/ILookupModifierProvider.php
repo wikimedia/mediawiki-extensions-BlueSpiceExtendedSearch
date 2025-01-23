@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch;
 
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 
 interface ILookupModifierProvider {
 

@@ -3,8 +3,8 @@
 namespace BS\ExtendedSearch\Data;
 
 use BS\ExtendedSearch\Backend;
-use IContextSource;
 use MediaWiki\Config\Config;
+use MediaWiki\Context\IContextSource;
 use MWStake\MediaWiki\Component\DataStore\ISecondaryDataProvider;
 use MWStake\MediaWiki\Component\DataStore\Reader as BaseReader;
 use MWStake\MediaWiki\Component\DataStore\ReaderParams;

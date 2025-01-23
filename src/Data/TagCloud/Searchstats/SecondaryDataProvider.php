@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Data\TagCloud\Searchstats;
 
 use BlueSpice\TagCloud\Data\TagCloud\Record;
+use MediaWiki\Context\IContextSource;
 
 class SecondaryDataProvider extends \MWStake\MediaWiki\Component\DataStore\SecondaryDataProvider {
 
@@ -13,14 +14,14 @@ class SecondaryDataProvider extends \MWStake\MediaWiki\Component\DataStore\Secon
 	protected $linkrenderer = null;
 
 	/**
-	 * @var \IContextSource
+	 * @var IContextSource
 	 */
 	protected $context;
 
 	/**
 	 *
 	 * @param \MediaWiki\Linker\LinkRenderer $linkrenderer
-	 * @param \IContextSource $context
+	 * @param IContextSource $context
 	 */
 	public function __construct( $linkrenderer, $context ) {
 		$this->linkrenderer = $linkrenderer;

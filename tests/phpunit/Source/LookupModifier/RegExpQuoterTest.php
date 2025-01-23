@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\Tests\Source\LookupModifier;
 
 use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\Source\LookupModifier\RegExpQuoter;
+use MediaWiki\Context\IContextSource;
 use MediaWikiIntegrationTestCase;
 
 class RegExpQuoterTest extends MediaWikiIntegrationTestCase {
@@ -13,7 +14,7 @@ class RegExpQuoterTest extends MediaWikiIntegrationTestCase {
 	 * @covers BS\ExtendedSearch\Source\LookupModifier\RegExpQuoter::apply
 	 */
 	public function testApply( $singleQuery, $singleQueryQuoted ) {
-		$context = $this->createMock( 'IContextSource' );
+		$context = $this->createMock( IContextSource::class );
 
 		$lookup = new Lookup();
 		$lookup->setQueryString( $singleQuery );
@@ -30,7 +31,7 @@ class RegExpQuoterTest extends MediaWikiIntegrationTestCase {
 	 * @covers BS\ExtendedSearch\Source\LookupModifier\RegExpQuoter::undo
 	 */
 	public function testUndo( $singleQuery, $singleQueryQuoted ) {
-		$context = $this->createMock( 'IContextSource' );
+		$context = $this->createMock( IContextSource::class );
 
 		$lookup = new Lookup();
 		$lookup->setQueryString( $singleQuery );
