@@ -3,9 +3,9 @@
 namespace BS\ExtendedSearch\Source\Crawler;
 
 use BS\ExtendedSearch\ISearchCrawler;
-use Config;
 use Job;
 use JobQueueGroup;
+use MediaWiki\Config\Config;
 use MediaWiki\Title\Title;
 use Wikimedia\Rdbms\ILoadBalancer;
 

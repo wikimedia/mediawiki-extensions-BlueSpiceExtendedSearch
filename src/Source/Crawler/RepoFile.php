@@ -2,8 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\Crawler;
 
-use Config;
 use JobQueueGroup;
+use MediaWiki\Config\Config;
 use MediaWiki\Title\Title;
 use RepoGroup;
 use Wikimedia\Rdbms\ILoadBalancer;

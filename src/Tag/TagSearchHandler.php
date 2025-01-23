@@ -4,8 +4,8 @@ namespace BS\ExtendedSearch\Tag;
 
 use BlueSpice\Tag\Handler;
 use BS\ExtendedSearch\Lookup;
-use Config;
 use ConfigException;
+use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Message\Message;
 use MediaWiki\Title\Title;

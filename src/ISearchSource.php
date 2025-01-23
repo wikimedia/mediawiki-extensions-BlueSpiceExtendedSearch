@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch;
 
-use Config;
+use MediaWiki\Config\Config;
 use OpenSearch\Client;
 
 interface ISearchSource extends ILookupModifierProvider, IPostProcessorProvider {

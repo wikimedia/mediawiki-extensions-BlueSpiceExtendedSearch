@@ -24,8 +24,8 @@ use BS\ExtendedSearch\Source\LookupModifier\BaseUserRelevance;
 use BS\ExtendedSearch\Source\LookupModifier\BaseWildcarder;
 use BS\ExtendedSearch\Source\LookupModifier\RegExpQuoter;
 use BS\ExtendedSearch\Source\PostProcessor\Base as PostProcessorBase;
-use Config;
 use IContextSource;
+use MediaWiki\Config\Config;
 use MediaWiki\MediaWikiServices;
 use OpenSearch\Client;
 use Wikimedia\ObjectFactory\ObjectFactory;
@@ -67,7 +67,7 @@ class GenericSource implements ISearchSource {
 
 	/**
 	 *
-	 * @return \Config
+	 * @return Config
 	 */
 	public function getConfig() {
 		return $this->config;

@@ -2,8 +2,8 @@
 
 namespace BS\ExtendedSearch;
 
-use Config;
 use Exception;
+use MediaWiki\Config\Config;
 use MediaWiki\MediaWikiServices;
 
 class PostProcessor {

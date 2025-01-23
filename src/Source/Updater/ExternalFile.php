@@ -4,8 +4,8 @@ namespace BS\ExtendedSearch\Source\Updater;
 
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
-use Config;
 use ConfigFactory;
+use MediaWiki\Config\Config;
 use MWStake\MediaWiki\Component\RunJobsTrigger\IHandler;
 use MWStake\MediaWiki\Component\RunJobsTrigger\Interval\OnceADay;
 use SplFileInfo;

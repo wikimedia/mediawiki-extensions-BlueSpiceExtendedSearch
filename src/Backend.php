@@ -8,10 +8,10 @@ use BS\ExtendedSearch\Plugin\ILookupModifier;
 use BS\ExtendedSearch\Plugin\IMappingModifier;
 use BS\ExtendedSearch\Plugin\ISearchPlugin;
 use BS\ExtendedSearch\Source\WikiPages;
-use Config;
 use Exception;
 use FormatJson;
 use HashConfig;
+use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
@@ -234,7 +234,7 @@ class Backend {
 
 	/**
 	 *
-	 * @return \Config
+	 * @return Config
 	 */
 	public function getConfig() {
 		return $this->config;

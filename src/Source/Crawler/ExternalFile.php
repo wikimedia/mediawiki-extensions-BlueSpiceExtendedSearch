@@ -2,9 +2,9 @@
 
 namespace BS\ExtendedSearch\Source\Crawler;
 
-use Config;
 use ConfigFactory;
 use JobQueueGroup;
+use MediaWiki\Config\Config;
 use MediaWiki\Title\TitleFactory;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
