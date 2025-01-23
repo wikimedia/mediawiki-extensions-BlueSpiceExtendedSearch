@@ -4,13 +4,14 @@ namespace BS\ExtendedSearch;
 
 use ExtensionRegistry;
 use HashConfig;
+use MediaWiki\Config\Config;
 use UnexpectedValueException;
 use Wikimedia\ObjectFactory\ObjectFactory;
 
 class SourceFactory {
 
 	/**
-	 * @var \Config
+	 * @var Config
 	 */
 	protected $config;
 
@@ -42,10 +43,10 @@ class SourceFactory {
 	protected $objectFactory = null;
 
 	/**
-	 * @param \Config $config
+	 * @param Config $config
 	 * @param ObjectFactory $objectFactory
 	 */
-	public function __construct( \Config $config, ObjectFactory $objectFactory ) {
+	public function __construct( Config $config, ObjectFactory $objectFactory ) {
 		$this->config = $config;
 		$this->objectFactory = $objectFactory;
 	}

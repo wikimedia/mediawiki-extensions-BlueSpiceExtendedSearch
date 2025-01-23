@@ -3,7 +3,7 @@
 namespace BS\ExtendedSearch;
 
 use BlueSpice\ExtensionAttributeBasedRegistry;
-use Config;
+use MediaWiki\Config\Config;
 use MediaWiki\MediaWikiServices;
 
 class ExternalIndexFactory {

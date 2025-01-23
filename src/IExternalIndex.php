@@ -3,7 +3,7 @@
 namespace BS\ExtendedSearch;
 
 use BS\ExtendedSearch\Source\Job\UpdateJob;
-use Config;
+use MediaWiki\Config\Config;
 use MediaWiki\MediaWikiServices;
 use Status;
 
