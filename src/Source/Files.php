@@ -9,7 +9,7 @@ use BS\ExtendedSearch\Source\DocumentProvider\File;
 use BS\ExtendedSearch\Source\LookupModifier\FileContent;
 use BS\ExtendedSearch\Source\MappingProvider\File as FileMappingProvider;
 use Exception;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use OpenSearch\Client;
 
 class Files extends GenericSource {

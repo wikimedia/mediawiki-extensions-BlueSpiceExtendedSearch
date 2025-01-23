@@ -12,6 +12,7 @@ use Exception;
 use FormatJson;
 use HashConfig;
 use MediaWiki\Config\Config;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
@@ -226,7 +227,7 @@ class Backend {
 
 	/**
 	 *
-	 * @return \IContextSource
+	 * @return IContextSource
 	 */
 	public function getContext() {
 		return RequestContext::getMain();

@@ -4,7 +4,7 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\Wildcarder;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\MediaWikiServices;
 
 class BaseWildcarder extends LookupModifier {

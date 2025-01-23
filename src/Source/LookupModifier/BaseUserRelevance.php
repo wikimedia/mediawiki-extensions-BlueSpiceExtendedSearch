@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\ResultRelevance;
+use MediaWiki\Context\IContextSource;
 
 class BaseUserRelevance extends LookupModifier {
 	/** @var array */
@@ -15,7 +16,7 @@ class BaseUserRelevance extends LookupModifier {
 	/**
 	 *
 	 * @param \BS\ExtendedSearch\Lookup &$lookup
-	 * @param \IContextSource $context
+	 * @param IContextSource $context
 	 */
 	public function __construct( &$lookup, $context ) {
 		parent::__construct( $lookup, $context );

@@ -4,7 +4,7 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\MediaWikiServices;
 
 class BaseMTimeBoost extends LookupModifier {

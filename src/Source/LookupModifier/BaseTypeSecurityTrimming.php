@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Backend;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\User;
 
@@ -22,7 +23,7 @@ class BaseTypeSecurityTrimming extends LookupModifier {
 	/**
 	 *
 	 * @param \BS\ExtendedSearch\Lookup &$lookup
-	 * @param \IContextSource $context
+	 * @param IContextSource $context
 	 */
 	public function __construct( &$lookup, $context ) {
 		parent::__construct( $lookup, $context );

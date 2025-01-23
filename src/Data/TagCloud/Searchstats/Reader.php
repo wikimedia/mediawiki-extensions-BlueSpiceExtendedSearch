@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Data\TagCloud\Searchstats;
 
 use BlueSpice\TagCloud\Data\TagCloud\Schema;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\MediaWikiServices;
 use MWStake\MediaWiki\Component\DataStore\DatabaseReader;
 use MWStake\MediaWiki\Component\DataStore\ReaderParams;
@@ -11,9 +12,9 @@ class Reader extends DatabaseReader {
 	/**
 	 *
 	 * @param \Wikimedia\Rdbms\LoadBalancer $loadBalancer
-	 * @param \IContextSource|null $context
+	 * @param IContextSource|null $context
 	 */
-	public function __construct( $loadBalancer, \IContextSource $context = null ) {
+	public function __construct( $loadBalancer, IContextSource $context = null ) {
 		parent::__construct( $loadBalancer, $context, $context->getConfig() );
 	}
 

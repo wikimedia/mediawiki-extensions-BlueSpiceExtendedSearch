@@ -7,7 +7,7 @@ use BS\ExtendedSearch\ISearchSource;
 use BS\ExtendedSearch\SearchResult;
 use BS\ExtendedSearch\Wildcarder;
 use ConfigException;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Title\Title;
 use MWException;

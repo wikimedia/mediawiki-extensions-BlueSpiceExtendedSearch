@@ -5,7 +5,7 @@ namespace BS\ExtendedSearch\Source\LookupModifier;
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\Plugin\ILookupModifier;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 
 abstract class LookupModifier implements ILookupModifier {
 
