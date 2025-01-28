@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Specials;
 
+use MediaWiki\Api\ApiMain;
 use MediaWiki\Html\Html;
 use MediaWiki\SpecialPage\SpecialPage;
 
@@ -32,7 +33,7 @@ class SearchAdmin extends SpecialPage {
 			[ 'action' => 'bs-extendedsearch-stats' ]
 		);
 
-		$api = new \ApiMain( $derivRequest );
+		$api = new ApiMain( $derivRequest );
 		$api->execute();
 		$data = $api->getResult()->getResultData();
 
