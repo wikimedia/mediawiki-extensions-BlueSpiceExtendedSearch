@@ -35,7 +35,7 @@ class WildcarderTest extends MediaWikiIntegrationTestCase {
 		$wildcarder = Wildcarder::factory( $origin );
 		$result = $wildcarder->getWildcarded();
 		$this->assertEquals(
-			"(*Test OR Test* OR *Test*) (*text OR text* OR *text*) (*dummy OR dummy* OR *dummy*)",
+			"(Test OR *Test OR Test* OR *Test*) (text OR *text OR text* OR *text*) (dummy OR *dummy OR dummy* OR *dummy*)",
 			$result
 		);
 	}
