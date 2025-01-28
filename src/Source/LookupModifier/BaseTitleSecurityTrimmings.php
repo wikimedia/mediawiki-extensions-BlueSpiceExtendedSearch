@@ -9,6 +9,7 @@ use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
 
 class BaseTitleSecurityTrimmings extends LookupModifier {
@@ -129,7 +130,7 @@ class BaseTitleSecurityTrimmings extends LookupModifier {
 
 				if ( $title->isSpecialPage() ) {
 					$sp = $spFactory->getPage( $title->getDBkey() );
-					if ( !$sp instanceof \SpecialPage ) {
+					if ( !$sp instanceof SpecialPage ) {
 						$excludes[] = $resultObject->getId();
 						continue;
 					}

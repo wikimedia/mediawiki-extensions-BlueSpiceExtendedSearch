@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\Hook\BeforePageDisplay;
 
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
 
 class AddResources extends \BlueSpice\Hook\BeforePageDisplay {
@@ -16,7 +17,7 @@ class AddResources extends \BlueSpice\Hook\BeforePageDisplay {
 
 	protected function doProcess() {
 		$title = $this->out->getTitle();
-		if ( $title->equals( \SpecialPage::getTitleFor( 'BSSearchCenter' ) ) === false ) {
+		if ( $title->equals( SpecialPage::getTitleFor( 'BSSearchCenter' ) ) === false ) {
 			$this->out->addJsConfigVars(
 				'ESMasterFilter',
 				$this->getMasterFilter()

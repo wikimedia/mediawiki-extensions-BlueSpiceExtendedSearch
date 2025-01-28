@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\Data\TagCloud\Searchstats;
 
 use BlueSpice\TagCloud\Data\TagCloud\Record;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\SpecialPage\SpecialPage;
 
 class SecondaryDataProvider extends \MWStake\MediaWiki\Component\DataStore\SecondaryDataProvider {
 
@@ -35,7 +36,7 @@ class SecondaryDataProvider extends \MWStake\MediaWiki\Component\DataStore\Secon
 	protected function doExtend( &$dataSet ) {
 		$rawData = $dataSet->getData();
 
-		$title = \SpecialPage::getTitleFor( 'BSSearchCenter' );
+		$title = SpecialPage::getTitleFor( 'BSSearchCenter' );
 		$rawData->{Record::RENDEREDLINK} = '';
 		$rawData->{Record::LINK} = $title->getLocalURL( [
 			'q' => $rawData->{Record::NAME}

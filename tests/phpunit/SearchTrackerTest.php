@@ -3,12 +3,12 @@
 namespace BS\ExtendedSearch\Tests;
 
 use BS\ExtendedSearch\SearchTracker;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
 use PHPUnit\Framework\TestCase;
-use SpecialPage;
 use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
