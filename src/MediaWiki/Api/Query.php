@@ -2,11 +2,12 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
+use MediaWiki\Api\ApiBase;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
-class Query extends \ApiBase {
+class Query extends ApiBase {
 	/** @var string */
 	protected $searchTerm;
 	/** @var array */
@@ -28,18 +29,18 @@ class Query extends \ApiBase {
 			'q' => [
 				ParamValidator::PARAM_TYPE => 'string',
 				ParamValidator::PARAM_REQUIRED => true,
-				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-query-param-q',
+				ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-query-param-q',
 			],
 			'backend' => [
 				ParamValidator::PARAM_TYPE => 'string',
 				ParamValidator::PARAM_REQUIRED => false,
 				ParamValidator::PARAM_DEFAULT => 'local',
-				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-generic-param-backend',
+				ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-generic-param-backend',
 			],
 			'searchTerm' => [
 				ParamValidator::PARAM_TYPE => 'string',
 				ParamValidator::PARAM_REQUIRED => false,
-				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-query-param-search-term'
+				ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-query-param-search-term'
 			]
 		];
 	}

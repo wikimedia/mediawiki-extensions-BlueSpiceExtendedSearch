@@ -3,10 +3,11 @@
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
 use BS\ExtendedSearch\Backend;
+use MediaWiki\Api\ApiBase;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\ParamValidator\ParamValidator;
 
-class Stats extends \ApiBase {
+class Stats extends ApiBase {
 
 	/**
 	 *
@@ -39,7 +40,7 @@ class Stats extends \ApiBase {
 				ParamValidator::PARAM_TYPE => 'string',
 				ParamValidator::PARAM_REQUIRED => false,
 				ParamValidator::PARAM_DEFAULT => '[]',
-				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-stats-param-stats',
+				ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-stats-param-stats',
 			]
 		];
 	}

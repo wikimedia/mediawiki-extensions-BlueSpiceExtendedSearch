@@ -2,9 +2,10 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
+use MediaWiki\Api\ApiBase;
 use Wikimedia\ParamValidator\ParamValidator;
 
-class ResultRelevance extends \ApiBase {
+class ResultRelevance extends ApiBase {
 	public function execute() {
 		$this->readInParameters();
 		$this->applyRelevanceChange();
@@ -20,7 +21,7 @@ class ResultRelevance extends \ApiBase {
 			'relevanceData' => [
 				ParamValidator::PARAM_TYPE => 'string',
 				ParamValidator::PARAM_REQUIRED => true,
-				\ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-query-param-relevance-data',
+				ApiBase::PARAM_HELP_MSG => 'apihelp-bs-extendedsearch-query-param-relevance-data',
 			]
 		];
 	}
