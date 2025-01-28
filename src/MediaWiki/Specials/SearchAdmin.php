@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Specials;
 
+use MediaWiki\Html\Html;
 use MediaWiki\SpecialPage\SpecialPage;
 
 class SearchAdmin extends SpecialPage {
@@ -53,7 +54,7 @@ class SearchAdmin extends SpecialPage {
 	 */
 	protected function renderOverview( $data ) {
 		$stats = $data['stats'];
-		$this->getOutput()->addHTML( \Html::rawElement(
+		$this->getOutput()->addHTML( Html::rawElement(
 			'h2',
 			[ 'class' => 'bs-es-admin-heading-backend' ],
 			$this->msg( 'bs-extendedsearch-admin-heading-backend' )->plain()
@@ -70,15 +71,15 @@ class SearchAdmin extends SpecialPage {
 	 * @param array $sErrorMessage
 	 */
 	public function renderError( $sErrorMessage ) {
-		$this->getOutput()->addHTML( \Html::rawElement(
+		$this->getOutput()->addHTML( Html::rawElement(
 			'div',
 			[ 'class' => 'bs-error' ],
-			\Html::element(
+			Html::element(
 				'span',
 				[ 'class' => 'bs-es-admin-error-label' ],
 				$this->msg( 'bs-extendedsearch-admin-label-error' )->plain()
 			) .
-			\Html::element(
+			Html::element(
 				'span',
 				[ 'class' => 'bs-es-admin-error-message' ],
 				$sErrorMessage
@@ -100,22 +101,22 @@ class SearchAdmin extends SpecialPage {
 	 * @param array $stats
 	 */
 	protected function renderBackendStats( array $stats ) {
-		$this->getOutput()->addHTML( \Html::rawElement(
+		$this->getOutput()->addHTML( Html::rawElement(
 			'div',
 			[],
-			\Html::element(
+			Html::element(
 				'span',
 				[ 'class' => 'bs-es-admin-all-documents-count-label' ],
 				$this->msg( 'bs-extendedsearch-admin-label-all-documents-count' )->plain()
 			) .
-			\Html::element(
+			Html::element(
 				'span',
 				[ 'class' => 'bs-es-admin-all-documents-count-value' ],
 				$stats['all_documents_count']
 			) .
-			\Html::rawElement(
+			Html::rawElement(
 				'span', [],
-				\Html::element( 'pre', [], json_encode( $stats['backend_info'], JSON_PRETTY_PRINT ) )
+				Html::element( 'pre', [], json_encode( $stats['backend_info'], JSON_PRETTY_PRINT ) )
 			)
 		) );
 	}
@@ -125,13 +126,13 @@ class SearchAdmin extends SpecialPage {
 	 * @param array $aSources
 	 */
 	protected function renderSources( $aSources ) {
-		$this->getOutput()->addHTML( \Html::rawElement(
+		$this->getOutput()->addHTML( Html::rawElement(
 			'h3',
 			[ 'class' => 'bs-es-admin-heading-sources' ],
 			$this->msg( 'bs-extendedsearch-admin-heading-sources' )->plain()
 		) );
 
-		$this->getOutput()->addHTML( \Html::openElement( 'table', [
+		$this->getOutput()->addHTML( Html::openElement( 'table', [
 			'class' => 'bs-es-admin-table-sources contenttable'
 		] ) );
 		$this->renderSourceTableHeading();
@@ -140,7 +141,7 @@ class SearchAdmin extends SpecialPage {
 			$this->renderSourceTableRow( $sSourceKey, $aSourceStats );
 		}
 
-		$this->getOutput()->addHTML( \Html::closeElement( 'table' ) );
+		$this->getOutput()->addHTML( Html::closeElement( 'table' ) );
 	}
 
 	/**
@@ -149,44 +150,44 @@ class SearchAdmin extends SpecialPage {
 	 * @param array $aSourceStats
 	 */
 	protected function renderSourceTableRow( $sSourceKey, $aSourceStats ) {
-		$this->getOutput()->addHTML( \Html::openElement( 'tr' ) );
-		$this->getOutput()->addHTML( \Html::element(
+		$this->getOutput()->addHTML( Html::openElement( 'tr' ) );
+		$this->getOutput()->addHTML( Html::element(
 			'th',
 			[],
 			$aSourceStats['label'] . " ($sSourceKey)"
 		) );
 
-		$this->getOutput()->addHTML( \Html::element(
+		$this->getOutput()->addHTML( Html::element(
 			'td',
 			[],
 			$aSourceStats['documents_count']
 		) );
 
-		$this->getOutput()->addHTML( \Html::element(
+		$this->getOutput()->addHTML( Html::element(
 			'td',
 			[],
 			$aSourceStats['pending_update_jobs']
 		) );
 
-		$this->getOutput()->addHTML( \Html::closeElement( 'tr' ) );
+		$this->getOutput()->addHTML( Html::closeElement( 'tr' ) );
 	}
 
 	protected function renderSourceTableHeading() {
-		$this->getOutput()->addHTML( \Html::openElement( 'tr' ) );
-		$this->getOutput()->addHTML( \Html::element( 'th' ) );
+		$this->getOutput()->addHTML( Html::openElement( 'tr' ) );
+		$this->getOutput()->addHTML( Html::element( 'th' ) );
 
-		$this->getOutput()->addHTML( \Html::element(
+		$this->getOutput()->addHTML( Html::element(
 			'th',
 			[],
 			$this->msg( 'bs-extendedsearch-admin-heading-sources-documentscount' )->plain()
 		) );
 
-		$this->getOutput()->addHTML( \Html::element(
+		$this->getOutput()->addHTML( Html::element(
 			'th',
 			[],
 			$this->msg( 'bs-extendedsearch-admin-heading-pendingupdatejobs' )->plain()
 		) );
 
-		$this->getOutput()->addHTML( \Html::closeElement( 'tr' ) );
+		$this->getOutput()->addHTML( Html::closeElement( 'tr' ) );
 	}
 }
