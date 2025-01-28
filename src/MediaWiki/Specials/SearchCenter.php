@@ -7,6 +7,7 @@ use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\Plugin\IFormattingModifier;
 use BS\ExtendedSearch\Source\GenericSource;
 use FormatJson;
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
@@ -86,9 +87,9 @@ class SearchCenter extends SpecialPage {
 		}
 
 		$out->enableOOUI();
-		$out->addHTML( \Html::element( 'div', [ 'id' => 'bs-es-tools' ] ) );
-		$out->addHTML( \Html::element( 'div', [ 'id' => 'bs-es-alt-search' ] ) );
-		$out->addHTML( \Html::element( 'div', [ 'id' => 'bs-es-results' ] ) );
+		$out->addHTML( Html::element( 'div', [ 'id' => 'bs-es-tools' ] ) );
+		$out->addHTML( Html::element( 'div', [ 'id' => 'bs-es-alt-search' ] ) );
+		$out->addHTML( Html::element( 'div', [ 'id' => 'bs-es-results' ] ) );
 		$out->addJsConfigVars( 'bsgLookupConfig', FormatJson::encode( $lookup ) );
 
 		// Structure of the result displayed in UI, decorated by each source

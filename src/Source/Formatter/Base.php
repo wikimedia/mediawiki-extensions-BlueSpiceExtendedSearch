@@ -8,6 +8,7 @@ use BS\ExtendedSearch\SearchResult;
 use BS\ExtendedSearch\Wildcarder;
 use ConfigException;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Title\Title;
 use MWException;
@@ -276,7 +277,7 @@ class Base implements ISearchResultFormatter {
 			'url' => $title->getFullURL()
 		];
 
-		return \Html::element( 'a', [
+		return Html::element( 'a', [
 			'href' => $title->getLocalURL(),
 			'class' => 'bs-traceable-link',
 			'data-bs-traceable-page' => json_encode( $data ),
