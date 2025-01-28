@@ -5,7 +5,7 @@ namespace BS\ExtendedSearch;
 use BS\ExtendedSearch\Source\Job\UpdateJob;
 use MediaWiki\Config\Config;
 use MediaWiki\MediaWikiServices;
-use Status;
+use MediaWiki\Status\Status;
 
 interface IExternalIndex {
 

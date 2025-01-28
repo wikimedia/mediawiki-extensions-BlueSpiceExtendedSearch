@@ -8,6 +8,7 @@ use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use Wikimedia\Rdbms\IDatabase;
@@ -28,18 +29,18 @@ class Handler implements IPrivacyHandler {
 	 *
 	 * @param string $oldUsername
 	 * @param string $newUsername
-	 * @return \Status
+	 * @return Status
 	 */
 	public function anonymize( $oldUsername, $newUsername ) {
 		// Nothing to handle
-		return \Status::newGood();
+		return Status::newGood();
 	}
 
 	/**
 	 *
 	 * @param User $userToDelete
 	 * @param User $deletedUser
-	 * @return \Status
+	 * @return Status
 	 */
 	public function delete( User $userToDelete, User $deletedUser ) {
 		$this->db->update(
@@ -53,7 +54,7 @@ class Handler implements IPrivacyHandler {
 			[ 'esr_user' => $userToDelete->getId() ]
 		);
 
-		return \Status::newGood();
+		return Status::newGood();
 	}
 
 	/**
@@ -61,7 +62,7 @@ class Handler implements IPrivacyHandler {
 	 * @param array $types
 	 * @param string $format
 	 * @param User $user
-	 * @return \Status
+	 * @return Status
 	 */
 	public function exportData( array $types, $format, User $user ) {
 		$data = [];
@@ -72,7 +73,7 @@ class Handler implements IPrivacyHandler {
 			$data[Transparency::DATA_TYPE_WORKING] = $this->getWorkingData( $user );
 		}
 
-		return \Status::newGood( $data );
+		return Status::newGood( $data );
 	}
 
 	/**
