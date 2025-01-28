@@ -8,8 +8,8 @@ use BS\ExtendedSearch\Plugin\IFormattingModifier;
 use BS\ExtendedSearch\Source\GenericSource;
 use FormatJson;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
-use SpecialPage;
 
 class SearchCenter extends SpecialPage {
 

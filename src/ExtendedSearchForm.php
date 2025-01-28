@@ -4,9 +4,9 @@ namespace BS\ExtendedSearch;
 
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
+use MediaWiki\SpecialPage\SpecialPage;
 use MWStake\MediaWiki\Component\CommonUserInterface\Component\Literal;
 use MWStake\MediaWiki\Component\CommonUserInterface\IRestrictedComponent;
-use SpecialPage;
 use TemplateParser;
 
 class ExtendedSearchForm extends Literal implements IRestrictedComponent {

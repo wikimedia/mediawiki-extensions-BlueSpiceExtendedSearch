@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch;
 
 use BlueSpice\IAdminTool;
 use MediaWiki\Message\Message;
+use MediaWiki\SpecialPage\SpecialPage;
 
 class AdminTool implements IAdminTool {
 
@@ -12,7 +13,7 @@ class AdminTool implements IAdminTool {
 	 * @return string
 	 */
 	public function getURL() {
-		$tool = \SpecialPage::getTitleFor( 'BSSearchAdmin' );
+		$tool = SpecialPage::getTitleFor( 'BSSearchAdmin' );
 		return $tool->getLocalURL();
 	}
 

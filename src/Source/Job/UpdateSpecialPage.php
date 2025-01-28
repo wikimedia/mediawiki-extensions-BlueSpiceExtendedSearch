@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
 
 class UpdateSpecialPage extends UpdateTitleBase {
@@ -20,7 +21,7 @@ class UpdateSpecialPage extends UpdateTitleBase {
 
 	/**
 	 *
-	 * @return \SpecialPage|null
+	 * @return SpecialPage|null
 	 */
 	protected function getDocumentProviderSource() {
 		return \MediaWiki\MediaWikiServices::getInstance()

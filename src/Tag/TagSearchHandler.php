@@ -8,6 +8,7 @@ use ConfigException;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Message\Message;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
 use MWException;
 use Parser;
@@ -77,7 +78,7 @@ class TagSearchHandler extends Handler {
 
 		$params = [
 			"placeholder" => $this->processedArgs[TagSearch::PARAM_PLACEHOLDER],
-			"action" => \SpecialPage::getTitleFor( 'SearchCenter' )->getLocalURL(),
+			"action" => SpecialPage::getTitleFor( 'SearchCenter' )->getLocalURL(),
 			"lookup_object" => $lookup,
 			"id_number" => $this->tagIdNumber,
 			"returnto" => "",

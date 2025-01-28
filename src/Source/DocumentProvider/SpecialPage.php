@@ -2,13 +2,15 @@
 
 namespace BS\ExtendedSearch\Source\DocumentProvider;
 
+use MediaWiki\SpecialPage\SpecialPage as MediaWikiSpecialPage;
+
 class SpecialPage extends Base {
 
 	/**
 	 *
 	 * @param string $sUri
 	 * @param string $documentId
-	 * @param \SpecialPage $oSpecialPage
+	 * @param MediaWikiSpecialPage $oSpecialPage
 	 *
 	 * @return array
 	 */

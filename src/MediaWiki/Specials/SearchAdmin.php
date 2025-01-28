@@ -2,7 +2,9 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Specials;
 
-class SearchAdmin extends \SpecialPage {
+use MediaWiki\SpecialPage\SpecialPage;
+
+class SearchAdmin extends SpecialPage {
 
 	/**
 	 *
