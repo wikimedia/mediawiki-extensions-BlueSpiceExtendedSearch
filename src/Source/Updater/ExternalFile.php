@@ -6,10 +6,10 @@ use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
 use ConfigFactory;
 use MediaWiki\Config\Config;
+use MediaWiki\Status\Status;
 use MWStake\MediaWiki\Component\RunJobsTrigger\IHandler;
 use MWStake\MediaWiki\Component\RunJobsTrigger\Interval\OnceADay;
 use SplFileInfo;
-use Status;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\LoadBalancer;
 

@@ -11,8 +11,8 @@ use Exception;
 use Job;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Status\Status;
 use MWException;
-use Status;
 
 abstract class UpdateJob extends Job {
 	public const ACTION_DELETE = 'delete';
