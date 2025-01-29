@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\Source\DocumentProvider;
 
 use MediaWiki\Content\Content;
 use MediaWiki\Content\Renderer\ContentRenderer;
+use MediaWiki\Content\TextContent;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\RedirectLookup;
@@ -17,7 +18,6 @@ use MediaWiki\User\UserFactory;
 use MWException;
 use PageProps;
 use Parser;
-use TextContent;
 use WikiPage as WikiPageObject;
 
 class WikiPage extends Base {
