@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\MediaWiki\Api;
 
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiResult;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -57,7 +58,7 @@ class Query extends ApiBase {
 	protected function getParameterFromSettings( $paramName, $paramSettings, $parseLimit ) {
 		$value = parent::getParameterFromSettings( $paramName, $paramSettings, $parseLimit );
 		if ( $paramName === 'q' ) {
-			$decodedValue = \FormatJson::decode( $value, true );
+			$decodedValue = FormatJson::decode( $value, true );
 
 			$oLookup = new \BS\ExtendedSearch\Lookup();
 			if ( is_array( $decodedValue ) ) {
@@ -113,7 +114,7 @@ class Query extends ApiBase {
 		$oResult->addValue( null, 'total', $this->resultSet->total );
 		$oResult->addValue( null, 'filters', $this->resultSet->filters );
 		$oResult->addValue( null, 'spellcheck', $this->resultSet->spellcheck );
-		$oResult->addValue( null, 'lookup', \FormatJson::encode( $this->oLookup ) );
+		$oResult->addValue( null, 'lookup', FormatJson::encode( $this->oLookup ) );
 		$oResult->addValue( null, 'total_approximated', $this->resultSet->total_approximated );
 		$oResult->addValue( null, 'search_after', $this->resultSet->search_after );
 		if ( !empty( $this->pageCreateData ) ) {

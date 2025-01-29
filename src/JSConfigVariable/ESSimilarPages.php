@@ -4,7 +4,7 @@ namespace BS\ExtendedSearch\JSConfigVariable;
 
 use BlueSpice\JSConfigVariable;
 use Exception;
-use FormatJson;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\MediaWikiServices;
 
 class ESSimilarPages extends JSConfigVariable {
