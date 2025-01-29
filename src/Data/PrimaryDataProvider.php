@@ -5,7 +5,7 @@ namespace BS\ExtendedSearch\Data;
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\SearchResult;
 use Exception;
-use FormatJson;
+use MediaWiki\Json\FormatJson;
 use MWStake\MediaWiki\Component\DataStore\FieldType;
 use MWStake\MediaWiki\Component\DataStore\Filter\Boolean;
 use MWStake\MediaWiki\Component\DataStore\Filter\Date;

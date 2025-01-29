@@ -7,6 +7,7 @@ use BS\ExtendedSearch\Lookup;
 use ConfigException;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\Message\Message;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
@@ -74,7 +75,7 @@ class TagSearchHandler extends Handler {
 		}
 		$this->modifyLookup( $lookup );
 
-		$lookup = \FormatJson::encode( $lookup );
+		$lookup = FormatJson::encode( $lookup );
 
 		$params = [
 			"placeholder" => $this->processedArgs[TagSearch::PARAM_PLACEHOLDER],

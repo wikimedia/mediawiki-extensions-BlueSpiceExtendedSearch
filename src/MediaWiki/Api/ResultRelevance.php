@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\MediaWiki\Api;
 
 use MediaWiki\Api\ApiBase;
+use MediaWiki\Json\FormatJson;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ResultRelevance extends ApiBase {
@@ -37,7 +38,7 @@ class ResultRelevance extends ApiBase {
 	protected function getParameterFromSettings( $paramName, $paramSettings, $parseLimit ) {
 		$value = parent::getParameterFromSettings( $paramName, $paramSettings, $parseLimit );
 		if ( $paramName === 'relevanceData' ) {
-			$decodedValue = \FormatJson::decode( $value, true );
+			$decodedValue = FormatJson::decode( $value, true );
 			if ( is_array( $decodedValue ) ) {
 				return $this->makeResultRelevanceFromArray( $decodedValue );
 			}

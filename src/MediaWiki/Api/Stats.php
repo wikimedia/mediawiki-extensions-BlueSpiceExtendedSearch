@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\MediaWiki\Api;
 
 use BS\ExtendedSearch\Backend;
 use MediaWiki\Api\ApiBase;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\ParamValidator\ParamValidator;
 
@@ -56,7 +57,7 @@ class Stats extends ApiBase {
 	protected function getParameterFromSettings( $paramName, $paramSettings, $parseLimit ) {
 		$value = parent::getParameterFromSettings( $paramName, $paramSettings, $parseLimit );
 		if ( $paramName === 'stats' ) {
-			$value = \FormatJson::decode( $value, true );
+			$value = FormatJson::decode( $value, true );
 			if ( empty( $value ) ) {
 				return [];
 			}
