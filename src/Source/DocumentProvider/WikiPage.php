@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\DocumentProvider;
 
-use Content;
+use MediaWiki\Content\Content;
 use MediaWiki\Content\Renderer\ContentRenderer;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
