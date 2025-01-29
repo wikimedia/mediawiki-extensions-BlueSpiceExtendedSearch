@@ -7,6 +7,7 @@ use MediaWiki\Content\Renderer\ContentRenderer;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\RedirectLookup;
+use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionRenderer;
@@ -16,7 +17,6 @@ use MediaWiki\User\UserFactory;
 use MWException;
 use PageProps;
 use Parser;
-use ParserOutput;
 use TextContent;
 use WikiPage as WikiPageObject;
 
