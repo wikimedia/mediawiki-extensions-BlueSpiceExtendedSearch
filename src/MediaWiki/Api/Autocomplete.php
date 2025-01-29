@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\MediaWiki\Api;
 
 use BS\ExtendedSearch\Backend;
 use MediaWiki\Api\ApiBase;
+use MediaWiki\Api\ApiResult;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -168,7 +169,7 @@ class Autocomplete extends ApiBase {
 		$this->suggestions = $backend->runAutocompleteLookup( $this->lookup, $this->searchData );
 	}
 
-	/** @var \ApiResult */
+	/** @var ApiResult */
 	protected $oResult;
 
 	protected function returnResults() {
