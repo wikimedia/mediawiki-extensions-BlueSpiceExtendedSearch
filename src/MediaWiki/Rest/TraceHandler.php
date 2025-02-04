@@ -73,8 +73,13 @@ abstract class TraceHandler extends SimpleHandler {
 			'namespace' => [
 				static::PARAM_SOURCE => 'body',
 				ParamValidator::PARAM_REQUIRED => true,
-				ParamValidator::PARAM_TYPE => 'int'
-			]
+				ParamValidator::PARAM_TYPE => 'integer'
+			],
+			'url' => [
+				static::PARAM_SOURCE => 'body',
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_TYPE => 'string'
+			],
 		];
 	}
 }
