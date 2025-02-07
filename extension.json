@@ -234,6 +234,13 @@
 					"class": "\\BS\\ExtendedSearch\\ContentDroplets\\SearchDroplet"
 				}
 			}
+		},
+		"PDFCreator": {
+			"Processors": {
+				"removeTagSearch": {
+					"class": "\\BS\\ExtendedSearch\\Integration\\PDFCreator\\Processor\\RemoveTagSearch"
+				}
+			}
 		}
 	},
 	"GroupPermissions": {
@@ -299,7 +306,6 @@
 			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddTraceTable::callback"
 		],
 		"GetPreferences": "BS\\ExtendedSearch\\Hook\\GetPreferences\\AddUserPreferredNamespaces::callback",
-		"BSUEModulePDFBeforeCreatePDF": "\\BS\\ExtendedSearch\\Hook\\BSUEModulePDFBeforeCreatePDF\\RemoveTagSearch::callback",
 		"NamespaceManager::editNamespace": "\\BS\\ExtendedSearch\\Hook\\NamespaceManagerEditNamespace\\ReindexNamespace::callback",
 		"UserMergeAccountFields": "\\BS\\ExtendedSearch\\Hook\\UserMergeAccountFields\\MergeExtendedSearchDBFields::callback",
 		"MWStakeCommonUIRegisterSkinSlotComponents": [ "extendedsearchform" ],
