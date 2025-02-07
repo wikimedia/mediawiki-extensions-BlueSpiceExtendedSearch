@@ -13,7 +13,7 @@ use BSNamespaceListParam;
 use ConfigException;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\Parser;
-use PPFrame;
+use MediaWiki\Parser\PPFrame;
 
 class TagSearch extends Tag {
 	public const PARAM_NAMESPACE = 'ns';

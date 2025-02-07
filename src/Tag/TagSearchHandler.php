@@ -10,10 +10,10 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Message\Message;
 use MediaWiki\Parser\Parser;
+use MediaWiki\Parser\PPFrame;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
 use MWException;
-use PPFrame;
 
 class TagSearchHandler extends Handler {
 	public const OPERATOR_OR = 'OR';
