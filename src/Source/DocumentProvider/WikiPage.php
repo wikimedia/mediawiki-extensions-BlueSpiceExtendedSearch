@@ -7,6 +7,7 @@ use MediaWiki\Content\Renderer\ContentRenderer;
 use MediaWiki\Content\TextContent;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\PageProps;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOutput;
@@ -17,7 +18,6 @@ use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MWException;
-use PageProps;
 use WikiPage as WikiPageObject;
 
 class WikiPage extends Base {
