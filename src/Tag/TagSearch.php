@@ -12,7 +12,7 @@ use BSCategoryListParam;
 use BSNamespaceListParam;
 use ConfigException;
 use MediaWiki\MediaWikiServices;
-use Parser;
+use MediaWiki\Parser\Parser;
 use PPFrame;
 
 class TagSearch extends Tag {
