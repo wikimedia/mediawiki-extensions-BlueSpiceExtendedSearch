@@ -8,6 +8,7 @@ use MediaWiki\Content\TextContent;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\RedirectLookup;
+use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
@@ -17,7 +18,6 @@ use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MWException;
 use PageProps;
-use Parser;
 use WikiPage as WikiPageObject;
 
 class WikiPage extends Base {

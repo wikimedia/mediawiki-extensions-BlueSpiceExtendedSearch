@@ -9,10 +9,10 @@ use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Message\Message;
+use MediaWiki\Parser\Parser;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
 use MWException;
-use Parser;
 use PPFrame;
 
 class TagSearchHandler extends Handler {
