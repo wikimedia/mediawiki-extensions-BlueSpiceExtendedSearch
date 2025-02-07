@@ -204,7 +204,7 @@
 			}
 		} );
 
-		this.popup.$element.css( 'top', this.searchBar.$searchBox.outerHeight() + 'px' );
+		this.popup.$element.css( 'top', ( this.searchBar.$searchBox.outerHeight() + 12 ) + 'px' );
 		this.popup.$element.addClass( 'searchbar-autocomplete-results' );
 		var wrapperId = this.searchBar.$searchBoxWrapper.attr( 'id' );
 		this.popup.$element.insertAfter( $( '#' + wrapperId ) );
