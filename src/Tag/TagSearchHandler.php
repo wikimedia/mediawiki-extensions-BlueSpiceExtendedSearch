@@ -7,6 +7,7 @@ use BS\ExtendedSearch\Lookup;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Html\TemplateParser;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Message\Message;
 use MediaWiki\Parser\Parser;
@@ -56,7 +57,7 @@ class TagSearchHandler extends Handler {
 		$this->parser->getOutput()->addModuleStyles( [ 'ext.blueSpiceExtendedSearch.TagSearch.styles' ] );
 		$this->parser->getOutput()->addModules( [ 'ext.blueSpiceExtendedSearch.TagSearch' ] );
 
-		$templateParser = new \TemplateParser( $this->config->get( 'TagSearchSearchFieldTemplatePath' ) );
+		$templateParser = new TemplateParser( $this->config->get( 'TagSearchSearchFieldTemplatePath' ) );
 
 		$lookup = new Lookup();
 
