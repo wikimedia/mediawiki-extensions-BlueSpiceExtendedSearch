@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch;
 
-use ConfigException;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\MediaWikiServices;
 
 class Wildcarder {

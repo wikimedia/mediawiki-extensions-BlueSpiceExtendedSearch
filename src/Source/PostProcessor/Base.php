@@ -8,7 +8,7 @@ use BS\ExtendedSearch\Plugin\IPostProcessor;
 use BS\ExtendedSearch\PostProcessor;
 use BS\ExtendedSearch\SearchResult;
 use BS\ExtendedSearch\Wildcarder;
-use ConfigException;
+use MediaWiki\Config\ConfigException;
 
 class Base implements IPostProcessor {
 	/**

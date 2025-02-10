@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch;
 
 use MediaWiki\Config\Config;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\MultiConfig;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -126,7 +127,7 @@ class SourceFactory {
 
 	/**
 	 * @param string $sourceKey
-	 * @throws \ConfigException
+	 * @throws ConfigException
 	 */
 	protected function assertSourceConfig( $sourceKey ) {
 		if ( isset( $this->configs[$sourceKey] ) ) {

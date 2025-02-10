@@ -6,7 +6,7 @@ use BS\ExtendedSearch\ISearchResultFormatter;
 use BS\ExtendedSearch\ISearchSource;
 use BS\ExtendedSearch\SearchResult;
 use BS\ExtendedSearch\Wildcarder;
-use ConfigException;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;

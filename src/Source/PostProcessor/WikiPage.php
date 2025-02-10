@@ -5,7 +5,7 @@ namespace BS\ExtendedSearch\Source\PostProcessor;
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\SearchResult;
-use ConfigException;
+use MediaWiki\Config\ConfigException;
 
 class WikiPage extends Base {
 

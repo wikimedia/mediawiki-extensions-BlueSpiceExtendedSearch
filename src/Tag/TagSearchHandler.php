@@ -4,8 +4,8 @@ namespace BS\ExtendedSearch\Tag;
 
 use BlueSpice\Tag\Handler;
 use BS\ExtendedSearch\Lookup;
-use ConfigException;
 use MediaWiki\Config\Config;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Message\Message;
