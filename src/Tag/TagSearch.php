@@ -10,7 +10,7 @@ use BlueSpice\Tag\Tag;
 use BS\ExtendedSearch\Param\Definition\SearchResultTypeListParam;
 use BSCategoryListParam;
 use BSNamespaceListParam;
-use ConfigException;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\PPFrame;

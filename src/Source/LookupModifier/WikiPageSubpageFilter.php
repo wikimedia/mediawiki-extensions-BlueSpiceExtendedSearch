@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
-use ConfigException;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\MediaWikiServices;
 
 class WikiPageSubpageFilter extends LookupModifier {
