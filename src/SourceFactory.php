@@ -3,8 +3,8 @@
 namespace BS\ExtendedSearch;
 
 use ExtensionRegistry;
-use HashConfig;
 use MediaWiki\Config\Config;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\MultiConfig;
 use UnexpectedValueException;
 use Wikimedia\ObjectFactory\ObjectFactory;
