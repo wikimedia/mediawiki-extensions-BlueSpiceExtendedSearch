@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\Formatter;
 
+use MediaWiki\Registration\ExtensionRegistry;
+
 class ExternalFileFormatter extends FileFormatter {
 
 	/**
@@ -17,7 +19,7 @@ class ExternalFileFormatter extends FileFormatter {
 
 		// Is there a centralized place to get file icons, so
 		// that those do not have to come with this extension?
-		$fileIcons = \ExtensionRegistry::getInstance()
+		$fileIcons = ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchIcons' );
 
 		$scriptPath = $this->getContext()->getConfig()->get( 'ScriptPath' );

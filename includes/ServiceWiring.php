@@ -5,6 +5,7 @@ use BS\ExtendedSearch\ExternalIndexFactory;
 use BS\ExtendedSearch\Plugin\ISearchPlugin;
 use BS\ExtendedSearch\SourceFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Registration\ExtensionRegistry;
 
 // PHP unit does not understand code coverage for this file
 // as the @covers annotation cannot cover a specific file
