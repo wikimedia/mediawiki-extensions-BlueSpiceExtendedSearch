@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\MediaWiki\Specials;
 
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Html\Html;
+use MediaWiki\Request\DerivativeRequest;
 use MediaWiki\SpecialPage\SpecialPage;
 
 class SearchAdmin extends SpecialPage {
@@ -28,7 +29,7 @@ class SearchAdmin extends SpecialPage {
 	public function execute( $subPage ) {
 		$this->setHeaders();
 
-		$derivRequest = new \DerivativeRequest(
+		$derivRequest = new DerivativeRequest(
 			$this->getRequest(),
 			[ 'action' => 'bs-extendedsearch-stats' ]
 		);
