@@ -3,7 +3,7 @@
 namespace BS\ExtendedSearch\JSConfigVariable;
 
 use BlueSpice\JSConfigVariable;
-use ExtensionRegistry;
+use MediaWiki\Registration\ExtensionRegistry;
 
 class AutocompleteConfig extends JSConfigVariable {
 

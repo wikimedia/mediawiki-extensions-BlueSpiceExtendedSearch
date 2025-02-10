@@ -2,10 +2,10 @@
 
 namespace BS\ExtendedSearch;
 
-use ExtensionRegistry;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\MultiConfig;
+use MediaWiki\Registration\ExtensionRegistry;
 use UnexpectedValueException;
 use Wikimedia\ObjectFactory\ObjectFactory;
 

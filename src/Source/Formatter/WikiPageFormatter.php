@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\Source\Formatter;
 
 use BS\ExtendedSearch\SearchResult;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Title\Title;
 
 class WikiPageFormatter extends Base {
@@ -333,7 +334,7 @@ class WikiPageFormatter extends Base {
 		$result['is_redirect'] = 1;
 		$result['redirect_target_anchor'] = $this->getTraceablePageAnchor( $redirTarget, $result['redirects_to'] );
 
-		$icons = \ExtensionRegistry::getInstance()
+		$icons = ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchIcons' );
 
 		$scriptPath = $this->getContext()->getConfig()->get( 'ScriptPath' );

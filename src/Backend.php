@@ -17,6 +17,7 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Title\Title;
 use MWException;
 use MWStake\MediaWiki\Component\ManifestRegistry\ManifestRegistryFactory;
@@ -713,11 +714,11 @@ class Backend {
 		// be retrieved from mapping, but since ES assigns types dynamically, it's not possible.
 		// It could also be inferred from results, but we need filter cfg even when no
 		// results are retrieved. Basically, this are all the fields of type array
-		$fieldsWithANDEnabled = \ExtensionRegistry::getInstance()
+		$fieldsWithANDEnabled = ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchFieldsWithANDFilterEnabled' );
 
 		// Filters that can only have one option selected at a time
-		$singleSelectFitlers = \ExtensionRegistry::getInstance()
+		$singleSelectFitlers = ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchSingleSelectFilters' );
 
 		$aggs = $results->getAggregations();
@@ -762,7 +763,7 @@ class Backend {
 	 * @return array
 	 */
 	public function getDefaultResultStructure() {
-		$defaultStructure = \ExtensionRegistry::getInstance()
+		$defaultStructure = ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchDefaultResultStructure' );
 
 		return $defaultStructure;
@@ -774,7 +775,7 @@ class Backend {
 	 * @return array
 	 */
 	public function getAutocompleteConfig() {
-		$autocompleteConfig = \ExtensionRegistry::getInstance()
+		$autocompleteConfig = ExtensionRegistry::getInstance()
 			->getAttribute( 'BlueSpiceExtendedSearchAutocomplete' );
 
 		return $autocompleteConfig;
