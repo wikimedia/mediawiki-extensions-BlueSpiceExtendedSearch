@@ -19,6 +19,7 @@ use MediaWiki\Json\FormatJson;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Title\Title;
+use MediaWiki\WikiMap\WikiMap;
 use MWException;
 use MWStake\MediaWiki\Component\ManifestRegistry\ManifestRegistryFactory;
 use OpenSearch\Client;
@@ -26,7 +27,6 @@ use OpenSearch\ClientBuilder;
 use RuntimeException;
 use stdClass;
 use Throwable;
-use WikiMap;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class Backend {
