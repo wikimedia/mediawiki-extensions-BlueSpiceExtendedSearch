@@ -5,6 +5,7 @@ namespace BS\ExtendedSearch;
 use ExtensionRegistry;
 use HashConfig;
 use MediaWiki\Config\Config;
+use MediaWiki\Config\MultiConfig;
 use UnexpectedValueException;
 use Wikimedia\ObjectFactory\ObjectFactory;
 
@@ -81,7 +82,7 @@ class SourceFactory {
 			throw new UnexpectedValueException( "Factory for $sourceKey returned invalid source object!" );
 		}
 		$source->setBackend( $backend );
-		$source->setSourceConfig( new \MultiConfig( [
+		$source->setSourceConfig( new MultiConfig( [
 			$this->config,
 			new HashConfig( $this->configs[$sourceKey] )
 		] ) );
