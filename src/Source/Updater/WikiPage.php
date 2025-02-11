@@ -9,8 +9,8 @@ use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Hook\AfterImportPageHook;
 use MediaWiki\Hook\PageMoveCompletingHook;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Page\Hook\ArticleUndeleteHook;
 use MediaWiki\Page\Hook\PageDeleteCompleteHook;
+use MediaWiki\Page\Hook\PageUndeleteCompleteHook;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Revision\RevisionRecord;
@@ -20,7 +20,7 @@ use MediaWiki\Title\Title;
 class WikiPage extends Base implements
 	PageSaveCompleteHook,
 	PageDeleteCompleteHook,
-	ArticleUndeleteHook,
+	PageUndeleteCompleteHook,
 	PageMoveCompletingHook,
 	AfterImportPageHook
 {
@@ -42,7 +42,7 @@ class WikiPage extends Base implements
 			'PageDeleteComplete', [ $this, 'onPageDeleteComplete' ]
 		);
 		$services->getHookContainer()->register(
-			'ArticleUndelete', [ $this, 'onArticleUndelete' ]
+			'PageUndeleteComplete', [ $this, 'onPageUndeleteComplete' ]
 		);
 		$services->getHookContainer()->register(
 			'PageMoveCompleting', [ $this, 'onPageMoveCompleting' ]
@@ -83,7 +83,17 @@ class WikiPage extends Base implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onArticleUndelete( $title, $create, $comment, $oldPageId, $restoredPages ) {
+	public function onPageUndeleteComplete(
+		ProperPageIdentity $page,
+		Authority $restorer,
+		string $reason,
+		RevisionRecord $restoredRev,
+		ManualLogEntry $logEntry,
+		int $restoredRevisionCount,
+		bool $created,
+		array $restoredPageIds
+	): void {
+		$title = Title::newFromPageIdentity( $page );
 		$this->jobQueueGroup->push( new UpdateWikiPage( $title ) );
 	}
 
