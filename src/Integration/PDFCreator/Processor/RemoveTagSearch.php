@@ -25,4 +25,11 @@ class RemoveTagSearch implements IProcessor {
 			}
 		}
 	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getPosition(): int {
+		return 50;
+	}
 }
