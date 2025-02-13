@@ -1,6 +1,7 @@
 <?php
 namespace BS\ExtendedSearch\Source\Updater;
 
+use MediaWiki\Installer\DatabaseUpdater;
 use MediaWiki\MediaWikiServices;
 
 class SpecialPage extends Base {
@@ -18,7 +19,7 @@ class SpecialPage extends Base {
 
 	/**
 	 * Update index if new extensions are being installed
-	 * @param \DatabaseUpdater $updater Updater
+	 * @param DatabaseUpdater $updater Updater
 	 * @return bool Always true
 	 */
 	public function onLoadExtensionSchemaUpdates( $updater ) {
