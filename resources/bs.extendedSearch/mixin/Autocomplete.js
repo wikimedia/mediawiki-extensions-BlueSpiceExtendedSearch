@@ -159,10 +159,16 @@
 				.html( this.basename )
 				.attr( 'tabindex', '-1' );
 		}
+		if ( cfg.breadcrumbs ) {
+			this.$header.append(
+				$( '<div>' )
+					.addClass( 'bs-extendedsearch-autocomplete-popup-primary-item-header-breadcrumbs' )
+					.html( cfg.breadcrumbs )
+			);
+		}
 		if ( cfg.original_title ) {
 			this.$header.append( this.$originalTitle );
 		}
-
 		if ( cfg.is_redirect ) {
 			var redirLayout = new OO.ui.HorizontalLayout( {
 				items: [

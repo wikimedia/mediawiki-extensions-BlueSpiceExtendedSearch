@@ -16,6 +16,10 @@ class WikiPageBoosters extends LookupModifier {
 		$contentNamespaces = MediaWikiServices::getInstance()
 			->getNamespaceInfo()
 			->getContentNamespaces();
+		$contentNamespaces = array_map( static function ( $ns ) {
+			return is_int( $ns ) ? $ns : null;
+		}, $contentNamespaces );
+		$contentNamespaces = array_filter( $contentNamespaces );
 		$this->lookup->addShouldTerms( 'namespace', array_values( $contentNamespaces ), 4, false );
 		// Boost subject namespaces (non-talk, non-specialpage)
 		$subjectNamespaces = MediaWikiServices::getInstance()
