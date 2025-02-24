@@ -664,7 +664,7 @@
 			"description": "Namespaces to exclude from search. Add to `autocomplete` array to exclude from AC only, or to `search` array as well to exclude from both AC and fulltext",
 			"public": false,
 			"value": {
-				"autocomplete": [],
+				"autocomplete": [ 6, 7 ],
 				"search": []
 			}
 		},
