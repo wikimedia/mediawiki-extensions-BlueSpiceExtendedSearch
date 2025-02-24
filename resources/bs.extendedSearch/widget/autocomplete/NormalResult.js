@@ -21,7 +21,7 @@
 		this.$element.on( 'click', this.onResultClick );
 
 		this.$element.addClass( 'bs-extendedsearch-autocomplete-popup-primary-item' );
-	}
+	};
 
 	OO.inheritClass( bs.extendedSearch.AutocompleteNormalResult, OO.ui.Widget );
 	OO.mixinClass( bs.extendedSearch.AutocompleteNormalResult, bs.extendedSearch.mixin.AutocompleteHeader );
