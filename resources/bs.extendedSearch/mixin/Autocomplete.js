@@ -169,7 +169,8 @@
 					new OO.ui.IconWidget( {
 						icon: 'articleRedirect'
 					} )
-				]
+				],
+				classes: [ 'bs-extendedsearch-autocomplete-popup-primary-item-header-redirect' ]
 			} );
 			redirLayout.$element.append( cfg.redirect_target_anchor );
 			this.$header.append( redirLayout.$element );
