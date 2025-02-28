@@ -116,11 +116,15 @@ class WikiPageFormatter extends Base {
 	/**
 	 *
 	 * @param array &$result
+	 * @param bool $subpageOnly
 	 */
-	protected function addAnchorAndImageUri( &$result ) {
+	protected function addAnchorAndImageUri( &$result, bool $subpageOnly = false ) {
 		$title = Title::newFromText( $result['prefixed_title'] );
 		if ( $title instanceof Title && $title->getNamespace() == $result['namespace'] ) {
-			$result['page_anchor'] = $this->getTraceablePageAnchor( $title, $result['display_title'] );
+			$result['page_anchor'] = $this->getTraceablePageAnchor( $title, $result['display_title'], $subpageOnly );
+			if ( $subpageOnly && $title->isSubpage() ) {
+				$result['breadcrumbs'] = $this->makeSubpageBreadCrumbs( $title );
+			}
 			if ( $title->exists() ) {
 				$result['image_uri'] = $this->getImageUri( $result['prefixed_title'], 150 );
 			}
@@ -380,7 +384,7 @@ class WikiPageFormatter extends Base {
 				$this->addRedirectAttributes( $result );
 			}
 
-			$this->addAnchorAndImageUri( $result );
+			$this->addAnchorAndImageUri( $result, true );
 		}
 	}
 
@@ -496,6 +500,18 @@ class WikiPageFormatter extends Base {
 		}
 
 		return implode( Base::VALUE_SEPARATOR, $formattedPages ) . ( $morePages ? Base::MORE_VALUES_TEXT : '' );
+	}
+
+	/**
+	 * @param Title $title
+	 * @return string
+	 */
+	private function makeSubpageBreadCrumbs( Title $title ): string {
+		$base = $title->getBaseTitle();
+		if ( !$base ) {
+			return '';
+		}
+		return $base->getPrefixedText();
 	}
 
 }
