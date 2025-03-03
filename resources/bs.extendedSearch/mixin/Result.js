@@ -104,9 +104,12 @@
 
 		this.relevantButton = new OO.ui.ButtonWidget( {
 			framed: false,
-			icon: relevantIcon,
+			icon: 'pushPin',
 			title: mw.message( 'bs-extendedsearch-result-relevance-relevant' ).plain()
 		} );
+		if (  parseInt( this.userRelevance ) === 1 ) {
+			this.relevantButton.setFlags( 'progressive' );
+		}
 		this.relevantButton.$button.attr( 'aria-pressed', parseInt( this.userRelevance ) === 1 );
 		this.relevantButton.connect( this, {
 			click: 'onRelevant'

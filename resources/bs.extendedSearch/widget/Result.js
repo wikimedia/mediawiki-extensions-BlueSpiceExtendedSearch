@@ -178,15 +178,15 @@
 	bs.extendedSearch.ResultWidget.prototype.updateRelevanceButtons = function() {
 		if( this.userRelevance == -1 ) {
 			//this.notRelevantButton.setIcon( 'unBlock' );
-			this.relevantButton.setIcon( 'star' );
+			this.relevantButton.setFlags();
 			this.relevantButton.$button.attr( 'aria-pressed', 'false' );
 		} else if ( this.userRelevance == 1 ) {
 			//this.notRelevantButton.setIcon( 'block' );
-			this.relevantButton.setIcon( 'unStar' );
+			this.relevantButton.setFlags( 'progressive' );
 			this.relevantButton.$button.attr( 'aria-pressed', 'true' );
 		} else {
 			//this.notRelevantButton.setIcon( 'block' );
-			this.relevantButton.setIcon( 'star' );
+			this.relevantButton.setFlags();
 			this.relevantButton.$button.attr( 'aria-pressed', 'false' );
 		}
 	}
