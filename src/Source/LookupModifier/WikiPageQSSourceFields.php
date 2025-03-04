@@ -67,7 +67,7 @@ class WikiPageQSSourceFields extends LookupModifier {
 			'is_redirect',
 			'redirects_to',
 			'page_language',
-			'page_id',
+			'page_id'
 		];
 	}
 

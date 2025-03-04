@@ -15,6 +15,7 @@ class SpecialPageFormatter extends Base {
 	 */
 	public function getResultStructure( $defaultResultStructure = [] ): array {
 		$defaultResultStructure['page_anchor'] = 'page_anchor';
+		$defaultResultStructure['namespace_text'] = 'namespace_text';
 
 		return $defaultResultStructure;
 	}
@@ -32,10 +33,9 @@ class SpecialPageFormatter extends Base {
 		$page = MediaWikiServices::getInstance()->getSpecialPageFactory()->getPage( $resultData['basename'] );
 		if ( $page ) {
 			$resultData['page_anchor'] = $this->getTraceablePageAnchor(
-				$page->getPageTitle(), $resultData['prefixed_title']
+				$page->getPageTitle(), $page->getLocalName()
 			);
 		}
-		$resultData['basename'] = $resultData['prefixed_title'];
 	}
 
 	/**
@@ -76,7 +76,7 @@ class SpecialPageFormatter extends Base {
 
 			$title = Title::makeTitle( NS_SPECIAL, $origBasename );
 			if ( $title instanceof Title ) {
-				$result['page_anchor'] = $this->getTraceablePageAnchor( $title, $result['prefixed_title'] );
+				$result['page_anchor'] = $this->getTraceablePageAnchor( $title, $title->getText() );
 			}
 		}
 	}

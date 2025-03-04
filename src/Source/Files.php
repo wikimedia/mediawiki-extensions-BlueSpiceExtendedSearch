@@ -6,6 +6,7 @@ use BS\ExtendedSearch\ISearchDocumentProvider;
 use BS\ExtendedSearch\ISearchMappingProvider;
 use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\Source\DocumentProvider\File;
+use BS\ExtendedSearch\Source\LookupModifier\FileAutocompleteSourceFields;
 use BS\ExtendedSearch\Source\LookupModifier\FileContent;
 use BS\ExtendedSearch\Source\MappingProvider\File as FileMappingProvider;
 use Exception;
@@ -107,6 +108,7 @@ class Files extends GenericSource {
 	public function getLookupModifiers( Lookup $lookup, IContextSource $context ): array {
 		$parent = parent::getLookupModifiers( $lookup, $context );
 		$parent[] = new FileContent( $lookup, $context );
+		$parent[] = new FileAutocompleteSourceFields( $lookup, $context );
 		return $parent;
 	}
 }

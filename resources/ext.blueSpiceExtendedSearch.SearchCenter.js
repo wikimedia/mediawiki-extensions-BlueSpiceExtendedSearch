@@ -109,7 +109,8 @@
 					is_redirect: true,
 					page_anchor: result.page_anchor,
 					redirect_target_anchor: result.redirect_target_anchor,
-					image_uri: result.image_uri,
+					namespace_text: result.namespace_text,
+					breadcrumbs: result.breadcrumbs,
 					_id: result.id,
 					raw_result: result
 				} );
@@ -304,10 +305,9 @@
 				caller: search,
 				mobile: bs.extendedSearch.utils.isMobile(),
 				defaultFilters: mw.config.get( 'ESSearchCenterDefaultFilters' ),
-				hitCounter: hitCount,
-				pageCreateData: response.page_create_data || {}
+				hitCounter: hitCount
 			} );
-
+			$toolsCnt.append( toolsPanel.$element );
 			toolsPanel.init();
 
 			if( response.total === 0 ) {

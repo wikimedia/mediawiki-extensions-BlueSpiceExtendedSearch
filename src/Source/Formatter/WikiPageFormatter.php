@@ -4,7 +4,7 @@ namespace BS\ExtendedSearch\Source\Formatter;
 
 use BS\ExtendedSearch\SearchResult;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Registration\ExtensionRegistry;
+use MediaWiki\Message\Message;
 use MediaWiki\Title\Title;
 
 class WikiPageFormatter extends Base {
@@ -17,6 +17,8 @@ class WikiPageFormatter extends Base {
 	public function getResultStructure( $defaultResultStructure = [] ): array {
 		$resultStructure = $defaultResultStructure;
 		$resultStructure['page_anchor'] = 'page_anchor';
+		$resultStructure['namespace_text'] = 'namespace_text';
+		$resultStructure['breadcrumbs'] = 'breadcrumbs';
 		$resultStructure['original_title'] = 'original_title';
 		$resultStructure['highlight'] = 'highlight';
 		$resultStructure['secondaryInfos']['top']['items'][] = [
@@ -34,10 +36,7 @@ class WikiPageFormatter extends Base {
 			"name" => "categories"
 		];
 
-		// $resultStructure['imageUri'] = "image_uri";
-
 		$resultStructure['featured']['highlight'] = "rendered_content_snippet";
-		$resultStructure['featured']['imageUri'] = "image_uri";
 
 		return $resultStructure;
 	}
@@ -55,7 +54,8 @@ class WikiPageFormatter extends Base {
 		parent::format( $resultData, $resultObject );
 
 		if ( $resultData['is_redirect'] === true ) {
-			$this->formatRedirect( $resultData );
+			$this->addAnchor( $resultData );
+			$this->addRedirectAttributes( $resultData );
 			return;
 		}
 		$resultData['categories'] = $this->formatCategories( $resultData['categories'] );
@@ -64,17 +64,23 @@ class WikiPageFormatter extends Base {
 		$resultData['redirects'] = $this->formatRedirectedFrom( $resultData );
 		$resultData['rendered_content_snippet'] = $this->getRenderedContentSnippet( $resultData['rendered_content'] );
 
-		if ( $resultData['display_title'] !== '' ) {
-			$resultData['basename'] = $resultData['display_title'];
+		$title = Title::newFromText( $resultData['prefixed_title'] );
+		if ( !$title ) {
+			return;
 		}
-		$resultData['original_title'] = $this->getOriginalTitleText( $resultData );
+		if ( $resultData['display_title'] !== $title->getPrefixedText() ) {
+			$resultData['basename'] = $resultData['display_title'];
+			$resultData['original_title'] = $this->getOriginalTitleText( $resultData );
+		} else {
+			$resultData['display_title'] = '';
+		}
 
 		$resultData['file-usage'] = '';
 		if ( $resultData['namespace'] === NS_FILE ) {
 			$resultData['file-usage'] = $this->getFileUsage( $resultData['prefixed_title'] );
 		}
 
-		$this->addAnchorAndImageUri( $resultData );
+		$this->addAnchor( $resultData );
 	}
 
 	/**
@@ -116,17 +122,16 @@ class WikiPageFormatter extends Base {
 	/**
 	 *
 	 * @param array &$result
-	 * @param bool $subpageOnly
 	 */
-	protected function addAnchorAndImageUri( &$result, bool $subpageOnly = false ) {
+	protected function addAnchor( &$result ) {
 		$title = Title::newFromText( $result['prefixed_title'] );
 		if ( $title instanceof Title && $title->getNamespace() == $result['namespace'] ) {
-			$result['page_anchor'] = $this->getTraceablePageAnchor( $title, $result['display_title'], $subpageOnly );
-			if ( $subpageOnly && $title->isSubpage() ) {
+			$result['page_anchor'] = $this->getTraceablePageAnchor( $title, $result['display_title'] );
+			$result['namespace_text'] = $title->getNamespace() === NS_MAIN ?
+				Message::newFromKey( 'blanknamespace' )->text() :
+				$title->getNsText();
+			if ( $title->isSubpage() ) {
 				$result['breadcrumbs'] = $this->makeSubpageBreadCrumbs( $title );
-			}
-			if ( $title->exists() ) {
-				$result['image_uri'] = $this->getImageUri( $result['prefixed_title'], 150 );
 			}
 		}
 	}
@@ -286,47 +291,6 @@ class WikiPageFormatter extends Base {
 	}
 
 	/**
-	 * Gets the URL for the article preview image
-	 *
-	 * @param string $prefixedTitle
-	 * @param int $width
-	 * @return string
-	 */
-	protected function getImageUri( $prefixedTitle, $width = 102 ) {
-		$title = Title::newFromText( $prefixedTitle );
-		if ( !( $title instanceof Title ) || $title->exists() == false ) {
-			return '';
-		}
-
-		$dfdUrlBuilder = $this->source->getBackend()->getService(
-			'MWStake.DynamicFileDispatcher.Factory'
-		);
-
-		return $dfdUrlBuilder->getUrl(
-			'articlepreviewimage',
-			[
-				'width' => $width,
-				'titletext' => $title->getFullText(),
-			]
-		);
-	}
-
-	/**
-	 *
-	 * @param array &$result
-	 */
-	protected function formatRedirect( &$result ) {
-		$title = Title::newFromText( $result['prefixed_title'] );
-		$redirTarget = Title::newFromText( $result['redirects_to'] );
-		if ( $redirTarget instanceof Title === false ) {
-			return;
-		}
-
-		$result['page_anchor'] = $this->getTraceablePageAnchor( $title, $result['display_title'] );
-		$this->addRedirectAttributes( $result );
-	}
-
-	/**
 	 * @param array &$result
 	 * @return void
 	 */
@@ -337,14 +301,6 @@ class WikiPageFormatter extends Base {
 		}
 		$result['is_redirect'] = 1;
 		$result['redirect_target_anchor'] = $this->getTraceablePageAnchor( $redirTarget, $result['redirects_to'] );
-
-		$icons = ExtensionRegistry::getInstance()
-			->getAttribute( 'BlueSpiceExtendedSearchIcons' );
-
-		$scriptPath = $this->getContext()->getConfig()->get( 'ScriptPath' );
-		if ( isset( $icons['redirect'] ) ) {
-			$result['image_uri'] = $scriptPath . $icons['redirect'];
-		}
 	}
 
 	/**
@@ -373,18 +329,22 @@ class WikiPageFormatter extends Base {
 			if ( $result['type'] !== $this->source->getTypeKey() ) {
 				continue;
 			}
+			$title = Title::newFromText( $result['prefixed_title'] );
+			if ( !$title ) {
+				continue;
+			}
 
-			if ( $result['display_title'] !== '' ) {
-				$result['display_text'] = $result['display_title'];
+			if ( $result['display_title'] !== $title->getPrefixedText() ) {
 				$result['original_title'] = $this->getOriginalTitleText( $result );
 			} else {
-				$result['display_text'] = $result['prefixed_title'];
+				// If no dedicated display title is set, allow normal mechanisms to show title
+				$result['display_title'] = '';
 			}
 			if ( $result['is_redirect'] === true ) {
 				$this->addRedirectAttributes( $result );
 			}
 
-			$this->addAnchorAndImageUri( $result, true );
+			$this->addAnchor( $result );
 		}
 	}
 
@@ -511,7 +471,8 @@ class WikiPageFormatter extends Base {
 		if ( !$base ) {
 			return '';
 		}
-		return $base->getPrefixedText();
+		$bits = explode( '/', $base->getText() );
+		return implode( ' > ', $bits );
 	}
 
 }

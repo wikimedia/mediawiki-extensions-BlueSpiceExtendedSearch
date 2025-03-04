@@ -159,13 +159,31 @@
 				.html( this.basename )
 				.attr( 'tabindex', '-1' );
 		}
+		this.$header.addClass( 'bs-extendedsearch-autocomplete-popup-primary-item-header' );
+
+		if ( cfg.image_uri ) {
+			this.$element.append( $( '<img>' )
+				.addClass( 'bs-extendedsearch-autocomplete-popup-primary-item-header-image' )
+				.attr( 'src', cfg.image_uri )
+			);
+		}
+
+		const $pathCnt = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-primary-item-header-path' );
+		if ( cfg.namespace_text ) {
+			$pathCnt.append( $( '<span>' )
+				.addClass( 'bs-extendedsearch-autocomplete-popup-primary-item-header-path-ns' )
+				.text( cfg.namespace_text )
+			);
+		}
+
 		if ( cfg.breadcrumbs ) {
-			this.$header.append(
-				$( '<div>' )
+			$pathCnt.append(
+				$( '<span>' )
 					.addClass( 'bs-extendedsearch-autocomplete-popup-primary-item-header-breadcrumbs' )
 					.html( cfg.breadcrumbs )
 			);
 		}
+		this.$header.append( $pathCnt );
 		if ( cfg.original_title ) {
 			this.$header.append( this.$originalTitle );
 		}

@@ -267,18 +267,21 @@ class Base implements ISearchResultFormatter {
 	 * Get page anchor that can be traced
 	 * @param Title $title
 	 * @param string $text
-	 * @param bool $subpageOnly
 	 * @return string
 	 */
-	public function getTraceablePageAnchor( Title $title, $text, bool $subpageOnly = false ): string {
+	public function getTraceablePageAnchor( Title $title, string $text ): string {
 		$data = [
 			'dbkey' => $title->getDBkey(),
 			'namespace' => $title->getNamespace(),
 			'url' => $title->getFullURL()
 		];
-		$display = $text ?: $title->getPrefixedText();
-		if ( $subpageOnly && $title->isSubpage() ) {
-			$display = $title->getSubpageText();
+		if ( $text ) {
+			$display = $text;
+		} else {
+			$display = $title->getText();
+			if ( $title->isSubpage() ) {
+				$display = $title->getSubpageText();
+			}
 		}
 
 		return Html::element( 'a', [

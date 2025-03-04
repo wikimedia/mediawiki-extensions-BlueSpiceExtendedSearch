@@ -118,7 +118,7 @@
 			this.onApplyFilterButton();
 		}.bind( this ) );
 
-		var layoutItems = [];
+		let actionButton = this.applyFilterButton;
 		if( this.isANDEnabled ) {
 			this.andOrSwitch = new bs.extendedSearch.FilterAndOrSwitch({
 				orLabel: mw.message( 'bs-extendedsearch-searchcenter-filter-or-label' ).plain(),
@@ -128,16 +128,16 @@
 			this.andOrSwitch.on( 'choose', function(e) {
 				this.filterType = e.data;
 			}.bind( this ) );
-			layoutItems.push( this.andOrSwitch );
+			actionButton = new OO.ui.HorizontalLayout( {
+				items: [ this.andOrSwitch, this.applyFilterButton ],
+				classes: [ 'bs-extendedsearch-filter-horizontal-layout' ]
+			} );
 		}
 
-		layoutItems.push( this.applyFilterButton );
-
-		this.actions = new OO.ui.ActionFieldLayout( this.filterBox,
-			new OO.ui.HorizontalLayout( {
-				items: layoutItems,
-				classes: [ 'bs-extendedsearch-filter-horizontal-layout' ]
-			}), { align: 'inline' } );
+		this.actions = new OO.ui.ActionFieldLayout( this.filterBox, actionButton, {
+			align: 'inline',
+			classes: [ 'bs-extendedsearch-filter-action-field-layout' ]
+		} );
 
 		this.$optionsContainer.append( this.actions.$element );
 
@@ -218,7 +218,7 @@
 		}
 
 		this.setLabel( label );
-	}
+	};
 
 	bs.extendedSearch.FilterWidget.prototype.onOptionsChange = function( oldValues, values ) {
 		if( this.multiSelect === false ) {
@@ -238,55 +238,13 @@
 		}
 	};
 
-	bs.extendedSearch.FilterAddWidget = function( cfg ) {
-		cfg = cfg || {};
-		cfg.framed = false;
-		cfg.label = '';
-
-		bs.extendedSearch.FilterAddWidget.parent.call( this, cfg );
-
-		this.$element
-			.attr( 'id', 'bs-extendedsearch-filter-add-button' )
-			.attr( 'title', mw.message( 'bs-extendedsearch-filter-add-button-label' ).text() )
-			.attr( 'aria-label', mw.message( 'bs-extendedsearch-filter-add-button-label' ).text() )
-			.addClass( 'bs-extendedsearch-filter-add-widget tools-button' )
-			.append( this.$button )
-			.on( 'click', { cfg: cfg, parent: this }, this.openAddWidgetDialog )
-			.on( 'keydown', { cfg: cfg, parent: this }, function( e ) {
-				if ( e.which === OO.ui.Keys.ENTER ) {
-					this.openAddWidgetDialog( e );
-				}
-			}.bind( this ) );
-			this.$label.addClass( 'bs-extendedsearch-filter-button-label' )
-			.text( mw.message( 'bs-extendedsearch-filter-add-button-label' ).text() );
-			this.$element.children().attr(
-				'aria-label',
-				mw.message( 'bs-extendedsearch-filter-add-button-label' ).text()
-			);
-	}
-
-	OO.inheritClass( bs.extendedSearch.FilterAddWidget, OO.ui.ButtonWidget );
-
-	bs.extendedSearch.FilterAddWidget.prototype.openAddWidgetDialog = function( e ) {
-		var windowManager = OO.ui.getWindowManager();
-
-		var cfg = e.data.cfg || {};
-		cfg.size = 'small';
-		cfg.parentButton = e.data.parent.$element;
-
-		var dialog = new bs.extendedSearch.FilterAddDialog( cfg );
-
-		windowManager.addWindows( [ dialog ] );
-		windowManager.openWindow( dialog );
-	}
-
 	bs.extendedSearch.FilterOptionsCheckboxWidget = function( cfg ) {
 		cfg = cfg || {};
 
 		bs.extendedSearch.FilterOptionsCheckboxWidget.parent.call( this, cfg );
 
 		this.$element.addClass( 'bs-extendedsearch-filter-group' );
-	}
+	};
 
 	OO.inheritClass( bs.extendedSearch.FilterOptionsCheckboxWidget, OO.ui.CheckboxMultiselectInputWidget );
 
