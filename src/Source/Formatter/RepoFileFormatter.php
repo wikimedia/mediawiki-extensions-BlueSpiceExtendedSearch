@@ -53,7 +53,8 @@ class RepoFileFormatter extends FileFormatter {
 				continue;
 			}
 			$result['basename'] = $result['filename'];
-			$result['image_uri'] = $this->getActualImageUrl( $result );
+			$result['image_uri'] = $this->getImage( $result );
+			$result['namespace_text'] = '';
 		}
 	}
 }

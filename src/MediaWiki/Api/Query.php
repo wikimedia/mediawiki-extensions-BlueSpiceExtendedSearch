@@ -6,7 +6,6 @@ use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiResult;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class Query extends ApiBase {
@@ -18,7 +17,6 @@ class Query extends ApiBase {
 	public function execute() {
 		$this->readInParameters();
 		$this->lookUpResults();
-		$this->setPageCreatable();
 		$this->returnResults();
 	}
 
@@ -117,37 +115,5 @@ class Query extends ApiBase {
 		$oResult->addValue( null, 'lookup', FormatJson::encode( $this->oLookup ) );
 		$oResult->addValue( null, 'total_approximated', $this->resultSet->total_approximated );
 		$oResult->addValue( null, 'search_after', $this->resultSet->search_after );
-		if ( !empty( $this->pageCreateData ) ) {
-			$oResult->addValue( null, 'page_create_data', $this->pageCreateData );
-		}
-	}
-
-	protected function setPageCreatable() {
-		if ( !$this->searchTerm ) {
-			return;
-		}
-		$pageName = $this->searchTerm;
-
-		if ( $this->getConfig()->get( 'CapitalLinks' ) ) {
-			$pageName = ucfirst( $pageName );
-		}
-
-		$title = Title::newFromText( $pageName );
-
-		if ( $title instanceof Title === false ) {
-			return;
-		}
-		$user = $this->getUser();
-		$pm = \MediaWiki\MediaWikiServices::getInstance()->getPermissionManager();
-
-		if ( $title->exists() == false &&
-			$pm->userCan( 'createpage', $user, $title ) &&
-			$pm->userCan( 'edit', $user, $title )
-		) {
-			$this->pageCreateData = [
-				'title' => $title->getPrefixedText(),
-				'url' => $title->getLocalURL( [ 'action' => 'edit' ] )
-			];
-		}
 	}
 }

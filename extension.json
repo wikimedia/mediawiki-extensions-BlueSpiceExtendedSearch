@@ -419,6 +419,7 @@
 			"scripts": [
 				"bs.extendedSearch/mixin/Result.js",
 				"bs.extendedSearch/mixin/Filter.js",
+				"bs.extendedSearch/widget/AddFilter.js",
 				"bs.extendedSearch/widget/Result.js",
 				"bs.extendedSearch/widget/ResultRedirect.js",
 				"bs.extendedSearch/widget/HitCount.js",
@@ -426,7 +427,6 @@
 				"bs.extendedSearch/widget/OperatorSuggest.js",
 				"bs.extendedSearch/widget/Filter.js",
 				"bs.extendedSearch/widget/LoadMoreButton.js",
-				"bs.extendedSearch/dialog/AddFilter.js",
 				"bs.extendedSearch/dialog/OptionsDialog.js",
 				"bs.extendedSearch/panel/Results.js",
 				"bs.extendedSearch/panel/ResultMessage.js",
@@ -504,7 +504,8 @@
 			],
 			"dependencies": [
 				"ext.bluespice",
-				"ext.blueSpiceExtendedSearch.SearchBar"
+				"ext.blueSpiceExtendedSearch.SearchBar",
+				"oojs-ui.styles.icons-layout"
 			]
 		},
 		"ext.blueSpiceExtendedSearch.SearchAdmin.styles": {

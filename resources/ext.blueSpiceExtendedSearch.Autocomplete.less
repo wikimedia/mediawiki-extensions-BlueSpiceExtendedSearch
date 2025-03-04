@@ -337,8 +337,31 @@
 			font-size: inherit;
 		}
 	}
-	.bs-extendedsearch-autocomplete-popup-primary-item-header-breadcrumbs {
-		font-size: 0.8em;
+	.bs-extendedsearch-autocomplete-popup-primary-item-header {
+		vertical-align: middle;
+		.bs-extendedsearch-autocomplete-popup-primary-item-header-path {
+			font-size: 0.9em;
+			.bs-extendedsearch-autocomplete-popup-primary-item-header-path-ns {
+				color: @autocomplete-pill-background-color;
+				margin-right: 5px;
+				font-weight: bold;
+			}
+			.bs-extendedsearch-autocomplete-popup-primary-item-header-breadcrumbs:before {
+				content: '·';
+				margin-right: 5px;
+			}
+		}
+	}
+	.bs-extendedsearch-autocomplete-popup-primary-item-header-image {
+		width: 40px;
+		height: 40px;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: 10px;
+		border-radius: 5px;
 	}
 }
 

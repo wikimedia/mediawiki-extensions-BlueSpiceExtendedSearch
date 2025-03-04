@@ -10,6 +10,8 @@
 
 		this.headerText = cfg.headerText;
 		this.headerUri = cfg.headerUri;
+		this.namespaceText = cfg.namespace_text || '';
+		this.breadcrumbs = cfg.breadcrumbs || '';
 		this.headerAnchor = cfg.page_anchor || null;
 		this.secondaryInfos = cfg.secondaryInfos || [];
 		this.highlight = cfg.highlight || '';
@@ -56,9 +58,23 @@
 		}
 
 		this.$header.addClass( 'bs-extendedsearch-result-header' );
-		this.$image.on( 'click', { pageAnchor: this.$header }, this.onImageClick );
-
 		this.$headerContainer.append( this.$header, this.$originalTitle );
+
+		this.$headerPathInfo = $( '<div>' ).addClass( 'bs-extendedsearch-result-header-path' );
+		if ( this.namespaceText ) {
+			this.$headerPathInfo.append( $( '<span>' )
+				.addClass( 'bs-extendedsearch-result-header-namespace' )
+				.text( this.namespaceText )
+			);
+		}
+		if ( this.breadcrumbs ) {
+			this.$headerPathInfo.append( $( '<span>' )
+				.addClass( 'bs-extendedsearch-result-header-breadcrumbs' )
+				.text( this.breadcrumbs )
+			);
+		}
+		this.$headerContainer.append( this.$headerPathInfo );
+		this.$image.on( 'click', { pageAnchor: this.$header }, this.onImageClick );
 
 		this.$highlightContainer = $( '<div>' )
 			.addClass( 'bs-extendedsearch-result-highlight-container' )
