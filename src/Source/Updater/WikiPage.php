@@ -91,9 +91,6 @@ class WikiPage extends Base implements
 	 * @inheritDoc
 	 */
 	public function onAfterImportPage( $title, $foreignTitle, $revCount, $sRevCount, $pageInfo ) {
-		if ( empty( $sRevCount ) ) {
-			return true;
-		}
 		$this->jobQueueGroup->push( new UpdateWikiPage( $title ) );
 		return true;
 	}
