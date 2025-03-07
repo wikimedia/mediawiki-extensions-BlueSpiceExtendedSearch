@@ -91,39 +91,27 @@
 	bs.extendedSearch.mixin.ResultRelevanceControl = function( cfg ) {
 		cfg = cfg || {};
 
-		this.userRelevance = cfg.user_relevance || 0;
+		this.isRelevantForUser = cfg.user_relevance === 1;
 		this.$relevanceControl = $( '<div>' ).addClass( 'bs-extendedsearch-result-relevance-cnt' );
 
-		//TODO: Dont like this
 		if( !mw.config.get( 'wgUserId' ) ) {
 			return;
 		}
-
-		var relevantIcon = this.userRelevance  == 1 ? 'unStar' : 'star';
-		//var notRelevantIcon = this.userRelevance == -1 ? 'unBlock': 'block';
 
 		this.relevantButton = new OO.ui.ButtonWidget( {
 			framed: false,
 			icon: 'pushPin',
 			title: mw.message( 'bs-extendedsearch-result-relevance-relevant' ).plain()
 		} );
-		if (  parseInt( this.userRelevance ) === 1 ) {
-			this.relevantButton.setFlags( 'progressive' );
+		if ( this.isRelevantForUser ) {
+			this.relevantButton.setFlags( [ 'progressive' ] );
 		}
-		this.relevantButton.$button.attr( 'aria-pressed', parseInt( this.userRelevance ) === 1 );
+		this.relevantButton.$button.attr( 'aria-pressed', this.isRelevantForUser );
 		this.relevantButton.connect( this, {
 			click: 'onRelevant'
 		} );
 
-		/*this.notRelevantButton = new OO.ui.ButtonWidget( {
-			framed: false,
-			icon: notRelevantIcon,
-			title: mw.message( 'bs-extendedsearch-result-relevance-not-relevant' ).plain()
-		} );
-
-		this.notRelevantButton.$element.on( 'click', this.onNotRelevant.bind( this ) );*/
-
-		this.$relevanceControl.append( this.relevantButton.$element /*, this.notRelevantButton.$element*/ );
+		this.$relevanceControl.append( this.relevantButton.$element );
 	};
 
 	OO.initClass( bs.extendedSearch.mixin.ResultRelevanceControl );
