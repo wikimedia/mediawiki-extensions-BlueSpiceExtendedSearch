@@ -106,9 +106,9 @@ class Base implements ISearchResultFormatter {
 		$user = $this->getContext()->getUser();
 		if ( $user->isRegistered() ) {
 			$resultRelevance = new \BS\ExtendedSearch\ResultRelevance( $user, $resultObject->getId() );
-			$resultData['user_relevance'] = $resultRelevance->getValue();
+			$resultData['user_relevance'] = (int)$resultRelevance->getValue();
 		} else {
-			$resultData['user_relevance'] = 0;
+			$resultData['user_relevance'] = false;
 		}
 		// End Experimental
 

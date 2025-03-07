@@ -148,15 +148,8 @@
 		window.location = anchor.attr( 'href' );
 	}
 
-	//Experimental
 	bs.extendedSearch.ResultWidget.prototype.onRelevant = function( e ) {
-		this.userRelevance = this.userRelevance == 1 ? 0 : 1;
-		this.makeChangeRelevanceCall();
-		this.updateRelevanceButtons();
-	}
-
-	bs.extendedSearch.ResultWidget.prototype.onNotRelevant = function( e ) {
-		this.userRelevance = this.userRelevance == -1 ? 0 : -1;
+		this.isRelevantForUser = !this.isRelevantForUser;
 		this.makeChangeRelevanceCall();
 		this.updateRelevanceButtons();
 	}
@@ -165,31 +158,24 @@
 		var queryData = {
 			relevanceData: JSON.stringify( {
 				resultId: this.getId(),
-				value: this.userRelevance
+				value: this.isRelevantForUser
 			} )
-		}
+		};
 
 		bs.extendedSearch.SearchCenter.runApiCall(
 			queryData,
 			'bs-extendedsearch-resultrelevance'
 		);
-	}
+	};
 
 	bs.extendedSearch.ResultWidget.prototype.updateRelevanceButtons = function() {
-		if( this.userRelevance == -1 ) {
-			//this.notRelevantButton.setIcon( 'unBlock' );
-			this.relevantButton.setFlags();
-			this.relevantButton.$button.attr( 'aria-pressed', 'false' );
-		} else if ( this.userRelevance == 1 ) {
-			//this.notRelevantButton.setIcon( 'block' );
-			this.relevantButton.setFlags( 'progressive' );
-			this.relevantButton.$button.attr( 'aria-pressed', 'true' );
+		if ( this.isRelevantForUser ) {
+			this.relevantButton.setFlags( [ 'progressive' ] );
 		} else {
-			//this.notRelevantButton.setIcon( 'block' );
-			this.relevantButton.setFlags();
-			this.relevantButton.$button.attr( 'aria-pressed', 'false' );
+			this.relevantButton.clearFlags();
 		}
-	}
-	//End Experimental
+		this.relevantButton.$button.attr( 'aria-pressed', this.isRelevantForUser ? 'true' : 'false' );
+
+	};
 
 } )( mediaWiki, jQuery, blueSpice, document );

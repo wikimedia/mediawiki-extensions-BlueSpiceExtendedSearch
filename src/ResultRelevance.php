@@ -45,12 +45,12 @@ class ResultRelevance {
 	 *
 	 * @param User $user
 	 * @param string $resultId
-	 * @param int $value
+	 * @param bool $value
 	 */
-	public function __construct( User $user, $resultId = '', $value = 0 ) {
+	public function __construct( User $user, $resultId = '', $value = false ) {
 		$this->user = $user;
 		$this->resultId = $resultId;
-		$this->value = is_int( $value ) ? $value : 0;
+		$this->value = $value;
 		$this->services = MediaWikiServices::getInstance();
 	}
 
@@ -78,11 +78,11 @@ class ResultRelevance {
 	/**
 	 * Gets relevance for set user and result ID
 	 *
-	 * @return int
+	 * @return bool
 	 */
 	public function getValue() {
 		if ( $this->resultId == '' ) {
-			return 0;
+			return false;
 		}
 
 		$this->setConditions();
@@ -95,10 +95,10 @@ class ResultRelevance {
 		);
 
 		if ( $result == null ) {
-			return 0;
+			return false;
 		}
 
-		return $result->esr_value;
+		return (bool)$result->esr_value;
 	}
 
 	/**
