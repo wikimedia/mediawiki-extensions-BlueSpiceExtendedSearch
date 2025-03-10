@@ -10,6 +10,7 @@ bs.extendedSearch.ToolsPanel = function( cfg ) {
 
 	this.defaultFilters = cfg.defaultFilters || [];
 	this.activeFilters = [];
+	this.optionStorage = new bs.extendedSearch.OptionStorage();
 
 	this.$element.addClass( 'bs-es-tools' );
 
@@ -107,25 +108,32 @@ bs.extendedSearch.ToolsPanel.prototype.appendFilter = function( filter, id ) {
  *
  * @param {Array} values
  */
-bs.extendedSearch.ToolsPanel.prototype.applyValuesFromOptionsDialog = function( values ) {
+bs.extendedSearch.ToolsPanel.prototype.updateSearchOptions = function( values ) {
+	this.optionStorage.setOptions( values );
+	this.applySearchOptions();
+	bs.extendedSearch.SearchCenter.updateQueryHash();
+};
+
+bs.extendedSearch.ToolsPanel.prototype.applySearchOptions = function( lookup ) {
+	lookup = lookup || this.lookup;
+	const values = this.optionStorage.getOptions();
 	var size = values.pageSize || 0;
-	this.lookup.setSize( size );
+	lookup.setSize( size );
 
 	var sortBy = values.sortBy || [];
 	var sortOrder = values.sortOrder || bs.extendedSearch.Lookup.SORT_ASC;
 
-	for( var i = 0; i < this.currentSortFields.length; i++ ) {
+	let i;
+	for( i = 0; i < this.currentSortFields.length; i++ ) {
 		var sortedField = this.currentSortFields[i];
 		if( sortBy.indexOf( sortedField ) === -1 ) {
-			this.lookup.removeSort( sortedField );
+			lookup.removeSort( sortedField );
 		}
 	}
 
-	for( var i = 0; i < sortBy.length; i++ ) {
-		this.lookup.addSort( sortBy[i], sortOrder );
+	for( i = 0; i < sortBy.length; i++ ) {
+		lookup.addSort( sortBy[i], sortOrder );
 	}
-
-	bs.extendedSearch.SearchCenter.updateQueryHash();
 };
 
 /**
@@ -157,6 +165,12 @@ bs.extendedSearch.ToolsPanel.prototype.setSortableFields = 	function() {
  * and converts it to simple array usable in dialog
  */
 bs.extendedSearch.ToolsPanel.prototype.setCurrentSortFields = function() {
+	const optionsFromStorage = this.optionStorage.getOptions();
+	if ( optionsFromStorage.sortBy ) {
+		this.currentSortFields = optionsFromStorage.sortBy;
+		this.currentSortOrder = optionsFromStorage.sortOrder || bs.extendedSearch.Lookup.SORT_DESC;
+		return;
+	}
 	var sortedFields = [];
 	var sortOrder = '';
 	var sort = this.lookup.getSort();
@@ -167,7 +181,7 @@ bs.extendedSearch.ToolsPanel.prototype.setCurrentSortFields = function() {
 				continue;
 			}
 			sortedFields.push( fieldName );
-			sortOrder = field[fieldName].order;
+			sortOrder = field[fieldName].order || bs.extendedSearch.Lookup.SORT_DESC;
 		}
 	}
 	this.currentSortFields = sortedFields;
@@ -181,15 +195,20 @@ bs.extendedSearch.ToolsPanel.prototype.getSearchOptionsConfig = function() {
 	this.setSortableFields();
 	this.setCurrentSortFields();
 
+	const pageSizeConfig = bs.extendedSearch.SearchCenter.getPageSizeConfig();
+	if ( this.optionStorage.getOptions().pageSize ) {
+		pageSizeConfig.value = this.optionStorage.getOptions().pageSize;
+	}
+
 	return {
-		pageSize: bs.extendedSearch.SearchCenter.getPageSizeConfig(),
+		pageSize: pageSizeConfig,
 		sortBy: {
 			value: this.currentSortFields,
 			options: this.sortableFields
 		},
 		sortOrder: {
 			//Because _score is default sort field, it needs to be sorted descending
-			value: this.currentSortOrder || bs.extendedSearch.Lookup.SORT_DESC,
+			value: this.currentSortOrder,
 			options: [
 				{
 					data: bs.extendedSearch.Lookup.SORT_ASC,
