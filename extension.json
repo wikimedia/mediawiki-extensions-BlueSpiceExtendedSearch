@@ -430,6 +430,7 @@
 				"bs.extendedSearch/dialog/OptionsDialog.js",
 				"bs.extendedSearch/panel/Results.js",
 				"bs.extendedSearch/panel/ResultMessage.js",
+				"bs.extendedSearch/OptionStorage.js",
 				"bs.extendedSearch/panel/Tools.js",
 				"ext.blueSpiceExtendedSearch.SearchCenter.js"
 			],

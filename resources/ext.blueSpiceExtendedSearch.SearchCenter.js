@@ -399,14 +399,24 @@
 	function _makeLookup( config ) {
 		config = config || {};
 		this.lookup = new bs.extendedSearch.Lookup( config );
-		if( this.lookup.getSize() === 0 ) {
+
+		this.optionStorage = new bs.extendedSearch.OptionStorage();
+		const options = this.optionStorage.getOptions();
+		if ( options.pageSize ) {
+			this.lookup.setSize( parseInt( options.pageSize ) );
+		} else if ( this.lookup.getSize() === 0 ) {
 			//set default value for page size - prevent zero size pages
 			this.lookup.setSize( mw.config.get( 'bsgESResultsPerPage' ) );
 		}
-		//Default sorter
-		if( this.lookup.getSort().length === 0 ) {
+		if ( options.sortBy ) {
+			this.lookup.sort = [];
+			for( var i = 0; i < options.sortBy.length; i++ ) {
+				this.lookup.addSort( options.sortBy[i], options.sortOrder );
+			}
+		} else if( this.lookup.getSort().length === 0 ) {
 			this.lookup.addSort( '_score', bs.extendedSearch.Lookup.SORT_DESC );
 		}
+
 		mw.hook( 'bs.extendedSearch.makeLookup' ).fire( this.lookup );
 	}
 

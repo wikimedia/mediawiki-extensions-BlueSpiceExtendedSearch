@@ -62,7 +62,7 @@ bs.extendedSearch.OptionsDialog.prototype.getActionProcess = function ( action )
 				var value = page.getValue();
 				results[pageName] = value;
 			}
-			me.toolsPanel.applyValuesFromOptionsDialog( results );
+			me.toolsPanel.updateSearchOptions( results );
 
 			return me.close( { action: action } );
 		} );
