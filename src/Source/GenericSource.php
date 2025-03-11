@@ -23,6 +23,7 @@ use BS\ExtendedSearch\Source\LookupModifier\BaseTypeSecurityTrimming;
 use BS\ExtendedSearch\Source\LookupModifier\BaseUserRelevance;
 use BS\ExtendedSearch\Source\LookupModifier\BaseWildcarder;
 use BS\ExtendedSearch\Source\LookupModifier\RegExpQuoter;
+use BS\ExtendedSearch\Source\LookupModifier\SearchContext;
 use BS\ExtendedSearch\Source\PostProcessor\Base as PostProcessorBase;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
@@ -276,6 +277,10 @@ class GenericSource implements ISearchSource {
 			new BaseAutocompleteSourceFields( $lookup, $context ),
 			new BaseConvertTypeFilter( $lookup, $context ),
 			new RegExpQuoter( $lookup, $context ),
+			new SearchContext(
+				$lookup, $context,
+				MediaWikiServices::getInstance()->getService( 'BSExtendedSearch.PluginManager' )
+			)
 		];
 	}
 

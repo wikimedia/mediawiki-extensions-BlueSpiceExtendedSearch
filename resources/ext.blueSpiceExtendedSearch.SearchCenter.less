@@ -42,13 +42,12 @@ div#bs-es-alt-search {
 div.bs-es-tools {
 	height: auto;
 	min-height: 43px;
-	border-bottom: 2px solid @tools-base-color;
 	clear: both;
 	position: relative;
 
 	.bs-extendedsearch-search-center-hitcount {
 		margin-top: 5px;
-		font-size: 1.4em;
+		color: #5e5e5e;
 		display: inline-block;
 		width: 70%;
 	}
@@ -229,6 +228,14 @@ div.bs-es-tools {
 	.bs-extendedsearch-result-header-path {
 		margin-bottom: 10px;
 		color: @results-secondary-color;
+
+		.bs-extendedsearch-result-header-source {
+			background-color: @tools-base-color;
+			color: @tools-text-color;
+			padding: 0 5px;
+			border-radius: 5px;
+			margin-right: 5px;
+		}
 
 		.bs-extendedsearch-result-header-breadcrumbs::before {
 			content: ':';

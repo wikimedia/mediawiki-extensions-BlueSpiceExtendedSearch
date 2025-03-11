@@ -27,6 +27,7 @@ bs.extendedSearch.ToolsPanel.prototype.init = function () {
 	} );
 	this.$filtersContainer = $( '<div>' ).attr( 'id', 'bs-es-tools-filters' );
 
+	this.addContextPill();
 	this.addFiltersFromLookup();
 	this.addDefaultFilters();
 
@@ -79,11 +80,11 @@ bs.extendedSearch.ToolsPanel.prototype.init = function () {
 	);
 
 	this.$element.append(
-		this.hitCounter.$element,
 		$( '<div>' ).addClass( 'bs-es-tools-tools-container' ).append(
 			this.$filtersContainer,
 			this.toolsContainer.$element
-		)
+		),
+		this.hitCounter.$element
 	);
 };
 
@@ -308,6 +309,7 @@ bs.extendedSearch.ToolsPanel.prototype.onAddFilter = function ( cfg ) {
  */
 bs.extendedSearch.ToolsPanel.prototype.addFiltersFromLookup = function () {
 	const queryFiltersWithTypes = this.lookup.getFilters();
+	const filters = [];
 	for ( const filterType in queryFiltersWithTypes ) {
 		if ( !queryFiltersWithTypes.hasOwnProperty( filterType ) ) {
 			continue;
@@ -333,12 +335,11 @@ bs.extendedSearch.ToolsPanel.prototype.addFiltersFromLookup = function () {
 					filter.filterType = 'and';
 				}
 
-				const selectedOptions = filterValues;
-				filter.selectedOptions = selectedOptions;
+				filter.selectedOptions = filterValues;
 
 				// in case selected options are not in offered options we must add them
 				for ( let j = 0; j < filter.selectedOptions.length; j++ ) {
-					const selectedOption = filter.selectedOptions[ j ];
+					const selectedOption = filter.selectedOptions[ j ].toString();
 					let hasOption = false;
 					for ( let k = 0; k < filter.options.length; k++ ) {
 						if ( filter.options[ k ].data === selectedOption ) {
@@ -353,11 +354,33 @@ bs.extendedSearch.ToolsPanel.prototype.addFiltersFromLookup = function () {
 						} );
 					}
 				}
-
-				this.addFilterWidget( filter );
+				filters.push( filter );
 			}
 		}
 	}
+	mw.hook( 'bs.extendedSearch.ToolsPanel.addFilters' ).fire( filters, this, this.lookup );
+	for ( let i = 0; i < filters.length; i++ ) {
+		this.addFilterWidget( filters[ i ] );
+	}
+};
+
+bs.extendedSearch.ToolsPanel.prototype.addContextPill = function () {
+	const context = this.lookup.getContext();
+	if ( !context || !context.showCustomPill ) {
+		return;
+	}
+
+	const contextButton = new bs.extendedSearch.ContextButton( {
+		label: context.text
+	} );
+	contextButton.connect( this, {
+		remove: function () {
+			this.lookup.setContext( null );
+			this.lookup.setFrom( 0 );
+			bs.extendedSearch.SearchCenter.updateQueryHash();
+		}
+	} );
+	this.$filtersContainer.append( contextButton.$element );
 };
 
 bs.extendedSearch.ToolsPanel.prototype.addDefaultFilters = function () {

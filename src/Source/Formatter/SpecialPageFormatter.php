@@ -45,9 +45,9 @@ class SpecialPageFormatter extends Base {
 	 */
 	protected function isFeatured( $result ) {
 		$filters = $this->lookup->getFilters();
-		if ( isset( $filters['terms']['namespace_text'] ) ) {
-			foreach ( $filters['terms']['namespace_text'] as $namespaceName ) {
-				if ( \BsNamespaceHelper::getNamespaceIndex( $namespaceName ) == NS_SPECIAL ) {
+		if ( isset( $filters['terms']['namespace'] ) ) {
+			foreach ( $filters['terms']['namespace'] as $nsIndex ) {
+				if ( (int)$nsIndex == NS_SPECIAL ) {
 					return parent::isFeatured( $result );
 				}
 			}

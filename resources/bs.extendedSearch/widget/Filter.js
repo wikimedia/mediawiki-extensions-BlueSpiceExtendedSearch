@@ -7,8 +7,8 @@
 		this.id = cfg.id;
 		this.options = cfg.options || [];
 		this.selectedOptions = cfg.selectedOptions || [];
-		this.isANDEnabled = cfg.isANDEnabled == 1; // eslint-disable-line eqeqeq
-		this.multiSelect = cfg.multiSelect == 1; // eslint-disable-line eqeqeq
+		this.isANDEnabled = cfg.isANDEnabled === 1;
+		this.multiSelect = cfg.multiSelect === 1;
 		this.filterType = cfg.filterType || 'or';
 		this.mobile = cfg.mobile || false;
 
@@ -184,7 +184,7 @@
 	};
 
 	bs.extendedSearch.FilterWidget.prototype.setFilterLabel = function () {
-		let label = '';
+		let label;
 		if ( this.selectedOptions.length === 0 ) {
 			label = this.emptyLabel;
 		} else if ( this.mobile ) {
@@ -204,7 +204,8 @@
 				const value = values[ i ];
 				for ( let optionIdx = 0; optionIdx < this.optionsCheckboxWidget.checkboxMultiselectWidget.items.length; optionIdx++ ) {
 					const option = this.optionsCheckboxWidget.checkboxMultiselectWidget.items[ optionIdx ];
-					if ( option.data === value ) {
+					const data = option.data;
+					if ( data.toString() === value.toString() ) {
 						labeledValues.push( option.label );
 					}
 				}

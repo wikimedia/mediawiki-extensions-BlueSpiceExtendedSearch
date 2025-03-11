@@ -7,7 +7,6 @@ use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiResult;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class Autocomplete extends ApiBase {
@@ -38,7 +37,6 @@ class Autocomplete extends ApiBase {
 	public function execute() {
 		$this->readInParameters();
 		$this->lookUpResults();
-		$this->setPageCreatable();
 		$this->returnResults();
 	}
 
@@ -106,50 +104,6 @@ class Autocomplete extends ApiBase {
 		$this->secondaryRequestData = $this->getParameter( 'secondaryRequestData' );
 	}
 
-	/** @var array|null */
-	protected $pageCreateInfo;
-
-	protected function setPageCreatable() {
-		$pageName = $this->searchData['value'];
-		if ( isset( $this->searchData[ 'mainpage' ] ) && $this->searchData[ 'mainpage' ] !== '' ) {
-			$pageName = $this->searchData[ 'mainpage' ] . '/' . $pageName;
-		}
-
-		if ( $this->getConfig()->get( 'CapitalLinks' ) ) {
-			$pageName = ucfirst( $pageName );
-		}
-
-		$title = Title::makeTitleSafe(
-			$this->searchData['namespace'],
-			$pageName
-		);
-		$user = $this->getUser();
-		$pm = MediaWikiServices::getInstance()->getPermissionManager();
-
-		if ( $title && $title->exists() == false &&
-			$pm->userCan( 'createpage', $user, $title ) &&
-			$pm->userCan( 'edit', $user, $title )
-		) {
-			$this->pageCreatable = true;
-
-			$linkRenderer = MediaWikiServices::getInstance()->getService( 'LinkRenderer' );
-			$anchorText = $this->msg(
-				'bs-extendedsearch-autocomplete-create-page-link',
-				$title->getFullText()
-			)->plain();
-			$anchor = $linkRenderer->makeLink( $title, $anchorText, [], [ 'action' => 'edit' ] );
-
-			$this->pageCreateInfo = [
-				'creatable' => 1,
-				'anchor' => $anchor
-			];
-		} else {
-			$this->pageCreateInfo = [
-				'creatable' => 0
-			];
-		}
-	}
-
 	/**
 	 *
 	 * @var array
@@ -175,8 +129,6 @@ class Autocomplete extends ApiBase {
 
 	protected function returnResults() {
 		$oResult = $this->getResult();
-
 		$oResult->addValue( null, 'suggestions', $this->suggestions );
-		$oResult->addValue( null, 'page_create_info', $this->pageCreateInfo );
 	}
 }

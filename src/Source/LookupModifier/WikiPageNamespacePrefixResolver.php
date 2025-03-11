@@ -67,7 +67,7 @@ class WikiPageNamespacePrefixResolver extends LookupModifier {
 
 	protected function setIsExlicitQueryOfNS_MAIN() { // phpcs:ignore MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName, Generic.Files.LineLength.TooLong
 		$this->titleText = $this->simpleQS['query'];
-		if ( strpos( $this->titleText, ':' ) === 0 ) {
+		if ( str_starts_with( $this->titleText, ':' ) ) {
 			$this->titleText = substr( $this->titleText, 1 );
 			$this->explicitlyMain = true;
 		}
@@ -76,7 +76,7 @@ class WikiPageNamespacePrefixResolver extends LookupModifier {
 	protected function setTitle() {
 		$titleName = trim( $this->titleText );
 		$this->title = Title::newFromText( $titleName );
-		if ( substr( $titleName, -1 ) === ':' ) {
+		if ( str_ends_with( $titleName, ':' ) ) {
 			// If search term is ending in a ":", presume
 			// user wants to see all results from given NS
 			// - set query text to "*"
@@ -99,15 +99,13 @@ class WikiPageNamespacePrefixResolver extends LookupModifier {
 
 	protected function resetNamespaceFilter() {
 		// We reset all namespace filters
-		$this->lookup->clearFilter( 'namespace_text' );
+		$this->lookup->clearFilter( 'namespace' );
 	}
 
 	public function setNewNamespaceFilterAndQuery() {
 		$this->simpleQS['query'] = $this->title->getText();
 		$this->lookup->setQueryString( $this->simpleQS );
-		// We use namespace name, because "namespace_name" is available filter on front-end
-		$nsText = \BsNamespaceHelper::getNamespaceName( $this->title->getNamespace() );
-		$this->lookup->addTermsFilter( 'namespace_text', $nsText );
+		$this->lookup->addTermsFilter( 'namespace', $this->title->getNamespace() );
 	}
 
 	public function undo() {
