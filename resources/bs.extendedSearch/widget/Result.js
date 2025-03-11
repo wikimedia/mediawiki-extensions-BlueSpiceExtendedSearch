@@ -10,6 +10,7 @@
 
 		this.headerText = cfg.headerText;
 		this.headerUri = cfg.headerUri;
+		this.source = cfg.source || null;
 		this.namespaceText = cfg.namespace_text || '';
 		this.breadcrumbs = cfg.breadcrumbs || '';
 		this.headerAnchor = cfg.page_anchor || null;
@@ -61,6 +62,12 @@
 		this.$headerContainer.append( this.$header, this.$originalTitle );
 
 		this.$headerPathInfo = $( '<div>' ).addClass( 'bs-extendedsearch-result-header-path' );
+		if ( this.source ) {
+			this.$headerPathInfo.append( $( '<span>' )
+				.addClass( 'bs-extendedsearch-result-header-source' )
+				.text( this.source )
+			);
+		}
 		if ( this.namespaceText ) {
 			this.$headerPathInfo.append( $( '<span>' )
 				.addClass( 'bs-extendedsearch-result-header-namespace' )

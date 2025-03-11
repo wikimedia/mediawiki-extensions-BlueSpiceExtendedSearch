@@ -26,9 +26,8 @@ class Base implements ISearchResultFormatter {
 	 */
 	public const MORE_VALUES_TEXT = '...';
 
-	public const AC_RANK_NORMAL = 'normal';
+	public const AC_RANK_PRIMARY = 'primary';
 	public const AC_RANK_SECONDARY = 'secondary';
-	public const AC_RANK_TOP = 'top';
 
 	/**
 	 *
@@ -101,16 +100,18 @@ class Base implements ISearchResultFormatter {
 		$resultData['id'] = $resultObject->getId();
 		$resultData['type'] = $resultObject->getType();
 		$resultData['score'] = $resultObject->getScore();
+		$resultData['_index'] = $resultObject->getIndex();
+		$resultData['_is_foreign'] = $this->source->getBackend()->isForeignIndex( $resultObject->getIndex() );
 
-		// Experimental
-		$user = $this->getContext()->getUser();
-		if ( $user->isRegistered() ) {
-			$resultRelevance = new \BS\ExtendedSearch\ResultRelevance( $user, $resultObject->getId() );
-			$resultData['user_relevance'] = (int)$resultRelevance->getValue();
-		} else {
-			$resultData['user_relevance'] = false;
+		if ( !$resultData['_is_foreign'] ) {
+			$user = $this->getContext()->getUser();
+			if ( $user->isRegistered() ) {
+				$resultRelevance = new \BS\ExtendedSearch\ResultRelevance( $user, $resultObject->getId() );
+				$resultData['user_relevance'] = (int)$resultRelevance->getValue();
+			} else {
+				$resultData['user_relevance'] = false;
+			}
 		}
-		// End Experimental
 
 		$type = $resultData['type'];
 		$resultData['typetext'] = $this->getTypeText( $type );
@@ -169,20 +170,18 @@ class Base implements ISearchResultFormatter {
 	 *
 	 * @param array &$results
 	 * @param array $searchData
+	 * @throws MWException
 	 */
 	public function rankAutocompleteResults( &$results, $searchData ): void {
-		$top = $this->getACHighestScored( $results );
 		foreach ( $results as &$result ) {
 			if ( $result['is_ranked'] === true ) {
-				return;
+				continue;
 			}
 
 			$lcBasename = mb_strtolower( $result['basename'] );
 			$lcSearchTerm = mb_strtolower( $searchData['value'] );
-			if ( strpos( $lcBasename, $lcSearchTerm ) === 0 && $top['_id'] === $result['_id'] ) {
-				$result['rank'] = self::AC_RANK_TOP;
-			} elseif ( $this->matchTokenized( $lcBasename, $lcSearchTerm ) ) {
-				$result['rank'] = self::AC_RANK_NORMAL;
+			if ( $this->matchTokenized( $lcBasename, $lcSearchTerm ) ) {
+				$result['rank'] = self::AC_RANK_PRIMARY;
 			} else {
 				$result['rank'] = self::AC_RANK_SECONDARY;
 			}
@@ -245,6 +244,17 @@ class Base implements ISearchResultFormatter {
 	 * @param bool $fieldsWithANDEnabled
 	 */
 	public function formatFilters( &$aggs, &$filterCfg, $fieldsWithANDEnabled = false ): void {
+		if ( isset( $filterCfg['namespace'] ) ) {
+			foreach ( $filterCfg['namespace']['buckets'] as &$bucket ) {
+				$id = (int)$bucket['key'];
+				if ( $id === NS_MAIN ) {
+					$bucket['label'] = wfMessage( 'blanknamespace' )->text();
+				} else {
+					$bucket['label'] = $this->getContext()->getLanguage()->getNsText( $id );
+				}
+				$bucket['key'] = (string)$bucket['key'];
+			}
+		}
 	}
 
 	/**

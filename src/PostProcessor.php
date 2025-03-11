@@ -50,8 +50,10 @@ class PostProcessor {
 		foreach ( $backend->getSources() as $source ) {
 			$processors = array_merge( $processors, $source->getPostProcessors( $postProcessor ) );
 		}
+		/** @var PluginManager $pluginManager */
+		$pluginManager = MediaWikiServices::getInstance()->getService( 'BSExtendedSearch.PluginManager' );
 		/** @var IPostProcessorProvider $plugin */
-		foreach ( $backend->getPluginsForInterface( IPostProcessorProvider::class ) as $plugin ) {
+		foreach ( $pluginManager->getPluginsImplementing( IPostProcessorProvider::class ) as $plugin ) {
 			$processors = array_merge( $processors, $plugin->getPostProcessors( $postProcessor ) );
 		}
 		$postProcessor->setProcessors( $processors );

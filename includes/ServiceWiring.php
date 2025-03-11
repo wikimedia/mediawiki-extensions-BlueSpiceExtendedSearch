@@ -3,6 +3,7 @@
 use BlueSpice\ExtensionAttributeBasedRegistry;
 use BS\ExtendedSearch\ExternalIndexFactory;
 use BS\ExtendedSearch\Plugin\ISearchPlugin;
+use BS\ExtendedSearch\PluginManager;
 use BS\ExtendedSearch\SourceFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -33,6 +34,23 @@ return [
 	'BSExtendedSearchBackend' => static function ( MediaWikiServices $services ) {
 		$config = $services->getConfigFactory()->makeConfig( 'bsg' );
 
+		$backendClass = $config->get( 'ESBackendClass' );
+		return new $backendClass(
+			$config,
+			$services->getDBLoadBalancer(),
+			$services->getHookContainer(),
+			$services->getService( 'BSExtendedSearchSourceFactory' ),
+			$services->getService( 'BSExtendedSearch.PluginManager' ),
+		);
+	},
+	'BSExtendedSearchTracker' => static function ( MediaWikiServices $services ) {
+		return new \BS\ExtendedSearch\SearchTracker(
+			$services->getDBLoadBalancer(),
+			$services->getTitleFactory(),
+			$services->getSpecialPageFactory()
+		);
+	},
+	'BSExtendedSearch.PluginManager' => static function ( MediaWikiServices $services ) {
 		$pluginInstances = [];
 		$plugins = ExtensionRegistry::getInstance()->getAttribute( 'BlueSpiceExtendedSearchPluginRegistry' );
 		foreach ( $plugins as $spec ) {
@@ -47,23 +65,8 @@ return [
 				);
 			}
 		}
-
-		$backendClass = $config->get( 'ESBackendClass' );
-		return new $backendClass(
-			$config,
-			$services->getDBLoadBalancer(),
-			$services->getHookContainer(),
-			$services->getService( 'BSExtendedSearchSourceFactory' ),
-			$pluginInstances
-		);
-	},
-	'BSExtendedSearchTracker' => static function ( MediaWikiServices $services ) {
-		return new \BS\ExtendedSearch\SearchTracker(
-			$services->getDBLoadBalancer(),
-			$services->getTitleFactory(),
-			$services->getSpecialPageFactory()
-		);
-	},
+		return new PluginManager( $pluginInstances );
+	}
 ];
 
 // @codeCoverageIgnoreEnd

@@ -372,7 +372,7 @@
 		action = action || 'bs-extendedsearch-query';
 
 		api.abort();
-		return api.get( $.extend( // eslint-disable-line no-jquery/no-extend
+		return api.get( Object.assign(
 			queryData,
 			{
 				action: action

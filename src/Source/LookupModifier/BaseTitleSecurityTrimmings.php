@@ -99,7 +99,7 @@ class BaseTitleSecurityTrimmings extends LookupModifier {
 			foreach ( $results->getResults() as $resultObject ) {
 				$searchAfter = $resultObject->getSort();
 				$data = $resultObject->getData();
-				if ( $this->backend->isSharedIndex( $resultObject->getIndex() ) ) {
+				if ( $this->backend->isForeignIndex( $resultObject->getIndex() ) ) {
 					if ( $resultObject->getType() === 'wikipage' && $data['namespace'] !== NS_FILE ) {
 						$excludes[] = $resultObject->getId();
 						continue;

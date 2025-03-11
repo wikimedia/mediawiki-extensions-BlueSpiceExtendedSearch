@@ -111,10 +111,9 @@ class BlueSpiceSearch extends \SearchEngine {
 		}
 
 		$acConfig = $this->backend->getAutocompleteConfig();
-		$suggestField = $acConfig['SuggestField'];
 
 		$lookup = $this->getLookup();
-		$lookup->setMatchQueryString( $suggestField, $search );
+		$lookup->setMatchQueryString( 'suggestions', $search );
 
 		$results = $this->backend->runRawQuery( $lookup, [ 'wikipage' ] );
 		$titles = [];

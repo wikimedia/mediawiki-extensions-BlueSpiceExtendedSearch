@@ -2,12 +2,8 @@
 	bs.extendedSearch.HitCountWidget = function ( cfg ) {
 		cfg = cfg || {};
 
-		this.term = cfg.term || '';
 		this.count = cfg.count || 0;
 		this.total_approximated = cfg.total_approximated; // eslint-disable-line camelcase
-		if ( cfg.spellCheck && cfg.spellCheck.action === 'replaced' ) {
-			this.term = cfg.spellCheck.alternative.term;
-		}
 
 		this.$element = $( '<div>' )
 			.addClass( 'bs-extendedsearch-search-center-hitcount' )
@@ -22,11 +18,9 @@
 			messageKey = 'bs-extendedsearch-search-center-hitcount-widget-approximately';
 		}
 
-		let message = mw.message( // eslint-disable-line mediawiki/msg-doc
-			messageKey,
-			this.count
-		).escaped();
-		message = message.replace( '$2', '<b>' + mw.html.escape( this.term ) + '</b>' );
+		let message = mw.message( messageKey, this.count ).escaped(); // eslint-disable-line mediawiki/msg-doc
+		// BC for old messages
+		message = message.replace( '$2', '' );
 		this.$element.html( message );
 	};
 

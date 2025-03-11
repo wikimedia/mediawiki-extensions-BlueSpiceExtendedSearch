@@ -187,11 +187,11 @@ class WikiPage extends Base {
 	 * @return string
 	 */
 	protected function getHTMLContent() {
-		$sHtml = $this->parserOutput->getText( [
+		$html = $this->parserOutput->runOutputPipeline( \ParserOptions::newFromAnon(), [
 			'allowTOC' => false,
 			'enableSectionEditLinks' => false
-		] );
-		return $this->stripTags( $sHtml );
+		] )->getRawText() ?? '';
+		return $this->stripTags( $html );
 	}
 
 	/**
@@ -213,8 +213,15 @@ class WikiPage extends Base {
 	 * @return string
 	 */
 	protected function stripTags( $sText ) {
+		// Replace whole `<styles>...</styles>` blocks with a space
+		$sText = preg_replace( '/<style[^>]*>.*?<\/style>/is', ' ', $sText );
 		$sText = strip_tags( $sText );
 		$sText = preg_replace( '/<!--(.|\s)*?-->/', '', $sText );
+		// Replace all variables with a space
+		$sText = preg_replace( '/\{\{[^}]*\}\}/', ' ', $sText );
+		$sText = preg_replace( '/__[^_]*__/', ' ', $sText );
+		// Remove excess line breaks and empty lines
+		$sText = preg_replace( '/\n{2,}/', "\n", $sText );
 		return trim( $sText );
 	}
 

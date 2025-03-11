@@ -71,16 +71,7 @@ form .bs-extendedsearch-searchbar-clear {
 
 #bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup .bs-extendedsearch-autocomplete-popup-primary .bs-extendedsearch-autocomplete-popup-primary-item a {
 	color: var( --content-fg-secondary );
-	width: 100%;
 	text-decoration: none;
-}
-
-#bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup .bs-extendedsearch-autocomplete-popup-primary .bs-extendedsearch-autocomplete-popup-primary-item:hover {
-	background-color: #f1f1f4;
-}
-
-#bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup .bs-extendedsearch-autocomplete-popup-primary .bs-extendedsearch-autocomplete-popup-primary-item:hover a {
-	color: var( --content-fg-primary );
 }
 
 #bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup .bs-extendedsearch-autocomplete-popup-special-cnt {
@@ -99,20 +90,6 @@ form .bs-extendedsearch-searchbar-clear {
 #bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup .bs-extendedsearch-autocomplete-popup-secondary .bs-extendedsearch-autocomplete-popup-secondary-item:hover a {
 	color: var( --content-fg-primary );
 	text-decoration: none;
-}
-
-#bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup-create-page-link {
-	height: auto;
-}
-
-#bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup-create-page-link a {
-	text-decoration: none;
-	color: var( --new-link-fg );
-	height: auto;
-}
-
-#bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup-create-page-link a:focus {
-	text-decoration: underline;
 }
 
 @media ( max-width: 1199.98px ) {

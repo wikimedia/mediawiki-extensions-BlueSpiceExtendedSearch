@@ -5,6 +5,7 @@ namespace BS\ExtendedSearch\MediaWiki\Specials;
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\Plugin\IFormattingModifier;
+use BS\ExtendedSearch\PluginManager;
 use BS\ExtendedSearch\Source\GenericSource;
 use MediaWiki\Html\Html;
 use MediaWiki\Json\FormatJson;
@@ -63,6 +64,9 @@ class SearchCenter extends SpecialPage {
 		$localBackend = $services->getService( 'BSExtendedSearchBackend' );
 		$defaultResultStructure = $localBackend->getDefaultResultStructure();
 
+		/** @var PluginManager $pluginManager */
+		$pluginManager = $services->getService( 'BSExtendedSearch.PluginManager' );
+
 		$base = new GenericSource( $services->getObjectFactory() );
 		$sortableFields = $base->getMappingProvider()->getSortableFields();
 		// Add _score manually, as its not a real field
@@ -73,7 +77,7 @@ class SearchCenter extends SpecialPage {
 
 		foreach ( $localBackend->getSources() as $source ) {
 			$resultStructure = $source->getFormatter()->getResultStructure( $defaultResultStructure );
-			$plugins = $localBackend->getPluginsForInterface( IFormattingModifier::class );
+			$plugins = $pluginManager->getPluginsImplementing( IFormattingModifier::class );
 			/** @var IFormattingModifier $plugin */
 			foreach ( $plugins as $plugin ) {
 				$plugin->modifyResultStructure( $resultStructure, $source );

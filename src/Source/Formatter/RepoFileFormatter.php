@@ -28,7 +28,7 @@ class RepoFileFormatter extends FileFormatter {
 			Title::makeTitle( NS_FILE, $result['filename'] )
 		);
 		if ( !$file ) {
-			return '';
+			return parent::getActualImageUrl( $result );
 		}
 
 		$hookContainer = $services->getHookContainer();
@@ -39,7 +39,7 @@ class RepoFileFormatter extends FileFormatter {
 			return $file->getCanonicalUrl();
 		}
 
-		return '';
+		return parent::getActualImageUrl( $result );
 	}
 
 	/**

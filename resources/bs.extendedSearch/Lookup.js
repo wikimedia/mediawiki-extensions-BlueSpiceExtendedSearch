@@ -319,6 +319,11 @@ bs.extendedSearch.Lookup.prototype.clearFilter = function ( field ) {
 		this.query.bool.filter = newFilters;
 	}
 
+	// Clear context if linked to a field
+	if ( this.context && this.context.key === field ) {
+		delete this.context;
+	}
+
 	return this;
 };
 
@@ -1074,4 +1079,18 @@ bs.extendedSearch.Lookup.prototype.getForceTerm = function () {
 	}
 
 	return false;
+};
+
+bs.extendedSearch.Lookup.prototype.getContext = function () {
+	return this.context || null;
+};
+
+bs.extendedSearch.Lookup.prototype.setContext = function ( context ) {
+	if ( !context ) {
+		if ( this.context ) {
+			delete this.context;
+		}
+		return;
+	}
+	this.context = context;
 };
