@@ -107,7 +107,6 @@ class WikiPages extends GenericSource {
 		$modifiers[] = new WikiPageNamespaceTextAggregation( $lookup, $context );
 		$modifiers[] = new WikiPageUserPreferences( $lookup, $context );
 		$modifiers[] = new WikiPageNamespacePrefixResolver( $lookup, $context );
-		$modifiers[] = new WikiPageSecurityTrimming( $lookup, $context );
 		$modifiers[] = new WikiPageCategoriesAggregation( $lookup, $context );
 		$modifiers[] = new WikiPageRenderedContentHighlight( $lookup, $context );
 		$modifiers[] = new WikiPageQSSourceFields( $lookup, $context );
@@ -118,6 +117,9 @@ class WikiPages extends GenericSource {
 		$modifiers[] = new WikiPageLanguageFilter( $lookup, $context );
 		$modifiers[] = new WikiPageAutocompleteRemoveUnwanted( $lookup, $context );
 		$modifiers[] = new WikiPageAutocompleteSourceFields( $lookup, $context );
+		if ( $this->backend->getConfig()->get( 'ESSecureResults' ) ) {
+			$modifiers[] = new WikiPageSecurityTrimming( $lookup, $context );
+		}
 
 		return $modifiers;
 	}
