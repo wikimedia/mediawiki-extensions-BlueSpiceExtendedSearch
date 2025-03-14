@@ -1,18 +1,18 @@
-( function( mw, $, bs, d, undefined ){
-	bs.util.registerNamespace( "bs.extendedSearch.mixin" );
+( function ( mw, $, bs ) {
+	bs.util.registerNamespace( 'bs.extendedSearch.mixin' );
 
-	bs.extendedSearch.mixin.QuietSubpage = function( subpage ) {
+	bs.extendedSearch.mixin.QuietSubpage = function ( subpage ) {
 		// Trim-out the quietSubpage from the result titles
 		this.titleTrim = subpage + '/';
 
-		var globalSearchButton = new OO.ui.ButtonWidget( {
+		const globalSearchButton = new OO.ui.ButtonWidget( {
 			framed: false,
 			label: mw.message( 'bs-extendedsearch-autocomplete-popup-quiet-subpage-clear' ).text(),
 			flags: [ 'primary', 'progressive' ]
 		} );
 
 		globalSearchButton.connect( this, {
-			click: function() {
+			click: function () {
 				this.emit( 'quietSubpageRemoved' );
 			}
 		} );
@@ -24,4 +24,4 @@
 		);
 
 	};
-} )( mediaWiki, jQuery, blueSpice, document );
+}( mediaWiki, jQuery, blueSpice ) );

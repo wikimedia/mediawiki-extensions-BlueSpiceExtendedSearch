@@ -1,5 +1,5 @@
-( function( mw, $, bs, d, undefined ){
-	bs.extendedSearch.SearchBar = function( cfg ) {
+( function ( mw, $, bs ) {
+	bs.extendedSearch.SearchBar = function ( cfg ) {
 		OO.EventEmitter.call( this );
 
 		this.init( cfg );
@@ -8,7 +8,7 @@
 	OO.initClass( bs.extendedSearch.SearchBar );
 	OO.mixinClass( bs.extendedSearch.SearchBar, OO.EventEmitter );
 
-	bs.extendedSearch.SearchBar.prototype.init = function( cfg ) {
+	bs.extendedSearch.SearchBar.prototype.init = function ( cfg ) {
 		cfg = cfg || {};
 
 		this.mobile = cfg.mobile || false;
@@ -18,15 +18,15 @@
 		this.showRecentlyFound = typeof cfg.showRecentlyFound !== 'undefined' ? cfg.showRecentlyFound : true;
 
 		this.useNamespacePills = true;
-		if( cfg.hasOwnProperty( 'useNamespacePills' ) && cfg.useNamespacePills === false ) {
+		if ( cfg.hasOwnProperty( 'useNamespacePills' ) && cfg.useNamespacePills === false ) {
 			this.useNamespacePills = false;
 		}
 		this.useSubpagePills = true;
-		if( cfg.hasOwnProperty( 'useSubpagePills' ) && cfg.useSubpagePills === false ) {
+		if ( cfg.hasOwnProperty( 'useSubpagePills' ) && cfg.useSubpagePills === false ) {
 			this.useSubpagePills = false;
 		}
 
-		if( bs.extendedSearch.utils.isMobile() ) {
+		if ( bs.extendedSearch.utils.isMobile() ) {
 			this.mobile = true;
 			cfg.cntId = cfg.cntId || 'bs-extendedsearch-mobile-box';
 			cfg.inputId = cfg.inputId || 'bs-extendedsearch-mobile-input';
@@ -36,7 +36,7 @@
 		}
 
 		this.typingTimer = null;
-		this.typingDoneInterval = (typeof cfg.typingDoneInterval !== 'undefined' ) ?
+		this.typingDoneInterval = ( typeof cfg.typingDoneInterval !== 'undefined' ) ?
 			cfg.typingDoneInterval : 200;
 
 		this.$searchContainer = $( '#' + cfg.cntId );
@@ -51,11 +51,11 @@
 			.addClass( 'bs-extendedsearch-searchbar-wrapper' )
 			.attr( 'id', cfg.cntId + '-wrapper' );
 
-		//Wrap search box input in another div to make it sizable when pill is added
+		// Wrap search box input in another div to make it sizable when pill is added
 		this.$searchBox.attr( 'style', 'display: table-cell;' );
 		this.$searchBox.wrap( this.$searchBoxWrapper );
 
-		//Wire the events
+		// Wire the events
 		this.$searchBox.on( 'keydown', this.onKeyDown.bind( this ) );
 		this.$searchBox.on( 'keyup', this.onKeyUp.bind( this ) );
 		this.$searchBox.on( 'paste', this.onPaste.bind( this ) );
@@ -71,20 +71,20 @@
 		this.isSearchCenter = cfg.isSearchCenter || false;
 	};
 
-	bs.extendedSearch.SearchBar.prototype.detectNamespace = function( value ) {
-		var parts = value.split( ':' );
-		if( parts.length === 1 ) {
+	bs.extendedSearch.SearchBar.prototype.detectNamespace = function ( value ) {
+		const parts = value.split( ':' );
+		if ( parts.length === 1 ) {
 			this.namespace = this.namespace || {};
 			return value;
 		}
-		if( parts.length === 2 && parts[1] === '' ) {
+		if ( parts.length === 2 && parts[ 1 ] === '' ) {
 			this.namespace = {};
 			return '';
 		}
 
-		var newNamespace = parts.shift().replace( '_', ' ' );
+		const newNamespace = parts.shift().replace( '_', ' ' );
 
-		if( !this.setNamespaceFromValue( newNamespace ) ) {
+		if ( !this.setNamespaceFromValue( newNamespace ) ) {
 			this.namespace = {};
 			return value;
 		} else {
@@ -94,22 +94,22 @@
 		}
 	};
 
-	bs.extendedSearch.SearchBar.prototype.resetValue = function() {
+	bs.extendedSearch.SearchBar.prototype.resetValue = function () {
 		this.removeNamespacePill( true );
 		this.removeSubpagePill( true );
 		this.value = '';
 	};
 
-	bs.extendedSearch.SearchBar.prototype.detectSubpage = function( value ) {
+	bs.extendedSearch.SearchBar.prototype.detectSubpage = function ( value ) {
 		if ( this.mainpage && !this.namespace ) {
 			value = [ this.mainpage, value ].join( '/' );
 		}
-		var parts = value.split( '/' );
-		if( parts.length === 1 ) {
+		const parts = value.split( '/' );
+		if ( parts.length === 1 ) {
 			this.mainpage = this.mainpage || '';
 			return value;
 		}
-		if( parts.length > 1 && parts[parts.length - 1] === '' ) {
+		if ( parts.length > 1 && parts[ parts.length - 1 ] === '' ) {
 			return '';
 		}
 
@@ -119,8 +119,8 @@
 		return value;
 	};
 
-	bs.extendedSearch.SearchBar.prototype.setNamespaceFromValue = function( nsText ) {
-		if( nsText === '' ) {
+	bs.extendedSearch.SearchBar.prototype.setNamespaceFromValue = function ( nsText ) {
+		if ( nsText === '' ) {
 			// Explicitly main
 			this.namespace = {
 				id: 0,
@@ -129,7 +129,7 @@
 			return true;
 		}
 
-		var namespaceId = this.findNamespace( bs.extendedSearch.utils.normalizeNamespaceName( nsText ) );
+		const namespaceId = this.findNamespace( bs.extendedSearch.utils.normalizeNamespaceName( nsText ) );
 		if ( namespaceId !== null ) {
 			this.namespace = {
 				id: namespaceId,
@@ -139,31 +139,31 @@
 			return true;
 		}
 
-		//NS cannot be set
+		// NS cannot be set
 		return false;
 	};
 
-	bs.extendedSearch.SearchBar.prototype.findNamespace = function( nsText ) {
-		if( !this.namespaces ) {
+	bs.extendedSearch.SearchBar.prototype.findNamespace = function ( nsText ) {
+		if ( !this.namespaces ) {
 			this.namespaces = bs.extendedSearch.utils.getNamespacesList();
 		}
 		nsText = bs.extendedSearch.utils.normalizeNamespaceName( nsText );
-		for ( var nsName in this.namespaces ) {
+		for ( const nsName in this.namespaces ) {
 			if ( !this.namespaces.hasOwnProperty( nsName ) ) {
 				continue;
 			}
-			if ( nsName.toLowerCase() === nsText) {
-				return this.namespaces[nsName];
+			if ( nsName.toLowerCase() === nsText ) {
+				return this.namespaces[ nsName ];
 			}
 		}
 
 		return null;
 	};
 
-	bs.extendedSearch.SearchBar.prototype.generateNamespacePill = function( value ) {
+	bs.extendedSearch.SearchBar.prototype.generateNamespacePill = function ( value ) {
 		value = value || this.value;
 		this.removeNamespacePill();
-		var sbW = this.$searchBox.outerWidth();
+		const sbW = this.$searchBox.outerWidth();
 
 		this.$pill = $( '<span>' )
 			.addClass( 'bs-extendedsearch-searchbar-pill namespace-pill' )
@@ -174,14 +174,14 @@
 		this.$searchBox.val( value );
 	};
 
-	bs.extendedSearch.SearchBar.prototype.generateSubpagePill = function( value ) {
+	bs.extendedSearch.SearchBar.prototype.generateSubpagePill = function ( value ) {
 		value = value || this.value;
 		this.removeSubpagePill();
 
 		this.$pill = $( '<span>' )
 			.addClass( 'bs-extendedsearch-searchbar-pill subpage-pill' );
 
-		var mainpageBits = this.mainpage.split( '/' );
+		const mainpageBits = this.mainpage.split( '/' );
 		if ( mainpageBits.length > 1 && this.mainpage.length > 30 ) {
 			this.$pill.attr( 'title', this.mainpage );
 			this.$pill.html( '.../' + mainpageBits.pop() + '/' );
@@ -190,12 +190,12 @@
 		}
 
 		this.$searchBox.before( this.$pill );
-		var sbW = this.$searchBox.outerWidth();
+		const sbW = this.$searchBox.outerWidth();
 		this.setSearchBoxWidthInline( sbW - this.$pill.outerWidth() );
 		this.$searchBox.val( value );
 	};
 
-	bs.extendedSearch.SearchBar.prototype.generateMasterFilterPill = function() {
+	bs.extendedSearch.SearchBar.prototype.generateMasterFilterPill = function () {
 		this.removeMasterFilterPill();
 
 		this.$pill = $( '<span>' )
@@ -209,13 +209,13 @@
 		).text() );
 
 		this.$searchBox.before( this.$pill );
-		var sbW = this.$searchBox.outerWidth();
+		const sbW = this.$searchBox.outerWidth();
 		this.setSearchBoxWidthInline( sbW - this.$pill.outerWidth() );
 	};
 
-	bs.extendedSearch.SearchBar.prototype.removeMasterFilterPill = function() {
-		var pill = this.$searchContainer.find( '.bs-extendedsearch-searchbar-pill.master-filter-pill' );
-		if( pill.length === 0 ) {
+	bs.extendedSearch.SearchBar.prototype.removeMasterFilterPill = function () {
+		const pill = this.$searchContainer.find( '.bs-extendedsearch-searchbar-pill.master-filter-pill' );
+		if ( pill.length === 0 ) {
 			return false;
 		}
 		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() + pill.outerWidth() );
@@ -223,16 +223,15 @@
 		return true;
 	};
 
-
-	bs.extendedSearch.SearchBar.prototype.removeNamespacePill = function( clearNamespace ) {
+	bs.extendedSearch.SearchBar.prototype.removeNamespacePill = function ( clearNamespace ) {
 		clearNamespace = clearNamespace || false;
 
-		if( clearNamespace ) {
+		if ( clearNamespace ) {
 			this.namespace = {};
 		}
 
-		var pill = this.$searchContainer.find( '.bs-extendedsearch-searchbar-pill.namespace-pill' );
-		if( pill.length === 0 ) {
+		const pill = this.$searchContainer.find( '.bs-extendedsearch-searchbar-pill.namespace-pill' );
+		if ( pill.length === 0 ) {
 			return false;
 		}
 		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() + pill.outerWidth() );
@@ -240,15 +239,15 @@
 		return true;
 	};
 
-	bs.extendedSearch.SearchBar.prototype.removeSubpagePill = function( clearMainpage ) {
+	bs.extendedSearch.SearchBar.prototype.removeSubpagePill = function ( clearMainpage ) {
 		clearMainpage = clearMainpage || false;
 
-		if( clearMainpage ) {
+		if ( clearMainpage ) {
 			this.mainpage = '';
 		}
 
-		var pill = this.$searchContainer.find( '.bs-extendedsearch-searchbar-pill.subpage-pill' );
-		if( pill.length === 0 ) {
+		const pill = this.$searchContainer.find( '.bs-extendedsearch-searchbar-pill.subpage-pill' );
+		if ( pill.length === 0 ) {
 			return false;
 		}
 		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() + pill.outerWidth() );
@@ -256,12 +255,12 @@
 		return true;
 	};
 
-	bs.extendedSearch.SearchBar.prototype.addClearButton = function() {
-		if( this.$searchContainer.find( '.bs-extendedsearch-searchbar-clear' ).length > 0 ) {
+	bs.extendedSearch.SearchBar.prototype.addClearButton = function () {
+		if ( this.$searchContainer.find( '.bs-extendedsearch-searchbar-clear' ).length > 0 ) {
 			return;
 		}
 
-		var clearButton = new OO.ui.ButtonWidget( {
+		const clearButton = new OO.ui.ButtonWidget( {
 			indicator: 'clear',
 			framed: false
 		} );
@@ -269,34 +268,34 @@
 		clearButton.$button.on( 'click', this.onClearSearch.bind( this ) );
 		clearButton.$button.on( 'keydown', this.onClearSearchKeyDown.bind( this ) );
 
-		var sbW = this.$searchBox.outerWidth();
+		const sbW = this.$searchBox.outerWidth();
 
 		clearButton.$element.addClass( 'bs-extendedsearch-searchbar-clear' );
 		clearButton.$element.insertAfter( this.$searchBox );
-		var cbW = clearButton.$element.outerWidth();
+		const cbW = clearButton.$element.outerWidth();
 
 		this.setSearchBoxWidthInline( sbW - cbW );
 		this.$searchContainer.addClass( 'clear-present' );
 
 		if ( this.isSearchCenter ) {
 			// Manually make sure that if this button is in focus, next target for tab starts in `.bs-es-tools` container
-			clearButton.$element.on( 'keydown', function( e ) {
-				var $tools = $( '.bs-es-tools' );
+			clearButton.$element.on( 'keydown', ( e ) => {
+				const $tools = $( '.bs-es-tools' );
 				if ( $tools.length === 0 ) {
 					return;
 				}
 				if ( e.which === 9 && !e.shiftKey ) {
 					e.preventDefault();
 					// First first focusable element in ( '.bs-es-tools' )
-					$tools.find( 'button, a, input' ).first().focus();
+					$tools.find( 'button, a, input' ).first().trigger( 'focus' );
 				}
 			} );
 		}
 	};
 
-	bs.extendedSearch.SearchBar.prototype.removeClearButton = function() {
-		var $clearButton = this.$searchContainer.find( '.bs-extendedsearch-searchbar-clear' );
-		if( $clearButton.length === 0 ){
+	bs.extendedSearch.SearchBar.prototype.removeClearButton = function () {
+		const $clearButton = this.$searchContainer.find( '.bs-extendedsearch-searchbar-clear' );
+		if ( $clearButton.length === 0 ) {
 			return;
 		}
 		this.setSearchBoxWidthInline( this.$searchBox.outerWidth() + $clearButton.outerWidth() );
@@ -304,113 +303,113 @@
 		this.$searchContainer.removeClass( 'clear-present' );
 	};
 
-	bs.extendedSearch.SearchBar.prototype.setSearchBoxWidthInline = function( width ) {
-		var value = 'display: table-cell;';
+	bs.extendedSearch.SearchBar.prototype.setSearchBoxWidthInline = function ( width ) { // eslint-disable-line no-unused-vars
+		const value = 'display: table-cell;';
 
 		this.$searchBox.attr( 'style', value );
 	};
 
-	bs.extendedSearch.SearchBar.prototype.toggleClearButton = function( value ) {
-		var pillPresent =
-			this.$searchContainer.find( '.bs-extendedsearch-searchbar-pill' ).length != 0;
+	bs.extendedSearch.SearchBar.prototype.toggleClearButton = function ( value ) {
+		let pillPresent =
+			this.$searchContainer.find( '.bs-extendedsearch-searchbar-pill' ).length !== 0;
 
-		if( !this.useNamespacePills ) {
+		if ( !this.useNamespacePills ) {
 			pillPresent = false;
 		}
 
-		if( value || pillPresent ) {
+		if ( value || pillPresent ) {
 			this.addClearButton();
 		} else {
 			this.removeClearButton();
 		}
 	};
 
-	bs.extendedSearch.SearchBar.prototype.onPaste = function( e ) {
-		var beforeValue = e.target.value;
-		var value = e.originalEvent.clipboardData.getData( 'Text' );
-		var isChanged = beforeValue !== value;
-		var shouldAbort = { abort: false };
+	bs.extendedSearch.SearchBar.prototype.onPaste = function ( e ) {
+		const beforeValue = e.target.value;
+		const value = e.originalEvent.clipboardData.getData( 'Text' );
+		const isChanged = beforeValue !== value;
+		const shouldAbort = { abort: false };
 		this.emit( 'beforeValueChanged', e, shouldAbort );
-		if( shouldAbort.abort === true ) {
+		if ( shouldAbort.abort === true ) {
 			return;
 		}
-		if( !isChanged ) {
+		if ( !isChanged ) {
 			return;
 		}
 
-		//paste event is fired before value is actually changed
-		//in the input - give it some time to change
-		setTimeout( function() {
+		// paste event is fired before value is actually changed
+		// in the input - give it some time to change
+		setTimeout( () => {
 			this.changeValue( value );
-		}.bind( this ), 200 );
+		}, 200 );
 	};
 
-	bs.extendedSearch.SearchBar.prototype.onKeyUp = function( e ) {
-		var value = e.target.value;
-		var isChanged = ( this.valueBefore || '' ) !== value;
-		var shouldAbort = { abort: false };
+	bs.extendedSearch.SearchBar.prototype.onKeyUp = function ( e ) {
+		const value = e.target.value;
+		let isChanged = ( this.valueBefore || '' ) !== value;
+		const shouldAbort = { abort: false };
 		this.emit( 'beforeValueChanged', e, shouldAbort );
-		if( shouldAbort.abort === true ) {
+		if ( shouldAbort.abort === true ) {
 			return;
 		}
-		if( this.valueBefore === '' && value === '' && e.which === 8 ) {
-			//Backspacing on empty field
-			if( this.useSubpagePills ) {
-				if( this.removeSubpagePill( true ) ) {
+		if ( this.valueBefore === '' && value === '' && e.which === 8 ) {
+			// Backspacing on empty field
+			if ( this.useSubpagePills ) {
+				if ( this.removeSubpagePill( true ) ) {
 					isChanged = true;
 				}
 			}
-			if( this.useNamespacePills && isChanged === false ) {
-				if( this.removeNamespacePill( true ) ) {
+			if ( this.useNamespacePills && isChanged === false ) {
+				if ( this.removeNamespacePill( true ) ) {
 					isChanged = true;
 				}
 			}
 		}
 
-		if( !isChanged ) {
+		if ( !isChanged ) {
 			return;
 		}
 
-		//Fire value change only after user has finished
-		//typing - to avoid sending requests mid-typing
+		// Fire value change only after user has finished
+		// typing - to avoid sending requests mid-typing
 		clearTimeout( this.typingTimer );
-		this.typingTimer = setTimeout( function() {
+		this.typingTimer = setTimeout( () => {
 			this.changeValue( value );
-		}.bind( this ), this.typingDoneInterval );
+		}, this.typingDoneInterval );
 	};
 
-	bs.extendedSearch.SearchBar.prototype.onKeyDown = function( e ) {
+	bs.extendedSearch.SearchBar.prototype.onKeyDown = function ( e ) {
 		this.valueBefore = e.target.value;
 	};
 
-	bs.extendedSearch.SearchBar.prototype.onClearSearch = function( e ) {
+	bs.extendedSearch.SearchBar.prototype.onClearSearch = function ( e ) {
 		this.emit( 'beforeClearSearch', e );
 
 		this.$searchBox.val( '' );
-		if( this.useNamespacePills ) {
+		if ( this.useNamespacePills ) {
 			this.removeNamespacePill( true );
 		}
-		if( this.useSubpagePills ) {
+		if ( this.useSubpagePills ) {
 			this.removeSubpagePill( true );
 		}
 		this.toggleClearButton( '' );
 
 		this.emit( 'clearSearch', e );
-		this.$searchBox.focus();
+		this.$searchBox.trigger( 'focus' );
 	};
 
-	bs.extendedSearch.SearchBar.prototype.onClearSearchKeyDown = function( e ) {
-		if( e.which == 13 ) {
+	bs.extendedSearch.SearchBar.prototype.onClearSearchKeyDown = function ( e ) {
+		if ( e.which == 13 ) { // eslint-disable-line eqeqeq
 			this.onClearSearch();
 		}
 	};
 
-	bs.extendedSearch.SearchBar.prototype.setValue = function( value ) {
+	bs.extendedSearch.SearchBar.prototype.setValue = function ( value ) {
 		this.$searchBox.val( value );
-		if( this.useNamespacePills ) {
+		if ( this.useNamespacePills ) {
 			value = this.detectNamespace( value );
 		}
-		if( this.useSubpagePills ) {
+		if ( this.useSubpagePills ) {
 			value = this.detectSubpage( value );
 		}
 
@@ -418,10 +417,11 @@
 		this.toggleClearButton( value );
 	};
 
-	bs.extendedSearch.SearchBar.prototype.changeValue = function( value ) {
-		if( this.useNamespacePills && value ) {
+	bs.extendedSearch.SearchBar.prototype.changeValue = function ( value ) {
+		if ( this.useNamespacePills && value ) {
 			value = this.detectNamespace( value );
-		} if( this.useSubpagePills && value ) {
+		}
+		if ( this.useSubpagePills && value ) {
 			value = this.detectSubpage( value );
 		}
 
@@ -432,11 +432,11 @@
 		this.emit( 'valueChanged' );
 	};
 
-	bs.extendedSearch.SearchBar.prototype.isMasterFilterActive = function() {
+	bs.extendedSearch.SearchBar.prototype.isMasterFilterActive = function () {
 		return this.quietSubpageSupressed;
 	};
 
-	bs.extendedSearch.SearchBar.prototype.getMasterFilterPage = function() {
+	bs.extendedSearch.SearchBar.prototype.getMasterFilterPage = function () {
 		if ( this.masterFilter && !this.isMasterFilterActive() ) {
 			if ( this.namespace.id !== 0 ) {
 				return this.namespace.text + ':' + this.mainpage;
@@ -448,7 +448,7 @@
 		return null;
 	};
 
-	bs.extendedSearch.SearchBar.prototype.suppressQuietSubpage = function( value ) {
+	bs.extendedSearch.SearchBar.prototype.suppressQuietSubpage = function ( value ) {
 		if ( !this.masterFilter ) {
 			return;
 		}
@@ -468,7 +468,7 @@
 		}
 	};
 
-	bs.extendedSearch.SearchBar.prototype.onFocus = function() {
+	bs.extendedSearch.SearchBar.prototype.onFocus = function () {
 		if ( this.$searchBox.val() ) {
 			return;
 		}
@@ -476,11 +476,11 @@
 		this.emit( 'emptyFocus' );
 	};
 
-	bs.extendedSearch.SearchBar.prototype.setPending = function() {
+	bs.extendedSearch.SearchBar.prototype.setPending = function () {
 		this.$searchBox.addClass( 'oo-ui-pendingElement-pending' );
 	};
 
-	bs.extendedSearch.SearchBar.prototype.clearPending = function() {
+	bs.extendedSearch.SearchBar.prototype.clearPending = function () {
 		this.$searchBox.removeClass( 'oo-ui-pendingElement-pending' );
 	};
-} )( mediaWiki, jQuery, blueSpice, document );
+}( mediaWiki, jQuery, blueSpice ) );

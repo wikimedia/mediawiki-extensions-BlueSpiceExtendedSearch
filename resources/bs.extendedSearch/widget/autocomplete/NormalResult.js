@@ -1,7 +1,7 @@
-( function( mw, $, bs, d, undefined ){
-	bs.util.registerNamespace( "bs.extendedSearch.mixin" );
+( function ( $, bs ) {
+	bs.util.registerNamespace( 'bs.extendedSearch.mixin' );
 
-	bs.extendedSearch.AutocompleteNormalResult = function( cfg ) {
+	bs.extendedSearch.AutocompleteNormalResult = function ( cfg ) {
 		cfg = cfg || {};
 
 		this.basename = cfg.suggestion.basename;
@@ -26,16 +26,16 @@
 	OO.inheritClass( bs.extendedSearch.AutocompleteNormalResult, OO.ui.Widget );
 	OO.mixinClass( bs.extendedSearch.AutocompleteNormalResult, bs.extendedSearch.mixin.AutocompleteHeader );
 
-	bs.extendedSearch.AutocompleteNormalResult.prototype.onResultClick = function( e ) {
-		var $target = $( e.target );
-		if( $target.hasClass( 'bs-extendedsearch-autocomplete-popup-primary-item' ) === false ) {
+	bs.extendedSearch.AutocompleteNormalResult.prototype.onResultClick = function ( e ) {
+		const $target = $( e.target );
+		if ( $target.hasClass( 'bs-extendedsearch-autocomplete-popup-primary-item' ) === false ) {
 			return;
 		}
-		//Anchor may be custom one, coming from backend, so we cannot target more specifically
-		var $anchor = $target.find( 'a' );
-		if( $anchor ) {
+		// Anchor may be custom one, coming from backend, so we cannot target more specifically
+		const $anchor = $target.find( 'a' );
+		if ( $anchor ) {
 			window.location = $anchor.attr( 'href' );
 		}
 	};
 
-} )( mediaWiki, jQuery, blueSpice, document );
+}( jQuery, blueSpice ) );

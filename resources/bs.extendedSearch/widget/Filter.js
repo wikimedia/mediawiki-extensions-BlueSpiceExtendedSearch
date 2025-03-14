@@ -1,15 +1,15 @@
-( function( mw, $, bs, d, undefined ){
-	bs.util.registerNamespace( "bs.extendedSearch.mixin" );
+( function ( mw, $, bs, d, undefined ) { // eslint-disable-line no-shadow-restricted-names
+	bs.util.registerNamespace( 'bs.extendedSearch.mixin' );
 
-	bs.extendedSearch.FilterWidget = function( cfg ) {
+	bs.extendedSearch.FilterWidget = function ( cfg ) {
 		cfg = cfg || {};
 
 		this.id = cfg.id;
 		this.options = cfg.options || [];
 		this.selectedOptions = cfg.selectedOptions || [];
-		this.isANDEnabled = cfg.isANDEnabled == 1 ? true : false;
-		this.multiSelect = cfg.multiSelect == 1 ? true : false;
-		this.filterType = cfg.filterType || "or";
+		this.isANDEnabled = cfg.isANDEnabled == 1; // eslint-disable-line eqeqeq
+		this.multiSelect = cfg.multiSelect == 1; // eslint-disable-line eqeqeq
+		this.filterType = cfg.filterType || 'or';
 		this.mobile = cfg.mobile || false;
 
 		this.dirty = false;
@@ -24,7 +24,7 @@
 			align: 'forwards',
 			padded: true,
 			autoClose: true
-		}
+		};
 
 		bs.extendedSearch.FilterWidget.parent.call( this, cfg );
 
@@ -51,11 +51,11 @@
 			.addClass( 'oo-ui-popupButtonWidget bs-extendedsearch-filter-button-widget' )
 			.append( this.$button, this.$removeButton, this.popup.$element );
 
-		//PRESELECTED OPTIONS
-		if( this.selectedOptions.length > 0 ) {
+		// PRESELECTED OPTIONS
+		if ( this.selectedOptions.length > 0 ) {
 			this.setFilterLabel();
 		}
-	}
+	};
 
 	OO.inheritClass( bs.extendedSearch.FilterWidget, OO.ui.Widget );
 
@@ -64,25 +64,25 @@
 	OO.mixinClass( bs.extendedSearch.FilterWidget, OO.ui.mixin.PopupElement );
 	OO.mixinClass( bs.extendedSearch.FilterWidget, bs.extendedSearch.mixin.FilterRemoveButton );
 
-	bs.extendedSearch.FilterWidget.prototype.onShowOptions = function()  {
+	bs.extendedSearch.FilterWidget.prototype.onShowOptions = function () {
 		this.popup.toggle();
 		this.isOpen = !this.isOpen;
 
-		if( this.dirty === false ) {
+		if ( this.dirty === false ) {
 			return;
 		}
 		this.applyFilter();
 	};
 
-	bs.extendedSearch.FilterWidget.prototype.showOptions = function() {
-		if( this.isOpen === false ) {
+	bs.extendedSearch.FilterWidget.prototype.showOptions = function () {
+		if ( this.isOpen === false ) {
 			this.popup.toggle();
 			this.isOpen = true;
 		}
 	};
 
-	bs.extendedSearch.FilterWidget.prototype.applyFilter = function() {
-		if( this.selectedOptions.length == 0 ) {
+	bs.extendedSearch.FilterWidget.prototype.applyFilter = function () {
+		if ( this.selectedOptions.length === 0 ) {
 			return this.removeFilter();
 		}
 
@@ -94,10 +94,10 @@
 		} );
 
 		this.dirty = false;
-	}
+	};
 
-	bs.extendedSearch.FilterWidget.prototype.getPopupContentWidgetElement = function()  {
-		if( this.options.length === 0 ){
+	bs.extendedSearch.FilterWidget.prototype.getPopupContentWidgetElement = function () {
+		if ( this.options.length === 0 ) {
 			return new OO.ui.LabelWidget( {
 				label: mw.message( 'bs-extendedsearch-search-center-filter-no-options-label' ).plain()
 			} ).$element;
@@ -106,28 +106,28 @@
 		this.$optionsContainer = $( '<div>' );
 
 		this.filterBox = new OO.ui.SearchInputWidget();
-		this.filterBox.on( 'change', function () {
+		this.filterBox.on( 'change', () => {
 			this.onOptionsFilter();
-		}.bind( this ) );
+		} );
 
 		this.applyFilterButton = new OO.ui.ButtonWidget( {
 			label: 'OK',
 			flags: 'primary'
 		} );
-		this.applyFilterButton.on( 'click', function() {
+		this.applyFilterButton.on( 'click', () => {
 			this.onApplyFilterButton();
-		}.bind( this ) );
+		} );
 
 		let actionButton = this.applyFilterButton;
-		if( this.isANDEnabled ) {
-			this.andOrSwitch = new bs.extendedSearch.FilterAndOrSwitch({
+		if ( this.isANDEnabled ) {
+			this.andOrSwitch = new bs.extendedSearch.FilterAndOrSwitch( {
 				orLabel: mw.message( 'bs-extendedsearch-searchcenter-filter-or-label' ).plain(),
 				andLabel: mw.message( 'bs-extendedsearch-searchcenter-filter-and-label' ).plain(),
 				selected: this.filterType
-			});
-			this.andOrSwitch.on( 'choose', function(e) {
+			} );
+			this.andOrSwitch.on( 'choose', ( e ) => {
 				this.filterType = e.data;
-			}.bind( this ) );
+			} );
 			actionButton = new OO.ui.HorizontalLayout( {
 				items: [ this.andOrSwitch, this.applyFilterButton ],
 				classes: [ 'bs-extendedsearch-filter-horizontal-layout' ]
@@ -146,7 +146,7 @@
 		return this.$optionsContainer;
 	};
 
-	bs.extendedSearch.FilterWidget.prototype.addCheckboxWidget = function( options ) {
+	bs.extendedSearch.FilterWidget.prototype.addCheckboxWidget = function ( options ) {
 		this.optionsCheckboxWidget = new bs.extendedSearch.FilterOptionsCheckboxWidget( {
 			value: this.selectedOptions,
 			options: options
@@ -154,74 +154,74 @@
 
 		this.optionsCheckboxWidget.$element.addClass( 'bs-extendedsearch-filter-options-checkbox-widget' );
 
-		this.optionsCheckboxWidget.checkboxMultiselectWidget.on( 'change', function () {
+		this.optionsCheckboxWidget.checkboxMultiselectWidget.on( 'change', () => {
 			this.onOptionsChange( this.selectedOptions, this.optionsCheckboxWidget.checkboxMultiselectWidget.findSelectedItemsData() );
-		}.bind( this ) );
+		} );
 
 		this.$optionsContainer.append( this.optionsCheckboxWidget.$element );
-	}
+	};
 
-	bs.extendedSearch.FilterWidget.prototype.onOptionsFilter = function() {
-		var searchTerm = this.filterBox.value;
-		var filteredOptions = [];
-		for( var i = 0; i < this.options.length; i++ ) {
-			var option = this.options[i];
-			if( this.selectedOptions.indexOf( option.data ) !== -1 ) {
+	bs.extendedSearch.FilterWidget.prototype.onOptionsFilter = function () {
+		const searchTerm = this.filterBox.value;
+		const filteredOptions = [];
+		for ( let i = 0; i < this.options.length; i++ ) {
+			const option = this.options[ i ];
+			if ( this.selectedOptions.indexOf( option.data ) !== -1 ) {
 				filteredOptions.push( option );
 				continue;
 			}
 
-			if( option.data.toLowerCase().includes( searchTerm.toLowerCase() ) ) {
+			if ( option.data.toLowerCase().includes( searchTerm.toLowerCase() ) ) {
 				filteredOptions.push( option );
 			}
 		}
 		this.$optionsContainer.children( '.bs-extendedsearch-filter-options-checkbox-widget' ).remove();
 		this.addCheckboxWidget( filteredOptions );
-	}
+	};
 
-	bs.extendedSearch.FilterWidget.prototype.onApplyFilterButton = function() {
+	bs.extendedSearch.FilterWidget.prototype.onApplyFilterButton = function () {
 		this.applyFilter();
-	}
+	};
 
-	bs.extendedSearch.FilterWidget.prototype.setFilterLabel = function() {
-		var label = '';
-		if( this.selectedOptions.length == 0 ) {
+	bs.extendedSearch.FilterWidget.prototype.setFilterLabel = function () {
+		let label = '';
+		if ( this.selectedOptions.length === 0 ) {
 			label = this.emptyLabel;
-		} else if( this.mobile ) {
-			var count = this.selectedOptions.length;
+		} else if ( this.mobile ) {
+			const count = this.selectedOptions.length;
 			label = this.valueLabel + mw.message( 'bs-extendedsearch-filter-label-count-only', count ).parse();
 		} else {
-			var values = this.selectedOptions;
-			var valuesCount = values.length;
-			var hiddenCount = 0;
-			if( valuesCount > 2 ) {
+			let values = this.selectedOptions;
+			const valuesCount = values.length;
+			let hiddenCount = 0;
+			if ( valuesCount > 2 ) {
 				values = values.slice( 0, 2 );
 				hiddenCount = valuesCount - 2;
 			}
 
-			var labeledValues = [];
-			for( var i = 0; i < values.length; i++ ) {
-				var value = values[i];
-				for( var optionIdx = 0; optionIdx < this.optionsCheckboxWidget.checkboxMultiselectWidget.items.length; optionIdx++ ) {
-					var option = this.optionsCheckboxWidget.checkboxMultiselectWidget.items[optionIdx];
-					if( option.data === value ) {
+			const labeledValues = [];
+			for ( let i = 0; i < values.length; i++ ) {
+				const value = values[ i ];
+				for ( let optionIdx = 0; optionIdx < this.optionsCheckboxWidget.checkboxMultiselectWidget.items.length; optionIdx++ ) {
+					const option = this.optionsCheckboxWidget.checkboxMultiselectWidget.items[ optionIdx ];
+					if ( option.data === value ) {
 						labeledValues.push( option.label );
 					}
 				}
 			}
 
 			label = this.valueLabel + labeledValues.join( ', ' );
-			if( hiddenCount > 0 ) {
-				var countMessageKey = this.hasHiddenLabelKey || '';
-				label += mw.message( countMessageKey, hiddenCount ).parse();
+			if ( hiddenCount > 0 ) {
+				const countMessageKey = this.hasHiddenLabelKey || '';
+				label += mw.message( countMessageKey, hiddenCount ).parse(); // eslint-disable-line mediawiki/msg-doc
 			}
 		}
 
 		this.setLabel( label );
 	};
 
-	bs.extendedSearch.FilterWidget.prototype.onOptionsChange = function( oldValues, values ) {
-		if( this.multiSelect === false ) {
+	bs.extendedSearch.FilterWidget.prototype.onOptionsChange = function ( oldValues, values ) {
+		if ( this.multiSelect === false ) {
 			values = arrayDiff( values, oldValues );
 			this.optionsCheckboxWidget.setValue( values );
 		}
@@ -232,13 +232,11 @@
 		this.dirty = true;
 
 		function arrayDiff( array1, array2 ) {
-			return array1.filter( function( el ) {
-				return array2.indexOf( el ) === -1;
-			} );
+			return array1.filter( ( el ) => array2.indexOf( el ) === -1 );
 		}
 	};
 
-	bs.extendedSearch.FilterOptionsCheckboxWidget = function( cfg ) {
+	bs.extendedSearch.FilterOptionsCheckboxWidget = function ( cfg ) {
 		cfg = cfg || {};
 
 		bs.extendedSearch.FilterOptionsCheckboxWidget.parent.call( this, cfg );
@@ -249,18 +247,16 @@
 	OO.inheritClass( bs.extendedSearch.FilterOptionsCheckboxWidget, OO.ui.CheckboxMultiselectInputWidget );
 
 	bs.extendedSearch.FilterOptionsCheckboxWidget.prototype.setOptionsData = function ( options ) {
-		var widget = this;
+		const widget = this;
 
 		this.optionsDirty = true;
 
 		this.checkboxMultiselectWidget
 			.clearItems()
-			.addItems( options.map( function ( opt ) {
-				var optValue, item, optDisabled;
-				optValue =
-					OO.ui.CheckboxMultiselectInputWidget.parent.prototype.cleanUpValue.call( widget, opt.data );
-				optDisabled = opt.disabled !== undefined ? opt.disabled : false;
-				item = new OO.ui.CheckboxMultioptionWidget( {
+			.addItems( options.map( ( opt ) => {
+				const optValue = OO.ui.CheckboxMultiselectInputWidget.parent.prototype.cleanUpValue.call( widget, opt.data );
+				const optDisabled = opt.disabled !== undefined ? opt.disabled : false;
+				const item = new OO.ui.CheckboxMultioptionWidget( {
 					data: optValue,
 					label: opt.label !== undefined ? opt.label : optValue,
 					disabled: optDisabled
@@ -270,7 +266,7 @@
 				item.checkbox.setValue( optValue );
 				item.$element
 					.append(
-						$('<p>')
+						$( '<p>' )
 							.html( opt.count )
 							.addClass( 'bs-extendedsearch-filter-option-count' )
 					)
@@ -279,7 +275,7 @@
 			} ) );
 	};
 
-	bs.extendedSearch.FilterAndOrSwitch = function( cfg ) {
+	bs.extendedSearch.FilterAndOrSwitch = function ( cfg ) {
 		cfg = cfg || {};
 
 		this.orButton = new OO.ui.ButtonOptionWidget( {
@@ -302,7 +298,7 @@
 		this.selectItemByData( cfg.selected );
 
 		this.$element.addClass( 'bs-extendedsearch-filter-and-or-switch' );
-	}
+	};
 
 	OO.inheritClass( bs.extendedSearch.FilterAndOrSwitch, OO.ui.ButtonSelectWidget );
-} )( mediaWiki, jQuery, blueSpice, document );
+}( mediaWiki, jQuery, blueSpice, document ) );

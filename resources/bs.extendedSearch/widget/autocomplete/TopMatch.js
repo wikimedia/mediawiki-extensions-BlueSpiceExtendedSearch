@@ -1,7 +1,7 @@
-( function( mw, $, bs, d, undefined ){
-	bs.util.registerNamespace( "bs.extendedSearch.mixin" );
+( function ( $, bs ) {
+	bs.util.registerNamespace( 'bs.extendedSearch.mixin' );
 
-	bs.extendedSearch.AutocompleteTopMatch = function( cfg ) {
+	bs.extendedSearch.AutocompleteTopMatch = function ( cfg ) {
 		cfg = cfg || {};
 
 		this.basename = cfg.suggestion.basename;
@@ -20,16 +20,16 @@
 
 		this.$image = $( '<div>' )
 			.addClass( 'bs-extendedsearch-autocomplete-popup-top-match-item-image' )
-			.attr( 'style', "background-image: url(" + this.imageUri + ")" );
+			.attr( 'style', 'background-image: url(' + this.imageUri + ')' );
 		this.$element.append( this.$image );
 
 		this.$info = $( '<div>' )
 			.addClass( 'bs-extendedsearch-autocomplete-popup-top-match-item-info' )
 			.append( this.$header, this.$type );
 
-		if( cfg.suggestion.modified_time ) {
+		if ( cfg.suggestion.modified_time ) {
 			bs.extendedSearch.mixin.AutocompleteModifiedTime.call( this, {
-				modified_time: cfg.suggestion.modified_time
+				modified_time: cfg.suggestion.modified_time // eslint-disable-line camelcase
 			} );
 			this.$info.append( this.$modifiedTime );
 		}
@@ -47,9 +47,9 @@
 	OO.mixinClass( bs.extendedSearch.AutocompleteTopMatch, bs.extendedSearch.mixin.AutocompleteHeader );
 	OO.mixinClass( bs.extendedSearch.AutocompleteTopMatch, bs.extendedSearch.mixin.AutocompleteModifiedTime );
 
-	bs.extendedSearch.AutocompleteTopMatch.prototype.onResultClick = function( e ) {
-		var anchor = e.data.pageAnchor;
-		if( $( e.target )[0] === $( anchor )[0] ) {
+	bs.extendedSearch.AutocompleteTopMatch.prototype.onResultClick = function ( e ) {
+		const anchor = e.data.pageAnchor;
+		if ( $( e.target )[ 0 ] === $( anchor )[ 0 ] ) {
 			// If user clicks on the actual anchor,
 			// no need to do anything here
 			return;
@@ -57,4 +57,4 @@
 		window.location = anchor.attr( 'href' );
 	};
 
-} )( mediaWiki, jQuery, blueSpice, document );
+}( jQuery, blueSpice ) );

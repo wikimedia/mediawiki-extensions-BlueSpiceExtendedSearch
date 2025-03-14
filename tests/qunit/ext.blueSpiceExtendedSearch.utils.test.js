@@ -1,9 +1,9 @@
-( function ( mw, $ ) {
+( function () {
 	QUnit.module( 'ext.blueSpiceExtendedSearch.utils', QUnit.newMwEnvironment() );
 
-	QUnit.test( 'ext.blueSpiceExtendedSearch.utils.fragmentFunctions', function ( assert ) {
-		//QUnit.expect( 1 );
-		var obj = {
+	QUnit.test( 'ext.blueSpiceExtendedSearch.utils.fragmentFunctions', ( assert ) => {
+		// QUnit.expect( 1 );
+		const obj = {
 			a: 1000,
 			b: [
 				'A',
@@ -15,8 +15,8 @@
 		};
 
 		bs.extendedSearch.utils.setFragment( obj );
-		var retrievedObj = bs.extendedSearch.utils.getFragment();
+		const retrievedObj = bs.extendedSearch.utils.getFragment();
 
 		assert.deepEqual( retrievedObj, obj, '#Fragment set/get works' );
 	} );
-}( mediaWiki, jQuery ) );
+}() );

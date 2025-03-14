@@ -1,4 +1,4 @@
-bs.extendedSearch.OptionsDialog = function( cfg, toolsPanel ) {
+bs.extendedSearch.OptionsDialog = function ( cfg, toolsPanel ) {
 	cfg = cfg || {};
 
 	this.options = cfg;
@@ -27,20 +27,20 @@ bs.extendedSearch.OptionsDialog.static.actions = [
 
 ];
 
-bs.extendedSearch.OptionsDialog.prototype.initialize = function() {
+bs.extendedSearch.OptionsDialog.prototype.initialize = function () {
 	bs.extendedSearch.OptionsDialog.super.prototype.initialize.call( this );
 
 	this.booklet = new OO.ui.BookletLayout( {
 		outlined: true
 	} );
 
-	this.optionPages = ['pageSize', 'sortBy', 'sortOrder'];
+	this.optionPages = [ 'pageSize', 'sortBy', 'sortOrder' ];
 
-	var pageSizeLayout = new bs.extendedSearch.PageSizeLayout( 'pageSize', { pageSizeOptions: this.options.pageSize } );
-	var sortByLayout = new bs.extendedSearch.SortByLayout( 'sortBy', { sortByOptions: this.options.sortBy } );
-	var sortOrderLayout = new bs.extendedSearch.SortOrderLayout( 'sortOrder', { sortOrderOptions: this.options.sortOrder } );
+	const pageSizeLayout = new bs.extendedSearch.PageSizeLayout( 'pageSize', { pageSizeOptions: this.options.pageSize } );
+	const sortByLayout = new bs.extendedSearch.SortByLayout( 'sortBy', { sortByOptions: this.options.sortBy } );
+	const sortOrderLayout = new bs.extendedSearch.SortOrderLayout( 'sortOrder', { sortOrderOptions: this.options.sortOrder } );
 
-	this.booklet.addPages( [pageSizeLayout, sortByLayout, sortOrderLayout] );
+	this.booklet.addPages( [ pageSizeLayout, sortByLayout, sortOrderLayout ] );
 
 	this.$body.append( this.booklet.$element );
 };
@@ -50,17 +50,17 @@ bs.extendedSearch.OptionsDialog.prototype.getBodyHeight = function () {
 };
 
 bs.extendedSearch.OptionsDialog.prototype.getActionProcess = function ( action ) {
-	var me = this;
+	const me = this;
 
-	if( action === 'save' ) {
-		return new OO.ui.Process( function() {
-			var results = {};
+	if ( action === 'save' ) {
+		return new OO.ui.Process( () => {
+			const results = {};
 
-			for( var i = 0; i < me.optionPages.length; i++ ) {
-				var pageName = me.optionPages[i];
-				var page = me.booklet.getPage( pageName );
-				var value = page.getValue();
-				results[pageName] = value;
+			for ( let i = 0; i < me.optionPages.length; i++ ) {
+				const pageName = me.optionPages[ i ];
+				const page = me.booklet.getPage( pageName );
+				const value = page.getValue();
+				results[ pageName ] = value;
 			}
 			me.toolsPanel.updateSearchOptions( results );
 
@@ -71,9 +71,8 @@ bs.extendedSearch.OptionsDialog.prototype.getActionProcess = function ( action )
 	return bs.extendedSearch.OptionsDialog.super.prototype.getActionProcess.call( this, action );
 };
 
-
-//PAGE SIZE LAYOUT
-bs.extendedSearch.PageSizeLayout = function( name, cfg ) {
+// PAGE SIZE LAYOUT
+bs.extendedSearch.PageSizeLayout = function ( name, cfg ) {
 	bs.extendedSearch.PageSizeLayout.parent.call( this, name, cfg );
 
 	this.pageSizeInput = new OO.ui.RadioSelectInputWidget( cfg.pageSizeOptions );
@@ -85,16 +84,16 @@ bs.extendedSearch.PageSizeLayout = function( name, cfg ) {
 
 OO.inheritClass( bs.extendedSearch.PageSizeLayout, OO.ui.PageLayout );
 
-bs.extendedSearch.PageSizeLayout.prototype.setupOutlineItem = function() {
-	this.outlineItem.setLabel( mw.message( 'bs-extendedsearch-search-center-options-page-size').plain() );
+bs.extendedSearch.PageSizeLayout.prototype.setupOutlineItem = function () {
+	this.outlineItem.setLabel( mw.message( 'bs-extendedsearch-search-center-options-page-size' ).plain() );
 };
 
-bs.extendedSearch.PageSizeLayout.prototype.getValue = function() {
+bs.extendedSearch.PageSizeLayout.prototype.getValue = function () {
 	return this.pageSizeInput.value;
 };
 
-//SORTING FIELD PAGE
-bs.extendedSearch.SortByLayout = function( name, cfg ) {
+// SORTING FIELD PAGE
+bs.extendedSearch.SortByLayout = function ( name, cfg ) {
 	bs.extendedSearch.SortByLayout.parent.call( this, name, cfg );
 
 	this.sortByInput = new OO.ui.RadioSelectInputWidget( cfg.sortByOptions );
@@ -106,16 +105,16 @@ bs.extendedSearch.SortByLayout = function( name, cfg ) {
 
 OO.inheritClass( bs.extendedSearch.SortByLayout, OO.ui.PageLayout );
 
-bs.extendedSearch.SortByLayout.prototype.setupOutlineItem = function() {
-	this.outlineItem.setLabel( mw.message( 'bs-extendedsearch-search-center-options-sort-by').plain() );
+bs.extendedSearch.SortByLayout.prototype.setupOutlineItem = function () {
+	this.outlineItem.setLabel( mw.message( 'bs-extendedsearch-search-center-options-sort-by' ).plain() );
 };
 
-bs.extendedSearch.SortByLayout.prototype.getValue = function() {
+bs.extendedSearch.SortByLayout.prototype.getValue = function () {
 	return [ this.sortByInput.value ];
 };
 
-//SORT ORDER LAYOUT
-bs.extendedSearch.SortOrderLayout = function( name, cfg ) {
+// SORT ORDER LAYOUT
+bs.extendedSearch.SortOrderLayout = function ( name, cfg ) {
 	bs.extendedSearch.SortOrderLayout.parent.call( this, name, cfg );
 
 	this.sortOrderInput = new OO.ui.RadioSelectInputWidget( cfg.sortOrderOptions );
@@ -127,10 +126,10 @@ bs.extendedSearch.SortOrderLayout = function( name, cfg ) {
 
 OO.inheritClass( bs.extendedSearch.SortOrderLayout, OO.ui.PageLayout );
 
-bs.extendedSearch.SortOrderLayout.prototype.setupOutlineItem = function() {
-	this.outlineItem.setLabel( mw.message( 'bs-extendedsearch-search-center-options-sort-order').plain() );
+bs.extendedSearch.SortOrderLayout.prototype.setupOutlineItem = function () {
+	this.outlineItem.setLabel( mw.message( 'bs-extendedsearch-search-center-options-sort-order' ).plain() );
 };
 
-bs.extendedSearch.SortOrderLayout.prototype.getValue = function() {
+bs.extendedSearch.SortOrderLayout.prototype.getValue = function () {
 	return this.sortOrderInput.value;
 };
