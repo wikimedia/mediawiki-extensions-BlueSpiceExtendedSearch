@@ -1,5 +1,5 @@
-( function( $, mw ){
-	bs.extendedSearch.OperatorSuggest = function( cfg ) {
+( function ( $, mw ) {
+	bs.extendedSearch.OperatorSuggest = function ( cfg ) {
 		this.$element = $( '<div>' ).addClass( 'bs-extendedSearch-operator-suggest' );
 
 		if ( !mw.config.get( 'bsgESOfferOperatorSuggestion' ) ) {
@@ -9,7 +9,7 @@
 		this.lookup = cfg.lookup;
 		this.searchBar = cfg.searchBar;
 
-		var suggestedQuery = this.getSuggestedQuery();
+		const suggestedQuery = this.getSuggestedQuery();
 		if ( !suggestedQuery ) {
 			return;
 		}
@@ -26,37 +26,39 @@
 			click: 'onSuggestionFollowed'
 		} );
 
-
 		this.$element.append( this.suggestButton.$element );
 	};
 
 	OO.initClass( bs.extendedSearch.OperatorSuggest );
 
-	bs.extendedSearch.OperatorSuggest.prototype.getSuggestedQuery = function() {
-		var qs = this.lookup.getQueryString(),
-			query = ( qs.query || '' ).trim(),
-			defaultOperator = qs.default_operator || 'OR',
-			operatorRegex = /AND|OR/gm,
-			regexCheckRegex = /\/.*?\//gm,
-			quoteRegex = /\".*?\"/gm,
-			hasExplicit = false,
-			isRegex = false,
-			targetOperator = defaultOperator === 'AND' ? 'OR' : 'AND',
-			match, cnt = 0, replacements = {}, identifier;
+	bs.extendedSearch.OperatorSuggest.prototype.getSuggestedQuery = function () {
+		const qs = this.lookup.getQueryString();
+		let query = ( qs.query || '' ).trim();
+		const defaultOperator = qs.default_operator || 'OR';
+		const operatorRegex = /AND|OR/gm;
+		const regexCheckRegex = /\/.*?\//gm;
+		const quoteRegex = /".*?"/gm;
+		let hasExplicit = false;
+		let isRegex = false;
+		const targetOperator = defaultOperator === 'AND' ? 'OR' : 'AND';
+		let match;
+		let cnt = 0;
+		const replacements = {};
+		let identifier;
 
 		// Mask any quoted terms
-		while ( match = quoteRegex.exec( qs.query ) ) {
+		while ( match = quoteRegex.exec( qs.query ) ) { // eslint-disable-line no-cond-assign
 			cnt++;
 			if ( match.index === quoteRegex.lastIndex ) {
 				quoteRegex.lastIndex++;
 			}
 			identifier = '#Q' + cnt + 'Q#';
-			replacements[identifier] = match;
+			replacements[ identifier ] = match;
 			query = query.replace( match, identifier );
 		}
 
 		// If whole query is consisted only of quoted terms, return
-		if ( !query.replace( /\#Q(\d*)\#/, '' ).trim() ) {
+		if ( !query.replace( /#Q(\d*)#/, '' ).trim() ) {
 			return null;
 		}
 
@@ -68,32 +70,28 @@
 			return null;
 		}
 
-		var bits = query.split( ' ' ).map( function( i ) {
-			return i.trim();
-		} ).filter( function( i ) {
-			return i !== '';
-		} );
+		const bits = query.split( ' ' ).map( ( i ) => i.trim() ).filter( ( i ) => i !== '' );
 		// If only term is in the search term, return
 		if ( bits.length < 2 ) {
 			return null;
 		}
 
-		var final = bits.join( ' ' + targetOperator + ' ' ).trim();
+		let final = bits.join( ' ' + targetOperator + ' ' ).trim();
 		// Restore quoted parts
 		for ( identifier in replacements ) {
 			if ( !replacements.hasOwnProperty( identifier ) ) {
 				continue;
 			}
 
-			final = final.replace( identifier, replacements[identifier] );
+			final = final.replace( identifier, replacements[ identifier ] );
 		}
 
 		return final;
 	};
 
-	bs.extendedSearch.OperatorSuggest.prototype.onSuggestionFollowed = function() {
+	bs.extendedSearch.OperatorSuggest.prototype.onSuggestionFollowed = function () {
 		this.searchBar.changeValue( this.suggestedQuery );
 		this.searchBar.setValue( this.suggestedQuery );
 	};
 
-} )( jQuery, mediaWiki );
+}( jQuery, mediaWiki ) );

@@ -1,4 +1,4 @@
-(function ( mw, $, bs) {
+( function ( mw, $, bs ) {
 	bs.util.registerNamespace( 'bs.extendedsearch.report' );
 
 	bs.extendedsearch.report.SearchTermsReport = function ( cfg ) {
@@ -7,7 +7,7 @@
 
 	OO.inheritClass( bs.extendedsearch.report.SearchTermsReport, bs.aggregatedStatistics.report.ReportBase );
 
-	bs.extendedsearch.report.SearchTermsReport.static.label = mw.message( "bs-extendedsearch-statistics-report-search-terms" ).text();
+	bs.extendedsearch.report.SearchTermsReport.static.label = mw.message( 'bs-extendedsearch-statistics-report-search-terms' ).text();
 
 	bs.extendedsearch.report.SearchTermsReport.prototype.getFilters = function () {
 		return [];
@@ -27,4 +27,4 @@
 		};
 	};
 
-} )( mediaWiki, jQuery , blueSpice);
+}( mediaWiki, jQuery, blueSpice ) );

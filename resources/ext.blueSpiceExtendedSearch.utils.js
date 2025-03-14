@@ -1,38 +1,37 @@
-(function( mw, $, bs, d, undefined ){
+( function ( mw, $, bs, d, undefined ) { // eslint-disable-line no-shadow-restricted-names
 
 	function parseQueryString( source ) {
-		source = source.substr( 1 );
-		var parts = source.split( '&' );
-		var obj = {};
-		for( var i = 0; i < parts.length; i++ ) {
-			var kvpair = parts[i].split( '=' );
-			var key = decodeURIComponent( kvpair.shift() );
-			if( !key || key.length === 0 ) {
+		source = source.slice( 1 );
+		const parts = source.split( '&' );
+		const obj = {};
+		for ( let i = 0; i < parts.length; i++ ) {
+			const kvpair = parts[ i ].split( '=' );
+			const key = decodeURIComponent( kvpair.shift() );
+			if ( !key || key.length === 0 ) {
 				continue;
 			}
 
-			var rawValue = decodeURIComponent( kvpair.join( '=' ) );
-			var parsedValue = false;
+			const rawValue = decodeURIComponent( kvpair.join( '=' ) );
+			let parsedValue = false;
 			if ( rawValue.length > 0 ) {
 				try {
 					parsedValue = JSON.parse( rawValue );
-				}
-				catch (exception) {
+				} catch ( exception ) {
 					parsedValue = rawValue;
 				}
 			}
-			obj[key] = parsedValue;
+			obj[ key ] = parsedValue;
 		}
 
 		return obj;
 	}
 
 	function _getQueryStringParam( param, loc ) {
-		var location = loc || window.location;
-		var parts = parseQueryString( location.search );
+		const location = loc || window.location;
+		const parts = parseQueryString( location.search );
 
-		if( param in parts ) {
-			return parts[param];
+		if ( param in parts ) {
+			return parts[ param ];
 		}
 	}
 
@@ -40,56 +39,52 @@
 		if ( Array.isArray( params ) === false ) {
 			params = [ params ];
 		}
-		var search = location.search;
-		for( var i = 0; i < params.length; i++ ) {
+		let search = location.search;
+		for ( let i = 0; i < params.length; i++ ) {
 			search = search
-				.replace( new RegExp('[?&]' + params[i] + '=[^&#]*(#.*)?$' ), '$1' )
-				.replace( new RegExp('([?&])' + params[i] + '=[^&]*&'), '$1' );
+				.replace( new RegExp( '[?&]' + params[ i ] + '=[^&#]*(#.*)?$' ), '$1' )
+				.replace( new RegExp( '([?&])' + params[ i ] + '=[^&]*&' ), '$1' );
 		}
-		var newUrl = window.location.href.replace( window.location.search, search );
+		const newUrl = window.location.href.replace( window.location.search, search );
 		this.pushHistory(
 			newUrl
 		);
 	}
 
 	function _pushHistory( url ) {
-		window.history.replaceState( {path:url},'',url );
+		window.history.replaceState( { path: url }, '', url );
 	}
 	/**
-	 *
-	 * @param Location loc
-	 * @returns object
+	 * @param {Location} loc
+	 * @return {Object}
 	 */
 	function _getFragment( loc ) {
-		var location = loc || window.location;
+		const location = loc || window.location;
 
 		return parseQueryString( location.hash );
 	}
 
 	/**
-	 *
-	 * @param object obj
-	 * @param Location loc
-	 * @returns void
+	 * @param {Object} obj
 	 */
 	function _setFragment( obj ) {
-		var hashMap = {};
+		const hashMap = {};
 
-		for( var key in obj ) {
+		for ( const key in obj ) {
 			if ( !obj.hasOwnProperty( key ) ) {
 				continue;
 			}
-			var value = obj[key];
-			var encValue = JSON.stringify( value );
-			hashMap[key] = encValue;
+			const value = obj[ key ];
+			const encValue = JSON.stringify( value );
+			hashMap[ key ] = encValue;
 		}
 
-		history.replaceState( undefined, undefined, "#" + $.param( hashMap ) );
+		history.replaceState( undefined, undefined, '#' + $.param( hashMap ) );
 		$( window ).trigger( 'hashchange' );
 	}
 
 	function _clearFragment( loc ) {
-		var location = loc || window.location;
+		const location = loc || window.location;
 
 		location.hash = '';
 	}
@@ -99,14 +94,14 @@
 	}
 
 	function _getNamespaceNames( namespaces, id ) {
-		var names = [];
-		for( var namespaceName in namespaces ) {
-			if ( !namespaces.hasOwnProperty( namespaceName ) )  {
+		const names = [];
+		for ( const namespaceName in namespaces ) {
+			if ( !namespaces.hasOwnProperty( namespaceName ) ) {
 				continue;
 			}
-			var nsId = namespaces[namespaceName];
-			if( nsId === id ) {
-				var name = namespaceName.charAt(0).toUpperCase() + namespaceName.slice(1);
+			const nsId = namespaces[ namespaceName ];
+			if ( nsId === id ) {
+				let name = namespaceName.charAt( 0 ).toUpperCase() + namespaceName.slice( 1 );
 				name = name.replace( '_', ' ' );
 				names.push( name );
 			}
@@ -115,10 +110,10 @@
 	}
 
 	function _isMobile() {
-		//MobileFrontend is required to make this decision
-		//on load-time, it is not used, so we init correct type here
-		var $nav = $( '.calumma-mobile-visible' );
-		if ( $nav.is( ':visible' ) && window.innerWidth < 1000 ) {
+		// MobileFrontend is required to make this decision
+		// on load-time, it is not used, so we init correct type here
+		const $nav = $( '.calumma-mobile-visible' );
+		if ( $nav.is( ':visible' ) && window.innerWidth < 1000 ) { // eslint-disable-line no-jquery/no-sizzle
 			return true;
 		}
 
@@ -141,4 +136,4 @@
 		isMobile: _isMobile,
 		normalizeNamespaceName: _normalizeNamespaceName
 	};
-})( mediaWiki, jQuery, blueSpice, document );
+}( mediaWiki, jQuery, blueSpice, document ) );

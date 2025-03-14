@@ -1,7 +1,7 @@
-( function( mw, $, bs, d, undefined ){
-	bs.util.registerNamespace( "bs.extendedSearch.mixin" );
+( function ( mw, $, bs ) {
+	bs.util.registerNamespace( 'bs.extendedSearch.mixin' );
 
-	bs.extendedSearch.ResultRedirectWidget = function( cfg, mobile ) {
+	bs.extendedSearch.ResultRedirectWidget = function ( cfg, mobile ) {
 		cfg = cfg || {};
 
 		bs.extendedSearch.ResultRedirectWidget.parent.call( this, cfg, mobile );
@@ -22,6 +22,6 @@
 		this.$element.addClass( 'redirect' );
 	};
 
-	OO.inheritClass( bs.extendedSearch.ResultRedirectWidget,  bs.extendedSearch.ResultWidget );
+	OO.inheritClass( bs.extendedSearch.ResultRedirectWidget, bs.extendedSearch.ResultWidget );
 
-} )( mediaWiki, jQuery, blueSpice, document );
+}( mediaWiki, jQuery, blueSpice ) );

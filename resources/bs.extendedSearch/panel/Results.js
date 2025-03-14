@@ -1,5 +1,5 @@
-( function( mw, $, bs, d, undefined ) {
-	bs.extendedSearch.ResultsPanel = function( cfg ) {
+( function ( $, bs ) {
+	bs.extendedSearch.ResultsPanel = function ( cfg ) {
 		cfg = cfg || {};
 
 		this.$element = cfg.$element;
@@ -9,7 +9,7 @@
 		this.results = cfg.results;
 		this.total = cfg.total;
 		this.spellcheck = cfg.spellcheck;
-		this.total_approximated = cfg.total_approximated;
+		this.total_approximated = cfg.total_approximated; // eslint-disable-line camelcase
 		this.searchAfter = cfg.searchAfter;
 
 		this.externalResults = cfg.externalResults || false;
@@ -26,13 +26,13 @@
 
 	OO.inheritClass( bs.extendedSearch.ResultsPanel, OO.ui.Widget );
 
-	bs.extendedSearch.ResultsPanel.prototype.showResults = function() {
+	bs.extendedSearch.ResultsPanel.prototype.showResults = function () {
 		this.addResultsInternally( this.results );
 		this.addLoadMoreButton();
 	};
 
-	bs.extendedSearch.ResultsPanel.prototype.addLoadMoreButton = function() {
-		if( this.total <= Object.keys( this.displayedResults ).length ) {
+	bs.extendedSearch.ResultsPanel.prototype.addLoadMoreButton = function () {
+		if ( this.total <= Object.keys( this.displayedResults ).length ) {
 			return;
 		}
 		this.loadMoreButton = new bs.extendedSearch.LoadMoreButtonWidget();
@@ -40,29 +40,29 @@
 		this.$element.append( this.loadMoreButton.$element );
 	};
 
-	bs.extendedSearch.ResultsPanel.prototype.appendResult = function( resultWidget ) {
-		this.displayedResults[resultWidget.getId()] = resultWidget.getRawResult();
+	bs.extendedSearch.ResultsPanel.prototype.appendResult = function ( resultWidget ) {
+		this.displayedResults[ resultWidget.getId() ] = resultWidget.getRawResult();
 		this.$element.append( resultWidget.$element );
 	};
 
-	bs.extendedSearch.ResultsPanel.prototype.getDisplayedResults = function() {
+	bs.extendedSearch.ResultsPanel.prototype.getDisplayedResults = function () {
 		return this.displayedResults;
 	};
 
-	bs.extendedSearch.ResultsPanel.prototype.getSearchAfter = function() {
+	bs.extendedSearch.ResultsPanel.prototype.getSearchAfter = function () {
 		return this.searchAfter;
 	};
 
-	bs.extendedSearch.ResultsPanel.prototype.addResultsInternally = function( results ) {
-		var me = this;
+	bs.extendedSearch.ResultsPanel.prototype.addResultsInternally = function ( results ) {
+		const me = this;
 
-		$.each( results, function( idx, cfg ) {
-			var resultWidget;
+		$.each( results, ( idx, cfg ) => { // eslint-disable-line no-jquery/no-each-util
+			let resultWidget;
 
-			if( me.externalResults ) {
+			if ( me.externalResults ) {
 				cfg.isExternal = true;
 			}
-			if( cfg.is_redirect ) {
+			if ( cfg.is_redirect ) {
 				resultWidget = new bs.extendedSearch.ResultRedirectWidget( cfg, me.mobile );
 			} else {
 				resultWidget = new bs.extendedSearch.ResultWidget( cfg, me.mobile );
@@ -73,29 +73,29 @@
 		this.emit( 'resultsAdded', results );
 	};
 
-	bs.extendedSearch.ResultsPanel.prototype.loadMoreResults = function( e ) {
+	bs.extendedSearch.ResultsPanel.prototype.loadMoreResults = function ( e ) { // eslint-disable-line no-unused-vars
 		this.loadMoreButton.showLoading();
-		if( !this.searchAfter ) {
+		if ( !this.searchAfter ) {
 			this.loadMoreButton.error();
 			return;
 		}
 
-		//We don't want to touch original lookup set in the URL hash
-		var loadMoreLookup = $.extend( true, {}, this.lookup );
+		// We don't want to touch original lookup set in the URL hash
+		const loadMoreLookup = $.extend( true, {}, this.lookup );
 		loadMoreLookup.setSearchAfter( this.searchAfter );
 
-		var newResultsPromise = bs.extendedSearch.SearchCenter.runApiCall( {
+		const newResultsPromise = bs.extendedSearch.SearchCenter.runApiCall( {
 			q: JSON.stringify( loadMoreLookup )
 		} );
 
-		var me = this;
-		newResultsPromise.done( function( response ) {
-			if( response.exception ) {
+		const me = this;
+		newResultsPromise.done( ( response ) => {
+			if ( response.exception ) {
 				return me.loadMoreButton.error();
 			}
 			me.searchAfter = response.search_after || null;
 
-			var results = bs.extendedSearch.SearchCenter.applyResultsToStructure(
+			const results = bs.extendedSearch.SearchCenter.applyResultsToStructure(
 				response.results
 			);
 
@@ -106,4 +106,4 @@
 		} );
 	};
 
-} )( mediaWiki, jQuery, blueSpice, document );
+}( jQuery, blueSpice ) );

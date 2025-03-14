@@ -1,10 +1,9 @@
-(function( mw, $, bs, d, undefined ){
-
+( function ( mw, $, bs ) {
 
 	bs.extendedSearch = {
 		_registerTrackableLinks: function () {
 			$( '.bs-traceable-link' ).each( function () {
-				var $a = $( this ),
+				const $a = $( this ),
 					data = $a.data( 'bs-traceable-page' );
 
 				function openLink( url, inNew ) {
@@ -19,7 +18,7 @@
 						openLink( $a.attr( 'href' ), shouldOpenInNew( e ) );
 						return;
 					}
-					bs.extendedSearch._trackLink( data ).always( function() {
+					bs.extendedSearch._trackLink( data ).always( () => {
 						openLink( $a.attr( 'href' ), shouldOpenInNew( e ) );
 					} );
 				}
@@ -29,7 +28,7 @@
 				}
 
 				if ( $a.hasClass( 'bs-recently-found-suggestion' ) ) {
-					var ignoreButton = new OO.ui.ButtonWidget( {
+					const ignoreButton = new OO.ui.ButtonWidget( {
 						framed: false,
 						icon: 'close',
 						classes: [ 'bs-extendedsearch-recentlyfound-ignore-button' ],
@@ -38,21 +37,21 @@
 						tabIndex: -1
 					} );
 					ignoreButton.connect( ignoreButton, {
-						click: function() {
+						click: function () {
 							this.setDisabled( true );
-							bs.extendedSearch._untrackLink( data ).done( function() {
+							bs.extendedSearch._untrackLink( data ).done( () => {
 								bs.extendedSearch.Autocomplete._instance.focusSearchBox();
-								this.$element.parent().fadeOut( 'normal', function() {
+								this.$element.parent().fadeOut( 'normal', function () { // eslint-disable-line no-jquery/no-fade
 									$( this ).remove();
 								} );
-							}.bind( this ) ).fail ( function( e ) {
-								console.error( e );
+							} ).fail( ( e ) => {
+								console.error( e ); // eslint-disable-line no-console
 							} );
 						}
 					} );
 					ignoreButton.$element.insertAfter( $a );
 				}
-				$a.on( 'click', function ( e ) {
+				$a.on( 'click', ( e ) => {
 					e.preventDefault();
 					e.stopPropagation();
 					doTrack( e );
@@ -75,32 +74,32 @@
 		_getRecentlyFound: function () {
 			return bs.extendedSearch._rest( 'recentlyfound' );
 		},
-		_rest: function( path, data, method ) {
+		_rest: function ( path, data, method ) {
 			data = data || {};
-			var dfd = $.Deferred();
+			const dfd = $.Deferred();
 
 			$.ajax( {
 				method: method,
 				url: mw.util.wikiScript( 'rest' ) + '/bluespice/extendedsearch/' + path,
 				data: data,
-				contentType: "application/json",
-				dataType: 'json',
-			} ).done( function( response ) {
+				contentType: 'application/json',
+				dataType: 'json'
+			} ).done( ( response ) => {
 				if ( response.success === false ) {
 					dfd.reject();
 					return;
 				}
 				dfd.resolve( response );
-			}.bind( this ) ).fail( function( jgXHR, type, status ) {
+			} ).fail( ( jgXHR, type, status ) => {
 				if ( type === 'error' ) {
 					dfd.reject( {
 						error: jgXHR.responseJSON || jgXHR.responseText
 					} );
 				}
 				dfd.reject( { type: type, status: status } );
-			}.bind( this ) );
+			} );
 
 			return dfd.promise();
 		}
 	};
-})( mediaWiki, jQuery, blueSpice, document );
+}( mediaWiki, jQuery, blueSpice ) );

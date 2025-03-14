@@ -1,22 +1,26 @@
-( function( mw, $, bs, d, undefined ){
+/* eslint-disable camelcase */
+( function ( mw, $, bs, d ) {
+	const search = bs.extendedSearch.SearchCenter;
+	let searchBar;
+
 	/**
 	 * Makes config object for special Type filter
 	 * This filter contains different results types (one for each source)
 	 * that can be filtered
 	 *
-	 * @returns {Array}
+	 * @return {Array}
 	 */
 	function _getTypeFilter() {
 		if ( !mw.config.get( 'bsgESEnableTypeFilter' ) ) {
 			return [];
 		}
-		var availableTypes = mw.config.get( 'bsgESAvailableTypes' );
+		const availableTypes = mw.config.get( 'bsgESAvailableTypes' );
 
-		if( availableTypes.length === 0 ) {
+		if ( availableTypes.length === 0 ) {
 			return [];
 		}
 
-		var typeFilter = {
+		const typeFilter = {
 			label: mw.message( 'bs-extendedsearch-search-center-filter-type-label' ).plain(),
 			filter: {
 				label: mw.message( 'bs-extendedsearch-search-center-filter-type-label' ).plain(),
@@ -28,11 +32,11 @@
 			}
 		};
 
-		for( var idx = 0; idx < availableTypes.length; idx++ ) {
-			var type = availableTypes[idx];
-			var message = type;
-			if( mw.message( 'bs-extendedsearch-source-type-' + type + '-label' ).exists()  ) {
-				message = mw.message( 'bs-extendedsearch-source-type-' + type + '-label' ).plain();
+		for ( let idx = 0; idx < availableTypes.length; idx++ ) {
+			const type = availableTypes[ idx ];
+			let message = type;
+			if ( mw.message( 'bs-extendedsearch-source-type-' + type + '-label' ).exists() ) { // eslint-disable-line mediawiki/msg-doc
+				message = mw.message( 'bs-extendedsearch-source-type-' + type + '-label' ).plain(); // eslint-disable-line mediawiki/msg-doc
 			}
 
 			typeFilter.filter.options.push( {
@@ -49,20 +53,20 @@
 	 * from aggregations returned by the search
 	 *
 	 * @param {Object} rawFilters
-	 * @returns {Array}
+	 * @return {Array}
 	 */
 	function _getFilters( rawFilters ) {
-		var filters = [];
-		for( var filterId in rawFilters ) {
+		const filters = [];
+		for ( const filterId in rawFilters ) {
 			if ( !rawFilters.hasOwnProperty( filterId ) ) {
 				continue;
 			}
-			var rawFilter = rawFilters[filterId];
-			//TODO: Change this with some mechanism to get label keys
-			var labelFilterId = filterId.replace( '.', '-' );
-			var label = rawFilter.label || mw.message( 'bs-extendedsearch-search-center-filter-' + labelFilterId + '-label' ).plain();
-			var valueLabel = rawFilter.valueLabel || mw.message( 'bs-extendedsearch-search-center-filter-' + labelFilterId + '-with-values-label' ).plain();
-			var filter = {
+			const rawFilter = rawFilters[ filterId ];
+			// TODO: Change this with some mechanism to get label keys
+			const labelFilterId = filterId.replace( '.', '-' );
+			const label = rawFilter.label || mw.message( 'bs-extendedsearch-search-center-filter-' + labelFilterId + '-label' ).plain(); // eslint-disable-line mediawiki/msg-doc
+			const valueLabel = rawFilter.valueLabel || mw.message( 'bs-extendedsearch-search-center-filter-' + labelFilterId + '-with-values-label' ).plain(); // eslint-disable-line mediawiki/msg-doc
+			const filter = {
 				label: label,
 				group: rawFilter.group || 'root',
 				filter: {
@@ -79,8 +83,8 @@
 			if ( !Array.isArray( rawFilter.buckets ) ) {
 				continue;
 			}
-			for( var i = 0; i < rawFilter.buckets.length; i++ ) {
-				var bucket = rawFilter.buckets[i];
+			for ( let i = 0; i < rawFilter.buckets.length; i++ ) {
+				const bucket = rawFilter.buckets[ i ];
 				filter.filter.options.push( {
 					label: bucket.label || bucket.key,
 					data: bucket.key,
@@ -97,14 +101,14 @@
 	 * returned by search
 	 *
 	 * @param {Array} results
-	 * @returns {Array}
+	 * @return {Array}
 	 */
 	function _applyResultsToStructure( results ) {
-		var resultStructures = mw.config.get( 'bsgESResultStructures' );
-		var structuredResults = [];
+		const resultStructures = mw.config.get( 'bsgESResultStructures' );
+		const structuredResults = [];
 
-		$.each( results, function( idx, result ) {
-			if( result.is_redirect ) {
+		$.each( results, ( idx, result ) => { // eslint-disable-line no-jquery/no-each-util
+			if ( result.is_redirect ) {
 				structuredResults.push( {
 					is_redirect: true,
 					page_anchor: result.page_anchor,
@@ -116,28 +120,28 @@
 				} );
 				return;
 			}
-			var resultStructure = resultStructures[result["type"]];
-			var cfg = {};
-			//dummy criteria for featured - prototype only
-			if( result.featured == 1 ) {
+			const resultStructure = resultStructures[ result.type ];
+			const cfg = {};
+			// dummy criteria for featured - prototype only
+			if ( result.featured == 1 ) { // eslint-disable-line eqeqeq
 				cfg.featured = true;
 			}
 
-			for( var cfgKey in resultStructure ) {
+			for ( const cfgKey in resultStructure ) {
 				if ( !resultStructure.hasOwnProperty( cfgKey ) ) {
 					continue;
 				}
-				if( cfgKey === 'secondaryInfos' ) {
-					cfg[cfgKey] = {
+				if ( cfgKey === 'secondaryInfos' ) {
+					cfg[ cfgKey ] = {
 						top: {
 							items: search.formatSecondaryInfoItems(
-								resultStructure[cfgKey]['top']['items'],
+								resultStructure[ cfgKey ].top.items,
 								result
 							)
 						},
 						bottom: {
 							items: search.formatSecondaryInfoItems(
-								resultStructure[cfgKey]['bottom']['items'],
+								resultStructure[ cfgKey ].bottom.items,
 								result
 							)
 						}
@@ -145,25 +149,25 @@
 					continue;
 				}
 
-				var resultKey = resultStructure[ cfgKey ];
-				var keyValue = search.getResultValueByKey( result, resultKey );
-				if( keyValue !== false ) {
-					cfg[cfgKey] = keyValue;
+				const resultKey = resultStructure[ cfgKey ];
+				const keyValue = search.getResultValueByKey( result, resultKey );
+				if ( keyValue !== false ) {
+					cfg[ cfgKey ] = keyValue;
 				}
 			}
 
-			//override values for featured results
-			if( cfg.featured === true ) {
-				for( var featuredField in resultStructure['featured'] ) {
-					if ( !resultStructure['featured'].hasOwnProperty( featuredField ) ) {
+			// override values for featured results
+			if ( cfg.featured === true ) {
+				for ( const featuredField in resultStructure.featured ) {
+					if ( !resultStructure.featured.hasOwnProperty( featuredField ) ) {
 						continue;
 					}
-					var resultKey = resultStructure['featured'][featuredField];
-					var keyValue = search.getResultValueByKey( result, resultKey );
-					if( !( keyValue ) ) {
+					const resultKey = resultStructure.featured[ featuredField ];
+					const keyValue = search.getResultValueByKey( result, resultKey );
+					if ( !( keyValue ) ) {
 						continue;
 					}
-					cfg[featuredField] = keyValue;
+					cfg[ featuredField ] = keyValue;
 				}
 			}
 
@@ -181,19 +185,19 @@
 	 *
 	 * @param {Array} items
 	 * @param {Array} result
-	 * @returns {Array}
+	 * @return {Array}
 	 */
 	function _formatSecondaryInfoItems( items, result ) {
-		var formattedItems = [];
+		const formattedItems = [];
 
-		for( var i = 0; i < items.length; i++ ) {
-			var item = items[i];
-			if( !( item.name in result ) ) {
+		for ( let i = 0; i < items.length; i++ ) {
+			const item = items[ i ];
+			if ( !( item.name in result ) ) {
 				continue;
 			}
 
-			var keyValue = search.getResultValueByKey( result, item.name );
-			if( !keyValue || ( Array.isArray( keyValue ) &&  keyValue.length === 0 ) ) {
+			const keyValue = search.getResultValueByKey( result, item.name );
+			if ( !keyValue || ( Array.isArray( keyValue ) && keyValue.length === 0 ) ) {
 				continue;
 			}
 
@@ -214,34 +218,34 @@
 	 *
 	 * @param {Array} result
 	 * @param {string} key
-	 * @returns {string}|false if not present
+	 * @return {string}|false if not present
 	 */
 	function _getResultValueByKey( result, key ) {
-		var value = false;
-		if( typeof( key ) !== 'string' ) {
+		let value = false;
+		if ( typeof ( key ) !== 'string' ) {
 			return value;
 		}
 
-		var keyBits = key.split( '.' );
-		for( var i = 0; i < keyBits.length; i++ ) {
-			var keyBit = keyBits[i];
-			if( result[keyBit] ) {
-				result = result[keyBit];
+		const keyBits = key.split( '.' );
+		for ( let i = 0; i < keyBits.length; i++ ) {
+			const keyBit = keyBits[ i ];
+			if ( result[ keyBit ] ) {
+				result = result[ keyBit ];
 				value = result;
 			}
 		}
-		if( value === '' ) {
+		if ( value === '' ) {
 			value = false;
 		}
 
 		return value;
 	}
 
-	var api = new mw.Api();
+	const api = new mw.Api();
 	function _execSearch() {
-		var $resultCnt = $( '#bs-es-results' );
-		var $toolsCnt = $( '#bs-es-tools' );
-		var $altSearchCnt = $( '#bs-es-alt-search' );
+		const $resultCnt = $( '#bs-es-results' );
+		const $toolsCnt = $( '#bs-es-tools' );
+		const $altSearchCnt = $( '#bs-es-alt-search' );
 
 		$resultCnt.children().remove();
 		$toolsCnt.children().remove();
@@ -249,8 +253,8 @@
 		$altSearchCnt.children().remove();
 		search.showLoading();
 
-		var queryData = bs.extendedSearch.utils.getFragment();
-		if( $.isEmptyObject( queryData ) || searchBar.$searchBox.val() === '' ) {
+		const queryData = bs.extendedSearch.utils.getFragment();
+		if ( $.isEmptyObject( queryData ) || searchBar.$searchBox.val() === '' ) {
 			search.removeLoading();
 			$resultCnt.append( new bs.extendedSearch.ResultMessage( {
 				mode: 'help'
@@ -260,43 +264,43 @@
 		}
 		queryData.searchTerm = searchBar.$searchBox.val();
 
-		var searchPromise = this.runApiCall( queryData );
+		const searchPromise = this.runApiCall( queryData );
 
 		$( d ).trigger( 'BSExtendedSearchSearchCenterExecSearch', [ queryData, search ] );
 
-		searchPromise.done( function( response ) {
-			if( response.exception ) {
+		searchPromise.done( ( response ) => {
+			if ( response.exception ) {
 				search.removeLoading();
 				$resultCnt.trigger( 'resultsReady' );
 				return $resultCnt.append( new bs.extendedSearch.ResultMessage( {
 					mode: 'error'
 				} ).$element );
 			}
-			//Lookup object might have changed due to LookupModifiers
+			// Lookup object might have changed due to LookupModifiers
 			search.makeLookup( JSON.parse( response.lookup ) );
 
-			var term = this.getLookupObject().getQueryString().query || '';
-			var hitCount = new bs.extendedSearch.HitCountWidget( {
+			const term = this.getLookupObject().getQueryString().query || '';
+			const hitCount = new bs.extendedSearch.HitCountWidget( {
 				term: term,
 				count: response.total,
 				total_approximated: response.total_approximated,
 				spellCheck: response.spellcheck || false
 			} );
 
-			var spellCheck = new bs.extendedSearch.SpellcheckWidget( response.spellcheck );
+			const spellCheck = new bs.extendedSearch.SpellcheckWidget( response.spellcheck );
 			spellCheck.$element.on( 'forceSearchTerm', this.forceSearchTerm.bind( this ) );
-			if( bs.extendedSearch.utils.isMobile() ) {
+			if ( bs.extendedSearch.utils.isMobile() ) {
 				$altSearchCnt.addClass( 'mobile' );
 			}
 			$altSearchCnt.append( spellCheck.$element );
 
-			var suggestOperator = new bs.extendedSearch.OperatorSuggest( {
+			const suggestOperator = new bs.extendedSearch.OperatorSuggest( {
 				lookup: search.getLookupObject(),
 				searchBar: searchBar
 			} );
 			$altSearchCnt.append( suggestOperator.$element );
 
-			var toolsPanel = new bs.extendedSearch.ToolsPanel( {
+			const toolsPanel = new bs.extendedSearch.ToolsPanel( {
 				lookup: search.getLookupObject(),
 				filterData: $.merge(
 					search.getTypeFilter(),
@@ -310,7 +314,7 @@
 			$toolsCnt.append( toolsPanel.$element );
 			toolsPanel.init();
 
-			if( response.total === 0 ) {
+			if ( response.total === 0 ) {
 				search.removeLoading();
 				$resultCnt.trigger( 'resultsReady' );
 				return $resultCnt.append( new bs.extendedSearch.ResultMessage( {
@@ -318,7 +322,7 @@
 				} ).$element );
 			}
 
-			var resultPanel = new bs.extendedSearch.ResultsPanel( {
+			const resultPanel = new bs.extendedSearch.ResultsPanel( {
 				$element: $resultCnt,
 				results: search.applyResultsToStructure( response.results ),
 				total: response.total,
@@ -328,7 +332,7 @@
 				mobile: bs.extendedSearch.utils.isMobile(),
 				searchAfter: response.search_after || []
 			} );
-			resultPanel.on( 'resultsAdded', function( resultsAdded ) {
+			resultPanel.on( 'resultsAdded', ( resultsAdded ) => {
 				$resultCnt.trigger( 'resultsUpdated', [ resultPanel, resultsAdded ] );
 			} );
 			$resultCnt.append( resultPanel.$element );
@@ -336,22 +340,22 @@
 			bs.extendedSearch._registerTrackableLinks();
 			$resultCnt.trigger( 'resultsReady', [ resultPanel ] );
 			search.removeLoading();
-			$( resultPanel.$element.children()[0] ).find( 'a' )[0].focus();
+			$( resultPanel.$element.children()[ 0 ] ).find( 'a' )[ 0 ].focus();
 			// Done afterwards to announce properly
 			hitCount.init();
-		}.bind( this ) );
+		} );
 	}
 
 	function _showLoading() {
-		if( $( '.bs-extendedsearch-searchcenter-loading' ).length > 0 ) {
+		if ( $( '.bs-extendedsearch-searchcenter-loading' ).length > 0 ) {
 			return;
 		}
 
-		var pbWidget = new OO.ui.ProgressBarWidget( {
+		const pbWidget = new OO.ui.ProgressBarWidget( {
 			progress: false
 		} );
 
-		//Insert loader before results div to avoid reseting it
+		// Insert loader before results div to avoid reseting it
 		$( '#bs-es-results' ).before(
 			$( '<div>' )
 				.addClass( 'bs-extendedsearch-searchcenter-loading' )
@@ -369,10 +373,10 @@
 		action = action || 'bs-extendedsearch-query';
 
 		api.abort();
-		return api.get( $.extend(
+		return api.get( $.extend( // eslint-disable-line no-jquery/no-extend
 			queryData,
 			{
-				'action': action
+				action: action
 			}
 		) );
 	}
@@ -390,8 +394,8 @@
 	}
 
 	function _getLookupObject() {
-		if( !this.lookup ) {
-			this.makeLookup({});
+		if ( !this.lookup ) {
+			this.makeLookup( {} );
 		}
 		return this.lookup;
 	}
@@ -405,15 +409,15 @@
 		if ( options.pageSize ) {
 			this.lookup.setSize( parseInt( options.pageSize ) );
 		} else if ( this.lookup.getSize() === 0 ) {
-			//set default value for page size - prevent zero size pages
+			// set default value for page size - prevent zero size pages
 			this.lookup.setSize( mw.config.get( 'bsgESResultsPerPage' ) );
 		}
 		if ( options.sortBy ) {
 			this.lookup.sort = [];
-			for( var i = 0; i < options.sortBy.length; i++ ) {
-				this.lookup.addSort( options.sortBy[i], options.sortOrder );
+			for ( let i = 0; i < options.sortBy.length; i++ ) {
+				this.lookup.addSort( options.sortBy[ i ], options.sortOrder );
 			}
-		} else if( this.lookup.getSort().length === 0 ) {
+		} else if ( this.lookup.getSort().length === 0 ) {
 			this.lookup.addSort( '_score', bs.extendedSearch.Lookup.SORT_DESC );
 		}
 
@@ -427,12 +431,15 @@
 	/**
 	 * Handles term forcing from spellcheck -
 	 * if user decides to override auto spellcheck
+	 *
+	 * @param {Event} e
+	 * @param {Object} params
 	 */
 	function _forceSearchTerm( e, params ) {
-		//Start fresh search
+		// Start fresh search
 		this.clearLookupObject();
 		this.getLookupObject().setQueryString( params.term );
-		if( params.force ) {
+		if ( params.force ) {
 			this.getLookupObject().setForceTerm();
 		}
 		searchBar.setValue( params.term );
@@ -442,9 +449,9 @@
 
 	function updateQueryHash( lookup ) {
 		lookup = lookup || search.getLookupObject();
-		bs.extendedSearch.utils.setFragment({
+		bs.extendedSearch.utils.setFragment( {
 			q: JSON.stringify( lookup )
-		});
+		} );
 	}
 
 	bs.extendedSearch.SearchCenter = {
@@ -465,10 +472,8 @@
 		removeLoading: _removeLoading
 	};
 
-	var search = bs.extendedSearch.SearchCenter;
-	var searchBar;
-	$( function() {
-		//Init searchBar and wire it up
+	$( () => {
+		// Init searchBar and wire it up
 		searchBar = new bs.extendedSearch.SearchBar( {
 			useNamespacePills: false,
 			useSubpagePills: false,
@@ -476,41 +481,40 @@
 			isSearchCenter: true
 		} );
 
-		searchBar.$searchForm.on( 'submit', function (e) {
+		searchBar.$searchForm.on( 'submit', ( e ) => {
 			e.preventDefault();
 			bs.extendedSearch.SearchCenter.execSearch();
 		} );
 
-
-		searchBar.on( 'valueChanged', function () {
+		searchBar.on( 'valueChanged', () => {
 			search.getLookupObject().removeForceTerm();
 			search.getLookupObject().setQueryString( searchBar.value );
 			search.updateQueryHash();
 		} );
 
-		searchBar.on( 'clearSearch', function () {
+		searchBar.on( 'clearSearch', () => {
 			search.clearLookupObject();
 			bs.extendedSearch.utils.clearFragment();
 		} );
 
-		//Init lookup object - get lookup config any way possible
-		var fragmentParams = bs.extendedSearch.utils.getFragment();
-		var updateHash = true;
-		var config;
+		// Init lookup object - get lookup config any way possible
+		const fragmentParams = bs.extendedSearch.utils.getFragment();
+		let updateHash = true;
+		let config;
 
-		if ( "q" in fragmentParams ) {
-			//Try getting lookup from fragment - it has top prio
+		if ( 'q' in fragmentParams ) {
+			// Try getting lookup from fragment - it has top prio
 			config = JSON.parse( fragmentParams.q );
 			updateHash = false;
 		} else {
-			//Get lookup configuration from pre-set variable
+			// Get lookup configuration from pre-set variable
 			config = JSON.parse( mw.config.get( 'bsgLookupConfig' ) );
 		}
 
 		if ( $.isEmptyObject( config ) === false ) {
 			search.makeLookup( config );
-			//Update searchBar if page is loaded with query present
-			var query = search.getLookupObject().getQueryString();
+			// Update searchBar if page is loaded with query present
+			const query = search.getLookupObject().getQueryString();
 			if ( query ) {
 				searchBar.setValue( query.query );
 			}
@@ -519,16 +523,16 @@
 			}
 
 			// Remove query string params passed once we set the hash
-			bs.extendedSearch.utils.removeQueryStringParams( ['q', 'raw_term', 'fulltext'] );
+			bs.extendedSearch.utils.removeQueryStringParams( [ 'q', 'raw_term', 'fulltext' ] );
 		}
 
 		bs.extendedSearch.SearchCenter.execSearch();
 
-		$( window ).on( 'hashchange', function() {
+		$( window ).on( 'hashchange', () => {
 			bs.extendedSearch.SearchCenter.execSearch();
 		} );
 
 		$( d ).trigger( 'BSExtendedSearchInit', [ search, searchBar ] );
 	} );
 
-} )( mediaWiki, jQuery, blueSpice, document );
+}( mediaWiki, jQuery, blueSpice, document ) );
