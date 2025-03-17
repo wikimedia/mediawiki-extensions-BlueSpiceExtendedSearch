@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 ( function ( mw, $, bs, d ) {
-	const search = bs.extendedSearch.SearchCenter;
 	let searchBar;
 
 	/**
@@ -123,7 +122,7 @@
 			const resultStructure = resultStructures[ result.type ];
 			const cfg = {};
 			// dummy criteria for featured - prototype only
-			if ( result.featured == 1 ) { // eslint-disable-line eqeqeq
+			if ( result.featured === 1 ) {
 				cfg.featured = true;
 			}
 
@@ -134,13 +133,13 @@
 				if ( cfgKey === 'secondaryInfos' ) {
 					cfg[ cfgKey ] = {
 						top: {
-							items: search.formatSecondaryInfoItems(
+							items: bs.extendedSearch.SearchCenter.formatSecondaryInfoItems(
 								resultStructure[ cfgKey ].top.items,
 								result
 							)
 						},
 						bottom: {
-							items: search.formatSecondaryInfoItems(
+							items: bs.extendedSearch.SearchCenter.formatSecondaryInfoItems(
 								resultStructure[ cfgKey ].bottom.items,
 								result
 							)
@@ -150,7 +149,7 @@
 				}
 
 				const resultKey = resultStructure[ cfgKey ];
-				const keyValue = search.getResultValueByKey( result, resultKey );
+				const keyValue = bs.extendedSearch.SearchCenter.getResultValueByKey( result, resultKey );
 				if ( keyValue !== false ) {
 					cfg[ cfgKey ] = keyValue;
 				}
@@ -163,7 +162,7 @@
 						continue;
 					}
 					const resultKey = resultStructure.featured[ featuredField ];
-					const keyValue = search.getResultValueByKey( result, resultKey );
+					const keyValue = bs.extendedSearch.SearchCenter.getResultValueByKey( result, resultKey );
 					if ( !( keyValue ) ) {
 						continue;
 					}
@@ -196,7 +195,7 @@
 				continue;
 			}
 
-			const keyValue = search.getResultValueByKey( result, item.name );
+			const keyValue = bs.extendedSearch.SearchCenter.getResultValueByKey( result, item.name );
 			if ( !keyValue || ( Array.isArray( keyValue ) && keyValue.length === 0 ) ) {
 				continue;
 			}
@@ -251,11 +250,11 @@
 		$toolsCnt.children().remove();
 		$toolsCnt.removeClass( 'bs-es-tools' );
 		$altSearchCnt.children().remove();
-		search.showLoading();
+		bs.extendedSearch.SearchCenter.showLoading();
 
 		const queryData = bs.extendedSearch.utils.getFragment();
 		if ( $.isEmptyObject( queryData ) || searchBar.$searchBox.val() === '' ) {
-			search.removeLoading();
+			bs.extendedSearch.SearchCenter.removeLoading();
 			$resultCnt.append( new bs.extendedSearch.ResultMessage( {
 				mode: 'help'
 			} ).$element );
@@ -266,18 +265,18 @@
 
 		const searchPromise = this.runApiCall( queryData );
 
-		$( d ).trigger( 'BSExtendedSearchSearchCenterExecSearch', [ queryData, search ] );
+		$( d ).trigger( 'BSExtendedSearchSearchCenterExecSearch', [ queryData, bs.extendedSearch.SearchCenter ] );
 
 		searchPromise.done( ( response ) => {
 			if ( response.exception ) {
-				search.removeLoading();
+				bs.extendedSearch.SearchCenter.removeLoading();
 				$resultCnt.trigger( 'resultsReady' );
 				return $resultCnt.append( new bs.extendedSearch.ResultMessage( {
 					mode: 'error'
 				} ).$element );
 			}
 			// Lookup object might have changed due to LookupModifiers
-			search.makeLookup( JSON.parse( response.lookup ) );
+			bs.extendedSearch.SearchCenter.makeLookup( JSON.parse( response.lookup ) );
 
 			const term = this.getLookupObject().getQueryString().query || '';
 			const hitCount = new bs.extendedSearch.HitCountWidget( {
@@ -295,18 +294,18 @@
 			$altSearchCnt.append( spellCheck.$element );
 
 			const suggestOperator = new bs.extendedSearch.OperatorSuggest( {
-				lookup: search.getLookupObject(),
+				lookup: bs.extendedSearch.SearchCenter.getLookupObject(),
 				searchBar: searchBar
 			} );
 			$altSearchCnt.append( suggestOperator.$element );
 
 			const toolsPanel = new bs.extendedSearch.ToolsPanel( {
-				lookup: search.getLookupObject(),
+				lookup: bs.extendedSearch.SearchCenter.getLookupObject(),
 				filterData: $.merge(
-					search.getTypeFilter(),
-					search.getFilters( response.filters )
+					bs.extendedSearch.SearchCenter.getTypeFilter(),
+					bs.extendedSearch.SearchCenter.getFilters( response.filters )
 				),
-				caller: search,
+				caller: bs.extendedSearch.SearchCenter,
 				mobile: bs.extendedSearch.utils.isMobile(),
 				defaultFilters: mw.config.get( 'ESSearchCenterDefaultFilters' ),
 				hitCounter: hitCount
@@ -315,7 +314,7 @@
 			toolsPanel.init();
 
 			if ( response.total === 0 ) {
-				search.removeLoading();
+				bs.extendedSearch.SearchCenter.removeLoading();
 				$resultCnt.trigger( 'resultsReady' );
 				return $resultCnt.append( new bs.extendedSearch.ResultMessage( {
 					mode: 'noResults'
@@ -324,10 +323,10 @@
 
 			const resultPanel = new bs.extendedSearch.ResultsPanel( {
 				$element: $resultCnt,
-				results: search.applyResultsToStructure( response.results ),
+				results: bs.extendedSearch.SearchCenter.applyResultsToStructure( response.results ),
 				total: response.total,
 				spellcheck: response.spellcheck,
-				caller: search,
+				caller: bs.extendedSearch.SearchCenter,
 				total_approximated: response.total_approximated,
 				mobile: bs.extendedSearch.utils.isMobile(),
 				searchAfter: response.search_after || []
@@ -339,7 +338,7 @@
 
 			bs.extendedSearch._registerTrackableLinks();
 			$resultCnt.trigger( 'resultsReady', [ resultPanel ] );
-			search.removeLoading();
+			bs.extendedSearch.SearchCenter.removeLoading();
 			$( resultPanel.$element.children()[ 0 ] ).find( 'a' )[ 0 ].focus();
 			// Done afterwards to announce properly
 			hitCount.init();
@@ -448,7 +447,7 @@
 	}
 
 	function updateQueryHash( lookup ) {
-		lookup = lookup || search.getLookupObject();
+		lookup = lookup || bs.extendedSearch.SearchCenter.getLookupObject();
 		bs.extendedSearch.utils.setFragment( {
 			q: JSON.stringify( lookup )
 		} );
@@ -487,13 +486,13 @@
 		} );
 
 		searchBar.on( 'valueChanged', () => {
-			search.getLookupObject().removeForceTerm();
-			search.getLookupObject().setQueryString( searchBar.value );
-			search.updateQueryHash();
+			bs.extendedSearch.SearchCenter.getLookupObject().removeForceTerm();
+			bs.extendedSearch.SearchCenter.getLookupObject().setQueryString( searchBar.value );
+			bs.extendedSearch.SearchCenter.updateQueryHash();
 		} );
 
 		searchBar.on( 'clearSearch', () => {
-			search.clearLookupObject();
+			bs.extendedSearch.SearchCenter.clearLookupObject();
 			bs.extendedSearch.utils.clearFragment();
 		} );
 
@@ -512,14 +511,14 @@
 		}
 
 		if ( $.isEmptyObject( config ) === false ) {
-			search.makeLookup( config );
+			bs.extendedSearch.SearchCenter.makeLookup( config );
 			// Update searchBar if page is loaded with query present
-			const query = search.getLookupObject().getQueryString();
+			const query = bs.extendedSearch.SearchCenter.getLookupObject().getQueryString();
 			if ( query ) {
 				searchBar.setValue( query.query );
 			}
 			if ( updateHash ) {
-				search.updateQueryHash();
+				bs.extendedSearch.SearchCenter.updateQueryHash();
 			}
 
 			// Remove query string params passed once we set the hash
@@ -532,7 +531,7 @@
 			bs.extendedSearch.SearchCenter.execSearch();
 		} );
 
-		$( d ).trigger( 'BSExtendedSearchInit', [ search, searchBar ] );
+		$( d ).trigger( 'BSExtendedSearchInit', [ bs.extendedSearch.SearchCenter, searchBar ] );
 	} );
 
 }( mediaWiki, jQuery, blueSpice, document ) );
