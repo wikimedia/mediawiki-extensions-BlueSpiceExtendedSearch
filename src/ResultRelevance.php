@@ -64,7 +64,8 @@ class ResultRelevance {
 		$result = $dbr->select(
 			'bs_extendedsearch_relevance',
 			[ 'esr_result', 'esr_value' ],
-			$this->queryConditions
+			$this->queryConditions,
+			__METHOD__
 		);
 
 		$values = [];
