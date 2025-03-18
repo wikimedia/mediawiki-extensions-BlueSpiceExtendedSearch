@@ -198,5 +198,6 @@
 	"bs-extendedsearch-recently-found-header-aria": "{{PLURAL:$1|Ein|$1}} zuletzt {{PLURAL:$1| angesehenes Ergebnis|angesehene Ergebnisse}} verfügbar",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 von $2",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Primäre Ergebnisse",
-	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Sekundäre Ergebnisse"
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Sekundäre Ergebnisse",
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Leitet weiter nach $1"
 }

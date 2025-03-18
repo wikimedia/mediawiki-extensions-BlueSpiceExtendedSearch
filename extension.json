@@ -407,7 +407,8 @@
 				"bs-extendedsearch-recently-found-header-aria",
 				"bs-extendedsearch-autocomplete-popup-select-announcement",
 				"bs-extendedsearch-autocomplete-popup-primary-results-aria",
-				"bs-extendedsearch-autocomplete-popup-secondary-results-aria"
+				"bs-extendedsearch-autocomplete-popup-secondary-results-aria",
+				"bs-extendedsearch-autocomplete-popup-redirect-title"
 			],
 			"dependencies": [
 				"ext.blueSpiceExtendedSearch.SearchBar",
