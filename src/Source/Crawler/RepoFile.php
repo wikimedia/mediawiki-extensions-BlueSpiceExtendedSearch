@@ -39,7 +39,8 @@ class RepoFile extends File {
 		$res = $dbr->select(
 			[ 'page' ],
 			[ 'page_id' ],
-			$this->makeQueryConditions()
+			$this->makeQueryConditions(),
+			__METHOD__
 		);
 
 		foreach ( $res as $row ) {
