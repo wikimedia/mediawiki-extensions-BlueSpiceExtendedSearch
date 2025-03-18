@@ -150,7 +150,7 @@
 		this.boldSearchTerm();
 
 		// If backend provided an anchor use it, otherwise create it
-		const $baseNameHtml = $( '<span>' ).text( this.basename )
+		const $baseNameHtml = $( '<span>' ).html( this.basename )
 			.addClass( 'bs-extendedsearch-result-text' );
 		if ( this.pageAnchor ) {
 			this.$header = this.$pageAnchor.html( $baseNameHtml );
