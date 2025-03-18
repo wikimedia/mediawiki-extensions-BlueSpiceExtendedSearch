@@ -150,22 +150,34 @@
 		this.boldSearchTerm();
 
 		// If backend provided an anchor use it, otherwise create it
+		const $baseNameHtml = $( '<span>' ).text( this.basename )
+			.addClass( 'bs-extendedsearch-result-text' );
 		if ( this.pageAnchor ) {
-			this.$header = this.$pageAnchor.html( this.basename );
+			this.$header = this.$pageAnchor.html( $baseNameHtml );
 			this.$header.attr( 'tabindex', '-1' );
 		} else {
 			this.$header = $( '<a>' )
 				.attr( 'href', this.uri )
-				.html( this.basename )
+				.html( $baseNameHtml )
 				.attr( 'tabindex', '-1' );
 		}
 		this.$header.addClass( 'bs-extendedsearch-autocomplete-popup-primary-item-header' );
+		if ( cfg.is_redirect ) {
+			const redirIcon = new OO.ui.IconWidget( {
+				icon: 'share',
+				title: mw.message( 'bs-extendedsearch-autocomplete-popup-redirect-title', cfg.redirects_to ).text(),
+				label: mw.message( 'bs-extendedsearch-autocomplete-popup-redirect-title', cfg.redirects_to ).text(),
+				invisibleLabel: true
+			} );
+			this.$header.append( redirIcon.$element );
+		}
 
-		if ( cfg.image_uri ) {
-			this.$element.append( $( '<img>' )
-				.addClass( 'bs-extendedsearch-autocomplete-popup-primary-item-header-image' )
-				.attr( 'src', cfg.image_uri )
-			);
+		if ( cfg.original_title ) {
+			const titleWithoutNamespace = cfg.original_title.split( ':' ).pop();
+			const lastTitlePart = titleWithoutNamespace.split( '/' ).pop();
+			const $originTitle = $( '<span>' ).addClass( 'bs-extendedsearch-result-origin-title' )
+				.append( $( '<i>' ).text( '(' + lastTitlePart + ')' ) );
+			this.$header.append( $originTitle );
 		}
 
 		const $pathCnt = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-primary-item-header-path' );
@@ -184,20 +196,13 @@
 			);
 		}
 		this.$header.append( $pathCnt );
-		if ( cfg.original_title ) {
-			this.$header.append( this.$originalTitle );
-		}
-		if ( cfg.is_redirect ) {
-			const redirLayout = new OO.ui.HorizontalLayout( {
-				items: [
-					new OO.ui.IconWidget( {
-						icon: 'articleRedirect'
-					} )
-				],
-				classes: [ 'bs-extendedsearch-autocomplete-popup-primary-item-header-redirect' ]
-			} );
-			redirLayout.$element.append( cfg.redirect_target_anchor );
-			this.$header.append( redirLayout.$element );
+
+		if ( cfg.image_uri ) {
+			this.$header.addClass( 'bs-extendedsearch-autocomplete-popup-primary-files' );
+			this.$element.append( $( '<img>' )
+				.addClass( 'bs-extendedsearch-autocomplete-popup-primary-item-header-image' )
+				.attr( 'src', cfg.image_uri )
+			);
 		}
 
 		this.$header.addClass( 'bs-extendedsearch-autocomplete-popup-primary-item-header' );

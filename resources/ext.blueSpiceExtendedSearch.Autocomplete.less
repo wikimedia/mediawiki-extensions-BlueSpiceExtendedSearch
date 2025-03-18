@@ -75,7 +75,7 @@
 
 	.bs-extendedsearch-autocomplete-popup-primary {
 		width: 50%;
-		font-size: 0.875rem;
+		font-size: 0.945rem;
 		vertical-align: top;
 		padding-bottom: 10px;
 		height: inherit;
@@ -90,7 +90,7 @@
 		}
 
 		.bs-extendedsearch-autocomplete-popup-primary-item {
-			padding: 5px 5px 5px 8px;
+			padding: 8px 5px 8px 8px;
 			position: relative;
 			cursor: pointer;
 
@@ -111,6 +111,20 @@
 				&:focus {
 					color: @bs-color-link-hover;
 					text-decoration: none;
+				}
+			}
+
+			&:has( img ) {
+				display: inline-block;
+				width: 100%;
+
+				.bs-extendedsearch-autocomplete-popup-primary-item-header-image {
+					float: right;
+				}
+
+				.bs-extendedsearch-autocomplete-popup-primary-item-header {
+					width: calc( 100% - 50px ) !important;
+					line-height: 42px; /* stylelint-disable-line declaration-property-unit-disallowed-list */
 				}
 			}
 		}
@@ -212,11 +226,11 @@
 		}
 
 		.bs-extendedsearch-autocomplete-popup-secondary {
-			font-size: 0.875rem;
+			font-size: 0.945rem;
 
 			.bs-extendedsearch-autocomplete-popup-secondary-item {
 				position: relative;
-				padding-left: 20px;
+				padding: 8px 5px 8px 20px;
 				overflow-x: hidden;
 
 				&:hover {
@@ -345,7 +359,7 @@
 		}
 
 		.bs-extendedsearch-autocomplete-popup-primary {
-			font-size: 1em;
+			font-size: 945rem;
 			width: 100%;
 			padding-bottom: 5px;
 
@@ -397,7 +411,7 @@
 
 	.bs-extendedsearch-result-original-title {
 		label {
-			font-size: inherit;
+			font-size: 0.9em;
 		}
 	}
 
@@ -406,9 +420,9 @@
 
 		.bs-extendedsearch-autocomplete-popup-primary-item-header-path {
 			font-size: 0.9em;
+			color: @autocomplete-results-path-color;
 
 			.bs-extendedsearch-autocomplete-popup-primary-item-header-path-ns {
-				color: @autocomplete-pill-background-color;
 				margin-right: 5px;
 				font-weight: bold;
 			}
@@ -417,6 +431,20 @@
 				content: '·';
 				margin-right: 5px;
 			}
+		}
+
+		&.bs-extendedsearch-autocomplete-popup-primary-files {
+			display: inline-flex;
+			justify-content: space-between;
+		}
+
+		.oo-ui-icon-share {
+			margin-left: 5px;
+			min-height: 15px;
+			height: 15px;
+			min-width: 15px;
+			width: 15px;
+			opacity: 0.6;
 		}
 	}
 
@@ -430,6 +458,15 @@
 		vertical-align: middle;
 		margin-right: 10px;
 		border-radius: 5px;
+	}
+
+	.bs-extendedsearch-result-text {
+		color: @autocomplete-results-text;
+		font-size: 0.945rem;
+	}
+
+	.bs-extendedsearch-result-origin-title {
+		margin-left: 5px;
 	}
 }
 
