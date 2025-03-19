@@ -101,7 +101,8 @@ class Base implements ISearchCrawler {
 		$dbw = $this->lb->getConnection( DB_PRIMARY );
 		$res = $dbw->delete(
 			'job',
-			[ 'job_cmd' => $oDummyJob->getType() ]
+			[ 'job_cmd' => $oDummyJob->getType() ],
+			__METHOD__
 		);
 
 		return $res !== false;
