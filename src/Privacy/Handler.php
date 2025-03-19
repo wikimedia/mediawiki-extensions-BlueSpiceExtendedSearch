@@ -52,7 +52,8 @@ class Handler implements IPrivacyHandler {
 
 		$this->db->delete(
 			'bs_extendedsearch_relevance',
-			[ 'esr_user' => $userToDelete->getId() ]
+			[ 'esr_user' => $userToDelete->getId() ],
+			__METHOD__
 		);
 
 		return Status::newGood();

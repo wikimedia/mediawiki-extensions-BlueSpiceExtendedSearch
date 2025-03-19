@@ -119,7 +119,8 @@ class ResultRelevance {
 		if ( $this->value == 0 ) {
 			$result = $dbw->delete(
 				'bs_extendedsearch_relevance',
-				$this->queryConditions
+				$this->queryConditions,
+				__METHOD__
 			);
 		} else {
 			if ( $this->getValue() == 0 ) {
