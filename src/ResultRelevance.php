@@ -92,7 +92,8 @@ class ResultRelevance {
 		$result = $dbr->selectRow(
 			'bs_extendedsearch_relevance',
 			[ 'esr_value' ],
-			$this->queryConditions
+			$this->queryConditions,
+			__METHOD__
 		);
 
 		if ( $result == null ) {
