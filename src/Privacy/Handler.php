@@ -46,7 +46,8 @@ class Handler implements IPrivacyHandler {
 		$this->db->update(
 			'bs_extendedsearch_history',
 			[ 'esh_user' => $deletedUser->getId() ],
-			[ 'esh_user' => $userToDelete->getId() ]
+			[ 'esh_user' => $userToDelete->getId() ],
+			__METHOD__
 		);
 
 		$this->db->delete(

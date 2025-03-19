@@ -140,7 +140,8 @@ class ResultRelevance {
 						'esr_value' => $this->value,
 						'esr_timestamp' => wfTimestamp( TS_UNIX )
 					],
-					$this->queryConditions
+					$this->queryConditions,
+					__METHOD__
 				);
 			}
 		}
