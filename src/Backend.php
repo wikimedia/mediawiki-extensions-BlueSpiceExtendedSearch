@@ -833,7 +833,8 @@ class Backend {
 				'esh_timestamp' => $data['timestamp'],
 				'esh_autocorrected' => $data['autocorrected'] ? 1 : 0,
 				'esh_lookup' => serialize( $data['lookup'] )
-			]
+			],
+			__METHOD__
 		);
 	}
 
