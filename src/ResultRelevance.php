@@ -130,7 +130,8 @@ class ResultRelevance {
 						'esr_result' => $this->resultId,
 						'esr_value' => $this->value,
 						'esr_timestamp' => wfTimestamp( TS_UNIX )
-					]
+					],
+					__METHOD__
 				);
 			} else {
 				$result = $dbw->update(
