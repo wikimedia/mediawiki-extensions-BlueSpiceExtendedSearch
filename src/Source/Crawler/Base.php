@@ -81,7 +81,8 @@ class Base implements ISearchCrawler {
 		$res = $dbr->selectRow(
 			'job',
 			'COUNT(*) AS count',
-			[ 'job_cmd' => $oDummyJob->getType() ]
+			[ 'job_cmd' => $oDummyJob->getType() ],
+			__METHOD__
 		);
 
 		return $res->count;
