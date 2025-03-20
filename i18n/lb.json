@@ -71,5 +71,6 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Global Resultater weisen",
 	"bs-extendedsearch-recentlyfound-ignore": "Ewechhuelen",
 	"bs-extendedsearch-tagsearch-input-aria-label": "Sichen",
-	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 vu(n) $2"
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 vu(n) $2",
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Leet op $1 virun"
 }
