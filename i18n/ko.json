@@ -138,5 +138,6 @@
 	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|$1개 결과}}를 찾았습니다",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$2 중 $1",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "1차 결과",
-	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "2차 결과"
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "2차 결과",
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "$1 문서로 넘겨주기"
 }
