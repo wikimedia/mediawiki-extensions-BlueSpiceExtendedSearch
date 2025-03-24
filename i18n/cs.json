@@ -3,7 +3,8 @@
 		"authors": [
 			"Fraxinus.cs",
 			"Jrobicek",
-			"Kotlis23"
+			"Kotlis23",
+			"Mormegil"
 		]
 	},
 	"bs-extendedsearch-source-label-specialpage": "Speciální stránka",
@@ -16,5 +17,5 @@
 	"action-extendedsearch-search-repofile": "vyhledávání souborů",
 	"action-extendedsearch-search-externalfile": "vyhledávání externích souborů",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Zobrazí výsledky vyhledávání pouze v jazyce uživatele. Uživatelé si mohou svůj jazyk uložit v nastavení.",
-	"bs-extendedsearch-autocomplete-popup-redirect-title": "Přesměrování za 1 $"
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Přesměrování na $1"
 }
