@@ -192,5 +192,6 @@
 	"bs-extendedsearch-recently-found-header-aria": "{{PLURAL:$1|Eén|$1}} onlangs bekeken {{PLURAL:$1|resultaat|resultaten}} beschikbaar",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 van $2",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Primaire resultaten",
-	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Secundaire resultaten"
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Secundaire resultaten",
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Verwijst door naar $1"
 }
