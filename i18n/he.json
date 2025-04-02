@@ -189,5 +189,6 @@
 	"bs-extendedsearch-recently-found-header-aria": "{{PLURAL:$1|זמינה תוצאה אחת שנצפתה|זמינות $1 תוצאות שנצפו}} לאחרונה",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 מתוך $2",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "תוצאות ראשוניות",
-	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "תוצאות משניות"
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "תוצאות משניות",
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "הפניות לדף $1"
 }

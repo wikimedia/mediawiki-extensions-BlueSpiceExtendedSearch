@@ -14,5 +14,7 @@
 	"action-extendedsearch-search-specialpage": "ਵਿਸ਼ੇਸ਼ ਵਰਕਿਆਂ ਲਈ ਖੋਜ ਕਰੋ",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "ਪੁੱਛਗਿੱਛ ਦੀ ਖੋਜ ਗਿਣਤੀ",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$2 ਵਿੱਚੋਂ $1",
-	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "ਮੁੱਢਲੇ ਨਤੀਜੇ"
+	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "ਮੁੱਢਲੇ ਨਤੀਜੇ",
+	"bs-extendedsearch-search-center-sort-order-asc": "ਚੜ੍ਹਦੀ ਤਰਤੀਬ ਵਿੱਚ",
+	"bs-extendedsearch-search-center-sort-order-desc": "ਲਹਿੰਦੀ ਤਰਤੀਬ ਵਿੱਚ"
 }
