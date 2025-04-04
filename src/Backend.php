@@ -613,7 +613,11 @@ class Backend {
 		$suggestLookup = clone $origTermLookup;
 		$suggestQueryString = $origTermLookup->getQueryString();
 		$escapedTerm = preg_quote( $origTerm, '/' );
-		$suggestQueryString['query'] = preg_replace( '/' . $escapedTerm . '/', $suggestedTerm, $suggestQueryString['query'] );
+		$suggestQueryString['query'] = preg_replace(
+			'/' . $escapedTerm . '/',
+			$suggestedTerm,
+			$suggestQueryString['query']
+		);
 		$suggestLookup->setQueryString( $suggestQueryString );
 		$query = $suggestLookup->getQueryDSL();
 		unset( $query['from'] );

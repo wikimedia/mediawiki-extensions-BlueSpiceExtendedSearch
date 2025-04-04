@@ -24,8 +24,7 @@ abstract class Reader extends BaseReader {
 	 * @param IContextSource|null $context
 	 * @param Config|null $config
 	 */
-	public function __construct( Backend $searchBackend,
-		IContextSource $context = null, Config $config = null ) {
+	public function __construct( Backend $searchBackend, ?IContextSource $context = null, ?Config $config = null ) {
 		parent::__construct( $context, $config );
 		$this->searchBackend = $searchBackend;
 	}

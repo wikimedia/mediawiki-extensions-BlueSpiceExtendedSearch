@@ -4,7 +4,7 @@ use MediaWiki\MediaWikiServices;
 
 require_once "searchScriptBase.php";
 
-class initBackends extends searchScriptBase {
+class initBackends extends searchScriptBase { // phpcs:ignore Squiz.Classes.ValidClassName.NotCamelCaps
 	/**
 	 * @var string
 	 */

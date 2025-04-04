@@ -17,7 +17,7 @@ class BlueSpiceSearchResult extends RevisionSearchResult {
 	 * @param ISearchResultSet|null $parentSet
 	 * @return SearchResult
 	 */
-	public static function newFromTitle( $title, ISearchResultSet $parentSet = null ) {
+	public static function newFromTitle( $title, ?ISearchResultSet $parentSet = null ) {
 		$result = new static( $title );
 		if ( $parentSet ) {
 			$parentSet->augmentResult( $result );
