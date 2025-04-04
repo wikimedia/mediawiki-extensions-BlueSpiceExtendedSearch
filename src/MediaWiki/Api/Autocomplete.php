@@ -133,7 +133,7 @@ class Autocomplete extends ApiBase {
 			$this->pageCreatable = true;
 
 			$linkRenderer = MediaWikiServices::getInstance()->getService( 'LinkRenderer' );
-			$anchorText = wfMessage(
+			$anchorText = $this->msg(
 				'bs-extendedsearch-autocomplete-create-page-link',
 				$title->getFullText()
 			)->plain();

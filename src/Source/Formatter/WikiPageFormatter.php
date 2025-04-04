@@ -156,7 +156,8 @@ class WikiPageFormatter extends Base {
 			$categoryTitle = Title::makeTitle( NS_CATEGORY, $category );
 			$formattedCategories[] = $this->linkRenderer->makeLink( $categoryTitle, $categoryTitle->getText() );
 		}
-		return implode( Base::VALUE_SEPARATOR, $formattedCategories ) . ( $moreCategories ? Base::MORE_VALUES_TEXT : '' );
+		return implode( Base::VALUE_SEPARATOR, $formattedCategories ) .
+			( $moreCategories ? Base::MORE_VALUES_TEXT : '' );
 	}
 
 	/**
