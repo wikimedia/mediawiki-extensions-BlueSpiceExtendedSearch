@@ -18,7 +18,10 @@ class SearchAdmin extends SpecialPage {
 	 * @param string $file
 	 * @param bool $includable
 	 */
-	public function __construct( $name = '', $restriction = '', $listed = true, $function = false, $file = '', $includable = false ) {
+	public function __construct(
+		$name = '', $restriction = '', $listed = true,
+		$function = false, $file = '', $includable = false
+	) {
 		parent::__construct( 'BSSearchAdmin', 'extendedsearchadmin-viewspecialpage' );
 	}
 

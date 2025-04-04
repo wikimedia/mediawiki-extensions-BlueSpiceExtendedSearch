@@ -27,7 +27,7 @@ class Store implements IStore {
 	 *
 	 * @param IContextSource|null $context
 	 */
-	public function __construct( IContextSource $context = null ) {
+	public function __construct( ?IContextSource $context = null ) {
 		if ( !$context ) {
 			$context = RequestContext::getMain();
 		}

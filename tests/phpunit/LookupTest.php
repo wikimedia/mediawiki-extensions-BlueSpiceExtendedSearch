@@ -188,7 +188,7 @@ class LookupTest extends \MediaWikiIntegrationTestCase {
 					"filter" => [ [
 						"terms" => [ "someField" => [ 'someValue1', 'someValue2', 'someValue3' ] ]
 					], [
-						"terms" => [ "someOtherField" => [ 'someValue1' ], "anotherField" => [ 'someValue2', 'someValue3' ] ]
+						"terms" => [ "someOtherField" => [ 'someValue1' ], "anotherField" => [ 'someValue2', 'someValue3' ] ] // phpcs:ignore Generic.Files.LineLength.TooLong
 					],
 					[
 						"term" => [ "yetAnotherField" => 'someValue1' ]

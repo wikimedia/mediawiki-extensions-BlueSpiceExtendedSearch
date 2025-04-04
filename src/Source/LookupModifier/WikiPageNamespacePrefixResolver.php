@@ -65,7 +65,7 @@ class WikiPageNamespacePrefixResolver extends LookupModifier {
 		return true;
 	}
 
-	protected function setIsExlicitQueryOfNS_MAIN() {
+	protected function setIsExlicitQueryOfNS_MAIN() { // phpcs:ignore MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName, Generic.Files.LineLength.TooLong
 		$this->titleText = $this->simpleQS['query'];
 		if ( strpos( $this->titleText, ':' ) === 0 ) {
 			$this->titleText = substr( $this->titleText, 1 );

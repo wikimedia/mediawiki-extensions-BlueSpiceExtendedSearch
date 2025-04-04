@@ -18,7 +18,7 @@ abstract class Store implements IStore {
 	 *
 	 * @param Backend|null $searchBackend
 	 */
-	public function __construct( Backend $searchBackend = null ) {
+	public function __construct( ?Backend $searchBackend = null ) {
 		$this->searchBackend = $searchBackend;
 	}
 
