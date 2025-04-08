@@ -44,6 +44,7 @@
 					topResultElements.push(
 						new bs.extendedSearch.AutocompleteTopMatch( {
 							suggestion: suggestion,
+							term: this.searchTerm,
 							popup: this,
 							autocomplete: this.autocomplete,
 							titleTrim: this.titleTrim
@@ -117,6 +118,7 @@
 				this.$secondaryResults.append(
 					new bs.extendedSearch.AutocompleteSecondaryResult( {
 						suggestion: suggestion,
+						term: this.searchTerm,
 						popup: this,
 						titleTrim: this.titleTrim
 					} ).$element
