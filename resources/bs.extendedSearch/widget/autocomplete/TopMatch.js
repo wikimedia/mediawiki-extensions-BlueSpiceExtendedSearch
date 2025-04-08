@@ -10,6 +10,7 @@
 		this.imageUri = cfg.suggestion.image_uri ||
 			this.autocomplete.getIconPath( this.type );
 		this.titleTrim = cfg.titleTrim || null;
+		this.searchTerm = cfg.term || '';
 
 		this.$element = $( '<div>' );
 

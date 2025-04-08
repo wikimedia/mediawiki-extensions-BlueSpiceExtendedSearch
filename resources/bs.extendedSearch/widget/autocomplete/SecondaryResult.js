@@ -6,6 +6,7 @@
 
 		this.popup = cfg.popup;
 		this.titleTrim = cfg.titleTrim || null;
+		this.searchTerm = cfg.term || '';
 
 		this.$element = $( '<div>' );
 
