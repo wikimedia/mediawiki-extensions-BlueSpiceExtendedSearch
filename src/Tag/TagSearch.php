@@ -24,8 +24,7 @@ class TagSearch extends Tag {
 	public const PARAM_OPERATOR = 'operator';
 	public const PARAM_TYPE = 'type';
 
-	/** @var int */
-	protected $tagCounter = 0;
+	protected static int $tagCounter = 0;
 
 	/**
 	 * @param mixed $processedInput
@@ -44,7 +43,6 @@ class TagSearch extends Tag {
 		$config = MediaWikiServices::getInstance()
 			->getConfigFactory()
 			->makeConfig( 'bsg' );
-		$this->tagCounter++;
 
 		return new TagSearchHandler(
 			$processedInput,
@@ -52,8 +50,12 @@ class TagSearch extends Tag {
 			$parser,
 			$frame,
 			$config,
-			$this->tagCounter
+			$this->nextTagId()
 		);
+	}
+
+	protected function nextTagId(): int {
+		return self::$tagCounter++;
 	}
 
 	/**
