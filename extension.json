@@ -95,6 +95,12 @@
 			},
 			"TagRegistry": {
 				"bs-tagsearch": "BS\\ExtendedSearch\\Tag\\TagSearch"
+			},
+			"StatusCheckProvider": {
+				"bs-extendedsearch": {
+					"class": "\\BS\\ExtendedSearch\\Integration\\BlueSpiceFoundation\\StatusCheckProvider",
+					"services": [ "BSExtendedSearchBackend" ]
+				}
 			}
 		},
 		"BlueSpiceVisualEditorConnector": {
