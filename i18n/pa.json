@@ -14,5 +14,7 @@
 	"bs-extendedsearch-admin-label-all-documents-count": "ਤਤਕਰੇ ਵਿੱਚ ਲਿਖਤਾਂ ਦੀ ਕੁੱਲ ਗਿਣਤੀ",
 	"bs-extendedsearch-search-center-filter-categories-with-values-label": "ਸ਼੍ਰੇਣੀ:",
 	"bs-extendedsearch-search-center-result-categories-label": "ਸ਼੍ਰੇਣੀ:",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "ਥਾਂ-ਰੋਕੂ"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "ਥਾਂ-ਰੋਕੂ",
+	"bs-extendedsearch-search-center-sort-order-asc": "ਚੜ੍ਹਦੀ ਤਰਤੀਬ ਵਿੱਚ",
+	"bs-extendedsearch-search-center-sort-order-desc": "ਲਹਿੰਦੀ ਤਰਤੀਬ ਵਿੱਚ"
 }

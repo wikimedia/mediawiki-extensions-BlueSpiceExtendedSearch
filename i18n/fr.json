@@ -10,6 +10,7 @@
 			"Fany",
 			"Gomoko",
 			"Graineahumus",
+			"JLTRY",
 			"MacOS Weed",
 			"Mahabarata",
 			"Thibaut120094",
@@ -207,5 +208,6 @@
 	"bs-extendedsearch-recently-found-header-aria": "{{PLURAL:$1|Un résultat|$1 résultats}} récemment consulté{{PLURAL:$1| disponible|s disponibles}}",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 sur $2",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Résultats principaux",
-	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Résultats auxiliaires"
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Résultats auxiliaires",
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Redirection vers $1"
 }

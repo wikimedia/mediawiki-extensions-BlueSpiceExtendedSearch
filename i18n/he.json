@@ -170,13 +170,13 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "קטגוריה1|קטגוריה2|...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-help": "טקסט שיוצג בשדה הקלט כשעדיין לא הוזן דבר",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "הפרמטר הזה מוערך רק בשילוב עם פרמטר \"קטגוריה\". הגדרת AND תתאים רק לתוצאות שנמצאות בכל הקטגוריות הנתונות, בעוד שערך OR יתאים לתוצאות שיש להן לפחות אחת מהקטגוריות הנתונות.",
-	"bs-extendedsearch-pref-externalfilepaths-help": "מיקומים חיצוניים שייסרקו לקבצים ושקבצים מהם ימופתחו. המיקומים האלו מוזנים בצמדי מפתח/ערך.",
+	"bs-extendedsearch-pref-externalfilepaths-help": "מיקומים חיצוניים שייסרקו לקבצים ושקבצים מהם ימופתחו. המיקומים האלו מוזנים בצמדי מפתח/ערך",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "מציג תוצאות בדף \"$1\"",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "הצגת תוצאות גלובליות",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "חיפוש בדף \"$1\"",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "מונחי חיפוש לכל משתמש",
-	"bs-extendedsearch-pref-auto-set-lang-filter-help": "החזרת תוצאות חיפוש עבור משתמש רק בשפת המשתמש. משתמשים יכולים להגדיר את השפה שלהם בהעדפות שלהם.",
-	"bs-extendedsearch-pref-compact-ac-paths-help": "הצגת פריסת השלמה אוטומטית קומפקטית של תפריט החיפוש (פריסת עמודה אחת, ללא תצוגה מקדימה של תמונות ממוזערות).",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "החזרת תוצאות חיפוש עבור משתמש רק בשפת המשתמש. משתמשים יכולים להגדיר את השפה שלהם בהעדפות שלהם",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "הצגת פריסת השלמה אוטומטית קומפקטית של תפריט החיפוש (פריסת עמודה אחת, ללא תצוגה מקדימה של תמונות ממוזערות)",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "מספר שאילתות החיפוש",
 	"bs-extendedsearch-droplet-search-name": "שדה חיפוש",
 	"bs-extendedsearch-droplet-search-description": "הוספת שדה חיפוש לתוכן הדף",
@@ -195,5 +195,6 @@
 	"bs-extendedsearch-recently-found-header-aria": "{{PLURAL:$1|זמינה תוצאה אחת שנצפתה|זמינות $1 תוצאות שנצפו}} לאחרונה",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 מתוך $2",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "תוצאות ראשוניות",
-	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "תוצאות משניות"
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "תוצאות משניות",
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "הפניות לדף $1"
 }

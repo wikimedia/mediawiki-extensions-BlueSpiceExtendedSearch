@@ -164,15 +164,15 @@
 	"action-extendedsearch-search-wikipage": "search for pages",
 	"action-extendedsearch-search-repofile": "search for files",
 	"action-extendedsearch-search-externalfile": "search for external files",
-	"bs-extendedsearch-pref-externalfilepaths-help": "External locations to scan for files and index files from. These locations are entered in key/value pairs.",
+	"bs-extendedsearch-pref-externalfilepaths-help": "External locations to scan for files and index files from. These locations are entered in key/value pairs",
 	"bs-extendedsearch-suggest-operator": "Did you mean to search for <b>$1</b>?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Showing results in \"$1\"",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Show global results",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Searching in \"$1\"",
 	"bs-extendedsearch-statistics-report-search-terms": "Search terms",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Search terms per user",
-	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Returns search results for a user only in the user's language. Users can set their language in their preferences.",
-	"bs-extendedsearch-pref-compact-ac-paths-help": "Show a compact autocomplete layout of the search menu (one-column layout, no thumbnail preview).",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Returns search results for a user only in the user's language. Users can set their language in their preferences",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Show a compact autocomplete layout of the search menu (one-column layout, no thumbnail preview)",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Number of search queries",
 	"bs-extendedsearch-droplet-search-name": "Search field",
 	"bs-extendedsearch-droplet-search-description": "Adds a search field to the page content",
@@ -191,5 +191,6 @@
 	"bs-extendedsearch-recently-found-header-aria": "{{PLURAL:$1|One|$1}} recently viewed {{PLURAL:$1|result|results}} available",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 of $2",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Primary results",
-	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Secondary results"
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Secondary results",
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Redirects to $1"
 }

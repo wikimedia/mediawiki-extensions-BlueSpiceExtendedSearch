@@ -73,5 +73,6 @@
 	"bs-extendedsearch-source-type-externalfile-label": "Externe Fichier",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL-Prefix",
 	"bs-extendedsearch-recentlyfound-ignore": "Ewechhuelen",
-	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 vu(n) $2"
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 vu(n) $2",
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Leet op $1 virun"
 }

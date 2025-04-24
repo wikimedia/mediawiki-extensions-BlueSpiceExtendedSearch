@@ -35,5 +35,6 @@
 	"bs-extendedsearch-recently-found-header-aria": "সম্প্রতি দেখা {{PLURAL:$1|একটি|$1টি}} {{PLURAL:$1|ফলাফল}} উপলব্ধ",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$2 এর $1",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "প্রাথমিক ফলাফল",
-	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "মাধ্যমিক ফলাফল"
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "মাধ্যমিক ফলাফল",
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "$1-এ পুনর্নির্দেশিত"
 }

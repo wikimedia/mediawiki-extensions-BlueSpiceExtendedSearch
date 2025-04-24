@@ -2,7 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Fraxinus.cs",
-			"Jrobicek"
+			"Jrobicek",
+			"Kotlis23",
+			"Mormegil"
 		]
 	},
 	"bs-extendedsearch-pref-external-file-paths-path-help": "Cesta úložiště. Pro připojené jednotky například: X:\\Dokumenty",
@@ -14,5 +16,6 @@
 	"right-extendedsearch-search-repofile": "Hledat soubory",
 	"right-extendedsearch-search-externalfile": "Vyhledání externích souborů",
 	"action-extendedsearch-search-repofile": "vyhledávání souborů",
-	"action-extendedsearch-search-externalfile": "vyhledávání externích souborů"
+	"action-extendedsearch-search-externalfile": "vyhledávání externích souborů",
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Přesměrování na $1"
 }

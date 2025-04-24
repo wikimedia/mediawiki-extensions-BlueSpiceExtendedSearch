@@ -169,15 +169,15 @@
 	"action-extendedsearch-search-wikipage": "naar pagina's te mogen zoeken",
 	"action-extendedsearch-search-repofile": "naar bestanden te mogen zoeken",
 	"action-extendedsearch-search-externalfile": "naar externe bestanden te mogen zoeken",
-	"bs-extendedsearch-pref-externalfilepaths-help": "Externe locaties om naar bestanden te zoeken en te indexeren. Geef de locaties op in paren van sleutel en waarde.",
+	"bs-extendedsearch-pref-externalfilepaths-help": "Externe locaties van waaruit bestanden worden opgezocht en geïndexeerd. Deze locaties worden opgegeven in paren van sleutel en waarde",
 	"bs-extendedsearch-suggest-operator": "Had u willen zoeken naar <b>$1</b>?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Er zijn resultaten in \"$1\"",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Globale resultaten weergeven",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Er wordt gezocht in \"$1\"",
 	"bs-extendedsearch-statistics-report-search-terms": "Zoektermen",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Zoektermen per gebruiker",
-	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Toont voor een gebruiker alleen de zoekresultaten in de taal van die gebruiker. Gebruikers kunnen hun taal instellen in hun voorkeuren.",
-	"bs-extendedsearch-pref-compact-ac-paths-help": "Het automatisch aanvullen in het zoekmenu in een beknopte opmaak weergeven (éénkolomsopmaak zonder miniatuurvoorvertoning).",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Toont voor een gebruiker alleen de zoekresultaten in de taal van die gebruiker. Gebruikers kunnen hun taal instellen in hun voorkeuren",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Het automatisch aanvullen in het zoekmenu in een beknopte opmaak weergeven (éénkolomsopmaak zonder miniatuurvoorvertoning)",
 	"bs-extendedsearch-close-search-button-aria-label": "Het zoekvak sluiten",
 	"bs-extendedsearch-remove-button-label": "Filter \"$1\" verwijderen",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Aantal zoekopdrachten",
@@ -198,5 +198,6 @@
 	"bs-extendedsearch-recently-found-header-aria": "{{PLURAL:$1|Eén|$1}} onlangs bekeken {{PLURAL:$1|resultaat|resultaten}} beschikbaar",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 van $2",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Primaire resultaten",
-	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Secundaire resultaten"
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Secundaire resultaten",
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Verwijst door naar $1"
 }

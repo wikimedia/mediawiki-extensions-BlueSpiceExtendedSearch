@@ -198,5 +198,6 @@
 	"bs-extendedsearch-recently-found-header-aria": "Aria-label for recently found section in autocomplete search\n$1 - number of recently viewed results found",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "Used to have make a screen reader announce the selected result",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Aria-label a section in the autocomplete search result list",
-	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Aria-label a section in the autocomplete search result list"
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Aria-label a section in the autocomplete search result list",
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Title for redirect link.\n* $1 - title of page which is linked to"
 }
