@@ -17,7 +17,6 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"BS\\ExtendedSearch\\Tests\\": "tests/phpunit",
 			"BS\\ExtendedSearch\\": "src"
 		}
 	},
