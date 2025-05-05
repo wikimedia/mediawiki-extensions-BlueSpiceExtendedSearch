@@ -16,11 +16,11 @@
 	"bs-extendedsearch-admin-heading-sources": "ماخذ",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "دستاویز",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "چھاݨاں شامل کرو",
-	"bs-extendedsearch-search-center-filter-namespace_text-label": "ناں جاہ",
+	"bs-extendedsearch-search-center-filter-namespace-label": "ناں جاہ",
 	"bs-extendedsearch-search-center-filter-tags-label": "ٹیگ",
 	"bs-extendedsearch-search-center-filter-categories-label": "ونْکی",
 	"bs-extendedsearch-search-center-filter-type-label": "قسم",
-	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "ناں جاہ:",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "ناں جاہ:",
 	"bs-extendedsearch-search-center-filter-tags-with-values-label": "ٹیگ:",
 	"bs-extendedsearch-search-center-filter-categories-with-values-label": "ونکی:",
 	"bs-extendedsearch-search-center-filter-type-with-values-label": "قسم:",
@@ -49,7 +49,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "وکی ورقہ",
 	"bs-extendedsearch-source-type-repofile-label": "لوکیل فائل",
 	"bs-extendedsearch-source-type-externalfile-label": "ٻاہرلی فائل",
-	"bs-extendedsearch-autocomplete-fulltext-search-button": "پوری عبارت ڳولو",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "یوآرایل سابقہ",
 	"bs-extendedsearch-search-center-filter-page_language-label": "ورقے دی زبان",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "ورقے دی زبان:",
@@ -63,5 +62,7 @@
 	"bs-extendedsearch-source-label-externalfile": "ٻاہرلی فائل",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "ڳولݨ شروع کرو",
 	"bs-extendedsearch-tagsearch-input-aria-label": "ڳولو",
-	"bs-extendedsearch-autocomplete-popup-select-announcement": "$2 وچوں $1 واں"
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$2 وچوں $1 واں",
+	"bs-extendedsearch-autocomplete-result-primary-results-label": "نتیجے",
+	"bs-extendedsearch-autocomplete-context-options-label": "ڳولو"
 }
