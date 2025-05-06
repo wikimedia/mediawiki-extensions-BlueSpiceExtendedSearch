@@ -48,7 +48,7 @@
 	"bs-extendedsearch-admin-heading-sources": "Bronnen",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Documenten",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Uitstaande bijwerktaken",
-	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|resultaat|resultaten}} voor $2",
+	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|zoekresultaat|zoekresultaten}} gevonden",
 	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Ongeveer $1 {{PLURAL:$1|resultaat|resultaten}} gevonden",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Filter toevoegen",
 	"bs-extendedsearch-search-center-filter-extension-label": "Uitbreiding",
