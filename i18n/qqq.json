@@ -48,7 +48,7 @@
 	"bs-extendedsearch-admin-heading-sources": "Label for heading of a section that lists information about the sources within a specific backend on Special:SearchAdmin\n{{Identical|Source}}",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Label for field that reports the number of documents within a specific source on Special:SearchAdmin",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Label for field that reports the number of pending update jobs for a specific source on Special:SearchAdmin",
-	"bs-extendedsearch-search-center-hitcount-widget": "Text showing how many hits search request has returned.\n $1 - number of hits, $2 - search term",
+	"bs-extendedsearch-search-center-hitcount-widget": "Text showing how many hits search request has returned. $1 is the number of results.",
 	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Text showing approximately how many hits search has returned. \n $1 - number of hits, $2 - search term",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Title for the add filter dialog",
 	"bs-extendedsearch-search-center-filter-extension-label": "Label for the extension field in the filter when its empty (nothing selected)",

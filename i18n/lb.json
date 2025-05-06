@@ -14,12 +14,14 @@
 	"bs-extendedsearch-admin-label-error": "Feeler",
 	"bs-extendedsearch-admin-heading-sources": "Quellen",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Dokumenter",
+	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|Sichresultat|Sichresultater}} fonnt",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Ongeféier $1 {{PLURAL:$1|Sichresultat|Sichresultater}} fonnt",
 	"bs-extendedsearch-search-center-filter-extension-label": "Erweiderung",
-	"bs-extendedsearch-search-center-filter-namespace_text-label": "Nummraum",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Nummraum",
 	"bs-extendedsearch-search-center-filter-categories-label": "Kategorie",
 	"bs-extendedsearch-search-center-filter-type-label": "Typ",
 	"bs-extendedsearch-search-center-filter-extension-with-values-label": "Erweiderung:",
-	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "Nummraum:",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Nummraum:",
 	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Kategorie:",
 	"bs-extendedsearch-search-center-filter-type-with-values-label": "Typ:",
 	"bs-extendedsearch-search-center-result-namespace_text-label": "Nummraum:",
@@ -72,5 +74,10 @@
 	"bs-extendedsearch-recentlyfound-ignore": "Ewechhuelen",
 	"bs-extendedsearch-tagsearch-input-aria-label": "Sichen",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 vu(n) $2",
-	"bs-extendedsearch-autocomplete-popup-redirect-title": "Leet op $1 virun"
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Leet op $1 virun",
+	"bs-extendedsearch-context-subpage-label": "op Ënnersäite vu(n) '''$1'''",
+	"bs-extendedsearch-context-namespace-label": "am Nummraum '''$1'''",
+	"bs-extendedsearch-autocomplete-context-none": "op der ganzer Wiki",
+	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultater",
+	"bs-extendedsearch-autocomplete-context-options-label": "Sichen"
 }
