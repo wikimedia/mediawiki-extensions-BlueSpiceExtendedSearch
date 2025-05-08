@@ -132,6 +132,7 @@
 		padding: 5px 5px 5px 8px;
 		position: relative;
 		cursor: pointer;
+		display: flex;
 
 		&.bs-autocomplete-result-selected {
 			background-color: @autocomplete-selected-background-color;
@@ -165,7 +166,11 @@
 
 	.bs-extendedsearch-autocomplete-popup-item-header {
 		vertical-align: middle;
-		display: inline-block;
+		display: flex;
+		flex-grow: 1;
+		margin-right: 10px;
+		font-size: 0.9375rem;
+		color: @autocomplete-pill-background-color;
 
 		.bs-extendedsearch-autocomplete-popup-item-header-path {
 			font-size: 0.9em;
@@ -180,7 +185,6 @@
 			}
 
 			.bs-extendedsearch-autocomplete-popup-item-header-path-ns {
-				color: @autocomplete-pill-background-color;
 				margin-right: 5px;
 				font-weight: bold;
 			}
@@ -189,11 +193,6 @@
 				content: '·';
 				margin-right: 5px;
 			}
-		}
-
-		&.bs-extendedsearch-autocomplete-popup-primary-files {
-			display: inline-flex;
-			justify-content: space-between;
 		}
 
 		.oo-ui-icon-share {
@@ -212,7 +211,7 @@
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
-		display: inline-block;
+		display: flex;
 		vertical-align: middle;
 		margin-right: 10px;
 		border-radius: 5px;
