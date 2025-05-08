@@ -4,5 +4,7 @@
 			"Bosogo"
 		]
 	},
-	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Жокко чыгаруу"
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Жокко чыгаруу",
+	"bs-extendedsearch-autocomplete-result-primary-results-label": "Натыйжалар",
+	"bs-extendedsearch-autocomplete-context-options-label": "Издөө"
 }
