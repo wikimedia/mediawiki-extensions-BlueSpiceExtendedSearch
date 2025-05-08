@@ -71,13 +71,6 @@ bs.extendedSearch.AutocompleteResult.prototype.render = function () {
 	}
 	this.$header.addClass( 'bs-extendedsearch-autocomplete-popup-item-header' );
 
-	if ( this.imageUrl ) {
-		this.$element.append( $( '<img>' )
-			.addClass( 'bs-extendedsearch-autocomplete-popup-item-header-image' )
-			.attr( 'src', this.imageUrl )
-		);
-	}
-
 	const $pathCnt = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-item-header-path' );
 	if ( this.source ) {
 		$pathCnt.append( $( '<span>' )
@@ -114,6 +107,13 @@ bs.extendedSearch.AutocompleteResult.prototype.render = function () {
 		this.$header.append( redirLayout.$element );
 	}
 	this.$element.append( this.$header );
+
+	if ( this.imageUrl ) {
+		this.$element.append( $( '<img>' )
+			.addClass( 'bs-extendedsearch-autocomplete-popup-item-header-image' )
+			.attr( 'src', this.imageUrl )
+		);
+	}
 };
 
 bs.extendedSearch.AutocompleteResult.prototype.boldSearchTerm = function () {
