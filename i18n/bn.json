@@ -13,7 +13,7 @@
 	"bs-extendedsearch-search-input-placeholder": "অনুসন্ধান করুন ('/' টাইপ করুন)",
 	"bs-extendedsearch-search-input-aria-label": "অনুসন্ধান বাক্স",
 	"bs-extendedsearch-source-label-user": "ব্যবহারকারী",
-	"bs-extendedsearch-search-center-hitcount-widget": "$2-এর জন্য $1টি {{PLURAL:$1|মিল পাওয়া গেছে}}",
+	"bs-extendedsearch-search-center-hitcount-widget": "$1টি {{PLURAL:$1|অনুসন্ধান ফলাফল}} পাওয়া গেছে",
 	"bs-extendedsearch-search-center-hitcount-widget-approximately": "$2-এর জন্য প্রায় $1টি {{PLURAL:$1|মিল পাওয়া গেছে}}",
 	"bs-extendedsearch-search-center-filter-namespace-label": "নামস্থান",
 	"bs-extendedsearch-search-center-filter-tags-label": "ট্যাগ",
