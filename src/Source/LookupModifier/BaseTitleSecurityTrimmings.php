@@ -115,19 +115,15 @@ class BaseTitleSecurityTrimmings extends LookupModifier {
 				if ( isset( $data['prefixed_title'] ) ) {
 					$title = \Title::newFromText( $data['prefixed_title'] );
 				} else {
-					$title = \Title::makeTitle( $data['namespace'], $data['basename'] );
+					$title = \Title::makeTitleSafe( $data['namespace'], $data['basename'] );
 				}
-				if ( !$title instanceof \Title ) {
-					if ( $title->isContentPage() && $title->exists() == false ) {
-						// I cant think of a good reason to show non-existing title in the search
-						$excludes[] = $resultObject->getId();
-						continue;
-					}
+				if ( !( $title instanceof \Title ) ) {
+					continue;
 				}
 
 				if ( $title->isSpecialPage() ) {
 					$sp = $spFactory->getPage( $title->getDBkey() );
-					if ( !$sp instanceof \SpecialPage ) {
+					if ( !( $sp instanceof \SpecialPage ) ) {
 						$excludes[] = $resultObject->getId();
 						continue;
 					}
@@ -139,10 +135,9 @@ class BaseTitleSecurityTrimmings extends LookupModifier {
 						$excludes[] = $resultObject->getId();
 						continue;
 					}
-				}
-
-				if ( !$permManager->userCan( 'read', $user, $title ) ) {
+				} elseif ( !$permManager->userCan( 'read', $user, $title ) ) {
 					$excludes[] = $resultObject->getId();
+					continue;
 				}
 
 				$validCount++;
