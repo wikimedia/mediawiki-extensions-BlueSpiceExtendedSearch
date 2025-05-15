@@ -230,6 +230,14 @@
 					"class": "\\BS\\ExtendedSearch\\Integration\\PDFCreator\\Processor\\RemoveTagSearch"
 				}
 			}
+		},
+		"BlueSpiceInstanceStatus": {
+			"ApiInstanceStatusProvider": {
+				"bs-extendedsearch": {
+					"class": "\\BS\\ExtendedSearch\\Integration\\StatusCheckProvider",
+					"services": [ "BSExtendedSearchBackend" ]
+				}
+			}
 		}
 	},
 	"DefaultUserOptions": {

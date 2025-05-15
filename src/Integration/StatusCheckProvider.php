@@ -1,12 +1,12 @@
 <?php
 
-namespace BS\ExtendedSearch\Integration\BlueSpiceFoundation;
+namespace BS\ExtendedSearch\Integration;
 
-use BlueSpice\InstanceStatus\IStatusProvider;
+use BlueSpice\InstanceStatus\IApiStatusProvider;
 use BS\ExtendedSearch\Backend;
 use Throwable;
 
-class StatusCheckProvider implements IStatusProvider {
+class StatusCheckProvider implements IApiStatusProvider {
 
 	/** @var Backend */
 	private $backend;
@@ -21,14 +21,14 @@ class StatusCheckProvider implements IStatusProvider {
 	/**
 	 * @return string
 	 */
-	public function getLabel(): string {
+	public function getKeyForApi(): string {
 		return 'ext-bluespiceextendedsearch-backend-connectivity';
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getValue(): string {
+	public function getValueForApi() {
 		try {
 			$client = $this->backend->getClient();
 
@@ -40,19 +40,5 @@ class StatusCheckProvider implements IStatusProvider {
 		} catch ( Throwable $e ) {
 			return 'Exception: ' . $e->getMessage();
 		}
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getIcon(): string {
-		return 'check';
-	}
-
-	/**
-	 * @return int
-	 */
-	public function getPriority(): int {
-		return 100;
 	}
 }
