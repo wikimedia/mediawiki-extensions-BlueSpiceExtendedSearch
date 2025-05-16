@@ -164,5 +164,7 @@
 	"bs-extendedsearch-statistics-report-search-terms": "Cirche le termine",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Cirche le termine pe utende",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Torne le resultate de recerche pe 'n'utende sulamende jndr'à lènghe de l'utende stesse. le utinde ponne 'mbostà 'a lènga lore jndr'à le preferenze.",
-	"bs-extendedsearch-pref-compact-ac-paths-help": "'Ndruche 'na disposizione combatte e autocomblete d'u menù de recerche (disposizione a 'na culonne, andeprime senze miniature)."
+	"bs-extendedsearch-pref-compact-ac-paths-help": "'Ndruche 'na disposizione combatte e autocomblete d'u menù de recerche (disposizione a 'na culonne, andeprime senze miniature).",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Namespace",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Namespace:"
 }

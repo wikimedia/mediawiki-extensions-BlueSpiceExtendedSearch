@@ -129,5 +129,7 @@
 	"bs-extendedsearch-suggest-operator": "Menade du söka efter <b>$1</b>?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Visar resultat i \"$1\"",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Visa globala resultat",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Söker i \"$1\""
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Söker i \"$1\"",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Namnrymd",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Namnrymd:"
 }

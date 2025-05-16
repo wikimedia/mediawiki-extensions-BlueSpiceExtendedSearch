@@ -8,5 +8,6 @@
 	"bs-extendedsearch-admin-heading-sources": "स्रोत",
 	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "नामविश्व:",
 	"bs-extendedsearch-search-center-filter-categories-with-values-label": "वर्ग:",
-	"bs-extendedsearch-searchcenter-sort-field-basename": "नाव"
+	"bs-extendedsearch-searchcenter-sort-field-basename": "नाव",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "नामविश्व:"
 }

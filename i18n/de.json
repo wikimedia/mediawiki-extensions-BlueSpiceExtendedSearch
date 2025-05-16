@@ -15,6 +15,7 @@
 			"Tiin",
 			"Umherirrender",
 			"Umlaut",
+			"Vhoesl",
 			"Wolfdietmann"
 		]
 	},
@@ -54,8 +55,8 @@
 	"bs-extendedsearch-admin-heading-sources": "Quellen",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Dokumente",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Ausstehende Aktualisierungsaufträge",
-	"bs-extendedsearch-search-center-hitcount-widget": "{{PLURAL:$1|Ein Treffer|$1 Treffer}} für $2",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Etwa {{PLURAL:$1|ein Treffer|$1 Treffer}} für $2",
+	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|Suchergebnis|Suchergebnisse}} gefunden",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Ungefähr $1 {{PLURAL:$1|Suchergebnis|Suchergebnisse}} gefunden",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Filter hinzufügen",
 	"bs-extendedsearch-search-center-filter-extension-label": "Erweiterung",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Namensraum",
@@ -199,5 +200,12 @@
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 von $2",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Primäre Ergebnisse",
 	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Sekundäre Ergebnisse",
-	"bs-extendedsearch-autocomplete-popup-redirect-title": "Leitet weiter nach $1"
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Leitet weiter nach $1",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Namensraum",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Namensraum:",
+	"bs-extendedsearch-context-subpage-label": "in Unterseiten von '''$1'''",
+	"bs-extendedsearch-context-namespace-label": "im '''$1'''-Namensraum",
+	"bs-extendedsearch-autocomplete-context-none": "im gesamten Wiki",
+	"bs-extendedsearch-autocomplete-result-primary-results-label": "Ergebnisse",
+	"bs-extendedsearch-autocomplete-context-options-label": "Suche"
 }

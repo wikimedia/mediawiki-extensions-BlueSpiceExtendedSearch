@@ -84,5 +84,7 @@
 	"bs-extendedsearch-collection-var-searchterm": "Słowo klucz",
 	"bs-extendedsearch-droplet-search-name": "Szukaj plików",
 	"bs-extendedsearch-source-label-externalfile": "Plik zewnętrzny",
-	"bs-extendedsearch-recentlyfound-ignore": "Usuń"
+	"bs-extendedsearch-recentlyfound-ignore": "Usuń",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Przestrzeń nazw",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Przestrzeń nazw:"
 }

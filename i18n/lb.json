@@ -72,5 +72,14 @@
 	"bs-extendedsearch-recentlyfound-ignore": "Ewechhuelen",
 	"bs-extendedsearch-tagsearch-input-aria-label": "Sichen",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 vu(n) $2",
-	"bs-extendedsearch-autocomplete-popup-redirect-title": "Leet op $1 virun"
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Leet op $1 virun",
+	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|Sichresultat|Sichresultater}} fonnt",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Ongeféier $1 {{PLURAL:$1|Sichresultat|Sichresultater}} fonnt",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Nummraum",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Nummraum:",
+	"bs-extendedsearch-context-subpage-label": "op Ënnersäite vu(n) '''$1'''",
+	"bs-extendedsearch-context-namespace-label": "am Nummraum '''$1'''",
+	"bs-extendedsearch-autocomplete-context-none": "op der ganzer Wiki",
+	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultater",
+	"bs-extendedsearch-autocomplete-context-options-label": "Sichen"
 }

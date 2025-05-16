@@ -164,13 +164,15 @@
 	"action-extendedsearch-search-wikipage": "пошук сторінок",
 	"action-extendedsearch-search-repofile": "пошук файлів",
 	"action-extendedsearch-search-externalfile": "пошук зовнішніх файлів",
-	"bs-extendedsearch-pref-externalfilepaths-help": "Зовнішні локації, в яких слід виконувати сканування на наявність файлів, і звідки здійснювати індексування файлів. Ці локації вводяться парами ключ/значення.",
+	"bs-extendedsearch-pref-externalfilepaths-help": "Зовнішні локації, в яких слід виконувати сканування на наявність файлів, і звідки здійснювати індексування файлів. Ці локації вводяться парами ключ/значення",
 	"bs-extendedsearch-suggest-operator": "Можливо, ви планували шукати <b>$1</b>?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Показування результатів у «$1»",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Показати глобальні результати",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Пошук у «$1»",
 	"bs-extendedsearch-statistics-report-search-terms": "Пошукові терміни",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Пошукові терміни для кожного користувача",
-	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Повертає результати пошуку користувача лише мовою користувача. Користувачі можуть вибирати свою мову відповідно до своїх уподобань.",
-	"bs-extendedsearch-pref-compact-ac-paths-help": "Показувати компактний макет автозаповнення меню пошуку (макет з одним стовпцем, без попереднього перегляду ескізів)."
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Повертає результати пошуку користувача лише мовою користувача. Користувачі можуть вибирати свою мову відповідно до своїх уподобань",
+	"bs-extendedsearch-pref-compact-ac-paths-help": "Показувати компактний макет автозаповнення меню пошуку (макет з одним стовпцем, без попереднього перегляду ескізів).",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Простір назв",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Простір назв:"
 }

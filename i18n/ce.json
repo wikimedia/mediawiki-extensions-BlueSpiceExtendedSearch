@@ -80,5 +80,7 @@
 	"bs-extendedsearch-collection-var-searchterm": "Термин",
 	"bs-extendedsearch-collection-var-numbersearched": "Лахарш",
 	"right-extendedsearch-search-wikipage": "АгӀонаш лахар",
-	"right-extendedsearch-search-repofile": "Файлаш лахар"
+	"right-extendedsearch-search-repofile": "Файлаш лахар",
+	"bs-extendedsearch-search-center-filter-namespace-label": "ЦӀерийн меттиг",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "ЦӀерийн меттиг:"
 }

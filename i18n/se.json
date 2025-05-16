@@ -25,5 +25,7 @@
 	"bs-extendedsearch-collection-type-searchhistory": "Ohcanhistorjá",
 	"right-extendedsearch-search-specialpage": "ohcat doaibmasiidduid",
 	"right-extendedsearch-search-repofile": "Ohcat fiillaid",
-	"action-extendedsearch-search-specialpage": "ohcat doaibmasiidduid"
+	"action-extendedsearch-search-specialpage": "ohcat doaibmasiidduid",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Nammagomuvuohta",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Nammagomuvuohta:"
 }

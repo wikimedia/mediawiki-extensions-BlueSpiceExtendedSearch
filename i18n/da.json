@@ -65,5 +65,7 @@
 	"action-extendedsearch-search-specialpage": "søg efter specialsider",
 	"action-extendedsearch-search-wikipage": "søg efter sider",
 	"action-extendedsearch-search-repofile": "søg efter filer",
-	"action-extendedsearch-search-externalfile": "søg efter eksterne filer"
+	"action-extendedsearch-search-externalfile": "søg efter eksterne filer",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Navnerum",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Navnerum:"
 }

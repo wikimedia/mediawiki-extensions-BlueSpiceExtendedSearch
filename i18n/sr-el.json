@@ -100,5 +100,7 @@
 	"action-extendedsearch-search-specialpage": "pretražujete posebne stranice",
 	"action-extendedsearch-search-wikipage": "pretražujete stranice",
 	"action-extendedsearch-search-repofile": "pretražujete datoteke",
-	"action-extendedsearch-search-externalfile": "pretražujete spoljašnje datoteke"
+	"action-extendedsearch-search-externalfile": "pretražujete spoljašnje datoteke",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Imenski prostor",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Imenski prostor:"
 }

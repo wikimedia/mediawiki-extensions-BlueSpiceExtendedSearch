@@ -45,8 +45,8 @@
 	"bs-extendedsearch-admin-heading-sources": "מקורות",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "מסמכים",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "משימת עדכון ממתינות",
-	"bs-extendedsearch-search-center-hitcount-widget": "{{PLURAL:$1|תוצאה אחת|$1 תוצאות}} עבור $2",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "בערך {{PLURAL:$1|תוצאה אחת|$1 תוצאות}} עבור $2",
+	"bs-extendedsearch-search-center-hitcount-widget": "{{PLURAL:$1|נמצאה תוצאה אחת|נמצאו $1 תוצאות}}",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "{{PLURAL:$1|נמצאה תוצאה אחת|נמצאו $1 תוצאות}} בערך",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "הוספת מסנן",
 	"bs-extendedsearch-search-center-filter-extension-label": "הרחבה",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "מרחב שם",
@@ -190,5 +190,12 @@
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 מתוך $2",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "תוצאות ראשוניות",
 	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "תוצאות משניות",
-	"bs-extendedsearch-autocomplete-popup-redirect-title": "הפניות לדף $1"
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "הפניות לדף $1",
+	"bs-extendedsearch-search-center-filter-namespace-label": "מרחב שם",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "מרחב שם:",
+	"bs-extendedsearch-context-subpage-label": "בדפי־משנה של '''$1'''",
+	"bs-extendedsearch-context-namespace-label": "במרחב השם '''$1'''",
+	"bs-extendedsearch-autocomplete-context-none": "בכל הוויקי",
+	"bs-extendedsearch-autocomplete-result-primary-results-label": "תוצאות",
+	"bs-extendedsearch-autocomplete-context-options-label": "חיפוש"
 }

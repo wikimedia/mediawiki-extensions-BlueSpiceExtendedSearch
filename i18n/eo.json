@@ -56,5 +56,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategorio(j)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Kategorio1|Kategorio2|...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Speco",
-	"bs-extendedsearch-suggest-operator": "Ĉu vi celis serĉi <b>$1</b>?"
+	"bs-extendedsearch-suggest-operator": "Ĉu vi celis serĉi <b>$1</b>?",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Nomspaco",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Nomspaco:"
 }

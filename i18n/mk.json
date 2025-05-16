@@ -79,5 +79,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Тип",
 	"bs-extendedsearch-collection-type-searchhistory": "Историја на пребарувањето",
 	"bs-extendedsearch-collection-var-searchterm": "Поим",
-	"bs-extendedsearch-collection-var-numbersearched": "Пребарувања"
+	"bs-extendedsearch-collection-var-numbersearched": "Пребарувања",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Именски простор",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Именски простор:"
 }

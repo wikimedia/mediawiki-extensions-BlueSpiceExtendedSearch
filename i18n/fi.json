@@ -56,5 +56,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Lisää suodatin",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Käytössä sivuilla",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Nimiavaruudet",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Luokat"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Luokat",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Nimiavaruus",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Nimiavaruus:"
 }

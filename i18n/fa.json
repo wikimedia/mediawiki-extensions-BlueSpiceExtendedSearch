@@ -123,5 +123,7 @@
 	"bs-extendedsearch-statistics-report-search-terms": "عبارت‌های جستجو",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "عبارت‌های جستجو به‌ازای کاربر",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "آغاز جستجو",
-	"bs-extendedsearch-tagsearch-input-aria-label": "جستجو"
+	"bs-extendedsearch-tagsearch-input-aria-label": "جستجو",
+	"bs-extendedsearch-search-center-filter-namespace-label": "فضای نام",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "فضای نام:"
 }

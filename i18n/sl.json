@@ -178,5 +178,7 @@
 	"bs-extendedsearch-rest-trace-insert-failure": "Podatkov o sledenju ni bilo mogoče vstaviti",
 	"bs-extendedsearch-rest-trace-remove-failure": "Podatkov o sledenju ni bilo mogoče odstraniti",
 	"bs-extendedsearch-recently-found-header": "Nedavno ogledano",
-	"bs-extendedsearch-recentlyfound-ignore": "Odstrani"
+	"bs-extendedsearch-recentlyfound-ignore": "Odstrani",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Imenski prostor",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Imenski prostor:"
 }
