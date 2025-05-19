@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Maoue",
-			"Ykhwong"
+			"Ykhwong",
+			"아라"
 		]
 	},
 	"bs-extsearch-desc": "일래스틱서치 검색 백엔드",
@@ -92,7 +93,7 @@
 	"bs-extendedsearch-pref-external-file-paths-excludes-exclude": "정규 표현식 패턴 제외",
 	"bs-extendedsearch-pref-external-file-paths-excludes-exclude-help": "외부 파일 위치의 파일들은 정규 표현식 패턴을 기반으로 검색에서 제외할 수 있습니다.",
 	"bs-extendedsearch-external-file-paths-desc": "색인해야 하는 외부 폴더의 배열",
-	"bs-extendedsearch-autocomplete-modified-time-label": "최근 수정 시간: $1",
+	"bs-extendedsearch-autocomplete-modified-time-label": "마지막 수정: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... $1개 더 보기",
 	"bs-extendedsearch-pref-compact-ac-paths": "단순한 자동 완성 사용",
 	"bs-extendedsearch-compact-ac-paths-desc": "단순한 자동 완성 팝업을 사용할지의 여부",
