@@ -115,7 +115,16 @@
 	.bs-extendedsearch-autocomplete-popup-secondary {
 		border-top: 1px solid @autocomplete-border-color;
 		margin: 5px;
-		padding-top: 5px;
+		padding-top: 15px;
+
+		.bs-extendedsearch-autocomplete-popup-special-item-label {
+			font-variant-caps: all-petite-caps;
+			letter-spacing: 0.15rem;
+			padding-bottom: 10px;
+			padding-left: 10px;
+			display: block;
+			font-size: 0.9375rem;
+		}
 	}
 
 	.quiet-subpage {
@@ -222,6 +231,7 @@
 			font-variant-caps: all-petite-caps;
 			letter-spacing: 0.15rem;
 			padding-bottom: 10px;
+			padding-left: 10px;
 		}
 
 		&.has-items {
@@ -249,16 +259,13 @@
 				}
 			}
 
-			.oo-ui-buttonElement-button {
+			a.oo-ui-buttonElement-button {
 				flex-grow: 1;
-
-				a {
-					background-color: transparent;
-					padding-left: 2.8em;
-					white-space: break-spaces;
-					color: #3f3f3f;
-					font-weight: normal;
-				}
+				font-size: 0.9375rem;
+				background-color: transparent;
+				padding-left: 2.8em;
+				white-space: break-spaces;
+				color: @tools-base-color;
 			}
 
 			.oo-ui-iconElement-icon {
@@ -267,8 +274,9 @@
 
 			.bs-extendedsearch-autocomplete-popup-context-option-label {
 				padding: 5px;
-				color: @autocomplete-pill-background-color;
+				color: @autocomplete-results-path-color;
 				white-space: break-spaces;
+				font-size: 0.9375rem;
 			}
 		}
 	}
