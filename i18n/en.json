@@ -74,7 +74,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "No valid matches for your query",
 	"bs-extendedsearch-autocomplete-result-type": "Type: $1",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "Top matches",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "You might be also looking for...",
 	"bs-extendedsearch-search-center-result-help": "Type something in the search bar above...",
 	"bs-extendedsearch-searchcenter-filter-or-label": "or",
 	"bs-extendedsearch-searchcenter-filter-and-label": "and",
@@ -189,5 +188,6 @@
 	"bs-extendedsearch-context-namespace-label": "in '''$1''' namespace",
 	"bs-extendedsearch-autocomplete-context-none": "in whole wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Results",
-	"bs-extendedsearch-autocomplete-context-options-label": "Search"
+	"bs-extendedsearch-autocomplete-context-options-label": "Search",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Similar results"
 }
