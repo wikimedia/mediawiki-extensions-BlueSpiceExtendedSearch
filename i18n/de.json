@@ -201,5 +201,6 @@
 	"bs-extendedsearch-context-namespace-label": "im '''$1'''-Namensraum",
 	"bs-extendedsearch-autocomplete-context-none": "im gesamten Wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Ergebnisse",
-	"bs-extendedsearch-autocomplete-context-options-label": "Suche"
+	"bs-extendedsearch-autocomplete-context-options-label": "Suche",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Ähnliche Ergebnisse"
 }

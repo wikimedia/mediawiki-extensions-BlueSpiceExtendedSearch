@@ -32,7 +32,7 @@
 
 		this.$secondaryResultsLabel = $( '<span>' )
 			.addClass( 'bs-extendedsearch-autocomplete-popup-special-item-label' )
-			.html( mw.message( 'bs-extendedsearch-autocomplete-result-secondary-results-label' ).plain() );
+			.html( mw.message( 'bs-extendedsearch-autocomplete-result-secondary-results-header-label' ).plain() );
 		this.$secondaryResults = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-secondary' );
 		this.$secondaryResults.append( this.$secondaryResultsLabel );
 		this.$secondaryResults.hide();
