@@ -11,7 +11,7 @@
 	"apihelp-bs-extendedsearch-stats-param-stats": "Spisak statistika koje treba da se vrate",
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Dodatni parametri za upit",
 	"apihelp-bs-extendedsearch-query-param-search-term": "Termin za kojim se sprovodi pretraga",
-	"bs-extendedsearch-search-input-placeholder": "Pronađite …",
+	"bs-extendedsearch-search-input-placeholder": "Pronađite...",
 	"bs-extendedsearch-source-label-wikipage": "Viki stranica",
 	"bs-extendedsearch-source-label-specialpage": "Posebna stranica",
 	"bs-extendedsearch-source-label-repofile": "Otpremanje datoteke",
@@ -19,8 +19,8 @@
 	"bs-extendedsearch-admin-label-error": "Greška",
 	"bs-extendedsearch-admin-heading-sources": "Izvori",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Dokumenti",
-	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|pogodak|pogotka|pogodaka}} za termin „$2”",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Oko $1 {{PLURAL:$1|pogodak|pogotka|pogodaka}} za termin „$2”",
+	"bs-extendedsearch-search-center-hitcount-widget": "{{PLURAL:$1|Pronađen je|Pronađeno je}} $1 {{PLURAL:$1|rezultat|rezultata}}",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Otprilike je {{PLURAL:$1|pronađen|pronađeno}} $1 {{PLURAL:$1|rezultat|rezultata}}",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Dodavanje filtera",
 	"bs-extendedsearch-search-center-filter-extension-label": "Dodatak",
 	"bs-extendedsearch-search-center-filter-namespace-label": "Imenski prostor",
@@ -98,5 +98,10 @@
 	"action-extendedsearch-search-specialpage": "pretražujete posebne stranice",
 	"action-extendedsearch-search-wikipage": "pretražujete stranice",
 	"action-extendedsearch-search-repofile": "pretražujete datoteke",
-	"action-extendedsearch-search-externalfile": "pretražujete spoljašnje datoteke"
+	"action-extendedsearch-search-externalfile": "pretražujete spoljašnje datoteke",
+	"bs-extendedsearch-recentlyfound-ignore": "Ukloni",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 od $2",
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Preusmerava na $1",
+	"bs-extendedsearch-autocomplete-result-primary-results-label": "Rezultati",
+	"bs-extendedsearch-autocomplete-context-options-label": "Pretraga"
 }

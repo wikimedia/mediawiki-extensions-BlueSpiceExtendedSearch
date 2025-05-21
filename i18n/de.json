@@ -15,7 +15,8 @@
 			"Tiin",
 			"Umherirrender",
 			"Umlaut",
-			"Wolfdietmann"
+			"Wolfdietmann",
+			"Vhoesl"
 		]
 	},
 	"bs-extsearch-desc": "Elasticsearch Suche Backend",
@@ -199,5 +200,6 @@
 	"bs-extendedsearch-context-subpage-label": "in Unterseiten von '''$1'''",
 	"bs-extendedsearch-context-namespace-label": "im '''$1'''-Namensraum",
 	"bs-extendedsearch-autocomplete-context-none": "im gesamten Wiki",
-	"bs-extendedsearch-autocomplete-result-primary-results-label": "Ergebnisse"
+	"bs-extendedsearch-autocomplete-result-primary-results-label": "Ergebnisse",
+	"bs-extendedsearch-autocomplete-context-options-label": "Suche"
 }
