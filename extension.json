@@ -93,20 +93,12 @@
 					]
 				}
 			},
-			"TagRegistry": {
-				"bs-tagsearch": "BS\\ExtendedSearch\\Tag\\TagSearch"
-			},
 			"StatusCheckProvider": {
 				"bs-extendedsearch": {
 					"class": "\\BS\\ExtendedSearch\\Integration\\BlueSpiceFoundation\\StatusCheckProvider",
 					"services": [ "BSExtendedSearchBackend" ]
 				}
 			}
-		},
-		"BlueSpiceVisualEditorConnector": {
-			"TagDefinitions": [
-				"ext.bluespice.tagsearch.visualEditor"
-			]
 		},
 		"BlueSpiceExtendedSearch": {
 			"Sources": {
@@ -213,11 +205,6 @@
 				"\\BS\\ExtendedSearch\\Privacy\\Handler"
 			]
 		},
-		"VisualEditor": {
-			"PluginModules": [
-				"ext.bluespice.extendedsearch.tagsearch.visualEditor"
-			]
-		},
 		"BlueSpiceExtendedStatistics": {
 			"SnapshotProviders": {
 				"es-searchstats": {
@@ -301,6 +288,10 @@
 		"addResources": {
 			"class": "BS\\ExtendedSearch\\Hook\\BeforePageDisplay\\AddResources",
 			"services": [ "NamespaceInfo", "ConfigFactory", "BSExtendedSearch.PluginManager" ]
+		},
+		"registerTags": {
+			"class": "BS\\ExtendedSearch\\HookHandler\\RegisterTags",
+			"services": [ "BSExtendedSearchBackend", "NamespaceInfo", "ContentLanguage" ]
 		}
 	},
 	"Hooks": {
@@ -314,7 +305,8 @@
 		"NamespaceManager::editNamespace": "\\BS\\ExtendedSearch\\Hook\\NamespaceManagerEditNamespace\\ReindexNamespace::callback",
 		"UserMergeAccountFields": "\\BS\\ExtendedSearch\\Hook\\UserMergeAccountFields\\MergeExtendedSearchDBFields::callback",
 		"MWStakeCommonUIRegisterSkinSlotComponents": [ "extendedsearchform" ],
-		"MWStakeRunJobsTriggerRegisterHandlers": "\\BS\\ExtendedSearch\\Hook\\MWStakeRunJobsTriggerRegisterHandlers\\RegisterExternalFileUpdater::callback"
+		"MWStakeRunJobsTriggerRegisterHandlers": "\\BS\\ExtendedSearch\\Hook\\MWStakeRunJobsTriggerRegisterHandlers\\RegisterExternalFileUpdater::callback",
+		"MWStakeGenericTagHandlerInitTags": "registerTags"
 	},
 	"SpecialPages": {
 		"BSSearchCenter": "BS\\ExtendedSearch\\MediaWiki\\Specials\\SearchCenter",
@@ -529,32 +521,6 @@
 			"styles": "ext.blueSpiceExtendedSearch.contentdroplets.css",
 			"dependencies": [
 				"ext.blueSpiceExtendedSearch.Autocomplete"
-			]
-		},
-		"ext.bluespice.tagsearch.visualEditor": {
-			"scripts": [
-				"bs.extendedSearch/vec/ui/SearchTypeInputWidget.js",
-				"bs.extendedSearch/vec/tag/TagSearchDefinition.js"
-			],
-			"messages": [
-				"bs-extendedsearch-tagsearch-ve-tagsearch-title",
-				"bs-extendedsearch-tagsearch-ve-tagsearch-desc",
-				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns",
-				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help",
-				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder",
-				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat",
-				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help",
-				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder",
-				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder",
-				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-help",
-				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder",
-				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator",
-				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help",
-				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type",
-				"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help"
-			],
-			"dependencies": [
-				"ext.visualEditor.mwcore"
 			]
 		},
 		"ext.bluespice.extendedsearch.collection.searchhistory": {

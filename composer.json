@@ -13,7 +13,8 @@
 	"require": {
 		"composer/installers": "~1.0|~2",
 		"opensearch-project/opensearch-php": "~2",
-		"mwstake/mediawiki-component-datastore": "~2"
+		"mwstake/mediawiki-component-datastore": "~2",
+		"mwstake/mediawiki-component-generictaghandler": "~1"
 	},
 	"require-dev": {
 		"mediawiki/mediawiki-codesniffer": "45.0.0",
