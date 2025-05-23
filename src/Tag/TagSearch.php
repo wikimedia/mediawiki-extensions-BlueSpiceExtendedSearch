@@ -2,112 +2,195 @@
 
 namespace BS\ExtendedSearch\Tag;
 
-use BlueSpice\ParamProcessor\IParamDefinition;
-use BlueSpice\ParamProcessor\ParamDefinition;
-use BlueSpice\ParamProcessor\ParamType;
-use BlueSpice\Tag\IHandler;
-use BlueSpice\Tag\Tag;
-use BS\ExtendedSearch\Param\Definition\SearchResultTypeListParam;
-use BSCategoryListParam;
-use BSNamespaceListParam;
-use MediaWiki\Config\ConfigException;
+use BS\ExtendedSearch\Backend;
+use BS\ExtendedSearch\ISearchSource;
+use MediaWiki\Language\Language;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Parser\Parser;
-use MediaWiki\Parser\PPFrame;
+use MediaWiki\Message\Message;
+use MediaWiki\Title\NamespaceInfo;
+use MWStake\MediaWiki\Component\FormEngine\StandaloneFormSpecification;
+use MWStake\MediaWiki\Component\GenericTagHandler\ClientTagSpecification;
+use MWStake\MediaWiki\Component\GenericTagHandler\GenericTag;
+use MWStake\MediaWiki\Component\GenericTagHandler\ITagHandler;
+use MWStake\MediaWiki\Component\InputProcessor\Processor\KeywordListValue;
+use MWStake\MediaWiki\Component\InputProcessor\Processor\KeywordValue;
+use MWStake\MediaWiki\Component\InputProcessor\Processor\StringValue;
 
-class TagSearch extends Tag {
-	public const PARAM_NAMESPACE = 'ns';
-	public const PARAM_NAMESPACE_FULLNAME = 'namespace';
-	public const PARAM_CATEGORY = 'cat';
-	public const PARAM_CATEGORY_FULLNAME = 'category';
-	public const PARAM_PLACEHOLDER = 'placeholder';
-	public const PARAM_OPERATOR = 'operator';
-	public const PARAM_TYPE = 'type';
+class TagSearch extends GenericTag {
 
-	protected static int $tagCounter = 0;
+	/** @var int */
+	private int $idCounter = 0;
 
 	/**
-	 * @param mixed $processedInput
-	 * @param array $processedArgs
-	 * @param Parser $parser
-	 * @param PPFrame $frame
-	 * @return IHandler
-	 * @throws ConfigException
+	 * @param Backend $backend
+	 * @param NamespaceInfo $namespaceInfo
+	 * @param Language $language
 	 */
-	public function getHandler(
-		$processedInput,
-		array $processedArgs,
-		Parser $parser,
-		PPFrame $frame
+	public function __construct(
+		private readonly Backend $backend,
+		private readonly NamespaceInfo $namespaceInfo,
+		private readonly Language $language
 	) {
-		$config = MediaWikiServices::getInstance()
-			->getConfigFactory()
-			->makeConfig( 'bsg' );
-
-		return new TagSearchHandler(
-			$processedInput,
-			$processedArgs,
-			$parser,
-			$frame,
-			$config,
-			$this->nextTagId()
-		);
-	}
-
-	protected function nextTagId(): int {
-		return self::$tagCounter++;
 	}
 
 	/**
-	 * @return array|string[]
+	 * @inheritDoc
 	 */
-	public function getTagNames() {
+	public function getTagNames(): array {
 		return [ 'bs:tagsearch', 'tagsearch' ];
 	}
 
 	/**
-	 * @return IParamDefinition[]
+	 * @inheritDoc
 	 */
-	public function getArgsDefinitions() {
-		$namespaceListParam = new BSNamespaceListParam(
-			ParamType::NAMESPACE_LIST,
-			static::PARAM_NAMESPACE,
-			[]
-		);
-		$namespaceListParam->setArrayValues( [ 'hastoexist' => true ] );
-		$namespaceListParamFull = new BSNamespaceListParam(
-			ParamType::NAMESPACE_LIST,
-			static::PARAM_NAMESPACE_FULLNAME,
-			[]
-		);
-		$namespaceListParam->setArrayValues( [ 'hastoexist' => true ] );
+	public function hasContent(): bool {
+		return false;
+	}
 
-		$categoryParam  = new BSCategoryListParam(
-			ParamType::CATEGORY_LIST, static::PARAM_CATEGORY_FULLNAME, []
+	/**
+	 * @inheritDoc
+	 */
+	public function getHandler( MediaWikiServices $services ): ITagHandler {
+		return new TagSearchHandler(
+			$services->getConfigFactory()->makeConfig( 'bsg' ),
+			$this->getTagId()
 		);
-		$catParam  = new BSCategoryListParam(
-			ParamType::CATEGORY_LIST, static::PARAM_CATEGORY, []
-		);
-		$categoryParam->setArrayValues( [ 'hastoexist' => false ] );
-		$catParam->setArrayValues( [ 'hastoexist' => false ] );
+	}
+
+	public function getTagId(): int {
+		return $this->idCounter++;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getParamDefinition(): ?array {
+		$types = array_map( static function ( ISearchSource $source ) {
+			return $source->getTypeKey();
+		}, $this->backend->getSources() );
 		return [
-			new SearchResultTypeListParam(
-				static::PARAM_TYPE
-			),
-			$namespaceListParam,
-			$namespaceListParamFull,
-			$catParam,
-			$categoryParam,
-			new ParamDefinition(
-				ParamType::STRING,
-				static::PARAM_PLACEHOLDER,
-				wfMessage( 'bs-extendedsearch-tagsearch-searchfield-placeholder' )->plain()
-			),
-			new ParamDefinition(
-				ParamType::STRING,
-				static::PARAM_OPERATOR,
-				TagSearchHandler::OPERATOR_OR
-			)
+			'namespace' => [
+				'type' => 'namespace-list',
+				'separator' => ',',
+			],
+			// B/C
+			'ns' => [
+				'type' => 'namespace-list',
+				'separator' => ',',
+			],
+			'category' => [
+				'type' => 'category-list',
+				'separator' => ',',
+			],
+			// B/C
+			'cat' => [
+				'type' => 'category-list',
+				'separator' => ',',
+			],
+			'placeholder' => ( new StringValue() )
+				->setDefaultValue(
+					Message::newFromKey( 'bs-extendedsearch-tagsearch-searchfield-placeholder' )->text()
+				),
+			'operator' => ( new KeywordValue() )
+				->setKeywords( [
+					'AND' => 'AND',
+					'OR' => 'OR',
+				] )
+				->setDefaultValue( 'AND' ),
+			'type' => ( new KeywordListValue() )
+				->setKeywords( $types )
+				->setListSeparator( ',' ),
+		];
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getClientTagSpecification(): ClientTagSpecification|null {
+		$formSpec = new StandaloneFormSpecification();
+		$formSpec->setItems( [
+			[
+				'type' => 'text',
+				'name' => 'placeholder',
+				'label' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder' )->text(),
+				'help' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-help' )->text(),
+				'widget_placeholder' => Message::newFromKey(
+					'bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder'
+				)->text(),
+			],
+			[
+				'type' => 'menutag_multiselect',
+				'name' => 'type',
+				'label' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-type' )->text(),
+				'help' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help' )->text(),
+				'options' => array_values( array_map( static function ( ISearchSource $source ) {
+					return [
+						'data' => $source->getTypeKey(),
+						'label' => Message::newFromKey(
+							'bs-extendedsearch-source-type-' . $source->getTypeKey() . '-label'
+						)->text(),
+					];
+				}, $this->backend->getSources() ) ),
+				'widget_allowArbitrary' => false,
+				'widget_$overlay' => true,
+			],
+			[
+				'type' => 'menutag_multiselect',
+				'name' => 'namespace',
+				'label' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns' )->text(),
+				'help' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help' )->text(),
+				'options' => array_values( array_map( function ( int $ns ) {
+					return [
+						'data' => $ns,
+						'label' => $ns === NS_MAIN ?
+							Message::newFromKey( 'blanknamespace' )->text() :
+							$this->language->getNsText( $ns ),
+					];
+				}, $this->namespaceInfo->getValidNamespaces() ) ),
+				'widget_allowArbitrary' => false,
+				'widget_$overlay' => true,
+			],
+			[
+				'type' => 'category_multiselect',
+				'name' => 'category',
+				'label' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat' )->text(),
+				'help' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help' )->text(),
+				'widget_$overlay' => true
+			],
+			[
+				'type' => 'dropdown',
+				'name' => 'operator',
+				'label' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator' )->text(),
+				'help' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help' )->text(),
+				'options' => [
+					[
+						'data' => 'AND',
+						'label' => 'AND',
+					],
+					[
+						'data' => 'OR',
+						'label' => 'OR',
+					]
+				],
+				'widget_$overlay' => true,
+			],
+		] );
+
+		return new ClientTagSpecification(
+			'TagSearch',
+			Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-desc' ),
+			$formSpec,
+			Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-title' )
+		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getResourceLoaderModules(): ?array {
+		return [
+			'ext.blueSpiceExtendedSearch.TagSearch',
+			'ext.blueSpiceExtendedSearch.TagSearch.styles',
 		];
 	}
 }
