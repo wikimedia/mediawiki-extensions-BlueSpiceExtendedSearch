@@ -12,7 +12,7 @@
 	"apihelp-bs-extendedsearch-stats-param-stats": "Spisak statistika koje treba da se vrate",
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Dodatni parametri za upit",
 	"apihelp-bs-extendedsearch-query-param-search-term": "Termin za kojim se sprovodi pretraga",
-	"bs-extendedsearch-search-input-placeholder": "Pronađite …",
+	"bs-extendedsearch-search-input-placeholder": "Pronađite...",
 	"bs-extendedsearch-source-label-wikipage": "Viki stranica",
 	"bs-extendedsearch-source-label-specialpage": "Posebna stranica",
 	"bs-extendedsearch-source-label-repofile": "Otpremanje datoteke",
@@ -103,5 +103,7 @@
 	"action-extendedsearch-search-repofile": "pretražujete datoteke",
 	"action-extendedsearch-search-externalfile": "pretražujete spoljašnje datoteke",
 	"bs-extendedsearch-flyout-similar-pages-title": "Slične stranice",
-	"bs-extendedsearch-flyout-similar-pages-emptytext": "Nisu pronađene slične stranice"
+	"bs-extendedsearch-flyout-similar-pages-emptytext": "Nisu pronađene slične stranice",
+	"bs-extendedsearch-recentlyfound-ignore": "Ukloni",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 od $2"
 }
