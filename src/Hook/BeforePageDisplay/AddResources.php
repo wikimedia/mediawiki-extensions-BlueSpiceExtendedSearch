@@ -8,9 +8,9 @@ use MediaWiki\Config\ConfigFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
+use MediaWiki\Output\OutputPage;
 use MediaWiki\Title\NamespaceInfo;
 use MediaWiki\Title\Title;
-use OutputPage;
 
 class AddResources implements BeforePageDisplayHook {
 
