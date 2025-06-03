@@ -6,7 +6,7 @@ use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\Plugin\ISearchContextProvider;
 use BS\ExtendedSearch\PluginManager;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 
 class SearchContext extends LookupModifier {
 
