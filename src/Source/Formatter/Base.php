@@ -6,12 +6,10 @@ use BS\ExtendedSearch\ISearchResultFormatter;
 use BS\ExtendedSearch\ISearchSource;
 use BS\ExtendedSearch\SearchResult;
 use BS\ExtendedSearch\Wildcarder;
-use MediaWiki\Config\ConfigException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Title\Title;
-use MWException;
 
 class Base implements ISearchResultFormatter {
 	/**
@@ -170,7 +168,6 @@ class Base implements ISearchResultFormatter {
 	 *
 	 * @param array &$results
 	 * @param array $searchData
-	 * @throws MWException
 	 */
 	public function rankAutocompleteResults( &$results, $searchData ): void {
 		foreach ( $results as &$result ) {
@@ -198,8 +195,6 @@ class Base implements ISearchResultFormatter {
 	 * @param string $haystack
 	 * @param string $needle
 	 * @return bool
-	 * @throws MWException
-	 * @throws ConfigException
 	 */
 	protected function matchTokenized( $haystack, $needle ) {
 		$separated = Wildcarder::factory( $needle )->getSeparated( [ '\s' ] );

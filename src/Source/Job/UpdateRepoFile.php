@@ -5,6 +5,7 @@ namespace BS\ExtendedSearch\Source\Job;
 use File;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
+use RuntimeException;
 
 class UpdateRepoFile extends UpdateTitleBase {
 	/** @inheritDoc */
@@ -43,9 +44,8 @@ class UpdateRepoFile extends UpdateTitleBase {
 	}
 
 	/**
-	 *
 	 * @return array
-	 * @throws \Exception
+	 * @throws RuntimeException
 	 */
 	protected function getDocumentProviderSource() {
 		$this->setFileRepoFile();
@@ -60,7 +60,7 @@ class UpdateRepoFile extends UpdateTitleBase {
 			] );
 
 			if ( $fsFile === null ) {
-				throw new \Exception(
+				throw new RuntimeException(
 					"File '{$this->getTitle()->getPrefixedDBkey()}' not found on filesystem!"
 				);
 			}
@@ -73,12 +73,11 @@ class UpdateRepoFile extends UpdateTitleBase {
 			];
 		}
 
-		throw new \Exception( "FSFile cannot be created" );
+		throw new RuntimeException( "FSFile cannot be created" );
 	}
 
 	/**
-	 *
-	 * @throws \Exception
+	 * @throws RuntimeException
 	 */
 	protected function setFileRepoFile() {
 		if ( !empty( $this->fileData ) ) {
@@ -91,7 +90,7 @@ class UpdateRepoFile extends UpdateTitleBase {
 		$services = MediaWikiServices::getInstance();
 		$file = $services->getRepoGroup()->findFile( $this->getTitle() );
 		if ( $file === false ) {
-			throw new \Exception(
+			throw new RuntimeException(
 				"File '{$this->getTitle()->getPrefixedDBkey()}' not found in any repo!"
 			);
 		}
