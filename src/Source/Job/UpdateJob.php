@@ -12,7 +12,7 @@ use Job;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Status\Status;
-use MWException;
+use Throwable;
 
 abstract class UpdateJob extends Job {
 	public const ACTION_DELETE = 'delete';
@@ -41,7 +41,7 @@ abstract class UpdateJob extends Job {
 		}
 		try {
 			$dC = $this->doRun();
-		} catch ( MWException $ex ) {
+		} catch ( Throwable $ex ) {
 			$this->setLastError( $ex->getMessage() );
 			return false;
 		}
@@ -70,9 +70,7 @@ abstract class UpdateJob extends Job {
 	}
 
 	/**
-	 *
 	 * @return ISearchSource
-	 * @throws Exception
 	 */
 	protected function getSource() {
 		return $this->getBackend()->getSource( $this->getSourceKey() );
