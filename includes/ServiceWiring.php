@@ -60,7 +60,7 @@ return [
 		$services->getHookContainer()->run( 'BSExtendedSearchRegisterPlugin', [ &$pluginInstances ] );
 		foreach ( $pluginInstances as $plugin ) {
 			if ( !( $plugin instanceof ISearchPlugin ) ) {
-				throw new Exception(
+				throw new LogicException(
 					'Search plugin must implement ' . ISearchPlugin::class . ', got ' . get_class( $plugin )
 				);
 			}
