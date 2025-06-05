@@ -409,6 +409,12 @@ class Backend {
 		if ( !empty( $excludeTypes ) ) {
 			$indices = array_diff( $indices, $this->getAllIndicesForQuery( $excludeTypes ) );
 		}
+		if ( empty( $indices ) ) {
+			// If indices to search in are empty, it will search in ALL indices available on server
+			// which is a nuisance at best, and security issue at worst, in farms and shared OS instances.
+			// Should never happen, but this is a safety net.
+			return new SearchResultSet( [], $this );
+		}
 
 		$query = $lookup->getQueryDSL();
 		if ( isset( $query['indices_boost'] ) ) {
@@ -421,6 +427,7 @@ class Backend {
 			}
 			$query['indices_boost'] = $replaced;
 		}
+
 		return $this->runRawQueryFromData( [
 			'index' => implode( ',', $indices ),
 			'body' => $query,
