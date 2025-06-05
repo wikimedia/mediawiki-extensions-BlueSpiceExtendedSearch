@@ -130,7 +130,7 @@ class WikiPageFormatter extends Base {
 			Message::newFromKey( 'blanknamespace' )->text() :
 			BsNamespaceHelper::getNamespaceName( $result['namespace'] );
 		$result['breadcrumbs'] = $this->makeSubpageBreadCrumbs( $result['prefixed_title'] );
-		if ( $result['_is_foreign'] ) {
+		if ( $result['_is_foreign'] ?? false ) {
 			$result['page_anchor'] = Html::element( 'a', [
 				'href' => $result['uri'],
 			], $this->getAnchorText( $result ) );
