@@ -371,7 +371,8 @@ bs.extendedSearch.ToolsPanel.prototype.addContextPill = function () {
 	}
 
 	const contextButton = new bs.extendedSearch.ContextButton( {
-		label: context.text
+		rawText: context.text.replace( /<[^>]*>?/gm, '' ),
+		label: new OO.ui.HtmlSnippet( context.text )
 	} );
 	contextButton.connect( this, {
 		remove: function () {
