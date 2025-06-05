@@ -3,20 +3,20 @@ bs.util.registerNamespace( 'bs.extendedSearch' );
 bs.extendedSearch.ContextButton = function ( cfg ) {
 	cfg = cfg || {};
 
-	bs.extendedSearch.FilterWidget.parent.call( this, cfg );
+	bs.extendedSearch.ContextButton.parent.call( this, cfg );
 
 	OO.ui.mixin.ButtonElement.call( this, cfg );
 	OO.ui.mixin.LabelElement.call( this, cfg );
-	bs.extendedSearch.mixin.FilterRemoveButton.call( this, { showRemove: true } );
+	bs.extendedSearch.mixin.FilterRemoveButton.call( this, {
+		showRemove: true,
+		label: cfg.rawText || ''
+	} );
 
-	this.$button
-		.addClass( 'bs-extendedsearch-filter-button-button' )
-		.append( this.$label )
-		.attr( 'tabindex', 0 );
+	this.$label.addClass( 'oo-ui-buttonElement-button bs-extendedsearch-filter-button-button bs-extendedsearch-context-button' );
 
 	this.$element
-		.addClass( 'oo-ui-popupButtonWidget bs-extendedsearch-filter-button-widget' )
-		.append( this.$button, this.$removeButton );
+		.addClass( 'bs-extendedsearch-filter-button-widget' )
+		.append( this.$label, this.$removeButton );
 };
 
 OO.inheritClass( bs.extendedSearch.ContextButton, OO.ui.Widget );
