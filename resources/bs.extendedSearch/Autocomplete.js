@@ -313,7 +313,7 @@ bs.extendedSearch.Autocomplete.prototype.setLookupToSubmit = function () {
 			queryString = this.searchBar.namespace.text + ':' + queryString;
 		}
 		if ( !hasContext ) {
-			lookup.addTermsFilter( 'namespace_text', this.searchBar.namespace.text );
+			lookup.addTermsFilter( 'namespace', this.searchBar.namespace.id );
 		}
 	}
 
