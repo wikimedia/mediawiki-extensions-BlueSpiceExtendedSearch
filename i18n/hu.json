@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Hanna Tardos",
-			"Krisztina"
+			"Krisztina",
+			"Tacsipacsi"
 		]
 	},
 	"bs-extendedsearch-close-search-button-aria-label": "Keresőmező bezárása",
@@ -50,15 +51,15 @@
 	"bs-extendedsearch-searchcenter-sort-field-ctime": "Létrehozás ideje",
 	"bs-extendedsearch-searchcenter-sort-field-size": "Méret",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Névtér",
-	"bs-extendedsearch-autocomplete-create-page-link": "\"$1\" lap létrehozása",
+	"bs-extendedsearch-autocomplete-create-page-link": "A(z) „$1” lap létrehozása",
 	"bs-extendedsearch-loadmore-label": "További találatok betöltése",
 	"bs-extendedsearch-search-center-result-typetext-label": "Típus:",
 	"bs-extendedsearch-source-type-specialpage-label": "Speciális lap",
-	"bs-extendedsearch-search-center-create-page-link": "\"$1\" lap létrehozása",
+	"bs-extendedsearch-search-center-create-page-link": "A(z) „$1” lap létrehozása",
 	"bs-extendedsearch-filter-add-button-label": "Szűrő hozzáadása",
 	"bs-extendedsearch-options-button-label": "Keresési beállítások",
 	"bs-extendedsearch-export-button-label": "Keresési eredmények exportálása",
-	"bs-extendedsearch-remove-button-label": "\"$1\" szűrő eltávolítása",
+	"bs-extendedsearch-remove-button-label": "A(z) „$1” szűrő eltávolítása",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Lapokon használt",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Névtér(ek)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Típus",
