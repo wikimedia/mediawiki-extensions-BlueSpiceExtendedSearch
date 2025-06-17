@@ -828,6 +828,10 @@
 		"ESIndexPrefix": {
 			"description": "Which prefix to use on the index names. Will use `WikiMap::getCurrentWikiId()` if empty.",
 			"value": ""
+		},
+		"ESSecureResults": {
+			"description": "If true, results will be filtered to only show pages the user has access to",
+			"value": true
 		}
 	},
 	"callback": "\\BS\\ExtendedSearch\\Setup::onRegistration",

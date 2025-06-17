@@ -264,15 +264,13 @@ class GenericSource implements ISearchSource {
 	 * @inheritDoc
 	 */
 	public function getLookupModifiers( Lookup $lookup, IContextSource $context ): array {
-		return [
+		$lookupModifiers = [
 			new BaseExtensionAggregation( $lookup, $context ),
 			new BaseTagsAggregation( $lookup, $context ),
 			new BaseSimpleQSFields( $lookup, $context ),
 			BaseWildcarder::factory( MediaWikiServices::getInstance(), $lookup, $context ),
 			new BaseSortByID( $lookup, $context ),
 			new BaseUserRelevance( $lookup, $context ),
-			new BaseTypeSecurityTrimming( $lookup, $context ),
-			new BaseTitleSecurityTrimmings( $this->getBackend(), $lookup, $context ),
 			new BaseMTimeBoost( $lookup, $context ),
 			new BaseAutocompleteSourceFields( $lookup, $context ),
 			new BaseConvertTypeFilter( $lookup, $context ),
@@ -282,6 +280,15 @@ class GenericSource implements ISearchSource {
 				MediaWikiServices::getInstance()->getService( 'BSExtendedSearch.PluginManager' )
 			)
 		];
+		$securityLMs = [
+			new BaseTypeSecurityTrimming( $lookup, $context ),
+			new BaseTitleSecurityTrimmings( $this->getBackend(), $lookup, $context ),
+		];
+		if ( $this->backend->getConfig()->get( 'ESSecureResults' ) ) {
+			$lookupModifiers = array_merge( $lookupModifiers, $securityLMs );
+		}
+
+		return $lookupModifiers;
 	}
 
 	/**
