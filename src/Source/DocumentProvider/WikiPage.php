@@ -98,6 +98,7 @@ class WikiPage extends Base {
 		}
 
 		$aDC = array_merge( $aDC, [
+			'uri' => $this->title->getFullURL(),
 			'basename' => $this->title->getBaseText(),
 			'basename_exact' => $this->title->getBaseText(),
 			'extension' => 'wiki',
