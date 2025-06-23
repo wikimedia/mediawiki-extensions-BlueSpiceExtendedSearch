@@ -79,5 +79,6 @@
 	"bs-extendedsearch-context-namespace-label": "am Nummraum '''$1'''",
 	"bs-extendedsearch-autocomplete-context-none": "op der ganzer Wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultater",
-	"bs-extendedsearch-autocomplete-context-options-label": "Sichen"
+	"bs-extendedsearch-autocomplete-context-options-label": "Sichen",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Änlech Resultater"
 }

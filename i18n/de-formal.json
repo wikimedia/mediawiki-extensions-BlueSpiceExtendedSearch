@@ -6,7 +6,6 @@
 		]
 	},
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Keine gültigen Übereinstimmungen für Ihre Anfrage",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Vielleicht suchen Sie auch nach...",
 	"bs-extendedsearch-search-center-result-help": "Geben Sie etwas in die Suchleiste oben ein....",
 	"bs-extendedsearch-search-center-result-exception": "Anfrage kann nicht ausgeführt werden, bitte ändern Sie den Suchbegriff.",
 	"bs-extendedsearch-search-center-hitcount-suggest": "Meinten Sie $1 ({{PLURAL:$2|Ein|$2}} Treffer)?",

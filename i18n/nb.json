@@ -75,7 +75,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Ingen gyldige treff for søket ditt",
 	"bs-extendedsearch-autocomplete-result-type": "Type: $1",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "Toppresultater",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Du leter kanskje også etter …",
 	"bs-extendedsearch-search-center-result-help": "Skriv inn noe i søkefeltet ovenfor …",
 	"bs-extendedsearch-searchcenter-filter-or-label": "eller",
 	"bs-extendedsearch-searchcenter-filter-and-label": "og",

@@ -84,7 +84,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "No hay coincidencias válidas para su consulta",
 	"bs-extendedsearch-autocomplete-result-type": "Tipo: $1",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "Mejores resultados",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Podrías estar buscando también por...",
 	"bs-extendedsearch-search-center-result-help": "Escribe algo en la barra de búsqueda de arriba...",
 	"bs-extendedsearch-searchcenter-filter-or-label": "o",
 	"bs-extendedsearch-searchcenter-filter-and-label": "y",

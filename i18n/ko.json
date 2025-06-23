@@ -58,7 +58,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "쿼리에 맞는 일치 항목이 없습니다",
 	"bs-extendedsearch-autocomplete-result-type": "유형: $1",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "최상위 일치",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "다음을 찾고 계십니까...",
 	"bs-extendedsearch-search-center-result-help": "위의 검색 표시줄에 무언가를 입력하십시오...",
 	"bs-extendedsearch-searchcenter-filter-or-label": "또는",
 	"bs-extendedsearch-searchcenter-filter-and-label": "그리고",

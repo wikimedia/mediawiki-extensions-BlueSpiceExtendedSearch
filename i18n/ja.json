@@ -85,7 +85,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "クエリに有効な一致がありません",
 	"bs-extendedsearch-autocomplete-result-type": "種類: $1",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "該当するものは存在しません。",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "あなたも探しているかもしれません...",
 	"bs-extendedsearch-search-center-result-help": "上の検索バーに何か入力してください...",
 	"bs-extendedsearch-searchcenter-filter-or-label": "または",
 	"bs-extendedsearch-searchcenter-filter-and-label": "と",

@@ -73,7 +73,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Nulle correspondentia valide pro tu consulta",
 	"bs-extendedsearch-autocomplete-result-type": "Typo: $1",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "Melior resultatos",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Forsan tu cercava etiam...",
 	"bs-extendedsearch-search-center-result-help": "Scribe qualcosa in le barra de recerca hic supra...",
 	"bs-extendedsearch-searchcenter-filter-or-label": "o",
 	"bs-extendedsearch-searchcenter-filter-and-label": "e",
@@ -186,5 +185,6 @@
 	"bs-extendedsearch-context-namespace-label": "in le spatio de nomines '''$1'''",
 	"bs-extendedsearch-autocomplete-context-none": "in tote le wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultatos",
-	"bs-extendedsearch-autocomplete-context-options-label": "Cercar"
+	"bs-extendedsearch-autocomplete-context-options-label": "Cercar",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultatos similar"
 }

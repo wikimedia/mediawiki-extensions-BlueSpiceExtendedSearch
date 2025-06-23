@@ -4,6 +4,7 @@
 			"Alacabe",
 			"Alien333",
 			"Crochet.david",
+			"Derugon",
 			"DreZhsh",
 			"Eihel",
 			"EmDashUser002",
@@ -91,7 +92,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Aucune correspondance valide pour votre requête",
 	"bs-extendedsearch-autocomplete-result-type": "Type : $1",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "Meilleures correspondances",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Vous pourriez aussi rechercher...",
 	"bs-extendedsearch-search-center-result-help": "Saisir quelque chose dans la barre de recherche ci-dessus...",
 	"bs-extendedsearch-searchcenter-filter-or-label": "ou",
 	"bs-extendedsearch-searchcenter-filter-and-label": "et",
@@ -206,5 +206,6 @@
 	"bs-extendedsearch-context-namespace-label": "dans l'espace de noms ''' $1 '''",
 	"bs-extendedsearch-autocomplete-context-none": "dans tout le wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Résultats",
-	"bs-extendedsearch-autocomplete-context-options-label": "Rechercher"
+	"bs-extendedsearch-autocomplete-context-options-label": "Rechercher",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Résultats similaires"
 }

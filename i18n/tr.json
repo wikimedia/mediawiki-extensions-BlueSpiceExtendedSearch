@@ -79,7 +79,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Sorgunuz için geçerli bir eşleşme yok",
 	"bs-extendedsearch-autocomplete-result-type": "Tür: $1",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "En iyi eşleşmeler",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Şunu içinde bakıyorsunuzdur...",
 	"bs-extendedsearch-search-center-result-help": "Yukarıdaki arama çubuğuna bir şey yazın...",
 	"bs-extendedsearch-searchcenter-filter-or-label": "veya",
 	"bs-extendedsearch-searchcenter-filter-and-label": "ve",
