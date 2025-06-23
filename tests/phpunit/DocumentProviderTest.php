@@ -43,12 +43,12 @@ class DocumentProviderTest extends \MediaWikiIntegrationTestCase {
 		$title = Title::makeTitle( NS_HELP, 'Dummy title' );
 		$this->insertPage( $title, 'Dummy text' );
 		$oWikiPage = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
-		$sTestUri = $oWikiPage->getTitle()->getCanonicalURL();
-		$sTestUriMD5 = md5( $sTestUri );
+		$testId = $oWikiPage->getTitle()->getNamespace() . '|' . $oWikiPage->getTitle()->getDBkey();
+		$testIdMd5 = md5( $testId );
 
-		$aDC = $oDP->getDocumentData( $sTestUri, $sTestUriMD5, $oWikiPage );
+		$aDC = $oDP->getDocumentData( $testId, $testIdMd5, $oWikiPage );
 		$this->assertNotEmpty( $aDC['id'] );
-		$this->assertEquals( $sTestUriMD5, $aDC['id'] );
+		$this->assertEquals( $testIdMd5, $aDC['id'] );
 		$this->assertEquals( $oWikiPage->getTitle()->getBaseText(), $aDC['basename'] );
 		$this->assertEquals( 'text/x-wiki', $aDC['mime_type'] );
 		$this->assertEquals( 'wiki', $aDC['extension'] );

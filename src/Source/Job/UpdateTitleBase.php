@@ -13,10 +13,10 @@ class UpdateTitleBase extends UpdateJob {
 	 * @return string
 	 */
 	protected function getDocumentProviderUri() {
-		if ( isset( $this->params['canonicalUrl'] ) ) {
-			return $this->params['canonicalUrl'];
+		if ( isset( $this->params['documentIdSource'] ) ) {
+			return $this->params['documentIdSource'];
 		}
-		return $this->getTitle()->getCanonicalURL();
+		return $this->getTitle()->getNamespace() . '|' . $this->getTitle()->getDBkey();
 	}
 
 	protected function doRun() {
