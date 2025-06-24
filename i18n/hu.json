@@ -46,7 +46,6 @@
 	"bs-extendedsearch-search-center-options-page-size": "Találatok laponként",
 	"bs-extendedsearch-autocomplete-result-type": "Típus: $1",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "Legjobb találatok",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Lehet, hogy ezt keresed...",
 	"bs-extendedsearch-searchcenter-filter-or-label": "vagy",
 	"bs-extendedsearch-searchcenter-filter-and-label": "és",
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Név",

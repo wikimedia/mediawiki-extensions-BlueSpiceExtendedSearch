@@ -99,7 +99,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "您的查询没有有效匹配项",
 	"bs-extendedsearch-autocomplete-result-type": "类型：$1",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "最大匹配",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "您可能要寻找...",
 	"bs-extendedsearch-search-center-result-help": "在上方的搜索栏输入一些东西...",
 	"bs-extendedsearch-searchcenter-filter-or-label": "或",
 	"bs-extendedsearch-searchcenter-filter-and-label": "和",

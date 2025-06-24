@@ -79,7 +79,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Немає дійсних збігів для Вашого запиту",
 	"bs-extendedsearch-autocomplete-result-type": "Тип: $1",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "Найкращі збіги",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Можливо, Ви також шукаєте...",
 	"bs-extendedsearch-search-center-result-help": "Введіть що-небудь у полі пошуку вгорі...",
 	"bs-extendedsearch-searchcenter-filter-or-label": "або",
 	"bs-extendedsearch-searchcenter-filter-and-label": "та",

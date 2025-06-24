@@ -65,7 +65,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Non ci sono risultati per la query attuale",
 	"bs-extendedsearch-autocomplete-result-type": "Tipo: $1",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "Migliori risultati",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Potresti stare cercando...",
 	"bs-extendedsearch-search-center-result-help": "Scrivi qualcosa nella barra di ricerca sopra",
 	"bs-extendedsearch-searchcenter-filter-or-label": "o",
 	"bs-extendedsearch-searchcenter-filter-and-label": "e",

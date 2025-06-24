@@ -75,7 +75,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Não há correspondências válidas para a sua consulta",
 	"bs-extendedsearch-autocomplete-result-type": "Tipo: $1",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "Melhores correspondências",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Pode também estar à procura de...",
 	"bs-extendedsearch-search-center-result-help": "Introduza texto na barra de pesquisa acima...",
 	"bs-extendedsearch-searchcenter-filter-or-label": "ou",
 	"bs-extendedsearch-searchcenter-filter-and-label": "e",

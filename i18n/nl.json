@@ -81,7 +81,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Geen passende resultaten gevonden",
 	"bs-extendedsearch-autocomplete-result-type": "Type: $1",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "Beste resultaten",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Misschien was u ook op zoek naar...",
 	"bs-extendedsearch-search-center-result-help": "Typ iets in het zoekvenster hierboven...",
 	"bs-extendedsearch-searchcenter-filter-or-label": "of",
 	"bs-extendedsearch-searchcenter-filter-and-label": "en",

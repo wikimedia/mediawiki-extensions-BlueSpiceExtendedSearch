@@ -49,7 +49,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Brak poprawnych dopasowań dla Twojego zapytania",
 	"bs-extendedsearch-autocomplete-result-type": "Typ: $1",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "Najlepsze dopasowania",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "Być może szukasz też...",
 	"bs-extendedsearch-searchcenter-filter-or-label": "lub",
 	"bs-extendedsearch-searchcenter-filter-and-label": "i",
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Nazwa",

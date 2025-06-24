@@ -79,7 +79,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "對於您的查詢沒有可用的符合內容",
 	"bs-extendedsearch-autocomplete-result-type": "類型：$1",
 	"bs-extendedsearch-autocomplete-result-top-match-label": "最符合",
-	"bs-extendedsearch-autocomplete-result-secondary-results-label": "您可能是在找...",
 	"bs-extendedsearch-search-center-result-help": "在上方搜尋框輸入一些內容...",
 	"bs-extendedsearch-searchcenter-filter-or-label": "或",
 	"bs-extendedsearch-searchcenter-filter-and-label": "且",
