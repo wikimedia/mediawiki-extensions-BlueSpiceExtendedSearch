@@ -8,5 +8,6 @@
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "रद्द गर्नुहोस्",
 	"prefs-extendedsearch": "विस्तारित खोज",
 	"bs-extendedsearch-search-center-result-redirects-label": "बाट अनुप्रेषित",
-	"bs-extendedsearch-tagsearch-searchfield-placeholder": "खोज्नका लागि केही प्रविष्ट गर्नुहोस्।"
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "खोज्नका लागि केही प्रविष्ट गर्नुहोस्।",
+	"bs-extendedsearch-search-center-filter-categories-label": "श्रेणी"
 }
