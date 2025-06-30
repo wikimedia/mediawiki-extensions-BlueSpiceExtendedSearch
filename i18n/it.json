@@ -143,5 +143,6 @@
 	"bs-extendedsearch-context-namespace-label": "nel namespace '''$1'''",
 	"bs-extendedsearch-autocomplete-context-none": "in tutto il wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Risultati",
-	"bs-extendedsearch-autocomplete-context-options-label": "Ricerca"
+	"bs-extendedsearch-autocomplete-context-options-label": "Ricerca",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Risultati simili"
 }

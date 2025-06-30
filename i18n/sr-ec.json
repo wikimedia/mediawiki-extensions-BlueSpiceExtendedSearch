@@ -109,5 +109,6 @@
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 од $2",
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "Преусмерава на $1",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Резултати",
-	"bs-extendedsearch-autocomplete-context-options-label": "Претрага"
+	"bs-extendedsearch-autocomplete-context-options-label": "Претрага",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Слични резултати"
 }

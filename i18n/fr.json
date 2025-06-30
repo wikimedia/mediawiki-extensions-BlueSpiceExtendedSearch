@@ -4,6 +4,7 @@
 			"Alacabe",
 			"Alien333",
 			"Crochet.david",
+			"Derugon",
 			"DreZhsh",
 			"Eihel",
 			"EmDashUser002",
@@ -206,5 +207,6 @@
 	"bs-extendedsearch-context-namespace-label": "dans l'espace de noms ''' $1 '''",
 	"bs-extendedsearch-autocomplete-context-none": "dans tout le wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Résultats",
-	"bs-extendedsearch-autocomplete-context-options-label": "Rechercher"
+	"bs-extendedsearch-autocomplete-context-options-label": "Rechercher",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Résultats similaires"
 }

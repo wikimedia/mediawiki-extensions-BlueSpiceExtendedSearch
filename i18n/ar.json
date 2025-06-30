@@ -5,6 +5,7 @@
 			"HitomiAkane",
 			"Kassem789",
 			"Meno25",
+			"Mohammed Qays",
 			"Omda4wady",
 			"ديفيد",
 			"محمد أحمد عبد الفتاح"
@@ -174,5 +175,6 @@
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "عدد استعلامات البحث",
 	"bs-extendedsearch-droplet-search-name": "مجال البحث",
 	"bs-extendedsearch-droplet-search-description": "يضيف حقل بحث إلى محتوى الصفحة",
-	"bs-extendedsearch-source-label-externalfile": "ملف خارجي"
+	"bs-extendedsearch-source-label-externalfile": "ملف خارجي",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "نتائج مماثلة"
 }
