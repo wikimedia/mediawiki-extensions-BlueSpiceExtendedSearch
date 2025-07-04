@@ -144,5 +144,16 @@
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 ennyiből $2",
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "Átirányítás ide $1",
 	"bs-extendedsearch-context-namespace-label": "in '''$1''' névtérben",
-	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Hasonló eredmények"
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Hasonló eredmények",
+	"apihelp-bs-extendedsearch-resultrelevance-summary": "Visszaadja a keresési erdemények relevanciáját",
+	"apihelp-bs-extendedsearch-type-store-summary": "Regisztrált keresési típusokat ad vissza",
+	"bs-extendedsearch-admin-label-all-documents-count": "Az indexben szereplő összes dokumentum száma",
+	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Függőben lévő frissítési feladatok",
+	"bs-extendedsearch-search-center-hitcount-replaced": "$1 keresési eredményei, keresési javaslat $2 ({{PLURAL:$3|$3 találat|$3 találat}})",
+	"bs-extendedsearch-default-filters-desc": "Alapértelmezetten beállítandó szűrők csoportja",
+	"bs-extendedsearch-redirect-target-label": "Átirányítás ide:",
+	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpiceExtendedSearch - Keresési előzmények: kifejezés (ennyiszer keresve): $1",
+	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch - {{PLURAL:$1|$1 lap|$1 lap}} van megjelölve releváns keresési {{PLURAL:$1|találatnak|találatnak}}{{GENDER:$2|}}",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Keresés...",
+	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Érvénytelen keresési eredménytípus: $1"
 }
