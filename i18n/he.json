@@ -191,5 +191,6 @@
 	"bs-extendedsearch-context-namespace-label": "במרחב השם '''$1'''",
 	"bs-extendedsearch-autocomplete-context-none": "בכל הוויקי",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "תוצאות",
-	"bs-extendedsearch-autocomplete-context-options-label": "חיפוש"
+	"bs-extendedsearch-autocomplete-context-options-label": "חיפוש",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "תוצאות דומות"
 }
