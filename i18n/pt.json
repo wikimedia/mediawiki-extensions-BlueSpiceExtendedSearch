@@ -167,5 +167,6 @@
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Devolve resultados de pesquisa para um utilizador somente na língua do utilizador. Os utilizadores podem definir a sua língua nas preferências.",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Número de consultas de pesquisa",
 	"bs-extendedsearch-droplet-search-name": "Campo de pesquisa",
-	"bs-extendedsearch-droplet-search-description": "Adiciona um campo de pesquisa ao conteúdo da página"
+	"bs-extendedsearch-droplet-search-description": "Adiciona um campo de pesquisa ao conteúdo da página",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultados similares"
 }
