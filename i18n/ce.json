@@ -107,5 +107,16 @@
 	"bs-extendedsearch-tagsearch-btn-aria-label": "Доладе лехар",
 	"bs-extendedsearch-tagsearch-input-aria-label": "Лахар",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Хиламаш",
-	"bs-extendedsearch-autocomplete-context-options-label": "Лахар"
+	"bs-extendedsearch-autocomplete-context-options-label": "Лахар",
+	"bs-extendedsearch-loadmore-label": "Кхин жамӀаш чудахар",
+	"bs-extendedsearch-pref-external-file-paths-path": "Физикин некъ",
+	"bs-extendedsearch-export-button-label": "Экспорт дан лехаман жамӀаш",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "ЦӀерийн меттиг1|ЦӀерийн меттиг2|...",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "ТӀейузург",
+	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|Цхьа жамӀ|$1 жамӀ}} карийна",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 - $2 чуьра",
+	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Йуьхьанцара жамӀаш",
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "ШолгӀа жамӀаш",
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "ДӀасахьажор тӀе $1",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Тера жамӀаш"
 }
