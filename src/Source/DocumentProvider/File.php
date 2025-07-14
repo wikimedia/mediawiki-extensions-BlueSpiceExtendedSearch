@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\DocumentProvider;
 
-use MimeAnalyzer;
+use Wikimedia\Mime\MimeAnalyzer;
 
 class File extends Base {
 
