@@ -120,12 +120,13 @@ class BaseTitleSecurityTrimmings extends LookupModifier {
 				} else {
 					$title = Title::makeTitleSafe( $data['namespace'], $data['basename'] );
 				}
-				if ( !$title instanceof Title ) {
-					if ( $title->isContentPage() && $title->exists() == false ) {
-						// I cant think of a good reason to show non-existing title in the search
-						$excludes[] = $resultObject->getId();
-						continue;
-					}
+				if (
+					!$title ||
+					( $title->isContentPage() && !$title->exists() )
+				) {
+					// I cant think of a good reason to show non-existing title in the search
+					$excludes[] = $resultObject->getId();
+					continue;
 				}
 
 				if ( $title->isSpecialPage() ) {
