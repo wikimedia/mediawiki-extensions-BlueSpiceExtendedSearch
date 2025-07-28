@@ -57,5 +57,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Catigurìa/i",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Catigurìa1|Catigurìa2|...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipu",
-	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Ammustra li risurtati glubbali"
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Ammustra li risurtati glubbali",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Namespace",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Namespace:"
 }

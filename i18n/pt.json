@@ -176,5 +176,8 @@
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Mostrar um formato de preenchimento automático compacto do menu de pesquisa (formato de uma coluna, sem antevisão de miniaturas).",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Número de consultas de pesquisa",
 	"bs-extendedsearch-droplet-search-name": "Campo de pesquisa",
-	"bs-extendedsearch-droplet-search-description": "Adiciona um campo de pesquisa ao conteúdo da página"
+	"bs-extendedsearch-droplet-search-description": "Adiciona um campo de pesquisa ao conteúdo da página",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Espaço nominal/Domínio",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Espaço nominal/Domínio:",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultados similares"
 }

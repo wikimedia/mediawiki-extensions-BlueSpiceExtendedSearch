@@ -134,5 +134,7 @@
 	"action-extendedsearch-search-wikipage": "поиск страниц",
 	"action-extendedsearch-search-repofile": "поиск файлов",
 	"action-extendedsearch-search-externalfile": "поиск внешних файлов",
-	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Показать глобальные результаты"
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Показать глобальные результаты",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Пространство имён",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Пространство имён:"
 }

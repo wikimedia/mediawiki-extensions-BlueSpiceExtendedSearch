@@ -127,5 +127,7 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "عبارت‌های جستجو به‌ازای کاربر",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "برای جستجو تایپ کنید...",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "آغاز جستجو",
-	"bs-extendedsearch-tagsearch-input-aria-label": "جستجو"
+	"bs-extendedsearch-tagsearch-input-aria-label": "جستجو",
+	"bs-extendedsearch-search-center-filter-namespace-label": "فضای نام",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "فضای نام:"
 }

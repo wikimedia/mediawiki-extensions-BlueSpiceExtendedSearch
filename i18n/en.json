@@ -43,8 +43,8 @@
 	"bs-extendedsearch-admin-heading-sources": "Sources",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Documents",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Pending update jobs",
-	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|hit|hits}} for $2",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "About $1 {{PLURAL:$1|hit|hits}} for $2",
+	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|search result|search results}} found",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Approximately $1 {{PLURAL:$1|search result|search results}} found",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Add Filter",
 	"bs-extendedsearch-search-center-filter-extension-label": "Extension",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Namespace",
@@ -192,5 +192,13 @@
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 of $2",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Primary results",
 	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Secondary results",
-	"bs-extendedsearch-autocomplete-popup-redirect-title": "Redirects to $1"
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Redirects to $1",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Namespace",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Namespace:",
+	"bs-extendedsearch-context-subpage-label": "in subpages of '''$1'''",
+	"bs-extendedsearch-context-namespace-label": "in '''$1''' namespace",
+	"bs-extendedsearch-autocomplete-context-none": "in whole wiki",
+	"bs-extendedsearch-autocomplete-result-primary-results-label": "Results",
+	"bs-extendedsearch-autocomplete-context-options-label": "Search",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Similar results"
 }

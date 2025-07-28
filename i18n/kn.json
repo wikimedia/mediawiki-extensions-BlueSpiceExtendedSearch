@@ -42,5 +42,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "ವರ್ಗ(ಗಳು)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "ನಮೂನೆ",
 	"bs-extendedsearch-collection-var-numbersearched": "ಹುಡುಕಾಟಗಳು",
-	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "ಜಾಗತಿಕ ಫಲಿತಾಂಶಗಳನ್ನು ತೋರಿಸಿ"
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "ಜಾಗತಿಕ ಫಲಿತಾಂಶಗಳನ್ನು ತೋರಿಸಿ",
+	"bs-extendedsearch-search-center-filter-namespace-label": "ನಾಮವರ್ಗ",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "ನಾಮವರ್ಗ:"
 }

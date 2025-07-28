@@ -175,5 +175,7 @@
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "\"$1\" içinde aranıyor",
 	"bs-extendedsearch-statistics-report-search-terms": "Arama terimleri",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Kişi başına arama terimleri",
-	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Bir kullanıcıya sadece kendi dilindeki arama sonuçlarını gösterir. Kullanıcılar tercihler bölümünde dili belirleyebilir."
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Bir kullanıcıya sadece kendi dilindeki arama sonuçlarını gösterir. Kullanıcılar tercihler bölümünde dili belirleyebilir.",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Ad alanı",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Ad alanı:"
 }

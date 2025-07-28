@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Krisztina"
+		]
+	},
+	"bs-extendedsearch-search-center-result-help": "Írjon be valamit a fenti keresősávba...",
+	"bs-extendedsearch-search-center-hitcount-suggest": "Erre gondolt $1 ({{PLURAL:$2|$2 találat|$2 találat}})?"
+}

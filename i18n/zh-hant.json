@@ -196,5 +196,7 @@
 	"bs-extendedsearch-recently-found-header-aria": "有 {{PLURAL:$1|1|$1}} 筆最近查看過的{{PLURAL:$1|結果}}可用",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 筆（共 $2 筆）",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "主要結果",
-	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "次要結果"
+	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "次要結果",
+	"bs-extendedsearch-search-center-filter-namespace-label": "命名空間",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "命名空間："
 }

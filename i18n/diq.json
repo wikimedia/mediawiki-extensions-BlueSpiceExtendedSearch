@@ -34,5 +34,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Babet",
 	"bs-extendedsearch-collection-var-searchterm": "Dewr",
 	"bs-extendedsearch-collection-var-numbersearched": "Cıgeyrayışi",
-	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Neticey \"$1\" mocniyeno"
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Neticey \"$1\" mocniyeno",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Heruna nameyan:"
 }

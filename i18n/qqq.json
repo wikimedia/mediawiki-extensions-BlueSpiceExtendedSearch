@@ -50,7 +50,7 @@
 	"bs-extendedsearch-admin-heading-sources": "Label for heading of a section that lists information about the sources within a specific backend on Special:SearchAdmin\n{{Identical|Source}}",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Label for field that reports the number of documents within a specific source on Special:SearchAdmin",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Label for field that reports the number of pending update jobs for a specific source on Special:SearchAdmin",
-	"bs-extendedsearch-search-center-hitcount-widget": "Text showing how many hits search request has returned.\n $1 - number of hits, $2 - search term",
+	"bs-extendedsearch-search-center-hitcount-widget": "Text showing how many hits search request has returned. $1 is the number of results.",
 	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Text showing approximately how many hits search has returned. \n $1 - number of hits, $2 - search term",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Title for the add filter dialog",
 	"bs-extendedsearch-search-center-filter-extension-label": "Label for the extension field in the filter when its empty (nothing selected)",
@@ -199,5 +199,13 @@
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "Used to have make a screen reader announce the selected result",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Aria-label a section in the autocomplete search result list",
 	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Aria-label a section in the autocomplete search result list",
-	"bs-extendedsearch-autocomplete-popup-redirect-title": "Title for redirect link.\n* $1 - title of page which is linked to"
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Title for redirect link.\n* $1 - title of page which is linked to",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Label for the namespace_text field in the filter when its empty (nothing selected)\n{{Identical|Namespace}}",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Label for the namespace_text field in the filter values are selected\n{{Identical|Namespace}}",
+	"bs-extendedsearch-context-subpage-label": "Search context pill text.\n$1 - page prefixed text",
+	"bs-extendedsearch-context-namespace-label": "Search context pill text.\n$1 - namespace text",
+	"bs-extendedsearch-autocomplete-context-none": "Search context pill text when no context is set",
+	"bs-extendedsearch-autocomplete-result-primary-results-label": "Header label for the results panel in autocomplete",
+	"bs-extendedsearch-autocomplete-context-options-label": "Header label for context options panel in autocomplete",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Header label for the secondary results panel in autocomplete"
 }

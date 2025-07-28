@@ -183,5 +183,7 @@
 	"bs-extendedsearch-close-search-button-aria-label": "Cerrar cuadro de búsqueda",
 	"bs-extendedsearch-remove-button-label": "Eliminar filtro \"$1\"",
 	"bs-extendedsearch-source-type-externalfile-label": "Archivo external",
-	"bs-extendedsearch-source-label-externalfile": "Archivo external"
+	"bs-extendedsearch-source-label-externalfile": "Archivo external",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Espacio de nombres",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Espacio de nombres:"
 }

@@ -29,8 +29,8 @@
 	"bs-extendedsearch-admin-heading-sources": "Fonti",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Documenti",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Attività di aggiornamento in attesa",
-	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|corrispondenza|corrispondenze}} per $2",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Circa $1 {{PLURAL:$1|corrispondenza|corrispondenze}} per $2",
+	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|risultato della ricerca trovato|risultati della ricerca trovati}}",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Circa $1 {{PLURAL:$1|risultato della ricerca trovato|risultati della ricerca trovati}}",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Aggiungi filtro",
 	"bs-extendedsearch-search-center-filter-extension-label": "Estensione",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Namespace",
@@ -144,5 +144,13 @@
 	"bs-extendedsearch-source-type-externalfile-label": "File esterno",
 	"bs-extendedsearch-source-label-externalfile": "File esterno",
 	"bs-extendedsearch-recentlyfound-ignore": "Rimuovi",
-	"bs-extendedsearch-autocomplete-popup-redirect-title": "Reindirizza a $1"
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Reindirizza a $1",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Namespace",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Namespace:",
+	"bs-extendedsearch-context-subpage-label": "nelle sottopagine di '''$1'''",
+	"bs-extendedsearch-context-namespace-label": "nel namespace '''$1'''",
+	"bs-extendedsearch-autocomplete-context-none": "in tutto il wiki",
+	"bs-extendedsearch-autocomplete-result-primary-results-label": "Risultati",
+	"bs-extendedsearch-autocomplete-context-options-label": "Ricerca",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Risultati simili"
 }

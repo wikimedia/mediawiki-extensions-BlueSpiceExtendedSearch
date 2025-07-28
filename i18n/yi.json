@@ -58,5 +58,7 @@
 	"bs-extendedsearch-source-type-repofile-label": "לאקאלע טעקע",
 	"bs-extendedsearch-source-type-specialpage-label": "ספּעציעלער בלאַט",
 	"bs-extendedsearch-search-center-filter-page_language-label": "בלאַט־שפראַך",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "נאָמענטייל(ן)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "נאָמענטייל(ן)",
+	"bs-extendedsearch-search-center-filter-namespace-label": "נאָמענטייל",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "נאָמענטייל:"
 }

@@ -43,5 +43,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Төрл",
 	"bs-extendedsearch-collection-type-searchhistory": "Хәәлтин түүк",
 	"bs-extendedsearch-collection-var-searchterm": "Томья",
-	"bs-extendedsearch-collection-var-numbersearched": "Хәәлтс"
+	"bs-extendedsearch-collection-var-numbersearched": "Хәәлтс",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Нердин орн-зә"
 }

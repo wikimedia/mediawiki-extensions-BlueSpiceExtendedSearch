@@ -49,8 +49,8 @@
 	"bs-extendedsearch-admin-heading-sources": "Bronnen",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Documenten",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Uitstaande bijwerktaken",
-	"bs-extendedsearch-search-center-hitcount-widget": "\n$1 {{PLURAL:$1|resultaat|resultaten}} voor $2",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Ongeveer $1 {{PLURAL:$1|resultaat|resultaten}} voor $2",
+	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|zoekresultaat|zoekresultaten}} gevonden",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Ongeveer $1 {{PLURAL:$1|resultaat|resultaten}} gevonden",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Filter toevoegen",
 	"bs-extendedsearch-search-center-filter-extension-label": "Uitbreiding",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Naamruimte",
@@ -199,5 +199,7 @@
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 van $2",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Primaire resultaten",
 	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Secundaire resultaten",
-	"bs-extendedsearch-autocomplete-popup-redirect-title": "Verwijst door naar $1"
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Verwijst door naar $1",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Naamruimte",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Naamruimte:"
 }

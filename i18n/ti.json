@@ -22,5 +22,6 @@
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "ቦታ ስም",
 	"bs-extendedsearch-autocomplete-create-page-link": "ገጽ «$1» ፍጠር",
 	"bs-extendedseach-wikipage-section-more-text": "... $1 ተወሳኺ",
-	"bs-extendedsearch-search-center-create-page-link": "ገጽ «$1» ፍጠር"
+	"bs-extendedsearch-search-center-create-page-link": "ገጽ «$1» ፍጠር",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "ቦታ ስም፦"
 }

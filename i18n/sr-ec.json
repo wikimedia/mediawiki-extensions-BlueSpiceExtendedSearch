@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aca",
 			"BadDog",
 			"Kizule",
 			"Milicevic01",
@@ -25,8 +26,8 @@
 	"bs-extendedsearch-admin-label-error": "Грешка",
 	"bs-extendedsearch-admin-heading-sources": "Извори",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Документи",
-	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|погодак|поготка|погодака}} за термин „$2”",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Око $1 {{PLURAL:$1|погодак|поготка|погодака}} за термин „$2”",
+	"bs-extendedsearch-search-center-hitcount-widget": "{{PLURAL:$1|Пронађен је|Пронађено је}} $1 {{PLURAL:$1|резултат|резултата}}",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Отприлике је {{PLURAL:$1|пронађен|пронађено}} $1 {{PLURAL:$1|резултат|резултата}}",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Додавање филтера",
 	"bs-extendedsearch-search-center-filter-extension-label": "Додатак",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Именски простор",
@@ -111,5 +112,10 @@
 	"action-extendedsearch-search-externalfile": "претражујете спољашње датотеке",
 	"bs-extendedsearch-recentlyfound-ignore": "Уклони",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 од $2",
-	"bs-extendedsearch-autocomplete-popup-redirect-title": "Преусмерава на $1"
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Преусмерава на $1",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Именски простор",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Именски простор:",
+	"bs-extendedsearch-autocomplete-result-primary-results-label": "Резултати",
+	"bs-extendedsearch-autocomplete-context-options-label": "Претрага",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Слични резултати"
 }

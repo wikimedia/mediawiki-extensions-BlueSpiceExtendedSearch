@@ -42,8 +42,8 @@
 	"bs-extendedsearch-admin-heading-sources": "Fontes",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Documentos",
 	"bs-extendedsearch-admin-heading-pendingupdatejobs": "Travalios pendente de actualisation",
-	"bs-extendedsearch-search-center-hitcount-widget": "$1 {{PLURAL:$1|visita|visitas}} pro $2",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Circa $1 {{PLURAL:$1|visita|visitas}} pro $2",
+	"bs-extendedsearch-search-center-hitcount-widget": "$1 resultato{{PLURAL:$1||s}} de recerca trovate",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Circa $1 resultato{{PLURAL:$1||s}} de recerca trovate",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Adder filtro",
 	"bs-extendedsearch-search-center-filter-extension-label": "Extension",
 	"bs-extendedsearch-search-center-filter-namespace_text-label": "Spatio de nomines",
@@ -191,5 +191,13 @@
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 de $2",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Resultatos primari",
 	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "Resultatos secundari",
-	"bs-extendedsearch-autocomplete-popup-redirect-title": "Redirige a $1"
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "Redirige a $1",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Spatio de nomines",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Spatio de nomines:",
+	"bs-extendedsearch-context-subpage-label": "in subpaginas de '''$1'''",
+	"bs-extendedsearch-context-namespace-label": "in le spatio de nomines '''$1'''",
+	"bs-extendedsearch-autocomplete-context-none": "in tote le wiki",
+	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultatos",
+	"bs-extendedsearch-autocomplete-context-options-label": "Cercar",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultatos similar"
 }

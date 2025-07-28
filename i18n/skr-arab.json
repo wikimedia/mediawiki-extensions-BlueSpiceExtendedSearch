@@ -63,5 +63,9 @@
 	"bs-extendedsearch-source-label-externalfile": "ٻاہرلی فائل",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "ڳولݨ شروع کرو",
 	"bs-extendedsearch-tagsearch-input-aria-label": "ڳولو",
-	"bs-extendedsearch-autocomplete-popup-select-announcement": "$2 وچوں $1 واں"
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$2 وچوں $1 واں",
+	"bs-extendedsearch-search-center-filter-namespace-label": "ناں جاہ",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "ناں جاہ:",
+	"bs-extendedsearch-autocomplete-result-primary-results-label": "نتیجے",
+	"bs-extendedsearch-autocomplete-context-options-label": "ڳولو"
 }

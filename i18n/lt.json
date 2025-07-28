@@ -127,5 +127,6 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Paieškos terminai vienam naudotojui",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Paieškos užklausų skaičius",
 	"bs-extendedsearch-droplet-search-name": "Paieškos laukas",
-	"bs-extendedsearch-droplet-search-description": "Prie puslapio turinio pridedamas paieškos laukas"
+	"bs-extendedsearch-droplet-search-description": "Prie puslapio turinio pridedamas paieškos laukas",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Vardų sritis:"
 }

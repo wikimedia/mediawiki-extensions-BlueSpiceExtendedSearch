@@ -33,5 +33,7 @@
 	"bs-extendedsearch-collection-type-searchhistory": "వెతుకుడు చరిత్ర",
 	"bs-extendedsearch-suggest-operator": "మీరు <b>$1</b> కోసం వెతకాలనుకున్నారా?",
 	"bs-extendedsearch-droplet-search-name": "శోధన ఫీల్డ్",
-	"bs-extendedsearch-droplet-search-description": "పేజీ కంటెంట్‌కి శోధన ఫీల్డ్‌ను జోడిస్తుంది"
+	"bs-extendedsearch-droplet-search-description": "పేజీ కంటెంట్‌కి శోధన ఫీల్డ్‌ను జోడిస్తుంది",
+	"bs-extendedsearch-search-center-filter-namespace-label": "పేరుబరి",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "పేరుబరి:"
 }
