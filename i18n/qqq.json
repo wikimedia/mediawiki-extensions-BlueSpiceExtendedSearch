@@ -196,5 +196,6 @@
 	"bs-extendedsearch-autocomplete-context-none": "Search context pill text when no context is set",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Header label for the results panel in autocomplete",
 	"bs-extendedsearch-autocomplete-context-options-label": "Header label for context options panel in autocomplete",
-	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Header label for the secondary results panel in autocomplete"
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Header label for the secondary results panel in autocomplete",
+	"prefs-searchsection": "Label for the search areas section in user preferences"
 }

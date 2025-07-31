@@ -202,5 +202,6 @@
 	"bs-extendedsearch-autocomplete-context-none": "im gesamten Wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Ergebnisse",
 	"bs-extendedsearch-autocomplete-context-options-label": "Suche",
-	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Ähnliche Ergebnisse"
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Ähnliche Ergebnisse",
+	"prefs-searchsection": "Suchbereiche"
 }
