@@ -29,8 +29,8 @@ class AddUserPreferredNamespaces extends GetPreferences {
 
 		$this->preferences['searchNs'] = [
 			'type' => 'multiselect',
-			'label' => wfMessage( 'bs-extendedsearch-user-preferred-namespaces' )->plain(),
-			'section' => 'extendedsearch',
+			'label-message' => 'bs-extendedsearch-user-preferred-namespaces',
+			'section' => 'extendedsearch/searchsection',
 			'options' => $namespaceValues
 		];
 

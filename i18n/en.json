@@ -189,5 +189,6 @@
 	"bs-extendedsearch-autocomplete-context-none": "in whole wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Results",
 	"bs-extendedsearch-autocomplete-context-options-label": "Search",
-	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Similar results"
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Similar results",
+	"prefs-searchsection": "Search areas"
 }
