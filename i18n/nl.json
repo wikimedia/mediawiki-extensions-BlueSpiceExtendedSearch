@@ -207,5 +207,6 @@
 	"bs-extendedsearch-autocomplete-context-none": "in de hele wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultaten",
 	"bs-extendedsearch-autocomplete-context-options-label": "Zoeken",
-	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Vergelijkbare resultaten"
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Vergelijkbare resultaten",
+	"prefs-searchsection": "Zoekgebieden"
 }

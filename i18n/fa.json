@@ -129,5 +129,6 @@
 	"bs-extendedsearch-tagsearch-btn-aria-label": "آغاز جستجو",
 	"bs-extendedsearch-tagsearch-input-aria-label": "جستجو",
 	"bs-extendedsearch-search-center-filter-namespace-label": "فضای نام",
-	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "فضای نام:"
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "فضای نام:",
+	"prefs-searchsection": "محدوده‌های جستجو"
 }
