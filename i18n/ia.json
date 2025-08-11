@@ -187,5 +187,6 @@
 	"bs-extendedsearch-autocomplete-context-none": "in tote le wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultatos",
 	"bs-extendedsearch-autocomplete-context-options-label": "Cercar",
-	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultatos similar"
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultatos similar",
+	"prefs-searchsection": "Areas de recerca"
 }
