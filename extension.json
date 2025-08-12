@@ -298,6 +298,14 @@
 		"extendedsearchform": {
 			"class": "BS\\ExtendedSearch\\HookHandler\\SkinSlotNavbarPrimarySearchForm"
 		},
+		"overrideSpecialSearch": {
+			"class": "BS\\ExtendedSearch\\HookHandler\\OverrideSpecialSearch",
+			"services": [ "ConfigFactory" ]
+		},
+		"overrideOpenSearchUrls": {
+			"class": "BS\\ExtendedSearch\\HookHandler\\OverrideOpenSearchUrls",
+			"services": [ "ConfigFactory" ]
+		},
 		"addResources": {
 			"class": "BS\\ExtendedSearch\\Hook\\BeforePageDisplay\\AddResources",
 			"services": [ "NamespaceInfo", "ConfigFactory", "BSExtendedSearch.PluginManager" ]
@@ -305,6 +313,8 @@
 	},
 	"Hooks": {
 		"BeforePageDisplay": "addResources",
+		"SpecialPage_initList": "overrideSpecialSearch",
+		"OpenSearchUrls": "overrideOpenSearchUrls",
 		"LoadExtensionSchemaUpdates": [
 			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddRelevanceTable::callback",
 			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddHistoryTable::callback",
@@ -615,6 +625,9 @@
 		},
 		"ESBackendPassword": {
 			"value": ""
+		},
+		"ESOverrideSpecialSearch": {
+			"value": true
 		},
 		"ESEnableSearchHistoryTracking": {
 			"value": true
