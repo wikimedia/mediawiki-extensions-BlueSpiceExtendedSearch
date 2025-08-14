@@ -177,7 +177,7 @@
 			},
 			"SpellCheck": {
 				"enabled": true,
-				"suggestField": "suggestions",
+				"suggestField": "suggestions-spellcheck",
 				"replaceThreshold": 0.01,
 				"suggestThreshold": 0.3
 			},
