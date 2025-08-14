@@ -22,10 +22,14 @@ class Base implements ISearchMappingProvider {
 			'congregated' => [
 				'type' => 'text'
 			],
+			'suggestions-spellcheck' => [
+				'type' => 'text',
+			],
 			'suggestions' => [
 				'type' => 'text',
 				'analyzer' => 'autocomplete',
-				'search_analyzer' => 'autocomplete'
+				'search_analyzer' => 'autocomplete',
+				'copy_to' => [ 'suggestions-spellcheck' ],
 			],
 			'suggestions_extra' => [
 				'type' => 'text',
