@@ -27,5 +27,6 @@
 	"bs-extendedsearch-source-label-user": "Geavaheaddji",
 	"bs-extendedsearch-source-label-repofile": "Vurke fiilla",
 	"bs-extendedsearch-search-center-filter-namespace-label": "Nammagomuvuohta",
-	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Nammagomuvuohta:"
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Nammagomuvuohta:",
+	"bs-extendedsearch-searchcenter-sort-field-size": "Sturrodat"
 }
