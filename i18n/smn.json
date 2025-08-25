@@ -19,5 +19,6 @@
 	"bs-extendedsearch-autocomplete-modified-time-label": "Majemustáá nubástittum: $1",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Siijđo kielâ",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Siijđo kielâ:",
-	"bs-extendedsearch-collection-type-searchhistory": "Uuccâmhistorjá"
+	"bs-extendedsearch-collection-type-searchhistory": "Uuccâmhistorjá",
+	"bs-extendedsearch-searchcenter-sort-field-size": "Stuárudâh"
 }
