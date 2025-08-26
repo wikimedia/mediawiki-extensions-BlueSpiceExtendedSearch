@@ -242,6 +242,7 @@
 
 	const api = new mw.Api();
 	function _execSearch() {
+		const $searchCnt = $( '#bs-es-searchcenter' );
 		const $resultCnt = $( '#bs-es-results' );
 		const $toolsCnt = $( '#bs-es-tools' );
 		const $altSearchCnt = $( '#bs-es-alt-search' );
@@ -253,6 +254,7 @@
 		bs.extendedSearch.SearchCenter.showLoading();
 
 		const queryData = bs.extendedSearch.utils.getFragment();
+		mw.hook( 'bs.extendedsearch.searchcenter.execSearch' ).fire( $searchCnt, queryData );
 		if ( $.isEmptyObject( queryData ) || searchBar.$searchBox.val() === '' ) {
 			bs.extendedSearch.SearchCenter.removeLoading();
 			$resultCnt.append( new bs.extendedSearch.ResultMessage( {
