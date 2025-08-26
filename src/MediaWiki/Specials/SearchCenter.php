@@ -10,6 +10,7 @@ use BS\ExtendedSearch\Source\GenericSource;
 use MediaWiki\Html\Html;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
 
@@ -58,7 +59,12 @@ class SearchCenter extends SpecialPage {
 		}
 
 		$out = $this->getOutput();
-		$out->addModules( "ext.blueSpiceExtendedSearch.SearchCenter" );
+		$modules = [ 'ext.blueSpiceExtendedSearch.SearchCenter' ];
+		$modules = array_merge( $modules, ExtensionRegistry::getInstance()->getAttribute(
+			'BlueSpiceExtendedSearchSearchCenterPluginModules'
+		) );
+
+		$out->addModules( $modules );
 
 		/** @var Backend $localBackend */
 		$localBackend = $services->getService( 'BSExtendedSearchBackend' );
@@ -91,9 +97,12 @@ class SearchCenter extends SpecialPage {
 		}
 
 		$out->enableOOUI();
-		$out->addHTML( Html::element( 'div', [ 'id' => 'bs-es-tools' ] ) );
-		$out->addHTML( Html::element( 'div', [ 'id' => 'bs-es-alt-search' ] ) );
-		$out->addHTML( Html::element( 'div', [ 'id' => 'bs-es-results' ] ) );
+		$html = Html::openElement( 'div', [ 'id' => 'bs-es-searchcenter' ] );
+		$html .= Html::element( 'div', [ 'id' => 'bs-es-tools' ] );
+		$html .= Html::element( 'div', [ 'id' => 'bs-es-alt-search' ] );
+		$html .= Html::element( 'div', [ 'id' => 'bs-es-results' ] );
+		$html .= Html::closeElement( 'div' );
+		$out->addHTML( $html );
 		$out->addJsConfigVars( 'bsgLookupConfig', FormatJson::encode( $lookup ) );
 
 		// Structure of the result displayed in UI, decorated by each source

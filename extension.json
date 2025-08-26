@@ -184,7 +184,8 @@
 			"SingleSelectFilters": [
 				"page_language"
 			],
-			"ExternalIndexRegistry": {}
+			"ExternalIndexRegistry": {},
+			"SearchCenterPluginModules": []
 		},
 		"BlueSpiceTagCloud": {
 			"StoreRegistry": {
