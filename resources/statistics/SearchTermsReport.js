@@ -9,6 +9,8 @@
 
 	bs.extendedsearch.report.SearchTermsReport.static.label = mw.message( 'bs-extendedsearch-statistics-report-search-terms' ).text();
 
+	bs.extendedsearch.report.SearchTermsReport.static.desc = mw.message( 'bs-extendedsearch-statistics-report-search-terms-desc' ).text();
+
 	bs.extendedsearch.report.SearchTermsReport.prototype.getFilters = function () {
 		return [];
 	};

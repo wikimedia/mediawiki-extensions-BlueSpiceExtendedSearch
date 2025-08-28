@@ -177,6 +177,7 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Globale Ergebnisse anzeigen",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Suchen in „$1“",
 	"bs-extendedsearch-statistics-report-search-terms": "Suchbegriffe",
+	"bs-extendedsearch-statistics-report-search-terms-desc": "Top-Suchbegriffe im gewählten Zeitraum",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Suchbegriffe pro Nutzer",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Zeigt nur Suchergebnisse in der Sprache des Benutzers an. Benutzer können ihre Sprache in ihren Einstellungen festlegen",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Anzahl der Suchanfragen",
