@@ -561,6 +561,7 @@
 			],
 			"messages": [
 				"bs-extendedsearch-statistics-report-search-terms",
+				"bs-extendedsearch-statistics-report-search-terms-desc",
 				"bs-extendedsearch-statistics-report-search-terms-axis-label"
 			]
 		},
