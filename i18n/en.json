@@ -171,6 +171,7 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Show global results",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Searching in \"$1\"",
 	"bs-extendedsearch-statistics-report-search-terms": "Search terms",
+	"bs-extendedsearch-statistics-report-search-terms-desc": "Top search terms in the selected period",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Search terms per user",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Returns search results for a user only in the user's language. Users can set their language in their preferences.",
 	"bs-extendedsearch-pref-compact-ac-paths-help": "Show a compact autocomplete layout of the search menu (one-column layout, no thumbnail preview).",
