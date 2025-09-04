@@ -3,7 +3,7 @@
 namespace BS\ExtendedSearch\Tag;
 
 use BS\ExtendedSearch\Lookup;
-use Config;
+use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Html\TemplateParser;
 use MediaWiki\Json\FormatJson;
