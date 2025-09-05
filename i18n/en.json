@@ -201,5 +201,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Results",
 	"bs-extendedsearch-autocomplete-context-options-label": "Search",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Similar results",
-	"prefs-searchsection": "Search areas"
+	"prefs-searchsection": "Search areas",
+	"bs-extendedsearch-statistics-report-search-terms-desc": "Top search terms in the selected period"
 }
