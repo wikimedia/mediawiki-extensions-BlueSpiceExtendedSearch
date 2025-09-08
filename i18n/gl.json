@@ -191,5 +191,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultados",
 	"bs-extendedsearch-autocomplete-context-options-label": "Procurar",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultados semellantes",
-	"prefs-searchsection": "Áreas de procura"
+	"prefs-searchsection": "Áreas de procura",
+	"bs-extendedsearch-statistics-report-search-terms-desc": "Termos de procura máis frecuentes no período seleccionado"
 }

@@ -208,5 +208,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultaten",
 	"bs-extendedsearch-autocomplete-context-options-label": "Zoeken",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Vergelijkbare resultaten",
-	"prefs-searchsection": "Zoekgebieden"
+	"prefs-searchsection": "Zoekgebieden",
+	"bs-extendedsearch-statistics-report-search-terms-desc": "Top-zoektermen in de geselecteerde periode"
 }

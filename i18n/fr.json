@@ -3,6 +3,7 @@
 		"authors": [
 			"Alacabe",
 			"Alien333",
+			"Bananax47",
 			"Crochet.david",
 			"Derugon",
 			"DreZhsh",
@@ -220,5 +221,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Résultats",
 	"bs-extendedsearch-autocomplete-context-options-label": "Rechercher",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Résultats similaires",
-	"prefs-searchsection": "Zones de recherche"
+	"prefs-searchsection": "Zones de recherche",
+	"bs-extendedsearch-statistics-report-search-terms-desc": "Principaux termes de recherche dans la période sélectionnée"
 }
