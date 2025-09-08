@@ -3,6 +3,7 @@
 		"authors": [
 			"Alacabe",
 			"Alien333",
+			"Bananax47",
 			"Crochet.david",
 			"Derugon",
 			"DreZhsh",
@@ -182,6 +183,7 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Afficher les résultats globaux",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Recherche dans « $1 »",
 	"bs-extendedsearch-statistics-report-search-terms": "Termes de recherche",
+	"bs-extendedsearch-statistics-report-search-terms-desc": "Principaux termes de recherche dans la période sélectionnée",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Termes de recherche par utilisateur",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Renvoie les résultats de recherche pour un utilisateur seulement dans sa langue. Les utilisateurs peuvent définir leur langue dans leurs préférences.",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Nombre de requêtes de recherche",
