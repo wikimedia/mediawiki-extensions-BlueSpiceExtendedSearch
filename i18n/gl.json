@@ -164,6 +164,7 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Mostrar os resultados globais",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Procurando en «$1»",
 	"bs-extendedsearch-statistics-report-search-terms": "Termos de procura",
+	"bs-extendedsearch-statistics-report-search-terms-desc": "Termos de procura máis frecuentes no período seleccionado",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Termos de procura por usuario",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Devolve os resultados de procura dun usuario só na lingua dese usuario. Os usuarios poden configurar a lingua nas súas preferencias.",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Número de consultas de procura",

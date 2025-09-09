@@ -166,6 +166,7 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "הצגת תוצאות גלובליות",
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "חיפוש בדף \"$1\"",
 	"bs-extendedsearch-statistics-report-search-terms": "ביטויים לחיפוש",
+	"bs-extendedsearch-statistics-report-search-terms-desc": "מונחי החיפוש המובילים בתקופה שנבחרה",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "מונחי חיפוש לכל משתמש",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "החזרת תוצאות חיפוש עבור משתמש רק בשפת המשתמש. משתמשים יכולים להגדיר את השפה שלהם בהעדפות שלהם",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "מספר שאילתות החיפוש",
