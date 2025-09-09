@@ -32,6 +32,7 @@
 			//set lookup object to be submited
 			this.setLookupToSubmit();
 
+			mw.hook( 'bs-extendedsearch-autocomplete-before-submit' ).fire( this.searchBar, this );
 			$( this.searchBar.$searchForm ).submit();
 		}
 	}
