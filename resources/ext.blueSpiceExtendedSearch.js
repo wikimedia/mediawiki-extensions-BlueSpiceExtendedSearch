@@ -67,6 +67,7 @@
 			} );
 		},
 		_trackLink: function ( data ) {
+			mw.hook( 'bs-extendedsearch-track-link' ).fire( data );
 			return bs.extendedSearch._rest( 'track', JSON.stringify( data ), 'POST' );
 		},
 		_untrackLink: function ( data ) {
