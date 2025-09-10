@@ -203,5 +203,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Ergebnisse",
 	"bs-extendedsearch-autocomplete-context-options-label": "Suche",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Ähnliche Ergebnisse",
-	"prefs-searchsection": "Suchbereiche"
+	"prefs-searchsection": "Suchbereiche",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Suche $1 $2"
 }

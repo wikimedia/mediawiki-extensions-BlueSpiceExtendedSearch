@@ -36,7 +36,6 @@ bs.extendedSearch.SearchBar = function ( cfg ) {
 		.attr( 'id', cfg.cntId + '-wrapper' );
 
 	// Wrap search box input in another div to make it sizable when pill is added
-	this.$searchBox.attr( 'style', 'display: table-cell;' );
 	this.$searchBox.wrap( this.$searchBoxWrapper );
 
 	// Wire the events

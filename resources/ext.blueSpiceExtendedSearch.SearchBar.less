@@ -11,7 +11,7 @@
 
 	.bs-extendedsearch-searchbar-wrapper,
 	.bs-extendedsearch-mobile-box-wrapper {
-		display: table;
+		display: flex;
 		width: calc( ~'100% - 48px' );
 
 		.bs-extendedsearch-searchbar-pill {
@@ -20,7 +20,6 @@
 			background-color: @autocomplete-pill-background-color;
 			font-weight: bold;
 			color: white;
-			display: table-cell;
 			width: 1%;
 			white-space: nowrap;
 			vertical-align: middle;
@@ -36,7 +35,6 @@
 		}
 
 		.bs-extendedsearch-searchbar-clear {
-			display: table-cell !important;
 			background-color: white !important;
 			width: 1%;
 			white-space: nowrap;

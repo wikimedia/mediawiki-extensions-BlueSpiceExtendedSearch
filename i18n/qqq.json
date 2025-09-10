@@ -183,7 +183,6 @@
 	"bs-extendedsearch-rest-trace-insert-failure": "REST error message when trace data could not be inserted",
 	"bs-extendedsearch-rest-trace-remove-failure": "REST error message when trace data could not be removed",
 	"bs-extendedsearch-recently-found-header": "Header for section that lists recently found pages",
-	"bs-extendedsearch-recentlyfound-ignore": "Title for button to remove element from recently viewed list",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "Aria-label for submit button in search form",
 	"bs-extendedsearch-tagsearch-input-aria-label": "Aria-label for search input field",
 	"bs-extendedsearch-autocomplete-header-aria": "Aria-label for autocomplete search input field in header area\n$1 - number of results found",
@@ -198,5 +197,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Header label for the results panel in autocomplete",
 	"bs-extendedsearch-autocomplete-context-options-label": "Header label for context options panel in autocomplete",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Header label for the secondary results panel in autocomplete",
-	"prefs-searchsection": "Label for the search areas section in user preferences"
+	"prefs-searchsection": "Label for the search areas section in user preferences",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Aria label for button to specify search location with given search term\n$1 - search term given by user\n$2 - context where location should be searched in"
 }
