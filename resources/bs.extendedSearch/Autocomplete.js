@@ -162,7 +162,7 @@ bs.extendedSearch.Autocomplete.prototype.filterByRank = function ( suggestions, 
 	return res;
 };
 
-bs.extendedSearch.Autocomplete.prototype.makePopup = function ( suggestions, headerText, ariaAnnouncerText ) {
+bs.extendedSearch.Autocomplete.prototype.makePopup = function ( suggestions, headerText ) {
 	if ( this.popup ) {
 		this.removePopup();
 	}
@@ -192,9 +192,7 @@ bs.extendedSearch.Autocomplete.prototype.makePopup = function ( suggestions, hea
 	this.popup.$element.css( 'top', ( this.searchBar.$searchBox.outerHeight() + 12 ) + 'px' );
 	this.popup.$element.addClass( 'searchbar-autocomplete-results' );
 	this.popup.$element.insertAfter( $( '#' + this.searchBar.$searchBoxWrapper.attr( 'id' ) ) );
-	if ( ariaAnnouncerText ) {
-		this.popup.announce( ariaAnnouncerText );
-	}
+	this.popup.$element.attr( 'id', this.searchBar.$searchBoxWrapper.attr( 'id' ) + '-results' );
 
 	bs.extendedSearch._registerTrackableLinks();
 	this.searchBar.suppressQuietSubpage( 'arm' );
@@ -254,14 +252,17 @@ bs.extendedSearch.Autocomplete.prototype.onEmptyFocus = function () {
 	if ( !this.searchBar.showRecentlyFound ) {
 		return;
 	}
+
 	bs.extendedSearch._getRecentlyFound().done( ( response ) => {
 		if ( response.suggestions.length === 0 ) {
 			return;
 		}
+		this.searchBar.$searchBox.attr( 'aria-expanded', true );
+		this.searchBar.$searchBox.attr( 'aria-controls', this.searchBar.$searchBoxWrapper.attr( 'id' ) + '-results' );
+		this.searchBar.$searchBox.attr( 'aria-autocomplete', 'list' );
 		this.makePopup(
 			response.suggestions,
-			mw.msg( 'bs-extendedsearch-recently-found-header' ),
-			mw.msg( 'bs-extendedsearch-recently-found-header-aria', response.suggestions.length )
+			mw.msg( 'bs-extendedsearch-recently-found-header' )
 		);
 	} );
 };
@@ -345,8 +346,10 @@ bs.extendedSearch.Autocomplete.prototype.navigateThroughResults = function ( dir
 		if ( title ) {
 			this.searchBar.resetValue();
 			this.searchBar.setValue( title );
+			$result.attr( 'title', title );
 		}
 	}
+	this.searchBar.$searchBox.attr( 'aria-activedescendant', $result.attr( 'id' ) );
 };
 
 bs.extendedSearch.Autocomplete.prototype.navigateToSelectedPopupItem = function () {

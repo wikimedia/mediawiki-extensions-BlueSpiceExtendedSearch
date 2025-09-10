@@ -8,8 +8,6 @@
 			position: relative;
 
 			.bs-extendedsearch-autocomplete-wrapper {
-				display: table;
-
 				.bs-extendedsearch-autocomplete-pill {
 					padding-left: 8px;
 					padding-right: 8px;
@@ -22,7 +20,6 @@
 				}
 
 				.bs-extendedsearch-autocomplete-clear {
-					display: table-cell !important;
 					background-color: white !important;
 					width: 1%;
 					white-space: nowrap;
@@ -74,6 +71,11 @@
 		background: @scrollbar-handle-color;
 	}
 
+	ul {
+		margin-top: 0;
+		margin-left: 0;
+	}
+
 	.bs-extendedsearch-autocomplete-popup-primary {
 		vertical-align: top;
 		height: inherit;
@@ -93,17 +95,6 @@
 
 		.bs-extendedsearch-autocomplete-popup-no-results {
 			padding: 10px;
-		}
-
-		.bs-extendedsearch-recentlyfound-ignore-button {
-			position: absolute;
-			top: 0;
-			right: 0;
-
-			a span.oo-ui-iconElement-icon.oo-ui-icon-close {
-				background-size: 14px;
-				opacity: 0.6;
-			}
 		}
 
 		.bs-recently-found-suggestion {

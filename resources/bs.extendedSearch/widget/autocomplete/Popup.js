@@ -13,34 +13,36 @@
 		this.titleTrim = cfg.titleTrim || null;
 		// This represents implicit subpage filter, not visible in the searchbar
 		this.quietSubpage = cfg.quietSubpage || null;
+		this.idCounter = 0;
 
 		this.displayedResults = {
 			primary: [],
 			secondary: []
 		};
 
-		this.$element = $( '<div>' );
-
 		bs.extendedSearch.AutocompletePopup.parent.call( this, cfg );
+
+		this.$element = $( '<div>' );
 
 		if ( this.quietSubpage ) {
 			bs.extendedSearch.mixin.QuietSubpage.call( this, this.quietSubpage );
 		}
 		this.headerText = cfg.headerText || mw.msg( 'bs-extendedsearch-autocomplete-result-primary-results-label' );
 
-		this.$primaryResults = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-primary' );
+		this.$primaryResults = $( '<ul>' ).addClass( 'bs-extendedsearch-autocomplete-popup-primary' );
+		this.$primaryResults.attr( 'role', 'listbox' );
+		this.$primaryResults.attr( 'aria-label', this.headerText );
+		this.$primaryResults.attr( 'tabindex', '-1' );
 
 		this.$secondaryResultsLabel = $( '<span>' )
 			.addClass( 'bs-extendedsearch-autocomplete-popup-special-item-label' )
 			.html( mw.message( 'bs-extendedsearch-autocomplete-result-secondary-results-header-label' ).plain() );
-		this.$secondaryResults = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-secondary' );
+		this.$secondaryResults = $( '<ul>' ).addClass( 'bs-extendedsearch-autocomplete-popup-secondary' );
+		this.$secondaryResults.attr( 'role', 'listbox' );
+		this.$secondaryResults.attr( 'aria-label', mw.message( 'bs-extendedsearch-autocomplete-result-secondary-results-header-label' ).plain() );
+		this.$secondaryResults.attr( 'tabindex', '-1' );
 		this.$secondaryResults.append( this.$secondaryResultsLabel );
 		this.$secondaryResults.hide();
-
-		this.$announcer = $( '<div>' )
-			.addClass( 'bs-extendedsearch-autocomplete-popup-announcer visually-hidden' )
-			.attr( 'aria-live', 'polite' );
-		this.$element.append( this.$announcer );
 
 		if ( this.headerText ) {
 			this.$primaryResults.append(
@@ -85,16 +87,11 @@
 		this.displayedResults.primary.push( ...resultsToRender );
 
 		if ( this.displayedResults.primary.length === 0 ) {
-			this.announce( mw.msg( 'bs-extendedsearch-autocomplete-result-primary-no-results-label' ) );
 			this.$primaryResults.append(
 				$( '<div>' )
 					.addClass( 'bs-extendedsearch-autocomplete-popup-no-results' )
 					.html( mw.message( 'bs-extendedsearch-autocomplete-result-primary-no-results-label' ).plain() )
 			);
-		} else {
-			const cnt = this.displayedResults.primary.length;
-			this.announce( mw.msg( 'bs-extendedsearch-autocomplete-header-aria', cnt ) );
-
 		}
 	};
 
@@ -112,16 +109,14 @@
 	};
 
 	bs.extendedSearch.AutocompletePopup.prototype.getResultWidget = function ( suggestion ) {
+		this.idCounter += 1;
 		return new bs.extendedSearch.AutocompleteResult( {
 			suggestion: suggestion,
 			term: this.searchTerm,
 			popup: this,
-			titleTrim: this.titleTrim
+			titleTrim: this.titleTrim,
+			id: 'r-item-' + this.idCounter
 		} );
-	};
-
-	bs.extendedSearch.AutocompletePopup.prototype.announce = function ( ariaLabel ) {
-		this.$announcer.text( ariaLabel );
 	};
 
 	/**
@@ -158,7 +153,8 @@
 
 	bs.extendedSearch.AutocompletePopup.prototype.setIterableItems = function () {
 		this.iterableItems = [];
-		this.$contextOptions.children( '.bs-extendedsearch-autocomplete-popup-context-option' )
+
+		this.$contextOptions.children( 'li' )
 			.each( ( k, el ) => {
 				this.iterableItems.push( el );
 			} );
@@ -181,21 +177,7 @@
 	bs.extendedSearch.AutocompletePopup.prototype.selectCurrent = function () {
 		const selectedItem = this.iterableItems[ this.currentIndex ];
 		$( selectedItem ).addClass( 'bs-autocomplete-result-selected' );
-		this.enableIgnoreButtons();
-		const itemLink = $( selectedItem ).find( 'a' )[ 0 ];
-		if ( !itemLink ) {
-			return selectedItem;
-		}
-		const titleText = $( itemLink ).attr( 'data-title' );
-		this.announce( titleText );
 		return selectedItem;
-	};
-
-	bs.extendedSearch.AutocompletePopup.prototype.enableIgnoreButtons = function () {
-		const $ignoreBtns = $( '.bs-extendedsearch-recentlyfound-ignore-button a' );
-		for ( let i = 0; i < $ignoreBtns.length; i++ ) {
-			$( $ignoreBtns[ i ] ).attr( 'tabindex', 0 );
-		}
 	};
 
 	bs.extendedSearch.AutocompletePopup.prototype.clearSelected = function () {

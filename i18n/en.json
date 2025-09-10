@@ -176,7 +176,6 @@
 	"bs-extendedsearch-rest-trace-insert-failure": "Failed to insert trace data",
 	"bs-extendedsearch-rest-trace-remove-failure": "Failed to remove trace data",
 	"bs-extendedsearch-recently-found-header": "Recently viewed",
-	"bs-extendedsearch-recentlyfound-ignore": "Remove",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "Start search",
 	"bs-extendedsearch-tagsearch-input-aria-label": "Search",
 	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|One result|$1 results}} found",
@@ -191,5 +190,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Results",
 	"bs-extendedsearch-autocomplete-context-options-label": "Search",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Similar results",
-	"prefs-searchsection": "Search areas"
+	"prefs-searchsection": "Search areas",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Search $1 $2"
 }

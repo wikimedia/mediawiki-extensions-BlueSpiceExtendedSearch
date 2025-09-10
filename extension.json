@@ -342,9 +342,6 @@
 				"ext.blueSpiceExtendedSearch.utils.js",
 				"bs.extendedSearch/Lookup.js"
 			],
-			"messages": [
-				"bs-extendedsearch-recentlyfound-ignore"
-			],
 			"dependencies": [
 				"ext.bluespice",
 				"mediawiki.api",
@@ -414,7 +411,8 @@
 				"bs-extendedsearch-autocomplete-popup-redirect-title",
 				"bs-extendedsearch-autocomplete-result-primary-results-label",
 				"bs-extendedsearch-autocomplete-context-options-label",
-				"bs-extendedsearch-autocomplete-result-secondary-results-header-label"
+				"bs-extendedsearch-autocomplete-result-secondary-results-header-label",
+				"bs-extendedsearch-autocomplete-context-options-aria-label"
 			],
 			"dependencies": [
 				"ext.blueSpiceExtendedSearch.SearchBar",

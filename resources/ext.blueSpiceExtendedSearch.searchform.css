@@ -1,25 +1,32 @@
 form .bs-extendedsearch-searchbar-pill {
-	display: table-cell;
-	width: 1%;
 	padding-left: 8px;
 	padding-right: 8px;
 	background-color: var( --navbar-primary-pill-bg );
 	color: var( --navbar-primary-pill-fg );
+	display: inline-flex;
+	align-items: center;
 }
 
 .bs-extendedsearch-searchbar-wrapper {
-	display: table;
+	display: flex;
 	width: calc( 100% - 48px );
 }
 
+/* Hide cancel button visible with type search default */
+#bs-extendedsearch-input[ type='search' ]::-webkit-search-cancel-button {
+	appearance: none;
+}
+
 form .bs-extendedsearch-searchbar-clear {
-	display: table-cell;
 	background-color: var( --navbar-primary-searchform-bg );
 	border: 1px solid var( --navbar-primary-border-color );
 	border-left: none; /* stylelint-disable-line declaration-property-value-disallowed-list */
 	border-radius: 0 5px 5px 0;
-	width: 1%;
-	padding-right: 10px;
+	width: 20px;
+}
+
+form .bs-extendedsearch-searchbar-clear a {
+	height: 100%;
 }
 
 #nb-pri form.clear-present input {
@@ -56,10 +63,6 @@ form .bs-extendedsearch-searchbar-clear {
 	max-height: unset;
 }
 
-#bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup .bs-extendedsearch-autocomplete-popup-primary {
-	border-right: 0.5px solid #e9e9e9;
-}
-
 #bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup .bs-extendedsearch-autocomplete-popup-primary .bs-extendedsearch-autocomplete-popup-primary-item .bs-extendedsearch-autocomplete-popup-primary-item-header {
 	width: 100%;
 }
@@ -93,13 +96,16 @@ form .bs-extendedsearch-searchbar-clear {
 
 @media ( max-width: 1199.98px ) {
 	#bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup {
-		overflow-y: auto;
+		left: 0;
+		position: fixed;
+		width: 100vw;
 		max-height: calc( 100vh - 60px );
+		box-shadow: 0 3px #f1f1f4;
+		overflow-y: auto;
 	}
 
 	#bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup .bs-extendedsearch-autocomplete-popup-primary {
 		width: 100%;
-		border-bottom: 0.5px solid var( --content-fg-secondary );
 	}
 
 	#bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup .bs-extendedsearch-autocomplete-popup-special-cnt {

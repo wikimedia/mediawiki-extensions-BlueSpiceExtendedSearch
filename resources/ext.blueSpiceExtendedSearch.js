@@ -27,30 +27,6 @@
 					return e.ctrlKey || e.metaKey;
 				}
 
-				if ( $a.hasClass( 'bs-recently-found-suggestion' ) ) {
-					const ignoreButton = new OO.ui.ButtonWidget( {
-						framed: false,
-						icon: 'close',
-						classes: [ 'bs-extendedsearch-recentlyfound-ignore-button' ],
-						title: mw.message( 'bs-extendedsearch-recentlyfound-ignore' ).plain(),
-						data: data,
-						tabIndex: -1
-					} );
-					ignoreButton.connect( ignoreButton, {
-						click: function () {
-							this.setDisabled( true );
-							bs.extendedSearch._untrackLink( data ).done( () => {
-								bs.extendedSearch.Autocomplete._instance.focusSearchBox();
-								this.$element.parent().fadeOut( 'normal', function () { // eslint-disable-line no-jquery/no-fade
-									$( this ).remove();
-								} );
-							} ).fail( ( e ) => {
-								console.error( e ); // eslint-disable-line no-console
-							} );
-						}
-					} );
-					ignoreButton.$element.insertAfter( $a );
-				}
 				$a.on( 'click', ( e ) => {
 					e.preventDefault();
 					e.stopPropagation();

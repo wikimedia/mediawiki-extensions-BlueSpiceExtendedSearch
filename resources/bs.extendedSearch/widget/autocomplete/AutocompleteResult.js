@@ -15,13 +15,17 @@ bs.extendedSearch.AutocompleteResult = function ( cfg ) {
 	this.breadcrumbs = cfg.suggestion.breadcrumbs || null;
 	this.isRedirect = cfg.suggestion.is_redirect || false;
 	this.$redirectTargetAnchor = cfg.suggestion.redirect_target_anchor || null;
+	this.id = cfg.id || 9999;
 
 	this.searchTerm = cfg.term || '';
 
-	this.$element = $( '<div>' );
-
 	bs.extendedSearch.AutocompleteResult.parent.call( this, cfg );
 	bs.extendedSearch.mixin.ResultOriginalTitle.call( this, cfg.suggestion );
+
+	this.$element = $( '<li>' );
+	this.$element.attr( 'role', 'option' );
+	this.$element.attr( 'aria-disabled', 'false' );
+	this.$element.attr( 'id', this.id );
 
 	this.render();
 	this.$element.on( 'click', this.onResultClick );
@@ -62,13 +66,12 @@ bs.extendedSearch.AutocompleteResult.prototype.render = function () {
 	// If backend provided an anchor use it, otherwise create it
 	if ( this.pageAnchor ) {
 		this.$header = this.$pageAnchor.html( this.basename );
-		this.$header.attr( 'tabindex', '-1' );
 	} else {
 		this.$header = $( '<a>' )
 			.attr( 'href', this.uri )
-			.html( this.basename )
-			.attr( 'tabindex', '-1' );
+			.html( this.basename );
 	}
+
 	this.$header.addClass( 'bs-extendedsearch-autocomplete-popup-item-header' );
 
 	const $pathCnt = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-item-header-path' );

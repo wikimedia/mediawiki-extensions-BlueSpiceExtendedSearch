@@ -1,7 +1,10 @@
 bs.util.registerNamespace( 'bs.extendedSearch.mixin' );
 
 bs.extendedSearch.mixin.ContextOptions = function () {
-	this.$contextOptions = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-context' );
+	this.$contextOptions = $( '<ul>' ).addClass( 'bs-extendedsearch-autocomplete-popup-context' );
+	this.$contextOptions.attr( 'role', 'listbox' );
+	this.$contextOptions.attr( 'aria-label', mw.msg( 'bs-extendedsearch-autocomplete-context-options-label' ) );
+	this.$contextOptions.attr( 'tabindex', '-1' );
 
 	if ( !this.searchTerm || !this.autocomplete.enableSearchContexts ) {
 		return;
@@ -14,9 +17,15 @@ bs.extendedSearch.mixin.ContextOptions = function () {
 
 	const contexts = mw.config.get( 'ESContexts' ) || {};
 	for ( const contextKey in contexts ) {
-		this.$contextOptions.append(
+		const $listElement = $( '<li>' );
+		$listElement.attr( 'role', 'option' );
+		$listElement.attr( 'aria-disabled', 'false' );
+		$listElement.attr( 'id', 'c-item-' + contextKey );
+		$listElement.attr( 'class', 'bs-extendedsearch-autocomplete-popup-item' );
+		$listElement.append(
 			this.getContextWidget( contextKey, contexts[ contextKey ] ).$element
 		);
+		this.$contextOptions.append( $listElement );
 	}
 };
 
@@ -36,6 +45,10 @@ bs.extendedSearch.mixin.ContextOptions.prototype.getContextWidget = function ( k
 			showCustomPill: data.showCustomPill
 		}
 	} );
+
+	const stripHTMLTags = ( str ) => str.replace( /<[^>]*>/g, '' );
+	widget.$element.attr( 'aria-label',
+		mw.message( 'bs-extendedsearch-autocomplete-context-options-aria-label', this.searchTerm, stripHTMLTags( data.text ) ).text() );
 	widget.connect( this, {
 		click: function () {
 			this.executeContextSearch( widget );
