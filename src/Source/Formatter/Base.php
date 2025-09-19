@@ -298,6 +298,7 @@ class Base implements ISearchResultFormatter {
 			'href' => $title->getLocalURL(),
 			'class' => 'bs-traceable-link',
 			'data-bs-traceable-page' => json_encode( $data ),
+			'title' => $title->getPrefixedText(),
 			'data-title' => $title->getPrefixedText()
 		], $display );
 	}
