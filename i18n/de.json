@@ -203,5 +203,8 @@
 	"bs-extendedsearch-autocomplete-context-options-label": "Suche",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Ähnliche Ergebnisse",
 	"prefs-searchsection": "Suchbereiche",
-	"bs-extendedsearch-autocomplete-context-options-aria-label": "Suche $1 $2"
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Suche $1 $2",
+	"prefs-search": "Sucheinstellungen",
+	"bs-extendedsearch-user-pref-shortcut": "Suche per Tastenkombination aktivieren",
+	"bs-extendedsearch-user-pref-shortcut-help": "Ermöglicht das Öffnen der Suche mit Tastaturkürzel <code>Umschalt + 7</code>"
 }
