@@ -19,6 +19,9 @@ $( () => {
 			return;
 		}
 
+		if ( !mw.user.options.get( 'searchShortcut' ) ) {
+			return;
+		}
 		if ( e.key === '/' ) {
 			e.preventDefault();
 			searchBar.$searchBox.focus(); // eslint-disable-line no-jquery/no-event-shorthand
