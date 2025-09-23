@@ -34,7 +34,7 @@
 	"bs-extendedsearch-admin-label-error": "Ошибка",
 	"bs-extendedsearch-admin-heading-sources": "Источники",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "Документы",
-	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Примерно $1 {{PLURAL:$1|результат|результатов}} для $2",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "{{PLURAL:$1|Найден|Найдено}} примерно $1 {{PLURAL:$1|результат|результата|результатов}}",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "Добавить фильтр",
 	"bs-extendedsearch-search-center-filter-extension-label": "Расширение",
 	"bs-extendedsearch-search-center-filter-namespace-label": "Пространство имён",
