@@ -217,5 +217,6 @@
 	"bs-extendedsearch-autocomplete-context-options-label": "Suche",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Ähnliche Ergebnisse",
 	"prefs-searchsection": "Suchbereiche",
-	"bs-extendedsearch-statistics-report-search-terms-desc": "Top-Suchbegriffe im gewählten Zeitraum"
+	"bs-extendedsearch-statistics-report-search-terms-desc": "Top-Suchbegriffe im gewählten Zeitraum",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Suche $1 $2"
 }

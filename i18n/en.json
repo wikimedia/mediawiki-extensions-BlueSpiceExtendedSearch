@@ -202,5 +202,6 @@
 	"bs-extendedsearch-autocomplete-context-options-label": "Search",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Similar results",
 	"prefs-searchsection": "Search areas",
-	"bs-extendedsearch-statistics-report-search-terms-desc": "Top search terms in the selected period"
+	"bs-extendedsearch-statistics-report-search-terms-desc": "Top search terms in the selected period",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Search $1 $2"
 }
