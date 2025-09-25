@@ -16,6 +16,7 @@
 			"JLTRY",
 			"MacOS Weed",
 			"Mahabarata",
+			"Marphy 123",
 			"Thibaut120094",
 			"Urhixidur",
 			"Verdy p",
@@ -222,5 +223,6 @@
 	"bs-extendedsearch-autocomplete-context-options-label": "Rechercher",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Résultats similaires",
 	"prefs-searchsection": "Zones de recherche",
-	"bs-extendedsearch-statistics-report-search-terms-desc": "Principaux termes de recherche dans la période sélectionnée"
+	"bs-extendedsearch-statistics-report-search-terms-desc": "Principaux termes de recherche dans la période sélectionnée",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Search $1 $2"
 }

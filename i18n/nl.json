@@ -209,5 +209,6 @@
 	"bs-extendedsearch-autocomplete-context-options-label": "Zoeken",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Vergelijkbare resultaten",
 	"prefs-searchsection": "Zoekgebieden",
-	"bs-extendedsearch-statistics-report-search-terms-desc": "Top-zoektermen in de geselecteerde periode"
+	"bs-extendedsearch-statistics-report-search-terms-desc": "Top-zoektermen in de geselecteerde periode",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "$1 in $2 zoeken"
 }
