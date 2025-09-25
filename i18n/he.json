@@ -178,7 +178,6 @@
 	"bs-extendedsearch-rest-trace-insert-failure": "לא היה אפשר להכניס את נתוני העקבה",
 	"bs-extendedsearch-rest-trace-remove-failure": "לא היה אפשר להסיר את נתוני העקבה",
 	"bs-extendedsearch-recently-found-header": "הוצגו לאחרונה",
-	"bs-extendedsearch-recentlyfound-ignore": "הסרה",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "להתחיל חיפוש",
 	"bs-extendedsearch-tagsearch-input-aria-label": "חיפוש",
 	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|נמצאה תוצאה אחת|נמצאו $1 תוצאות}}",

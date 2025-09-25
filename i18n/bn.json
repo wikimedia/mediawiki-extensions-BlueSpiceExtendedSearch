@@ -29,7 +29,6 @@
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "নামস্থান",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "\"$1\"-এর ফলাফল দেখানো হচ্ছে",
 	"bs-extendedsearch-trace-error-invalid-data": "ট্রেস ডেটা অবৈধ বা সরবরাহ করা হয়নি। সরাসরি এই পৃষ্ঠায় প্রবেশ করবেন না।",
-	"bs-extendedsearch-recentlyfound-ignore": "সরান",
 	"bs-extendedsearch-tagsearch-input-aria-label": "অনুসন্ধান করুন",
 	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|একটি ফলাফল|$1টি ফলাফল}} পাওয়া গেছে",
 	"bs-extendedsearch-recently-found-header-aria": "সম্প্রতি দেখা {{PLURAL:$1|একটি|$1টি}} {{PLURAL:$1|ফলাফল}} উপলব্ধ",

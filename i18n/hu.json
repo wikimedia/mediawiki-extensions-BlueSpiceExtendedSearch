@@ -142,7 +142,6 @@
 	"bs-extendedsearch-droplet-search-description": "Kereső mezőt ad a lap tartalmához",
 	"bs-extendedsearch-source-label-externalfile": "Külső fájl",
 	"bs-extendedsearch-recently-found-header": "Nemrég megtekintett",
-	"bs-extendedsearch-recentlyfound-ignore": "Eltávolítás",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "Keresés indítása",
 	"bs-extendedsearch-tagsearch-input-aria-label": "Keresés",
 	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|Egy találat|$1 találat}}",

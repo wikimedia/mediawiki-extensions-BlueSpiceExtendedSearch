@@ -173,7 +173,6 @@
 	"bs-extendedsearch-rest-trace-insert-failure": "Error durante le insertion del datos de traciamento",
 	"bs-extendedsearch-rest-trace-remove-failure": "Error durante le deletion del datos de traciamento",
 	"bs-extendedsearch-recently-found-header": "Recentemente legite",
-	"bs-extendedsearch-recentlyfound-ignore": "Remover",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "Comenciar le recerca",
 	"bs-extendedsearch-tagsearch-input-aria-label": "Cercar",
 	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|Un resultato|$1 resultatos}} trovate",

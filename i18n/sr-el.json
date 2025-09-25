@@ -98,7 +98,6 @@
 	"action-extendedsearch-search-wikipage": "pretražujete stranice",
 	"action-extendedsearch-search-repofile": "pretražujete datoteke",
 	"action-extendedsearch-search-externalfile": "pretražujete spoljašnje datoteke",
-	"bs-extendedsearch-recentlyfound-ignore": "Ukloni",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 od $2",
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "Preusmerava na $1",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Rezultati",

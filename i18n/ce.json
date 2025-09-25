@@ -108,7 +108,6 @@
 	"bs-extendedsearch-droplet-search-name": "Лоьху меттиг",
 	"bs-extendedsearch-source-label-externalfile": "Арахьара файл",
 	"bs-extendedsearch-recently-found-header": "Дукха хан йоццуш хьаьжна",
-	"bs-extendedsearch-recentlyfound-ignore": "ДӀайаккха",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "Доладе лехар",
 	"bs-extendedsearch-tagsearch-input-aria-label": "Лахар",
 	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|Цхьа жамӀ|$1 жамӀ}} карийна",

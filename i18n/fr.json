@@ -16,6 +16,7 @@
 			"JLTRY",
 			"MacOS Weed",
 			"Mahabarata",
+			"Marphy 123",
 			"Thibaut120094",
 			"Urhixidur",
 			"Verdy p",
@@ -195,7 +196,6 @@
 	"bs-extendedsearch-rest-trace-insert-failure": "Échec de l'insertion des données de traçage",
 	"bs-extendedsearch-rest-trace-remove-failure": "Échec de la suppression des données de traçage",
 	"bs-extendedsearch-recently-found-header": "Consulté récemment",
-	"bs-extendedsearch-recentlyfound-ignore": "Retirer",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "Lancer la recherche",
 	"bs-extendedsearch-tagsearch-input-aria-label": "Recherche",
 	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|Un résultat trouvé|$1 résultats trouvés}}",
@@ -210,5 +210,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Résultats",
 	"bs-extendedsearch-autocomplete-context-options-label": "Rechercher",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Résultats similaires",
-	"prefs-searchsection": "Zones de recherche"
+	"prefs-searchsection": "Zones de recherche",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Search $1 $2"
 }

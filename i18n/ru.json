@@ -126,6 +126,5 @@
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Поиск в «$1»",
 	"bs-extendedsearch-droplet-search-name": "Поле поиска",
 	"bs-extendedsearch-source-label-externalfile": "Внешний файл",
-	"bs-extendedsearch-recently-found-header": "Недавно просмотрено",
-	"bs-extendedsearch-recentlyfound-ignore": "Удалить"
+	"bs-extendedsearch-recently-found-header": "Недавно просмотрено"
 }

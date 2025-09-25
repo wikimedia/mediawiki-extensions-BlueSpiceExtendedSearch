@@ -173,6 +173,5 @@
 	"apihelp-bs-extendedsearch-recently-found-pages-summary": "Lister opp sider brukeren nylig har besøkt fra søkeresultatene",
 	"bs-extendedsearch-rest-trace-insert-failure": "Kunne ikke sette inn sporingsdata",
 	"bs-extendedsearch-rest-trace-remove-failure": "Kunne ikke fjerne sporingsdata",
-	"bs-extendedsearch-recently-found-header": "Nylig vist",
-	"bs-extendedsearch-recentlyfound-ignore": "Fjern"
+	"bs-extendedsearch-recently-found-header": "Nylig vist"
 }
