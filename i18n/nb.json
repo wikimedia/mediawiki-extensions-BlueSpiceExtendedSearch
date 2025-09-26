@@ -187,5 +187,6 @@
 	"bs-extendedsearch-recently-found-header": "Nylig vist",
 	"bs-extendedsearch-autocomplete-input-title": "Søk (skriv «/»)",
 	"bs-extendedsearch-search-center-filter-namespace-label": "Navnerom",
-	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Navnerom:"
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Navnerom:",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Søk etter $1 i $2"
 }
