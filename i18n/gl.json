@@ -190,5 +190,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultados",
 	"bs-extendedsearch-autocomplete-context-options-label": "Procurar",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultados semellantes",
-	"prefs-searchsection": "Áreas de procura"
+	"prefs-searchsection": "Áreas de procura",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Procurar «$1» en $2"
 }
