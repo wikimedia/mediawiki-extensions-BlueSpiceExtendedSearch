@@ -136,7 +136,6 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Termini di ricerca per utente",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Restituisce i risultati della ricerca per un utente solo nella lingua dell'utente. Gli utenti possono impostare la loro lingua nelle loro preferenze",
 	"bs-extendedsearch-source-label-externalfile": "File esterno",
-	"bs-extendedsearch-recentlyfound-ignore": "Rimuovi",
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "Reindirizza a $1",
 	"bs-extendedsearch-context-subpage-label": "nelle sottopagine di '''$1'''",
 	"bs-extendedsearch-context-namespace-label": "nel namespace '''$1'''",

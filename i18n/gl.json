@@ -176,7 +176,6 @@
 	"bs-extendedsearch-rest-trace-insert-failure": "Non se puideron inserir os datos de rastrexo",
 	"bs-extendedsearch-rest-trace-remove-failure": "Non se puideron eliminar os datos de rastrexo",
 	"bs-extendedsearch-recently-found-header": "Visitadas recentemente",
-	"bs-extendedsearch-recentlyfound-ignore": "Eliminar",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "Comezar a procura",
 	"bs-extendedsearch-tagsearch-input-aria-label": "Procurar",
 	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|Atopouse un resultado|Atopáronse $1 resultados}}",
@@ -191,5 +190,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultados",
 	"bs-extendedsearch-autocomplete-context-options-label": "Procurar",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultados semellantes",
-	"prefs-searchsection": "Áreas de procura"
+	"prefs-searchsection": "Áreas de procura",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Procurar «$1» en $2"
 }

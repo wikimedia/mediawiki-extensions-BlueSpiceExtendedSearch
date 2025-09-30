@@ -178,7 +178,6 @@
 	"bs-extendedsearch-rest-trace-insert-failure": "插入追蹤資料失敗",
 	"bs-extendedsearch-rest-trace-remove-failure": "移除追蹤資料失敗",
 	"bs-extendedsearch-recently-found-header": "近期檢視",
-	"bs-extendedsearch-recentlyfound-ignore": "移除",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "開始搜尋",
 	"bs-extendedsearch-tagsearch-input-aria-label": "搜尋",
 	"bs-extendedsearch-autocomplete-header-aria": "找到 {{PLURAL:$1|1|$1}} 筆結果",

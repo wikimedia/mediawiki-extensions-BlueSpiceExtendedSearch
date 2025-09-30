@@ -104,7 +104,6 @@
 	"action-extendedsearch-search-wikipage": "претражујете странице",
 	"action-extendedsearch-search-repofile": "претражујете датотеке",
 	"action-extendedsearch-search-externalfile": "претражујете спољашње датотеке",
-	"bs-extendedsearch-recentlyfound-ignore": "Уклони",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 од $2",
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "Преусмерава на $1",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Резултати",

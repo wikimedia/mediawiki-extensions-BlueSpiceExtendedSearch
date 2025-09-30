@@ -188,7 +188,6 @@
 	"bs-extendedsearch-rest-trace-insert-failure": "Einfügen von Trace-Daten fehlgeschlagen",
 	"bs-extendedsearch-rest-trace-remove-failure": "Trace-Daten konnten nicht entfernt werden",
 	"bs-extendedsearch-recently-found-header": "Zuletzt angesehen",
-	"bs-extendedsearch-recentlyfound-ignore": "Entfernen",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "Suche starten",
 	"bs-extendedsearch-tagsearch-input-aria-label": "Suche",
 	"bs-extendedsearch-autocomplete-header-aria": "{{PLURAL:$1|Ein Ergebnis|$1 Ergebnisse}} verfügbar",
