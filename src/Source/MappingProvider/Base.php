@@ -27,14 +27,14 @@ class Base implements ISearchMappingProvider {
 			],
 			'suggestions' => [
 				'type' => 'text',
-				'analyzer' => 'autocomplete',
-				'search_analyzer' => 'autocomplete',
+				'analyzer' => 'substring_analyzer',
+				'search_analyzer' => 'substring_analyzer',
 				'copy_to' => [ 'suggestions-spellcheck' ],
 			],
 			'suggestions_extra' => [
 				'type' => 'text',
-				'analyzer' => 'autocomplete',
-				'search_analyzer' => 'autocomplete'
+				'analyzer' => 'substring_analyzer',
+				'search_analyzer' => 'substring_analyzer'
 			],
 			'uri' => [
 				'type' => 'text'
