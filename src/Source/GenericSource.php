@@ -140,6 +140,9 @@ class GenericSource implements ISearchSource {
 			"settings" => [
 				// Only for testing purposes on small sample, remove or increase for production
 				// "number_of_shards" => 1,
+				"index" => [
+					"max_ngram_diff" => 20
+				],
 				"analysis" => [
 					"normalizer" => [
 						"lowercase" => [
@@ -149,9 +152,9 @@ class GenericSource implements ISearchSource {
 						]
 					],
 					"analyzer" => [
-						"autocomplete" => [
-							"tokenizer" => "autocomplete",
-							"filter" => [ "lowercase" ]
+						"substring_analyzer" => [
+							"tokenizer" => "substring",
+							"filter" => [ "lowercase", "asciifolding" ]
 						],
 						"content_analyzer" => [
 							"tokenizer" => "whitespace",
@@ -159,9 +162,9 @@ class GenericSource implements ISearchSource {
 						],
 					],
 					"tokenizer" => [
-						"autocomplete" => [
-							"type" => "edge_ngram",
-							"min_gram" => 1,
+						"substring" => [
+							"type" => "ngram",
+							"min_gram" => 3,
 							"max_gram" => 20,
 							"token_chars" => [ "letter", "digit" ]
 						]
