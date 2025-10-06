@@ -187,5 +187,6 @@
 	"bs-extendedsearch-source-label-externalfile": "ملف خارجي",
 	"bs-extendedsearch-search-center-filter-namespace-label": "النطاق",
 	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "النطاق:",
-	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "نتائج مماثلة"
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "نتائج مماثلة",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "بحث $1 $2"
 }
