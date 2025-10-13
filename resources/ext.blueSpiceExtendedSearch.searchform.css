@@ -9,7 +9,7 @@ form .bs-extendedsearch-searchbar-pill {
 
 .bs-extendedsearch-searchbar-wrapper {
 	display: flex;
-	width: calc( 100% - 48px );
+	width: calc( 100% - 3rem );
 }
 
 /* Hide cancel button visible with type search default */
