@@ -9,7 +9,7 @@ form .bs-extendedsearch-searchbar-pill {
 
 .bs-extendedsearch-searchbar-wrapper {
 	display: table;
-	width: calc( 100% - 48px );
+	width: calc( 100% - 3rem );
 }
 
 form .bs-extendedsearch-searchbar-clear {
