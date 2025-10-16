@@ -224,5 +224,5 @@
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Résultats similaires",
 	"prefs-searchsection": "Zones de recherche",
 	"bs-extendedsearch-statistics-report-search-terms-desc": "Principaux termes de recherche dans la période sélectionnée",
-	"bs-extendedsearch-autocomplete-context-options-aria-label": "Search $1 $2"
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Rechercher $1 $2"
 }
