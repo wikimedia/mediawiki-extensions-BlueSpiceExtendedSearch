@@ -210,5 +210,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Résultats",
 	"bs-extendedsearch-autocomplete-context-options-label": "Rechercher",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Résultats similaires",
-	"prefs-searchsection": "Zones de recherche"
+	"prefs-searchsection": "Zones de recherche",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Rechercher $1 $2"
 }
