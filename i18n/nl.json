@@ -196,5 +196,10 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultaten",
 	"bs-extendedsearch-autocomplete-context-options-label": "Zoeken",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Vergelijkbare resultaten",
-	"prefs-searchsection": "Zoekgebieden"
+	"prefs-searchsection": "Zoekgebieden",
+	"bs-extendedsearch-statistics-report-search-terms-desc": "Top-zoektermen in de geselecteerde periode",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "$1 in $2 zoeken",
+	"prefs-search": "Zoekinstellingen",
+	"bs-extendedsearch-user-pref-shortcut": "Zoeken via sneltoets mogelijk maken",
+	"bs-extendedsearch-user-pref-shortcut-help": "Hiermee kunt u een zoekopdracht beginnen met de sneltoets <code>Shift + 7</code>"
 }

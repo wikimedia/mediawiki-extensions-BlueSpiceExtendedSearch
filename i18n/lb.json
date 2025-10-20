@@ -80,5 +80,8 @@
 	"bs-extendedsearch-autocomplete-context-none": "op der ganzer Wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultater",
 	"bs-extendedsearch-autocomplete-context-options-label": "Sichen",
-	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Änlech Resultater"
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Änlech Resultater",
+	"bs-extendedsearch-search-center-hitcount-replaced": "Resultater fir $1 gi gewisen, amplaz no $2 sichen ({{PLURAL:$3|$3 Treffer}})",
+	"bs-extendedsearch-export-button-label": "Sichresultater exportéieren",
+	"prefs-search": "Sichastellungen"
 }

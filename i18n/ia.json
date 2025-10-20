@@ -188,5 +188,7 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultatos",
 	"bs-extendedsearch-autocomplete-context-options-label": "Cercar",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultatos similar",
-	"prefs-searchsection": "Areas de recerca"
+	"prefs-searchsection": "Areas de recerca",
+	"bs-extendedsearch-statistics-report-search-terms-desc": "Terminos de recerca principal in le periodo seligite",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Cercar $1 in $2"
 }

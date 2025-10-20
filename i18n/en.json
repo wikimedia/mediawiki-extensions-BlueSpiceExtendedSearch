@@ -191,5 +191,9 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Results",
 	"bs-extendedsearch-autocomplete-context-options-label": "Search",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Similar results",
-	"prefs-searchsection": "Search areas"
+	"prefs-searchsection": "Search areas",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Search $1 $2",
+	"prefs-search": "Search settings",
+	"bs-extendedsearch-user-pref-shortcut": "Enable search using a keyboard shortcut",
+	"bs-extendedsearch-user-pref-shortcut-help": "Allows you to open the search using keyboard shortcuts <code>Shift + 7</code>"
 }

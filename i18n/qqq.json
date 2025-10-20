@@ -3,6 +3,7 @@
 		"authors": [
 			"Amire80",
 			"Kizule",
+			"McDutchie",
 			"MuratTheTurkish",
 			"Robby",
 			"Robert Vogel <vogel@hallowelt.com>",
@@ -198,5 +199,9 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Header label for the results panel in autocomplete",
 	"bs-extendedsearch-autocomplete-context-options-label": "Header label for context options panel in autocomplete",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Header label for the secondary results panel in autocomplete",
-	"prefs-searchsection": "Label for the search areas section in user preferences"
+	"prefs-searchsection": "Label for the search areas section in user preferences",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Aria label for button to specify search location with given search term\n* $1 - search term given by user\n* $2 - context where location should be searched in",
+	"prefs-search": "Label for the search areas section in user preferences",
+	"bs-extendedsearch-user-pref-shortcut": "Label for config to enable search keyboard shortcut",
+	"bs-extendedsearch-user-pref-shortcut-help": "Help text for config to enable search keyboard shortcut"
 }

@@ -119,7 +119,7 @@
 	"bs-extendedsearch-external-file-paths-desc": "مجموعة المجلدات الخارجية التي تنبغي فهرستها",
 	"bs-extendedsearch-autocomplete-modified-time-label": "آخر تعديل: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... $1 أكثر",
-	"bs-extendedsearch-search-center-result-redirects-label": "تم التحويل من:",
+	"bs-extendedsearch-search-center-result-redirects-label": "حُوِّلَت من:",
 	"bs-extendedsearch-default-filters-desc": "قائمة المرشحات للضبط افتراضيا",
 	"bs-extendedsearch-redirect-target-label": "تحويلات إلى:",
 	"bs-extendedsearch-search-center-filter-page_language-label": "لغة الصفحة",
@@ -176,5 +176,6 @@
 	"bs-extendedsearch-droplet-search-name": "مجال البحث",
 	"bs-extendedsearch-droplet-search-description": "يضيف حقل بحث إلى محتوى الصفحة",
 	"bs-extendedsearch-source-label-externalfile": "ملف خارجي",
-	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "نتائج مماثلة"
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "نتائج مماثلة",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "بحث $1 $2"
 }

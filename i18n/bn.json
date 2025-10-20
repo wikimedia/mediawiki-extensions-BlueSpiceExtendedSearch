@@ -36,5 +36,8 @@
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$2 এর $1",
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "প্রাথমিক ফলাফল",
 	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "মাধ্যমিক ফলাফল",
-	"bs-extendedsearch-autocomplete-popup-redirect-title": "$1-এ পুনর্নির্দেশিত"
+	"bs-extendedsearch-autocomplete-popup-redirect-title": "$1-এ পুনর্নির্দেশিত",
+	"prefs-search": "অনুসন্ধান সেটিং",
+	"bs-extendedsearch-user-pref-shortcut": "কীবোর্ড শর্টকাট ব্যবহার করে অনুসন্ধান সক্রিয় করুন",
+	"bs-extendedsearch-user-pref-shortcut-help": "আপনাকে <code>Shift + 7</code> কীবোর্ড শর্টকাট ব্যবহার করে অনুসন্ধান খুলতে দিবে"
 }

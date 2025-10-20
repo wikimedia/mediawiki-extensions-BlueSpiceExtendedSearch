@@ -3,6 +3,7 @@
 		"authors": [
 			"Alacabe",
 			"Alien333",
+			"Bananax47",
 			"Crochet.david",
 			"Derugon",
 			"DreZhsh",
@@ -15,6 +16,7 @@
 			"JLTRY",
 			"MacOS Weed",
 			"Mahabarata",
+			"Marphy 123",
 			"Thibaut120094",
 			"Urhixidur",
 			"Verdy p",
@@ -209,5 +211,10 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Résultats",
 	"bs-extendedsearch-autocomplete-context-options-label": "Rechercher",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Résultats similaires",
-	"prefs-searchsection": "Zones de recherche"
+	"prefs-searchsection": "Zones de recherche",
+	"bs-extendedsearch-statistics-report-search-terms-desc": "Principaux termes de recherche dans la période sélectionnée",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Rechercher $1 $2",
+	"prefs-search": "Paramètres de recherche",
+	"bs-extendedsearch-user-pref-shortcut": "Activer la recherche à l'aide d'un raccourci clavier",
+	"bs-extendedsearch-user-pref-shortcut-help": "Permet d'ouvrir la recherche à l'aide des raccourcis clavier <code>Maj + 7</code>"
 }

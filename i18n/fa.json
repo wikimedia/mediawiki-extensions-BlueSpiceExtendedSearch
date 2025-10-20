@@ -122,5 +122,7 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "عبارت‌های جستجو به‌ازای کاربر",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "آغاز جستجو",
 	"bs-extendedsearch-tagsearch-input-aria-label": "جستجو",
-	"prefs-searchsection": "محدوده‌های جستجو"
+	"prefs-searchsection": "محدوده‌های جستجو",
+	"prefs-search": "جستجوی تنظیمات",
+	"bs-extendedsearch-user-pref-shortcut": "فعال‌سازی جستجو با استفاده از میانبر صفحه‌کلید"
 }

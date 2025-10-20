@@ -193,5 +193,7 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "תוצאות",
 	"bs-extendedsearch-autocomplete-context-options-label": "חיפוש",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "תוצאות דומות",
-	"prefs-searchsection": "אזורים לחיפוש"
+	"prefs-searchsection": "אזורים לחיפוש",
+	"bs-extendedsearch-statistics-report-search-terms-desc": "מונחי החיפוש המובילים בתקופה שנבחרה",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "חיפוש $1 $2"
 }

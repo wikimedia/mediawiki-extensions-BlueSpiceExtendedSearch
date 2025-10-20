@@ -190,5 +190,10 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultados",
 	"bs-extendedsearch-autocomplete-context-options-label": "Procurar",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultados semellantes",
-	"prefs-searchsection": "Áreas de procura"
+	"prefs-searchsection": "Áreas de procura",
+	"bs-extendedsearch-statistics-report-search-terms-desc": "Termos de procura máis frecuentes no período seleccionado",
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Procurar «$1» en $2",
+	"prefs-search": "Configuración de procura",
+	"bs-extendedsearch-user-pref-shortcut": "Activar a procura usando un atallo de teclado",
+	"bs-extendedsearch-user-pref-shortcut-help": "Permite abrir a procura usando o atallo de teclado <code>Maiús. + 7</code>"
 }
