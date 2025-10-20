@@ -130,5 +130,7 @@
 	"bs-extendedsearch-tagsearch-input-aria-label": "جستجو",
 	"bs-extendedsearch-search-center-filter-namespace-label": "فضای نام",
 	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "فضای نام:",
-	"prefs-searchsection": "محدوده‌های جستجو"
+	"prefs-searchsection": "محدوده‌های جستجو",
+	"prefs-search": "جستجوی تنظیمات",
+	"bs-extendedsearch-user-pref-shortcut": "فعال‌سازی جستجو با استفاده از میانبر صفحه‌کلید"
 }
