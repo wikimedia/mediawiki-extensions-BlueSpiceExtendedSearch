@@ -117,5 +117,6 @@
 	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Именски простор:",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Резултати",
 	"bs-extendedsearch-autocomplete-context-options-label": "Претрага",
-	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Слични резултати"
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Слични резултати",
+	"prefs-search": "Подешавање претраге"
 }
