@@ -89,7 +89,7 @@ class Stats extends ApiBase {
 				// bs-extendedsearch-source-label-specialpage
 				// bs-extendedsearch-source-label-external
 				// bs-extendedsearch-source-label-repofile
-				'label' => $this->msg( 'bs-extendedsearch-source-label-' . $typeKey )->plain(),
+				'label' => $this->msg( 'bs-extendedsearch-source-label-' . $typeKey )->text(),
 				'pending_update_jobs' => $source->getCrawler()->getNumberOfPendingJobs(),
 				'documents_count' => $this->getCountStats( $backend->getIndexName( $typeKey ), $backend )['count'] ?? -1
 			];

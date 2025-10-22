@@ -111,7 +111,7 @@ class Handler implements IPrivacyHandler {
 				'bs-extendedsearch-privacy-transparency-content-highlight',
 				$title->getPrefixedText(),
 				$this->getFormattedHighlights( $resultObject->getParam( 'highlight' ) )
-			)->plain();
+			)->text();
 		}
 
 		return $data;
@@ -179,7 +179,7 @@ class Handler implements IPrivacyHandler {
 				'bs-extendedsearch-privacy-transparency-history-item',
 				$row->esh_term,
 				$row->freq
-			)->plain();
+			)->text();
 		}
 
 		if ( empty( $terms ) ) {
@@ -190,7 +190,7 @@ class Handler implements IPrivacyHandler {
 			wfMessage(
 				'bs-extendedsearch-privacy-transparency-history-summary',
 				implode( ',', $terms )
-			)->plain()
+			)->text()
 		];
 	}
 

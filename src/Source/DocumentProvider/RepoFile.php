@@ -45,7 +45,7 @@ class RepoFile extends FileBase {
 			return '';
 		}
 		if ( $title->getNamespace() === NS_MAIN ) {
-			return wfMessage( 'bs-ns_main' )->plain();
+			return wfMessage( 'bs-ns_main' )->text();
 		}
 		return $title->getNsText();
 	}

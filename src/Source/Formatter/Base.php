@@ -155,7 +155,7 @@ class Base implements ISearchResultFormatter {
 	protected function getTypeText( $type ) {
 		$typeText = $type;
 		if ( wfMessage( "bs-extendedsearch-source-type-$type-label" )->exists() ) {
-			$typeText = wfMessage( "bs-extendedsearch-source-type-$type-label" )->plain();
+			$typeText = wfMessage( "bs-extendedsearch-source-type-$type-label" )->text();
 		}
 
 		return $typeText;

@@ -48,16 +48,16 @@ class ExternalFilePathsExcludes extends ConfigDefinition {
 			'labelsOnlyOnFirst' => true,
 			'keyLabel' => $this->msg(
 				'bs-extendedsearch-pref-external-file-paths-path'
-			)->plain(),
+			)->text(),
 			'valueLabel' => $this->msg(
 				'bs-extendedsearch-pref-external-file-paths-excludes-exclude'
-			)->plain(),
+			)->text(),
 			'keyHelp' => $this->msg(
 				'bs-extendedsearch-pref-external-file-paths-path-help'
-			)->plain(),
+			)->text(),
 			'valueHelp' => $this->msg(
 				'bs-extendedsearch-pref-external-file-paths-excludes-exclude-help'
-			)->plain(),
+			)->text(),
 			'validation-callback' => function ( $value, $alldata, $parent ) {
 				foreach ( $value as $key => $pattern ) {
 					try {
