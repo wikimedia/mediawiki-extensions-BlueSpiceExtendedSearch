@@ -249,7 +249,7 @@ class WikiPageFormatter extends Base {
 				wfMessage(
 					'bs-extendedseach-wikipage-section-more-text',
 					( count( $result['sections'] ) - 3 )
-				)->plain();
+				)->text();
 		}
 		return $sectionText;
 	}
