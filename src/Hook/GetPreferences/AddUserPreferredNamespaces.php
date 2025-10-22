@@ -20,7 +20,7 @@ class AddUserPreferredNamespaces extends GetPreferences {
 				$label = $testTitle->getNsText();
 
 				if ( $namespaceId === NS_MAIN ) {
-					$label = wfMessage( 'bs-ns_main' )->plain();
+					$label = wfMessage( 'bs-ns_main' )->text();
 				}
 
 				$namespaceValues[$label] = $namespaceId;

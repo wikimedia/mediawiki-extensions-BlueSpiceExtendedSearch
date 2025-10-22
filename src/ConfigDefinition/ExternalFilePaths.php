@@ -50,10 +50,10 @@ class ExternalFilePaths extends \BlueSpice\ConfigDefinition {
 			'allowAdditions' => true,
 			'valueRequired' => false,
 			'labelsOnlyOnFirst' => true,
-			'keyLabel' => wfMessage( 'bs-extendedsearch-pref-external-file-paths-path' )->plain(),
-			'valueLabel' => wfMessage( 'bs-extendedsearch-pref-external-file-paths-url-prefix' )->plain(),
-			'keyHelp' => wfMessage( 'bs-extendedsearch-pref-external-file-paths-path-help' )->plain(),
-			'valueHelp' => wfMessage( 'bs-extendedsearch-pref-external-file-paths-url-help' )->plain()
+			'keyLabel' => wfMessage( 'bs-extendedsearch-pref-external-file-paths-path' )->text(),
+			'valueLabel' => wfMessage( 'bs-extendedsearch-pref-external-file-paths-url-prefix' )->text(),
+			'keyHelp' => wfMessage( 'bs-extendedsearch-pref-external-file-paths-path-help' )->text(),
+			'valueHelp' => wfMessage( 'bs-extendedsearch-pref-external-file-paths-url-help' )->text()
 		] );
 	}
 

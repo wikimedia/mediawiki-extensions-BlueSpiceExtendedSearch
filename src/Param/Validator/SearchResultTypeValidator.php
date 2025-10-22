@@ -18,7 +18,7 @@ class SearchResultTypeValidator extends ValueValidatorBase {
 				wfMessage(
 					'bs-extendedsearch-tagsearch-parser-error-invalid-search-type',
 					$value
-				)->plain()
+				)->text()
 			);
 		}
 
@@ -28,7 +28,7 @@ class SearchResultTypeValidator extends ValueValidatorBase {
 				wfMessage(
 					'bs-extendedsearch-tagsearch-parser-error-invalid-search-type',
 					$value
-				)->plain()
+				)->text()
 			);
 		}
 	}
