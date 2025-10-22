@@ -101,7 +101,7 @@ class TagSearch extends Tag {
 			new ParamDefinition(
 				ParamType::STRING,
 				static::PARAM_PLACEHOLDER,
-				wfMessage( 'bs-extendedsearch-tagsearch-searchfield-placeholder' )->plain()
+				wfMessage( 'bs-extendedsearch-tagsearch-searchfield-placeholder' )->text()
 			),
 			new ParamDefinition(
 				ParamType::STRING,
