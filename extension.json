@@ -28,9 +28,6 @@
 				"ESAutoSetLangFilter": "BS\\ExtendedSearch\\ConfigDefinition\\AutoSetLanguageFilter::getInstance",
 				"ExtendedSearchExternalFilePathsExcludes": "\\BS\\ExtendedSearch\\ConfigDefinition\\ExternalFilePathsExcludes::getInstance"
 			},
-			"AdminToolRegistry": {
-				"bs-extended-search": "BS\\ExtendedSearch\\AdminTool"
-			},
 			"PermissionRegistry": {
 				"extendedsearch-search-specialpage": {
 					"type": "global",
