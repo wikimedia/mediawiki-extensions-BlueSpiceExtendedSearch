@@ -179,5 +179,6 @@
 	"bs-extendedsearch-droplet-search-description": "Adiciona um campo de pesquisa ao conteúdo da página",
 	"bs-extendedsearch-search-center-filter-namespace-label": "Espaço nominal/Domínio",
 	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Espaço nominal/Domínio:",
-	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultados similares"
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultados similares",
+	"prefs-search": "Definições de procura"
 }
