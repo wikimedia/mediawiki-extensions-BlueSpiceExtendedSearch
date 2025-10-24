@@ -168,5 +168,6 @@
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Número de consultas de pesquisa",
 	"bs-extendedsearch-droplet-search-name": "Campo de pesquisa",
 	"bs-extendedsearch-droplet-search-description": "Adiciona um campo de pesquisa ao conteúdo da página",
-	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultados similares"
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultados similares",
+	"prefs-search": "Definições de procura"
 }
