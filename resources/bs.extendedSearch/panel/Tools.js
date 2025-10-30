@@ -147,7 +147,7 @@ bs.extendedSearch.ToolsPanel.prototype.setSortableFields = function () {
 
 		let label = field.charAt( 0 ).toUpperCase() + field.slice( 1 );
 		if ( mw.message( 'bs-extendedsearch-searchcenter-sort-field-' + field ).exists() ) { // eslint-disable-line mediawiki/msg-doc
-			label = mw.message( 'bs-extendedsearch-searchcenter-sort-field-' + field ).plain(); // eslint-disable-line mediawiki/msg-doc
+			label = mw.message( 'bs-extendedsearch-searchcenter-sort-field-' + field ).text(); // eslint-disable-line mediawiki/msg-doc
 		}
 
 		this.sortableFields.push(
@@ -213,11 +213,11 @@ bs.extendedSearch.ToolsPanel.prototype.getSearchOptionsConfig = function () {
 			options: [
 				{
 					data: bs.extendedSearch.Lookup.SORT_ASC,
-					label: mw.message( 'bs-extendedsearch-search-center-sort-order-asc' ).plain()
+					label: mw.message( 'bs-extendedsearch-search-center-sort-order-asc' ).text()
 				},
 				{
 					data: bs.extendedSearch.Lookup.SORT_DESC,
-					label: mw.message( 'bs-extendedsearch-search-center-sort-order-desc' ).plain()
+					label: mw.message( 'bs-extendedsearch-search-center-sort-order-desc' ).text()
 				}
 			]
 		}
