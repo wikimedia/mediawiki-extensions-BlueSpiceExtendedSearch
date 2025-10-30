@@ -99,7 +99,7 @@
 	bs.extendedSearch.FilterWidget.prototype.getPopupContentWidgetElement = function () {
 		if ( this.options.length === 0 ) {
 			return new OO.ui.LabelWidget( {
-				label: mw.message( 'bs-extendedsearch-search-center-filter-no-options-label' ).plain()
+				label: mw.message( 'bs-extendedsearch-search-center-filter-no-options-label' ).text()
 			} ).$element;
 		}
 
@@ -121,8 +121,8 @@
 		let actionButton = this.applyFilterButton;
 		if ( this.isANDEnabled ) {
 			this.andOrSwitch = new bs.extendedSearch.FilterAndOrSwitch( {
-				orLabel: mw.message( 'bs-extendedsearch-searchcenter-filter-or-label' ).plain(),
-				andLabel: mw.message( 'bs-extendedsearch-searchcenter-filter-and-label' ).plain(),
+				orLabel: mw.message( 'bs-extendedsearch-searchcenter-filter-or-label' ).text(),
+				andLabel: mw.message( 'bs-extendedsearch-searchcenter-filter-and-label' ).text(),
 				selected: this.filterType
 			} );
 			this.andOrSwitch.on( 'choose', ( e ) => {

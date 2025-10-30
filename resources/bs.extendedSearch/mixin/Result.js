@@ -72,7 +72,7 @@
 		let $label = null;
 		if ( !item.nolabel ) {
 			const labelKey = item.labelKey || '';
-			const label = mw.message( labelKey ).plain(); // eslint-disable-line mediawiki/msg-doc
+			const label = mw.message( labelKey ).text(); // eslint-disable-line mediawiki/msg-doc
 			$label = $( '<span>' )
 				.html( label );
 		}
@@ -103,7 +103,7 @@
 		this.relevantButton = new OO.ui.ButtonWidget( {
 			framed: false,
 			icon: 'pushPin',
-			title: mw.message( 'bs-extendedsearch-result-relevance-relevant' ).plain()
+			title: mw.message( 'bs-extendedsearch-result-relevance-relevant' ).text()
 		} );
 		if ( this.isRelevantForUser ) {
 			this.relevantButton.setFlags( [ 'progressive' ] );
