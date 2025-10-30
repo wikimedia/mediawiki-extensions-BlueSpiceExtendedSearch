@@ -11,7 +11,7 @@
 
 		this.$element.addClass( 'bs-extendedsearch-loadmore' );
 
-		const text = mw.message( 'bs-extendedsearch-loadmore-label' ).plain();
+		const text = mw.message( 'bs-extendedsearch-loadmore-label' ).text();
 		this.$anchor = $( '<a>' ).attr( 'href', '#' ).html( text );
 		this.$anchor.on( 'click', this.onClick.bind( this ) );
 
@@ -27,7 +27,7 @@
 	};
 
 	bs.extendedSearch.LoadMoreButtonWidget.prototype.error = function () {
-		const message = mw.message( 'bs-extendedsearch-loadmore-error' ).plain();
+		const message = mw.message( 'bs-extendedsearch-loadmore-error' ).text();
 		this.$element.html( $( '<span>' ).html( message ) );
 	};
 

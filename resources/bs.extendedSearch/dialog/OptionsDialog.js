@@ -11,17 +11,17 @@ OO.inheritClass( bs.extendedSearch.OptionsDialog, OO.ui.ProcessDialog );
 
 bs.extendedSearch.OptionsDialog.static.name = 'optionsDialog';
 
-bs.extendedSearch.OptionsDialog.static.title = mw.message( 'bs-extendedsearch-search-center-options-dialog-title' ).plain();
+bs.extendedSearch.OptionsDialog.static.title = mw.message( 'bs-extendedsearch-search-center-options-dialog-title' ).text();
 
 bs.extendedSearch.OptionsDialog.static.actions = [
 	{
 		action: 'save',
-		label: mw.message( 'bs-extendedsearch-search-center-options-dialog-button-apply-label' ).plain(),
+		label: mw.message( 'bs-extendedsearch-search-center-options-dialog-button-apply-label' ).text(),
 		flags: 'primary',
 		disabled: false
 	},
 	{
-		label: mw.message( 'bs-extendedsearch-search-center-dialog-button-cancel-label' ).plain(),
+		label: mw.message( 'bs-extendedsearch-search-center-dialog-button-cancel-label' ).text(),
 		flags: 'safe'
 	}
 
@@ -85,7 +85,7 @@ bs.extendedSearch.PageSizeLayout = function ( name, cfg ) {
 OO.inheritClass( bs.extendedSearch.PageSizeLayout, OO.ui.PageLayout );
 
 bs.extendedSearch.PageSizeLayout.prototype.setupOutlineItem = function () {
-	this.outlineItem.setLabel( mw.message( 'bs-extendedsearch-search-center-options-page-size' ).plain() );
+	this.outlineItem.setLabel( mw.message( 'bs-extendedsearch-search-center-options-page-size' ).text() );
 };
 
 bs.extendedSearch.PageSizeLayout.prototype.getValue = function () {
@@ -106,7 +106,7 @@ bs.extendedSearch.SortByLayout = function ( name, cfg ) {
 OO.inheritClass( bs.extendedSearch.SortByLayout, OO.ui.PageLayout );
 
 bs.extendedSearch.SortByLayout.prototype.setupOutlineItem = function () {
-	this.outlineItem.setLabel( mw.message( 'bs-extendedsearch-search-center-options-sort-by' ).plain() );
+	this.outlineItem.setLabel( mw.message( 'bs-extendedsearch-search-center-options-sort-by' ).text() );
 };
 
 bs.extendedSearch.SortByLayout.prototype.getValue = function () {
@@ -127,7 +127,7 @@ bs.extendedSearch.SortOrderLayout = function ( name, cfg ) {
 OO.inheritClass( bs.extendedSearch.SortOrderLayout, OO.ui.PageLayout );
 
 bs.extendedSearch.SortOrderLayout.prototype.setupOutlineItem = function () {
-	this.outlineItem.setLabel( mw.message( 'bs-extendedsearch-search-center-options-sort-order' ).plain() );
+	this.outlineItem.setLabel( mw.message( 'bs-extendedsearch-search-center-options-sort-order' ).text() );
 };
 
 bs.extendedSearch.SortOrderLayout.prototype.getValue = function () {

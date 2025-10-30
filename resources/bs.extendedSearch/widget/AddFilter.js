@@ -16,7 +16,7 @@ bs.extendedSearch.FilterAddWidget = function ( cfg ) {
 		}
 		if ( group !== 'root' ) {
 			menuItems.push( new OO.ui.MenuSectionOptionWidget( {
-				label: mw.message( 'bs-extendedsearch-add-filter-group-' + group + '-label' ).plain() // eslint-disable-line mediawiki/msg-doc
+				label: mw.message( 'bs-extendedsearch-add-filter-group-' + group + '-label' ).text() // eslint-disable-line mediawiki/msg-doc
 			} ) );
 		}
 

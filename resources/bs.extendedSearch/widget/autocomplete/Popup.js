@@ -32,7 +32,7 @@
 
 		this.$secondaryResultsLabel = $( '<span>' )
 			.addClass( 'bs-extendedsearch-autocomplete-popup-special-item-label' )
-			.html( mw.message( 'bs-extendedsearch-autocomplete-result-secondary-results-header-label' ).plain() );
+			.html( mw.message( 'bs-extendedsearch-autocomplete-result-secondary-results-header-label' ).text() );
 		this.$secondaryResults = $( '<div>' ).addClass( 'bs-extendedsearch-autocomplete-popup-secondary' );
 		this.$secondaryResults.append( this.$secondaryResultsLabel );
 		this.$secondaryResults.hide();
@@ -89,7 +89,7 @@
 			this.$primaryResults.append(
 				$( '<div>' )
 					.addClass( 'bs-extendedsearch-autocomplete-popup-no-results' )
-					.html( mw.message( 'bs-extendedsearch-autocomplete-result-primary-no-results-label' ).plain() )
+					.html( mw.message( 'bs-extendedsearch-autocomplete-result-primary-no-results-label' ).text() )
 			);
 		} else {
 			const cnt = this.displayedResults.primary.length;

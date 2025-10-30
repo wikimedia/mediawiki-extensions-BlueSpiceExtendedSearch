@@ -112,7 +112,7 @@ bs.extendedSearch.SearchBar.prototype.setNamespaceFromValue = function ( nsText 
 		// Explicitly main
 		this.namespace = {
 			id: 0,
-			text: mw.message( 'bs-ns_main' ).plain()
+			text: mw.message( 'bs-ns_main' ).text()
 		};
 		return true;
 	}

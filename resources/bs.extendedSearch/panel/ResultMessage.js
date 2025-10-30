@@ -38,7 +38,7 @@
 	bs.extendedSearch.ResultMessage.prototype.showError = function () {
 		const label = new OO.ui.LabelWidget( {
 			classes: [ 'bs-extendedsearch-help' ],
-			label: mw.message( 'bs-extendedsearch-search-center-result-exception' ).plain()
+			label: mw.message( 'bs-extendedsearch-search-center-result-exception' ).text()
 		} );
 		this.$element.append( label.$element );
 	};
