@@ -254,6 +254,7 @@
 
 		const queryData = bs.extendedSearch.utils.getFragment();
 		if ( $.isEmptyObject( queryData ) || searchBar.$searchBox.val() === '' ) {
+			mw.hook( 'bs.extendedsearch.searchcenter.getResults' ).fire( $searchCnt, { total: 0, results: []}, {} );
 			bs.extendedSearch.SearchCenter.removeLoading();
 			$resultCnt.append( new bs.extendedSearch.ResultMessage( {
 				mode: 'help'
@@ -268,6 +269,7 @@
 		$( d ).trigger( 'BSExtendedSearchSearchCenterExecSearch', [ queryData, bs.extendedSearch.SearchCenter ] );
 
 		searchPromise.done( ( response ) => {
+			mw.hook( 'bs.extendedsearch.searchcenter.getResults' ).fire( $searchCnt, response, queryData );
 			if ( response.exception ) {
 				bs.extendedSearch.SearchCenter.removeLoading();
 				$resultCnt.trigger( 'resultsReady' );
