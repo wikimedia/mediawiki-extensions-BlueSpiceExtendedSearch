@@ -83,6 +83,6 @@ class NamespaceContextProvider implements ISearchContextProvider {
 	 * @inheritDoc
 	 */
 	public function getContextPriority(): int {
-		return 10;
+		return 80;
 	}
 }

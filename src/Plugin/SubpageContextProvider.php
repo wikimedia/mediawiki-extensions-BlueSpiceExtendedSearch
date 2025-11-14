@@ -103,6 +103,6 @@ class SubpageContextProvider implements ISearchContextProvider {
 	 * @inheritDoc
 	 */
 	public function getContextPriority(): int {
-		return 1;
+		return 90;
 	}
 }
