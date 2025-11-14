@@ -59,6 +59,6 @@ class NullContextProvider implements ISearchContextProvider {
 	 * @inheritDoc
 	 */
 	public function getContextPriority(): int {
-		return 90;
+		return 20;
 	}
 }
