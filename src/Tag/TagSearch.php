@@ -110,18 +110,9 @@ class TagSearch extends GenericTag {
 		$formSpec = new StandaloneFormSpecification();
 		$formSpec->setItems( [
 			[
-				'type' => 'text',
-				'name' => 'placeholder',
-				'label' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder' )->text(),
-				'help' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-help' )->text(),
-				'widget_placeholder' => Message::newFromKey(
-					'bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder'
-				)->text(),
-			],
-			[
 				'type' => 'menutag_multiselect',
 				'name' => 'type',
-				'label' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-type' )->text(),
+				'label' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-type-label' )->text(),
 				'help' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help' )->text(),
 				'options' => array_values( array_map( static function ( ISearchSource $source ) {
 					return [
@@ -137,7 +128,7 @@ class TagSearch extends GenericTag {
 			[
 				'type' => 'menutag_multiselect',
 				'name' => 'namespace',
-				'label' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns' )->text(),
+				'label' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-ns-label' )->text(),
 				'help' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help' )->text(),
 				'options' => array_values( array_map( function ( int $ns ) {
 					return [
@@ -153,27 +144,36 @@ class TagSearch extends GenericTag {
 			[
 				'type' => 'category_multiselect',
 				'name' => 'category',
-				'label' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat' )->text(),
+				'label' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-cat-label' )->text(),
 				'help' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help' )->text(),
 				'widget_$overlay' => true
 			],
 			[
 				'type' => 'dropdown',
 				'name' => 'operator',
-				'label' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator' )->text(),
+				'label' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-operator-label' )->text(),
 				'help' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help' )->text(),
 				'options' => [
 					[
 						'data' => 'AND',
-						'label' => 'AND',
+						'label' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label' )->text()
 					],
 					[
 						'data' => 'OR',
-						'label' => 'OR',
+						'label' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label' )->text()
 					]
 				],
 				'widget_$overlay' => true,
 			],
+			[
+				'type' => 'text',
+				'name' => 'placeholder',
+				'label' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label' )->text(),
+				'help' => Message::newFromKey( 'bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-help' )->text(),
+				'widget_placeholder' => Message::newFromKey(
+					'bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder'
+				)->text(),
+			]
 		] );
 
 		return new ClientTagSpecification(
