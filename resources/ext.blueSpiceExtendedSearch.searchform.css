@@ -26,11 +26,13 @@ form .bs-extendedsearch-searchbar-clear {
 	border-radius: 0 0 0 0;
 }
 
-#nb-pri form input:focus + .bs-extendedsearch-searchbar-clear {
+#nb-pri form input:focus + .bs-extendedsearch-searchbar-clear,
+#nb-pri form.clear-present .bs-extendedsearch-searchbar-clear {
 	border-width: 1px;
 }
 
-#nb-pri form.clear-present input:focus {
+#nb-pri form.clear-present input:focus,
+#nb-pri form.clear-present input#bs-extendedsearch-input {
 	border-right: none; /* stylelint-disable-line declaration-property-value-disallowed-list */
 }
 
