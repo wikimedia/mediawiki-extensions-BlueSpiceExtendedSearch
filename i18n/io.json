@@ -6,10 +6,10 @@
 	},
 	"bs-extendedsearch-search-center-hitcount-widget-approximately": "Pri $1 {{PLURAL:$1|rezulto|rezulti}} pri $2",
 	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Etiketi:",
+	"bs-extendedsearch-search-center-result-namespace_text-label": "Nomaro (''namespace'')ː",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Anular",
 	"bs-extendedsearch-search-center-options-sort-by": "Klasifikar segun",
 	"bs-extendedsearch-search-center-options-sort-order": "Organizo-ordeno",
-	"bs-extendedsearch-search-center-result-namespace_text-label": "Nomaro (''namespace'')ː",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nomaro (''namespace'')",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Nomaro/Nomari"
 }
