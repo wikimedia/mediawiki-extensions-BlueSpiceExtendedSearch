@@ -28,5 +28,6 @@
 	"bs-extendedsearch-source-label-repofile": "Vurke fiilla",
 	"bs-extendedsearch-search-center-filter-namespace-label": "Nammagomuvuohta",
 	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Nammagomuvuohta:",
-	"bs-extendedsearch-searchcenter-sort-field-size": "Sturrodat"
+	"bs-extendedsearch-searchcenter-sort-field-size": "Sturrodat",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Kategoriija:"
 }
