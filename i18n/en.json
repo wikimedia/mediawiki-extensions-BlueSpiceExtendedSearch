@@ -206,5 +206,12 @@
 	"bs-extendedsearch-autocomplete-context-options-aria-label": "Search $1 $2",
 	"prefs-search": "Search settings",
 	"bs-extendedsearch-user-pref-shortcut": "Enable search using a keyboard shortcut",
-	"bs-extendedsearch-user-pref-shortcut-help": "Allows you to open the search using keyboard shortcuts <code>Shift + 7</code>"
+	"bs-extendedsearch-user-pref-shortcut-help": "Allows you to open the search using keyboard shortcuts <code>Shift + 7</code>",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "Types of results",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "Placeholder text for search field",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "Filter by namespaces",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Filter by categories",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Filter combination of categories",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "All categories must be assigned (AND)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "One category is sufficient (OR)"
 }

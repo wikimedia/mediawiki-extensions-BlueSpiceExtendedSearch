@@ -214,5 +214,12 @@
 	"bs-extendedsearch-autocomplete-context-options-aria-label": "Aria label for button to specify search location with given search term\n* $1 - search term given by user\n* $2 - context where location should be searched in",
 	"prefs-search": "Label for the search areas section in user preferences",
 	"bs-extendedsearch-user-pref-shortcut": "Label for config to enable search keyboard shortcut",
-	"bs-extendedsearch-user-pref-shortcut-help": "Help text for config to enable search keyboard shortcut"
+	"bs-extendedsearch-user-pref-shortcut-help": "Help text for config to enable search keyboard shortcut",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "Label for dropdown widget to select result type",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "Label for input field to set placeholder text",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "Label for input field to filter by namespaces",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Label for input field to filter by categories",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Label for dropdown to select operator how to filter categories",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "Label for dropdown option",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Label for dropdown option"
 }

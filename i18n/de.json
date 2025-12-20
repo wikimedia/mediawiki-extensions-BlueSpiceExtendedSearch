@@ -221,5 +221,12 @@
 	"bs-extendedsearch-autocomplete-context-options-aria-label": "Suche $1 $2",
 	"prefs-search": "Sucheinstellungen",
 	"bs-extendedsearch-user-pref-shortcut": "Suche per Tastenkombination aktivieren",
-	"bs-extendedsearch-user-pref-shortcut-help": "Ermöglicht das Öffnen der Suche mit Tastaturkürzel <code>Umschalt + 7</code>"
+	"bs-extendedsearch-user-pref-shortcut-help": "Ermöglicht das Öffnen der Suche mit Tastaturkürzel <code>Umschalt + 7</code>",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "Ergebnistypen",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "Platzhaltertext für Suchfeld",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "Nach Namensräumen filtern",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Nach Kategorien filtern",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Filterverknüpfung der Kategorien",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "Alle Kategorien müssen vergeben sein (UND)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eine Kategorie reicht (ODER)"
 }
