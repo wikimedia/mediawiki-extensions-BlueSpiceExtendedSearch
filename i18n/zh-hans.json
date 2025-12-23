@@ -231,5 +231,12 @@
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "相似结果",
 	"bs-extendedsearch-autocomplete-context-options-aria-label": "在$2搜索$1",
 	"bs-extendedsearch-user-pref-shortcut": "启动使用键盘快捷键搜索",
-	"bs-extendedsearch-user-pref-shortcut-help": "允许您使用键盘快捷键<code>Shift + 7</code>来开启搜索"
+	"bs-extendedsearch-user-pref-shortcut-help": "允许您使用键盘快捷键<code>Shift + 7</code>来开启搜索",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "结果类型",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "搜索框中的占位符文本",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "按命名空间筛选",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "按分类筛选",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "筛选分类组合",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "所有分类必须被分配（且）",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "一个分类即可（或）"
 }

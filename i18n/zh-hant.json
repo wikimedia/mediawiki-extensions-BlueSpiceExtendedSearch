@@ -211,5 +211,12 @@
 	"bs-extendedsearch-autocomplete-context-options-aria-label": "在$2搜尋$1",
 	"prefs-search": "搜尋設定",
 	"bs-extendedsearch-user-pref-shortcut": "啟動使用鍵盤快捷鍵搜尋",
-	"bs-extendedsearch-user-pref-shortcut-help": "允許您使用鍵盤快捷鍵：<code>Shift + 7</code> 來開啟搜尋"
+	"bs-extendedsearch-user-pref-shortcut-help": "允許您使用鍵盤快捷鍵：<code>Shift + 7</code> 來開啟搜尋",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "結果類型",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "搜尋欄位的佔位符文字",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "按命名空間篩選",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "按分類篩選",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "篩選分類組合",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "所有分類都必須分配（且）",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "一個分類即可（或）"
 }
