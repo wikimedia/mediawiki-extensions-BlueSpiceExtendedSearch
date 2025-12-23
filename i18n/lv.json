@@ -10,8 +10,5 @@
 	"bs-extendedsearch-search-center-options-page-size": "Ieraksti lapā",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Vārdtelpa",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Lapa $1: Teksts: $2",
-	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Rakstiet lai meklētu...",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Vārdtelpa(s)",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Kategorija(-s)",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tips"
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Rakstiet lai meklētu..."
 }
