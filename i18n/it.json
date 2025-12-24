@@ -137,5 +137,6 @@
 	"bs-extendedsearch-autocomplete-context-none": "in tutto il wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Risultati",
 	"bs-extendedsearch-autocomplete-context-options-label": "Ricerca",
-	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Risultati simili"
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Risultati simili",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "Tipi di risultati"
 }
