@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Agusbou2015",
+			"Avengium",
 			"Carlosmg.dg",
 			"DiegoAmbrocio",
 			"Fewasser Traduce",
@@ -168,5 +169,6 @@
 	"bs-extendedsearch-statistics-report-search-terms": "Buscar términos",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Términos de búsqueda por usuario",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Devuelve los resultados de la búsqueda de un usuario sólo en su idioma. Los usuarios pueden establecer su idioma en sus preferencias.",
-	"bs-extendedsearch-source-label-externalfile": "Archivo external"
+	"bs-extendedsearch-source-label-externalfile": "Archivo external",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "Tipos de resultados"
 }
