@@ -6,7 +6,8 @@
 			"Mjälten",
 			"Sabelöga",
 			"Technic2",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Stefan2255"
 		]
 	},
 	"bssearchadmin": "Sök admin",
@@ -122,5 +123,10 @@
 	"bs-extendedsearch-suggest-operator": "Menade du söka efter <b>$1</b>?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Visar resultat i \"$1\"",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Visa globala resultat",
-	"bs-extendedsearch-searchbar-master-filter-tooltip": "Söker i \"$1\""
+	"bs-extendedsearch-searchbar-master-filter-tooltip": "Söker i \"$1\"",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "Typer av resultat",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "Platshållartext för sökfält",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "Filtrera efter namnrymder",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Filtrera efter kategorier",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Filterkombination av kategorier"
 }
