@@ -78,5 +78,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultater",
 	"bs-extendedsearch-autocomplete-context-options-label": "Sichen",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Änlech Resultater",
-	"prefs-search": "Sichastellungen"
+	"prefs-search": "Sichastellungen",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eng Kategorie geet duer (OR)"
 }

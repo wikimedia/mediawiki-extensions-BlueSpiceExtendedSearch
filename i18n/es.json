@@ -170,5 +170,11 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Términos de búsqueda por usuario",
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Devuelve los resultados de la búsqueda de un usuario sólo en su idioma. Los usuarios pueden establecer su idioma en sus preferencias.",
 	"bs-extendedsearch-source-label-externalfile": "Archivo external",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "Tipos de resultados"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "Tipos de resultados",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "Texto de marcador de posición para el campo de búsqueda",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "Filtrar por espacios de nombres",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Filtrar por categorías",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Combinación de filtros de categorías",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "Todas las categorías deben estar asignadas (AND)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Una categoría es suficiente (OR)"
 }
