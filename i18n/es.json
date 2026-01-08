@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Agusbou2015",
+			"Avengium",
 			"Carlosmg.dg",
 			"DiegoAmbrocio",
 			"Fewasser Traduce",
@@ -185,5 +186,12 @@
 	"bs-extendedsearch-source-type-externalfile-label": "Archivo external",
 	"bs-extendedsearch-source-label-externalfile": "Archivo external",
 	"bs-extendedsearch-search-center-filter-namespace-label": "Espacio de nombres",
-	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Espacio de nombres:"
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Espacio de nombres:",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "Tipos de resultados",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "Texto de marcador de posición para el campo de búsqueda",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "Filtrar por espacios de nombres",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Filtrar por categorías",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Combinación de filtros de categorías",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "Todas las categorías deben estar asignadas (AND)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Una categoría es suficiente (OR)"
 }
