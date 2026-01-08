@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Agusbou2015",
+			"Avengium",
 			"Carlosmg.dg",
 			"DiegoAmbrocio",
 			"Fewasser Traduce",
@@ -14,8 +15,7 @@
 			"Rodney Araujo",
 			"SpikeShroom",
 			"Vanbasten 23",
-			"Whovian Biologist",
-			"Avengium"
+			"Whovian Biologist"
 		]
 	},
 	"bs-extsearch-desc": "Motor de búsquedas Elasticsearch",
