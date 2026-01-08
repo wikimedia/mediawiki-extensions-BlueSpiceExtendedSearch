@@ -149,5 +149,6 @@
 	"bs-extendedsearch-context-subpage-label": "'''$1'''의 하위 문서에서",
 	"bs-extendedsearch-context-namespace-label": "'''$1''' 이름공간에서",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "결과",
-	"bs-extendedsearch-autocomplete-context-options-label": "검색"
+	"bs-extendedsearch-autocomplete-context-options-label": "검색",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "이름공간별 필터"
 }
