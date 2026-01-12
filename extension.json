@@ -280,7 +280,8 @@
 		"BlueSpiceExtendedSearchSpecial": "languages/BlueSpiceExtendedSearch.special.alias.php"
 	},
 	"ExtensionFunctions": [
-		"BS\\ExtendedSearch\\Setup::init"
+		"BS\\ExtendedSearch\\Setup::init",
+		"BS\\ExtendedSearch\\ExternalFileUpdaterCron::register"
 	],
 	"HookHandlers": {
 		"extendedsearchform": {
@@ -319,7 +320,6 @@
 		"NamespaceManager::editNamespace": "\\BS\\ExtendedSearch\\Hook\\NamespaceManagerEditNamespace\\ReindexNamespace::callback",
 		"UserMergeAccountFields": "\\BS\\ExtendedSearch\\Hook\\UserMergeAccountFields\\MergeExtendedSearchDBFields::callback",
 		"MWStakeCommonUIRegisterSkinSlotComponents": [ "extendedsearchform" ],
-		"MWStakeRunJobsTriggerRegisterHandlers": "\\BS\\ExtendedSearch\\Hook\\MWStakeRunJobsTriggerRegisterHandlers\\RegisterExternalFileUpdater::callback",
 		"MWStakeGenericTagHandlerInitTags": "registerTags"
 	},
 	"SpecialPages": {
