@@ -4,16 +4,15 @@ namespace BS\ExtendedSearch\Source\Updater;
 
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
+use Exception;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigFactory;
-use MediaWiki\Status\Status;
-use MWStake\MediaWiki\Component\RunJobsTrigger\IHandler;
-use MWStake\MediaWiki\Component\RunJobsTrigger\Interval\OnceADay;
+use MWStake\MediaWiki\Component\ProcessManager\IProcessStep;
 use SplFileInfo;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\LoadBalancer;
 
-class ExternalFile implements IHandler {
+class ExternalFile implements IProcessStep {
 	/** @var string */
 	protected $sourceKey = 'externalfile';
 	/** @var Config */
@@ -37,6 +36,23 @@ class ExternalFile implements IHandler {
 		$this->lb = $loadBalancer;
 		$this->backend = $searchBackend;
 		$this->index = $this->backend->getIndexName( $this->sourceKey );
+	}
+
+	/**
+	 * @param array $data
+	 *
+	 * @return array
+	 * @throws Exception
+	 */
+	public function execute( $data = [] ): array {
+		// 1. - Run crawler to handle new files/paths and updates
+		$crawler = $this->backend->getSource( $this->sourceKey )->getCrawler();
+		$crawler->crawl();
+
+		// 2. - Check if all indexed files exist
+		$this->removeDeletedFilesFromIndex();
+
+		return [];
 	}
 
 	/**
@@ -156,34 +172,5 @@ class ExternalFile implements IHandler {
 			'index' => $this->index,
 			'body' => $docs,
 		] );
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getKey() {
-		return 'bs-extendedsearch-update-external-files';
-	}
-
-	/**
-	 * @return Status
-	 * @throws \Exception
-	 */
-	public function run() {
-		// 1. - Run crawler to handle new files/paths and updates
-		$crawler = $this->backend->getSource( $this->sourceKey )->getCrawler();
-		$crawler->crawl();
-
-		// 2. - Check if all indexed files exist
-		$this->removeDeletedFilesFromIndex();
-
-		return Status::newGood();
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function getInterval() {
-		return new OnceADay();
 	}
 }
