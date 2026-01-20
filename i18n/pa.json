@@ -14,6 +14,7 @@
 	"bs-extendedsearch-search-center-sort-order-asc": "ਚੜ੍ਹਦੀ ਤਰਤੀਬ ਵਿੱਚ",
 	"bs-extendedsearch-search-center-sort-order-desc": "ਲਹਿੰਦੀ ਤਰਤੀਬ ਵਿੱਚ",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "ਰੱਦ ਕਰੋ",
+	"bs-extendedsearch-search-center-options-sort-by": "ਇਸ ਮੁਤਾਬਕ ਛਾਂਟੋ",
 	"bs-extendedsearch-source-type-specialpage-label": "ਖ਼ਾਸ ਵਰਕਾ",
 	"bs-extendedsearch-search-center-filter-page_language-label": "ਵਰਕੇ ਦੀ ਬੋਲੀ",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "ਵਰਕੇ ਦੀ ਬੋਲੀ:",
@@ -21,6 +22,5 @@
 	"action-extendedsearch-search-specialpage": "ਵਿਸ਼ੇਸ਼ ਵਰਕਿਆਂ ਲਈ ਖੋਜ ਕਰੋ",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "ਪੁੱਛਗਿੱਛ ਦੀ ਖੋਜ ਗਿਣਤੀ",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$2 ਵਿੱਚੋਂ $1",
-	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "ਮੁੱਢਲੇ ਨਤੀਜੇ",
-	"bs-extendedsearch-search-center-options-sort-by": "ਇਸ ਮੁਤਾਬਕ ਛਾਂਟੋ"
+	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "ਮੁੱਢਲੇ ਨਤੀਜੇ"
 }
