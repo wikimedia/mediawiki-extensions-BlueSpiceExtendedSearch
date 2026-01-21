@@ -186,5 +186,12 @@
 	"bs-extendedsearch-autocomplete-context-options-aria-label": "Cercar $1 in $2",
 	"prefs-search": "Parametro de recerca",
 	"bs-extendedsearch-user-pref-shortcut": "Activar le recerca con un clave accelerator",
-	"bs-extendedsearch-user-pref-shortcut-help": "Permitte aperir le recerca usante le clave accelerator <code>Shift + 7</code>"
+	"bs-extendedsearch-user-pref-shortcut-help": "Permitte aperir le recerca usante le clave accelerator <code>Shift + 7</code>",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "Typos de resultatos",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "Texto de marcator de position pro le campo de recerca",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "Filtrar per spatios de nomines",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Filtrar per categorias",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Combination de filtros de categorias",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "Tote le categorias debe esser assignate (AND)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Un categoria es sufficiente (OR)"
 }
