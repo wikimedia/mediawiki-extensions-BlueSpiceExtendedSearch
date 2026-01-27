@@ -4,8 +4,8 @@
 			"Merrahtar"
 		]
 	},
-	"bs-extendedsearch-autocomplete-create-page-link": "Лыһкэ лыст «$1»",
-	"bs-extendedsearch-search-center-create-page-link": "Лыһкэ лыст «$1»",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Е̄ссктэ",
-	"prefs-extendedsearch": "Коамьтна озант"
+	"bs-extendedsearch-autocomplete-create-page-link": "Лыһкэ лыст «$1»",
+	"prefs-extendedsearch": "Коамьтна озант",
+	"bs-extendedsearch-search-center-create-page-link": "Лыһкэ лыст «$1»"
 }
