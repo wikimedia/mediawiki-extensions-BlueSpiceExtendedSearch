@@ -11,14 +11,13 @@ use MediaWiki\Html\Html;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Registration\ExtensionRegistry;
-use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\SpecialPage\UnlistedSpecialPage;
 use MediaWiki\Title\Title;
 
-class SearchCenter extends SpecialPage {
+class SearchCenter extends UnlistedSpecialPage {
 
 	public function __construct() {
-		// SearchCenter should only be reached via searchBar
-		parent::__construct( 'BSSearchCenter', '', false );
+		parent::__construct( 'BSSearchCenter' );
 	}
 
 	/**
