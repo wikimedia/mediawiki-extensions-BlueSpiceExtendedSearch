@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Artsiom91",
+			"Ucukor",
 			"ZlyiLev"
 		]
 	},
 	"bs-extendedsearch-search-center-sort-order-asc": "Па ўзрастанні",
 	"bs-extendedsearch-search-center-sort-order-desc": "Па змяншэнні",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Скасаваць",
 	"bs-extendedsearch-search-center-options-sort-order": "Парадак сартаванння",
 	"bs-extendedsearch-autocomplete-create-page-link": "Стварыць старонку «$1»"
 }

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ucukor",
 			"W"
 		]
 	},
@@ -14,6 +15,7 @@
 	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Катэгорыя:",
 	"bs-extendedsearch-search-center-filter-type-with-values-label": "Від:",
 	"bs-extendedsearch-search-center-result-categories-label": "Катэгорыя:",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Скасаваць",
 	"bs-extendedsearch-searchcenter-filter-or-label": "або",
 	"bs-extendedsearch-searchcenter-filter-and-label": "і",
 	"bs-extendedsearch-searchcenter-sort-field-size": "Памер",
