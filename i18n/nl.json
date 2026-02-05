@@ -213,5 +213,12 @@
 	"bs-extendedsearch-autocomplete-context-options-aria-label": "$1 in $2 zoeken",
 	"prefs-search": "Zoekinstellingen",
 	"bs-extendedsearch-user-pref-shortcut": "Zoeken via sneltoets mogelijk maken",
-	"bs-extendedsearch-user-pref-shortcut-help": "Hiermee kunt u een zoekopdracht beginnen met de sneltoets <code>Shift + 7</code>"
+	"bs-extendedsearch-user-pref-shortcut-help": "Hiermee kunt u een zoekopdracht beginnen met de sneltoets <code>Shift + 7</code>",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "Soorten resultaten",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "Tijdelijke tekst voor zoekveld",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "Filteren op naamruimten",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Filteren op categorieën",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Filtercombinatie van categorieën",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "Alle categorieën moeten zijn toegewezen (EN)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eén categorie is voldoende (OF)"
 }
