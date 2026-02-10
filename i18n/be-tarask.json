@@ -15,9 +15,11 @@
 	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Катэгорыя:",
 	"bs-extendedsearch-search-center-filter-type-with-values-label": "Від:",
 	"bs-extendedsearch-search-center-result-categories-label": "Катэгорыя:",
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Скасаваць",
 	"bs-extendedsearch-searchcenter-filter-or-label": "або",
 	"bs-extendedsearch-searchcenter-filter-and-label": "і",
 	"bs-extendedsearch-searchcenter-sort-field-size": "Памер",
+	"bs-extendedsearch-loadmore-label": "Ладаваць болей вынікаў",
 	"bs-extendedsearch-search-center-result-typetext-label": "Від:",
 	"bs-extendedsearch-source-type-wikipage-label": "Вікістаронка",
 	"bs-extendedsearch-source-type-specialpage-label": "Адмысловая старонка",
@@ -32,7 +34,5 @@
 	"right-extendedsearch-search-repofile": "Пошук файлаў",
 	"action-extendedsearch-search-specialpage": "пошук адмысловых старонак",
 	"action-extendedsearch-search-wikipage": "пошук старонак",
-	"action-extendedsearch-search-repofile": "пошук файлаў",
-	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Скасаваць",
-	"bs-extendedsearch-loadmore-label": "Ладаваць болей вынікаў"
+	"action-extendedsearch-search-repofile": "пошук файлаў"
 }
