@@ -37,5 +37,6 @@
 	"action-extendedsearch-search-specialpage": "пошук адмысловых старонак",
 	"action-extendedsearch-search-wikipage": "пошук старонак",
 	"action-extendedsearch-search-repofile": "пошук файлаў",
-	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Скасаваць"
+	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Скасаваць",
+	"bs-extendedsearch-loadmore-label": "Ладаваць болей вынікаў"
 }
