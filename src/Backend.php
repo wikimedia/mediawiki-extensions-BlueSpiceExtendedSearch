@@ -355,15 +355,15 @@ class Backend {
 			$source->getFormatter()->formatAutocompleteResults( $results, $searchData );
 		}
 
-		$rankers = $this->pluginManager->getPluginsForInterface( IRankingModifier::class );
+		$rankers = $this->getPluginsForInterface( IRankingModifier::class );
 		foreach ( $rankers as $ranker ) {
 			$ranker->rankAutocompleteResults( $results, $searchData );
 		}
-                $formatters = $this->getPluginsForInterface( IFormattingModifier::class );
+		$formatters = $this->getPluginsForInterface( IFormattingModifier::class );
 		/** @var IFormattingModifier $formatter */
 		foreach ( $formatters as $formatter ) {
 			$formatter->formatAutocompleteResults( $results, $searchData );
-                }
+		}
 
 		usort( $results, static function ( $e1, $e2 ) {
 			if ( $e1['score'] == $e2['score'] ) {
