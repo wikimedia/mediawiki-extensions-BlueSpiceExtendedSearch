@@ -356,7 +356,7 @@ class Backend {
 			// when results are ranked based on original data, it can be modified
 			$source->getFormatter()->formatAutocompleteResults( $results, $searchData );
 		}
-		$rankers = $this->pluginManager->getPluginsForInterface( IRankingModifier::class );
+		$rankers = $this->getPluginsForInterface( IRankingModifier::class );
 		foreach ( $rankers as $ranker ) {
 			$ranker->rankAutocompleteResults( $results, $searchData );
 		}
