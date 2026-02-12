@@ -38,5 +38,6 @@
 	"action-extendedsearch-search-wikipage": "пошук старонак",
 	"action-extendedsearch-search-repofile": "пошук файлаў",
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Скасаваць",
-	"bs-extendedsearch-loadmore-label": "Ладаваць болей вынікаў"
+	"bs-extendedsearch-loadmore-label": "Ладаваць болей вынікаў",
+	"bs-extendedsearch-search-center-filter-tags-label": "Тэґ"
 }
