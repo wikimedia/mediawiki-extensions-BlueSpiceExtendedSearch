@@ -12,6 +12,7 @@ use MediaWiki\Page\PageProps;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOutput;
+use MediaWiki\Parser\ParserOutputLinkTypes;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionRenderer;
@@ -329,7 +330,7 @@ class WikiPage extends Base {
 	 * @return array
 	 */
 	protected function getUsedFiles() {
-		return array_keys( $this->parserOutput->getImages() );
+		return array_keys( $this->parserOutput->getLinkList( ParserOutputLinkTypes::MEDIA ) );
 	}
 
 	/**
