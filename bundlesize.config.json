@@ -1,6 +1,18 @@
 [
 	{
 		"resourceModule": "ext.blueSpiceExtendedSearch.SearchFieldAutocomplete",
-		"maxSize": "0.6 kB"
+		"maxSize": "2 kB"
+	},
+	{
+		"resourceModule": "ext.blueSpiceExtendedSearch.Autocomplete",
+		"maxSize": "8 kB"
+	},
+	{
+		"resourceModule": "ext.blueSpiceExtendedSearch.SearchBar",
+		"maxSize": "4 kB"
+	},
+	{
+		"resourceModule": "ext.blueSpiceExtendedSearch",
+		"maxSize": "6 kB"
 	}
 ]
