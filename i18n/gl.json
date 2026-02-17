@@ -194,5 +194,12 @@
 	"bs-extendedsearch-autocomplete-context-options-aria-label": "Procurar «$1» en $2",
 	"prefs-search": "Configuración de procura",
 	"bs-extendedsearch-user-pref-shortcut": "Activar a procura usando un atallo de teclado",
-	"bs-extendedsearch-user-pref-shortcut-help": "Permite abrir a procura usando o atallo de teclado <code>Maiús. + 7</code>"
+	"bs-extendedsearch-user-pref-shortcut-help": "Permite abrir a procura usando o atallo de teclado <code>Maiús. + 7</code>",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "Tipos de resultados",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "Texto de marcador de posición para o campo de busca",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "Filtrar por espazos de nomes",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Filtrar por categorías",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Filtrar combinacións de categorías",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "Todas as categorías deben estar asignadas (E)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Unha categoría é suficiente (OU)"
 }
