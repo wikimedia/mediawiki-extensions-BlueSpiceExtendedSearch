@@ -5,6 +5,7 @@ bs.extendedSearch.mixin.FilterRemoveButton = function ( cfg ) {
 
 	this.showRemove = cfg.showRemove || false;
 	if ( !this.showRemove ) {
+		this.$element.addClass( 'no-remove-button' );
 		return null;
 	}
 
