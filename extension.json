@@ -419,7 +419,8 @@
 			],
 			"dependencies": [
 				"ext.blueSpiceExtendedSearch.SearchBar",
-				"oojs-ui.styles.icons-interactions"
+				"oojs-ui.styles.icons-interactions",
+				"mwstake.component.galaxy.foreignWikiBadge"
 			]
 		},
 		"ext.blueSpiceExtendedSearch.SearchCenter": {
@@ -515,7 +516,8 @@
 			"dependencies": [
 				"ext.bluespice",
 				"ext.blueSpiceExtendedSearch.SearchBar",
-				"oojs-ui.styles.icons-layout"
+				"oojs-ui.styles.icons-layout",
+				"mwstake.component.galaxy.foreignWikiBadge"
 			]
 		},
 		"ext.blueSpiceExtendedSearch.SearchAdmin.styles": {

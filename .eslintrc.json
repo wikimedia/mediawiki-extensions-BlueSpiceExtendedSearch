@@ -10,6 +10,7 @@
 		"bs": "readonly",
 		"jQuery": "readonly",
 		"mediaWiki": "readonly",
+		"mws": "readonly",
 		"QUnit": "readonly"
 	},
 	"rules": {

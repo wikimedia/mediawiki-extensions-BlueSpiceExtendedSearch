@@ -63,10 +63,9 @@
 
 		this.$headerPathInfo = $( '<div>' ).addClass( 'bs-extendedsearch-result-header-path' );
 		if ( this.source ) {
-			this.$headerPathInfo.append( $( '<span>' )
-				.addClass( 'bs-extendedsearch-result-header-source' )
-				.text( this.source )
-			);
+			mws.galaxyIntegration.ForeignWikiBadge.call( this, this.source );
+			const $badge = this.getWikiBadge();
+			this.$headerPathInfo.append( $badge );
 		}
 		if ( this.namespaceText ) {
 			this.$headerPathInfo.append( $( '<span>' )
@@ -133,6 +132,7 @@
 	OO.mixinClass( bs.extendedSearch.ResultWidget, bs.extendedSearch.mixin.ResultSecondaryInfo );
 	OO.mixinClass( bs.extendedSearch.ResultWidget, bs.extendedSearch.mixin.ResultRelevanceControl );
 	OO.mixinClass( bs.extendedSearch.ResultWidget, bs.extendedSearch.mixin.ResultOriginalTitle );
+	OO.mixinClass( bs.extendedSearch.ResultWidget, mws.galaxyIntegration.ForeignWikiBadge );
 
 	bs.extendedSearch.ResultWidget.prototype.getId = function () {
 		return this.id;
