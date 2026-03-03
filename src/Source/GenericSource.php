@@ -21,6 +21,7 @@ use BS\ExtendedSearch\Source\LookupModifier\BaseTagsAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\BaseTitleSecurityTrimmings;
 use BS\ExtendedSearch\Source\LookupModifier\BaseTypeSecurityTrimming;
 use BS\ExtendedSearch\Source\LookupModifier\BaseUserRelevance;
+use BS\ExtendedSearch\Source\LookupModifier\BaseWikiIDEnforcing;
 use BS\ExtendedSearch\Source\LookupModifier\BaseWildcarder;
 use BS\ExtendedSearch\Source\LookupModifier\RegExpQuoter;
 use BS\ExtendedSearch\Source\LookupModifier\SearchContext;
@@ -268,6 +269,7 @@ class GenericSource implements ISearchSource {
 	 */
 	public function getLookupModifiers( Lookup $lookup, IContextSource $context ): array {
 		$lookupModifiers = [
+			new BaseWikiIDEnforcing( $lookup, $context ),
 			new BaseExtensionAggregation( $lookup, $context ),
 			new BaseTagsAggregation( $lookup, $context ),
 			new BaseSimpleQSFields( $lookup, $context ),

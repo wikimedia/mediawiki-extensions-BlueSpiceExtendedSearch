@@ -4,7 +4,7 @@ use MediaWiki\MediaWikiServices;
 
 require_once "searchScriptBase.php";
 
-class purgeIndexes extends searchScriptBase { // phpcs:ignore Squiz.Classes.ValidClassName.NotCamelCaps
+class PurgeDocuments extends searchScriptBase {
 	/**
 	 * @var string
 	 */
@@ -12,7 +12,7 @@ class purgeIndexes extends searchScriptBase { // phpcs:ignore Squiz.Classes.Vali
 
 	public function execute() {
 		if ( !$this->hasOption( 'quick' ) ) {
-			$this->output( 'This will delete all indexes related to this wiki instance! Starting in ... ' );
+			$this->output( 'This will delete all documents related to this wiki instance! Starting in ... ' );
 			$this->countDown( 5 );
 		}
 
@@ -23,11 +23,11 @@ class purgeIndexes extends searchScriptBase { // phpcs:ignore Squiz.Classes.Vali
 			if ( !$this->sourceOnList( $sourceKey ) ) {
 				continue;
 			}
-			$backend->deleteIndex( $sourceKey );
-			$this->output( "\nIndex deleted: {$backend->getIndexName( $sourceKey)}" );
+			$backend->purgeDocuments( $sourceKey );
+			$this->output( "\nDocuments purged on index: {$backend->getIndexName( $sourceKey)}" );
 		}
 	}
 }
 
-$maintClass = purgeIndexes::class;
+$maintClass = PurgeDocuments::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

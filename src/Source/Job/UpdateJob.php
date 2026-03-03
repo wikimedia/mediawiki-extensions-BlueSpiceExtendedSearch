@@ -12,6 +12,7 @@ use Job;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Status\Status;
+use MediaWiki\WikiMap\WikiMap;
 use Throwable;
 
 abstract class UpdateJob extends Job {
@@ -177,7 +178,7 @@ abstract class UpdateJob extends Job {
 	 * @return string
 	 */
 	protected function getDocumentId( string $identifier ): string {
-		return md5( $identifier );
+		return md5( $identifier . WikiMap::getCurrentWikiId() );
 	}
 
 }

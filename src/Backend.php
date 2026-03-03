@@ -177,6 +177,26 @@ class Backend {
 
 	/**
 	 * @param string $sourceKey
+	 * @return array|callable
+	 */
+	public function purgeDocuments( string $sourceKey ) {
+		// Delete all documents where `wiki_id` field matches current wiki, this is needed for shared OpenSearch clusters
+		$client = $this->getClient();
+		$index = $this->getIndexName( $sourceKey );
+		return $client->deleteByQuery( [
+			'index' => $index,
+			'body'  => [
+				'query' => [
+					'term' => [
+						'wiki_id' => WikiMap::getCurrentWikiId(),
+					]
+				]
+			]
+		 ] );
+	}
+
+	/**
+	 * @param string $sourceKey
 	 *
 	 * @return bool
 	 * @throws InvalidArgumentException

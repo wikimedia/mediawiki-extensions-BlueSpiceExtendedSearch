@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Source\DocumentProvider;
 
 use BS\ExtendedSearch\ISearchDocumentProvider;
+use MediaWiki\WikiMap\WikiMap;
 
 class Base implements ISearchDocumentProvider {
 
@@ -17,6 +18,7 @@ class Base implements ISearchDocumentProvider {
 			'basename' => wfBaseName( $uri ),
 			'basename_exact' => wfBaseName( $uri ),
 			'suggestions' => wfBaseName( $uri ),
+			'wiki_id' => WikiMap::getCurrentWikiId(),
 		];
 	}
 }

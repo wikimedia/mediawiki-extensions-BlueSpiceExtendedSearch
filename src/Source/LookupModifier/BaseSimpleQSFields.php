@@ -14,6 +14,7 @@ class BaseSimpleQSFields extends LookupModifier {
 		$this->lookup->addSourceField( 'ctime' );
 		$this->lookup->addSourceField( 'mtime' );
 		$this->lookup->addSourceField( 'uri' );
+		$this->lookup->addSourceField( 'wiki_id' );
 
 		$simpleQS = $this->lookup->getQueryString();
 		$fields = [ 'basename^4', 'congregated' ];
