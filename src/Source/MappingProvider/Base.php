@@ -69,6 +69,9 @@ class Base implements ISearchMappingProvider {
 				'type' => 'keyword',
 				'copy_to' => 'congregated'
 			],
+			'wiki_id' => [
+				'type' => 'keyword'
+			]
 		];
 	}
 

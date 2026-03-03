@@ -338,6 +338,9 @@ class WikiPage extends Base {
 	 */
 	protected function getRevision() {
 		$revision = $this->revisionLookup->getRevisionByTitle( $this->title );
+		if ( !$revision ) {
+			return null;
+		}
 		$this->hookContainer->run(
 			'BSExtendedSearchWikipageFetchRevision',
 			[ $this->title, &$revision ]
