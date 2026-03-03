@@ -6,7 +6,8 @@
 			"Freddy9",
 			"Steeve815",
 			"Strayblues",
-			"YaronSh"
+			"YaronSh",
+			"Neriah"
 		]
 	},
 	"bs-extsearch-desc": "מנגנון חיפוש Elasticsearch",
@@ -188,5 +189,10 @@
 	"bs-extendedsearch-autocomplete-context-options-label": "חיפוש",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "תוצאות דומות",
 	"prefs-searchsection": "אזורים לחיפוש",
-	"bs-extendedsearch-autocomplete-context-options-aria-label": "חיפוש $1 $2"
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "חיפוש $1 $2",
+	"prefs-search": "הגדרות חיפוש",
+	"bs-extendedsearch-user-pref-shortcut": "הפעלת חיפוש באמצעות קיצורי מקלדת",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "סוגי תוצאות",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "סינון לפי מרחב שמות",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "סינון לפי קטגוריות"
 }

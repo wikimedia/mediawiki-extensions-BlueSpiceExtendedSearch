@@ -14,5 +14,9 @@
 	"bs-extendedsearch-searchcenter-sort-field-basename": "نالو",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "نانءُپولار",
 	"bs-extendedsearch-search-center-result-redirects-label": "کان چوريل:",
-	"bs-extendedsearch-redirect-target-label": "ڏانھن چوريل:"
+	"bs-extendedsearch-redirect-target-label": "ڏانھن چوريل:",
+	"right-extendedsearch-search-specialpage": "خاص صفحا ڳوليو",
+	"right-extendedsearch-search-wikipage": "صفحا ڳوليو",
+	"action-extendedsearch-search-specialpage": "خاص صفحا ڳوليو",
+	"action-extendedsearch-search-wikipage": "صفحا ڳوليو"
 }
