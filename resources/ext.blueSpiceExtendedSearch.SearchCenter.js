@@ -3,51 +3,6 @@
 	let searchBar;
 
 	/**
-	 * Makes config object for special Type filter
-	 * This filter contains different results types (one for each source)
-	 * that can be filtered
-	 *
-	 * @return {Array}
-	 */
-	function _getTypeFilter() {
-		if ( !mw.config.get( 'bsgESEnableTypeFilter' ) ) {
-			return [];
-		}
-		const availableTypes = mw.config.get( 'bsgESAvailableTypes' );
-
-		if ( availableTypes.length === 0 ) {
-			return [];
-		}
-
-		const typeFilter = {
-			label: mw.message( 'bs-extendedsearch-search-center-filter-type-label' ).text(),
-			filter: {
-				label: mw.message( 'bs-extendedsearch-search-center-filter-type-label' ).text(),
-				valueLabel: mw.message( 'bs-extendedsearch-search-center-filter-type-with-values-label' ).text(),
-				hasHiddenLabelKey: 'bs-extendedsearch-search-center-filter-has-hidden',
-				id: 'type',
-				options: [],
-				group: 'root'
-			}
-		};
-
-		for ( let idx = 0; idx < availableTypes.length; idx++ ) {
-			const type = availableTypes[ idx ];
-			let message = type;
-			if ( mw.message( 'bs-extendedsearch-source-type-' + type + '-label' ).exists() ) { // eslint-disable-line mediawiki/msg-doc
-				message = mw.message( 'bs-extendedsearch-source-type-' + type + '-label' ).text(); // eslint-disable-line mediawiki/msg-doc
-			}
-
-			typeFilter.filter.options.push( {
-				label: message || type,
-				data: type
-			} );
-		}
-
-		return [ typeFilter ];
-	}
-
-	/**
 	 * Makes config objects for each of filterable fields
 	 * from aggregations returned by the search
 	 *
@@ -304,10 +259,7 @@
 
 			const toolsPanel = new bs.extendedSearch.ToolsPanel( {
 				lookup: bs.extendedSearch.SearchCenter.getLookupObject(),
-				filterData: $.merge(
-					bs.extendedSearch.SearchCenter.getTypeFilter(),
-					bs.extendedSearch.SearchCenter.getFilters( response.filters )
-				),
+				filterData: bs.extendedSearch.SearchCenter.getFilters( response.filters ),
 				caller: bs.extendedSearch.SearchCenter,
 				mobile: bs.extendedSearch.utils.isMobile(),
 				defaultFilters: mw.config.get( 'ESSearchCenterDefaultFilters' ),
@@ -463,7 +415,6 @@
 		makeLookup: _makeLookup,
 		updateQueryHash: updateQueryHash,
 		getPageSizeConfig: _getPageSizeConfig,
-		getTypeFilter: _getTypeFilter,
 		getFilters: _getFilters,
 		applyResultsToStructure: _applyResultsToStructure,
 		formatSecondaryInfoItems: _formatSecondaryInfoItems,

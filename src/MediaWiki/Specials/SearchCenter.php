@@ -108,8 +108,6 @@ class SearchCenter extends UnlistedSpecialPage {
 		$out->addJsConfigVars( 'bsgESResultStructures', $resultStructures );
 		// Array of fields available for sorting
 		$out->addJsConfigVars( 'bsgESSortableFields', $sortableFields );
-		// Array of each source's types.
-		$out->addJsConfigVars( 'bsgESAvailableTypes', $availableTypes );
 		$out->addJsConfigVars( 'bsgESResultsPerPage', 25 );
 		$out->addJsConfigVars(
 			'ESSearchCenterDefaultFilters', $config->get( 'ESSearchCenterDefaultFilters' )

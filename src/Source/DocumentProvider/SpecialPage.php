@@ -33,4 +33,11 @@ class SpecialPage extends Base {
 			'namespace_text' => $oSpecialPage->getPageTitle()->getNsText()
 		] );
 	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getDocumentType(): string {
+		return 'special-page';
+	}
 }

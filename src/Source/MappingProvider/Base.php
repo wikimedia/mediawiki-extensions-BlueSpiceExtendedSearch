@@ -71,6 +71,9 @@ class Base implements ISearchMappingProvider {
 			],
 			'wiki_id' => [
 				'type' => 'keyword'
+			],
+			'document_type' => [
+				'type' => 'keyword'
 			]
 		];
 	}

@@ -38,10 +38,15 @@ class UpdateWikiPage extends UpdateTitleBase {
 	 * @throws \Exception
 	 */
 	protected function skipProcessing() {
-		return in_array(
+		$skippedNs = in_array(
 			$this->getTitle()->getNamespace(),
-			$this->getSource()->getConfig()->get( 'skip_namespaces' )
+			$this->getSource()->getConfig()->get( 'skip_namespaces' ) ?? []
 		);
+		$skippedCM = in_array(
+			$this->getTitle()->getContentModel(),
+			$this->getSource()->getConfig()->get( 'skip_content_models' ) ?? []
+		);
+		return $skippedNs || $skippedCM;
 	}
 
 	/**

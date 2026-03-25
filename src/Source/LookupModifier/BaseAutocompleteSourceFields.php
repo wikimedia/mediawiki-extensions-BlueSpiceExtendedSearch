@@ -11,6 +11,7 @@ class BaseAutocompleteSourceFields extends LookupModifier {
 		$this->lookup->addSourceField( 'uri' );
 		$this->lookup->addSourceField( 'filename' );
 		$this->lookup->addSourceField( 'wiki_id' );
+		$this->lookup->addSourceField( 'document_type' );
 	}
 
 	public function undo() {
