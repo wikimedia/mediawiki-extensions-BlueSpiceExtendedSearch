@@ -9,6 +9,7 @@ use BS\ExtendedSearch\Wildcarder;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Message\Message;
 use MediaWiki\Title\Title;
 
 class Base implements ISearchResultFormatter {
@@ -111,8 +112,7 @@ class Base implements ISearchResultFormatter {
 			}
 		}
 
-		$type = $resultData['type'];
-		$resultData['typetext'] = $this->getTypeText( $type );
+		$resultData['typetext'] = $this->getTypeText( $resultData['document_type'] ) ?? $resultObject->getType();
 
 		if ( $this->isFeatured( $resultData ) ) {
 			$resultData['featured'] = 1;
@@ -151,12 +151,12 @@ class Base implements ISearchResultFormatter {
 	 * @return string
 	 */
 	protected function getTypeText( $type ) {
-		$typeText = $type;
-		if ( wfMessage( "bs-extendedsearch-source-type-$type-label" )->exists() ) {
-			$typeText = wfMessage( "bs-extendedsearch-source-type-$type-label" )->text();
+		$msg = Message::newFromKey( "bs-extendedsearch-search-center-filter-document-type-$type-label" );
+		if ( $msg->exists() ) {
+			return $msg->text();
 		}
 
-		return $typeText;
+		return $type;
 	}
 
 	/**
@@ -249,6 +249,28 @@ class Base implements ISearchResultFormatter {
 				}
 				$bucket['key'] = (string)$bucket['key'];
 			}
+		}
+
+		if ( isset( $filterCfg['document_type'] ) ) {
+			$filterCfg['document_type']['label'] = Message::newFromKey(
+				'bs-extendedsearch-search-center-filter-type-label'
+			)->text();
+			$filterCfg['document_type']['valueLabel'] = Message::newFromKey(
+				'bs-extendedsearch-search-center-filter-type-with-values-label'
+			)->text();
+			foreach ( $filterCfg['document_type']['buckets'] as &$bucket ) {
+				$typeKey = $bucket['key'];
+				$message = Message::newFromKey(
+					'bs-extendedsearch-search-center-filter-document-type-' . $typeKey . '-label'
+				);
+				if ( $message->exists() ) {
+					$bucket['label'] = $message->text();
+				}
+			}
+			// Put this filter first
+			$documentTypeFilter = $filterCfg['document_type'];
+			unset( $filterCfg['document_type'] );
+			$filterCfg = [ 'document_type' => $documentTypeFilter ] + $filterCfg;
 		}
 	}
 

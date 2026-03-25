@@ -50,6 +50,13 @@ class File extends Base {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	protected function getDocumentType(): string {
+		return 'file';
+	}
+
+	/**
 	 * Make sure that the archive name for local files is stripped
 	 *
 	 * @param string $name

@@ -92,10 +92,6 @@
 	"bs-extendedsearch-loadmore-error": "More results cannot be retrieved",
 	"bs-extendedsearch-filter-label-count-only": "($1)",
 	"bs-extendedsearch-search-center-result-typetext-label": "Type:",
-	"bs-extendedsearch-source-type-wikipage-label": "Wikipage",
-	"bs-extendedsearch-source-type-repofile-label": "Local file",
-	"bs-extendedsearch-source-type-specialpage-label": "Special page",
-	"bs-extendedsearch-source-type-externalfile-label": "External file",
 	"bs-extendedsearch-result-relevance-relevant": "This result is important for me",
 	"bs-extendedsearch-result-relevance-not-relevant": "This result is not important for me",
 	"prefs-extendedsearch": "Extended search",
@@ -196,5 +192,9 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Filter by categories",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Filter combination of categories",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "All categories must be assigned (AND)",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "One category is sufficient (OR)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "One category is sufficient (OR)",
+	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Page",
+	"bs-extendedsearch-search-center-filter-document-type-file-label": "File",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Special page",
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "User profile"
 }

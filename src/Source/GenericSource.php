@@ -13,6 +13,7 @@ use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\PostProcessor;
 use BS\ExtendedSearch\Source\LookupModifier\BaseAutocompleteSourceFields;
 use BS\ExtendedSearch\Source\LookupModifier\BaseConvertTypeFilter;
+use BS\ExtendedSearch\Source\LookupModifier\BaseDocumentTypeAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\BaseExtensionAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\BaseMTimeBoost;
 use BS\ExtendedSearch\Source\LookupModifier\BaseSimpleQSFields;
@@ -271,6 +272,7 @@ class GenericSource implements ISearchSource {
 		$lookupModifiers = [
 			new BaseWikiIDEnforcing( $lookup, $context ),
 			new BaseExtensionAggregation( $lookup, $context ),
+			new BaseDocumentTypeAggregation( $lookup, $context ),
 			new BaseTagsAggregation( $lookup, $context ),
 			new BaseSimpleQSFields( $lookup, $context ),
 			BaseWildcarder::factory( MediaWikiServices::getInstance(), $lookup, $context ),

@@ -19,6 +19,16 @@ class Base implements ISearchDocumentProvider {
 			'basename_exact' => wfBaseName( $uri ),
 			'suggestions' => wfBaseName( $uri ),
 			'wiki_id' => WikiMap::getCurrentWikiId(),
+			'document_type' => $this->getDocumentType()
 		];
+	}
+
+	/**
+	 * Type of document, for filtering
+	 *
+	 * @return string
+	 */
+	protected function getDocumentType(): string {
+		return '';
 	}
 }

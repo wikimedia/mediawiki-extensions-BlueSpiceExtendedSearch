@@ -82,12 +82,12 @@ class WikiPage extends Base {
 	 * @inheritDoc
 	 */
 	public function getDocumentData( $sUri, string $documentId, $wikiPage ): array {
-		$aDC = parent::getDocumentData( $sUri, $documentId, null );
 		$this->wikipage = $wikiPage;
 		$this->assertWikiPage();
 		$this->title = $this->wikipage->getTitle();
 		$this->revision = $this->getRevision();
 		$this->assertRevision();
+		$aDC = parent::getDocumentData( $sUri, $documentId, null );
 
 		$this->content = $this->revision->getContent( 'main' );
 		$this->parserOutput = $this->contentRenderer->getParserOutput( $this->content, $this->title );
@@ -133,6 +133,16 @@ class WikiPage extends Base {
 		] );
 
 		return $aDC;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getDocumentType(): string {
+		if ( $this->title->getNamespace() === NS_USER && !$this->title->isSubpage() ) {
+			return 'user-profile';
+		}
+		return $this->title->getContentModel() ?: 'wikitext';
 	}
 
 	/**
