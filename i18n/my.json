@@ -53,5 +53,7 @@
 	"bs-extendedsearch-source-label-repofile": "ဖိုင်​တင်​ရန်​",
 	"bs-extendedsearch-search-center-create-page-link": "\"$1\" စာမျက်နှာ ဖန်တီးရန်",
 	"bs-extendedsearch-collection-type-searchhistory": "ရှာဖွေမှုမှတ်တမ်း",
-	"bs-extendedsearch-collection-var-numbersearched": "ရှာဖွေမှုများ"
+	"bs-extendedsearch-collection-var-numbersearched": "ရှာဖွေမှုများ",
+	"bs-extendedsearch-search-center-filter-namespace-label": "အမည်ညွှန်း",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "အမည်ညွှန်း:"
 }

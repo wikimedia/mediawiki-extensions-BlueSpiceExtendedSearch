@@ -24,5 +24,6 @@
 	"bs-extendedsearch-result-relevance-not-relevant": "'Di na imporante ang resulta",
 	"bs-extendedsearch-pref-external-file-paths-path": "Pisikal na pinagdaanan",
 	"bs-extendedsearch-pref-external-file-paths-excludes-invalid": "Hindi wastong regular na ekspresyon",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Kategorya1|Kategorya2|..."
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Kategorya1|Kategorya2|...",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Ipangalanan:"
 }

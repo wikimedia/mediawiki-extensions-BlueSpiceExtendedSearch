@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"JeffreyKim",
 			"Winston Sung"
 		]
 	},
-	"bs-extendedsearch-searchcenter-sort-field-size": "嘥士"
+	"bs-extendedsearch-searchcenter-sort-field-size": "嘥士",
+	"prefs-searchsection": "搵啲區域"
 }

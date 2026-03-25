@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Agusbou2015",
+			"Avengium",
 			"Carlosmg.dg",
 			"DiegoAmbrocio",
 			"Fewasser Traduce",
@@ -95,7 +96,7 @@
 	"bs-extendedsearch-searchcenter-sort-field-size": "Tamaño",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Espacio de nombres",
 	"bs-extendedsearch-search-center-filter-has-hidden": "… {{PLURAL:$1|y $1 más}}",
-	"bs-extendedsearch-search-center-result-exception": "No se puede ejecutar la consulta; modifica el término de búsqueda.",
+	"bs-extendedsearch-search-center-result-exception": "No se puede ejecutar la consulta; {{#FORMAL:modifica|modifique}} el término de búsqueda.",
 	"bs-extendedsearch-autocomplete-create-page-link": "Crear la página «$1».",
 	"bs-extendedsearch-loadmore-label": "Cargar más resultados",
 	"bs-extendedsearch-loadmore-error": "No es posible recuperar más resultados",
@@ -140,7 +141,7 @@
 	"bs-extendedsearch-flyout-similar-pages-emptytext": "No se encontró ninguna página similar",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Utilizado en páginas",
 	"bs-extendedsearch-tagsearch-extension-description": "Añadir un formulario de búsqueda al contenido de {{GENDER:your}}",
-	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Escribe para buscar…",
+	"bs-extendedsearch-tagsearch-searchfield-placeholder": "{{#FORMAL:Escribe|Escriba}} para buscar…",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "El tipo de resultado de búsqueda no es válido: $1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "EtiquetaBúsqueda",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-desc": "Crea un campo de entrada de búsqueda que busca en los contextos especificados",
@@ -152,7 +153,7 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Categoría 1|Categoría 2|…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder": "Marcador de posición",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-help": "Texto que se mostrará en el campo de entrada cuando aún no se haya introducido nada",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "Escribe para buscar…",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-placeholder": "{{#FORMAL:Escribe|Escriba}} para buscar…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator": "Operador de búsqueda",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "Este parámetro se evalúa sólo en combinación con el parámetro \"categoría\". Si se establece el valor AND, sólo coincidirán los resultados que estén en todas las categorías dadas, mientras que el valor OR coincidirá con los resultados que tengan al menos una de las categorías establecidas",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type": "Tipo",
@@ -183,5 +184,14 @@
 	"bs-extendedsearch-close-search-button-aria-label": "Cerrar cuadro de búsqueda",
 	"bs-extendedsearch-remove-button-label": "Eliminar filtro \"$1\"",
 	"bs-extendedsearch-source-type-externalfile-label": "Archivo external",
-	"bs-extendedsearch-source-label-externalfile": "Archivo external"
+	"bs-extendedsearch-source-label-externalfile": "Archivo external",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Espacio de nombres",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Espacio de nombres:",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "Tipos de resultados",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "Texto de marcador de posición para el campo de búsqueda",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "Filtrar por espacios de nombres",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Filtrar por categorías",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Combinación de filtros de categorías",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "Todas las categorías deben estar asignadas (AND)",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Una categoría es suficiente (OR)"
 }

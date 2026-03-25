@@ -11,5 +11,15 @@
 	"bs-extendedsearch-search-center-filter-namespace_text-with-values-label": "نانءُپولار:",
 	"bs-extendedsearch-search-center-result-namespace_text-label": "نانءُپولار:",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "نانءُپولار",
-	"bs-extendedsearch-redirect-target-label": "ڏانھن چوريل:"
+	"bs-extendedsearch-redirect-target-label": "ڏانھن چوريل:",
+	"bs-extendedsearch-search-center-filter-namespace-label": "نانءُپولار",
+	"bs-extendedsearch-search-center-filter-categories-label": "زمرو",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "نانءُپولار:",
+	"bs-extendedsearch-search-center-filter-categories-with-values-label": "زمرو:",
+	"bs-extendedsearch-search-center-result-categories-label": "زمرو:",
+	"bs-extendedsearch-privacy-transparency-content-highlight": "صفحو $1 : متن: $2",
+	"right-extendedsearch-search-specialpage": "خاص صفحا ڳوليو",
+	"right-extendedsearch-search-wikipage": "صفحا ڳوليو",
+	"action-extendedsearch-search-specialpage": "خاص صفحا ڳوليو",
+	"action-extendedsearch-search-wikipage": "صفحا ڳوليو"
 }

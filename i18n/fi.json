@@ -58,5 +58,7 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Wikisivu",
 	"prefs-extendedsearch": "Laajennettu haku",
 	"bs-extendedsearch-autocomplete-create-page-link": "Luo sivu \"$1\"",
-	"bs-extendedsearch-search-center-create-page-link": "Luo sivu \"$1\""
+	"bs-extendedsearch-search-center-create-page-link": "Luo sivu \"$1\"",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Nimiavaruus",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Nimiavaruus:"
 }

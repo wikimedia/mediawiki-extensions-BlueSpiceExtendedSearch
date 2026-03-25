@@ -60,5 +60,12 @@
 	"bs-extendedsearch-close-search-button-aria-label": "ڳولݨ ݙٻہ بند کرو",
 	"bs-extendedsearch-droplet-search-name": "ڳولݨ خانہ",
 	"bs-extendedsearch-source-type-externalfile-label": "ٻاہرلی فائل",
-	"bs-extendedsearch-source-label-externalfile": "ٻاہرلی فائل"
+	"bs-extendedsearch-source-label-externalfile": "ٻاہرلی فائل",
+	"bs-extendedsearch-search-center-filter-namespace-label": "ناں جاہ",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "ناں جاہ:",
+	"bs-extendedsearch-tagsearch-btn-aria-label": "ڳولݨ شروع کرو",
+	"bs-extendedsearch-tagsearch-input-aria-label": "ڳولو",
+	"bs-extendedsearch-autocomplete-popup-select-announcement": "$2 وچوں $1 واں",
+	"bs-extendedsearch-autocomplete-result-primary-results-label": "نتیجے",
+	"bs-extendedsearch-autocomplete-context-options-label": "ڳولو"
 }

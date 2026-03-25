@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
+			"Lluis Cat",
 			"Vfc"
 		]
 	},
@@ -10,5 +11,8 @@
 	"bs-extendedsearch-search-center-result-ctime-label": "Creat:",
 	"bs-extendedsearch-searchcenter-sort-field-ctime": "Temps de creació",
 	"bs-extendedsearch-autocomplete-create-page-link": "Crea la pàgina \"$1\"",
-	"bs-extendedsearch-search-center-create-page-link": "Crea la pàgina \"$1\""
+	"bs-extendedsearch-search-center-create-page-link": "Crea la pàgina \"$1\"",
+	"bs-extendedsearch-searchcenter-sort-field-basename": "Nom",
+	"bs-extendedsearch-searchcenter-sort-field-size": "Mida",
+	"bs-extendedsearch-droplet-search-name": "Cerca un camp"
 }

@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Assilidjoe"
+		]
+	},
+	"bs-extendedsearch-search-input-placeholder": "Hwehwɛ...",
+	"bs-extendedsearch-recently-found-header-aria": "{{PLURAL:$1|One|$1}} dza wɔhwɛɛ nkyɛree {{PLURAL:$1|result|results}} ɔwɔ hɔ"
+}

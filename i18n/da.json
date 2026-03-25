@@ -67,5 +67,7 @@
 	"action-extendedsearch-search-repofile": "søg efter filer",
 	"action-extendedsearch-search-externalfile": "søg efter eksterne filer",
 	"bs-extendedsearch-search-center-result-sections-label": "Sektioner:",
-	"prefs-extendedsearch": "Udvidet søgning"
+	"prefs-extendedsearch": "Udvidet søgning",
+	"bs-extendedsearch-search-center-filter-namespace-label": "Navnerum",
+	"bs-extendedsearch-search-center-filter-namespace-with-values-label": "Navnerum:"
 }
