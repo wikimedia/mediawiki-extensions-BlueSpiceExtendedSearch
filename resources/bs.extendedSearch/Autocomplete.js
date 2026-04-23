@@ -189,10 +189,20 @@ bs.extendedSearch.Autocomplete.prototype.makePopup = function ( suggestions, hea
 		}
 	} );
 
-	this.popup.$element.css( 'top', ( this.searchBar.$searchBox.outerHeight() + 12 ) + 'px' );
+	const $activeInput = $( document.activeElement );
+
+	const $currentWrapper = $activeInput.closest( '.bs-extendedsearch-searchbar-wrapper' );
+	const $currentForm = $activeInput.closest( 'form' );
+
+	this.popup.$element.css( 'top', ( $activeInput.outerHeight() + 12 ) + 'px' );
 	this.popup.$element.addClass( 'searchbar-autocomplete-results' );
-	this.popup.$element.insertAfter( $( '#' + this.searchBar.$searchBoxWrapper.attr( 'id' ) ) );
-	this.popup.$element.attr( 'id', this.searchBar.$searchBoxWrapper.attr( 'id' ) + '-results' );
+
+	$currentForm.css( 'position', 'relative' );
+
+	this.popup.$element.insertAfter( $currentWrapper );
+
+	const wrapperId = $currentWrapper.attr( 'id' ) || 'bs-tagsearch-wrapper';
+	this.popup.$element.attr( 'id', wrapperId + '-results' );
 
 	bs.extendedSearch._registerTrackableLinks();
 	this.searchBar.suppressQuietSubpage( 'arm' );
