@@ -83,5 +83,6 @@
 	"bs-extendedsearch-autocomplete-context-options-label": "Sichen",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Änlech Resultater",
 	"prefs-search": "Sichastellungen",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eng Kategorie geet duer (OR)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eng Kategorie geet duer (OR)",
+	"bs-extendedsearch-user-preferred-namespaces": "Preferéiert Nummraim"
 }
