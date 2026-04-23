@@ -99,20 +99,28 @@ bs.extendedSearch.Lookup.prototype.setBoolMatchQueryString = function ( field, q
 };
 
 bs.extendedSearch.Lookup.prototype.setMultiMatchQuery = function ( field, q ) {
-	this.ensurePropertyPath( 'query.bool.must', {} );
+	this.ensurePropertyPath( 'query.bool', {} );
 
-	this.query.bool.must.multi_match = {
-		query: q,
-		type: 'bool_prefix',
-		fields: [
-			field,
-			field + '._2gram',
-			field + '._3gram',
-			field + '_extra',
-			field + '_extra._2gram',
-			field + '_extra._3gram'
-		]
-	};
+	if ( this.query.bool.must && !Array.isArray( this.query.bool.must ) ) {
+		this.query.bool.must = [ this.query.bool.must ];
+	} else if ( !this.query.bool.must ) {
+		this.query.bool.must = [];
+	}
+
+	this.query.bool.must.push( {
+		multi_match: {
+			query: q,
+			type: 'bool_prefix',
+			fields: [
+				field,
+				field + '._2gram',
+				field + '._3gram',
+				field + '_extra',
+				field + '_extra._2gram',
+				field + '_extra._3gram'
+			]
+		}
+	} );
 
 	return this;
 };

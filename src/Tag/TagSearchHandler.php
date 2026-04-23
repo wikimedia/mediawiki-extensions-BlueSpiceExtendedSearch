@@ -75,6 +75,8 @@ class TagSearchHandler implements ITagHandler {
 			$params['returnto'] = $title->getPrefixedDBkey();
 		}
 
+		$parser->getOutput()->addModules( [ 'ext.blueSpiceExtendedSearch.TagSearch' ] );
+
 		return $templateParser->processTemplate(
 			'TagSearchField',
 			$params
