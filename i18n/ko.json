@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Maoue",
+			"Tensama0415",
 			"Ykhwong",
 			"아라"
 		]
@@ -10,9 +11,9 @@
 	"bssearchadmin-desc": "검색을 위한 관리 인터페이스를 제공합니다",
 	"bssearchcenter": "검색 센터",
 	"apihelp-bs-extendedsearch-query-summary": "색인 검색",
-	"apihelp-bs-extendedsearch-query-param-params": "쿼리의 추가 변수",
+	"apihelp-bs-extendedsearch-query-param-params": "쿼리의 추가 매개변수",
 	"apihelp-bs-extendedsearch-stats-param-stats": "반환되어야 하는 통계 목록",
-	"apihelp-bs-extendedsearch-triggerupdate-param-params": "쿼리의 추가 변수",
+	"apihelp-bs-extendedsearch-triggerupdate-param-params": "쿼리의 추가 매개변수",
 	"apihelp-bs-extendedsearch-query-param-search-term": "검색을 수행할 대상이 되는 용어",
 	"bs-extendedsearch-close-search-button-aria-label": "검색 상자 닫기",
 	"bs-extendedsearch-search-button-title": "전문 검색으로 전환",
