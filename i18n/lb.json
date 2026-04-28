@@ -48,6 +48,7 @@
 	"bs-extendedsearch-source-type-specialpage-label": "Spezialsäit",
 	"bs-extendedsearch-source-type-externalfile-label": "Externe Fichier",
 	"prefs-extendedsearch": "Erweidert Sich",
+	"bs-extendedsearch-user-preferred-namespaces": "Preferéiert Nummraim",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL-Prefix",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Lescht Ännerung: $1",
 	"bs-extendedsearch-redirect-target-label": "Viruleedung op:",
@@ -79,6 +80,5 @@
 	"bs-extendedsearch-autocomplete-context-options-label": "Sichen",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Änlech Resultater",
 	"prefs-search": "Sichastellungen",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eng Kategorie geet duer (OR)",
-	"bs-extendedsearch-user-preferred-namespaces": "Preferéiert Nummraim"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eng Kategorie geet duer (OR)"
 }
