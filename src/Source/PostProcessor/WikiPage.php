@@ -4,10 +4,23 @@ namespace BS\ExtendedSearch\Source\PostProcessor;
 
 use BS\ExtendedSearch\Backend;
 use BS\ExtendedSearch\Lookup;
+use BS\ExtendedSearch\PostProcessor;
 use BS\ExtendedSearch\SearchResult;
+use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigException;
+use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\Title\TitleFactory;
 
 class WikiPage extends Base {
+
+	public function __construct(
+		PostProcessor $postProcessorRunner,
+		private readonly Config $config,
+		private readonly PermissionManager $permissionManager,
+		private readonly TitleFactory $titleFactory
+	) {
+		parent::__construct( $postProcessorRunner );
+	}
 
 	/**
 	 *
@@ -16,6 +29,22 @@ class WikiPage extends Base {
 	 */
 	public function process( SearchResult &$result, Lookup $lookup ) {
 		parent::process( $result, $lookup );
+		if ( $result->getType() !== 'wikipage' ) {
+			return;
+		}
+		$title = $this->titleFactory->newFromText( $result->getData()['prefixed_title'] );
+		if ( !$title ) {
+			return;
+		}
+		$result->setParam( '_title_object', $title );
+		if ( $this->config->get( 'ESSecureResults' ) && $this->config->get( 'ESSecureResultsRigor' ) === 'strict' ) {
+			$user = $this->postProcessorRunner->getBackend()->getContext()->getUser() ?? null;
+			if ( $user && !$this->permissionManager->quickUserCan( 'read', $user, $title ) ) {
+				// If user cannot read the page, hide it
+				$result = null;
+				return;
+			}
+		}
 
 		if ( !$this->isScoreSorting( $lookup ) ) {
 			// If user sorts by something else by relevance
@@ -83,6 +112,7 @@ class WikiPage extends Base {
 		$boostValue = round( ( $score * $portionOfScore ) * ( $relevance * $boostFactor ), 2 );
 
 		$result->setParam( '_score', $score + $boostValue );
+
 		return true;
 	}
 

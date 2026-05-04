@@ -813,6 +813,10 @@
 		"ESSecureResults": {
 			"description": "If true, results will be filtered to only show pages the user has access to",
 			"value": true
+		},
+		"ESSecureResultsRigor": {
+			"description": "Can be `strict` or `quick`. In quick mode, only general namespace permission are checked, which in strict mode, permissions for each individual page are checked.",
+			"value": "strict"
 		}
 	},
 	"callback": "\\BS\\ExtendedSearch\\Setup::onRegistration",

@@ -87,6 +87,13 @@ class PostProcessor {
 	}
 
 	/**
+	 * @return Backend
+	 */
+	public function getBackend(): Backend {
+		return $this->backend;
+	}
+
+	/**
 	 * Get the search type currently being executed
 	 *
 	 * @return string
@@ -113,8 +120,13 @@ class PostProcessor {
 		foreach ( $results as &$result ) {
 			foreach ( $this->processors as $processor ) {
 				$processor->process( $result, $lookup );
+				if ( !$result ) {
+					continue 2;
+				}
 			}
 		}
+		// Filter out nulls
+		$results = array_filter( $results );
 
 		if ( $this->reSort ) {
 			$this->doReSort( $results, $lookup );

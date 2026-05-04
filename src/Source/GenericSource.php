@@ -14,11 +14,9 @@ use BS\ExtendedSearch\PostProcessor;
 use BS\ExtendedSearch\Source\LookupModifier\BaseAutocompleteSourceFields;
 use BS\ExtendedSearch\Source\LookupModifier\BaseConvertTypeFilter;
 use BS\ExtendedSearch\Source\LookupModifier\BaseExtensionAggregation;
-use BS\ExtendedSearch\Source\LookupModifier\BaseMTimeBoost;
 use BS\ExtendedSearch\Source\LookupModifier\BaseSimpleQSFields;
 use BS\ExtendedSearch\Source\LookupModifier\BaseSortByID;
 use BS\ExtendedSearch\Source\LookupModifier\BaseTagsAggregation;
-use BS\ExtendedSearch\Source\LookupModifier\BaseTitleSecurityTrimmings;
 use BS\ExtendedSearch\Source\LookupModifier\BaseTypeSecurityTrimming;
 use BS\ExtendedSearch\Source\LookupModifier\BaseUserRelevance;
 use BS\ExtendedSearch\Source\LookupModifier\BaseWildcarder;
@@ -274,7 +272,6 @@ class GenericSource implements ISearchSource {
 			BaseWildcarder::factory( MediaWikiServices::getInstance(), $lookup, $context ),
 			new BaseSortByID( $lookup, $context ),
 			new BaseUserRelevance( $lookup, $context ),
-			new BaseMTimeBoost( $lookup, $context ),
 			new BaseAutocompleteSourceFields( $lookup, $context ),
 			new BaseConvertTypeFilter( $lookup, $context ),
 			new RegExpQuoter( $lookup, $context ),
@@ -285,7 +282,6 @@ class GenericSource implements ISearchSource {
 		];
 		$securityLMs = [
 			new BaseTypeSecurityTrimming( $lookup, $context ),
-			new BaseTitleSecurityTrimmings( $this->getBackend(), $lookup, $context ),
 		];
 		if ( $this->backend->getConfig()->get( 'ESSecureResults' ) ) {
 			$lookupModifiers = array_merge( $lookupModifiers, $securityLMs );
