@@ -8,8 +8,23 @@ use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
+use MediaWiki\Title\TitleValue;
 
 class WikiPageFormatter extends Base {
+
+	/**
+	 * @var TitleFactory
+	 */
+	protected TitleFactory $titleFactory;
+
+	/**
+	 * @inheritDoc
+	 */
+	public function __construct( $source ) {
+		parent::__construct( $source );
+		$this->titleFactory = $this->source->getBackend()->getService( 'TitleFactory' );
+	}
 
 	/**
 	 *
@@ -55,6 +70,12 @@ class WikiPageFormatter extends Base {
 
 		parent::format( $resultData, $resultObject );
 
+		$title = $resultObject->getParam( '_title_object' ) ?? null;
+		if ( !$title ) {
+			return;
+		}
+		$resultData['_title_object'] = $title;
+
 		if ( $resultData['is_redirect'] === true ) {
 			$this->addAnchor( $resultData );
 			$this->addRedirectAttributes( $resultData );
@@ -66,10 +87,6 @@ class WikiPageFormatter extends Base {
 		$resultData['redirects'] = $this->formatRedirectedFrom( $resultData );
 		$resultData['rendered_content_snippet'] = $this->getRenderedContentSnippet( $resultData['rendered_content'] );
 
-		$title = Title::newFromText( $resultData['prefixed_title'] );
-		if ( !$title ) {
-			return;
-		}
 		if ( $resultData['display_title'] !== $title->getPrefixedText() ) {
 			$resultData['basename'] = $resultData['display_title'];
 			$resultData['original_title'] = $this->getOriginalTitleText( $resultData );
@@ -79,7 +96,7 @@ class WikiPageFormatter extends Base {
 
 		$resultData['file-usage'] = '';
 		if ( $resultData['namespace'] === NS_FILE && $resultData['_is_foreign'] === false ) {
-			$resultData['file-usage'] = $this->getFileUsage( $resultData['prefixed_title'] );
+			$resultData['file-usage'] = $this->getFileUsage( $title );
 		}
 
 		$this->addAnchor( $resultData );
@@ -135,7 +152,7 @@ class WikiPageFormatter extends Base {
 				'href' => $result['uri'],
 			], $this->getAnchorText( $result ) );
 		} else {
-			$title = Title::newFromText( $result['prefixed_title'] );
+			$title = $result['_title_object'];
 			if ( $title instanceof Title && $title->getNamespace() == $result['namespace'] ) {
 				$result['page_anchor'] = $this->getTraceablePageAnchor( $title, $result['display_title'] );
 			}
@@ -163,8 +180,10 @@ class WikiPageFormatter extends Base {
 			if ( $isForeign ) {
 				$formattedCategories[] = $category;
 			} else {
-				$categoryTitle = Title::makeTitle( NS_CATEGORY, $category );
-				$formattedCategories[] = $this->linkRenderer->makeLink( $categoryTitle, $categoryTitle->getText() );
+				$categoryTitle = new TitleValue( NS_CATEGORY, $category );
+				$formattedCategories[] = $this->linkRenderer->makePreloadedLink(
+					$categoryTitle, $categoryTitle->getText()
+				);
 			}
 		}
 		return implode( Base::VALUE_SEPARATOR, $formattedCategories ) .
@@ -227,7 +246,6 @@ class WikiPageFormatter extends Base {
 		if ( $result['_is_foreign'] ) {
 			return '';
 		}
-		$title = Title::newFromText( $result['prefixed_title'] );
 		$sections = [];
 		$moreSections = false;
 		foreach ( $sectionsToAdd as $idx => $section ) {
@@ -235,7 +253,7 @@ class WikiPageFormatter extends Base {
 				$moreSections = true;
 				break;
 			}
-			$linkTarget = $title->createFragmentTarget( $section );
+			$linkTarget = new TitleValue( $result['namespace'], $result['prefixed_title'], $section );
 			$displayText = str_replace( '_', ' ', $section );
 			if ( strlen( $displayText ) > 25 ) {
 				$displayText = substr( $displayText, 0, 25 ) . Base::MORE_VALUES_TEXT;
@@ -274,7 +292,7 @@ class WikiPageFormatter extends Base {
 			if ( $result['_is_foreign'] ) {
 				$redirs[] = $displayText;
 			} else {
-				$redirTitle = Title::newFromText( $prefixedTitle );
+				$redirTitle = $this->titleFactory->newFromText( $prefixedTitle );
 				if ( $redirTitle instanceof Title === false ) {
 					continue;
 				}
@@ -318,7 +336,7 @@ class WikiPageFormatter extends Base {
 			$result['redirect_target_anchor'] = $result['redirects_to'];
 			return;
 		}
-		$redirTarget = Title::newFromText( $result['redirects_to'] );
+		$redirTarget = $this->titleFactory->newFromText( $result['redirects_to'] );
 		if ( $redirTarget instanceof Title === false ) {
 			return;
 		}
@@ -359,6 +377,11 @@ class WikiPageFormatter extends Base {
 				// If no dedicated display title is set, allow normal mechanisms to show title
 				$result['display_title'] = '';
 			}
+			$title = $this->titleFactory->newFromText( $result['prefixed_title'] );
+			if ( !$title ) {
+				continue;
+			}
+			$result['_title_object'] = $title;
 			if ( $result['is_redirect'] === true ) {
 				$this->addRedirectAttributes( $result );
 			}
@@ -441,16 +464,14 @@ class WikiPageFormatter extends Base {
 	 * @param Title $title
 	 * @return string
 	 */
-	protected function getFileUsage( $title ) {
+	protected function getFileUsage( Title $title ) {
 		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()
 			->getConnection( DB_REPLICA );
 
-		// Would be nice to get this info from the index w/o running another query
-		$target = Title::newFromText( $title );
 		$res = $dbr->select(
 			[ 'imagelinks', 'page' ],
 			[ 'page_namespace', 'page_title', 'il_to' ],
-			[ 'il_to' => $target->getDBkey(), 'il_from = page_id' ],
+			[ 'il_to' => $title->getDBkey(), 'il_from = page_id' ],
 			__METHOD__,
 			[ 'LIMIT' => 5, 'ORDER BY' => 'il_from', ]
 		);
@@ -460,7 +481,7 @@ class WikiPageFormatter extends Base {
 
 		$usedInPages = [];
 		foreach ( $res as $row ) {
-			$usedInPages[] = Title::makeTitle(
+			$usedInPages[] = $this->titleFactory->makeTitle(
 				$row->page_namespace,
 				$row->page_title
 			);

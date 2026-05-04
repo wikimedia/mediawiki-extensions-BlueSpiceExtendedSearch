@@ -3,12 +3,28 @@
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Backend;
+use BS\ExtendedSearch\Lookup;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Title\Title;
+use MWStake\MediaWiki\Component\Utils\UtilityFactory;
 
 class WikiPageUserPreferences extends LookupModifier {
 	/** @var int[] */
 	protected $namespacesToBoost;
+
+	/** @var UtilityFactory */
+	protected $utilityFactory;
+
+	/**
+	 * @param Lookup $lookup
+	 * @param IContextSource $context
+	 * @param UtilityFactory|null $utilityFactory
+	 */
+	public function __construct( $lookup, $context, ?UtilityFactory $utilityFactory ) {
+		parent::__construct( $lookup, $context );
+		$this->utilityFactory =
+			$utilityFactory ?? MediaWikiServices::getInstance()->getService( 'MWStakeCommonUtilsFactory' );
+	}
 
 	public function apply() {
 		$services = MediaWikiServices::getInstance();
@@ -29,13 +45,13 @@ class WikiPageUserPreferences extends LookupModifier {
 			}
 
 			$nsId = (int)substr( $optionName, strlen( 'searchNs' ) );
-			$oTitle = Title::makeTitle( $nsId, 'Dummy' );
-			if ( $permManager->userCan( 'read', $user, $oTitle ) ) {
-				$namespacesToBoost[] = $nsId;
-			}
+			$namespacesToBoost[] = $nsId;
 		}
 
-		$this->namespacesToBoost = $namespacesToBoost;
+		$readableNamespaces = $this->utilityFactory->getReadableNamespacesHelper();
+		$this->namespacesToBoost = array_values(
+			array_diff( $namespacesToBoost, $readableNamespaces->getRestrictedNamespaces( $user ) )
+		);
 		if ( !empty( $this->namespacesToBoost ) ) {
 			$this->lookup->addShouldTerms( 'namespace', $this->namespacesToBoost, 8, false );
 		}
