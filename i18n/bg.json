@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"StanProg"
+		]
+	},
+	"bs-extendedsearch-tagsearch-input-aria-label": "Търсене",
+	"bs-extendedsearch-autocomplete-context-options-label": "Търсене"
+}
