@@ -196,5 +196,9 @@
 	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Page",
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "File",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Special page",
-	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "User profile"
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "User profile",
+	"bs-extendedsearch-source-type-wikipage-label": "Wikipage",
+	"bs-extendedsearch-source-type-repofile-label": "Local file",
+	"bs-extendedsearch-source-type-specialpage-label": "Special page",
+	"bs-extendedsearch-source-type-externalfile-label": "External file"
 }

@@ -204,5 +204,9 @@
 	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Label for the document_type option for wikitext type",
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "Label for the document_type option for file type",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Label for the document_type option for special page type",
-	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Label for the document_type option for user profile type"
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Label for the document_type option for user profile type",
+	"bs-extendedsearch-source-type-wikipage-label": "Label for Wikipage source type",
+	"bs-extendedsearch-source-type-repofile-label": "Label for Local file source type",
+	"bs-extendedsearch-source-type-specialpage-label": "Label for Special page source type",
+	"bs-extendedsearch-source-type-externalfile-label": "Label for external file source type"
 }
