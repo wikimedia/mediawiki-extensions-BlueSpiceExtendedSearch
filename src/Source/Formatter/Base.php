@@ -11,6 +11,7 @@ use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Message\Message;
 use MediaWiki\Title\Title;
+use MWStake\MediaWiki\Component\Utils\UtilityFactory;
 
 class Base implements ISearchResultFormatter {
 	/**
@@ -46,6 +47,11 @@ class Base implements ISearchResultFormatter {
 	protected $linkRenderer;
 
 	/**
+	 * @var UtilityFactory
+	 */
+	protected $utilityFactory;
+
+	/**
 	 *
 	 * @param ISearchSource $source
 	 */
@@ -53,6 +59,7 @@ class Base implements ISearchResultFormatter {
 		$this->source = $source;
 		// Just for convenience, as many of the formatters would use it
 		$this->linkRenderer = $this->source->getBackend()->getService( 'LinkRenderer' );
+		$this->utilityFactory = $this->source->getBackend()->getService( 'MWStakeCommonUtilsFactory' );
 	}
 
 	/**
@@ -102,8 +109,8 @@ class Base implements ISearchResultFormatter {
 		$resultData['_index'] = $resultObject->getIndex();
 		$resultData['_is_foreign'] = $this->source->getBackend()->isForeignIndex( $resultObject->getIndex() );
 
+		$user = $this->getContext()->getUser();
 		if ( !$resultData['_is_foreign'] ) {
-			$user = $this->getContext()->getUser();
 			if ( $user->isRegistered() ) {
 				$resultRelevance = new \BS\ExtendedSearch\ResultRelevance( $user, $resultObject->getId() );
 				$resultData['user_relevance'] = (int)$resultRelevance->getValue();
@@ -123,8 +130,8 @@ class Base implements ISearchResultFormatter {
 			// Not all types have these
 			return;
 		}
-		$resultData['ctime'] = $this->getContext()->getLanguage()->date( $originalValues['ctime'] );
-		$resultData['mtime'] = $this->getContext()->getLanguage()->date( $originalValues['mtime'] );
+		$resultData['ctime'] = $this->getContext()->getLanguage()->userDate( $originalValues['ctime'], $user );
+		$resultData['mtime'] = $this->getContext()->getLanguage()->userDate( $originalValues['mtime'], $user );
 	}
 
 	/**
@@ -151,9 +158,11 @@ class Base implements ISearchResultFormatter {
 	 * @return string
 	 */
 	protected function getTypeText( $type ) {
-		$msg = Message::newFromKey( "bs-extendedsearch-search-center-filter-document-type-$type-label" );
-		if ( $msg->exists() ) {
-			return $msg->text();
+		$typeText = $type;
+		$messageKey = "bs-extendedsearch-source-type-$type-label";
+		$messageHelper = $this->utilityFactory->getMessageHelper();
+		if ( $messageHelper->msgExistsQuick( $messageKey ) ) {
+			return Message::newFromKey( $messageKey )->text();
 		}
 
 		return $type;

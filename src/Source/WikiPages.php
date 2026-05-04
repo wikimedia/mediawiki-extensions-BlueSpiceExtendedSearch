@@ -26,6 +26,7 @@ use BS\ExtendedSearch\Source\LookupModifier\WikiPageSubpageFilter;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageUserPreferences;
 use BS\ExtendedSearch\Source\PostProcessor\WikiPage as WikiPagePostProcessor;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\MediaWikiServices;
 
 class WikiPages extends GenericSource {
 
@@ -93,7 +94,14 @@ class WikiPages extends GenericSource {
 	 * @return IPostProcessor[]
 	 */
 	public function getPostProcessors( PostProcessor $postProcessorRunner ): array {
-		return [ new WikiPagePostProcessor( $postProcessorRunner ) ];
+		return [
+			new WikiPagePostProcessor(
+				$postProcessorRunner,
+				$this->backend->getConfig(),
+				MediaWikiServices::getInstance()->getPermissionManager(),
+				MediaWikiServices::getInstance()->getTitleFactory()
+			)
+		];
 	}
 
 	/**
@@ -105,7 +113,9 @@ class WikiPages extends GenericSource {
 	public function getLookupModifiers( Lookup $lookup, IContextSource $context ): array {
 		$modifiers = parent::getLookupModifiers( $lookup, $context );
 		$modifiers[] = new WikiPageNamespaceTextAggregation( $lookup, $context );
-		$modifiers[] = new WikiPageUserPreferences( $lookup, $context );
+		$modifiers[] = new WikiPageUserPreferences(
+			$lookup, $context, MediaWikiServices::getInstance()->getService( 'MWStakeCommonUtilsFactory' )
+		);
 		$modifiers[] = new WikiPageNamespacePrefixResolver( $lookup, $context );
 		$modifiers[] = new WikiPageCategoriesAggregation( $lookup, $context );
 		$modifiers[] = new WikiPageRenderedContentHighlight( $lookup, $context );
@@ -118,7 +128,9 @@ class WikiPages extends GenericSource {
 		$modifiers[] = new WikiPageAutocompleteRemoveUnwanted( $lookup, $context );
 		$modifiers[] = new WikiPageAutocompleteSourceFields( $lookup, $context );
 		if ( $this->backend->getConfig()->get( 'ESSecureResults' ) ) {
-			$modifiers[] = new WikiPageSecurityTrimming( $lookup, $context );
+			$modifiers[] = new WikiPageSecurityTrimming(
+				$lookup, $context, MediaWikiServices::getInstance()->getService( 'MWStakeCommonUtilsFactory' )
+			);
 		}
 
 		return $modifiers;
