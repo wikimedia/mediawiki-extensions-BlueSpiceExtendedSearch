@@ -3,12 +3,29 @@
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
 use BS\ExtendedSearch\Backend;
-use MediaWiki\Title\Title;
+use BS\ExtendedSearch\Lookup;
+use MediaWiki\Context\IContextSource;
+use MediaWiki\MediaWikiServices;
+use MWStake\MediaWiki\Component\Utils\UtilityFactory;
 
 class WikiPageSecurityTrimming extends LookupModifier {
 
+	/** @var UtilityFactory */
+	protected $utilityFactory;
+
 	/** @var int[] */
 	protected $namespaceIdBlacklist = [];
+
+	/**
+	 * @param Lookup $lookup
+	 * @param IContextSource $context
+	 * @param UtilityFactory|null $utilityFactory
+	 */
+	public function __construct( $lookup, $context, ?UtilityFactory $utilityFactory ) {
+		parent::__construct( $lookup, $context );
+		$this->utilityFactory =
+			$utilityFactory ?? MediaWikiServices::getInstance()->getService( 'MWStakeCommonUtilsFactory' );
+	}
 
 	/**
 	 * We can not use a namespace whitelist here and just add a filter,
@@ -26,33 +43,18 @@ class WikiPageSecurityTrimming extends LookupModifier {
 	 * See, https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html
 	 */
 	public function apply() {
-		$aNamespaceIds = $this->context->getLanguage()->getNamespaceIds();
-		$this->namespaceIdBlacklist = [];
+		$readableNamespaces = $this->utilityFactory->getReadableNamespacesHelper();
 
-		foreach ( $aNamespaceIds as $sNsText => $iNsId ) {
-			if ( $this->userCanNotRead( $iNsId ) ) {
-				$this->namespaceIdBlacklist[] = $iNsId;
-			}
-		}
-
+		$this->namespaceIdBlacklist = $readableNamespaces->getRestrictedNamespaces( $this->context->getUser() );
 		if ( !empty( $this->namespaceIdBlacklist ) ) {
 			$this->lookup->addBoolMustNotTerms( 'namespace', $this->namespaceIdBlacklist );
 		}
 	}
 
-	/**
-	 *
-	 * @param int $iNsId
-	 * @return bool
-	 */
-	protected function userCanNotRead( $iNsId ) {
-		$oTitle = Title::makeTitle( $iNsId, 'Dummy' );
-		return !\MediaWiki\MediaWikiServices::getInstance()
-			->getPermissionManager()
-			->userCan( 'read', $this->context->getUser(), $oTitle );
-	}
-
 	public function undo() {
+		if ( !empty( $this->namespaceIdBlacklist ) ) {
+			$this->lookup->removeBoolMustNotTerms( 'namespace', $this->namespaceIdBlacklist );
+		}
 	}
 
 	/**
