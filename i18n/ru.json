@@ -75,10 +75,6 @@
 	"bs-extendedsearch-autocomplete-create-page-link": "Создать страницу «$1»",
 	"bs-extendedsearch-loadmore-label": "Загрузка других результатов",
 	"bs-extendedsearch-search-center-result-typetext-label": "Тип:",
-	"bs-extendedsearch-source-type-wikipage-label": "Вики-страница",
-	"bs-extendedsearch-source-type-repofile-label": "Локальный файл",
-	"bs-extendedsearch-source-type-specialpage-label": "Служебная страница",
-	"bs-extendedsearch-source-type-externalfile-label": "Внешний файл",
 	"bs-extendedsearch-result-relevance-relevant": "Этот результат важен для меня",
 	"bs-extendedsearch-result-relevance-not-relevant": "Этот результат не важен для меня",
 	"prefs-extendedsearch": "Расширенный поиск",
@@ -121,5 +117,9 @@
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Поиск в «$1»",
 	"bs-extendedsearch-droplet-search-name": "Поле поиска",
 	"bs-extendedsearch-source-label-externalfile": "Внешний файл",
-	"bs-extendedsearch-recently-found-header": "Недавно просмотрено"
+	"bs-extendedsearch-recently-found-header": "Недавно просмотрено",
+	"bs-extendedsearch-source-type-wikipage-label": "Вики-страница",
+	"bs-extendedsearch-source-type-repofile-label": "Локальный файл",
+	"bs-extendedsearch-source-type-specialpage-label": "Служебная страница",
+	"bs-extendedsearch-source-type-externalfile-label": "Внешний файл"
 }

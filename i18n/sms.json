@@ -19,8 +19,6 @@
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Jõõsk",
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Nõmm",
 	"bs-extendedsearch-searchcenter-sort-field-size": "Šorradvuõtt",
-	"bs-extendedsearch-source-type-repofile-label": "Pääiklaž teâttõs",
-	"bs-extendedsearch-source-type-specialpage-label": "Tuåimmseidd",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Mââimõssân muttum: $1",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Seeid ǩiõll",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Seeid ǩiõll:",
@@ -33,5 +31,7 @@
 	"action-extendedsearch-search-specialpage": "ooccâd tuåimmseeidaid",
 	"action-extendedsearch-search-wikipage": "ooccâd seeidaid",
 	"action-extendedsearch-search-repofile": "ooccâd teâttõõzzid",
-	"bs-extendedsearch-suggest-operator": "Juʹrddiǩ-a ton <b>$1</b>?"
+	"bs-extendedsearch-suggest-operator": "Juʹrddiǩ-a ton <b>$1</b>?",
+	"bs-extendedsearch-source-type-repofile-label": "Pääiklaž teâttõs",
+	"bs-extendedsearch-source-type-specialpage-label": "Tuåimmseidd"
 }

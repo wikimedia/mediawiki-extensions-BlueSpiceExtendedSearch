@@ -42,9 +42,6 @@
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nimiavaruus",
 	"bs-extendedsearch-autocomplete-create-page-link": "Luo sivu \"$1\"",
 	"bs-extendedsearch-search-center-result-typetext-label": "Tyyppi:",
-	"bs-extendedsearch-source-type-wikipage-label": "Wikisivu",
-	"bs-extendedsearch-source-type-repofile-label": "Paikallinen tiedosto",
-	"bs-extendedsearch-source-type-specialpage-label": "Toimintosivu",
 	"prefs-extendedsearch": "Laajennettu haku",
 	"bs-extendedseach-wikipage-section-more-text": "... $1 lisää",
 	"bs-extendedsearch-redirect-target-label": "Ohjaa sivulle:",
@@ -54,5 +51,8 @@
 	"bs-extendedsearch-pref-auto-set-lang-filter": "Aseta kielisuodatin automaattisesti",
 	"bs-extendedsearch-search-center-create-page-link": "Luo sivu \"$1\"",
 	"bs-extendedsearch-filter-add-button-label": "Lisää suodatin",
-	"bs-extendedsearch-search-center-result-file-usage-label": "Käytössä sivuilla"
+	"bs-extendedsearch-search-center-result-file-usage-label": "Käytössä sivuilla",
+	"bs-extendedsearch-source-type-wikipage-label": "Wikisivu",
+	"bs-extendedsearch-source-type-repofile-label": "Paikallinen tiedosto",
+	"bs-extendedsearch-source-type-specialpage-label": "Toimintosivu"
 }

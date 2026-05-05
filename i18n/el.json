@@ -49,14 +49,14 @@
 	"bs-extendedsearch-searchcenter-sort-field-size": "Μέγεθος",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Ονοματοχώρος",
 	"bs-extendedsearch-search-center-result-typetext-label": "Τύπος:",
-	"bs-extendedsearch-source-type-wikipage-label": "Βικισελίδα",
-	"bs-extendedsearch-source-type-repofile-label": "Τοπικό αρχείο",
-	"bs-extendedsearch-source-type-specialpage-label": "Ειδική σελίδα",
 	"bs-extendedsearch-pref-external-file-paths-path": "Φυσική διαδρομή",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Τελευταία επεξεργασία: $1",
 	"bs-extendedseach-wikipage-section-more-text": "... $1 περισσότερα",
 	"bs-extendedsearch-redirect-target-label": "Ανακατευθύνει σε:",
 	"bs-extendedsearch-search-center-create-page-link": "Δημιουργία σελίδας \"$1\"",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Σελίδα $1: Κείμενο: $2",
-	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpiceExtendedSearch - Ιστορικό αναζήτησης: όρος (φορές που αναζητήθηκε ): $1"
+	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpiceExtendedSearch - Ιστορικό αναζήτησης: όρος (φορές που αναζητήθηκε ): $1",
+	"bs-extendedsearch-source-type-wikipage-label": "Βικισελίδα",
+	"bs-extendedsearch-source-type-repofile-label": "Τοπικό αρχείο",
+	"bs-extendedsearch-source-type-specialpage-label": "Ειδική σελίδα"
 }

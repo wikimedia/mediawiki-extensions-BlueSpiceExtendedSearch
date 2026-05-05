@@ -64,9 +64,6 @@
 	"bs-extendedsearch-autocomplete-create-page-link": "Направи страницу „$1”",
 	"bs-extendedsearch-loadmore-label": "Учитај још резултата",
 	"bs-extendedsearch-search-center-result-typetext-label": "Тип:",
-	"bs-extendedsearch-source-type-wikipage-label": "Викистраница",
-	"bs-extendedsearch-source-type-repofile-label": "Локална датотека",
-	"bs-extendedsearch-source-type-specialpage-label": "Посебна страница",
 	"bs-extendedsearch-result-relevance-not-relevant": "Овај резултат ми није важан",
 	"bs-extendedsearch-user-preferred-namespaces": "Жељени именски простори",
 	"bs-extendedsearch-pref-external-file-paths": "Спољашња путања датотеке",
@@ -105,5 +102,8 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Резултати",
 	"bs-extendedsearch-autocomplete-context-options-label": "Претрага",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Слични резултати",
-	"prefs-search": "Подешавање претраге"
+	"prefs-search": "Подешавање претраге",
+	"bs-extendedsearch-source-type-wikipage-label": "Викистраница",
+	"bs-extendedsearch-source-type-repofile-label": "Локална датотека",
+	"bs-extendedsearch-source-type-specialpage-label": "Посебна страница"
 }

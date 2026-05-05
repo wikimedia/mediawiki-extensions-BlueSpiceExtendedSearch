@@ -53,8 +53,8 @@
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "נאָמענטייל",
 	"bs-extendedsearch-autocomplete-create-page-link": "שאפֿן בלאט \"$1\"",
 	"bs-extendedsearch-search-center-result-typetext-label": "טיפ:",
+	"bs-extendedsearch-search-center-filter-page_language-label": "בלאַט־שפראַך",
 	"bs-extendedsearch-source-type-wikipage-label": "וויקיבלאט",
 	"bs-extendedsearch-source-type-repofile-label": "לאקאלע טעקע",
-	"bs-extendedsearch-source-type-specialpage-label": "ספּעציעלער בלאַט",
-	"bs-extendedsearch-search-center-filter-page_language-label": "בלאַט־שפראַך"
+	"bs-extendedsearch-source-type-specialpage-label": "ספּעציעלער בלאַט"
 }

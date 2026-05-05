@@ -92,10 +92,6 @@
 	"bs-extendedsearch-loadmore-label": "Carregar mais resultados",
 	"bs-extendedsearch-loadmore-error": "Não podem ser obtidos mais resultados",
 	"bs-extendedsearch-search-center-result-typetext-label": "Tipo:",
-	"bs-extendedsearch-source-type-wikipage-label": "Página wiki",
-	"bs-extendedsearch-source-type-repofile-label": "Ficheiro local",
-	"bs-extendedsearch-source-type-specialpage-label": "Página especial",
-	"bs-extendedsearch-source-type-externalfile-label": "Ficheiro externo",
 	"bs-extendedsearch-result-relevance-relevant": "O resultado é importante para mim",
 	"bs-extendedsearch-result-relevance-not-relevant": "O resultado não é importante para mim",
 	"prefs-extendedsearch": "Pesquisa avançada",
@@ -177,5 +173,9 @@
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultados similares",
 	"prefs-searchsection": "Áreas de procura",
 	"bs-extendedsearch-autocomplete-context-options-aria-label": "Procurar $1 $2",
-	"prefs-search": "Definições de procura"
+	"prefs-search": "Definições de procura",
+	"bs-extendedsearch-source-type-wikipage-label": "Página wiki",
+	"bs-extendedsearch-source-type-repofile-label": "Ficheiro local",
+	"bs-extendedsearch-source-type-specialpage-label": "Página especial",
+	"bs-extendedsearch-source-type-externalfile-label": "Ficheiro externo"
 }

@@ -73,9 +73,6 @@
 	"bs-extendedsearch-loadmore-label": "بارگیری نتایج بیشتر",
 	"bs-extendedsearch-loadmore-error": "نتایج بیشتر قابل واکشی نیستند",
 	"bs-extendedsearch-search-center-result-typetext-label": "نوع:",
-	"bs-extendedsearch-source-type-wikipage-label": "ویکی‌صفحه",
-	"bs-extendedsearch-source-type-repofile-label": "پروندهٔ محلی",
-	"bs-extendedsearch-source-type-specialpage-label": "صفحهٔ ویژه",
 	"bs-extendedsearch-result-relevance-relevant": "این نتیجه برایم مهم است",
 	"bs-extendedsearch-result-relevance-not-relevant": "این نتیجه برایم مهم نیست",
 	"prefs-extendedsearch": "جستجوی گسترده",
@@ -120,5 +117,8 @@
 	"bs-extendedsearch-tagsearch-input-aria-label": "جستجو",
 	"prefs-searchsection": "محدوده‌های جستجو",
 	"prefs-search": "جستجوی تنظیمات",
-	"bs-extendedsearch-user-pref-shortcut": "فعال‌سازی جستجو با استفاده از میانبر صفحه‌کلید"
+	"bs-extendedsearch-user-pref-shortcut": "فعال‌سازی جستجو با استفاده از میانبر صفحه‌کلید",
+	"bs-extendedsearch-source-type-wikipage-label": "ویکی‌صفحه",
+	"bs-extendedsearch-source-type-repofile-label": "پروندهٔ محلی",
+	"bs-extendedsearch-source-type-specialpage-label": "صفحهٔ ویژه"
 }

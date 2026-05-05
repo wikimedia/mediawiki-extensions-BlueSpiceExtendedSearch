@@ -52,9 +52,6 @@
 	"bs-extendedsearch-search-center-filter-has-hidden": "...{{PLURAL:$1|и уште $1}}",
 	"bs-extendedsearch-autocomplete-create-page-link": "Создади ја страницата „$1“",
 	"bs-extendedsearch-search-center-result-typetext-label": "Тип:",
-	"bs-extendedsearch-source-type-wikipage-label": "Викистраница",
-	"bs-extendedsearch-source-type-repofile-label": "Месна податотека",
-	"bs-extendedsearch-source-type-specialpage-label": "Службена страница",
 	"prefs-extendedsearch": "Напредно пребарување",
 	"bs-extendedsearch-user-preferred-namespaces": "Претпочитани именски простори",
 	"bs-extendedsearch-pref-external-file-paths": "Надворешни податотечни патеки",
@@ -73,5 +70,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Категорија1|Категорија2|...",
 	"bs-extendedsearch-collection-type-searchhistory": "Историја на пребарувањето",
 	"bs-extendedsearch-collection-var-searchterm": "Поим",
-	"bs-extendedsearch-collection-var-numbersearched": "Пребарувања"
+	"bs-extendedsearch-collection-var-numbersearched": "Пребарувања",
+	"bs-extendedsearch-source-type-wikipage-label": "Викистраница",
+	"bs-extendedsearch-source-type-repofile-label": "Месна податотека",
+	"bs-extendedsearch-source-type-specialpage-label": "Службена страница"
 }

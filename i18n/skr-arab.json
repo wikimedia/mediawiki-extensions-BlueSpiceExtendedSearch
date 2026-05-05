@@ -46,9 +46,6 @@
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "ناں جاہ",
 	"bs-extendedsearch-loadmore-label": "ٻئے نتیجے لوڈ کرو",
 	"bs-extendedsearch-search-center-result-typetext-label": "قسم:",
-	"bs-extendedsearch-source-type-wikipage-label": "وکی ورقہ",
-	"bs-extendedsearch-source-type-repofile-label": "لوکیل فائل",
-	"bs-extendedsearch-source-type-externalfile-label": "ٻاہرلی فائل",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "یوآرایل سابقہ",
 	"bs-extendedsearch-search-center-filter-page_language-label": "ورقے دی زبان",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "ورقے دی زبان:",
@@ -60,5 +57,8 @@
 	"bs-extendedsearch-tagsearch-input-aria-label": "ڳولو",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$2 وچوں $1 واں",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "نتیجے",
-	"bs-extendedsearch-autocomplete-context-options-label": "ڳولو"
+	"bs-extendedsearch-autocomplete-context-options-label": "ڳولو",
+	"bs-extendedsearch-source-type-wikipage-label": "وکی ورقہ",
+	"bs-extendedsearch-source-type-repofile-label": "لوکیل فائل",
+	"bs-extendedsearch-source-type-externalfile-label": "ٻاہرلی فائل"
 }

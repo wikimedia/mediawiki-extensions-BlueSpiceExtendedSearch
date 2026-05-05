@@ -36,9 +36,6 @@
 	"bs-extendedsearch-search-center-filter-has-hidden": "...{{PLURAL:$1|e $1 àutru|e àutri $1}}",
 	"bs-extendedsearch-loadmore-label": "Càrrica àutri risurtati",
 	"bs-extendedsearch-search-center-result-typetext-label": "Tipu:",
-	"bs-extendedsearch-source-type-wikipage-label": "Pàggina wiki",
-	"bs-extendedsearch-source-type-repofile-label": "File lucali",
-	"bs-extendedsearch-source-type-specialpage-label": "Pàggina spiciali",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Ùrtimu canciamentu: $1",
 	"bs-extendedseach-wikipage-section-more-text": " ... $1 àutri",
 	"bs-extendedsearch-redirect-target-label": "Rimanna a:",
@@ -52,5 +49,8 @@
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Tipu di risurtatu di l'arricerca nun vàlidu: $1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "Namespace1|Namespace2|...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Catigurìa1|Catigurìa2|...",
-	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Ammustra li risurtati glubbali"
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Ammustra li risurtati glubbali",
+	"bs-extendedsearch-source-type-wikipage-label": "Pàggina wiki",
+	"bs-extendedsearch-source-type-repofile-label": "File lucali",
+	"bs-extendedsearch-source-type-specialpage-label": "Pàggina spiciali"
 }

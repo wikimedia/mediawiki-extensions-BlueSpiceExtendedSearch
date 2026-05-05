@@ -23,8 +23,6 @@
 	"bs-extendedsearch-searchcenter-sort-field-size": "Памер",
 	"bs-extendedsearch-loadmore-label": "Ладаваць болей вынікаў",
 	"bs-extendedsearch-search-center-result-typetext-label": "Від:",
-	"bs-extendedsearch-source-type-wikipage-label": "Вікістаронка",
-	"bs-extendedsearch-source-type-specialpage-label": "Адмысловая старонка",
 	"prefs-extendedsearch": "Пашыраны пошук",
 	"bs-extendedsearch-search-center-filter-page_language-label": "Мова старонкі",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Мова старонкі:",
@@ -36,5 +34,7 @@
 	"right-extendedsearch-search-repofile": "Пошук файлаў",
 	"action-extendedsearch-search-specialpage": "пошук адмысловых старонак",
 	"action-extendedsearch-search-wikipage": "пошук старонак",
-	"action-extendedsearch-search-repofile": "пошук файлаў"
+	"action-extendedsearch-search-repofile": "пошук файлаў",
+	"bs-extendedsearch-source-type-wikipage-label": "Вікістаронка",
+	"bs-extendedsearch-source-type-specialpage-label": "Адмысловая старонка"
 }

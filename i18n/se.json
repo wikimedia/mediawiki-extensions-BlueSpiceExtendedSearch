@@ -21,10 +21,10 @@
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Geavat",
 	"bs-extendedsearch-searchcenter-sort-field-size": "Sturrodat",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Nammagomuvuohta",
-	"bs-extendedsearch-source-type-repofile-label": "Báikkálaš fiila",
-	"bs-extendedsearch-source-type-specialpage-label": "Doaibmasiidu",
 	"bs-extendedsearch-collection-type-searchhistory": "Ohcanhistorjá",
 	"right-extendedsearch-search-specialpage": "ohcat doaibmasiidduid",
 	"right-extendedsearch-search-repofile": "Ohcat fiillaid",
-	"action-extendedsearch-search-specialpage": "ohcat doaibmasiidduid"
+	"action-extendedsearch-search-specialpage": "ohcat doaibmasiidduid",
+	"bs-extendedsearch-source-type-repofile-label": "Báikkálaš fiila",
+	"bs-extendedsearch-source-type-specialpage-label": "Doaibmasiidu"
 }

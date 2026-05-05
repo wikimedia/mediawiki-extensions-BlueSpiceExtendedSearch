@@ -40,9 +40,6 @@
 	"bs-extendedsearch-loadmore-label": "Indlæs flere resultater",
 	"bs-extendedsearch-loadmore-error": "Der kunne ikke hentes flere resultater",
 	"bs-extendedsearch-search-center-result-typetext-label": "Type:",
-	"bs-extendedsearch-source-type-wikipage-label": "Wikiside",
-	"bs-extendedsearch-source-type-repofile-label": "Lokal fil",
-	"bs-extendedsearch-source-type-specialpage-label": "Specialside",
 	"bs-extendedsearch-result-relevance-relevant": "Dette resultat er vigtigt for mig",
 	"bs-extendedsearch-result-relevance-not-relevant": "Dette resultat er ikke vigtigt for mig",
 	"prefs-extendedsearch": "Udvidet søgning",
@@ -62,5 +59,8 @@
 	"action-extendedsearch-search-specialpage": "søg efter specialsider",
 	"action-extendedsearch-search-wikipage": "søg efter sider",
 	"action-extendedsearch-search-repofile": "søg efter filer",
-	"action-extendedsearch-search-externalfile": "søg efter eksterne filer"
+	"action-extendedsearch-search-externalfile": "søg efter eksterne filer",
+	"bs-extendedsearch-source-type-wikipage-label": "Wikiside",
+	"bs-extendedsearch-source-type-repofile-label": "Lokal fil",
+	"bs-extendedsearch-source-type-specialpage-label": "Specialside"
 }

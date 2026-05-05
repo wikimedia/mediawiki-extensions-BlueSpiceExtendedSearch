@@ -44,9 +44,6 @@
 	"bs-extendedsearch-search-center-hitcount-replaced": "Resultater fir $1 gi gewisen, amplaz no $2 sichen ({{PLURAL:$3|$3 Treffer}})",
 	"bs-extendedsearch-loadmore-label": "Méi Resultater lueden",
 	"bs-extendedsearch-search-center-result-typetext-label": "Typ:",
-	"bs-extendedsearch-source-type-repofile-label": "Lokale Fichier",
-	"bs-extendedsearch-source-type-specialpage-label": "Spezialsäit",
-	"bs-extendedsearch-source-type-externalfile-label": "Externe Fichier",
 	"prefs-extendedsearch": "Erweidert Sich",
 	"bs-extendedsearch-user-preferred-namespaces": "Preferéiert Nummraim",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL-Prefix",
@@ -80,5 +77,8 @@
 	"bs-extendedsearch-autocomplete-context-options-label": "Sichen",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Änlech Resultater",
 	"prefs-search": "Sichastellungen",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eng Kategorie geet duer (OR)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eng Kategorie geet duer (OR)",
+	"bs-extendedsearch-source-type-repofile-label": "Lokale Fichier",
+	"bs-extendedsearch-source-type-specialpage-label": "Spezialsäit",
+	"bs-extendedsearch-source-type-externalfile-label": "Externe Fichier"
 }

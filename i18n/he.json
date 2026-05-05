@@ -96,10 +96,6 @@
 	"bs-extendedsearch-loadmore-label": "טעינת תוצאות נוספות",
 	"bs-extendedsearch-loadmore-error": "לא ניתן לאחזר תוצאות נוספות",
 	"bs-extendedsearch-search-center-result-typetext-label": "סוג:",
-	"bs-extendedsearch-source-type-wikipage-label": "דף ויקי",
-	"bs-extendedsearch-source-type-repofile-label": "קובץ מקומי",
-	"bs-extendedsearch-source-type-specialpage-label": "דף מיוחד",
-	"bs-extendedsearch-source-type-externalfile-label": "קובץ חיצוני",
 	"bs-extendedsearch-result-relevance-relevant": "התוצאה הזאת חשובה לי",
 	"bs-extendedsearch-result-relevance-not-relevant": "התוצאה הזאת לא חשובה לי",
 	"prefs-extendedsearch": "חיפוש מורחב",
@@ -194,5 +190,9 @@
 	"bs-extendedsearch-user-pref-shortcut": "הפעלת חיפוש באמצעות קיצורי מקלדת",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "סוגי תוצאות",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "סינון לפי מרחב שמות",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "סינון לפי קטגוריות"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "סינון לפי קטגוריות",
+	"bs-extendedsearch-source-type-wikipage-label": "דף ויקי",
+	"bs-extendedsearch-source-type-repofile-label": "קובץ מקומי",
+	"bs-extendedsearch-source-type-specialpage-label": "דף מיוחד",
+	"bs-extendedsearch-source-type-externalfile-label": "קובץ חיצוני"
 }

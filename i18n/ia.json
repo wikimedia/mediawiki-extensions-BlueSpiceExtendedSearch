@@ -90,10 +90,6 @@
 	"bs-extendedsearch-loadmore-label": "Cargar plus resultatos",
 	"bs-extendedsearch-loadmore-error": "Impossibile recuperar plus resultatos",
 	"bs-extendedsearch-search-center-result-typetext-label": "Typo:",
-	"bs-extendedsearch-source-type-wikipage-label": "Pagina wiki",
-	"bs-extendedsearch-source-type-repofile-label": "File local",
-	"bs-extendedsearch-source-type-specialpage-label": "Pagina special",
-	"bs-extendedsearch-source-type-externalfile-label": "File externe",
 	"bs-extendedsearch-result-relevance-relevant": "Iste resultato es importante pro me",
 	"bs-extendedsearch-result-relevance-not-relevant": "Iste resultato non es importante pro me",
 	"prefs-extendedsearch": "Recerca extendite",
@@ -193,5 +189,9 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Filtrar per categorias",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Combination de filtros de categorias",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "Tote le categorias debe esser assignate (AND)",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Un categoria es sufficiente (OR)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Un categoria es sufficiente (OR)",
+	"bs-extendedsearch-source-type-wikipage-label": "Pagina wiki",
+	"bs-extendedsearch-source-type-repofile-label": "File local",
+	"bs-extendedsearch-source-type-specialpage-label": "Pagina special",
+	"bs-extendedsearch-source-type-externalfile-label": "File externe"
 }

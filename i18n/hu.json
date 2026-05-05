@@ -79,10 +79,6 @@
 	"bs-extendedsearch-loadmore-label": "További találatok betöltése",
 	"bs-extendedsearch-loadmore-error": "Nem érhető el további eredmény",
 	"bs-extendedsearch-search-center-result-typetext-label": "Típus:",
-	"bs-extendedsearch-source-type-wikipage-label": "Wikilap",
-	"bs-extendedsearch-source-type-repofile-label": "Helyi fájl",
-	"bs-extendedsearch-source-type-specialpage-label": "Speciális lap",
-	"bs-extendedsearch-source-type-externalfile-label": "Külső fájl",
 	"bs-extendedsearch-result-relevance-relevant": "Ez az eredmény számomra fontos",
 	"bs-extendedsearch-result-relevance-not-relevant": "Ez az eredmény számomra nem fontos",
 	"prefs-extendedsearch": "Kibővített keresés",
@@ -149,5 +145,9 @@
 	"bs-extendedsearch-autocomplete-context-none": "a teljes wikiben",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Eredmények",
 	"bs-extendedsearch-autocomplete-context-options-label": "Keresés",
-	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Hasonló eredmények"
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Hasonló eredmények",
+	"bs-extendedsearch-source-type-wikipage-label": "Wikilap",
+	"bs-extendedsearch-source-type-repofile-label": "Helyi fájl",
+	"bs-extendedsearch-source-type-specialpage-label": "Speciális lap",
+	"bs-extendedsearch-source-type-externalfile-label": "Külső fájl"
 }

@@ -26,8 +26,8 @@
 	"bs-extendedsearch-searchcenter-sort-field-basename": "Name",
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Heruna nameyan",
 	"bs-extendedsearch-search-center-result-typetext-label": "Babet:",
-	"bs-extendedsearch-source-type-specialpage-label": "Pela xısusiye",
 	"bs-extendedsearch-collection-var-searchterm": "Dewr",
 	"bs-extendedsearch-collection-var-numbersearched": "Cıgeyrayışi",
-	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Neticey \"$1\" mocniyeno"
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage": "Neticey \"$1\" mocniyeno",
+	"bs-extendedsearch-source-type-specialpage-label": "Pela xısusiye"
 }

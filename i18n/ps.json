@@ -79,10 +79,6 @@
 	"bs-extendedsearch-loadmore-error": "نورې پايلې نشي ترلاسه‌کېدای",
 	"bs-extendedsearch-filter-label-count-only": "($1)",
 	"bs-extendedsearch-search-center-result-typetext-label": "ډول:",
-	"bs-extendedsearch-source-type-wikipage-label": "ويکي‌مخ",
-	"bs-extendedsearch-source-type-repofile-label": "ځايي دوتنه",
-	"bs-extendedsearch-source-type-specialpage-label": "ځانگړی مخ",
-	"bs-extendedsearch-source-type-externalfile-label": "باندنۍ دوتنه",
 	"bs-extendedsearch-result-relevance-relevant": "دا پايله زما لپاره مهمه ده",
 	"bs-extendedsearch-result-relevance-not-relevant": "دا پايله زما لپاره مهمه نه ده",
 	"prefs-extendedsearch": "غځول‌شوی لټون",
@@ -153,5 +149,9 @@
 	"bs-extendedsearch-autocomplete-context-options-label": "پلټل",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "ورته پايلې",
 	"prefs-searchsection": "لټون سيمې",
-	"bs-extendedsearch-autocomplete-context-options-aria-label": "$1 $2 پلټل"
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "$1 $2 پلټل",
+	"bs-extendedsearch-source-type-wikipage-label": "ويکي‌مخ",
+	"bs-extendedsearch-source-type-repofile-label": "ځايي دوتنه",
+	"bs-extendedsearch-source-type-specialpage-label": "ځانگړی مخ",
+	"bs-extendedsearch-source-type-externalfile-label": "باندنۍ دوتنه"
 }

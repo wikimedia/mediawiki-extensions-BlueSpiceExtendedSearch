@@ -98,10 +98,6 @@
 	"bs-extendedsearch-loadmore-label": "Laad meer resultaten",
 	"bs-extendedsearch-loadmore-error": "Er kunnen niet meer zoekresultaten worden opgehaald",
 	"bs-extendedsearch-search-center-result-typetext-label": "Type:",
-	"bs-extendedsearch-source-type-wikipage-label": "Wikibase",
-	"bs-extendedsearch-source-type-repofile-label": "Lokaal bestand",
-	"bs-extendedsearch-source-type-specialpage-label": "Speciale pagina",
-	"bs-extendedsearch-source-type-externalfile-label": "Extern bestand",
 	"bs-extendedsearch-result-relevance-relevant": "Dit resultaat is belangrijk",
 	"bs-extendedsearch-result-relevance-not-relevant": "Dit resultaat is niet belangrijk",
 	"prefs-extendedsearch": "Uitgebreid zoeken",
@@ -201,5 +197,9 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Filteren op categorieën",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Filtercombinatie van categorieën",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "Alle categorieën moeten zijn toegewezen (EN)",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eén categorie is voldoende (OF)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eén categorie is voldoende (OF)",
+	"bs-extendedsearch-source-type-wikipage-label": "Wikibase",
+	"bs-extendedsearch-source-type-repofile-label": "Lokaal bestand",
+	"bs-extendedsearch-source-type-specialpage-label": "Speciale pagina",
+	"bs-extendedsearch-source-type-externalfile-label": "Extern bestand"
 }

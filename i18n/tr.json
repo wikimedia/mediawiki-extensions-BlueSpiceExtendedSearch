@@ -96,9 +96,6 @@
 	"bs-extendedsearch-loadmore-label": "Daha fazla sonuç yükle",
 	"bs-extendedsearch-loadmore-error": "Daha fazla sonuç alınamıyor",
 	"bs-extendedsearch-search-center-result-typetext-label": "Tür:",
-	"bs-extendedsearch-source-type-wikipage-label": "Vikisayfa",
-	"bs-extendedsearch-source-type-repofile-label": "Yerel dosya",
-	"bs-extendedsearch-source-type-specialpage-label": "Özel sayfa",
 	"bs-extendedsearch-result-relevance-relevant": "Bu sonuç benim için önemli",
 	"bs-extendedsearch-result-relevance-not-relevant": "Bu sonuç benim için önemli değil",
 	"prefs-extendedsearch": "Detaylı arama",
@@ -161,5 +158,8 @@
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "\"$1\" içinde aranıyor",
 	"bs-extendedsearch-statistics-report-search-terms": "Arama terimleri",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Kişi başına arama terimleri",
-	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Bir kullanıcıya sadece kendi dilindeki arama sonuçlarını gösterir. Kullanıcılar tercihler bölümünde dili belirleyebilir"
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Bir kullanıcıya sadece kendi dilindeki arama sonuçlarını gösterir. Kullanıcılar tercihler bölümünde dili belirleyebilir",
+	"bs-extendedsearch-source-type-wikipage-label": "Vikisayfa",
+	"bs-extendedsearch-source-type-repofile-label": "Yerel dosya",
+	"bs-extendedsearch-source-type-specialpage-label": "Özel sayfa"
 }

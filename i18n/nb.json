@@ -92,10 +92,6 @@
 	"bs-extendedsearch-loadmore-label": "Last flere resultater",
 	"bs-extendedsearch-loadmore-error": "Flere resultater kan ikke hentes",
 	"bs-extendedsearch-search-center-result-typetext-label": "Type:",
-	"bs-extendedsearch-source-type-wikipage-label": "Wikiside",
-	"bs-extendedsearch-source-type-repofile-label": "Lokal fil",
-	"bs-extendedsearch-source-type-specialpage-label": "Spesialside",
-	"bs-extendedsearch-source-type-externalfile-label": "Ekstern fil",
 	"bs-extendedsearch-result-relevance-relevant": "Dette resultatet er viktig for meg",
 	"bs-extendedsearch-result-relevance-not-relevant": "Dette resultatet er ikke viktig for meg",
 	"prefs-extendedsearch": "Utvidet søk",
@@ -169,5 +165,9 @@
 	"bs-extendedsearch-rest-trace-insert-failure": "Kunne ikke sette inn sporingsdata",
 	"bs-extendedsearch-rest-trace-remove-failure": "Kunne ikke fjerne sporingsdata",
 	"bs-extendedsearch-recently-found-header": "Nylig vist",
-	"bs-extendedsearch-autocomplete-context-options-aria-label": "Søk etter $1 i $2"
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Søk etter $1 i $2",
+	"bs-extendedsearch-source-type-wikipage-label": "Wikiside",
+	"bs-extendedsearch-source-type-repofile-label": "Lokal fil",
+	"bs-extendedsearch-source-type-specialpage-label": "Spesialside",
+	"bs-extendedsearch-source-type-externalfile-label": "Ekstern fil"
 }

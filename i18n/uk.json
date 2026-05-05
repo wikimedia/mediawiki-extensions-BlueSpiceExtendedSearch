@@ -96,9 +96,6 @@
 	"bs-extendedsearch-loadmore-label": "Завантажити більше результатів",
 	"bs-extendedsearch-loadmore-error": "Більше результатів отримати неможливо",
 	"bs-extendedsearch-search-center-result-typetext-label": "Тип:",
-	"bs-extendedsearch-source-type-wikipage-label": "Вікісторінка",
-	"bs-extendedsearch-source-type-repofile-label": "Локальний файл",
-	"bs-extendedsearch-source-type-specialpage-label": "Спеціальна сторінка",
 	"bs-extendedsearch-result-relevance-relevant": "Цей результат для мене важливий",
 	"bs-extendedsearch-result-relevance-not-relevant": "Цей результат для мене неважливий",
 	"prefs-extendedsearch": "Розширений пошук",
@@ -162,5 +159,8 @@
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Пошук у «$1»",
 	"bs-extendedsearch-statistics-report-search-terms": "Пошукові терміни",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Пошукові терміни для кожного користувача",
-	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Повертає результати пошуку користувача лише мовою користувача. Користувачі можуть вибирати свою мову відповідно до своїх уподобань"
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Повертає результати пошуку користувача лише мовою користувача. Користувачі можуть вибирати свою мову відповідно до своїх уподобань",
+	"bs-extendedsearch-source-type-wikipage-label": "Вікісторінка",
+	"bs-extendedsearch-source-type-repofile-label": "Локальний файл",
+	"bs-extendedsearch-source-type-specialpage-label": "Спеціальна сторінка"
 }

@@ -112,10 +112,6 @@
 	"bs-extendedsearch-loadmore-error": "Impossible de récupérer plus de résultats",
 	"bs-extendedsearch-filter-label-count-only": "($1)",
 	"bs-extendedsearch-search-center-result-typetext-label": "Type :",
-	"bs-extendedsearch-source-type-wikipage-label": "Page wiki",
-	"bs-extendedsearch-source-type-repofile-label": "Fichier local",
-	"bs-extendedsearch-source-type-specialpage-label": "Page spéciale",
-	"bs-extendedsearch-source-type-externalfile-label": "Fichier externe",
 	"bs-extendedsearch-result-relevance-relevant": "Ce résultat est important pour moi",
 	"bs-extendedsearch-result-relevance-not-relevant": "Ce résultat n’est pas important pour moi",
 	"prefs-extendedsearch": "Recherche avancée",
@@ -209,5 +205,9 @@
 	"bs-extendedsearch-autocomplete-context-options-aria-label": "Rechercher $1 $2",
 	"prefs-search": "Paramètres de recherche",
 	"bs-extendedsearch-user-pref-shortcut": "Activer la recherche à l'aide d'un raccourci clavier",
-	"bs-extendedsearch-user-pref-shortcut-help": "Permet d'ouvrir la recherche à l'aide des raccourcis clavier <code>Maj + 7</code>"
+	"bs-extendedsearch-user-pref-shortcut-help": "Permet d'ouvrir la recherche à l'aide des raccourcis clavier <code>Maj + 7</code>",
+	"bs-extendedsearch-source-type-wikipage-label": "Page wiki",
+	"bs-extendedsearch-source-type-repofile-label": "Fichier local",
+	"bs-extendedsearch-source-type-specialpage-label": "Page spéciale",
+	"bs-extendedsearch-source-type-externalfile-label": "Fichier externe"
 }

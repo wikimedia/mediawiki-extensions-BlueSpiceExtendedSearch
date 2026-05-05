@@ -59,10 +59,6 @@
 	"bs-extendedsearch-autocomplete-create-page-link": "Кхолла агӀо «$1»",
 	"bs-extendedsearch-loadmore-label": "Кхин жамӀаш чудахар",
 	"bs-extendedsearch-search-center-result-typetext-label": "Тайпа:",
-	"bs-extendedsearch-source-type-wikipage-label": "Вики-агӀо",
-	"bs-extendedsearch-source-type-repofile-label": "Локалан файл",
-	"bs-extendedsearch-source-type-specialpage-label": "Белхан агӀо",
-	"bs-extendedsearch-source-type-externalfile-label": "Арахьара файл",
 	"prefs-extendedsearch": "Кхиаме лехамаш",
 	"bs-extendedsearch-pref-external-file-paths": "Файлийн арахьара некъаш",
 	"bs-extendedsearch-pref-external-file-paths-path": "Физикин некъ",
@@ -112,5 +108,9 @@
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "ДӀасахьажор тӀе $1",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Хиламаш",
 	"bs-extendedsearch-autocomplete-context-options-label": "Лахар",
-	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Тера жамӀаш"
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Тера жамӀаш",
+	"bs-extendedsearch-source-type-wikipage-label": "Вики-агӀо",
+	"bs-extendedsearch-source-type-repofile-label": "Локалан файл",
+	"bs-extendedsearch-source-type-specialpage-label": "Белхан агӀо",
+	"bs-extendedsearch-source-type-externalfile-label": "Арахьара файл"
 }

@@ -98,10 +98,6 @@
 	"bs-extendedsearch-loadmore-label": "تحميل المزيد من النتائج",
 	"bs-extendedsearch-loadmore-error": "لا يمكن استرجاع المزيد من النتائج",
 	"bs-extendedsearch-search-center-result-typetext-label": "النوع:",
-	"bs-extendedsearch-source-type-wikipage-label": "صفحة الويكي",
-	"bs-extendedsearch-source-type-repofile-label": "ملف محلي",
-	"bs-extendedsearch-source-type-specialpage-label": "صفحة خاصة",
-	"bs-extendedsearch-source-type-externalfile-label": "ملف خارجي",
 	"bs-extendedsearch-result-relevance-relevant": "هذه النتيجة مهمة بالنسبة لي",
 	"bs-extendedsearch-result-relevance-not-relevant": "هذه النتيجة ليست مهمة بالنسبة لي",
 	"prefs-extendedsearch": "البحث الموسع",
@@ -171,5 +167,9 @@
 	"bs-extendedsearch-droplet-search-description": "يضيف حقل بحث إلى محتوى الصفحة",
 	"bs-extendedsearch-source-label-externalfile": "ملف خارجي",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "نتائج مماثلة",
-	"bs-extendedsearch-autocomplete-context-options-aria-label": "بحث $1 $2"
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "بحث $1 $2",
+	"bs-extendedsearch-source-type-wikipage-label": "صفحة الويكي",
+	"bs-extendedsearch-source-type-repofile-label": "ملف محلي",
+	"bs-extendedsearch-source-type-specialpage-label": "صفحة خاصة",
+	"bs-extendedsearch-source-type-externalfile-label": "ملف خارجي"
 }

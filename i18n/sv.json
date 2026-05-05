@@ -79,9 +79,6 @@
 	"bs-extendedsearch-loadmore-label": "Läs in fler resultat",
 	"bs-extendedsearch-loadmore-error": "Fler resultat kan inte hämtas",
 	"bs-extendedsearch-search-center-result-typetext-label": "Typ:",
-	"bs-extendedsearch-source-type-wikipage-label": "Wikisida",
-	"bs-extendedsearch-source-type-repofile-label": "Lokal fil",
-	"bs-extendedsearch-source-type-specialpage-label": "Specialsida",
 	"bs-extendedsearch-result-relevance-relevant": "Detta resultat är viktigt för mig",
 	"bs-extendedsearch-result-relevance-not-relevant": "Detta resultat är inte viktigt för mig",
 	"prefs-extendedsearch": "Utökad sökning",
@@ -128,5 +125,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "Platshållartext för sökfält",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "Filtrera efter namnrymder",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Filtrera efter kategorier",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Filterkombination av kategorier"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Filterkombination av kategorier",
+	"bs-extendedsearch-source-type-wikipage-label": "Wikisida",
+	"bs-extendedsearch-source-type-repofile-label": "Lokal fil",
+	"bs-extendedsearch-source-type-specialpage-label": "Specialsida"
 }

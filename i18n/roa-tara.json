@@ -89,9 +89,6 @@
 	"bs-extendedsearch-loadmore-label": "Careche cchiù resultate",
 	"bs-extendedsearch-loadmore-error": "otre resultate non ge ponne essere pigghiate",
 	"bs-extendedsearch-search-center-result-typetext-label": "Tipe:",
-	"bs-extendedsearch-source-type-wikipage-label": "UicchiPàgene",
-	"bs-extendedsearch-source-type-repofile-label": "File locale",
-	"bs-extendedsearch-source-type-specialpage-label": "Pàgena speciale",
 	"bs-extendedsearch-result-relevance-relevant": "Stu resultate jè 'mbortande pe me",
 	"bs-extendedsearch-result-relevance-not-relevant": "Stu resultate non g'è 'mbortande pe me",
 	"prefs-extendedsearch": "Ricerche estese",
@@ -154,5 +151,8 @@
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Stoche a cerche jndr'à \"$1\"",
 	"bs-extendedsearch-statistics-report-search-terms": "Cirche le termine",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Cirche le termine pe utende",
-	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Torne le resultate de recerche pe 'n'utende sulamende jndr'à lènghe de l'utende stesse. le utinde ponne 'mbostà 'a lènga lore jndr'à le preferenze."
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Torne le resultate de recerche pe 'n'utende sulamende jndr'à lènghe de l'utende stesse. le utinde ponne 'mbostà 'a lènga lore jndr'à le preferenze.",
+	"bs-extendedsearch-source-type-wikipage-label": "UicchiPàgene",
+	"bs-extendedsearch-source-type-repofile-label": "File locale",
+	"bs-extendedsearch-source-type-specialpage-label": "Pàgena speciale"
 }

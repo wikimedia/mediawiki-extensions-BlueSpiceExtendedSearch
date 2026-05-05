@@ -117,10 +117,6 @@
 	"bs-extendedsearch-loadmore-label": "加载更多结果",
 	"bs-extendedsearch-loadmore-error": "更多结果不能检索",
 	"bs-extendedsearch-search-center-result-typetext-label": "类型：",
-	"bs-extendedsearch-source-type-wikipage-label": "Wiki页面",
-	"bs-extendedsearch-source-type-repofile-label": "本地文件",
-	"bs-extendedsearch-source-type-specialpage-label": "特殊页面",
-	"bs-extendedsearch-source-type-externalfile-label": "外部文件",
 	"bs-extendedsearch-result-relevance-relevant": "此结果对我而言重要",
 	"bs-extendedsearch-result-relevance-not-relevant": "此结果对我而言不重要",
 	"prefs-extendedsearch": "扩展搜索",
@@ -220,5 +216,9 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "按分类筛选",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "筛选分类组合",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "所有分类必须被分配（且）",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "一个分类即可（或）"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "一个分类即可（或）",
+	"bs-extendedsearch-source-type-wikipage-label": "Wiki页面",
+	"bs-extendedsearch-source-type-repofile-label": "本地文件",
+	"bs-extendedsearch-source-type-specialpage-label": "特殊页面",
+	"bs-extendedsearch-source-type-externalfile-label": "外部文件"
 }

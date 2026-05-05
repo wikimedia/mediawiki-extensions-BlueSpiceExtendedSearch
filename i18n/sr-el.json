@@ -58,9 +58,6 @@
 	"bs-extendedsearch-autocomplete-create-page-link": "Napravi stranicu „$1”",
 	"bs-extendedsearch-loadmore-label": "Učitaj još rezultata",
 	"bs-extendedsearch-search-center-result-typetext-label": "Tip:",
-	"bs-extendedsearch-source-type-wikipage-label": "Vikistranica",
-	"bs-extendedsearch-source-type-repofile-label": "Lokalna datoteka",
-	"bs-extendedsearch-source-type-specialpage-label": "Posebna stranica",
 	"bs-extendedsearch-result-relevance-not-relevant": "Ovaj rezultat mi nije važan",
 	"bs-extendedsearch-user-preferred-namespaces": "Željeni imenski prostori",
 	"bs-extendedsearch-pref-external-file-paths": "Spoljašnja putanja datoteke",
@@ -97,5 +94,8 @@
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 od $2",
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "Preusmerava na $1",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Rezultati",
-	"bs-extendedsearch-autocomplete-context-options-label": "Pretraga"
+	"bs-extendedsearch-autocomplete-context-options-label": "Pretraga",
+	"bs-extendedsearch-source-type-wikipage-label": "Vikistranica",
+	"bs-extendedsearch-source-type-repofile-label": "Lokalna datoteka",
+	"bs-extendedsearch-source-type-specialpage-label": "Posebna stranica"
 }

@@ -71,9 +71,6 @@
 	"bs-extendedsearch-loadmore-label": "Įkelti daugiau rezultatų",
 	"bs-extendedsearch-loadmore-error": "Daugiau rezultatų gauti negalima",
 	"bs-extendedsearch-search-center-result-typetext-label": "Tipas:",
-	"bs-extendedsearch-source-type-wikipage-label": "Viki puslapis",
-	"bs-extendedsearch-source-type-repofile-label": "Vietinis failas",
-	"bs-extendedsearch-source-type-specialpage-label": "Specialusis puslapis",
 	"bs-extendedsearch-result-relevance-relevant": "Šis rezultatas man svarbus",
 	"bs-extendedsearch-result-relevance-not-relevant": "Šis rezultatas man nėra svarbus",
 	"prefs-extendedsearch": "Išplėstinė paieška",
@@ -118,5 +115,8 @@
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Paieškos terminai vienam naudotojui",
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Paieškos užklausų skaičius",
 	"bs-extendedsearch-droplet-search-name": "Paieškos laukas",
-	"bs-extendedsearch-droplet-search-description": "Prie puslapio turinio pridedamas paieškos laukas"
+	"bs-extendedsearch-droplet-search-description": "Prie puslapio turinio pridedamas paieškos laukas",
+	"bs-extendedsearch-source-type-wikipage-label": "Viki puslapis",
+	"bs-extendedsearch-source-type-repofile-label": "Vietinis failas",
+	"bs-extendedsearch-source-type-specialpage-label": "Specialusis puslapis"
 }

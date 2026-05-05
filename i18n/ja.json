@@ -102,10 +102,6 @@
 	"bs-extendedsearch-loadmore-label": "結果をもっと読み込む",
 	"bs-extendedsearch-loadmore-error": "これ以上の結果を取得できません",
 	"bs-extendedsearch-search-center-result-typetext-label": "種類:",
-	"bs-extendedsearch-source-type-wikipage-label": "ウィキページ",
-	"bs-extendedsearch-source-type-repofile-label": "ファイルの読み込み",
-	"bs-extendedsearch-source-type-specialpage-label": "特別ページ",
-	"bs-extendedsearch-source-type-externalfile-label": "外部ファイル",
 	"bs-extendedsearch-result-relevance-relevant": "この結果は私にとって重要です",
 	"bs-extendedsearch-result-relevance-not-relevant": "この結果は私にとって重要ではない",
 	"prefs-extendedsearch": "拡張検索",
@@ -175,5 +171,9 @@
 	"bs-extendedsearch-droplet-search-description": "ページのコンテンツに検索欄を追加",
 	"bs-extendedsearch-source-label-externalfile": "外部ファイル",
 	"bs-extendedsearch-trace-error-invalid-data": "トレース データが提供されていないか無効です。このページに直接アクセスしないでください。",
-	"apihelp-bs-extendedsearch-recently-found-pages-summary": "利用者が最近検索結果から閲覧したページをリスト表示します。"
+	"apihelp-bs-extendedsearch-recently-found-pages-summary": "利用者が最近検索結果から閲覧したページをリスト表示します。",
+	"bs-extendedsearch-source-type-wikipage-label": "ウィキページ",
+	"bs-extendedsearch-source-type-repofile-label": "ファイルの読み込み",
+	"bs-extendedsearch-source-type-specialpage-label": "特別ページ",
+	"bs-extendedsearch-source-type-externalfile-label": "外部ファイル"
 }
