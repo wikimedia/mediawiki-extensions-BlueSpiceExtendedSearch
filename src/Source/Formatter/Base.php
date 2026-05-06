@@ -11,6 +11,7 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Title\Title;
+use Message;
 use MWStake\MediaWiki\Component\Utils\UtilityFactory;
 
 class Base implements ISearchResultFormatter {
