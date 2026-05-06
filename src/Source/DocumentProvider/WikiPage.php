@@ -193,7 +193,7 @@ class WikiPage extends Base {
 		$html = $this->parserOutput->runOutputPipeline( ParserOptions::newFromAnon(), [
 			'allowTOC' => false,
 			'enableSectionEditLinks' => false
-		] )->getRawText() ?? '';
+		] )->getContentHolderText() ?? '';
 		return $this->stripTags( $html );
 	}
 
