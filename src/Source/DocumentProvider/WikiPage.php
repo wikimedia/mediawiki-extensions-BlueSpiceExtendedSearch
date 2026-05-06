@@ -10,6 +10,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageProps;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Parser\Parser;
+use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
@@ -188,7 +189,7 @@ class WikiPage extends Base {
 	 * @return string
 	 */
 	protected function getHTMLContent() {
-		$html = $this->parserOutput->runOutputPipeline( \ParserOptions::newFromAnon(), [
+		$html = $this->parserOutput->runOutputPipeline( ParserOptions::newFromAnon(), [
 			'allowTOC' => false,
 			'enableSectionEditLinks' => false
 		] )->getRawText() ?? '';
