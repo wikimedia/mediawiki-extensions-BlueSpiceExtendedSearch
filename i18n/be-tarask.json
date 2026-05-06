@@ -40,5 +40,7 @@
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Скасаваць",
 	"bs-extendedsearch-loadmore-label": "Ладаваць болей вынікаў",
 	"bs-extendedsearch-search-center-filter-tags-label": "Тэґ",
-	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Тэґі:"
+	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Тэґі:",
+	"bs-extendedsearch-search-center-sort-order-asc": "Водле ўзросту",
+	"bs-extendedsearch-search-center-sort-order-desc": "Водле спаду"
 }
