@@ -117,7 +117,6 @@ class WikiPages extends GenericSource {
 			$lookup, $context, MediaWikiServices::getInstance()->getService( 'MWStakeCommonUtilsFactory' )
 		);
 		$modifiers[] = new WikiPageNamespacePrefixResolver( $lookup, $context );
-		$modifiers[] = new WikiPageSecurityTrimming( $lookup, $context );
 		$modifiers[] = new WikiPageCategoriesAggregation( $lookup, $context );
 		$modifiers[] = new WikiPageRenderedContentHighlight( $lookup, $context );
 		$modifiers[] = new WikiPageQSSourceFields( $lookup, $context );
