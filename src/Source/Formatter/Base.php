@@ -9,6 +9,7 @@ use BS\ExtendedSearch\Wildcarder;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Message\Message;
 use MediaWiki\Title\Title;
 use MWStake\MediaWiki\Component\Utils\UtilityFactory;
 
