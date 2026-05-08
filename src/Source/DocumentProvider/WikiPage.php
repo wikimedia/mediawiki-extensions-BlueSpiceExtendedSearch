@@ -20,6 +20,7 @@ use MediaWiki\Revision\RevisionRenderer;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
+use MWStake\MediaWiki\Component\Utils\UtilityFactory;
 use WikiPage as WikiPageObject;
 
 class WikiPage extends Base {
@@ -53,6 +54,8 @@ class WikiPage extends Base {
 	protected $revisionLookup;
 	/** @var RevisionRenderer */
 	private $revisionRenderer;
+	/** @var UtilityFactory */
+	private $utilityFactory;
 
 	/**
 	 * @param HookContainer $hookContainer
@@ -63,11 +66,12 @@ class WikiPage extends Base {
 	 * @param RedirectLookup $redirectLookup
 	 * @param UserFactory $userFactory
 	 * @param RevisionRenderer|null $revisionRenderer
+	 * @param UtilityFactory|null $utilityFactory
 	 */
 	public function __construct(
 		HookContainer $hookContainer, ContentRenderer $contentRenderer, RevisionLookup $revisionLookup,
 		PageProps $pageProps, Parser $parser, RedirectLookup $redirectLookup, UserFactory $userFactory,
-		?RevisionRenderer $revisionRenderer = null
+		?RevisionRenderer $revisionRenderer = null, ?UtilityFactory $utilityFactory = null
 	) {
 		$this->hookContainer = $hookContainer;
 		$this->contentRenderer = $contentRenderer;
@@ -77,6 +81,8 @@ class WikiPage extends Base {
 		$this->redirectLookup = $redirectLookup;
 		$this->userFactory = $userFactory;
 		$this->revisionRenderer = $revisionRenderer ?? MediaWikiServices::getInstance()->getRevisionRenderer();
+		$this->utilityFactory = $utilityFactory ??
+			MediaWikiServices::getInstance()->getService( 'MWStakeCommonUtilsFactory' );
 	}
 
 	/**
@@ -137,7 +143,8 @@ class WikiPage extends Base {
 	}
 
 	/**
-	 *
+	 * Legacy only
+	 * @deprecated
 	 * @param Title $title
 	 * @param string|null $prop
 	 * @param mixed|null $default
@@ -309,10 +316,6 @@ class WikiPage extends Base {
 			return $this->title->getPrefixedText();
 		}
 		$title = $title ?? $this->title;
-		$displayTitle = $this->getPageProps( $title, 'displaytitle' );
-		if ( $displayTitle ) {
-			return $displayTitle;
-		}
 		if ( $this->title->getNamespace() === NS_USER ) {
 			$user = $this->userFactory->newFromName( $title->getDBkey() );
 			if ( $user instanceof User ) {
@@ -323,7 +326,9 @@ class WikiPage extends Base {
 			// Fall back to username
 			return $title->getText();
 		}
-		return $title->getPrefixedText();
+
+		$displayTitle = $this->utilityFactory->getDisplayTitleHelper()->getDisplayTitle( $title );
+		return $displayTitle ?? $title->getPrefixedText();
 	}
 
 	/**
