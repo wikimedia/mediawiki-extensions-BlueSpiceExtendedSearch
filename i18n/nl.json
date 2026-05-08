@@ -137,7 +137,7 @@
 	"bs-extendedsearch-remove-button-label": "Filter \"$1\" verwijderen",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Gebruikt op pagina's",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Invoeren om te zoeken...",
-	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Ongeldig type zoekresultaat: $1",
+	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Onjuist type zoekresultaat: $1",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "Label zoeken",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-desc": "Aanmaken van invoerveld om te zoeken in specifieke context",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Naamruimte(n)",
