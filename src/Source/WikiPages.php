@@ -51,7 +51,7 @@ class WikiPages extends GenericSource {
 			'class' => DocumentProvider\WikiPage::class,
 			'services' => [
 				'HookContainer', 'ContentRenderer', 'RevisionLookup', 'PageProps', 'Parser',
-				'RedirectLookup', 'UserFactory', 'RevisionRenderer'
+				'RedirectLookup', 'UserFactory', 'RevisionRenderer', 'MWStakeCommonUtilsFactory'
 			]
 		] );
 	}
