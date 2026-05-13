@@ -151,5 +151,19 @@
 	"bs-extendedsearch-context-namespace-label": "'''$1''' 이름공간에서",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "결과",
 	"bs-extendedsearch-autocomplete-context-options-label": "검색",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "이름공간별 필터"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "이름공간별 필터",
+	"bs-extendedsearch-search-center-hitcount-widget": "{{PLURAL:$1|$1개 검색 결과}}를 찾았습니다",
+	"bs-extendedsearch-search-center-hitcount-widget-approximately": "대략 {{PLURAL:$1|$1개의 검색 결과}}를 찾았습니다",
+	"bs-extendedsearch-search-center-result-sections-label": "문단:",
+	"bs-extendedsearch-source-type-externalfile-label": "외부 파일",
+	"bs-extendedsearch-remove-button-label": "필터 \"$1\" 제거",
+	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "전역 결과 표시",
+	"bs-extendedsearch-tagsearch-btn-aria-label": "검색 시작",
+	"bs-extendedsearch-tagsearch-input-aria-label": "검색",
+	"bs-extendedsearch-autocomplete-context-none": "전체 위키에서",
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "비슷한 결과",
+	"prefs-search": "검색 설정",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "결과 유형",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "검색 필드의 플레이스홀더 텍스트",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "분류별 필터"
 }
