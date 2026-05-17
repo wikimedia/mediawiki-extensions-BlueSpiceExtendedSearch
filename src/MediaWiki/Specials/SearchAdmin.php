@@ -9,20 +9,13 @@ use MediaWiki\SpecialPage\SpecialPage;
 
 class SearchAdmin extends SpecialPage {
 
-	/**
-	 *
-	 * @param string $name
-	 * @param string $restriction
-	 * @param bool $listed
-	 * @param bool $function
-	 * @param string $file
-	 * @param bool $includable
-	 */
-	public function __construct(
-		$name = '', $restriction = '', $listed = true,
-		$function = false, $file = '', $includable = false
-	) {
-		parent::__construct( 'BSSearchAdmin', 'extendedsearchadmin-viewspecialpage' );
+	public function __construct() {
+		parent::__construct( 'BSSearchAdmin' );
+	}
+
+	/** @inheritDoc */
+	public function getRestriction(): string {
+		return 'extendedsearchadmin-viewspecialpage';
 	}
 
 	/**
