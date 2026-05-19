@@ -150,5 +150,20 @@
 	"prefs-search": "검색 설정",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "결과 유형",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "검색 필드의 플레이스홀더 텍스트",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "분류별 필터"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "분류별 필터",
+	"bssearchadmin": "검색 관리자",
+	"apihelp-bs-extendedsearch-query-param-q": "검색어",
+	"apihelp-bs-extendedsearch-stats-summary": "등록된 백엔드와 구성된 소스에 대한 통계 데이터를 반환합니다",
+	"apihelp-bs-extendedsearch-generic-param-backend": "쿼리되어야 하는 구성된 백엔드의 키",
+	"apihelp-bs-extendedsearch-generic-param-sources": "지정된 백엔드 내의 하나 이상의 소스를 파이프|로 구분합니다. 비어 있는 경우 사용 가능한 모든 소스를 쿼리합니다.",
+	"apihelp-bs-extendedsearch-autocomplete-summary": "주어진 쿼리로부터 자동완성 결과를 반환합니다",
+	"bs-extendedsearch-droplet-search-name": "검색 필드",
+	"bs-extendedsearch-droplet-search-description": "페이지 콘텐츠에 검색 필드를 추가합니다",
+	"bs-extendedsearch-source-label-externalfile": "외부 파일",
+	"bs-extendedsearch-trace-error-invalid-data": "추적 데이터가 제공되지 않거나 유효하지 않습니다. 이 문서에 직접 접속하지 마세요.",
+	"apihelp-bs-extendedsearch-recently-found-pages-summary": "검색 결과에서 사용자가 최근에 이동한 문서 목록",
+	"bs-extendedsearch-rest-trace-insert-failure": "추적 데이터를 삽입하는데 실패함",
+	"bs-extendedsearch-rest-trace-remove-failure": "추적 데이터를 제거하는데 실패함",
+	"bs-extendedsearch-recently-found-header": "최근에 확인함",
+	"bs-extendedsearch-recently-found-header-aria": "{{PLURAL:$1|$1개}}의 최근에 확인한 {{PLURAL:$1|결과}}를 사용 가능합니다"
 }
