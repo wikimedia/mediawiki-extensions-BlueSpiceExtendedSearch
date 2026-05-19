@@ -253,7 +253,7 @@ class WikiPageFormatter extends Base {
 				$moreSections = true;
 				break;
 			}
-			$linkTarget = new TitleValue( $result['namespace'], $result['prefixed_title'], $section );
+			$linkTarget = $result['_title_object']->createFragmentTarget( $section );
 			$displayText = str_replace( '_', ' ', $section );
 			if ( strlen( $displayText ) > 25 ) {
 				$displayText = substr( $displayText, 0, 25 ) . Base::MORE_VALUES_TEXT;
