@@ -156,7 +156,7 @@
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "비슷한 결과",
 	"prefs-search": "검색 설정",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "결과 유형",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "검색 필드의 플레이스홀더 텍스트",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "검색 필드의 자리 표시자 텍스트",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "분류별 필터",
 	"bssearchadmin": "검색 관리자",
 	"apihelp-bs-extendedsearch-query-param-q": "검색어",
