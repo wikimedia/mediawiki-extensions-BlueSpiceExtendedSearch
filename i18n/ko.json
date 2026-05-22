@@ -188,5 +188,20 @@
 	"bs-extendedsearch-user-pref-shortcut-help": "키보드 단축키 <code>Shift + 7</code> 사용하여 검색 창을 열 수 있습니다",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "분류 조합으로 필터링",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "모든 분류가 반드시 할당되어야 합니다 (AND)",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "분류는 하나로 충분합니다 (OR)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "분류는 하나로 충분합니다 (OR)",
+	"bs-extendedsearch-search-center-hitcount-replaced": "$2 대신 $1에 대한 검색 결과를 표시 중입니다 ({{PLURAL:$3|$3개 결과}})",
+	"bs-extendedsearch-search-center-hitcount-suggest": "$1을(를) 찾으셨나요 ({{PLURAL:$2|$2개 결과}})?",
+	"bs-extendedsearch-auto-set-lang-filter-desc": "사용자/위키 언어에 따라 문서 언어 필터를 자동으로 설정할지 여부",
+	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpiceExtendedSearch - 검색 기록: 검색어 (검색 횟수): $1",
+	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch - {{GENDER:$2|당신}}은 {{PLURAL:$1|$1게 문서}}를 관련 검색 {{PLURAL:$1|결과}}로 표시했습니다",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-desc": "지정된 문맥에서 검색하는 검색 입력 필드를 생성합니다",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "파이프(|)로 구분된, 유효한 이름공간 이름 또는 ID의 목록",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-help": "파이프(|)로 구분된, 유효한 분류 이름 목록",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-placeholder-help": "입력란에 아무것도 입력하지 않았을 때 표시될 텍스트입니다",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-operator-help": "이 매개변수는 \"category\" 매개변수와 함께 사용될 때만 평가됩니다. AND로 설정하면 지정된 모든 분류에 속하는 결과만 일치시키고, OR 값으로 설정하면 지정된 분류 중 하나 이상에 속하는 결과만 일치시킵니다.",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-type-help": "파이프(|)로 구분된, 유효한 결과 유형 목록",
+	"bs-extendedsearch-pref-externalfilepaths-help": "파일을 검색하고 색인을 생성할 외부 위치입니다. 이러한 위치는 키/값 쌍으로 입력됩니다",
+	"bs-extendedsearch-statistics-report-search-terms-desc": "선택한 기간 동안 가장 많이 검색된 용어",
+	"bs-extendedsearch-statistics-report-search-term-by-user": "사용자 당 검색어",
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "사용자의 언어로만 검색 결과를 표시합니다. 사용자는 환경 설정에서 언어를 변경할 수 있습니다"
 }
