@@ -42,7 +42,7 @@
 	"bs-extendedsearch-admin-label-all-documents-count": "색인 대상 총 문서 수",
 	"bs-extendedsearch-admin-heading-sources": "출처",
 	"bs-extendedsearch-admin-heading-sources-documentscount": "문서",
-	"bs-extendedsearch-admin-heading-pendingupdatejobs": "보류 중인 업데이트 작업",
+	"bs-extendedsearch-admin-heading-pendingupdatejobs": "대기 중인 업데이트 작업",
 	"bs-extendedsearch-search-center-hitcount-widget": "{{PLURAL:$1|$1개 검색 결과}}를 찾았습니다",
 	"bs-extendedsearch-search-center-hitcount-widget-approximately": "대략 {{PLURAL:$1|$1개의 검색 결과}}를 찾았습니다",
 	"bs-extendedsearch-search-center-addfilter-dialog-title": "필터 추가",
