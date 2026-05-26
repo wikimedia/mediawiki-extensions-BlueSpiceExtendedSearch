@@ -173,7 +173,7 @@
 	"apihelp-bs-extendedsearch-resultrelevance-summary": "검색 결과의 관련성을 반환합니다",
 	"apihelp-bs-extendedsearch-query-param-relevance-data": "검색 문맥에 대한 추가 정보를 포함하는 JSON 디코딩된 문자열",
 	"apihelp-bs-extendedsearch-type-store-summary": "등록된 검색 유형을 반환합니다",
-	"bs-extendedsearch-admin-heading-pendingupdatejobs": "보류 중인 업데이트 작업",
+	"bs-extendedsearch-admin-heading-pendingupdatejobs": "대기 중인 업데이트 작업",
 	"bs-extendedsearch-collection-var-searchterm": "검색어",
 	"prefs-searchsection": "검색 영어",
 	"bs-extendedsearch-autocomplete-context-options-aria-label": "검색 $1 $2",
