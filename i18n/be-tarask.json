@@ -40,5 +40,6 @@
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Скасаваць",
 	"bs-extendedsearch-loadmore-label": "Ладаваць болей вынікаў",
 	"bs-extendedsearch-search-center-sort-order-asc": "Водле ўзросту",
-	"bs-extendedsearch-search-center-sort-order-desc": "Водле спаду"
+	"bs-extendedsearch-search-center-sort-order-desc": "Водле спаду",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Фільтар водле катэґорыі"
 }
