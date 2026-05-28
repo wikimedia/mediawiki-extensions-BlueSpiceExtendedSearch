@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Red Winged Duck",
 			"Ucukor",
 			"W"
 		]
@@ -10,10 +11,10 @@
 	"bs-extendedsearch-source-label-specialpage": "Адмысловая старонка",
 	"bs-extendedsearch-admin-label-error": "Памылка",
 	"bs-extendedsearch-admin-heading-sources": "Крыніцы",
-	"bs-extendedsearch-search-center-filter-tags-label": "Тэґ",
+	"bs-extendedsearch-search-center-filter-tags-label": "Тэг",
 	"bs-extendedsearch-search-center-filter-categories-label": "Катэгорыя",
 	"bs-extendedsearch-search-center-filter-type-label": "Від",
-	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Тэґі:",
+	"bs-extendedsearch-search-center-filter-tags-with-values-label": "Тэгі:",
 	"bs-extendedsearch-search-center-filter-categories-with-values-label": "Катэгорыя:",
 	"bs-extendedsearch-search-center-filter-type-with-values-label": "Від:",
 	"bs-extendedsearch-search-center-result-categories-label": "Катэгорыя:",
@@ -37,7 +38,7 @@
 	"action-extendedsearch-search-specialpage": "пошук адмысловых старонак",
 	"action-extendedsearch-search-wikipage": "пошук старонак",
 	"action-extendedsearch-search-repofile": "пошук файлаў",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Фільтар водле катэґорыі",
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Фільтар паводле катэгорыяў",
 	"bs-extendedsearch-source-type-wikipage-label": "Вікістаронка",
 	"bs-extendedsearch-source-type-specialpage-label": "Адмысловая старонка"
 }
