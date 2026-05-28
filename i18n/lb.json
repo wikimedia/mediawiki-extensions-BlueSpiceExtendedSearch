@@ -89,5 +89,6 @@
 	"bs-extendedsearch-export-button-label": "Sichresultater exportéieren",
 	"prefs-search": "Sichastellungen",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eng Kategorie geet duer (OR)",
-	"bs-extendedsearch-user-preferred-namespaces": "Preferéiert Nummraim"
+	"bs-extendedsearch-user-preferred-namespaces": "Preferéiert Nummraim",
+	"bs-extendedsearch-source-label-externalfile": "Externe Fichier"
 }
