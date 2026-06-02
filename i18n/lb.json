@@ -67,6 +67,7 @@
 	"action-extendedsearch-search-externalfile": "no externe Fichiere sichen",
 	"bs-extendedsearch-suggest-operator": "Wollt Dir no <b>$1</b> sichen?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Global Resultater weisen",
+	"bs-extendedsearch-source-label-externalfile": "Externe Fichier",
 	"bs-extendedsearch-tagsearch-input-aria-label": "Sichen",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 vu(n) $2",
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "Leet op $1 virun",
@@ -80,6 +81,5 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eng Kategorie geet duer (OR)",
 	"bs-extendedsearch-source-type-repofile-label": "Lokale Fichier",
 	"bs-extendedsearch-source-type-specialpage-label": "Spezialsäit",
-	"bs-extendedsearch-source-type-externalfile-label": "Externe Fichier",
-	"bs-extendedsearch-source-label-externalfile": "Externe Fichier"
+	"bs-extendedsearch-source-type-externalfile-label": "Externe Fichier"
 }
