@@ -109,7 +109,7 @@
 	"bs-extendedsearch-user-preferred-namespaces": "Voorkeursnaamruimte",
 	"bs-extendedsearch-pref-external-file-paths": "Pad naar extern bestand",
 	"bs-extendedsearch-pref-external-file-paths-path": "Fysiek pad",
-	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL voorvoegsel",
+	"bs-extendedsearch-pref-external-file-paths-url-prefix": "Url-voorvoegsel",
 	"bs-extendedsearch-pref-external-file-paths-path-help": "Opslagpad. Voor aangekoppelde opslageenheden, bijvoorbeeld: X:\\Documenten",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix-help": "Alle bestanden die vanaf de geïndexeerde fysieke locatie zijn geïndexeerd, krijgen in de zoekresultaten een voorvoegsel. Het moet worden gebruikt als bestanden beschikbaar zijn vanaf een webserver. Het URL-voorvoegsel is standaard ingesteld op dezelfde waarde als Fysiek pad.",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Uit te sluiten patronen",
