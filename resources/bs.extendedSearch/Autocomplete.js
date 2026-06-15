@@ -90,8 +90,14 @@ bs.extendedSearch.Autocomplete.prototype.getSuggestions = async function () {
 			lookup.addTermFilter( 'namespace', 0 );
 		}
 	}
+	const lookupData = {
+		lookup: lookup,
+		lookupConfig: this.lookupConfig
+	};
+	mw.hook( 'bs.extendedSearch.Autocomplete.GetSuggestions' )
+		.fire( lookupData, this.searchBar );
 
-	this.runLookup( lookup ).done( ( response ) => {
+	this.runLookup( lookupData.lookup ).done( ( response ) => {
 		this.searchBar.clearPending();
 		$( document ).trigger( 'BSExtendedSearchAutocompleteSuggestionsRetrieved', [ response.suggestions || [] ] );
 		dfd.resolve( response.suggestions );
@@ -253,7 +259,13 @@ bs.extendedSearch.Autocomplete.prototype.onSubmit = function ( e ) {
 		// Set lookup object to be submitted
 		this.setLookupToSubmit();
 
-		$( this.searchBar.$searchForm ).submit(); // eslint-disable-line no-jquery/no-event-shorthand
+		const data = {
+			continueSubmit: true
+		};
+		mw.hook( 'bs.extendedSearch.Autocomplete.beforeSubmit' ).fire( data, this.searchBar );
+		if ( data.continueSubmit ) {
+			$( this.searchBar.$searchForm ).submit(); // eslint-disable-line no-jquery/no-event-shorthand
+		}
 	}
 };
 
