@@ -1,27 +1,6 @@
 bs.util.registerNamespace( 'bs.extendedSearch.mixin' );
 
-bs.extendedSearch.mixin.FilterRemoveButton = function ( cfg ) {
-	cfg = cfg || {};
-
-	this.showRemove = cfg.showRemove || false;
-	if ( !this.showRemove ) {
-		this.$element.addClass( 'no-remove-button' );
-		return null;
-	}
-
-	const button = new OO.ui.ButtonWidget( {
-		indicator: 'clear'
-	} );
-
-	button.connect( this, { click: 'removeFilter' } );
-
-	this.$removeButton = button.$element;
-	this.$removeButton.addClass( 'bs-extendedsearch-filter-button-remove' );
-	this.$removeButton.attr( 'title', mw.message( 'bs-extendedsearch-remove-button-label', cfg.label ).text() );
-	this.$removeButton.children().attr(
-		'aria-label',
-		mw.message( 'bs-extendedsearch-remove-button-label', cfg.label ).text().replaceAll( '"', '' ) // eslint-disable-line es-x/no-string-prototype-replaceall
-	);
+bs.extendedSearch.mixin.FilterRemoveButton = function () {
 };
 
 OO.initClass( bs.extendedSearch.mixin.FilterRemoveButton );

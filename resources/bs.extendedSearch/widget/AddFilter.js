@@ -3,7 +3,9 @@ bs.util.registerNamespace( 'bs.extendedSearch' );
 bs.extendedSearch.FilterAddWidget = function ( cfg ) {
 	cfg = cfg || {};
 	cfg.label = mw.message( 'bs-extendedsearch-filter-add-button-label' ).text();
+	cfg.invisibleLabel = true;
 	cfg.icon = 'funnel';
+	cfg.framed = false;
 
 	this.availableFilters = cfg.filterData || [];
 	this.activeFilters = cfg.activeFilters || [];
