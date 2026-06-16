@@ -144,7 +144,8 @@
 					"bottom": {
 						"items": [
 							{
-								"name": "typetext"
+								"name": "typetext",
+								"nolabel": true
 							},
 							{
 								"name": "ctime"
@@ -419,8 +420,7 @@
 			],
 			"dependencies": [
 				"ext.blueSpiceExtendedSearch.SearchBar",
-				"oojs-ui.styles.icons-interactions",
-				"mwstake.component.galaxy.foreignWikiBadge"
+				"oojs-ui.styles.icons-interactions"
 			]
 		},
 		"ext.blueSpiceExtendedSearch.SearchCenter": {
@@ -510,14 +510,12 @@
 				"bs-extendedsearch-options-button-label",
 				"bs-extendedsearch-export-button-label",
 				"bs-extendedsearch-search-center-result-file-usage-label",
-				"bs-extendedsearch-suggest-operator",
-				"bs-extendedsearch-remove-button-label"
+				"bs-extendedsearch-suggest-operator"
 			],
 			"dependencies": [
 				"ext.bluespice",
 				"ext.blueSpiceExtendedSearch.SearchBar",
-				"oojs-ui.styles.icons-layout",
-				"mwstake.component.galaxy.foreignWikiBadge"
+				"oojs-ui.styles.icons-layout"
 			]
 		},
 		"ext.blueSpiceExtendedSearch.SearchAdmin.styles": {

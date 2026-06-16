@@ -25,17 +25,19 @@
 			padded: true,
 			autoClose: true
 		};
+		cfg.indicator = 'down';
 
 		bs.extendedSearch.FilterWidget.parent.call( this, cfg );
 
 		OO.ui.mixin.ButtonElement.call( this, cfg );
 		OO.ui.mixin.LabelElement.call( this, cfg );
+		OO.ui.mixin.IndicatorElement.call( this, cfg );
 		OO.ui.mixin.PopupElement.call( this, cfg );
 		bs.extendedSearch.mixin.FilterRemoveButton.call( this, cfg );
 
 		this.$button
 			.addClass( 'bs-extendedsearch-filter-button-button' )
-			.append( this.$label )
+			.append( this.$label, this.$indicator )
 			.attr( 'tabindex', 0 );
 
 		this.connect( this, { click: 'onShowOptions' } );
@@ -49,7 +51,7 @@
 			.attr( 'id', 'bs-extendedsearch-filter-' + cfg.id )
 			.attr( 'aria-haspopup', 'true' )
 			.addClass( 'oo-ui-popupButtonWidget bs-extendedsearch-filter-button-widget' )
-			.append( this.$button, this.$removeButton, this.popup.$element );
+			.append( this.$button, this.popup.$element );
 
 		// PRESELECTED OPTIONS
 		if ( this.selectedOptions.length > 0 ) {
@@ -61,6 +63,7 @@
 
 	OO.mixinClass( bs.extendedSearch.FilterWidget, OO.ui.mixin.ButtonElement );
 	OO.mixinClass( bs.extendedSearch.FilterWidget, OO.ui.mixin.LabelElement );
+	OO.mixinClass( bs.extendedSearch.FilterWidget, OO.ui.mixin.IndicatorElement );
 	OO.mixinClass( bs.extendedSearch.FilterWidget, OO.ui.mixin.PopupElement );
 	OO.mixinClass( bs.extendedSearch.FilterWidget, bs.extendedSearch.mixin.FilterRemoveButton );
 

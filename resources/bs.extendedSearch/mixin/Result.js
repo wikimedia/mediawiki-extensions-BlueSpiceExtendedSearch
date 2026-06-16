@@ -62,7 +62,7 @@
 			if ( idx === 0 ) {
 				return;
 			}
-			$( '<div>' ).addClass( 'bs-extendedsearch-result-secondaryinfo-separator' ).insertBefore( $( child ) );
+			$( '<span>' ).addClass( 'bs-extendedsearch-result-secondaryinfo-separator' ).text( '·' ).insertBefore( $( child ) );
 		} );
 
 		return container;

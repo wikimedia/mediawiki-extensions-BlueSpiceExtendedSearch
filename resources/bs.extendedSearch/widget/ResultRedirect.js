@@ -18,7 +18,7 @@
 			.addClass( 'bs-extendedsearch-result-redirect-target-container' )
 			.append( this.redirectIcon.$element, this.$redirectTargetAnchor );
 
-		this.$redirectTargetContainer.insertAfter( this.$header );
+		this.$titleRow.append( this.$redirectTargetContainer );
 		this.$element.addClass( 'redirect' );
 	};
 

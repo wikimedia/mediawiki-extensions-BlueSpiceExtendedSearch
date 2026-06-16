@@ -41,6 +41,7 @@ bs.extendedSearch.ToolsPanel.prototype.init = function () {
 
 	const menuButton = new OO.ui.ButtonMenuSelectWidget( {
 		icon: 'menu',
+		framed: false,
 		title: mw.message( 'bs-extendedsearch-options-button-label' ).text(),
 		menu: {
 			horizontalPosition: 'end',

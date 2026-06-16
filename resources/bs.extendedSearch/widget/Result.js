@@ -47,6 +47,10 @@
 		this.$headerContainer = $( '<div>' )
 			.addClass( 'bs-extendedsearch-result-header-container' );
 
+		this.$wikiLabel = $( '<div>' )
+			.addClass( 'bs-extendedsearch-result-wiki-label' );
+		this.$headerContainer.append( this.$wikiLabel );
+
 		if ( this.headerAnchor && !this.isExternal ) {
 			this.$header = $( this.headerAnchor );
 		} else {
@@ -59,14 +63,12 @@
 		}
 
 		this.$header.addClass( 'bs-extendedsearch-result-header' );
-		this.$headerContainer.append( this.$header, this.$originalTitle );
+		this.$titleRow = $( '<div>' )
+			.addClass( 'bs-extendedsearch-result-title-row' )
+			.append( this.$header, this.$originalTitle );
+		this.$headerContainer.append( this.$titleRow );
 
 		this.$headerPathInfo = $( '<div>' ).addClass( 'bs-extendedsearch-result-header-path' );
-		if ( this.source ) {
-			mws.galaxyIntegration.ForeignWikiBadge.call( this, this.source );
-			const $badge = this.getWikiBadge();
-			this.$headerPathInfo.append( $badge );
-		}
 		if ( this.namespaceText ) {
 			this.$headerPathInfo.append( $( '<span>' )
 				.addClass( 'bs-extendedsearch-result-header-namespace' )
@@ -88,18 +90,11 @@
 				$( '<span>' ).html( this.highlight )
 			);
 
-		this.$dataContainer.append( this.$headerContainer, this.$topSecondaryInfo, this.$highlightContainer, this.$bottomSecondaryInfo );
-
-		this.$element = $( '<div>' )
-			.addClass( 'bs-extendedsearch-result-container' )
-			.attr( 'id', 'bs-es-result-' + this.getId() )
-			.append( this.$image, this.$dataContainer, this.$relevanceControl );
-
+		this.$linksContainer = null;
 		if ( this.rightLinks.length > 0 ) {
 			this.$linksContainer = $( '<div>' )
 				.addClass( 'bs-extendedsearch-result-links-container' );
 
-			this.$dataContainer.addClass( 'short' );
 			for ( let idx = 0; idx < this.rightLinks.length; idx++ ) {
 				if ( !this.rightLinks[ idx ].hasOwnProperty( 'labelKey' ) ) {
 					// Do not show the entry without any label
@@ -114,9 +109,21 @@
 				this.$innerContainer.append( this.rightLinks[ idx ].value );
 				this.$linksContainer.append( this.$innerContainer );
 			}
-
-			this.$element.append( this.$linksContainer );
 		}
+
+		this.$dataContainer.append(
+			this.$headerContainer,
+			this.$topSecondaryInfo,
+			this.$highlightContainer,
+			this.$linksContainer,
+			this.$bottomSecondaryInfo
+		);
+
+		this.$element = $( '<div>' )
+			.addClass( 'bs-extendedsearch-result-container' )
+			.attr( 'id', 'bs-es-result-' + this.getId() )
+			.css( '--wiki-color', 'transparent' )
+			.append( this.$image, this.$dataContainer, this.$relevanceControl );
 
 		if ( this.featured ) {
 			this.$element.addClass( 'bs-extendedsearch-result-featured' );
@@ -125,6 +132,8 @@
 		if ( this.mobile ) {
 			this.$element.addClass( 'bs-extendedsearch-result-mobile' );
 		}
+
+		mw.hook( 'bs.extendedSearch.result.init' ).fire( this.$element, this.source );
 	};
 
 	OO.inheritClass( bs.extendedSearch.ResultWidget, OO.ui.Widget );
@@ -132,7 +141,6 @@
 	OO.mixinClass( bs.extendedSearch.ResultWidget, bs.extendedSearch.mixin.ResultSecondaryInfo );
 	OO.mixinClass( bs.extendedSearch.ResultWidget, bs.extendedSearch.mixin.ResultRelevanceControl );
 	OO.mixinClass( bs.extendedSearch.ResultWidget, bs.extendedSearch.mixin.ResultOriginalTitle );
-	OO.mixinClass( bs.extendedSearch.ResultWidget, mws.galaxyIntegration.ForeignWikiBadge );
 
 	bs.extendedSearch.ResultWidget.prototype.getId = function () {
 		return this.id;

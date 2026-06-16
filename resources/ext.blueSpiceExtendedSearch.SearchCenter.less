@@ -47,7 +47,7 @@ div.bs-es-tools {
 
 	.bs-extendedsearch-search-center-hitcount {
 		margin-top: 5px;
-		color: #5e5e5e;
+		color: @results-secondary-color;
 		display: inline-block;
 		width: 70%;
 	}
@@ -72,21 +72,16 @@ div.bs-es-tools {
 			min-height: 43px;
 			flex-grow: 1;
 
+			#bs-extendedsearch-filter-namespace {
+				margin-top: 15px;
+			}
+
 			.bs-extendedsearch-filter-button-widget {
 				margin: 4px 10px 4px 0;
 
 				.bs-extendedsearch-filter-button-button {
-					border-radius: 5px 0 0 5px !important;
 					font-weight: normal;
-					background-color: @tools-base-color;
-					color: @tools-text-color;
 					height: 24px;
-					border: none; /* stylelint-disable-line declaration-property-value-disallowed-list */
-
-					span.oo-ui-labelElement-label {
-						vertical-align: middle;
-						color: @tools-text-color;
-					}
 
 					&:hover {
 						text-decoration: none !important;
@@ -95,35 +90,6 @@ div.bs-es-tools {
 					&.bs-extendedsearch-context-button {
 						cursor: text;
 						line-height: 1.42857143em;
-					}
-				}
-
-				.bs-extendedsearch-filter-button-remove a {
-					border-radius: 0 5px 5px 0 !important;
-					background-color: @tools-base-color;
-					height: 20px;
-					padding: 12px 3px 12px 22px;
-					border: none; /* stylelint-disable-line declaration-property-value-disallowed-list */
-
-					span.oo-ui-indicatorElement-indicator {
-						right: 8px;
-						background: none;
-						padding: 6px 0;
-
-						&::before {
-							content: '\ea0f';
-							font-family: 'icomoon' !important;
-							color: @tools-text-color;
-							font-size: 7px; /* stylelint-disable-line declaration-property-unit-disallowed-list */
-						}
-					}
-				}
-
-				.bs-extendedsearch-filter-and-or-switch {
-					.oo-ui-optionWidget-selected {
-						a {
-							color: @tools-text-color !important;
-						}
 					}
 				}
 
@@ -162,12 +128,6 @@ div.bs-es-tools {
 				div.bs-extendedsearch-filter-options-checkbox-widget {
 					margin-top: 5px;
 				}
-
-				&.no-remove-button {
-					.bs-extendedsearch-filter-button-button {
-						border-radius: 5px !important;
-					}
-				}
 			}
 		}
 	}
@@ -197,10 +157,6 @@ div.bs-es-tools {
 						text-align: left;
 						width: 100%;
 					}
-
-					.bs-extendedsearch-filter-button-remove {
-						display: table-cell;
-					}
 				}
 			}
 		}
@@ -218,38 +174,31 @@ div.bs-es-tools {
 }
 
 .bs-extendedsearch-result-container {
+	--wiki-color: transparent;
 	width: 100%;
-	border: 2px solid @result-border-color;
-	height: auto;
-	padding: 10px;
+	background-color: @results-background-color;
+	color: @results-primary-color;
+	border-top: 0;
+	border-right: 0;
+	border-bottom: 0;
+	border-left: 5px solid var( --wiki-color );
+	padding: 8px 8px 8px 16px;
 	margin-top: 10px;
-	min-height: @results-content-height;
 	display: flex;
 	position: relative;
 
-	&.bs-extendedsearch-result-featured {
-		min-height: @results-featured-content-height;
+	a {
+		color: @results-link-color;
+	}
 
-		.bs-extendedsearch-result-data-container {
-			width: 60%;
-			overflow: hidden auto;
-		}
+	.bs-extendedsearch-result-wiki-label {
+		margin-bottom: 4px;
 	}
 
 	.bs-extendedsearch-result-header-path {
-		margin-bottom: 10px;
+		margin-bottom: 12px;
+		font-size: 0.8em;
 		color: @results-secondary-color;
-
-		.foreign-wiki-badge {
-			margin-right: 5px;
-			display: inline-block;
-			height: 100%;
-			vertical-align: bottom;
-
-			.foreign-wiki-badge__text {
-				font-size: 1rem;
-			}
-		}
 
 		.bs-extendedsearch-result-header-breadcrumbs::before {
 			content: ':';
@@ -265,25 +214,13 @@ div.bs-es-tools {
 				width: 90%;
 			}
 		}
-
-		&.bs-extendedsearch-result-featured {
-			.bs-extendedsearch-result-data-container {
-				width: 60%;
-			}
-		}
 	}
 
 	&.redirect {
-		min-height: auto !important;
-
-		.bs-extendedsearch-result-header {
-			vertical-align: middle;
-		}
-
 		.bs-extendedsearch-result-redirect-target-container {
-			display: inline-block;
+			display: inline-flex;
+			align-items: center;
 			margin-left: 10px;
-			vertical-align: middle;
 
 			.oo-ui-iconWidget {
 				margin-right: 5px;
@@ -293,9 +230,10 @@ div.bs-es-tools {
 
 	.bs-extendedsearch-result-image {
 		width: 110px;
-		height: @results-content-height;
-		margin-right: 10px;
+		min-height: @results-content-height;
+		margin-right: 12px;
 		cursor: pointer;
+		flex-shrink: 0;
 
 		.bs-extendedsearch-result-image-inner {
 			background-size: cover;
@@ -307,7 +245,15 @@ div.bs-es-tools {
 	}
 
 	.bs-extendedsearch-result-data-container {
-		width: 75%;
+		flex: 1;
+		min-width: 0;
+
+		.bs-extendedsearch-result-title-row {
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			margin-bottom: 8px;
+		}
 
 		.bs-extendedsearch-result-header {
 			font-size: 1.3em;
@@ -315,7 +261,8 @@ div.bs-es-tools {
 		}
 
 		.bs-extendedsearch-result-original-title {
-			display: inline-block;
+			display: flex;
+			align-items: center;
 			margin-left: 5px;
 
 			label {
@@ -327,17 +274,11 @@ div.bs-es-tools {
 			width: auto;
 			height: auto;
 			line-height: 1em;
-			margin-bottom: 4px;
 			color: @results-secondary-color;
 
 			.bs-extendedsearch-secondaryinfo-item {
-				display: inline-block;
-				height: 15px;
+				display: inline;
 				font-size: 0.8em;
-
-				&:first-of-type {
-					padding-left: 0;
-				}
 
 				span {
 					line-height: 1em;
@@ -349,42 +290,39 @@ div.bs-es-tools {
 			}
 
 			.bs-extendedsearch-result-secondaryinfo-separator {
-				height: 10px;
-				width: 2px;
-				background-color: @result-border-color;
-				display: inline-block;
-				margin-left: 5px;
-				margin-right: 5px;
+				display: inline;
+				margin: 0 5px;
+				font-size: 1em;
+				color: @results-secondary-color;
+				vertical-align: middle;
 			}
 		}
 
 		.bs-extendedsearch-result-highlight-container {
-			padding-bottom: 5px;
-			margin-bottom: 10px;
+			margin-bottom: 12px;
+			font-size: 1em;
 			overflow-y: hidden;
 		}
-	}
 
-	.bs-extendedsearch-result-links-container {
-		max-width: 180px;
-		width: 100%;
-		margin-right: 50px;
+		.bs-extendedsearch-result-links-container {
+			margin-bottom: 12px;
 
-		.bs-extendedsearch-result-links-inner,
-		.bs-extendedsearch-result-redirects-container {
-			.oo-ui-labelWidget {
-				display: block;
+			.bs-extendedsearch-result-links-inner,
+			.bs-extendedsearch-result-redirects-container {
+				.oo-ui-labelWidget {
+					display: block;
+					font-weight: bold;
+					font-size: 1em;
+					margin-bottom: 8px;
+				}
 			}
 
-			&:first-of-type {
-				margin-bottom: 10px;
+			.bs-extendedsearch-result-links-inner {
+				font-size: 1em;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
 			}
-		}
-
-		.bs-extendedsearch-result-links-inner {
-			text-overflow: ellipsis;
-			overflow: hidden;
-			white-space: nowrap;
 		}
 	}
 
