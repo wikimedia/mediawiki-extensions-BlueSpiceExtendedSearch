@@ -503,6 +503,7 @@
 				"bs-extendedsearch-filter-add-button-label",
 				"bs-extendedsearch-options-button-label",
 				"bs-extendedsearch-export-button-label",
+				"bs-extendedsearch-save-as-collection-button-label",
 				"bs-extendedsearch-search-center-result-file-usage-label",
 				"bs-extendedsearch-suggest-operator"
 			],
