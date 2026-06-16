@@ -53,9 +53,9 @@ bs.extendedSearch.ToolsPanel.prototype.init = function () {
 				} ),
 				new OO.ui.MenuOptionWidget( {
 					data: 'export',
-					icon: 'upload',
+					icon: 'bookmark',
 					disable: mw.config.get( 'bsgESUserCanExport' ) === false,
-					label: mw.msg( 'bs-extendedsearch-export-button-label' )
+					label: mw.msg( 'bs-extendedsearch-save-as-collection-button-label' )
 				} )
 			]
 		}

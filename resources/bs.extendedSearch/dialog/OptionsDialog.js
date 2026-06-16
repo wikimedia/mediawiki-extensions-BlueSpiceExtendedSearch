@@ -17,14 +17,12 @@ bs.extendedSearch.OptionsDialog.static.actions = [
 	{
 		action: 'save',
 		label: mw.message( 'bs-extendedsearch-search-center-options-dialog-button-apply-label' ).text(),
-		flags: 'primary',
-		disabled: false
+		flags: [ 'primary', 'progressive' ]
 	},
 	{
-		label: mw.message( 'bs-extendedsearch-search-center-dialog-button-cancel-label' ).text(),
-		flags: 'safe'
+		title: mw.message( 'bs-extendedsearch-search-center-dialog-button-cancel-label' ).text(),
+		flags: [ 'safe', 'close' ]
 	}
-
 ];
 
 bs.extendedSearch.OptionsDialog.prototype.initialize = function () {
@@ -41,6 +39,7 @@ bs.extendedSearch.OptionsDialog.prototype.initialize = function () {
 	const sortOrderLayout = new bs.extendedSearch.SortOrderLayout( 'sortOrder', { sortOrderOptions: this.options.sortOrder } );
 
 	this.booklet.addPages( [ pageSizeLayout, sortByLayout, sortOrderLayout ] );
+	this.booklet.setPage( 'pageSize' );
 
 	this.$body.append( this.booklet.$element );
 };
@@ -77,9 +76,12 @@ bs.extendedSearch.PageSizeLayout = function ( name, cfg ) {
 
 	this.pageSizeInput = new OO.ui.RadioSelectInputWidget( cfg.pageSizeOptions );
 
-	this.$element.append(
-		this.pageSizeInput.$element
-	);
+	this.field = new OO.ui.FieldLayout( this.pageSizeInput, {
+		label: mw.message( 'bs-extendedsearch-search-center-options-page-size' ).text(),
+		align: 'top'
+	} );
+
+	this.$element.append( this.field.$element );
 };
 
 OO.inheritClass( bs.extendedSearch.PageSizeLayout, OO.ui.PageLayout );
@@ -98,9 +100,11 @@ bs.extendedSearch.SortByLayout = function ( name, cfg ) {
 
 	this.sortByInput = new OO.ui.RadioSelectInputWidget( cfg.sortByOptions );
 
-	this.$element.append(
-		this.sortByInput.$element
-	);
+	this.field = new OO.ui.FieldLayout( this.sortByInput, {
+		label: mw.message( 'bs-extendedsearch-search-center-options-sort-by' ).text()
+	} );
+
+	this.$element.append( this.field.$element );
 };
 
 OO.inheritClass( bs.extendedSearch.SortByLayout, OO.ui.PageLayout );
@@ -119,9 +123,11 @@ bs.extendedSearch.SortOrderLayout = function ( name, cfg ) {
 
 	this.sortOrderInput = new OO.ui.RadioSelectInputWidget( cfg.sortOrderOptions );
 
-	this.$element.append(
-		this.sortOrderInput.$element
-	);
+	this.field = new OO.ui.FieldLayout( this.sortOrderInput, {
+		label: mw.message( 'bs-extendedsearch-search-center-options-sort-order' ).text()
+	} );
+
+	this.$element.append( this.field.$element );
 };
 
 OO.inheritClass( bs.extendedSearch.SortOrderLayout, OO.ui.PageLayout );
