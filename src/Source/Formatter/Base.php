@@ -11,6 +11,7 @@ use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Message\Message;
 use MediaWiki\Title\Title;
+use MediaWiki\WikiMap\WikiMap;
 use MWStake\MediaWiki\Component\Utils\UtilityFactory;
 
 class Base implements ISearchResultFormatter {
@@ -107,7 +108,7 @@ class Base implements ISearchResultFormatter {
 		$resultData['type'] = $resultObject->getType();
 		$resultData['score'] = $resultObject->getScore();
 		$resultData['_index'] = $resultObject->getIndex();
-		$resultData['_is_foreign'] = $this->source->getBackend()->isForeignIndex( $resultObject->getIndex() );
+		$resultData['_is_foreign'] = $this->isForeign( $resultData['wiki_id'] );
 
 		$user = $this->getContext()->getUser();
 		if ( !$resultData['_is_foreign'] ) {
@@ -142,6 +143,7 @@ class Base implements ISearchResultFormatter {
 	 */
 	public function formatAutocompleteResults( &$results, $searchData ): void {
 		foreach ( $results as &$result ) {
+			$result['_is_foreign'] = $this->isForeign( $result['wiki_id'] );
 			// For some reason _keys are not transmitted to client
 			$result['id'] = $result['_id'];
 			if ( !isset( $result['mtime'] ) || $result['rank'] !== 'top' ) {
@@ -328,4 +330,13 @@ class Base implements ISearchResultFormatter {
 			'data-title' => $title->getPrefixedText()
 		], $display );
 	}
+
+	/**
+	 * @param string $wikiId
+	 * @return bool
+	 */
+	private function isForeign( string $wikiId ): bool {
+		return $wikiId !== WikiMap::getCurrentWikiId();
+	}
+
 }

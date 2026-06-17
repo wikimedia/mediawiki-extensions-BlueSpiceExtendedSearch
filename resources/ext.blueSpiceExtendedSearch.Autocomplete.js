@@ -3,7 +3,20 @@ $( () => {
 		masterFilter: mw.config.get( 'ESMasterFilter' )
 	} );
 
-	bs.extendedSearch.Autocomplete._instance = new bs.extendedSearch.Autocomplete( searchBar );
+	const cfg = {};
+
+	const contexts = mw.config.get( 'ESContexts' ) || {};
+	const defaultContext = mw.config.get( 'ESDefaultContext' );
+	if ( defaultContext && contexts[ defaultContext ] ) {
+		const contextData = {
+			key: defaultContext,
+			definition: JSON.parse( contexts[ defaultContext ].definition || '{}' ),
+			text: contexts[ defaultContext ].text,
+			showCustomPill: contexts[ defaultContext ].showCustomPill
+		};
+		cfg.lookupConfig = { context: contextData };
+	}
+	bs.extendedSearch.Autocomplete._instance = new bs.extendedSearch.Autocomplete( searchBar, cfg );
 
 	$( document ).on( 'keydown', ( e ) => {
 		// See if is an input or a textarea
