@@ -40,5 +40,6 @@
 	"action-extendedsearch-search-repofile": "пошук файлаў",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Фільтар паводле катэгорыяў",
 	"bs-extendedsearch-source-type-wikipage-label": "Вікістаронка",
-	"bs-extendedsearch-source-type-specialpage-label": "Адмысловая старонка"
+	"bs-extendedsearch-source-type-specialpage-label": "Адмысловая старонка",
+	"bs-extendedsearch-search-center-options-sort-by": "Сартаваць паводле"
 }
