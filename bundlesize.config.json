@@ -1,11 +1,15 @@
 [
 	{
 		"resourceModule": "ext.blueSpiceExtendedSearch.SearchFieldAutocomplete",
-		"maxSize": "2 kB"
+		"maxSize": "2 kB",
+		"@note": "Ignore mwstake.component.galaxy.foreignWikiBadge",
+		"ignoreDependencies": true
 	},
 	{
 		"resourceModule": "ext.blueSpiceExtendedSearch.Autocomplete",
-		"maxSize": "8 kB"
+		"maxSize": "8 kB",
+		"@note": "Ignore mwstake.component.galaxy.foreignWikiBadge",
+		"ignoreDependencies": true
 	},
 	{
 		"resourceModule": "ext.blueSpiceExtendedSearch.SearchBar",
