@@ -819,6 +819,10 @@
 		"ESSecureResultsRigor": {
 			"description": "Can be `strict` or `quick`. In quick mode, only general namespace permission are checked, which in strict mode, permissions for each individual page are checked.",
 			"value": "strict"
+		},
+		"ESDefaultContext": {
+			"description": "Default context to be used when going from autocomplete to fulltext search",
+			"value": null
 		}
 	},
 	"callback": "\\BS\\ExtendedSearch\\Setup::onRegistration",

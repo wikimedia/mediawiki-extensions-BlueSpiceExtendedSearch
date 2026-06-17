@@ -78,7 +78,7 @@ bs.extendedSearch.AutocompleteResult.prototype.render = function () {
 	if ( this.source ) {
 		$pathCnt.append( $( '<span>' )
 			.addClass( 'bs-extendedsearch-autocomplete-popup-item-header-path-source' )
-			.text( this.source )
+			.text( this.source.display_text )
 		);
 	}
 	if ( this.namespaceText ) {

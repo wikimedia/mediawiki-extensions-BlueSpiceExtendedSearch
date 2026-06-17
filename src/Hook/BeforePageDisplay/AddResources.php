@@ -57,6 +57,9 @@ class AddResources implements BeforePageDisplayHook {
 			return $a['priority'] <=> $b['priority'];
 		} );
 		$out->addJsConfigVars( 'ESContexts', $contexts );
+
+		$config = $this->configFactory->makeConfig( 'bsg' );
+		$out->addJsConfigVars( 'ESDefaultContext', $config->get( 'ESDefaultContext' ) ?? null );
 	}
 
 	/**
