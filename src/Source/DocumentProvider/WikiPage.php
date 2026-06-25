@@ -137,6 +137,8 @@ class WikiPage extends Base {
 			'page_id' => $this->title->getArticleID(),
 			'suggestions' => $this->title->getPrefixedText(),
 			'suggestions_extra' => $this->getDisplayTitle(),
+			'creator' => $wikiPage->getCreator()?->getName() ?? "",
+			'author' => $this->revision->getUser()?->getName() ?? "",
 		] );
 
 		return $aDC;
