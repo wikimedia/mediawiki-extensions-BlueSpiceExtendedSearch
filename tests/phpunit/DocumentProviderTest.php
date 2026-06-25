@@ -52,6 +52,8 @@ class DocumentProviderTest extends \MediaWikiIntegrationTestCase {
 		$this->assertEquals( $oWikiPage->getTitle()->getBaseText(), $aDC['basename'] );
 		$this->assertEquals( 'text/x-wiki', $aDC['mime_type'] );
 		$this->assertEquals( 'wiki', $aDC['extension'] );
+		$this->assertEquals( 'UTSysop', $aDC['author'] );
+		$this->assertEquals( 'UTSysop', $aDC['creator'] );
 		$this->assertEquals( $oWikiPage->getTitle()->getNamespace(), $aDC['namespace'] );
 		$this->assertEquals( $oWikiPage->getTitle()->getNsText(), $aDC['namespace_text'] );
 	}
