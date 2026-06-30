@@ -129,7 +129,6 @@
 	"bs-extendedsearch-filter-add-button-label": "Een filter toevoegen",
 	"bs-extendedsearch-options-button-label": "Zoekopties",
 	"bs-extendedsearch-export-button-label": "Exporteren zoekresultaten",
-	"bs-extendedsearch-remove-button-label": "Filter \"$1\" verwijderen",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Gebruikt op pagina's",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Invoeren om te zoeken...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Onjuist type zoekresultaat: $1",
