@@ -137,5 +137,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Pagina wiki",
 	"bs-extendedsearch-source-type-repofile-label": "File locale",
 	"bs-extendedsearch-source-type-specialpage-label": "Pagina speciale",
-	"bs-extendedsearch-source-type-externalfile-label": "File esterno"
+	"bs-extendedsearch-source-type-externalfile-label": "File esterno",
+	"bs-extendedsearch-remove-button-label": "Rimuovi il filtro \"$1\""
 }

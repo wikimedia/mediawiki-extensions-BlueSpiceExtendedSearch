@@ -111,5 +111,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Вики-агӀо",
 	"bs-extendedsearch-source-type-repofile-label": "Локалан файл",
 	"bs-extendedsearch-source-type-specialpage-label": "Белхан агӀо",
-	"bs-extendedsearch-source-type-externalfile-label": "Арахьара файл"
+	"bs-extendedsearch-source-type-externalfile-label": "Арахьара файл",
+	"bs-extendedsearch-remove-button-label": "ДӀайаккха фильтр «$1»"
 }

@@ -200,5 +200,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Wikibase",
 	"bs-extendedsearch-source-type-repofile-label": "Lokaal bestand",
 	"bs-extendedsearch-source-type-specialpage-label": "Speciale pagina",
-	"bs-extendedsearch-source-type-externalfile-label": "Extern bestand"
+	"bs-extendedsearch-source-type-externalfile-label": "Extern bestand",
+	"bs-extendedsearch-remove-button-label": "Filter \"$1\" verwijderen"
 }

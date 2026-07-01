@@ -168,5 +168,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Wikiside",
 	"bs-extendedsearch-source-type-repofile-label": "Lokal fil",
 	"bs-extendedsearch-source-type-specialpage-label": "Spesialside",
-	"bs-extendedsearch-source-type-externalfile-label": "Ekstern fil"
+	"bs-extendedsearch-source-type-externalfile-label": "Ekstern fil",
+	"bs-extendedsearch-remove-button-label": "Fjerne filteret «$1»"
 }

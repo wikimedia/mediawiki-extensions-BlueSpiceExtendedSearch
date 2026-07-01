@@ -193,5 +193,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "דף ויקי",
 	"bs-extendedsearch-source-type-repofile-label": "קובץ מקומי",
 	"bs-extendedsearch-source-type-specialpage-label": "דף מיוחד",
-	"bs-extendedsearch-source-type-externalfile-label": "קובץ חיצוני"
+	"bs-extendedsearch-source-type-externalfile-label": "קובץ חיצוני",
+	"bs-extendedsearch-remove-button-label": "הסרת מסנן \"$1\""
 }

@@ -161,5 +161,6 @@
 	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Повертає результати пошуку користувача лише мовою користувача. Користувачі можуть вибирати свою мову відповідно до своїх уподобань",
 	"bs-extendedsearch-source-type-wikipage-label": "Вікісторінка",
 	"bs-extendedsearch-source-type-repofile-label": "Локальний файл",
-	"bs-extendedsearch-source-type-specialpage-label": "Спеціальна сторінка"
+	"bs-extendedsearch-source-type-specialpage-label": "Спеціальна сторінка",
+	"bs-extendedsearch-remove-button-label": "Видалити фільтр \" $1 \""
 }

@@ -148,5 +148,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Wikilap",
 	"bs-extendedsearch-source-type-repofile-label": "Helyi fájl",
 	"bs-extendedsearch-source-type-specialpage-label": "Speciális lap",
-	"bs-extendedsearch-source-type-externalfile-label": "Külső fájl"
+	"bs-extendedsearch-source-type-externalfile-label": "Külső fájl",
+	"bs-extendedsearch-remove-button-label": "A(z) „$1” szűrő eltávolítása"
 }

@@ -208,5 +208,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Page wiki",
 	"bs-extendedsearch-source-type-repofile-label": "Fichier local",
 	"bs-extendedsearch-source-type-specialpage-label": "Page spéciale",
-	"bs-extendedsearch-source-type-externalfile-label": "Fichier externe"
+	"bs-extendedsearch-source-type-externalfile-label": "Fichier externe",
+	"bs-extendedsearch-remove-button-label": "Retirer le filtre « $1 »"
 }

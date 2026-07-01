@@ -166,5 +166,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Viki stran",
 	"bs-extendedsearch-source-type-repofile-label": "Lokalna datoteka",
 	"bs-extendedsearch-source-type-specialpage-label": "Posebna stran",
-	"bs-extendedsearch-source-type-externalfile-label": "Zunanja datoteka"
+	"bs-extendedsearch-source-type-externalfile-label": "Zunanja datoteka",
+	"bs-extendedsearch-remove-button-label": "Odstrani filter »$1«"
 }

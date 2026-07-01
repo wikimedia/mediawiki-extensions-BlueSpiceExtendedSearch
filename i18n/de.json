@@ -207,5 +207,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Seite",
 	"bs-extendedsearch-source-type-repofile-label": "Lokale Datei",
 	"bs-extendedsearch-source-type-specialpage-label": "Spezialseite",
-	"bs-extendedsearch-source-type-externalfile-label": "Externe Datei"
+	"bs-extendedsearch-source-type-externalfile-label": "Externe Datei",
+	"bs-extendedsearch-remove-button-label": "Entferne Filter \"$1\""
 }

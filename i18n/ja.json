@@ -174,5 +174,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "ウィキページ",
 	"bs-extendedsearch-source-type-repofile-label": "ファイルの読み込み",
 	"bs-extendedsearch-source-type-specialpage-label": "特別ページ",
-	"bs-extendedsearch-source-type-externalfile-label": "外部ファイル"
+	"bs-extendedsearch-source-type-externalfile-label": "外部ファイル",
+	"bs-extendedsearch-remove-button-label": "フィルター「$1」を除去"
 }

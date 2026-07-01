@@ -195,5 +195,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "위키페이지",
 	"bs-extendedsearch-source-type-repofile-label": "로컬 파일",
 	"bs-extendedsearch-source-type-specialpage-label": "특수 문서",
-	"bs-extendedsearch-source-type-externalfile-label": "외부 파일"
+	"bs-extendedsearch-source-type-externalfile-label": "외부 파일",
+	"bs-extendedsearch-remove-button-label": "필터 \"$1\" 제거"
 }

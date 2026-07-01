@@ -152,5 +152,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "ويکي‌مخ",
 	"bs-extendedsearch-source-type-repofile-label": "ځايي دوتنه",
 	"bs-extendedsearch-source-type-specialpage-label": "ځانگړی مخ",
-	"bs-extendedsearch-source-type-externalfile-label": "باندنۍ دوتنه"
+	"bs-extendedsearch-source-type-externalfile-label": "باندنۍ دوتنه",
+	"bs-extendedsearch-remove-button-label": "\"$1\" چاڼگر لرې‌کول"
 }
