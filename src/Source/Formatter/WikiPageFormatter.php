@@ -354,9 +354,12 @@ class WikiPageFormatter extends Base {
 	 */
 	public function formatAutocompleteResults( &$results, $searchData ): void {
 		parent::formatAutocompleteResults( $results, $searchData );
-
-		foreach ( $results as &$result ) {
+		foreach ( $results as $idx => &$result ) {
 			if ( $result['type'] !== $this->source->getTypeKey() ) {
+				continue;
+			}
+			if ( (int)( $result['namespace'] ?? NS_MAIN ) === NS_FILE ) {
+				unset( $results[$idx] );
 				continue;
 			}
 
@@ -384,15 +387,25 @@ class WikiPageFormatter extends Base {
 	 * @param array $searchData
 	 */
 	public function rankAutocompleteResults( &$results, $searchData ): void {
-		$top = $this->getACHighestScored( $results );
+		$rankCandidates = array_values( array_filter( $results, static function ( $result ) {
+			return $result['type'] === 'wikipage' &&
+				(int)( $result['namespace'] ?? NS_MAIN ) !== NS_FILE;
+		} ) );
+		$top = $this->getACHighestScored( $rankCandidates );
+		$topId = is_array( $top ) ? ( $top['_id'] ?? '' ) : '';
 		foreach ( $results as &$result ) {
 			if ( $result['type'] !== $this->source->getTypeKey() ) {
 				continue;
 			}
+			if ( (int)( $result['namespace'] ?? NS_MAIN ) === NS_FILE ) {
+				$result['rank'] = self::AC_RANK_SECONDARY;
+				$result['is_ranked'] = true;
+				continue;
+			}
 
-			$this->assignRank( $result, $result['display_title'], $searchData, $top['_id'] );
+			$this->assignRank( $result, $result['display_title'], $searchData, $topId );
 			if ( $this->getOriginalTitleText( $result ) ) {
-				$this->assignRank( $result, $result['prefixed_title'], $searchData, $top['_id'] );
+				$this->assignRank( $result, $result['prefixed_title'], $searchData, $topId );
 			}
 
 			$result['is_ranked'] = true;

@@ -17,6 +17,9 @@ class WikiPageAutocompleteRemoveUnwanted extends WikiPageRemoveUnwanted {
 		$excludedByConfig = $this->getNamespacesExcludedByConfig();
 		$toExclude = array_merge( $talkNamespaces, $excludedByConfig );
 		$toExclude = array_unique( $toExclude );
+		// Namespace-based query trimming is global for all types and would hide repofile.
+		// NS_FILE wikipages are filtered later in wikipage formatter instead.
+		$toExclude = array_diff( $toExclude, [ NS_FILE ] );
 
 		$this->lookup->addBoolMustNotTerms( 'namespace', $toExclude );
 	}

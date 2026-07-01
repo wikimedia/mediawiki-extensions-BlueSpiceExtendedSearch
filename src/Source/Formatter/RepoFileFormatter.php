@@ -57,4 +57,25 @@ class RepoFileFormatter extends FileFormatter {
 			$result['namespace_text'] = '';
 		}
 	}
+
+	/**
+	 * @param array &$results
+	 * @param array $searchData
+	 */
+	public function rankAutocompleteResults( &$results, $searchData ): void {
+		foreach ( $results as &$result ) {
+			if ( $result['type'] !== $this->source->getTypeKey() ) {
+				continue;
+			}
+
+			$haystack = mb_strtolower( $result['filename'] ?? $result['basename'] ?? '' );
+			$needle = mb_strtolower( $searchData['value'] ?? '' );
+			if ( $this->matchTokenized( $haystack, $needle ) ) {
+				$result['rank'] = self::AC_RANK_PRIMARY;
+			} else {
+				$result['rank'] = self::AC_RANK_SECONDARY;
+			}
+			$result['is_ranked'] = true;
+		}
+	}
 }

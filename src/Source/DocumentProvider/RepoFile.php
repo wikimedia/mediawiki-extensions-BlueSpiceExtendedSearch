@@ -25,7 +25,10 @@ class RepoFile extends FileBase {
 
 		$dc = parent::getDocumentData( $sUri, $documentId, $this->file );
 		$filename = $mDataItem['title'];
-		$fileTitle = Title::newFromText( $filename );
+		$fileTitle = Title::makeTitleSafe( NS_FILE, $filename );
+		if ( $fileTitle instanceof Title ) {
+			$filename = $fileTitle->getText();
+		}
 
 		return array_merge( $dc, [
 			'filename' => $filename,

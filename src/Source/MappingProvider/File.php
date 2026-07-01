@@ -29,7 +29,7 @@ class File extends Base {
 		return array_merge( $config, [
 			'filename' => [
 				'type' => 'text',
-				'copy_to' => [ 'congregated', 'suggestions' ],
+				'copy_to' => [ 'congregated', 'suggestions', 'suggestions_extra' ],
 				// required in order to be sortable
 				'fielddata' => true
 			],
