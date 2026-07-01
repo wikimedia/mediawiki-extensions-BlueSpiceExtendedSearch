@@ -5,6 +5,7 @@ namespace BS\ExtendedSearch\Source\Job;
 use File;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
+use Wikimedia\FileBackend\FSFile\FSFile;
 
 class UpdateRepoFile extends UpdateTitleBase {
 	/** @inheritDoc */
@@ -48,7 +49,8 @@ class UpdateRepoFile extends UpdateTitleBase {
 	protected function getDocumentProviderSource() {
 		$this->setFileRepoFile();
 
-		if ( isset( $this->fileData['fsFile'] ) ) {
+		$fsFile = null;
+		if ( isset( $this->fileData['fsFile'] ) && $this->fileData['fsFile'] instanceof FSFile ) {
 			$fsFile = $this->fileData['fsFile'];
 		} elseif ( $this->file ) {
 			$this->setFileRepoFile();
@@ -57,21 +59,17 @@ class UpdateRepoFile extends UpdateTitleBase {
 				'src' => $this->file->getPath()
 			] );
 
-			if ( $fsFile === null ) {
+			if ( $fsFile === null || $fsFile === false ) {
 				throw new \Exception(
 					"File '{$this->getTitle()->getPrefixedDBkey()}' not found on filesystem!"
 				);
 			}
 		}
 
-		if ( $fsFile instanceof \FSFile ) {
-			return [
-				'fsFile' => new \SplFileInfo( $fsFile->getPath() ),
-				'title' => $this->title->getDBkey()
-			];
-		}
-
-		throw new \Exception( "FSFile cannot be created" );
+		return [
+			'fsFile' => new \SplFileInfo( $fsFile->getPath() ),
+			'title' => $this->title->getDBkey()
+		];
 	}
 
 	/**

@@ -152,12 +152,26 @@ class GenericSource implements ISearchSource {
 							"tokenizer" => "substring",
 							"filter" => [ "lowercase", "asciifolding" ]
 						],
+						"autocomplete_index_analyzer" => [
+							"tokenizer" => "autocomplete",
+							"filter" => [ "lowercase", "asciifolding" ]
+						],
+						"autocomplete_search_analyzer" => [
+							"tokenizer" => "whitespace",
+							"filter" => [ "lowercase", "asciifolding" ]
+						],
 						"content_analyzer" => [
 							"tokenizer" => "whitespace",
 							"filter" => [ "lowercase", "asciifolding" ]
 						],
 					],
 					"tokenizer" => [
+						"autocomplete" => [
+							"type" => "ngram",
+							"min_gram" => 1,
+							"max_gram" => 20,
+							"token_chars" => [ "letter", "digit", "punctuation", "symbol" ]
+						],
 						"substring" => [
 							"type" => "ngram",
 							"min_gram" => 3,

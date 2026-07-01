@@ -179,6 +179,9 @@ class Base implements ISearchResultFormatter {
 	 */
 	public function rankAutocompleteResults( &$results, $searchData ): void {
 		foreach ( $results as &$result ) {
+			if ( $result['type'] !== $this->source->getTypeKey() ) {
+				continue;
+			}
 			if ( $result['is_ranked'] === true ) {
 				continue;
 			}
