@@ -1132,14 +1132,11 @@ class Lookup extends \ArrayObject {
 		$this->ensurePropertyPath( 'query.bool.must', [] );
 		$this['query']['bool']['must']['multi_match'] = [
 			'query' => $value,
-			'type' => 'bool_prefix',
+			'type' => 'best_fields',
+			'operator' => 'and',
 			'fields' => [
 				$field,
-				$field . '._2gram',
-				$field . '._3gram',
 				$field . '_extra',
-				$field . '_extra._2gram',
-				$field . '_extra._3gram',
 			]
 		];
 
