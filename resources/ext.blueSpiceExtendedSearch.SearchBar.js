@@ -380,6 +380,7 @@ bs.extendedSearch.SearchBar.prototype.onClearSearch = function ( e ) {
 		this.removeSubpagePill( true );
 	}
 	this.toggleClearButton( '' );
+	this.setValue( '' );
 
 	this.emit( 'clearSearch', e );
 	this.$searchBox.focus(); // eslint-disable-line no-jquery/no-event-shorthand
