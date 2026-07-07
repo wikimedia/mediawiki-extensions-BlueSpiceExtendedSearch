@@ -170,6 +170,5 @@
 	"bs-extendedsearch-source-type-wikipage-label": "صفحة الويكي",
 	"bs-extendedsearch-source-type-repofile-label": "ملف محلي",
 	"bs-extendedsearch-source-type-specialpage-label": "صفحة خاصة",
-	"bs-extendedsearch-source-type-externalfile-label": "ملف خارجي",
-	"bs-extendedsearch-remove-button-label": "إزالة عامل التصفية \" $1 \""
+	"bs-extendedsearch-source-type-externalfile-label": "ملف خارجي"
 }
