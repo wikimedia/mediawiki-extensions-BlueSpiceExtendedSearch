@@ -5,6 +5,7 @@ namespace BS\ExtendedSearch\MediaWiki\Rest;
 use BS\ExtendedSearch\SearchTracker;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Rest\HttpException;
+use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -22,6 +23,9 @@ abstract class TraceHandler extends SimpleHandler {
 		$this->tracker = $tracker;
 	}
 
+	/**
+	 * @return Response
+	 */
 	public function execute() {
 		$user = RequestContext::getMain()->getUser();
 		if ( !$user->isRegistered() ) {

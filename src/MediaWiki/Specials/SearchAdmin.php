@@ -26,7 +26,6 @@ class SearchAdmin extends SpecialPage {
 	}
 
 	/**
-	 *
 	 * @param string $subPage
 	 */
 	public function execute( $subPage ) {
@@ -46,7 +45,6 @@ class SearchAdmin extends SpecialPage {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function getGroupName() {
@@ -54,7 +52,6 @@ class SearchAdmin extends SpecialPage {
 	}
 
 	/**
-	 *
 	 * @param array $data
 	 */
 	protected function renderOverview( $data ) {
@@ -72,7 +69,6 @@ class SearchAdmin extends SpecialPage {
 	}
 
 	/**
-	 *
 	 * @param array $sErrorMessage
 	 */
 	public function renderError( $sErrorMessage ) {
@@ -93,7 +89,6 @@ class SearchAdmin extends SpecialPage {
 	}
 
 	/**
-	 *
 	 * @param array $aBackedStats
 	 */
 	protected function renderStats( $aBackedStats ) {
@@ -102,7 +97,6 @@ class SearchAdmin extends SpecialPage {
 	}
 
 	/**
-	 *
 	 * @param array $stats
 	 */
 	protected function renderBackendStats( array $stats ) {
@@ -127,7 +121,6 @@ class SearchAdmin extends SpecialPage {
 	}
 
 	/**
-	 *
 	 * @param array $aSources
 	 */
 	protected function renderSources( $aSources ) {
@@ -150,7 +143,6 @@ class SearchAdmin extends SpecialPage {
 	}
 
 	/**
-	 *
 	 * @param string $sSourceKey
 	 * @param array $aSourceStats
 	 */

@@ -14,7 +14,6 @@ class RepoFile extends FileBase {
 	protected $file = null;
 
 	/**
-	 *
 	 * @param string $sUri
 	 * @param string $documentId
 	 * @param array $mDataItem
@@ -36,7 +35,6 @@ class RepoFile extends FileBase {
 	}
 
 	/**
-	 *
 	 * @param Title|null $title
 	 * @return string
 	 */

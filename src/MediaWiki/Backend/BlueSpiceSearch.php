@@ -24,7 +24,6 @@ class BlueSpiceSearch extends \SearchEngine {
 	}
 
 	/**
-	 *
 	 * @param string $term
 	 * @return SearchResultSet
 	 */
@@ -33,7 +32,6 @@ class BlueSpiceSearch extends \SearchEngine {
 	}
 
 	/**
-	 *
 	 * @param string $term
 	 * @return SearchResultSet
 	 */
@@ -91,7 +89,6 @@ class BlueSpiceSearch extends \SearchEngine {
 	}
 
 	/**
-	 *
 	 * @param string $search
 	 * @return \SearchSuggestionSet
 	 */
@@ -101,7 +98,6 @@ class BlueSpiceSearch extends \SearchEngine {
 	}
 
 	/**
-	 *
 	 * @param string $search
 	 * @return Title[]
 	 */
@@ -191,7 +187,6 @@ class BlueSpiceSearch extends \SearchEngine {
 	}
 
 	/**
-	 *
 	 * @param string $term
 	 * @return bool
 	 */
@@ -200,7 +195,6 @@ class BlueSpiceSearch extends \SearchEngine {
 	}
 
 	/**
-	 *
 	 * @param int $id
 	 * @param string $title
 	 * @param string $text
@@ -210,7 +204,6 @@ class BlueSpiceSearch extends \SearchEngine {
 	}
 
 	/**
-	 *
 	 * @param int $id
 	 * @param string $title
 	 */
@@ -219,7 +212,6 @@ class BlueSpiceSearch extends \SearchEngine {
 	}
 
 	/**
-	 *
 	 * @param int $id
 	 * @param string $title
 	 */

@@ -11,25 +11,21 @@ use Wikimedia\ParamValidator\ParamValidator;
 
 class Autocomplete extends ApiBase {
 	/**
-	 *
 	 * @var \BS\ExtendedSearch\Lookup
 	 */
 	protected $lookup = null;
 
 	/**
-	 *
 	 * @var string Backend name
 	 */
 	protected $backend = '';
 
 	/**
-	 *
 	 * @var array
 	 */
 	protected $searchData;
 
 	/**
-	 *
 	 * @var array
 	 */
 	protected $secondaryRequestData;
@@ -41,7 +37,6 @@ class Autocomplete extends ApiBase {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	protected function getAllowedParams() {
@@ -71,7 +66,6 @@ class Autocomplete extends ApiBase {
 	}
 
 	/**
-	 *
 	 * @param string $paramName Parameter name
 	 * @param array|mixed $paramSettings Default value or an array of settings
 	 *  using PARAM_* constants.
@@ -105,7 +99,6 @@ class Autocomplete extends ApiBase {
 	}
 
 	/**
-	 *
 	 * @var array
 	 */
 	protected $suggestions;

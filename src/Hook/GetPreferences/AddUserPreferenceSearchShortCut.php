@@ -6,6 +6,9 @@ use BlueSpice\Hook\GetPreferences;
 
 class AddUserPreferenceSearchShortCut extends GetPreferences {
 
+	/**
+	 * @return bool
+	 */
 	protected function doProcess() {
 		$this->preferences['searchShortcut'] = [
 			'type' => 'toggle',

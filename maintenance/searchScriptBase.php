@@ -21,7 +21,6 @@ abstract class searchScriptBase extends Maintenance { // phpcs:ignore Squiz.Clas
 	}
 
 	/**
-	 *
 	 * @param string $sourceKey
 	 * @return bool
 	 */

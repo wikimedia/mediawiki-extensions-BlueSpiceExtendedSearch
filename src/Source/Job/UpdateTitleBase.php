@@ -19,6 +19,7 @@ class UpdateTitleBase extends UpdateJob {
 		return $this->getTitle()->getNamespace() . '|' . $this->getTitle()->getDBkey();
 	}
 
+	/** @inheritDoc */
 	protected function doRun() {
 		$this->dp = $this->getSource()->getDocumentProvider();
 		if ( $this->isDeletion() ) {
@@ -56,7 +57,6 @@ class UpdateTitleBase extends UpdateJob {
 	}
 
 	/**
-	 *
 	 * @return bool
 	 */
 	protected function isDeletion() {

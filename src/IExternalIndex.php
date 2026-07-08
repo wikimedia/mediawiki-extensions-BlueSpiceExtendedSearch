@@ -14,14 +14,12 @@ interface IExternalIndex {
 	public const FIELD_SOURCE_KEY = 'sourcekey';
 
 	/**
-	 *
 	 * @param string $action
 	 * @return Status
 	 */
 	public function push( $action = UpdateJob::ACTION_UPDATE );
 
 	/**
-	 *
 	 * @param MediaWikiServices $services
 	 * @param Config $config
 	 * @param array $document

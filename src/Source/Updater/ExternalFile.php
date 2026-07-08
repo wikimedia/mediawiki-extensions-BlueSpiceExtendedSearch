@@ -69,7 +69,6 @@ class ExternalFile implements IHandler {
 	}
 
 	/**
-	 *
 	 * @param Lookup $lookup
 	 * @param array &$results
 	 *

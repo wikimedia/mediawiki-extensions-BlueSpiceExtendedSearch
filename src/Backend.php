@@ -215,7 +215,6 @@ class Backend {
 	}
 
 	/**
-	 *
 	 * @param string $type
 	 * @return string
 	 */
@@ -224,7 +223,6 @@ class Backend {
 	}
 
 	/**
-	 *
 	 * @return IContextSource
 	 */
 	public function getContext() {
@@ -232,7 +230,6 @@ class Backend {
 	}
 
 	/**
-	 *
 	 * @return Config
 	 */
 	public function getConfig() {
@@ -367,7 +364,6 @@ class Backend {
 	}
 
 	/**
-	 *
 	 * @param array $results
 	 * @return array
 	 */
@@ -784,7 +780,6 @@ class Backend {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	public function getSpellCheckConfig() {
@@ -810,7 +805,6 @@ class Backend {
 	}
 
 	/**
-	 *
 	 * @return bool
 	 */
 	protected function isHistoryTrackingEnabled() {
@@ -819,7 +813,6 @@ class Backend {
 	}
 
 	/**
-	 *
 	 * @param array $data
 	 */
 	protected function logSearchHistory( $data ) {

@@ -31,7 +31,6 @@ use MediaWiki\MediaWikiServices;
 class WikiPages extends GenericSource {
 
 	/**
-	 *
 	 * @return \BS\ExtendedSearch\Source\Crawler\WikiPage
 	 */
 	public function getCrawler(): ISearchCrawler {
@@ -43,7 +42,6 @@ class WikiPages extends GenericSource {
 	}
 
 	/**
-	 *
 	 * @return \BS\ExtendedSearch\Source\DocumentProvider\WikiPage
 	 */
 	public function getDocumentProvider(): ISearchDocumentProvider {
@@ -57,7 +55,6 @@ class WikiPages extends GenericSource {
 	}
 
 	/**
-	 *
 	 * @return \BS\ExtendedSearch\Source\MappingProvider\WikiPage
 	 */
 	public function getMappingProvider(): ISearchMappingProvider {
@@ -65,7 +62,6 @@ class WikiPages extends GenericSource {
 	}
 
 	/**
-	 *
 	 * @return \BS\ExtendedSearch\Source\Updater\WikiPage
 	 */
 	public function getUpdater(): ISearchUpdater {
@@ -73,7 +69,6 @@ class WikiPages extends GenericSource {
 	}
 
 	/**
-	 *
 	 * @return Formatter\WikiPageFormatter
 	 */
 	public function getFormatter(): ISearchResultFormatter {
@@ -81,7 +76,6 @@ class WikiPages extends GenericSource {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getSearchPermission(): string {

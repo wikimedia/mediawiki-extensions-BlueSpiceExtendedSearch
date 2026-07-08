@@ -13,7 +13,6 @@ class RepoFile extends File {
 	protected $sJobClass = 'BS\ExtendedSearch\Source\Job\UpdateRepoFile';
 
 	/**
-	 *
 	 * @var RepoGroup
 	 */
 	protected $repoGroup = null;

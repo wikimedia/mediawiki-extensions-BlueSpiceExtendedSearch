@@ -12,19 +12,16 @@ use Wikimedia\Rdbms\ILoadBalancer;
 class Store implements IStore {
 
 	/**
-	 *
 	 * @var IContextSource
 	 */
 	protected $context = null;
 
 	/**
-	 *
 	 * @var ILoadBalancer
 	 */
 	protected $loadBalancer = null;
 
 	/**
-	 *
 	 * @param IContextSource|null $context
 	 */
 	public function __construct( ?IContextSource $context = null ) {
@@ -36,7 +33,6 @@ class Store implements IStore {
 	}
 
 	/**
-	 *
 	 * @return Reader
 	 */
 	public function getReader() {
@@ -44,7 +40,6 @@ class Store implements IStore {
 	}
 
 	/**
-	 *
 	 * @return Writer
 	 */
 	public function getWriter() {
@@ -56,7 +51,6 @@ class Store implements IStore {
 	}
 
 	/**
-	 *
 	 * @param array $params
 	 * @return ReaderParams
 	 */

@@ -62,7 +62,6 @@ abstract class UpdateJob extends Job {
 	abstract protected function isDeletion();
 
 	/**
-	 *
 	 * @return Backend
 	 */
 	protected function getBackend() {
@@ -77,7 +76,6 @@ abstract class UpdateJob extends Job {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function getBackendKey() {
@@ -88,7 +86,6 @@ abstract class UpdateJob extends Job {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function getSourceKey() {
@@ -105,7 +102,6 @@ abstract class UpdateJob extends Job {
 	abstract protected function doRun();
 
 	/**
-	 *
 	 * @param array $dC
 	 * @return Status
 	 */
@@ -133,7 +129,6 @@ abstract class UpdateJob extends Job {
 	}
 
 	/**
-	 *
 	 * @return ExternalIndexFactory
 	 */
 	protected function getExternalIndexFactory() {
@@ -142,6 +137,9 @@ abstract class UpdateJob extends Job {
 		);
 	}
 
+	/**
+	 * @return bool
+	 */
 	protected function shouldSkipProcessing() {
 		$job = $this;
 		$skip = $this->skipProcessing();
@@ -164,7 +162,6 @@ abstract class UpdateJob extends Job {
 	}
 
 	/**
-	 *
 	 * @return bool
 	 */
 	protected function skipProcessing() {

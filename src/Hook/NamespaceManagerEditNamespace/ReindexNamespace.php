@@ -9,6 +9,8 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 
 class ReindexNamespace extends NamespaceManagerEditNamespace {
+
+	/** @inheritDoc */
 	protected function skipProcessing() {
 		if ( !isset( $this->namespaceDefinition[$this->nsId]['name' ] ) ) {
 			return true;

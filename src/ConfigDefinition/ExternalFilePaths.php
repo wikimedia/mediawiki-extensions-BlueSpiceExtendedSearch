@@ -6,7 +6,6 @@ class ExternalFilePaths extends \BlueSpice\ConfigDefinition {
 	public const EXTENSION_EXTENDED_SEARCH = 'BlueSpiceExtendedSearch';
 
 	/**
-	 *
 	 * @return string[]
 	 */
 	public function getPaths() {
@@ -18,7 +17,6 @@ class ExternalFilePaths extends \BlueSpice\ConfigDefinition {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getLabelMessageKey() {
@@ -26,7 +24,6 @@ class ExternalFilePaths extends \BlueSpice\ConfigDefinition {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getVariableName() {
@@ -34,7 +31,6 @@ class ExternalFilePaths extends \BlueSpice\ConfigDefinition {
 	}
 
 	/**
-	 *
 	 * @return \BlueSpice\Html\FormField\KeyValueField
 	 */
 	public function getHtmlFormField() {
@@ -42,7 +38,6 @@ class ExternalFilePaths extends \BlueSpice\ConfigDefinition {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	protected function makeFormFieldParams() {
@@ -58,7 +53,6 @@ class ExternalFilePaths extends \BlueSpice\ConfigDefinition {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getHelpMessageKey() {

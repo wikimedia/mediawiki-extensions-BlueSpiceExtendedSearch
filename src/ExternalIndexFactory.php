@@ -8,19 +8,16 @@ use MediaWiki\MediaWikiServices;
 
 class ExternalIndexFactory {
 	/**
-	 *
 	 * @var Config
 	 */
 	protected $config = null;
 
 	/**
-	 *
 	 * @var ExtensionAttributeBasedRegistry
 	 */
 	protected $registry = null;
 
 	/**
-	 *
 	 * @param Config $config
 	 * @param ExtensionAttributeBasedRegistry $registry
 	 */
@@ -30,7 +27,6 @@ class ExternalIndexFactory {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	public function getTypes() {
@@ -38,7 +34,6 @@ class ExternalIndexFactory {
 	}
 
 	/**
-	 *
 	 * @param string $type
 	 * @param array $document
 	 * @return IExternalIndex|null

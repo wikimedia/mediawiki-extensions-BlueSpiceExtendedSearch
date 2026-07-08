@@ -7,7 +7,6 @@ use MWStake\MediaWiki\Component\DataStore\DatabaseWriter;
 class Writer extends DatabaseWriter {
 
 	/**
-	 *
 	 * @return array
 	 */
 	protected function getIdentifierFields() {
@@ -15,7 +14,6 @@ class Writer extends DatabaseWriter {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function getTableName() {
@@ -23,7 +21,6 @@ class Writer extends DatabaseWriter {
 	}
 
 	/**
-	 *
 	 * @return Schema
 	 */
 	public function getSchema() {

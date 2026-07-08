@@ -10,7 +10,6 @@ use BS\ExtendedSearch\ISearchResultFormatter;
 class SpecialPages extends GenericSource {
 
 	/**
-	 *
 	 * @return ISearchCrawler
 	 */
 	public function getCrawler(): ISearchCrawler {
@@ -22,7 +21,6 @@ class SpecialPages extends GenericSource {
 	}
 
 	/**
-	 *
 	 * @return \BS\ExtendedSearch\Source\DocumentProvider\SpecialPage
 	 */
 	public function getDocumentProvider(): ISearchDocumentProvider {
@@ -30,7 +28,6 @@ class SpecialPages extends GenericSource {
 	}
 
 	/**
-	 *
 	 * @return MappingProvider\SpecialPage
 	 */
 	public function getMappingProvider(): ISearchMappingProvider {
@@ -38,7 +35,6 @@ class SpecialPages extends GenericSource {
 	}
 
 	/**
-	 *
 	 * @return Formatter\SpecialPageFormatter
 	 */
 	public function getFormatter(): ISearchResultFormatter {
@@ -46,7 +42,6 @@ class SpecialPages extends GenericSource {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getSearchPermission(): string {

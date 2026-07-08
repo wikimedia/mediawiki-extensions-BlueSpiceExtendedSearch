@@ -7,7 +7,6 @@ use BS\ExtendedSearch\ISearchMappingProvider;
 class Base implements ISearchMappingProvider {
 
 	/**
-	 *
 	 * @return array
 	 */
 	public function getPropertyConfig(): array {
@@ -73,7 +72,6 @@ class Base implements ISearchMappingProvider {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	public function getSourceConfig(): array {

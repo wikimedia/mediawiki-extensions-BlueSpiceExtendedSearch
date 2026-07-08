@@ -31,7 +31,6 @@ class WikiPage extends Base implements
 	private $jobQueueGroup;
 
 	/**
-	 *
 	 * @param MediaWikiServices $services
 	 */
 	public function init( MediaWikiServices $services ): void {
