@@ -7,7 +7,6 @@ use BlueSpice\WikiFarm\CommandDescriptionBase;
 class InitBackend extends CommandDescriptionBase {
 
 	/**
-	 *
 	 * @return string[]
 	 */
 	public function getCommandArguments() {
@@ -20,7 +19,6 @@ class InitBackend extends CommandDescriptionBase {
 	}
 
 	/**
-	 *
 	 * @return int
 	 */
 	public function getPosition() {

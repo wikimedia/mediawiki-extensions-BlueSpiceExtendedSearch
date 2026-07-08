@@ -9,13 +9,11 @@ use MWStake\MediaWiki\Component\DataStore\IStore;
 abstract class Store implements IStore {
 
 	/**
-	 *
 	 * @var Backend
 	 */
 	protected $searchBackend = null;
 
 	/**
-	 *
 	 * @param Backend|null $searchBackend
 	 */
 	public function __construct( ?Backend $searchBackend = null ) {
@@ -23,7 +21,6 @@ abstract class Store implements IStore {
 	}
 
 	/**
-	 *
 	 * @return Backend
 	 */
 	protected function getSearchBackend() {
@@ -35,7 +32,6 @@ abstract class Store implements IStore {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function getSearchBackendKey() {

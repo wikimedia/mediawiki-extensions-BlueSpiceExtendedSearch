@@ -6,7 +6,6 @@ use MediaWiki\MediaWikiServices;
 
 class SpecialPage extends Base {
 	/**
-	 *
 	 * @param MediaWikiServices $services
 	 */
 	public function init( MediaWikiServices $services ): void {

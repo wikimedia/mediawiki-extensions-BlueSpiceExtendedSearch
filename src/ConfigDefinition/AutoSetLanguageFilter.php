@@ -6,7 +6,6 @@ class AutoSetLanguageFilter extends \BlueSpice\ConfigDefinition\BooleanSetting {
 	public const EXTENSION_EXTENDED_SEARCH = 'BlueSpiceExtendedSearch';
 
 	/**
-	 *
 	 * @return string[]
 	 */
 	public function getPaths() {
@@ -18,7 +17,6 @@ class AutoSetLanguageFilter extends \BlueSpice\ConfigDefinition\BooleanSetting {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getLabelMessageKey() {
@@ -26,7 +24,6 @@ class AutoSetLanguageFilter extends \BlueSpice\ConfigDefinition\BooleanSetting {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getHelpMessageKey() {

@@ -28,25 +28,21 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 	public const FLOAT = 'float';
 
 	/**
-	 *
 	 * @var Record[]
 	 */
 	protected $data = [];
 
 	/**
-	 *
 	 * @var Backend
 	 */
 	protected $searchBackend = null;
 
 	/**
-	 *
 	 * @var Schema
 	 */
 	protected $schema = null;
 
 	/**
-	 *
 	 * @param Backend $searchBackend
 	 * @param Schema $schema
 	 */
@@ -56,7 +52,6 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	public function getValueTypeMapping() {
@@ -72,7 +67,6 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 	}
 
 	/**
-	 *
 	 * @return Backend
 	 */
 	public function getSearchBackend() {
@@ -90,7 +84,6 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 	abstract protected function getTypeName();
 
 	/**
-	 *
 	 * @param ReaderParams $params
 	 * @return Record[]
 	 */
@@ -148,7 +141,6 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 	}
 
 	/**
-	 *
 	 * @param ReaderParams $params
 	 * @param array $query
 	 * @return array
@@ -253,7 +245,6 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 	}
 
 	/**
-	 *
 	 * @param ReaderParams $params
 	 * @param array $query
 	 * @return array
@@ -299,7 +290,6 @@ abstract class PrimaryDataProvider implements IPrimaryDataProvider {
 	}
 
 	/**
-	 *
 	 * @param SearchResult $row
 	 * @return null
 	 */

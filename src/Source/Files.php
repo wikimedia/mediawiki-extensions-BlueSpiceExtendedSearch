@@ -20,7 +20,6 @@ class Files extends GenericSource {
 	private $failedOnce = false;
 
 	/**
-	 *
 	 * @return FileMappingProvider
 	 */
 	public function getMappingProvider(): ISearchMappingProvider {
@@ -28,7 +27,6 @@ class Files extends GenericSource {
 	}
 
 	/**
-	 *
 	 * @param array $document
 	 *
 	 * @return bool
@@ -54,7 +52,6 @@ class Files extends GenericSource {
 	}
 
 	/**
-	 *
 	 * @return ISearchDocumentProvider
 	 */
 	public function getDocumentProvider(): ISearchDocumentProvider {

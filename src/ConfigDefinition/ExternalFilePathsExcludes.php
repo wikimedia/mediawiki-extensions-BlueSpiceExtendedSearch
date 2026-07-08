@@ -10,7 +10,6 @@ class ExternalFilePathsExcludes extends ConfigDefinition {
 	public const EXTENSION_EXTENDED_SEARCH = 'BlueSpiceExtendedSearch';
 
 	/**
-	 *
 	 * @return string[]
 	 */
 	public function getPaths() {
@@ -22,7 +21,6 @@ class ExternalFilePathsExcludes extends ConfigDefinition {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getLabelMessageKey() {
@@ -30,7 +28,6 @@ class ExternalFilePathsExcludes extends ConfigDefinition {
 	}
 
 	/**
-	 *
 	 * @return KeyValueField
 	 */
 	public function getHtmlFormField() {
@@ -38,7 +35,6 @@ class ExternalFilePathsExcludes extends ConfigDefinition {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	protected function makeFormFieldParams() {

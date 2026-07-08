@@ -8,19 +8,16 @@ use Wikimedia\Rdbms\IDatabase;
 class PrimaryDataProvider extends PrimaryDatabaseDataProvider {
 
 	/**
-	 *
 	 * @var Record[]
 	 */
 	protected $data = [];
 
 	/**
-	 *
 	 * @var IDatabase
 	 */
 	protected $db = null;
 
 	/**
-	 *
 	 * @return array
 	 */
 	protected function getTableNames() {
@@ -28,7 +25,6 @@ class PrimaryDataProvider extends PrimaryDatabaseDataProvider {
 	}
 
 	/**
-	 *
 	 * @param \stdClass $row
 	 */
 	protected function appendRowToData( \stdClass $row ) {
@@ -45,7 +41,6 @@ class PrimaryDataProvider extends PrimaryDatabaseDataProvider {
 	}
 
 	/**
-	 *
 	 * @param string $term
 	 * @return string
 	 */

@@ -12,7 +12,6 @@ class UpdateWikiPage extends UpdateTitleBase {
 	protected $sSourceKey = 'wikipage';
 
 	/**
-	 *
 	 * @param Title $title
 	 * @param array $params
 	 */
@@ -20,6 +19,7 @@ class UpdateWikiPage extends UpdateTitleBase {
 		parent::__construct( 'updateWikiPageIndex', $title, $params );
 	}
 
+	/** @inheritDoc */
 	protected function doRun() {
 		$this->dp = $this->getSource()->getDocumentProvider();
 		if ( $this->isNoIndex() ) {
@@ -33,7 +33,6 @@ class UpdateWikiPage extends UpdateTitleBase {
 	}
 
 	/**
-	 *
 	 * @return bool
 	 * @throws \Exception
 	 */
@@ -45,7 +44,6 @@ class UpdateWikiPage extends UpdateTitleBase {
 	}
 
 	/**
-	 *
 	 * @return WikiPage|null
 	 */
 	protected function getDocumentProviderSource() {

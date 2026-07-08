@@ -10,13 +10,11 @@ use MediaWiki\MediaWikiServices;
 class Store implements ITagCloudStore {
 
 	/**
-	 *
 	 * @var Context
 	 */
 	protected $context = null;
 
 	/**
-	 *
 	 * @param Context $context
 	 */
 	public function __construct( Context $context ) {
@@ -25,7 +23,6 @@ class Store implements ITagCloudStore {
 	}
 
 	/**
-	 *
 	 * @return Reader
 	 */
 	public function getReader() {
@@ -33,7 +30,6 @@ class Store implements ITagCloudStore {
 	}
 
 	/**
-	 *
 	 * @return Writer
 	 */
 	public function getWriter() {
@@ -45,7 +41,6 @@ class Store implements ITagCloudStore {
 	}
 
 	/**
-	 *
 	 * @param array $params
 	 * @return ReaderParams
 	 */

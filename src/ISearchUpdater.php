@@ -16,7 +16,6 @@ interface ISearchUpdater {
 	public function init( MediaWikiServices $services ): void;
 
 	/**
-	 *
 	 * @param Title $title
 	 * @param array|null $params
 	 *

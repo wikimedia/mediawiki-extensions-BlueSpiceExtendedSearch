@@ -7,7 +7,6 @@ use BlueSpice\WikiFarm\CommandDescriptionBase;
 class RebuildIndex extends CommandDescriptionBase {
 
 	/**
-	 *
 	 * @return string[]
 	 */
 	public function getCommandArguments() {
@@ -20,7 +19,6 @@ class RebuildIndex extends CommandDescriptionBase {
 	}
 
 	/**
-	 *
 	 * @return int
 	 */
 	public function getPosition() {

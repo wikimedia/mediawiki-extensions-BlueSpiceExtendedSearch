@@ -10,7 +10,6 @@ use BS\ExtendedSearch\Source\Formatter\ExternalFileFormatter;
 class ExternalFiles extends Files {
 
 	/**
-	 *
 	 * @return ExternalFileCrawler
 	 */
 	public function getCrawler(): ISearchCrawler {

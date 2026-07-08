@@ -8,7 +8,6 @@ use MediaWiki\Registration\ExtensionRegistry;
 class FileFormatter extends Base {
 
 	/**
-	 *
 	 * @param array &$resultData
 	 * @param SearchResult $resultObject
 	 */
@@ -23,7 +22,6 @@ class FileFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param array $resultData
 	 * @return string
 	 */
@@ -54,7 +52,6 @@ class FileFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param array $defaultResultStructure
 	 *
 	 * @return array
@@ -74,7 +71,6 @@ class FileFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param SearchResult $resultObject
 	 * @return string
 	 */

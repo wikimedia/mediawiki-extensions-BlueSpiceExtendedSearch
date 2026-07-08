@@ -11,9 +11,6 @@ use MWStake\MediaWiki\Component\CommonUserInterface\IRestrictedComponent;
 
 class ExtendedSearchForm extends Literal implements IRestrictedComponent {
 
-	/**
-	 *
-	 */
 	public function __construct() {
 		parent::__construct(
 			'bs-extended-search-form',
@@ -22,7 +19,6 @@ class ExtendedSearchForm extends Literal implements IRestrictedComponent {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	public function getPermissions(): array {
@@ -30,7 +26,6 @@ class ExtendedSearchForm extends Literal implements IRestrictedComponent {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	private function getParams(): array {
@@ -63,7 +58,6 @@ class ExtendedSearchForm extends Literal implements IRestrictedComponent {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	private function getTemplateHtml(): string {
@@ -78,7 +72,6 @@ class ExtendedSearchForm extends Literal implements IRestrictedComponent {
 	}
 
 	/**
-	 *
 	 * @inheritDoc
 	 */
 	public function getRequiredRLModules(): array {

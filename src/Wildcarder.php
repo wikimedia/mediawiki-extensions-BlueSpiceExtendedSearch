@@ -47,7 +47,6 @@ class Wildcarder {
 	}
 
 	/**
-	 *
 	 * @param string $original
 	 * @param array $wildcardingOperators
 	 * @param array $wildcardingSeparators
@@ -187,7 +186,6 @@ class Wildcarder {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	protected function getQuotedParts() {

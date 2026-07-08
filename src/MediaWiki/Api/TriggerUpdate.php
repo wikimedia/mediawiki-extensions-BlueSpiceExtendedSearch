@@ -26,7 +26,6 @@ class TriggerUpdate extends ApiBase {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	protected function getAllowedParams() {

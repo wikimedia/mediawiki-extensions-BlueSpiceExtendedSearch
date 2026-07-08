@@ -5,7 +5,6 @@ namespace BS\ExtendedSearch;
 interface ISearchDocumentProvider {
 
 	/**
-	 *
 	 * @param string $uri
 	 * @param string $documentId
 	 * @param mixed $dataItem

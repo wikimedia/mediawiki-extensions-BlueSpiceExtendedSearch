@@ -15,25 +15,21 @@ class Base implements ISearchCrawler {
 	protected $sJobClass = '';
 
 	/**
-	 *
 	 * @var Config
 	 */
 	protected $sourceConfig = null;
 
 	/**
-	 *
 	 * @var ILoadBalancer
 	 */
 	protected $lb = null;
 
 	/**
-	 *
 	 * @var JobQueueGroup
 	 */
 	protected $jobQueueGroup = null;
 
 	/**
-	 *
 	 * @param ILoadBalancer $lb
 	 * @param JobQueueGroup $jobQueueGroup
 	 * @param Config $sourceConfig
@@ -52,7 +48,6 @@ class Base implements ISearchCrawler {
 	}
 
 	/**
-	 *
 	 * @param Title $oTitle
 	 * @param array $aParams
 	 * @return Job|null
@@ -68,7 +63,6 @@ class Base implements ISearchCrawler {
 	}
 
 	/**
-	 *
 	 * @return int
 	 */
 	public function getNumberOfPendingJobs(): int {
@@ -89,7 +83,6 @@ class Base implements ISearchCrawler {
 	}
 
 	/**
-	 *
 	 * @return bool
 	 */
 	public function clearPendingJobs(): bool {

@@ -31,6 +31,9 @@ class RecentlyFoundHandler extends SimpleHandler {
 		$this->linkRenderer = $linkRenderer;
 	}
 
+	/**
+	 * @return Response
+	 */
 	public function execute() {
 		$titles = $this->getRecentTitles( RequestContext::getMain()->getUser() );
 		return $this->formatAndReturn( $titles );
@@ -51,7 +54,7 @@ class RecentlyFoundHandler extends SimpleHandler {
 	/**
 	 * @param array $title
 	 *
-	 * @return void
+	 * @return Response
 	 */
 	protected function formatAndReturn( array $title ): Response {
 		$suggestions = [];

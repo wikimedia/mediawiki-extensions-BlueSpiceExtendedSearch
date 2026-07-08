@@ -22,7 +22,6 @@ class File extends Base {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	public function getPropertyConfig(): array {

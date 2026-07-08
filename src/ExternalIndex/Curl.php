@@ -7,7 +7,6 @@ use MWHttpRequest;
 abstract class Curl extends \BS\ExtendedSearch\ExternalIndex {
 
 	/**
-	 *
 	 * @param array $mappedFields
 	 * @param string $action
 	 * @return MWHttpRequest

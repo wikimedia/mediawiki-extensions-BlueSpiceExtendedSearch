@@ -21,7 +21,6 @@ class Query extends ApiBase {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	protected function getAllowedParams() {
@@ -46,7 +45,6 @@ class Query extends ApiBase {
 	}
 
 	/**
-	 *
 	 * @param string $paramName Parameter name
 	 * @param array|mixed $paramSettings Default value or an array of settings
 	 *  using PARAM_* constants.
@@ -71,7 +69,6 @@ class Query extends ApiBase {
 	}
 
 	/**
-	 *
 	 * @var \BS\ExtendedSearch\Lookup|null
 	 */
 	protected $oLookup = null;
@@ -85,7 +82,6 @@ class Query extends ApiBase {
 	}
 
 	/**
-	 *
 	 * @var stdClass
 	 */
 	protected $resultSet;

@@ -31,13 +31,11 @@ class Base implements ISearchResultFormatter {
 	public const AC_RANK_SECONDARY = 'secondary';
 
 	/**
-	 *
 	 * @var ISearchSource
 	 */
 	protected $source;
 
 	/**
-	 *
 	 * @var \BS\ExtendedSearch\Lookup
 	 */
 	protected $lookup;
@@ -53,7 +51,6 @@ class Base implements ISearchResultFormatter {
 	protected $utilityFactory;
 
 	/**
-	 *
 	 * @param ISearchSource $source
 	 */
 	public function __construct( $source ) {
@@ -155,7 +152,6 @@ class Base implements ISearchResultFormatter {
 	}
 
 	/**
-	 *
 	 * @param string $type
 	 * @return string
 	 */
@@ -267,7 +263,6 @@ class Base implements ISearchResultFormatter {
 	}
 
 	/**
-	 *
 	 * @param array $results
 	 * @return array|false
 	 */

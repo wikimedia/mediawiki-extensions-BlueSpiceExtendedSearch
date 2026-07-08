@@ -5,7 +5,6 @@ namespace BS\ExtendedSearch\Source\MappingProvider;
 class RepoFile extends File {
 
 	/**
-	 *
 	 * @return array
 	 */
 	public function getPropertyConfig(): array {

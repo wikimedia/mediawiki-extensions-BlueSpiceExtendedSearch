@@ -5,13 +5,11 @@ namespace BS\ExtendedSearch;
 interface ISearchMappingProvider {
 
 	/**
-	 *
 	 * @return array
 	 */
 	public function getPropertyConfig(): array;
 
 	/**
-	 *
 	 * @return array
 	 */
 	public function getSourceConfig(): array;

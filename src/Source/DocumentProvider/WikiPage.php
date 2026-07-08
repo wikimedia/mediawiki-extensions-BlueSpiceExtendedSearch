@@ -165,7 +165,6 @@ class WikiPage extends Base {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	protected function getCategories() {
@@ -181,7 +180,6 @@ class WikiPage extends Base {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function getTextContent() {
@@ -194,7 +192,6 @@ class WikiPage extends Base {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function getHTMLContent() {
@@ -206,7 +203,6 @@ class WikiPage extends Base {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	protected function getSections() {
@@ -219,7 +215,6 @@ class WikiPage extends Base {
 	}
 
 	/**
-	 *
 	 * @param string $sText
 	 * @return string
 	 */
@@ -256,7 +251,6 @@ class WikiPage extends Base {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	protected function parseWikipageForTags() {
@@ -277,7 +271,6 @@ class WikiPage extends Base {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function getRedirectsTo() {
@@ -294,7 +287,6 @@ class WikiPage extends Base {
 	}
 
 	/**
-	 *
 	 * @return string[]
 	 */
 	protected function getRedirects() {
@@ -308,7 +300,6 @@ class WikiPage extends Base {
 	}
 
 	/**
-	 *
 	 * @param Title|null $title
 	 * @return string
 	 */
@@ -333,7 +324,6 @@ class WikiPage extends Base {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	protected function getUsedFiles() {
@@ -362,7 +352,6 @@ class WikiPage extends Base {
 	}
 
 	/**
-	 *
 	 * @param Title|null $title
 	 * @return string
 	 */

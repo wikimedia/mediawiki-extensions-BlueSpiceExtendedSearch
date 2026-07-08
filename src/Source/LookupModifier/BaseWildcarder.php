@@ -21,7 +21,6 @@ class BaseWildcarder extends LookupModifier {
 	protected $defaultOperator;
 
 	/**
-	 *
 	 * @param Lookup $lookup
 	 * @param IContextSource $oContext
 	 * @param string $defaultOperator
@@ -54,7 +53,6 @@ class BaseWildcarder extends LookupModifier {
 	}
 
 	/**
-	 *
 	 * @param string $wildcarded
 	 */
 	protected function setWildcarded( $wildcarded ) {
@@ -70,7 +68,6 @@ class BaseWildcarder extends LookupModifier {
 	}
 
 	/**
-	 *
 	 * @return int
 	 */
 	public function getPriority() {

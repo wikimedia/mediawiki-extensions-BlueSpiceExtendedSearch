@@ -21,7 +21,6 @@ class SearchCenter extends SpecialPage {
 	}
 
 	/**
-	 *
 	 * @param string $subPage
 	 */
 	public function execute( $subPage ) {
@@ -140,7 +139,6 @@ class SearchCenter extends SpecialPage {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function getGroupName() {
@@ -148,7 +146,6 @@ class SearchCenter extends SpecialPage {
 	}
 
 	/**
-	 *
 	 * @return bool
 	 */
 	private function userCanExport() {
