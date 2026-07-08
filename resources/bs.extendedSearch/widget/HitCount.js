@@ -18,7 +18,7 @@
 			messageKey = 'bs-extendedsearch-search-center-hitcount-widget-approximately';
 		}
 
-		let message = mw.message( messageKey, this.count ).escaped(); // eslint-disable-line mediawiki/msg-doc
+		let message = mw.message( messageKey, this.count ).escaped();
 		// BC for old messages
 		message = message.replace( '$2', '' );
 		this.$element.html( message );

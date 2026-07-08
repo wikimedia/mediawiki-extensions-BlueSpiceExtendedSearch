@@ -169,7 +169,7 @@
 		const filteredOptions = [];
 		for ( let i = 0; i < this.options.length; i++ ) {
 			const option = this.options[ i ];
-			if ( this.selectedOptions.indexOf( option.data ) !== -1 ) {
+			if ( this.selectedOptions.indexOf( option.data ) !== -1 ) { // eslint-disable-line unicorn/prefer-includes
 				filteredOptions.push( option );
 				continue;
 			}
@@ -217,7 +217,7 @@
 			label = this.valueLabel + labeledValues.join( ', ' );
 			if ( hiddenCount > 0 ) {
 				const countMessageKey = this.hasHiddenLabelKey || '';
-				label += mw.message( countMessageKey, hiddenCount ).parse(); // eslint-disable-line mediawiki/msg-doc
+				label += mw.message( countMessageKey, hiddenCount ).parse();
 			}
 		}
 
@@ -236,7 +236,7 @@
 		this.dirty = true;
 
 		function arrayDiff( array1, array2 ) {
-			return array1.filter( ( el ) => array2.indexOf( el ) === -1 );
+			return array1.filter( ( el ) => array2.indexOf( el ) === -1 ); // eslint-disable-line unicorn/prefer-includes
 		}
 	};
 

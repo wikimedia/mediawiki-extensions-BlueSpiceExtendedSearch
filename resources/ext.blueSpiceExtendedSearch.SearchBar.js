@@ -247,7 +247,7 @@ bs.extendedSearch.SearchBar.prototype.addClearButton = function () {
 		return;
 	}
 
-	const clearButton = new OO.ui.ButtonWidget( {
+	const clearButton = new OO.ui.ButtonWidget( { // eslint-disable-line mediawiki/no-unlabeled-buttonwidget
 		indicator: 'clear',
 		framed: false
 	} );

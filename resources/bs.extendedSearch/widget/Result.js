@@ -104,7 +104,7 @@
 					.addClass( 'bs-extendedsearch-result-links-inner' );
 
 				this.$innerContainer.append( new OO.ui.LabelWidget( {
-					label: mw.message( this.rightLinks[ idx ].labelKey ).text() // eslint-disable-line mediawiki/msg-doc
+					label: mw.message( this.rightLinks[ idx ].labelKey ).text()
 				} ).$element );
 				this.$innerContainer.append( this.rightLinks[ idx ].value );
 				this.$linksContainer.append( this.$innerContainer );

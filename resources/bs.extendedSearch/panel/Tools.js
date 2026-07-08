@@ -39,7 +39,7 @@ bs.extendedSearch.ToolsPanel.prototype.init = function () {
 		addFilter: 'onAddFilter'
 	} );
 
-	const menuButton = new OO.ui.ButtonMenuSelectWidget( {
+	const menuButton = new OO.ui.ButtonMenuSelectWidget( { // eslint-disable-line mediawiki/no-unlabeled-buttonwidget
 		icon: 'menu',
 		framed: false,
 		title: mw.message( 'bs-extendedsearch-options-button-label' ).text(),
@@ -96,7 +96,7 @@ bs.extendedSearch.ToolsPanel.prototype.init = function () {
  * @param {string} id
  */
 bs.extendedSearch.ToolsPanel.prototype.appendFilter = function ( filter, id ) {
-	if ( this.activeFilters.indexOf( id ) !== -1 ) {
+	if ( this.activeFilters.indexOf( id ) !== -1 ) { // eslint-disable-line unicorn/prefer-includes
 		return;
 	}
 	this.$filtersContainer.append( filter.$element );
@@ -126,7 +126,7 @@ bs.extendedSearch.ToolsPanel.prototype.applySearchOptions = function ( lookup ) 
 	let i;
 	for ( i = 0; i < this.currentSortFields.length; i++ ) {
 		const sortedField = this.currentSortFields[ i ];
-		if ( sortBy.indexOf( sortedField ) === -1 ) {
+		if ( sortBy.indexOf( sortedField ) === -1 ) { // eslint-disable-line unicorn/prefer-includes
 			lookup.removeSort( sortedField );
 		}
 	}

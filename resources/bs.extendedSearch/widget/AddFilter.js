@@ -26,7 +26,7 @@ bs.extendedSearch.FilterAddWidget = function ( cfg ) {
 			const filter = this.groupedFilters[ group ][ i ];
 			menuItems.push( new OO.ui.MenuOptionWidget( {
 				data: filter.filter,
-				disabled: this.activeFilters.indexOf( filter.filter.id ) !== -1,
+				disabled: this.activeFilters.indexOf( filter.filter.id ) !== -1, // eslint-disable-line unicorn/prefer-includes
 				label: filter.label
 			} ) );
 		}

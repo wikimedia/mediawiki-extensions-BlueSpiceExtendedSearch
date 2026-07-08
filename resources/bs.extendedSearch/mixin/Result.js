@@ -72,7 +72,7 @@
 		let $label = null;
 		if ( !item.nolabel ) {
 			const labelKey = item.labelKey || '';
-			const label = mw.message( labelKey ).text(); // eslint-disable-line mediawiki/msg-doc
+			const label = mw.message( labelKey ).text();
 			$label = $( '<span>' )
 				.html( label );
 		}
@@ -100,7 +100,7 @@
 			return;
 		}
 
-		this.relevantButton = new OO.ui.ButtonWidget( {
+		this.relevantButton = new OO.ui.ButtonWidget( { // eslint-disable-line mediawiki/no-unlabeled-buttonwidget
 			framed: false,
 			icon: 'pushPin',
 			title: mw.message( 'bs-extendedsearch-result-relevance-relevant' ).text()
