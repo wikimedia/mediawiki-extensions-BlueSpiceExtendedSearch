@@ -14,7 +14,6 @@ class BaseUserRelevance extends LookupModifier {
 	protected $negativeBoosts = [];
 
 	/**
-	 *
 	 * @param \BS\ExtendedSearch\Lookup &$lookup
 	 * @param IContextSource $context
 	 */

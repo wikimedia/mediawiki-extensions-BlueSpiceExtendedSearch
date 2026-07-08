@@ -10,25 +10,21 @@ use MediaWiki\Title\Title;
 class WikiPageNamespacePrefixResolver extends LookupModifier {
 
 	/**
-	 *
 	 * @var string
 	 */
 	protected $simpleQS = [];
 
 	/**
-	 *
 	 * @var Title
 	 */
 	protected $title = null;
 
 	/**
-	 *
 	 * @var string
 	 */
 	protected $titleText = '';
 
 	/**
-	 *
 	 * @var bool
 	 */
 	protected $explicitlyMain = false;
@@ -49,13 +45,15 @@ class WikiPageNamespacePrefixResolver extends LookupModifier {
 	}
 
 	/**
-	 *
 	 * @return int
 	 */
 	public function getPriority() {
 		return 10;
 	}
 
+	/**
+	 * @return bool|null
+	 */
 	protected function setSimpleQS() {
 		$aQueryString = $this->lookup->getQueryString();
 		if ( !isset( $aQueryString['query'] ) ) {
@@ -87,6 +85,9 @@ class WikiPageNamespacePrefixResolver extends LookupModifier {
 		}
 	}
 
+	/**
+	 * @return bool
+	 */
 	protected function doesNotApply() {
 		if ( $this->title instanceof Title === false ) {
 			return true;

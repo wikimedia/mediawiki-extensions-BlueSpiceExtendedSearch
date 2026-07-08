@@ -5,7 +5,6 @@ namespace BS\ExtendedSearch\Source\Crawler;
 class File extends Base {
 
 	/**
-	 *
 	 * @param \SplFileInfo $file
 	 * @return bool
 	 */

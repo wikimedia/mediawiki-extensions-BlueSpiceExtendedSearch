@@ -26,7 +26,6 @@ interface ISearchSource extends ILookupModifierProvider, IPostProcessorProvider 
 	public function getBackend(): Backend;
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getTypeKey(): string;
@@ -47,7 +46,6 @@ interface ISearchSource extends ILookupModifierProvider, IPostProcessorProvider 
 	public function getDocumentProvider(): ISearchDocumentProvider;
 
 	/**
-	 *
 	 * @return \BS\ExtendedSearch\Source\Updater\Base
 	 */
 	public function getUpdater(): ISearchUpdater;
@@ -60,7 +58,6 @@ interface ISearchSource extends ILookupModifierProvider, IPostProcessorProvider 
 	public function getIndexSettings(): array;
 
 	/**
-	 *
 	 * @param Client $client
 	 *
 	 * @return bool
@@ -68,14 +65,12 @@ interface ISearchSource extends ILookupModifierProvider, IPostProcessorProvider 
 	public function runAdditionalSetupRequests( Client $client ): bool;
 
 	/**
-	 *
 	 * @param array $document
 	 * @return bool
 	 */
 	public function addDocumentToIndex( $document ): bool;
 
 	/**
-	 *
 	 * @param string $documentId
 	 *
 	 * @return bool
@@ -88,7 +83,6 @@ interface ISearchSource extends ILookupModifierProvider, IPostProcessorProvider 
 	public function getFormatter(): ISearchResultFormatter;
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getSearchPermission(): string;

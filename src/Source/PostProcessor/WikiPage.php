@@ -23,7 +23,6 @@ class WikiPage extends Base {
 	}
 
 	/**
-	 *
 	 * @param SearchResult &$result
 	 * @param Lookup $lookup
 	 */

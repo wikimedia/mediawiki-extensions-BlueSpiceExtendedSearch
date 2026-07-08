@@ -15,7 +15,6 @@ class Base implements ISearchUpdater {
 	protected $source;
 
 	/**
-	 *
 	 * @param ISearchSource $source
 	 */
 	public function __construct( ISearchSource $source ) {
@@ -23,7 +22,6 @@ class Base implements ISearchUpdater {
 	}
 
 	/**
-	 *
 	 * @param MediaWikiServices $services
 	 */
 	public function init( MediaWikiServices $services ): void {
@@ -33,7 +31,6 @@ class Base implements ISearchUpdater {
 	}
 
 	/**
-	 *
 	 * @param Title $oTitle
 	 * @param array $aParams
 	 * @return void
@@ -63,7 +60,6 @@ class Base implements ISearchUpdater {
 	}
 
 	/**
-	 *
 	 * @param string $sBackendKey
 	 * @param string $sSourceKey
 	 * @param Title $oTitle

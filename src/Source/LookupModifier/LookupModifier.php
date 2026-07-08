@@ -10,19 +10,16 @@ use MediaWiki\Context\IContextSource;
 abstract class LookupModifier implements ILookupModifier {
 
 	/**
-	 *
 	 * @var Lookup
 	 */
 	protected $lookup = null;
 
 	/**
-	 *
 	 * @var IContextSource
 	 */
 	protected $context = null;
 
 	/**
-	 *
 	 * @param Lookup $lookup
 	 * @param IContextSource $context
 	 */

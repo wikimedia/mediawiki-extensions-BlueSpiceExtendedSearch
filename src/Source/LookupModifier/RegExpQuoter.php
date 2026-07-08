@@ -18,7 +18,6 @@ class RegExpQuoter extends LookupModifier {
 	protected $originalQuery;
 
 	/**
-	 *
 	 * @return void
 	 */
 	public function apply() {
@@ -35,7 +34,6 @@ class RegExpQuoter extends LookupModifier {
 	}
 
 	/**
-	 *
 	 * @return void
 	 */
 	public function undo() {
@@ -45,7 +43,6 @@ class RegExpQuoter extends LookupModifier {
 	}
 
 	/**
-	 *
 	 * @return Lookup
 	 */
 	public function getLookup() {
@@ -53,7 +50,6 @@ class RegExpQuoter extends LookupModifier {
 	}
 
 	/**
-	 *
 	 * @return int
 	 */
 	public function getPriority() {
@@ -61,7 +57,6 @@ class RegExpQuoter extends LookupModifier {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	protected function getPatterns() {

@@ -8,7 +8,6 @@ class SearchResultSet extends \SearchResultSet {
 	protected $results = [];
 
 	/**
-	 *
 	 * @param bool $searchContainedSyntax
 	 */
 	public function __construct( $searchContainedSyntax ) {
@@ -16,7 +15,6 @@ class SearchResultSet extends \SearchResultSet {
 	}
 
 	/**
-	 *
 	 * @return int
 	 */
 	public function numRows() {
@@ -24,7 +22,6 @@ class SearchResultSet extends \SearchResultSet {
 	}
 
 	/**
-	 *
 	 * @return int
 	 */
 	public function getTotalHits() {
@@ -32,7 +29,6 @@ class SearchResultSet extends \SearchResultSet {
 	}
 
 	/**
-	 *
 	 * @return \SearchResult|false
 	 */
 	public function next() {
@@ -50,7 +46,6 @@ class SearchResultSet extends \SearchResultSet {
 	}
 
 	/**
-	 *
 	 * @param \SearchResult $searchResult
 	 */
 	public function add( $searchResult ) {

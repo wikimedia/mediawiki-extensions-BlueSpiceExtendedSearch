@@ -19,7 +19,6 @@ class AddTraceTable extends LoadExtensionSchemaUpdates {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function getExtensionPath() {

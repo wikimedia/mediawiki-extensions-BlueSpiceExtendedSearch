@@ -67,7 +67,6 @@ class GenericSource implements ISearchSource {
 	}
 
 	/**
-	 *
 	 * @return Config
 	 */
 	public function getConfig() {
@@ -130,7 +129,6 @@ class GenericSource implements ISearchSource {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	public function getIndexSettings(): array {
@@ -175,7 +173,6 @@ class GenericSource implements ISearchSource {
 	}
 
 	/**
-	 *
 	 * @param Client $client
 	 *
 	 * @return bool
@@ -185,7 +182,6 @@ class GenericSource implements ISearchSource {
 	}
 
 	/**
-	 *
 	 * @param array $document
 	 * @return bool
 	 */
@@ -209,7 +205,6 @@ class GenericSource implements ISearchSource {
 	}
 
 	/**
-	 *
 	 * @param string $documentId
 	 *
 	 * @return bool
@@ -238,7 +233,6 @@ class GenericSource implements ISearchSource {
 	}
 
 	/**
-	 *
 	 * @return Formatter\Base
 	 */
 	public function getFormatter(): ISearchResultFormatter {
@@ -246,7 +240,6 @@ class GenericSource implements ISearchSource {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	public function getSearchPermission(): string {

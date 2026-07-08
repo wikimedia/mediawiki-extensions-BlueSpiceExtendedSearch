@@ -14,7 +14,6 @@ use MediaWiki\User\UserIdentity;
 class RepoFile extends Base {
 
 	/**
-	 *
 	 * @param MediaWikiServices $services
 	 */
 	public function init( MediaWikiServices $services ): void {
@@ -107,7 +106,6 @@ class RepoFile extends Base {
 	protected $titleMoveOrigFile = null;
 
 	/**
-	 *
 	 * @param Title $title
 	 * @param Title $newtitle
 	 * @param User $user
@@ -195,7 +193,6 @@ class RepoFile extends Base {
 	}
 
 	/**
-	 *
 	 * @param File $file
 	 * @return bool
 	 */

@@ -13,13 +13,11 @@ use MWStake\MediaWiki\Component\DataStore\ResultSet;
 abstract class Reader extends BaseReader {
 
 	/**
-	 *
 	 * @var Backend
 	 */
 	protected $searchBackend = null;
 
 	/**
-	 *
 	 * @param Backend $searchBackend
 	 * @param IContextSource|null $context
 	 * @param Config|null $config
@@ -30,14 +28,12 @@ abstract class Reader extends BaseReader {
 	}
 
 	/**
-	 *
 	 * @param ReaderParams $params
 	 * @return PrimaryDataProvider
 	 */
 	abstract protected function makePrimaryDataProvider( $params );
 
 	/**
-	 *
 	 * @param ReaderParams $params
 	 * @return ResultSet
 	 */

@@ -7,6 +7,9 @@ use MediaWiki\Title\Title;
 
 class AddUserPreferredNamespaces extends GetPreferences {
 
+	/**
+	 * @return bool
+	 */
 	protected function doProcess() {
 		$namespaces = $this->getContext()->getLanguage()->getNamespaces();
 		$user = $this->getContext()->getUser();

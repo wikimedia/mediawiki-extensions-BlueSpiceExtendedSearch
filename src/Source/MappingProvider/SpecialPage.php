@@ -5,7 +5,6 @@ namespace BS\ExtendedSearch\Source\MappingProvider;
 class SpecialPage extends Base {
 
 	/**
-	 *
 	 * @return array
 	 */
 	public function getPropertyConfig(): array {

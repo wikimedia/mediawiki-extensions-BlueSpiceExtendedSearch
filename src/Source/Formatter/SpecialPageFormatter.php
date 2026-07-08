@@ -9,7 +9,6 @@ use MediaWiki\Title\Title;
 class SpecialPageFormatter extends Base {
 
 	/**
-	 *
 	 * @param array $defaultResultStructure
 	 * @return array
 	 */
@@ -21,7 +20,6 @@ class SpecialPageFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param array &$resultData
 	 * @param SearchResult $resultObject
 	 */
@@ -39,7 +37,6 @@ class SpecialPageFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param array $result
 	 * @return bool
 	 */
@@ -56,7 +53,6 @@ class SpecialPageFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param array &$results
 	 * @param array $searchData
 	 */

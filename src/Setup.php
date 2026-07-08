@@ -22,7 +22,6 @@ class Setup {
 	// TODO: Move hooks to proper classes
 
 	/**
-	 *
 	 * @param ILoadBalancer $lb
 	 * @return \SearchEngine
 	 */
