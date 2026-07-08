@@ -165,9 +165,6 @@ class Base implements ISearchResultFormatter {
 		$messageHelper = $this->utilityFactory->getMessageHelper();
 		if ( $messageHelper->msgExistsQuick( $messageKey ) ) {
 			return Message::newFromKey( $messageKey )->text();
-		$msg = Message::newFromKey( "bs-extendedsearch-search-center-filter-document-type-$type-label" );
-		if ( $msg->exists() ) {
-			return $msg->text();
 		}
 
 		return $type;

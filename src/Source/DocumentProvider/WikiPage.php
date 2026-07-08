@@ -145,8 +145,6 @@ class WikiPage extends Base {
 	}
 
 	/**
-	 * Legacy only
-	 * @deprecated
 	 * @inheritDoc
 	 */
 	protected function getDocumentType(): string {
@@ -157,7 +155,8 @@ class WikiPage extends Base {
 	}
 
 	/**
-	 *
+	 * Legacy only
+	 * @deprecated
 	 * @param Title $title
 	 * @param string|null $prop
 	 * @param mixed|null $default
