@@ -9,19 +9,16 @@ use MediaWiki\User\User;
 
 class BaseTypeSecurityTrimming extends LookupModifier {
 	/**
-	 *
 	 * @var User
 	 */
 	protected $user;
 
 	/**
-	 *
 	 * @var array
 	 */
 	protected $blockedTypes;
 
 	/**
-	 *
 	 * @param \BS\ExtendedSearch\Lookup &$lookup
 	 * @param IContextSource $context
 	 */

@@ -10,7 +10,6 @@ class UpdateExternalFile extends UpdateJob {
 	protected $sSourceKey = 'externalfile';
 
 	/**
-	 *
 	 * @param Title $title
 	 * @param array $params
 	 */

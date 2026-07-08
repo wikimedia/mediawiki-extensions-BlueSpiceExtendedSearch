@@ -95,7 +95,6 @@ class ExternalFile extends File {
 	}
 
 	/**
-	 *
 	 * @param SplFileInfo $file
 	 * @param string $excludePatterns
 	 * @return bool
@@ -114,7 +113,6 @@ class ExternalFile extends File {
 	}
 
 	/**
-	 *
 	 * @param string $sUriPrefix
 	 * @param SplFileInfo $oFile
 	 * @param SplFileInfo $oSourcePath

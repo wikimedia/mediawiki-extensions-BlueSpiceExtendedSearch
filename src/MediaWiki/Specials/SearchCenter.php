@@ -21,7 +21,6 @@ class SearchCenter extends UnlistedSpecialPage {
 	}
 
 	/**
-	 *
 	 * @param string $subPage
 	 */
 	public function execute( $subPage ) {
@@ -146,7 +145,6 @@ class SearchCenter extends UnlistedSpecialPage {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function getGroupName() {
@@ -154,7 +152,6 @@ class SearchCenter extends UnlistedSpecialPage {
 	}
 
 	/**
-	 *
 	 * @return bool
 	 */
 	private function userCanExport() {

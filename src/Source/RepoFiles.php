@@ -16,7 +16,6 @@ use BS\ExtendedSearch\Source\Updater\RepoFile as RepoFileUpdater;
 class RepoFiles extends Files {
 
 	/**
-	 *
 	 * @return RepoFileCrawler
 	 */
 	public function getCrawler(): ISearchCrawler {
@@ -28,7 +27,6 @@ class RepoFiles extends Files {
 	}
 
 	/**
-	 *
 	 * @return RepoFileDocumentProvider
 	 */
 	public function getDocumentProvider(): ISearchDocumentProvider {
@@ -39,7 +37,6 @@ class RepoFiles extends Files {
 	}
 
 	/**
-	 *
 	 * @return RepoFileMappingProvider
 	 */
 	public function getMappingProvider(): ISearchMappingProvider {

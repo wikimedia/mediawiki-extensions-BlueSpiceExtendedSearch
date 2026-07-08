@@ -11,7 +11,6 @@ class UpdateSpecialPage extends UpdateTitleBase {
 	protected $sSourceKey = 'specialpage';
 
 	/**
-	 *
 	 * @param Title $title
 	 * @param array $params
 	 */
@@ -20,7 +19,6 @@ class UpdateSpecialPage extends UpdateTitleBase {
 	}
 
 	/**
-	 *
 	 * @return SpecialPage|null
 	 */
 	protected function getDocumentProviderSource() {
@@ -29,6 +27,7 @@ class UpdateSpecialPage extends UpdateTitleBase {
 			->getPage( $this->getTitle()->getText() );
 	}
 
+	/** @inheritDoc */
 	public function doRun() {
 		// We need to override UpdateTitleBase::run because as SpecialPage
 		// title does never "exist" in the database
@@ -43,7 +42,6 @@ class UpdateSpecialPage extends UpdateTitleBase {
 	}
 
 	/**
-	 *
 	 * @return bool
 	 */
 	protected function isDeletion() {

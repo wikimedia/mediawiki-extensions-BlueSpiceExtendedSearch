@@ -11,7 +11,6 @@ use Wikimedia\ParamValidator\ParamValidator;
 class Stats extends ApiBase {
 
 	/**
-	 *
 	 * @var Backend
 	 */
 	protected $backend = [];
@@ -32,7 +31,6 @@ class Stats extends ApiBase {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	protected function getAllowedParams() {
@@ -47,7 +45,6 @@ class Stats extends ApiBase {
 	}
 
 	/**
-	 *
 	 * @param string $paramName Parameter name
 	 * @param array|mixed $paramSettings Default value or an array of settings
 	 *  using PARAM_* constants.
@@ -66,7 +63,6 @@ class Stats extends ApiBase {
 	}
 
 	/**
-	 *
 	 * @param Backend $backend
 	 *
 	 * @return array The stats

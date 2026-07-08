@@ -8,7 +8,6 @@ use MediaWiki\SpecialPage\SpecialPage as MediaWikiSpecialPage;
 class SpecialPage extends Base {
 
 	/**
-	 *
 	 * @param string $sUri
 	 * @param string $documentId
 	 * @param MediaWikiSpecialPage $oSpecialPage

@@ -85,7 +85,6 @@ class ExternalFile implements IProcessStep {
 	}
 
 	/**
-	 *
 	 * @param Lookup $lookup
 	 * @param array &$results
 	 *

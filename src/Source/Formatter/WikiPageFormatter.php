@@ -27,7 +27,6 @@ class WikiPageFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param array $defaultResultStructure
 	 * @return array
 	 */
@@ -59,7 +58,6 @@ class WikiPageFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param array &$resultData
 	 * @param SearchResult $resultObject
 	 */
@@ -103,7 +101,6 @@ class WikiPageFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param array $result
 	 * @return bool
 	 */
@@ -139,7 +136,6 @@ class WikiPageFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param array &$result
 	 */
 	protected function addAnchor( &$result ) {
@@ -160,7 +156,6 @@ class WikiPageFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param array $categories
 	 * @param bool $isForeign
 	 * @return string|null
@@ -219,7 +214,6 @@ class WikiPageFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param array $result
 	 * @return string
 	 */
@@ -237,7 +231,6 @@ class WikiPageFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param array $result
 	 * @param array $sectionsToAdd
 	 * @return string
@@ -273,7 +266,6 @@ class WikiPageFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param array $result
 	 * @return string
 	 */
@@ -304,7 +296,6 @@ class WikiPageFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param SearchResult $resultObject
 	 * @return string
 	 */
@@ -345,7 +336,6 @@ class WikiPageFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param array $result
 	 * @return string
 	 */
@@ -359,7 +349,6 @@ class WikiPageFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param array &$results
 	 * @param array $searchData
 	 */
@@ -391,7 +380,6 @@ class WikiPageFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param array &$results
 	 * @param array $searchData
 	 */
@@ -446,7 +434,6 @@ class WikiPageFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param string $prefixedTitle
 	 * @return string
 	 */
@@ -460,7 +447,6 @@ class WikiPageFormatter extends Base {
 	}
 
 	/**
-	 *
 	 * @param Title $title
 	 * @return string
 	 */

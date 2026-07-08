@@ -14,7 +14,6 @@ class ResultRelevance extends ApiBase {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	protected function getAllowedParams() {
@@ -28,7 +27,6 @@ class ResultRelevance extends ApiBase {
 	}
 
 	/**
-	 *
 	 * @param string $paramName Parameter name
 	 * @param array|mixed $paramSettings Default value or an array of settings
 	 *  using PARAM_* constants.
@@ -47,7 +45,6 @@ class ResultRelevance extends ApiBase {
 	}
 
 	/**
-	 *
 	 * @param array $value
 	 * @return \BS\ExtendedSearch\ResultRelevance|false
 	 */
@@ -67,7 +64,6 @@ class ResultRelevance extends ApiBase {
 	}
 
 	/**
-	 *
 	 * @var \BS\ExtendedSearch\ResultRelevance
 	 */
 	protected $resultRelevance = null;
@@ -77,7 +73,6 @@ class ResultRelevance extends ApiBase {
 	}
 
 	/**
-	 *
 	 * @var bool
 	 */
 	protected $status;

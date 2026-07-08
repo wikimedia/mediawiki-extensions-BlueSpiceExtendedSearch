@@ -7,7 +7,6 @@ use MediaWiki\User\User;
 
 class ResultRelevance {
 	/**
-	 *
 	 * @var User
 	 */
 	protected $user;
@@ -33,7 +32,6 @@ class ResultRelevance {
 	protected $value;
 
 	/**
-	 *
 	 * @var array
 	 */
 	protected $queryConditions;
@@ -42,7 +40,6 @@ class ResultRelevance {
 	protected $services;
 
 	/**
-	 *
 	 * @param User $user
 	 * @param string $resultId
 	 * @param bool $value

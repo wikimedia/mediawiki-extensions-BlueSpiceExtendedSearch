@@ -18,7 +18,6 @@ class DeleteIndices extends CommandDescriptionBase {
 	}
 
 	/**
-	 *
 	 * @return int
 	 */
 	public function getPosition() {

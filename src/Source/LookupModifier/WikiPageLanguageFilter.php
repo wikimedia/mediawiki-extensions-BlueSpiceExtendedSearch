@@ -9,7 +9,6 @@ use MediaWiki\MediaWikiServices;
  * a page_language fields, since its not applicable to all.
  * If PL filter is present, we need to show all pages that have that language set
  * OR the page_language field does not exist entirely.
- *
  */
 class WikiPageLanguageFilter extends LookupModifier {
 
@@ -88,7 +87,6 @@ class WikiPageLanguageFilter extends LookupModifier {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function getAutoLangCode() {

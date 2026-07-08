@@ -17,25 +17,21 @@ use MediaWiki\Status\Status;
 abstract class ExternalIndex implements IExternalIndex {
 
 	/**
-	 *
 	 * @var MediaWikiServices
 	 */
 	protected $services = null;
 
 	/**
-	 *
 	 * @var Config
 	 */
 	protected $config = null;
 
 	/**
-	 *
 	 * @var array
 	 */
 	protected $document = null;
 
 	/**
-	 *
 	 * @param MediaWikiServices $services
 	 * @param Config $config
 	 * @param array $document
@@ -49,7 +45,6 @@ abstract class ExternalIndex implements IExternalIndex {
 	}
 
 	/**
-	 *
 	 * @param MediaWikiServices $services
 	 * @param Config $config
 	 * @param array $document
@@ -62,7 +57,6 @@ abstract class ExternalIndex implements IExternalIndex {
 	}
 
 	/**
-	 *
 	 * @param string $action
 	 * @return Status
 	 */
@@ -94,7 +88,6 @@ abstract class ExternalIndex implements IExternalIndex {
 	abstract protected function doPush( array $mappedFields, $action );
 
 	/**
-	 *
 	 * @param string $map
 	 * @param mixed $default
 	 * @param string $action
@@ -105,7 +98,6 @@ abstract class ExternalIndex implements IExternalIndex {
 	}
 
 	/**
-	 *
 	 * @param string $action
 	 * @return bool
 	 */
@@ -114,7 +106,6 @@ abstract class ExternalIndex implements IExternalIndex {
 	}
 
 	/**
-	 *
 	 * @param string $action
 	 * @return bool
 	 */

@@ -18,7 +18,6 @@ class UpdateRepoFile extends UpdateTitleBase {
 	protected $canonicalURL = null;
 
 	/**
-	 *
 	 * @param Title $title
 	 * @param array $params
 	 */
@@ -35,7 +34,6 @@ class UpdateRepoFile extends UpdateTitleBase {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function getDocumentProviderUri() {
@@ -104,7 +102,6 @@ class UpdateRepoFile extends UpdateTitleBase {
 	}
 
 	/**
-	 *
 	 * @return bool
 	 */
 	protected function isDeletion() {

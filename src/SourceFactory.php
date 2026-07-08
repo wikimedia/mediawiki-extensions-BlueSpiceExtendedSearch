@@ -29,7 +29,6 @@ class SourceFactory {
 	protected $configs = [];
 
 	/**
-	 *
 	 * @var array
 	 */
 	protected $sources = [];
@@ -64,7 +63,6 @@ class SourceFactory {
 	}
 
 	/**
-	 *
 	 * @param string $sourceKey
 	 * @param Backend $backend
 	 * @return ISearchSource
@@ -92,7 +90,6 @@ class SourceFactory {
 	}
 
 	/**
-	 *
 	 * @param string $sourceKey
 	 */
 	public function destroySource( $sourceKey ) {

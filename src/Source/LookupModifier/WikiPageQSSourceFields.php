@@ -71,6 +71,9 @@ class WikiPageQSSourceFields extends LookupModifier {
 		];
 	}
 
+	/**
+	 * @return bool
+	 */
 	private function shouldSearchInRaw() {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
 		return (bool)$config->get( 'ESSearchInRawWikitext' );
