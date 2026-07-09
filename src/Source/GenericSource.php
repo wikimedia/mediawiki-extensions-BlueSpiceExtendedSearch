@@ -258,7 +258,7 @@ class GenericSource implements ISearchSource {
 	 * @inheritDoc
 	 */
 	public function getLookupModifiers( Lookup $lookup, IContextSource $context ): array {
-		return [
+		$lookupModifiers = [
 			new BaseExtensionAggregation( $lookup, $context ),
 			new BaseTagsAggregation( $lookup, $context ),
 			new BaseSimpleQSFields( $lookup, $context ),
