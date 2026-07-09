@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Maoue",
+			"Ouclie",
 			"Tensama0415",
 			"Ykhwong",
 			"아라"
@@ -93,10 +94,6 @@
 	"bs-extendedsearch-loadmore-label": "더 많은 결과 불러오기",
 	"bs-extendedsearch-loadmore-error": "더 많은 결과를 가져올 수 없습니다",
 	"bs-extendedsearch-search-center-result-typetext-label": "유형:",
-	"bs-extendedsearch-source-type-wikipage-label": "위키페이지",
-	"bs-extendedsearch-source-type-repofile-label": "로컬 파일",
-	"bs-extendedsearch-source-type-specialpage-label": "특수 문서",
-	"bs-extendedsearch-source-type-externalfile-label": "외부 파일",
 	"bs-extendedsearch-result-relevance-relevant": "이 결과는 제게 중요합니다",
 	"bs-extendedsearch-result-relevance-not-relevant": "이 결과는 제게 중요하지 않습니다",
 	"prefs-extendedsearch": "확장된 검색",
@@ -195,5 +192,9 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "분류별 필터",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "분류 조합으로 필터링",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "모든 분류가 반드시 할당되어야 합니다 (AND)",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "분류는 하나로 충분합니다 (OR)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "분류는 하나로 충분합니다 (OR)",
+	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "문서",
+	"bs-extendedsearch-search-center-filter-document-type-file-label": "파일",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "특수 문서",
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "사용자 프로파일"
 }
