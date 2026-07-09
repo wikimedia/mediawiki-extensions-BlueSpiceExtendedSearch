@@ -38,9 +38,9 @@ bs.extendedSearch.vec.ui.SearchTypeInputWidget.prototype.getSearchTypes = functi
 	bs.api.store.getData( 'extendedsearch-type' ).done( ( response ) => {
 		const results = response.results;
 		const options = [];
-		for ( let i in results ) {
+		for ( let i = 0; i < results.length; i++ ) {
 			options.push( {
-				data: i,
+				data: results[ i ],
 				label: results[ i ]
 			} );
 		}
