@@ -19,6 +19,7 @@
 	"rules": {
 		"es-x/no-array-prototype-includes": "off",
 		"max-len": "off",
+		"mediawiki/no-unlabeled-buttonwidget": "off",
 		"no-jquery/no-class-state": "off",
 		"no-jquery/no-global-selector": "off",
 		"no-jquery/variable-pattern": "off",
