@@ -57,5 +57,8 @@
 	"bs-extendedsearch-tagsearch-input-aria-label": "ڳولو",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$2 وچوں $1 واں",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "نتیجے",
-	"bs-extendedsearch-autocomplete-context-options-label": "ڳولو"
+	"bs-extendedsearch-autocomplete-context-options-label": "ڳولو",
+	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "ورقہ",
+	"bs-extendedsearch-search-center-filter-document-type-file-label": "فائل",
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "ورتݨ پروفائل"
 }
