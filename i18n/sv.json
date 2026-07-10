@@ -133,5 +133,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "Platshållartext för sökfält",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "Filtrera efter namnrymder",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Filtrera efter kategorier",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Filterkombination av kategorier"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Filterkombination av kategorier",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Specialsida"
 }

@@ -191,5 +191,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "Tipos de resultados",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "Texto provisório para o campo de pesquisa",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "Filtrar por espaços nominais",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Filtrar por categorias"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Filtrar por categorias",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Página especial"
 }

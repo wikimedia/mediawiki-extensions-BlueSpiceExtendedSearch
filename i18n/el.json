@@ -58,5 +58,6 @@
 	"bs-extendedsearch-redirect-target-label": "Ανακατευθύνει σε:",
 	"bs-extendedsearch-search-center-create-page-link": "Δημιουργία σελίδας \"$1\"",
 	"bs-extendedsearch-privacy-transparency-content-highlight": "Σελίδα $1: Κείμενο: $2",
-	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpiceExtendedSearch - Ιστορικό αναζήτησης: όρος (φορές που αναζητήθηκε ): $1"
+	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpiceExtendedSearch - Ιστορικό αναζήτησης: όρος (φορές που αναζητήθηκε ): $1",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Ειδική σελίδα"
 }

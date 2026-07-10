@@ -154,5 +154,6 @@
 	"bs-extendedsearch-autocomplete-context-none": "a teljes wikiben",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Eredmények",
 	"bs-extendedsearch-autocomplete-context-options-label": "Keresés",
-	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Hasonló eredmények"
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Hasonló eredmények",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Speciális lap"
 }

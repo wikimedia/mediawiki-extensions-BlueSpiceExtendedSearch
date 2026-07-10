@@ -159,5 +159,6 @@
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Stoche a cerche jndr'à \"$1\"",
 	"bs-extendedsearch-statistics-report-search-terms": "Cirche le termine",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Cirche le termine pe utende",
-	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Torne le resultate de recerche pe 'n'utende sulamende jndr'à lènghe de l'utende stesse. le utinde ponne 'mbostà 'a lènga lore jndr'à le preferenze."
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Torne le resultate de recerche pe 'n'utende sulamende jndr'à lènghe de l'utende stesse. le utinde ponne 'mbostà 'a lènga lore jndr'à le preferenze.",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Pàgena speciale"
 }

@@ -182,5 +182,6 @@
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultados similares",
 	"prefs-searchsection": "Áreas de procura",
 	"bs-extendedsearch-autocomplete-context-options-aria-label": "Procurar $1 $2",
-	"prefs-search": "Definições de procura"
+	"prefs-search": "Definições de procura",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Página especial"
 }

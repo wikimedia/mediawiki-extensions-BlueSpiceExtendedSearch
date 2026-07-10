@@ -213,5 +213,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Nach Kategorien filtern",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Filterverknüpfung der Kategorien",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "Alle Kategorien müssen vergeben sein (UND)",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eine Kategorie reicht (ODER)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eine Kategorie reicht (ODER)",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Spezialseite"
 }

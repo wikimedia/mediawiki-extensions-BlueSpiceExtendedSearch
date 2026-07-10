@@ -201,5 +201,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Filtrar por categorías",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Filtrar combinacións de categorías",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "Todas as categorías deben estar asignadas (E)",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Unha categoría é suficiente (OU)"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Unha categoría é suficiente (OU)",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Páxina especial"
 }

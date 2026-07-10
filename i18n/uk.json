@@ -167,5 +167,6 @@
 	"bs-extendedsearch-searchbar-master-filter-tooltip": "Пошук у «$1»",
 	"bs-extendedsearch-statistics-report-search-terms": "Пошукові терміни",
 	"bs-extendedsearch-statistics-report-search-term-by-user": "Пошукові терміни для кожного користувача",
-	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Повертає результати пошуку користувача лише мовою користувача. Користувачі можуть вибирати свою мову відповідно до своїх уподобань"
+	"bs-extendedsearch-pref-auto-set-lang-filter-help": "Повертає результати пошуку користувача лише мовою користувача. Користувачі можуть вибирати свою мову відповідно до своїх уподобань",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Спеціальна сторінка"
 }

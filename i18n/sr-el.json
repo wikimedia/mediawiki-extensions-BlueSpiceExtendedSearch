@@ -101,5 +101,6 @@
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 od $2",
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "Preusmerava na $1",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Rezultati",
-	"bs-extendedsearch-autocomplete-context-options-label": "Pretraga"
+	"bs-extendedsearch-autocomplete-context-options-label": "Pretraga",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Posebna stranica"
 }

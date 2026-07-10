@@ -117,5 +117,6 @@
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "ДӀасахьажор тӀе $1",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Хиламаш",
 	"bs-extendedsearch-autocomplete-context-options-label": "Лахар",
-	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Тера жамӀаш"
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Тера жамӀаш",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Белхан агӀо"
 }

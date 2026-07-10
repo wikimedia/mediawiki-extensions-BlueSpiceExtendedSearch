@@ -82,5 +82,6 @@
 	"bs-extendedsearch-collection-type-searchhistory": "Historia wyszukiwania",
 	"bs-extendedsearch-collection-var-searchterm": "Słowo klucz",
 	"bs-extendedsearch-droplet-search-name": "Szukaj plików",
-	"bs-extendedsearch-source-label-externalfile": "Plik zewnętrzny"
+	"bs-extendedsearch-source-label-externalfile": "Plik zewnętrzny",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Strona specjalna"
 }
