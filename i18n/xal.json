@@ -42,5 +42,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Вики-халх",
 	"bs-extendedsearch-source-type-repofile-label": "Дотад файл",
 	"bs-extendedsearch-source-type-specialpage-label": "Шишлң халх",
-	"bs-extendedsearch-source-type-externalfile-label": "Һазад файл"
+	"bs-extendedsearch-source-type-externalfile-label": "Һазад файл",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Шишлң халх"
 }

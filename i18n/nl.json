@@ -200,5 +200,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Wikibase",
 	"bs-extendedsearch-source-type-repofile-label": "Lokaal bestand",
 	"bs-extendedsearch-source-type-specialpage-label": "Speciale pagina",
-	"bs-extendedsearch-source-type-externalfile-label": "Extern bestand"
+	"bs-extendedsearch-source-type-externalfile-label": "Extern bestand",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Speciale pagina"
 }

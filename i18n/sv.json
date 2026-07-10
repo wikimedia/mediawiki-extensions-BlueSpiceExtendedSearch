@@ -128,5 +128,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Filterkombination av kategorier",
 	"bs-extendedsearch-source-type-wikipage-label": "Wikisida",
 	"bs-extendedsearch-source-type-repofile-label": "Lokal fil",
-	"bs-extendedsearch-source-type-specialpage-label": "Specialsida"
+	"bs-extendedsearch-source-type-specialpage-label": "Specialsida",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Specialsida"
 }

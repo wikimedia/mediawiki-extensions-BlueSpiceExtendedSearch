@@ -52,5 +52,6 @@
 	"bs-extendedsearch-suggest-operator": "Ĉu vi celis serĉi <b>$1</b>?",
 	"bs-extendedsearch-source-type-wikipage-label": "Vikipaĝo",
 	"bs-extendedsearch-source-type-repofile-label": "Loka dosiero",
-	"bs-extendedsearch-source-type-specialpage-label": "Speciala paĝo"
+	"bs-extendedsearch-source-type-specialpage-label": "Speciala paĝo",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Speciala paĝo"
 }

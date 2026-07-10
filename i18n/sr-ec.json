@@ -105,5 +105,6 @@
 	"prefs-search": "Подешавање претраге",
 	"bs-extendedsearch-source-type-wikipage-label": "Викистраница",
 	"bs-extendedsearch-source-type-repofile-label": "Локална датотека",
-	"bs-extendedsearch-source-type-specialpage-label": "Посебна страница"
+	"bs-extendedsearch-source-type-specialpage-label": "Посебна страница",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Посебна страница"
 }

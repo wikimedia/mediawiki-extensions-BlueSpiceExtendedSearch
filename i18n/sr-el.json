@@ -97,5 +97,6 @@
 	"bs-extendedsearch-autocomplete-context-options-label": "Pretraga",
 	"bs-extendedsearch-source-type-wikipage-label": "Vikistranica",
 	"bs-extendedsearch-source-type-repofile-label": "Lokalna datoteka",
-	"bs-extendedsearch-source-type-specialpage-label": "Posebna stranica"
+	"bs-extendedsearch-source-type-specialpage-label": "Posebna stranica",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Posebna stranica"
 }

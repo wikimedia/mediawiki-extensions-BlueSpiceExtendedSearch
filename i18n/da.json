@@ -62,5 +62,6 @@
 	"action-extendedsearch-search-externalfile": "søg efter eksterne filer",
 	"bs-extendedsearch-source-type-wikipage-label": "Wikiside",
 	"bs-extendedsearch-source-type-repofile-label": "Lokal fil",
-	"bs-extendedsearch-source-type-specialpage-label": "Specialside"
+	"bs-extendedsearch-source-type-specialpage-label": "Specialside",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Specialside"
 }

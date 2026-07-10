@@ -21,5 +21,6 @@
 	"bs-extendedsearch-search-center-filter-page_language-label": "Siijđo kielâ",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "Siijđo kielâ:",
 	"bs-extendedsearch-collection-type-searchhistory": "Uuccâmhistorjá",
-	"bs-extendedsearch-source-type-specialpage-label": "Toimâsijđo"
+	"bs-extendedsearch-source-type-specialpage-label": "Toimâsijđo",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Toimâsijđo"
 }
