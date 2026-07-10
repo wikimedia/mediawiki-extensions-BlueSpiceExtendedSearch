@@ -216,5 +216,6 @@
 	"bs-extendedsearch-autocomplete-context-options-aria-label": "Rechercher $1 $2",
 	"prefs-search": "Paramètres de recherche",
 	"bs-extendedsearch-user-pref-shortcut": "Activer la recherche à l'aide d'un raccourci clavier",
-	"bs-extendedsearch-user-pref-shortcut-help": "Permet d'ouvrir la recherche à l'aide des raccourcis clavier <code>Maj + 7</code>"
+	"bs-extendedsearch-user-pref-shortcut-help": "Permet d'ouvrir la recherche à l'aide des raccourcis clavier <code>Maj + 7</code>",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Page spéciale"
 }

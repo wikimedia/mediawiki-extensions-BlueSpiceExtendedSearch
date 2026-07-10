@@ -183,5 +183,6 @@
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultados",
 	"bs-extendedsearch-autocomplete-context-options-label": "Procurar",
 	"prefs-searchsection": "Áreas de procura",
-	"bs-extendedsearch-autocomplete-context-options-aria-label": "Procurar $1 $2"
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Procurar $1 $2",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Página especial"
 }

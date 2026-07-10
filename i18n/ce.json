@@ -118,5 +118,6 @@
 	"bs-extendedsearch-autocomplete-popup-primary-results-aria": "Йуьхьанцара жамӀаш",
 	"bs-extendedsearch-autocomplete-popup-secondary-results-aria": "ШолгӀа жамӀаш",
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "ДӀасахьажор тӀе $1",
-	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Тера жамӀаш"
+	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Тера жамӀаш",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Белхан агӀо"
 }

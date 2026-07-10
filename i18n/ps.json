@@ -158,5 +158,6 @@
 	"bs-extendedsearch-autocomplete-context-options-label": "پلټل",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "ورته پايلې",
 	"prefs-searchsection": "لټون سيمې",
-	"bs-extendedsearch-autocomplete-context-options-aria-label": "$1 $2 پلټل"
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "$1 $2 پلټل",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "ځانگړی مخ"
 }

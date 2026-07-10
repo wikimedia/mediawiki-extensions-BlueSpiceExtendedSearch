@@ -201,5 +201,6 @@
 	"bs-extendedsearch-user-pref-shortcut": "הפעלת חיפוש באמצעות קיצורי מקלדת",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "סוגי תוצאות",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "סינון לפי מרחב שמות",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "סינון לפי קטגוריות"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "סינון לפי קטגוריות",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "דף מיוחד"
 }

@@ -176,5 +176,6 @@
 	"bs-extendedsearch-rest-trace-remove-failure": "Kunne ikke fjerne sporingsdata",
 	"bs-extendedsearch-recently-found-header": "Nylig vist",
 	"bs-extendedsearch-recentlyfound-ignore": "Fjern",
-	"bs-extendedsearch-autocomplete-context-options-aria-label": "Søk etter $1 i $2"
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "Søk etter $1 i $2",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Spesialside"
 }

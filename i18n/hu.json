@@ -155,5 +155,6 @@
 	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpiceExtendedSearch - Keresési előzmények: kifejezés (ennyiszer keresve): $1",
 	"bs-extendedsearch-privacy-transparency-relevance": "BlueSpiceExtendedSearch - {{PLURAL:$1|$1 lap|$1 lap}} van megjelölve releváns keresési {{PLURAL:$1|találatnak|találatnak}}{{GENDER:$2|}}",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Keresés...",
-	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Érvénytelen keresési eredménytípus: $1"
+	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Érvénytelen keresési eredménytípus: $1",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Speciális lap"
 }

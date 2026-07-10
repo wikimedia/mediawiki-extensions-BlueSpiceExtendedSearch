@@ -206,5 +206,6 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "按分類篩選",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "篩選分類組合",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "所有分類都必須分配（且）",
-	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "一個分類即可（或）"
+	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "一個分類即可（或）",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "特殊頁面"
 }

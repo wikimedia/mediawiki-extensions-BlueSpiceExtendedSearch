@@ -177,5 +177,6 @@
 	"bs-extendedsearch-droplet-search-description": "يضيف حقل بحث إلى محتوى الصفحة",
 	"bs-extendedsearch-source-label-externalfile": "ملف خارجي",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "نتائج مماثلة",
-	"bs-extendedsearch-autocomplete-context-options-aria-label": "بحث $1 $2"
+	"bs-extendedsearch-autocomplete-context-options-aria-label": "بحث $1 $2",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "صفحة خاصة"
 }
