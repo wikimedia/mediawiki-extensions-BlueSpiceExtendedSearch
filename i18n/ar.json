@@ -178,5 +178,8 @@
 	"bs-extendedsearch-source-label-externalfile": "ملف خارجي",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "نتائج مماثلة",
 	"bs-extendedsearch-autocomplete-context-options-aria-label": "بحث $1 $2",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "صفحة خاصة"
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "صفحة خاصة",
+	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "صفحة",
+	"bs-extendedsearch-search-center-filter-document-type-file-label": "ملف",
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "ملف المستخدم"
 }
