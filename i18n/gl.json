@@ -196,5 +196,8 @@
 	"bs-extendedsearch-source-type-repofile-label": "Ficheiro local",
 	"bs-extendedsearch-source-type-specialpage-label": "Páxina especial",
 	"bs-extendedsearch-source-type-externalfile-label": "Ficheiro externo",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Páxina especial"
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Páxina especial",
+	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Páxina",
+	"bs-extendedsearch-search-center-filter-document-type-file-label": "Ficheiro",
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Perfil de usuario"
 }
