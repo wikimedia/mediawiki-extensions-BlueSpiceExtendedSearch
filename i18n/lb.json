@@ -87,5 +87,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eng Kategorie geet duer (OR)",
 	"bs-extendedsearch-user-preferred-namespaces": "Preferéiert Nummraim",
 	"bs-extendedsearch-source-label-externalfile": "Externe Fichier",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Spezialsäit"
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Spezialsäit",
+	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Säit",
+	"bs-extendedsearch-search-center-filter-document-type-file-label": "Fichier",
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Benotzerprofil"
 }
