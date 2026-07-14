@@ -149,9 +149,9 @@
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "ورته پايلې",
 	"prefs-searchsection": "لټون سيمې",
 	"bs-extendedsearch-autocomplete-context-options-aria-label": "$1 $2 پلټل",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "ځانگړی مخ",
 	"bs-extendedsearch-source-type-wikipage-label": "ويکي‌مخ",
 	"bs-extendedsearch-source-type-repofile-label": "ځايي دوتنه",
 	"bs-extendedsearch-source-type-specialpage-label": "ځانگړی مخ",
-	"bs-extendedsearch-source-type-externalfile-label": "باندنۍ دوتنه",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "ځانگړی مخ"
+	"bs-extendedsearch-source-type-externalfile-label": "باندنۍ دوتنه"
 }

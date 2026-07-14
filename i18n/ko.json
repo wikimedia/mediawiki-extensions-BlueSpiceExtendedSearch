@@ -193,12 +193,12 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "분류 조합으로 필터링",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "모든 분류가 반드시 할당되어야 합니다 (AND)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "분류는 하나로 충분합니다 (OR)",
-	"bs-extendedsearch-source-type-wikipage-label": "위키페이지",
-	"bs-extendedsearch-source-type-repofile-label": "로컬 파일",
-	"bs-extendedsearch-source-type-specialpage-label": "특수 문서",
-	"bs-extendedsearch-source-type-externalfile-label": "외부 파일",
 	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "문서",
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "파일",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "특수 문서",
-	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "사용자 프로파일"
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "사용자 프로파일",
+	"bs-extendedsearch-source-type-wikipage-label": "위키페이지",
+	"bs-extendedsearch-source-type-repofile-label": "로컬 파일",
+	"bs-extendedsearch-source-type-specialpage-label": "특수 문서",
+	"bs-extendedsearch-source-type-externalfile-label": "외부 파일"
 }

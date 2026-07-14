@@ -50,8 +50,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-placeholder": "Namespace1|Namespace2|...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Catigurìa1|Catigurìa2|...",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Ammustra li risurtati glubbali",
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Pàggina spiciali",
 	"bs-extendedsearch-source-type-wikipage-label": "Pàggina wiki",
 	"bs-extendedsearch-source-type-repofile-label": "File lucali",
-	"bs-extendedsearch-source-type-specialpage-label": "Pàggina spiciali",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Pàggina spiciali"
+	"bs-extendedsearch-source-type-specialpage-label": "Pàggina spiciali"
 }

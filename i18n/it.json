@@ -134,12 +134,12 @@
 	"bs-extendedsearch-autocomplete-context-options-label": "Ricerca",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Risultati simili",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "Tipi di risultati",
-	"bs-extendedsearch-source-type-wikipage-label": "Pagina wiki",
-	"bs-extendedsearch-source-type-repofile-label": "File locale",
-	"bs-extendedsearch-source-type-specialpage-label": "Pagina speciale",
-	"bs-extendedsearch-source-type-externalfile-label": "File esterno",
 	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Pagina",
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "File",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Pagina speciale",
-	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Profilo utente"
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Profilo utente",
+	"bs-extendedsearch-source-type-wikipage-label": "Pagina wiki",
+	"bs-extendedsearch-source-type-repofile-label": "File locale",
+	"bs-extendedsearch-source-type-specialpage-label": "Pagina speciale",
+	"bs-extendedsearch-source-type-externalfile-label": "File esterno"
 }
