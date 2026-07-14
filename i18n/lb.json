@@ -82,5 +82,8 @@
 	"bs-extendedsearch-source-type-repofile-label": "Lokale Fichier",
 	"bs-extendedsearch-source-type-specialpage-label": "Spezialsäit",
 	"bs-extendedsearch-source-type-externalfile-label": "Externe Fichier",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Spezialsäit"
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Spezialsäit",
+	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Säit",
+	"bs-extendedsearch-search-center-filter-document-type-file-label": "Fichier",
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Benotzerprofil"
 }
