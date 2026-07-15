@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"AlbertRA",
 			"Fitoschido",
 			"Lluis Cat",
 			"Vfc"
@@ -12,5 +13,8 @@
 	"bs-extendedsearch-searchcenter-sort-field-size": "Mida",
 	"bs-extendedsearch-autocomplete-create-page-link": "Crea la pàgina \"$1\"",
 	"bs-extendedsearch-search-center-create-page-link": "Crea la pàgina \"$1\"",
-	"bs-extendedsearch-droplet-search-name": "Cerca un camp"
+	"bs-extendedsearch-droplet-search-name": "Cerca un camp",
+	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Pàgina",
+	"bs-extendedsearch-search-center-filter-document-type-file-label": "Fitxer",
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Perfil d'usuari"
 }
