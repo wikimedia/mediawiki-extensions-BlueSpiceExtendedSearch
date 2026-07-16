@@ -208,5 +208,6 @@
 	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Label for the document_type option for wikitext type",
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "Label for the document_type option for file type",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Label for the document_type option for special page type",
-	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Label for the document_type option for user profile type"
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Label for the document_type option for user profile type",
+	"bs-extendedsearch-save-as-collection-button-label": "Tooltip text for a button to save search results as a page collection"
 }

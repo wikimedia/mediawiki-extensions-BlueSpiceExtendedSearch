@@ -200,5 +200,6 @@
 	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Page",
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "File",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Special page",
-	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "User profile"
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "User profile",
+	"bs-extendedsearch-save-as-collection-button-label": "Save as page collection"
 }

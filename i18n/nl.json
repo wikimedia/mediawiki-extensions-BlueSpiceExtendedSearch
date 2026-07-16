@@ -207,5 +207,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Filtercombinatie van categorieën",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "Alle categorieën moeten zijn toegewezen (EN)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eén categorie is voldoende (OF)",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Speciale pagina"
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Speciale pagina",
+	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Pagina",
+	"bs-extendedsearch-search-center-filter-document-type-file-label": "Bestand",
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Gebruikersprofiel"
 }
