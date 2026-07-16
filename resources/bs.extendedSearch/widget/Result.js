@@ -84,11 +84,14 @@
 		this.$headerContainer.append( this.$headerPathInfo );
 		this.$image.on( 'click', { pageAnchor: this.$header }, this.onImageClick );
 
-		this.$highlightContainer = $( '<div>' )
-			.addClass( 'bs-extendedsearch-result-highlight-container' )
-			.append(
-				$( '<span>' ).html( this.highlight )
-			);
+		this.$highlightContainer = null;
+		if ( this.highlight ) {
+			this.$highlightContainer = $( '<div>' )
+				.addClass( 'bs-extendedsearch-result-highlight-container' )
+				.append(
+					$( '<span>' ).html( this.highlight )
+				);
+		}
 
 		this.$linksContainer = null;
 		if ( this.rightLinks.length > 0 ) {
@@ -122,7 +125,7 @@
 		this.$element = $( '<div>' )
 			.addClass( 'bs-extendedsearch-result-container' )
 			.attr( 'id', 'bs-es-result-' + this.getId() )
-			.css( '--wiki-color', 'transparent' )
+			.css( '--wiki-color', '#3e5389' )
 			.append( this.$image, this.$dataContainer, this.$relevanceControl );
 
 		if ( this.featured ) {

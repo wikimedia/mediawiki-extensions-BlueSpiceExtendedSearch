@@ -174,7 +174,7 @@ div.bs-es-tools {
 }
 
 .bs-extendedsearch-result-container {
-	--wiki-color: transparent;
+	--wiki-color: @results-link-color;
 	width: 100%;
 	background-color: @results-background-color;
 	color: @results-primary-color;
@@ -197,7 +197,8 @@ div.bs-es-tools {
 
 	.bs-extendedsearch-result-header-path {
 		margin-bottom: 12px;
-		font-size: 0.8em;
+		font-size: 0.75em;
+		line-height: 1;
 		color: @results-secondary-color;
 
 		.bs-extendedsearch-result-header-breadcrumbs::before {
@@ -221,9 +222,15 @@ div.bs-es-tools {
 			display: inline-flex;
 			align-items: center;
 			margin-left: 10px;
+			font-size: 0.75em;
 
 			.oo-ui-iconWidget {
 				margin-right: 5px;
+				width: 0.75em;
+				height: 0.75em;
+				min-width: 0.75em;
+				min-height: 0.75em;
+				opacity: 0.5;
 			}
 		}
 	}
@@ -253,11 +260,13 @@ div.bs-es-tools {
 			align-items: center;
 			flex-wrap: wrap;
 			margin-bottom: 8px;
+			line-height: 1;
 		}
 
 		.bs-extendedsearch-result-header {
-			font-size: 1.3em;
+			font-size: 1.25em;
 			font-weight: bold;
+			line-height: 1;
 		}
 
 		.bs-extendedsearch-result-original-title {
@@ -281,7 +290,7 @@ div.bs-es-tools {
 			align-items: center;
 
 			.bs-extendedsearch-secondaryinfo-item {
-				font-size: 1em;
+				font-size: 0.75em;
 
 				span {
 					line-height: 1em;
@@ -294,12 +303,9 @@ div.bs-es-tools {
 
 			.bs-extendedsearch-result-secondaryinfo-separator {
 				flex-shrink: 0;
-				width: 4px;
-				height: 4px;
-				margin: 0 5px;
-				font-size: 0;
-				border-radius: 50%;
-				background-color: @results-secondary-color;
+				margin: 0 0.4em;
+				font-size: 0.75em;
+				color: @results-secondary-color;
 			}
 		}
 
