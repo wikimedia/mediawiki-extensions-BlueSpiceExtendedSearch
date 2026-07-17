@@ -210,5 +210,6 @@
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Speciale pagina",
 	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Pagina",
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "Bestand",
-	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Gebruikersprofiel"
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Gebruikersprofiel",
+	"bs-extendedsearch-save-as-collection-button-label": "Als paginaverzameling opslaan"
 }
