@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\Source\Formatter;
 
 use BS\ExtendedSearch\SearchResult;
 use BsNamespaceHelper;
+use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
@@ -19,11 +20,22 @@ class WikiPageFormatter extends Base {
 	protected TitleFactory $titleFactory;
 
 	/**
+	 * @var HookContainer
+	 */
+	protected HookContainer $hookContainer;
+
+	/**
+	 * @var array Interwiki prefixes, keyed by wiki ID
+	 */
+	private array $interwikiPrefixes = [];
+
+	/**
 	 * @inheritDoc
 	 */
 	public function __construct( $source ) {
 		parent::__construct( $source );
 		$this->titleFactory = $this->source->getBackend()->getService( 'TitleFactory' );
+		$this->hookContainer = $this->source->getBackend()->getService( 'HookContainer' );
 	}
 
 	/**
@@ -79,7 +91,7 @@ class WikiPageFormatter extends Base {
 			$this->addRedirectAttributes( $resultData );
 			return;
 		}
-		$resultData['categories'] = $this->formatCategories( $resultData['categories'], $resultData['_is_foreign'] );
+		$resultData['categories'] = $this->formatCategories( $resultData['categories'], $resultData );
 		$resultData['highlight'] = $this->getHighlight( $resultObject );
 		$resultData['sections'] = $this->getSections( $resultData );
 		$resultData['redirects'] = $this->formatRedirectedFrom( $resultData );
@@ -156,13 +168,16 @@ class WikiPageFormatter extends Base {
 
 	/**
 	 * @param array $categories
-	 * @param bool $isForeign
+	 * @param array $result
 	 * @return string|null
 	 */
-	protected function formatCategories( $categories, bool $isForeign = false ) {
+	protected function formatCategories( $categories, array $result ) {
 		if ( empty( $categories ) ) {
 			return null;
 		}
+
+		$isForeign = $result['_is_foreign'] ?? false;
+		$interwiki = $isForeign ? $this->getInterwikiPrefix( $result['wiki_id'] ) : '';
 
 		$moreCategories = false;
 		$formattedCategories = [];
@@ -171,10 +186,16 @@ class WikiPageFormatter extends Base {
 				$moreCategories = true;
 				break;
 			}
-			if ( $isForeign ) {
+			if ( $isForeign && !$interwiki ) {
 				$formattedCategories[] = $category;
+				continue;
+			}
+			$categoryTitle = new TitleValue( NS_CATEGORY, $category, '', $interwiki );
+			if ( $isForeign ) {
+				$formattedCategories[] = $this->linkRenderer->makeKnownLink(
+					$categoryTitle, $categoryTitle->getText()
+				);
 			} else {
-				$categoryTitle = new TitleValue( NS_CATEGORY, $category );
 				$formattedCategories[] = $this->linkRenderer->makePreloadedLink(
 					$categoryTitle, $categoryTitle->getText()
 				);
@@ -182,6 +203,22 @@ class WikiPageFormatter extends Base {
 		}
 		return implode( Base::VALUE_SEPARATOR, $formattedCategories ) .
 			( $moreCategories ? Base::MORE_VALUES_TEXT : '' );
+	}
+
+	/**
+	 * Interwiki prefix pointing to the wiki the result originates from,
+	 * empty string if there is none
+	 *
+	 * @param string $wikiId
+	 * @return string
+	 */
+	protected function getInterwikiPrefix( string $wikiId ): string {
+		if ( !isset( $this->interwikiPrefixes[$wikiId] ) ) {
+			$prefix = '';
+			$this->hookContainer->run( 'GetInterwikiPrefixFromWikiId', [ $wikiId, &$prefix ] );
+			$this->interwikiPrefixes[$wikiId] = $prefix;
+		}
+		return $this->interwikiPrefixes[$wikiId];
 	}
 
 	/**
