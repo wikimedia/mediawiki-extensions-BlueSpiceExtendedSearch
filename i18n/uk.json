@@ -162,5 +162,6 @@
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Спеціальна сторінка",
 	"bs-extendedsearch-source-type-wikipage-label": "Вікісторінка",
 	"bs-extendedsearch-source-type-repofile-label": "Локальний файл",
-	"bs-extendedsearch-source-type-specialpage-label": "Спеціальна сторінка"
+	"bs-extendedsearch-source-type-specialpage-label": "Спеціальна сторінка",
+	"bs-extendedsearch-remove-button-label": "Видалити фільтр \" $1 \""
 }

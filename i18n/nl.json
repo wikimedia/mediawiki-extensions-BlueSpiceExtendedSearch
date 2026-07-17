@@ -204,5 +204,7 @@
 	"bs-extendedsearch-source-type-externalfile-label": "Extern bestand",
 	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Pagina",
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "Bestand",
-	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Gebruikersprofiel"
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Gebruikersprofiel",
+	"bs-extendedsearch-remove-button-label": "Filter \"$1\" verwijderen",
+	"bs-extendedsearch-save-as-collection-button-label": "Als paginaverzameling opslaan"
 }

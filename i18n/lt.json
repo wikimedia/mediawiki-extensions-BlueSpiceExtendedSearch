@@ -118,5 +118,6 @@
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Specialusis puslapis",
 	"bs-extendedsearch-source-type-wikipage-label": "Viki puslapis",
 	"bs-extendedsearch-source-type-repofile-label": "Vietinis failas",
-	"bs-extendedsearch-source-type-specialpage-label": "Specialusis puslapis"
+	"bs-extendedsearch-source-type-specialpage-label": "Specialusis puslapis",
+	"bs-extendedsearch-remove-button-label": "Pašalinti filtrą „$1“"
 }
