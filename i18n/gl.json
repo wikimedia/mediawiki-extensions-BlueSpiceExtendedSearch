@@ -200,5 +200,6 @@
 	"bs-extendedsearch-source-type-repofile-label": "Ficheiro local",
 	"bs-extendedsearch-source-type-specialpage-label": "Páxina especial",
 	"bs-extendedsearch-source-type-externalfile-label": "Ficheiro externo",
-	"bs-extendedsearch-remove-button-label": "Eliminar o filtro «$1»"
+	"bs-extendedsearch-remove-button-label": "Eliminar o filtro «$1»",
+	"bs-extendedsearch-save-as-collection-button-label": "Gardar como colección de páxinas"
 }
