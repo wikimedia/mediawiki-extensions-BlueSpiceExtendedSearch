@@ -126,6 +126,7 @@
 	"bs-extendedsearch-options-button-label": "검색 옵션",
 	"bs-extendedsearch-export-button-label": "검색 결과 내보내기",
 	"bs-extendedsearch-remove-button-label": "필터 \"$1\" 제거",
+	"bs-extendedsearch-save-as-collection-button-label": "문서 컬렉션으로써 저장",
 	"bs-extendedsearch-search-center-result-file-usage-label": "문서에 사용됨",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "검색하려면 입력하세요...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "유효하지 않은 검색 결과 유형: $1",
