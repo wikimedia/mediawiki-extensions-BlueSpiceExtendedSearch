@@ -33,6 +33,10 @@ class Base implements IPostProcessor {
 			// If user sorts by something else by relevance
 			return;
 		}
+		if ( $this->isBoolShouldQueryEnabled() ) {
+			// Query-level relevance handles title boosting; skip PHP post-processing
+			return;
+		}
 		if ( $this->postProcessorRunner->getType() === Backend::QUERY_TYPE_SEARCH ) {
 			if ( $this->fulltextPercentageBoost( $result, $lookup ) ) {
 				$this->postProcessorRunner->requestReSort();
@@ -211,5 +215,16 @@ class Base implements IPostProcessor {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * @return bool
+	 */
+	protected function isBoolShouldQueryEnabled(): bool {
+		try {
+			return (bool)$this->postProcessorRunner->getConfig()->get( 'ESUseBoolShouldQuery' );
+		} catch ( ConfigException $e ) {
+			return false;
+		}
 	}
 }

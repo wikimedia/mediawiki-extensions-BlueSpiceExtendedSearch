@@ -169,6 +169,15 @@ bs.extendedSearch.Lookup.prototype.getQueryString = function () {
 		}
 	}
 
+	// Also check should clauses for simple_query_string (used by BoolShouldQuery mode)
+	if ( this.query.bool.should && Array.isArray( this.query.bool.should ) ) {
+		for ( let i = 0; i < this.query.bool.should.length; i++ ) {
+			if ( 'simple_query_string' in this.query.bool.should[ i ] ) {
+				return this.query.bool.should[ i ].simple_query_string;
+			}
+		}
+	}
+
 	return [];
 };
 

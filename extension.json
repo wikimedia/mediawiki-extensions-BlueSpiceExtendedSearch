@@ -645,6 +645,16 @@
 			"public": false,
 			"value": ""
 		},
+		"ESUseBoolShouldQuery": {
+			"description": "Use bool/should query structure instead of query_string for improved title relevance. Requires index rebuild after enabling.",
+			"public": false,
+			"value": false
+		},
+		"ESBoolShouldTitleBoost": {
+			"description": "Boost value for the match_phrase title clause when ESUseBoolShouldQuery is enabled",
+			"public": false,
+			"value": 15
+		},
 		"ESExcludeNamespaces": {
 			"description": "Namespaces to exclude from search. Add to `autocomplete` array to exclude from AC only, or to `search` array as well to exclude from both AC and fulltext",
 			"public": false,
