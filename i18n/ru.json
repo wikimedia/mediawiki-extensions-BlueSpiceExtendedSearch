@@ -94,6 +94,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Добавить фильтр",
 	"bs-extendedsearch-options-button-label": "Настройки поиска",
 	"bs-extendedsearch-export-button-label": "Экспортировать результаты поиска",
+	"bs-extendedsearch-remove-button-label": "Удалить фильтр «$1»",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Используется на страницах",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Введите для поиска…",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-title": "Поиск тегов",
@@ -121,6 +122,5 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Вики-страница",
 	"bs-extendedsearch-source-type-repofile-label": "Локальный файл",
 	"bs-extendedsearch-source-type-specialpage-label": "Служебная страница",
-	"bs-extendedsearch-source-type-externalfile-label": "Внешний файл",
-	"bs-extendedsearch-remove-button-label": "Удалить фильтр «$1»"
+	"bs-extendedsearch-source-type-externalfile-label": "Внешний файл"
 }

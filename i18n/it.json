@@ -100,6 +100,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Aggiungi un filtro",
 	"bs-extendedsearch-options-button-label": "Opzioni di ricerca",
 	"bs-extendedsearch-export-button-label": "Esporta risultati di ricerca",
+	"bs-extendedsearch-remove-button-label": "Rimuovi il filtro \"$1\"",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Usato nelle pagine",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Scrivi per ricercare ...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns-help": "Elenco di nomi o ID validi di namespace separati dalla barra verticale (|)",
@@ -141,6 +142,5 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Pagina wiki",
 	"bs-extendedsearch-source-type-repofile-label": "File locale",
 	"bs-extendedsearch-source-type-specialpage-label": "Pagina speciale",
-	"bs-extendedsearch-source-type-externalfile-label": "File esterno",
-	"bs-extendedsearch-remove-button-label": "Rimuovi il filtro \"$1\""
+	"bs-extendedsearch-source-type-externalfile-label": "File esterno"
 }

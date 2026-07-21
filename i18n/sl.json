@@ -122,6 +122,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Dodajte filter",
 	"bs-extendedsearch-options-button-label": "Možnosti iskanja",
 	"bs-extendedsearch-export-button-label": "Izvozite iskalne zadetke",
+	"bs-extendedsearch-remove-button-label": "Odstrani filter »$1«",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Uporabljeno na straneh",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Vnesite iskalni niz ...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Neveljavna vrsta iskalnih zadetkov: $1",
@@ -167,6 +168,5 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Viki stran",
 	"bs-extendedsearch-source-type-repofile-label": "Lokalna datoteka",
 	"bs-extendedsearch-source-type-specialpage-label": "Posebna stran",
-	"bs-extendedsearch-source-type-externalfile-label": "Zunanja datoteka",
-	"bs-extendedsearch-remove-button-label": "Odstrani filter »$1«"
+	"bs-extendedsearch-source-type-externalfile-label": "Zunanja datoteka"
 }

@@ -129,6 +129,8 @@
 	"bs-extendedsearch-filter-add-button-label": "Een filter toevoegen",
 	"bs-extendedsearch-options-button-label": "Zoekopties",
 	"bs-extendedsearch-export-button-label": "Exporteren zoekresultaten",
+	"bs-extendedsearch-remove-button-label": "Filter \"$1\" verwijderen",
+	"bs-extendedsearch-save-as-collection-button-label": "Als paginaverzameling opslaan",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Gebruikt op pagina's",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Invoeren om te zoeken...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Onjuist type zoekresultaat: $1",
@@ -197,14 +199,12 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Filtercombinatie van categorieën",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "Alle categorieën moeten zijn toegewezen (EN)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eén categorie is voldoende (OF)",
+	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Pagina",
+	"bs-extendedsearch-search-center-filter-document-type-file-label": "Bestand",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Speciale pagina",
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Gebruikersprofiel",
 	"bs-extendedsearch-source-type-wikipage-label": "Wikibase",
 	"bs-extendedsearch-source-type-repofile-label": "Lokaal bestand",
 	"bs-extendedsearch-source-type-specialpage-label": "Speciale pagina",
-	"bs-extendedsearch-source-type-externalfile-label": "Extern bestand",
-	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Pagina",
-	"bs-extendedsearch-search-center-filter-document-type-file-label": "Bestand",
-	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Gebruikersprofiel",
-	"bs-extendedsearch-remove-button-label": "Filter \"$1\" verwijderen",
-	"bs-extendedsearch-save-as-collection-button-label": "Als paginaverzameling opslaan"
+	"bs-extendedsearch-source-type-externalfile-label": "Extern bestand"
 }

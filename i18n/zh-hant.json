@@ -127,6 +127,7 @@
 	"bs-extendedsearch-filter-add-button-label": "添加篩選",
 	"bs-extendedsearch-options-button-label": "搜尋選項",
 	"bs-extendedsearch-export-button-label": "匯出搜尋結果",
+	"bs-extendedsearch-remove-button-label": "刪除$1過濾器",
 	"bs-extendedsearch-search-center-result-file-usage-label": "使用於頁面",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "要搜尋的類型…",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "無效搜尋結果類型：$1",
@@ -199,6 +200,5 @@
 	"bs-extendedsearch-source-type-wikipage-label": "wiki 頁面",
 	"bs-extendedsearch-source-type-repofile-label": "本地檔案",
 	"bs-extendedsearch-source-type-specialpage-label": "特殊頁面",
-	"bs-extendedsearch-source-type-externalfile-label": "外部檔案",
-	"bs-extendedsearch-remove-button-label": "刪除$1過濾器"
+	"bs-extendedsearch-source-type-externalfile-label": "外部檔案"
 }

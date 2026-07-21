@@ -102,6 +102,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Szűrő hozzáadása",
 	"bs-extendedsearch-options-button-label": "Keresési beállítások",
 	"bs-extendedsearch-export-button-label": "Keresési eredmények exportálása",
+	"bs-extendedsearch-remove-button-label": "A(z) „$1” szűrő eltávolítása",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Lapokon használt",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Keresés...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Érvénytelen keresési eredménytípus: $1",
@@ -149,6 +150,5 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Wikilap",
 	"bs-extendedsearch-source-type-repofile-label": "Helyi fájl",
 	"bs-extendedsearch-source-type-specialpage-label": "Speciális lap",
-	"bs-extendedsearch-source-type-externalfile-label": "Külső fájl",
-	"bs-extendedsearch-remove-button-label": "A(z) „$1” szűrő eltávolítása"
+	"bs-extendedsearch-source-type-externalfile-label": "Külső fájl"
 }

@@ -103,6 +103,7 @@
 	"bs-extendedsearch-filter-add-button-label": "يو چاڼگر ورگډول",
 	"bs-extendedsearch-options-button-label": "پلټل خوښنې",
 	"bs-extendedsearch-export-button-label": "لټون پايلې بهرلېږل",
+	"bs-extendedsearch-remove-button-label": "\"$1\" چاڼگر لرې‌کول",
 	"bs-extendedsearch-search-center-result-file-usage-label": "مخونو کې کارېدلی",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "پلټلو لپاره وليکئ...",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "لټون پايلې ناسم ډول: $1",
@@ -153,6 +154,5 @@
 	"bs-extendedsearch-source-type-wikipage-label": "ويکي‌مخ",
 	"bs-extendedsearch-source-type-repofile-label": "ځايي دوتنه",
 	"bs-extendedsearch-source-type-specialpage-label": "ځانگړی مخ",
-	"bs-extendedsearch-source-type-externalfile-label": "باندنۍ دوتنه",
-	"bs-extendedsearch-remove-button-label": "\"$1\" چاڼگر لرې‌کول"
+	"bs-extendedsearch-source-type-externalfile-label": "باندنۍ دوتنه"
 }

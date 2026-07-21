@@ -136,6 +136,7 @@
 	"bs-extendedsearch-filter-add-button-label": "Einen Filter hinzufügen",
 	"bs-extendedsearch-options-button-label": "Suchoptionen",
 	"bs-extendedsearch-export-button-label": "Suchergebnisse exportieren",
+	"bs-extendedsearch-remove-button-label": "Entferne Filter \"$1\"",
 	"bs-extendedsearch-search-center-result-file-usage-label": "Verwendet auf den Seiten",
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Zum Suchen tippen …",
 	"bs-extendedsearch-tagsearch-parser-error-invalid-search-type": "Ungültiger Suchergebnistyp: $1",
@@ -208,6 +209,5 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Seite",
 	"bs-extendedsearch-source-type-repofile-label": "Lokale Datei",
 	"bs-extendedsearch-source-type-specialpage-label": "Spezialseite",
-	"bs-extendedsearch-source-type-externalfile-label": "Externe Datei",
-	"bs-extendedsearch-remove-button-label": "Entferne Filter \"$1\""
+	"bs-extendedsearch-source-type-externalfile-label": "Externe Datei"
 }
