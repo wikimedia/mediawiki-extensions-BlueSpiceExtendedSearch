@@ -225,5 +225,6 @@
 	"bs-extendedsearch-source-type-repofile-label": "本地文件",
 	"bs-extendedsearch-source-type-specialpage-label": "特殊页面",
 	"bs-extendedsearch-source-type-externalfile-label": "外部文件",
-	"bs-extendedsearch-remove-button-label": "删除过滤器“ $1 ”"
+	"bs-extendedsearch-remove-button-label": "删除过滤器“ $1 ”",
+	"bs-extendedsearch-save-as-collection-button-label": "另存为页面收藏"
 }
