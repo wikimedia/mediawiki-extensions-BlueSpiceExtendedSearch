@@ -21,6 +21,7 @@ use BS\ExtendedSearch\Source\LookupModifier\BaseTagsAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\BaseTypeSecurityTrimming;
 use BS\ExtendedSearch\Source\LookupModifier\BaseWikiIDEnforcing;
 use BS\ExtendedSearch\Source\LookupModifier\BaseWildcarder;
+use BS\ExtendedSearch\Source\LookupModifier\BoolShouldQuery;
 use BS\ExtendedSearch\Source\LookupModifier\RegExpQuoter;
 use BS\ExtendedSearch\Source\LookupModifier\SearchContext;
 use BS\ExtendedSearch\Source\PostProcessor\Base as PostProcessorBase;
@@ -287,7 +288,8 @@ class GenericSource implements ISearchSource {
 			new SearchContext(
 				$lookup, $context,
 				MediaWikiServices::getInstance()->getService( 'BSExtendedSearch.PluginManager' )
-			)
+			),
+			new BoolShouldQuery( $lookup, $context ),
 		];
 		$securityLMs = [
 			new BaseTypeSecurityTrimming( $lookup, $context ),

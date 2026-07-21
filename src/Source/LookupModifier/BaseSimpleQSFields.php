@@ -2,6 +2,8 @@
 
 namespace BS\ExtendedSearch\Source\LookupModifier;
 
+use MediaWiki\MediaWikiServices;
+
 class BaseSimpleQSFields extends LookupModifier {
 
 	/**
@@ -16,6 +18,11 @@ class BaseSimpleQSFields extends LookupModifier {
 		$this->lookup->addSourceField( 'uri' );
 		$this->lookup->addSourceField( 'wiki_id' );
 		$this->lookup->addSourceField( 'document_type' );
+
+		if ( $this->isBoolShouldQueryEnabled() ) {
+			// Field boosting is handled by BoolShouldQuery modifier
+			return;
+		}
 
 		$simpleQS = $this->lookup->getQueryString();
 		$fields = [ 'basename^4', 'congregated' ];
@@ -44,6 +51,14 @@ class BaseSimpleQSFields extends LookupModifier {
 		$this->lookup->removeSourceField( 'mtime' );
 		$this->lookup->removeSourceField( 'uri' );
 		$this->lookup->addSourceField( 'document_type' );
+	}
+
+	/**
+	 * @return bool
+	 */
+	private function isBoolShouldQueryEnabled(): bool {
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
+		return (bool)$config->get( 'ESUseBoolShouldQuery' );
 	}
 
 }
