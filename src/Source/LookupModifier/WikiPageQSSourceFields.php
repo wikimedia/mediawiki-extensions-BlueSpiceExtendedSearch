@@ -10,6 +10,12 @@ class WikiPageQSSourceFields extends LookupModifier {
 		foreach ( $this->getSource() as $field ) {
 			$this->lookup->addSourceField( $field );
 		}
+
+		if ( $this->isBoolShouldQueryEnabled() ) {
+			// Field boosting is handled by BoolShouldQuery modifier
+			return;
+		}
+
 		$queryString = $this->lookup->getQueryString();
 
 		$fields = $this->getFieldsToSearchIn();
@@ -77,5 +83,13 @@ class WikiPageQSSourceFields extends LookupModifier {
 	private function shouldSearchInRaw() {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
 		return (bool)$config->get( 'ESSearchInRawWikitext' );
+	}
+
+	/**
+	 * @return bool
+	 */
+	private function isBoolShouldQueryEnabled(): bool {
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
+		return (bool)$config->get( 'ESUseBoolShouldQuery' );
 	}
 }

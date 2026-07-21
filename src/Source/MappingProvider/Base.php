@@ -19,7 +19,8 @@ class Base implements ISearchMappingProvider {
 				'doc_values' => true
 			],
 			'congregated' => [
-				'type' => 'text'
+				'type' => 'text',
+				'analyzer' => 'content_analyzer'
 			],
 			'suggestions-spellcheck' => [
 				'type' => 'text',
