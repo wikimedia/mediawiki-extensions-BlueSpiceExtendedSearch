@@ -206,5 +206,6 @@
 	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "문서",
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "파일",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "특수 문서",
-	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "사용자 프로파일"
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "사용자 프로파일",
+	"bs-extendedsearch-save-as-collection-button-label": "문서 컬렉션으로써 저장"
 }
