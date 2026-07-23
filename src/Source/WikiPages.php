@@ -14,6 +14,7 @@ use BS\ExtendedSearch\Source\LookupModifier\WikiPageAutocompleteRemoveUnwanted;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageAutocompleteSourceFields;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageBoosters;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageCategoriesAggregation;
+use BS\ExtendedSearch\Source\LookupModifier\WikiPageContentNamespacesOnly;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageLanguageAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageLanguageFilter;
 use BS\ExtendedSearch\Source\LookupModifier\WikiPageNamespacePrefixResolver;
@@ -117,6 +118,7 @@ class WikiPages extends GenericSource {
 		$modifiers[] = new WikiPageBoosters( $lookup, $context );
 		$modifiers[] = new WikiPageSubpageFilter( $lookup, $context );
 		$modifiers[] = new WikiPageRemoveUnwanted( $lookup, $context );
+		$modifiers[] = new WikiPageContentNamespacesOnly( $lookup, $context );
 		$modifiers[] = new WikiPageLanguageAggregation( $lookup, $context );
 		$modifiers[] = new WikiPageLanguageFilter( $lookup, $context );
 		$modifiers[] = new WikiPageAutocompleteRemoveUnwanted( $lookup, $context );

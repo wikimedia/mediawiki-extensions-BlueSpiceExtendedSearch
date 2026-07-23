@@ -220,6 +220,47 @@ class Lookup extends \ArrayObject {
 	}
 
 	/**
+	 * Add a raw query clause to the "must_not" section, for conditions
+	 * that cannot be expressed as a simple list of terms
+	 *
+	 * @param array $query
+	 * @return Lookup
+	 */
+	public function addBoolMustNotQuery( array $query ) {
+		$this->ensurePropertyPath( 'query.bool.must_not', [] );
+
+		foreach ( $this['query']['bool']['must_not'] as $clause ) {
+			if ( $clause === $query ) {
+				return $this;
+			}
+		}
+
+		$this['query']['bool']['must_not'][] = $query;
+
+		return $this;
+	}
+
+	/**
+	 * Counterpart of Lookup::addBoolMustNotQuery
+	 *
+	 * @param array $query
+	 * @return Lookup
+	 */
+	public function removeBoolMustNotQuery( array $query ) {
+		$this->ensurePropertyPath( 'query.bool.must_not', [] );
+
+		foreach ( $this['query']['bool']['must_not'] as $idx => $clause ) {
+			if ( $clause === $query ) {
+				unset( $this['query']['bool']['must_not'][$idx] );
+			}
+		}
+
+		$this['query']['bool']['must_not'] = array_values( $this['query']['bool']['must_not'] );
+
+		return $this;
+	}
+
+	/**
 	 * Remove items from must_not terms by field and value
 	 *
 	 * @param string $field
