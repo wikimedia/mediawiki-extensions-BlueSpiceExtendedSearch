@@ -198,6 +198,8 @@
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "File",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Special page",
 	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "User profile",
+	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "Sanitized CSS",
+	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Scribunto",
 	"bs-extendedsearch-source-type-wikipage-label": "Wikipage",
 	"bs-extendedsearch-source-type-repofile-label": "Local file",
 	"bs-extendedsearch-source-type-specialpage-label": "Special page",

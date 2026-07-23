@@ -655,6 +655,11 @@
 				"search": []
 			}
 		},
+		"ESLimitPagesToContentNamespaces": {
+			"description": "Only return wiki pages from content namespaces. Does not affect other document types, like blog posts, processes or files",
+			"public": false,
+			"value": true
+		},
 		"ESSourceConfig": {
 			"value": {
 				"wikipage": {

@@ -156,11 +156,16 @@ class Base implements ISearchResultFormatter {
 	 * @return string
 	 */
 	protected function getTypeText( $type ) {
-		$typeText = $type;
-		$messageKey = "bs-extendedsearch-source-type-$type-label";
 		$messageHelper = $this->utilityFactory->getMessageHelper();
-		if ( $messageHelper->msgExistsQuick( $messageKey ) ) {
-			return Message::newFromKey( $messageKey )->text();
+		$typeKey = strtolower( $type );
+		$messageKeys = [
+			"bs-extendedsearch-search-center-filter-document-type-$typeKey-label",
+			"bs-extendedsearch-source-type-$typeKey-label",
+		];
+		foreach ( $messageKeys as $messageKey ) {
+			if ( $messageHelper->msgExistsQuick( $messageKey ) ) {
+				return Message::newFromKey( $messageKey )->text();
+			}
 		}
 
 		return $type;
@@ -269,7 +274,7 @@ class Base implements ISearchResultFormatter {
 				'bs-extendedsearch-search-center-filter-type-with-values-label'
 			)->text();
 			foreach ( $filterCfg['document_type']['buckets'] as &$bucket ) {
-				$typeKey = $bucket['key'];
+				$typeKey = strtolower( $bucket['key'] );
 				$message = Message::newFromKey(
 					'bs-extendedsearch-search-center-filter-document-type-' . $typeKey . '-label'
 				);
