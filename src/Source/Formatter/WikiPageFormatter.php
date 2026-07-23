@@ -124,7 +124,8 @@ class WikiPageFormatter extends Base {
 
 		$pageTitle = $result['prefixed_title'];
 
-		if ( empty( $namespaceFilters ) ) {
+		// Main namespace titles have no prefix, but may contain a colon themselves
+		if ( empty( $namespaceFilters ) && (int)( $result['namespace'] ?? NS_MAIN ) !== NS_MAIN ) {
 			$pageTitle = $this->removeNamespace( $pageTitle );
 		}
 
@@ -139,10 +140,8 @@ class WikiPageFormatter extends Base {
 	 * @param array &$result
 	 */
 	protected function addAnchor( &$result ) {
-		$result['namespace_text'] = $result['namespace'] === NS_MAIN ?
-			Message::newFromKey( 'blanknamespace' )->text() :
-			BsNamespaceHelper::getNamespaceName( $result['namespace'] );
-		$result['breadcrumbs'] = $this->makeSubpageBreadCrumbs( $result['prefixed_title'] );
+		$result['namespace_text'] = $this->getNamespaceText( $result );
+		$result['breadcrumbs'] = $this->makeSubpageBreadCrumbs( $result );
 		if ( $result['_is_foreign'] ?? false ) {
 			$result['page_anchor'] = Html::element( 'a', [
 				'href' => $result['uri'],
@@ -500,12 +499,11 @@ class WikiPageFormatter extends Base {
 	}
 
 	/**
-	 * @param string $text
+	 * @param array $resultData
 	 * @return string
 	 */
-	private function makeSubpageBreadCrumbs( string $text ): string {
-		// Strip NS prefix
-		$text = preg_replace( '/^[^:]+:/', '', $text );
+	private function makeSubpageBreadCrumbs( array $resultData ): string {
+		$text = $this->stripNamespacePrefix( $resultData );
 
 		$bits = explode( '/', $text );
 		array_pop( $bits );
@@ -520,11 +518,68 @@ class WikiPageFormatter extends Base {
 	 * @return string|null
 	 */
 	private function getAnchorText( array $resultData ) {
-		// Strip NS prefix
-		$text = preg_replace( '/^[^:]+:/', '', $resultData['prefixed_title'] );
+		$text = $this->stripNamespacePrefix( $resultData );
 
 		$bits = explode( '/', $text );
 		return array_pop( $bits );
+	}
+
+	/**
+	 * Label of the namespace a result lives in.
+	 * Results from foreign wikis may be in a namespace that is not registered on
+	 * this wiki - in that case the local lookup yields nothing and we fall back to
+	 * the namespace name as it was indexed, or to the prefix of the title itself.
+	 *
+	 * @param array $resultData
+	 * @return string
+	 */
+	private function getNamespaceText( array $resultData ): string {
+		$namespace = isset( $resultData['namespace'] ) ? (int)$resultData['namespace'] : NS_MAIN;
+		if ( $namespace === NS_MAIN ) {
+			return Message::newFromKey( 'blanknamespace' )->text();
+		}
+
+		$localText = BsNamespaceHelper::getNamespaceName( $namespace );
+		if ( is_string( $localText ) && $localText !== '' ) {
+			return $localText;
+		}
+
+		$indexedText = $resultData['namespace_text'] ?? '';
+		if ( is_string( $indexedText ) && $indexedText !== '' ) {
+			return $indexedText;
+		}
+
+		$prefixedTitle = $resultData['prefixed_title'] ?? '';
+		$separatorPos = strpos( $prefixedTitle, ':' );
+		if ( $separatorPos === false ) {
+			return '';
+		}
+
+		return substr( $prefixedTitle, 0, $separatorPos );
+	}
+
+	/**
+	 * Removes the namespace prefix from the prefixed title of a result.
+	 * Only titles that actually live in a namespace have a prefix - titles in the
+	 * main namespace may contain a colon themselves ( "Project: Phoenix" ), so
+	 * nothing must be cut off there.
+	 *
+	 * @param array $resultData
+	 * @return string
+	 */
+	private function stripNamespacePrefix( array $resultData ): string {
+		$prefixedTitle = $resultData['prefixed_title'] ?? '';
+		$namespace = isset( $resultData['namespace'] ) ? (int)$resultData['namespace'] : NS_MAIN;
+		if ( $namespace === NS_MAIN ) {
+			return $prefixedTitle;
+		}
+
+		$separatorPos = strpos( $prefixedTitle, ':' );
+		if ( $separatorPos === false ) {
+			return $prefixedTitle;
+		}
+
+		return substr( $prefixedTitle, $separatorPos + 1 );
 	}
 
 }
