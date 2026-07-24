@@ -95,7 +95,13 @@ class WikiPageFormatter extends Base {
 		$resultData['highlight'] = $this->getHighlight( $resultObject );
 		$resultData['sections'] = $this->getSections( $resultData );
 		$resultData['redirects'] = $this->formatRedirectedFrom( $resultData );
-		$resultData['rendered_content_snippet'] = $this->getRenderedContentSnippet( $resultData['rendered_content'] );
+		$resultData['rendered_content_snippet'] = $this->getRenderedContentSnippet(
+			$resultData['rendered_content'] ?? ''
+		);
+
+		if ( $resultData['highlight'] === '' ) {
+			$resultData['highlight'] = $resultData['rendered_content_snippet'];
+		}
 
 		if ( $resultData['display_title'] !== $title->getPrefixedText() ) {
 			$resultData['basename'] = $resultData['display_title'];
@@ -344,14 +350,21 @@ class WikiPageFormatter extends Base {
 	}
 
 	/**
-	 * Returns only portion of rendered content
-	 * that is displayed in featured results
+	 * Returns only portion of rendered content, used for featured results
+	 * and as a fallback whenever there is no highlight for a result
 	 *
-	 * @param string $renderedContent
+	 * @param string|null $renderedContent
 	 * @return string
 	 */
 	protected function getRenderedContentSnippet( $renderedContent ) {
-		return substr( $renderedContent, 0, 500 ) . Base::MORE_VALUES_TEXT;
+		$renderedContent = trim( $renderedContent ?? '' );
+		if ( $renderedContent === '' ) {
+			return '';
+		}
+		if ( mb_strlen( $renderedContent ) <= 500 ) {
+			return $renderedContent;
+		}
+		return mb_substr( $renderedContent, 0, 500 ) . Base::MORE_VALUES_TEXT;
 	}
 
 	/**
