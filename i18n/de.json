@@ -214,5 +214,10 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Filterverknüpfung der Kategorien",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "Alle Kategorien müssen vergeben sein (UND)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Eine Kategorie reicht (ODER)",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Spezialseite"
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Spezialseite",
+	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Seite",
+	"bs-extendedsearch-search-center-filter-document-type-file-label": "Datei",
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Benutzerprofil",
+	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "Bereinigtes CSS",
+	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Scribunto"
 }
