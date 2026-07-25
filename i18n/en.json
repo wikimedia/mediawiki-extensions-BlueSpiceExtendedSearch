@@ -207,5 +207,7 @@
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "File",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Special page",
 	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "User profile",
-	"bs-extendedsearch-save-as-collection-button-label": "Save as page collection"
+	"bs-extendedsearch-save-as-collection-button-label": "Save as page collection",
+	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "Sanitized CSS",
+	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Scribunto"
 }

@@ -215,5 +215,7 @@
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "Label for the document_type option for file type",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Label for the document_type option for special page type",
 	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Label for the document_type option for user profile type",
-	"bs-extendedsearch-save-as-collection-button-label": "Tooltip text for a button to save search results as a page collection"
+	"bs-extendedsearch-save-as-collection-button-label": "Tooltip text for a button to save search results as a page collection",
+	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "Label for the document_type option for the \"sanitized-css\" content model (Extension:TemplateStyles)",
+	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Label for the document_type option for the \"Scribunto\" content model (Extension:Scribunto)"
 }
