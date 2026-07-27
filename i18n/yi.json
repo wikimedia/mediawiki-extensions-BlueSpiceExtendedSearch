@@ -54,5 +54,7 @@
 	"bs-extendedsearch-autocomplete-create-page-link": "שאפֿן בלאט \"$1\"",
 	"bs-extendedsearch-search-center-result-typetext-label": "טיפ:",
 	"bs-extendedsearch-search-center-filter-page_language-label": "בלאַט־שפראַך",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "ספּעציעלער בלאַט"
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "ספּעציעלער בלאַט",
+	"bs-extendedsearch-source-type-wikipage-label": "וויקיבלאט",
+	"bs-extendedsearch-source-type-repofile-label": "לאקאלע טעקע"
 }

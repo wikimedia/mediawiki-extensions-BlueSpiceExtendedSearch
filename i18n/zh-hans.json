@@ -222,5 +222,11 @@
 	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "页面",
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "文件",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "特殊页面",
-	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "用户资料"
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "用户资料",
+	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "已过滤的CSS",
+	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Scribunto",
+	"bs-extendedsearch-source-type-wikipage-label": "Wiki页面",
+	"bs-extendedsearch-source-type-repofile-label": "本地文件",
+	"bs-extendedsearch-source-type-specialpage-label": "特殊页面",
+	"bs-extendedsearch-source-type-externalfile-label": "外部文件"
 }

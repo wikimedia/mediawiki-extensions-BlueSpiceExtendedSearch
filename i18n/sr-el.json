@@ -95,5 +95,7 @@
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "Preusmerava na $1",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Rezultati",
 	"bs-extendedsearch-autocomplete-context-options-label": "Pretraga",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Posebna stranica"
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Posebna stranica",
+	"bs-extendedsearch-source-type-wikipage-label": "Vikistranica",
+	"bs-extendedsearch-source-type-repofile-label": "Lokalna datoteka"
 }

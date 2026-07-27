@@ -50,5 +50,7 @@
 	"bs-extendedsearch-tagsearch-searchfield-placeholder": "Entajpu por serĉi...",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat-placeholder": "Kategorio1|Kategorio2|...",
 	"bs-extendedsearch-suggest-operator": "Ĉu vi celis serĉi <b>$1</b>?",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Speciala paĝo"
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Speciala paĝo",
+	"bs-extendedsearch-source-type-wikipage-label": "Vikipaĝo",
+	"bs-extendedsearch-source-type-repofile-label": "Loka dosiero"
 }

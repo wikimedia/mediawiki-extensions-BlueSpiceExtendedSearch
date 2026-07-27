@@ -116,5 +116,7 @@
 	"bs-extendedsearch-statistics-report-search-terms-axis-label": "Paieškos užklausų skaičius",
 	"bs-extendedsearch-droplet-search-name": "Paieškos laukas",
 	"bs-extendedsearch-droplet-search-description": "Prie puslapio turinio pridedamas paieškos laukas",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Specialusis puslapis"
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Specialusis puslapis",
+	"bs-extendedsearch-source-type-wikipage-label": "Viki puslapis",
+	"bs-extendedsearch-source-type-repofile-label": "Vietinis failas"
 }

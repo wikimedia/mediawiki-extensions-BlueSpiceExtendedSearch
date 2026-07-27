@@ -190,5 +190,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-label": "Combination de filtros de categorias",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-and-label": "Tote le categorias debe esser assignate (AND)",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-operator-or-label": "Un categoria es sufficiente (OR)",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Pagina special"
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Pagina special",
+	"bs-extendedsearch-source-type-wikipage-label": "Pagina wiki",
+	"bs-extendedsearch-source-type-repofile-label": "File local",
+	"bs-extendedsearch-source-type-externalfile-label": "File externe"
 }

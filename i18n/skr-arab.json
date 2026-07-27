@@ -60,5 +60,8 @@
 	"bs-extendedsearch-autocomplete-context-options-label": "ڳولو",
 	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "ورقہ",
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "فائل",
-	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "ورتݨ پروفائل"
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "ورتݨ پروفائل",
+	"bs-extendedsearch-source-type-wikipage-label": "وکی ورقہ",
+	"bs-extendedsearch-source-type-repofile-label": "لوکیل فائل",
+	"bs-extendedsearch-source-type-externalfile-label": "ٻاہرلی فائل"
 }

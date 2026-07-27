@@ -67,6 +67,7 @@
 	"action-extendedsearch-search-externalfile": "no externe Fichiere sichen",
 	"bs-extendedsearch-suggest-operator": "Wollt Dir no <b>$1</b> sichen?",
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "Global Resultater weisen",
+	"bs-extendedsearch-statistics-report-search-terms": "Sichbegrëffer",
 	"bs-extendedsearch-source-label-externalfile": "Externe Fichier",
 	"bs-extendedsearch-tagsearch-input-aria-label": "Sichen",
 	"bs-extendedsearch-autocomplete-popup-select-announcement": "$1 vu(n) $2",
@@ -82,5 +83,9 @@
 	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Säit",
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "Fichier",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Spezialsäit",
-	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Benotzerprofil"
+	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Benotzerprofil",
+	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Scribunto",
+	"bs-extendedsearch-source-type-repofile-label": "Lokale Fichier",
+	"bs-extendedsearch-source-type-specialpage-label": "Spezialsäit",
+	"bs-extendedsearch-source-type-externalfile-label": "Externe Fichier"
 }

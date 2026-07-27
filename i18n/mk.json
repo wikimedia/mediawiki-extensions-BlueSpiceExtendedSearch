@@ -71,5 +71,7 @@
 	"bs-extendedsearch-collection-type-searchhistory": "Историја на пребарувањето",
 	"bs-extendedsearch-collection-var-searchterm": "Поим",
 	"bs-extendedsearch-collection-var-numbersearched": "Пребарувања",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Службена страница"
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Службена страница",
+	"bs-extendedsearch-source-type-wikipage-label": "Викистраница",
+	"bs-extendedsearch-source-type-repofile-label": "Месна податотека"
 }

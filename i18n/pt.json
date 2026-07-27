@@ -174,5 +174,8 @@
 	"prefs-searchsection": "Áreas de procura",
 	"bs-extendedsearch-autocomplete-context-options-aria-label": "Procurar $1 $2",
 	"prefs-search": "Definições de procura",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Página especial"
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Página especial",
+	"bs-extendedsearch-source-type-wikipage-label": "Página wiki",
+	"bs-extendedsearch-source-type-repofile-label": "Ficheiro local",
+	"bs-extendedsearch-source-type-externalfile-label": "Ficheiro externo"
 }

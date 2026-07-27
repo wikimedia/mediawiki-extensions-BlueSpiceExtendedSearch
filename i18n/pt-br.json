@@ -183,5 +183,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-placeholder-label": "Texto provisório para o campo de pesquisa",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "Filtrar por espaços nominais",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "Filtrar por categorias",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Página especial"
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Página especial",
+	"bs-extendedsearch-source-type-wikipage-label": "Página wiki",
+	"bs-extendedsearch-source-type-repofile-label": "Arquivo local",
+	"bs-extendedsearch-source-type-externalfile-label": "Arquivo externo"
 }

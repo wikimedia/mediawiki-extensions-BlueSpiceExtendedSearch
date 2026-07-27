@@ -118,5 +118,8 @@
 	"bs-extendedsearch-droplet-search-name": "Поле поиска",
 	"bs-extendedsearch-source-label-externalfile": "Внешний файл",
 	"bs-extendedsearch-recently-found-header": "Недавно просмотрено",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Служебная страница"
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Служебная страница",
+	"bs-extendedsearch-source-type-wikipage-label": "Вики-страница",
+	"bs-extendedsearch-source-type-repofile-label": "Локальный файл",
+	"bs-extendedsearch-source-type-externalfile-label": "Внешний файл"
 }

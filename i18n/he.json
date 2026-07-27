@@ -191,5 +191,8 @@
 	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "סוגי תוצאות",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-ns-label": "סינון לפי מרחב שמות",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-cat-label": "סינון לפי קטגוריות",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "דף מיוחד"
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "דף מיוחד",
+	"bs-extendedsearch-source-type-wikipage-label": "דף ויקי",
+	"bs-extendedsearch-source-type-repofile-label": "קובץ מקומי",
+	"bs-extendedsearch-source-type-externalfile-label": "קובץ חיצוני"
 }
