@@ -198,7 +198,10 @@
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "Ficheiro",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Páxina especial",
 	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Perfil de usuario",
+	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "CSS hixienizado",
+	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Scribunto",
 	"bs-extendedsearch-source-type-wikipage-label": "Páxina wiki",
 	"bs-extendedsearch-source-type-repofile-label": "Ficheiro local",
+	"bs-extendedsearch-source-type-specialpage-label": "Páxina especial",
 	"bs-extendedsearch-source-type-externalfile-label": "Ficheiro externo"
 }
