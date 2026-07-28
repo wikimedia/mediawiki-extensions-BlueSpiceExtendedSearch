@@ -121,6 +121,5 @@
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Служебная страница",
 	"bs-extendedsearch-source-type-wikipage-label": "Вики-страница",
 	"bs-extendedsearch-source-type-repofile-label": "Локальный файл",
-	"bs-extendedsearch-source-type-specialpage-label": "Служебная страница",
 	"bs-extendedsearch-source-type-externalfile-label": "Внешний файл"
 }

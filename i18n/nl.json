@@ -203,6 +203,8 @@
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "Bestand",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Speciale pagina",
 	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Gebruikersprofiel",
+	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "Opgeschoonde CSS",
+	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Scribunto",
 	"bs-extendedsearch-source-type-wikipage-label": "Wikibase",
 	"bs-extendedsearch-source-type-repofile-label": "Lokaal bestand",
 	"bs-extendedsearch-source-type-specialpage-label": "Speciale pagina",

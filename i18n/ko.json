@@ -5,7 +5,8 @@
 			"Ouclie",
 			"Tensama0415",
 			"Ykhwong",
-			"아라"
+			"아라",
+			"YeBoy371"
 		]
 	},
 	"bs-extsearch-desc": "일래스틱서치 검색 백엔드",
@@ -199,6 +200,7 @@
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "파일",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "특수 문서",
 	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "사용자 프로파일",
+	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "새니타이즈드 CSS",
 	"bs-extendedsearch-source-type-wikipage-label": "위키페이지",
 	"bs-extendedsearch-source-type-repofile-label": "로컬 파일",
 	"bs-extendedsearch-source-type-specialpage-label": "특수 문서",

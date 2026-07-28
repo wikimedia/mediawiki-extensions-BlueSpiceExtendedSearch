@@ -58,6 +58,5 @@
 	"bs-extendedsearch-privacy-transparency-history-summary": "BlueSpiceExtendedSearch - Ιστορικό αναζήτησης: όρος (φορές που αναζητήθηκε ): $1",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Ειδική σελίδα",
 	"bs-extendedsearch-source-type-wikipage-label": "Βικισελίδα",
-	"bs-extendedsearch-source-type-repofile-label": "Τοπικό αρχείο",
-	"bs-extendedsearch-source-type-specialpage-label": "Ειδική σελίδα"
+	"bs-extendedsearch-source-type-repofile-label": "Τοπικό αρχείο"
 }

@@ -54,6 +54,5 @@
 	"bs-extendedsearch-search-center-result-file-usage-label": "Käytössä sivuilla",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Toimintosivu",
 	"bs-extendedsearch-source-type-wikipage-label": "Wikisivu",
-	"bs-extendedsearch-source-type-repofile-label": "Paikallinen tiedosto",
-	"bs-extendedsearch-source-type-specialpage-label": "Toimintosivu"
+	"bs-extendedsearch-source-type-repofile-label": "Paikallinen tiedosto"
 }
