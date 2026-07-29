@@ -20,6 +20,7 @@ class WikiPageAutocompleteRemoveUnwanted extends WikiPageRemoveUnwanted {
 		// Namespace-based query trimming is global for all types and would hide repofile.
 		// NS_FILE wikipages are filtered later in wikipage formatter instead.
 		$toExclude = array_diff( $toExclude, [ NS_FILE ] );
+		$toExclude = array_values( $toExclude );
 
 		$this->lookup->addBoolMustNotTerms( 'namespace', $toExclude );
 	}
