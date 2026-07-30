@@ -96,7 +96,7 @@ bs.extendedSearch.AutocompleteResult.prototype.render = function () {
 		const redirLayout = new OO.ui.HorizontalLayout( {
 			items: [
 				new OO.ui.IconWidget( {
-					icon: 'articleRedirect'
+					icon: 'share'
 				} )
 			],
 			classes: [ 'bs-extendedsearch-autocomplete-popup-item-header-redirect' ]
