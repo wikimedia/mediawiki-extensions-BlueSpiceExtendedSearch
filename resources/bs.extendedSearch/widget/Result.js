@@ -124,7 +124,6 @@
 		this.$element = $( '<div>' )
 			.addClass( 'bs-extendedsearch-result-container' )
 			.attr( 'id', 'bs-es-result-' + this.getId() )
-			.css( '--wiki-color', '#3e5389' )
 			.append( this.$image, this.$dataContainer, this.$relevanceControl );
 
 		if ( this.featured ) {
