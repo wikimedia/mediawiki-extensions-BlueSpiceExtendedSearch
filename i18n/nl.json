@@ -76,6 +76,8 @@
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Annuleren",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Toepassen",
 	"bs-extendedsearch-search-center-options-page-size": "Items per pagina",
+	"bs-extendedsearch-search-center-options-page-size-label": "Aantal weergegeven items",
+	"bs-extendedsearch-search-center-options-sorting": "Sorteren",
 	"bs-extendedsearch-search-center-options-sort-by": "Sorteren op",
 	"bs-extendedsearch-search-center-options-sort-order": "Sorteervolgorde",
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Geen passende resultaten gevonden",

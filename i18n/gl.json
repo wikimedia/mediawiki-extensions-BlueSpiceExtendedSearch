@@ -71,6 +71,8 @@
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Cancelar",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Aplicar",
 	"bs-extendedsearch-search-center-options-page-size": "Entradas por páxina",
+	"bs-extendedsearch-search-center-options-page-size-label": "Número de entradas mostradas",
+	"bs-extendedsearch-search-center-options-sorting": "Ordenación",
 	"bs-extendedsearch-search-center-options-sort-by": "Ordenar por",
 	"bs-extendedsearch-search-center-options-sort-order": "Orde",
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Non hai coincidencias válidas para a túa consulta",
@@ -198,7 +200,10 @@
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "Ficheiro",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Páxina especial",
 	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Perfil de usuario",
+	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "CSS hixienizado",
+	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Scribunto",
 	"bs-extendedsearch-source-type-wikipage-label": "Páxina wiki",
 	"bs-extendedsearch-source-type-repofile-label": "Ficheiro local",
+	"bs-extendedsearch-source-type-specialpage-label": "Páxina especial",
 	"bs-extendedsearch-source-type-externalfile-label": "Ficheiro externo"
 }

@@ -21,7 +21,8 @@
 			"Urhixidur",
 			"Verdy p",
 			"Wladek92",
-			"Zarisi"
+			"Zarisi",
+			"NClara"
 		]
 	},
 	"bs-extsearch-extensionname": "BlueSpiceExtendedSearch",
@@ -89,6 +90,8 @@
 	"bs-extendedsearch-search-center-dialog-button-cancel-label": "Annuler",
 	"bs-extendedsearch-search-center-options-dialog-button-apply-label": "Appliquer",
 	"bs-extendedsearch-search-center-options-page-size": "Entrées par page",
+	"bs-extendedsearch-search-center-options-page-size-label": "Nombre d'entrées affichées",
+	"bs-extendedsearch-search-center-options-sorting": "Tri",
 	"bs-extendedsearch-search-center-options-sort-by": "Trier par",
 	"bs-extendedsearch-search-center-options-sort-order": "Ordre de tri",
 	"bs-extendedsearch-autocomplete-result-primary-no-results-label": "Aucune correspondance valide pour votre requête",
