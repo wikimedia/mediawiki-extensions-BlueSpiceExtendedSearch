@@ -2,6 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\Formatter;
 
+use BlueSpice\Utility\TrackingCategoryHelper;
 use BS\ExtendedSearch\SearchResult;
 use BsNamespaceHelper;
 use MediaWiki\HookContainer\HookContainer;
@@ -30,12 +31,20 @@ class WikiPageFormatter extends Base {
 	private array $interwikiPrefixes = [];
 
 	/**
+	 * @var TrackingCategoryHelper
+	 */
+	private TrackingCategoryHelper $trackingCategoryHelper;
+
+	/**
 	 * @inheritDoc
 	 */
 	public function __construct( $source ) {
 		parent::__construct( $source );
 		$this->titleFactory = $this->source->getBackend()->getService( 'TitleFactory' );
 		$this->hookContainer = $this->source->getBackend()->getService( 'HookContainer' );
+		$this->trackingCategoryHelper = $this->source->getBackend()->getService(
+			'BSTrackingCategoryHelper'
+		);
 	}
 
 	/**
@@ -178,6 +187,11 @@ class WikiPageFormatter extends Base {
 	 * @return string|null
 	 */
 	protected function formatCategories( $categories, array $result ) {
+		if ( empty( $categories ) ) {
+			return null;
+		}
+
+		$categories = $this->trackingCategoryHelper->filterOut( $categories );
 		if ( empty( $categories ) ) {
 			return null;
 		}
