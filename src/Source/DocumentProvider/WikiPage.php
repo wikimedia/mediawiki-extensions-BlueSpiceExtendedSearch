@@ -182,8 +182,14 @@ class WikiPage extends Base {
 		$renderedRevision = $this->revisionRenderer->getRenderedRevision( $this->revision );
 		$cats = $renderedRevision->getRevisionParserOutput()->getCategoryNames();
 
+		$trackingCategoryHelper = MediaWikiServices::getInstance()
+			->getService( 'BSTrackingCategoryHelper' );
+
 		$categories = [];
 		foreach ( $cats as $cat ) {
+			if ( $trackingCategoryHelper->isTrackingCategory( $cat ) ) {
+				continue;
+			}
 			$categories[] = Title::newFromDBkey( $cat )->getText();
 		}
 
