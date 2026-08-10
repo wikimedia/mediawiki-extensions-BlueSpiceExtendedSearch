@@ -10,7 +10,6 @@ use MediaWiki\SpecialPage\SpecialPage;
 class SearchAdmin extends SpecialPage {
 
 	/**
-	 *
 	 * @param string $name
 	 * @param string $restriction
 	 * @param bool $listed
