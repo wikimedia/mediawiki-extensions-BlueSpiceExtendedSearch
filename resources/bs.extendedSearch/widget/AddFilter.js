@@ -24,6 +24,9 @@ bs.extendedSearch.FilterAddWidget = function ( cfg ) {
 
 		for ( let i = 0; i < this.groupedFilters[ group ].length; i++ ) {
 			const filter = this.groupedFilters[ group ][ i ];
+			if ( filter.filter.hidden ) {
+				continue;
+			}
 			menuItems.push( new OO.ui.MenuOptionWidget( {
 				data: filter.filter,
 				disabled: this.activeFilters.indexOf( filter.filter.id ) !== -1, // eslint-disable-line unicorn/prefer-includes
