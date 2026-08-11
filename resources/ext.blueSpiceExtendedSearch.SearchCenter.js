@@ -30,7 +30,8 @@
 					id: filterId,
 					isANDEnabled: rawFilter.isANDEnabled,
 					multiSelect: rawFilter.multiSelect,
-					options: []
+					options: [],
+					hidden: rawFilter.hidden || false
 				}
 			};
 
