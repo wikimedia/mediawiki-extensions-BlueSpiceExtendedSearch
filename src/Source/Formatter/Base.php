@@ -108,14 +108,6 @@ class Base implements ISearchResultFormatter {
 		$resultData['_is_foreign'] = $this->isForeign( $resultData['wiki_id'] );
 
 		$user = $this->getContext()->getUser();
-		if ( !$resultData['_is_foreign'] ) {
-			if ( $user->isRegistered() ) {
-				$resultRelevance = new \BS\ExtendedSearch\ResultRelevance( $user, $resultObject->getId() );
-				$resultData['user_relevance'] = (int)$resultRelevance->getValue();
-			} else {
-				$resultData['user_relevance'] = false;
-			}
-		}
 
 		$resultData['typetext'] = $this->getTypeText( $resultData['document_type'] ) ?? $resultObject->getType();
 

@@ -1,1 +1,0 @@
-ALTER TABLE /*$wgDBprefix*/bs_extendedsearch_relevance CHANGE COLUMN `rel_value` `esr_value` SMALLINT(1) NOT NULL DEFAULT '0';

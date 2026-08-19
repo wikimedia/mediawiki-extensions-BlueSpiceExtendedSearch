@@ -19,7 +19,6 @@ use BS\ExtendedSearch\Source\LookupModifier\BaseSimpleQSFields;
 use BS\ExtendedSearch\Source\LookupModifier\BaseSortByID;
 use BS\ExtendedSearch\Source\LookupModifier\BaseTagsAggregation;
 use BS\ExtendedSearch\Source\LookupModifier\BaseTypeSecurityTrimming;
-use BS\ExtendedSearch\Source\LookupModifier\BaseUserRelevance;
 use BS\ExtendedSearch\Source\LookupModifier\BaseWikiIDEnforcing;
 use BS\ExtendedSearch\Source\LookupModifier\BaseWildcarder;
 use BS\ExtendedSearch\Source\LookupModifier\RegExpQuoter;
@@ -282,7 +281,6 @@ class GenericSource implements ISearchSource {
 			new BaseSimpleQSFields( $lookup, $context ),
 			BaseWildcarder::factory( MediaWikiServices::getInstance(), $lookup, $context ),
 			new BaseSortByID( $lookup, $context ),
-			new BaseUserRelevance( $lookup, $context ),
 			new BaseAutocompleteSourceFields( $lookup, $context ),
 			new BaseConvertTypeFilter( $lookup, $context ),
 			new RegExpQuoter( $lookup, $context ),
