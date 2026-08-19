@@ -318,7 +318,6 @@
 		"SpecialPage_initList": "overrideSpecialSearch",
 		"OpenSearchUrls": "overrideOpenSearchUrls",
 		"LoadExtensionSchemaUpdates": [
-			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddRelevanceTable::callback",
 			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddHistoryTable::callback",
 			"BS\\ExtendedSearch\\Hook\\LoadExtensionSchemaUpdates\\AddTraceTable::callback"
 		],
@@ -340,7 +339,6 @@
 		"bs-extendedsearch-stats": "BS\\ExtendedSearch\\MediaWiki\\Api\\Stats",
 		"bs-extendedsearch-triggerupdate": "BS\\ExtendedSearch\\MediaWiki\\Api\\TriggerUpdate",
 		"bs-extendedsearch-autocomplete": "BS\\ExtendedSearch\\MediaWiki\\Api\\Autocomplete",
-		"bs-extendedsearch-resultrelevance": "BS\\ExtendedSearch\\MediaWiki\\Api\\ResultRelevance",
 		"bs-extendedsearch-type-store": "BS\\ExtendedSearch\\MediaWiki\\Api\\TypeStore"
 	},
 	"ResourceFileModulePaths": {
@@ -502,8 +500,6 @@
 				"bs-extendedsearch-loadmore-error",
 				"bs-extendedsearch-filter-label-count-only",
 				"bs-extendedsearch-search-center-result-typetext-label",
-				"bs-extendedsearch-result-relevance-relevant",
-				"bs-extendedsearch-result-relevance-not-relevant",
 				"bs-extendedsearch-search-center-result-redirects-label",
 				"bs-extendedsearch-redirect-target-label",
 				"bs-extendedsearch-search-center-filter-page_language-label",

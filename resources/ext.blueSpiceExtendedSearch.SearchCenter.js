@@ -127,7 +127,6 @@
 
 			cfg._id = result.id;
 			cfg.raw_result = result;
-			cfg.user_relevance = result.user_relevance;
 
 			structuredResults.push( cfg );
 		} );

@@ -35,7 +35,6 @@
 
 		bs.extendedSearch.mixin.ResultImage.call( this, cfg );
 		bs.extendedSearch.mixin.ResultSecondaryInfo.call( this, cfg );
-		bs.extendedSearch.mixin.ResultRelevanceControl.call( this, cfg );
 		bs.extendedSearch.mixin.ResultOriginalTitle.call( this, cfg );
 
 		this.id = cfg._id;
@@ -142,7 +141,6 @@
 	OO.inheritClass( bs.extendedSearch.ResultWidget, OO.ui.Widget );
 	OO.mixinClass( bs.extendedSearch.ResultWidget, bs.extendedSearch.mixin.ResultImage );
 	OO.mixinClass( bs.extendedSearch.ResultWidget, bs.extendedSearch.mixin.ResultSecondaryInfo );
-	OO.mixinClass( bs.extendedSearch.ResultWidget, bs.extendedSearch.mixin.ResultRelevanceControl );
 	OO.mixinClass( bs.extendedSearch.ResultWidget, bs.extendedSearch.mixin.ResultOriginalTitle );
 
 	bs.extendedSearch.ResultWidget.prototype.getId = function () {
@@ -164,36 +162,6 @@
 	bs.extendedSearch.ResultWidget.prototype.onImageClick = function ( e ) {
 		const anchor = e.data.pageAnchor;
 		window.location = anchor.attr( 'href' );
-	};
-
-	bs.extendedSearch.ResultWidget.prototype.onRelevant = function ( e ) { // eslint-disable-line no-unused-vars
-		this.isRelevantForUser = !this.isRelevantForUser;
-		this.makeChangeRelevanceCall();
-		this.updateRelevanceButtons();
-	};
-
-	bs.extendedSearch.ResultWidget.prototype.makeChangeRelevanceCall = function () {
-		const queryData = {
-			relevanceData: JSON.stringify( {
-				resultId: this.getId(),
-				value: this.isRelevantForUser
-			} )
-		};
-
-		bs.extendedSearch.SearchCenter.runApiCall(
-			queryData,
-			'bs-extendedsearch-resultrelevance'
-		);
-	};
-
-	bs.extendedSearch.ResultWidget.prototype.updateRelevanceButtons = function () {
-		if ( this.isRelevantForUser ) {
-			this.relevantButton.setFlags( [ 'progressive' ] );
-		} else {
-			this.relevantButton.clearFlags();
-		}
-		this.relevantButton.$button.attr( 'aria-pressed', this.isRelevantForUser ? 'true' : 'false' );
-
 	};
 
 }( mediaWiki, jQuery, blueSpice ) );

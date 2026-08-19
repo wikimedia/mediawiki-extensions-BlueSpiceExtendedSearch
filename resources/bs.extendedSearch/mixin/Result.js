@@ -85,39 +85,6 @@
 			.append( $label, $value );
 	};
 
-	/**
-	 * Experimental
-	 *
-	 * @param {Object} cfg
-	 */
-	bs.extendedSearch.mixin.ResultRelevanceControl = function ( cfg ) {
-		cfg = cfg || {};
-
-		this.isRelevantForUser = cfg.user_relevance === 1;
-		this.$relevanceControl = $( '<div>' ).addClass( 'bs-extendedsearch-result-relevance-cnt' );
-
-		if ( !mw.config.get( 'wgUserId' ) ) {
-			return;
-		}
-
-		this.relevantButton = new OO.ui.ButtonWidget( {
-			framed: false,
-			icon: 'pushPin',
-			title: mw.message( 'bs-extendedsearch-result-relevance-relevant' ).text()
-		} );
-		if ( this.isRelevantForUser ) {
-			this.relevantButton.setFlags( [ 'progressive' ] );
-		}
-		this.relevantButton.$button.attr( 'aria-pressed', this.isRelevantForUser );
-		this.relevantButton.connect( this, {
-			click: 'onRelevant'
-		} );
-
-		this.$relevanceControl.append( this.relevantButton.$element );
-	};
-
-	OO.initClass( bs.extendedSearch.mixin.ResultRelevanceControl );
-
 	bs.extendedSearch.mixin.ResultOriginalTitle = function ( cfg ) {
 		cfg = cfg || {};
 

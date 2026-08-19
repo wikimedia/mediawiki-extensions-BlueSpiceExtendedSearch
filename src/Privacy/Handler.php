@@ -47,12 +47,6 @@ class Handler implements IPrivacyHandler {
 			__METHOD__
 		);
 
-		$this->db->delete(
-			'bs_extendedsearch_relevance',
-			[ 'esr_user' => $userToDelete->getId() ],
-			__METHOD__
-		);
-
 		return Status::newGood();
 	}
 
@@ -136,14 +130,10 @@ class Handler implements IPrivacyHandler {
 	 */
 	protected function getWorkingData( $user ) {
 		$searchHistory = $this->getSearchHistory( $user );
-		$searchRelevance = $this->getSearchRelevance( $user );
 
 		$data = [];
 		if ( !empty( $searchHistory ) ) {
 			$data = $searchHistory;
-		}
-		if ( !empty( $searchRelevance ) ) {
-			$data = array_merge( $data, $searchRelevance );
 		}
 
 		return $data;
@@ -183,37 +173,6 @@ class Handler implements IPrivacyHandler {
 				'bs-extendedsearch-privacy-transparency-history-summary',
 				implode( ',', $terms )
 			)->text()
-		];
-	}
-
-	/**
-	 * @param User $user
-	 * @return Message[]
-	 */
-	protected function getSearchRelevance( $user ) {
-		// We can only show the number of relevant pages user has,
-		// because only hashed doc IDs are stored
-		$row = $this->db->selectRow(
-			'bs_extendedsearch_relevance',
-			[ 'COUNT( esr_user ) as relevant_pages' ],
-			[
-				'esr_user' => $user->getId(),
-				'esr_value' => 1
-			],
-			__METHOD__,
-			[ 'GROUP BY' => 'esr_user' ]
-		);
-
-		if ( !$row ) {
-			return [];
-		}
-
-		return [
-			wfMessage(
-				'bs-extendedsearch-privacy-transparency-relevance',
-				$row->relevant_pages,
-				$user->getName()
-			)->parse()
 		];
 	}
 }

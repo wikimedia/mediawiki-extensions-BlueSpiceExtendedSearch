@@ -1,1 +1,0 @@
-ALTER TABLE /*$wgDBprefix*/bs_extendedsearch_relevance CHANGE COLUMN `rel_user` `esr_user` INT (6) NOT NULL;
