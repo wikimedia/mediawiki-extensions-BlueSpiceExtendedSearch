@@ -203,7 +203,6 @@
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "특수 문서",
 	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "사용자 프로파일",
 	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "새니타이즈드 CSS",
-	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Scribunto",
 	"bs-extendedsearch-source-type-wikipage-label": "위키페이지",
 	"bs-extendedsearch-source-type-repofile-label": "로컬 파일",
 	"bs-extendedsearch-source-type-specialpage-label": "특수 문서",
