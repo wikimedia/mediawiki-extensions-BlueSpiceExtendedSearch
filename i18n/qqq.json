@@ -210,6 +210,7 @@
 	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Label for the document_type option for user profile type",
 	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "Label for the document_type option for the \"sanitized-css\" content model (Extension:TemplateStyles)",
 	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Label for the document_type option for the \"Scribunto\" content model (Extension:Scribunto)",
+	"bs-extendedsearch-search-center-filter-document-type-neowikischema-label": "Label for the document_type option for the \"NeoWikiSchema\" content model (Extension:NeoWiki)",
 	"bs-extendedsearch-source-type-wikipage-label": "Label for Wikipage source type",
 	"bs-extendedsearch-source-type-repofile-label": "Label for Local file source type",
 	"bs-extendedsearch-source-type-specialpage-label": "Label for Special page source type",

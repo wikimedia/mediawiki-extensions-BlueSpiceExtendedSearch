@@ -213,6 +213,7 @@
 	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Benutzerprofil",
 	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "Bereinigtes CSS",
 	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Scribunto",
+	"bs-extendedsearch-search-center-filter-document-type-neowikischema-label": "Schema",
 	"bs-extendedsearch-source-type-wikipage-label": "Seite",
 	"bs-extendedsearch-source-type-repofile-label": "Lokale Datei",
 	"bs-extendedsearch-source-type-specialpage-label": "Spezialseite",
