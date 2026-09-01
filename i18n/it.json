@@ -17,7 +17,7 @@
 	"apihelp-bs-extendedsearch-query-param-params": "Parametri aggiuntivi per la ricerca",
 	"apihelp-bs-extendedsearch-triggerupdate-param-params": "Parametri addizionali per la query",
 	"apihelp-bs-extendedsearch-query-param-search-term": "Termine per il quale viene condotta la ricerca",
-	"bs-extendedsearch-close-search-button-aria-label": "Chiudere la casella di ricerca",
+	"bs-extendedsearch-close-search-button-aria-label": "Chiudi la casella di ricerca",
 	"bs-extendedsearch-search-button-title": "Passa alla ricerca nel testo completo",
 	"bs-extendedsearch-search-button-aria-label": "Passa alla ricerca nel testo completo",
 	"bs-extendedsearch-search-input-placeholder": "Trova ...",
