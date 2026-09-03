@@ -180,7 +180,7 @@
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "Redirects to $1",
 	"bs-extendedsearch-context-subpage-label": "in subpages of '''$1'''",
 	"bs-extendedsearch-context-namespace-label": "in '''$1''' namespace",
-	"bs-extendedsearch-autocomplete-context-none": "in whole wiki",
+	"bs-extendedsearch-autocomplete-context-none": "in this wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Results",
 	"bs-extendedsearch-autocomplete-context-options-label": "Search",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Similar results",
