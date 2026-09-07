@@ -5,6 +5,7 @@
 			"Cookai1205",
 			"Cwlin0416",
 			"Kly",
+			"LowensteinYang",
 			"Willy1018",
 			"Winston Sung",
 			"Xiplus"
@@ -180,7 +181,7 @@
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "重新導向至$1",
 	"bs-extendedsearch-context-subpage-label": "在'''$1'''的子頁面",
 	"bs-extendedsearch-context-namespace-label": "在'''$1'''命名空間",
-	"bs-extendedsearch-autocomplete-context-none": "在整個 wiki",
+	"bs-extendedsearch-autocomplete-context-none": "在此wiki內",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "結果",
 	"bs-extendedsearch-autocomplete-context-options-label": "搜尋",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "相似結果",

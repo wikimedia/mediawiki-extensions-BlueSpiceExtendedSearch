@@ -180,7 +180,7 @@
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "Redirección cara a «$1»",
 	"bs-extendedsearch-context-subpage-label": "en subpáxinas de «'''$1'''»",
 	"bs-extendedsearch-context-namespace-label": "no espazo de nomes «'''$1'''»",
-	"bs-extendedsearch-autocomplete-context-none": "en todo o wiki",
+	"bs-extendedsearch-autocomplete-context-none": "neste wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultados",
 	"bs-extendedsearch-autocomplete-context-options-label": "Procurar",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultados semellantes",
