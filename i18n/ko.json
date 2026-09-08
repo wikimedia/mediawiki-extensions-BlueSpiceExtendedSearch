@@ -182,7 +182,7 @@
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "$1 문서로 넘겨주기",
 	"bs-extendedsearch-context-subpage-label": "'''$1'''의 하위 문서에서",
 	"bs-extendedsearch-context-namespace-label": "'''$1''' 이름공간에서",
-	"bs-extendedsearch-autocomplete-context-none": "전체 위키에서",
+	"bs-extendedsearch-autocomplete-context-none": "위키에서",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "결과",
 	"bs-extendedsearch-autocomplete-context-options-label": "검색",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "비슷한 결과",
