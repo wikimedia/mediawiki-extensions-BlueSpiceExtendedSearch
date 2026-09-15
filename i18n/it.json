@@ -81,8 +81,6 @@
 	"bs-extendedsearch-loadmore-label": "Carica altri risultati",
 	"bs-extendedsearch-loadmore-error": "Non è possibile recuperare altri risultati",
 	"bs-extendedsearch-search-center-result-typetext-label": "Tipo:",
-	"bs-extendedsearch-result-relevance-relevant": "Questo risultato è importante per me",
-	"bs-extendedsearch-result-relevance-not-relevant": "Questo risultato non è importante per me",
 	"prefs-extendedsearch": "Ricerca avanzata",
 	"bs-extendedsearch-user-preferred-namespaces": "Namespace preferiti",
 	"bs-extendedsearch-pref-external-file-paths-path": "Percorso fisico",

@@ -73,8 +73,6 @@
 	"bs-extendedsearch-loadmore-label": "بارگیری نتایج بیشتر",
 	"bs-extendedsearch-loadmore-error": "نتایج بیشتر قابل واکشی نیستند",
 	"bs-extendedsearch-search-center-result-typetext-label": "نوع:",
-	"bs-extendedsearch-result-relevance-relevant": "این نتیجه برایم مهم است",
-	"bs-extendedsearch-result-relevance-not-relevant": "این نتیجه برایم مهم نیست",
 	"prefs-extendedsearch": "جستجوی گسترده",
 	"bs-extendedsearch-user-preferred-namespaces": "فضاهای نام ترجیحی",
 	"bs-extendedsearch-autocomplete-modified-time-label": "آخرین تغییر: $1",

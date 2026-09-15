@@ -40,8 +40,6 @@
 	"bs-extendedsearch-loadmore-label": "Indlæs flere resultater",
 	"bs-extendedsearch-loadmore-error": "Der kunne ikke hentes flere resultater",
 	"bs-extendedsearch-search-center-result-typetext-label": "Type:",
-	"bs-extendedsearch-result-relevance-relevant": "Dette resultat er vigtigt for mig",
-	"bs-extendedsearch-result-relevance-not-relevant": "Dette resultat er ikke vigtigt for mig",
 	"prefs-extendedsearch": "Udvidet søgning",
 	"bs-extendedsearch-pref-external-file-paths-path": "Fysisk sti",
 	"bs-extendedsearch-pref-external-file-paths-excludes": "Ekskluder mønstre",

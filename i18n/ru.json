@@ -75,8 +75,6 @@
 	"bs-extendedsearch-autocomplete-create-page-link": "Создать страницу «$1»",
 	"bs-extendedsearch-loadmore-label": "Загрузка других результатов",
 	"bs-extendedsearch-search-center-result-typetext-label": "Тип:",
-	"bs-extendedsearch-result-relevance-relevant": "Этот результат важен для меня",
-	"bs-extendedsearch-result-relevance-not-relevant": "Этот результат не важен для меня",
 	"prefs-extendedsearch": "Расширенный поиск",
 	"bs-extendedsearch-user-preferred-namespaces": "Предпочитаемые пространство имён",
 	"bs-extendedsearch-pref-external-file-paths": "Внешние пути файлов",

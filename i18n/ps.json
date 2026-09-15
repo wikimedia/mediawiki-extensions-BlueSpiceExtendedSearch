@@ -79,8 +79,6 @@
 	"bs-extendedsearch-loadmore-error": "نورې پايلې نشي ترلاسه‌کېدای",
 	"bs-extendedsearch-filter-label-count-only": "($1)",
 	"bs-extendedsearch-search-center-result-typetext-label": "ډول:",
-	"bs-extendedsearch-result-relevance-relevant": "دا پايله زما لپاره مهمه ده",
-	"bs-extendedsearch-result-relevance-not-relevant": "دا پايله زما لپاره مهمه نه ده",
 	"prefs-extendedsearch": "غځول‌شوی لټون",
 	"bs-extendedsearch-user-preferred-namespaces": "غوره‌شوي نوم‌تشيالونه",
 	"bs-extendedsearch-pref-external-file-paths": "باندنۍ دوتنې لار",

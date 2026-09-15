@@ -56,8 +56,6 @@
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "Przestrzeń nazw",
 	"bs-extendedsearch-loadmore-label": "Załaduj więcej wyników",
 	"bs-extendedsearch-search-center-result-typetext-label": "Typ:",
-	"bs-extendedsearch-result-relevance-relevant": "Ten wynik jest dla mnie ważny",
-	"bs-extendedsearch-result-relevance-not-relevant": "Ten wynik nie jest dla mnie ważny",
 	"prefs-extendedsearch": "Wyszukiwanie zaawansowane",
 	"bs-extendedsearch-user-preferred-namespaces": "Preferowane przestrzenie nazw",
 	"bs-extendedsearch-pref-external-file-paths": "Zewnętrzne ścieżki plików",

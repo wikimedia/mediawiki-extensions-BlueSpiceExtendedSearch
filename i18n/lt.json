@@ -71,8 +71,6 @@
 	"bs-extendedsearch-loadmore-label": "Įkelti daugiau rezultatų",
 	"bs-extendedsearch-loadmore-error": "Daugiau rezultatų gauti negalima",
 	"bs-extendedsearch-search-center-result-typetext-label": "Tipas:",
-	"bs-extendedsearch-result-relevance-relevant": "Šis rezultatas man svarbus",
-	"bs-extendedsearch-result-relevance-not-relevant": "Šis rezultatas man nėra svarbus",
 	"prefs-extendedsearch": "Išplėstinė paieška",
 	"bs-extendedsearch-pref-external-file-paths-url-prefix": "URL priešdėlis",
 	"bs-extendedsearch-autocomplete-modified-time-label": "Paskutinį kartą atnaujinta: $1",
