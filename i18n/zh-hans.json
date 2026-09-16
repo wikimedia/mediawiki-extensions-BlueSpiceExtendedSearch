@@ -201,7 +201,7 @@
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "重定向至$1",
 	"bs-extendedsearch-context-subpage-label": "在'''$1'''的子页面",
 	"bs-extendedsearch-context-namespace-label": "在'''$1'''命名空间",
-	"bs-extendedsearch-autocomplete-context-none": "在整个wiki",
+	"bs-extendedsearch-autocomplete-context-none": "在此wiki内",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "结果",
 	"bs-extendedsearch-autocomplete-context-options-label": "搜索",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "相似结果",
