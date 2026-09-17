@@ -27,7 +27,7 @@ class BaseUserRelevance extends LookupModifier {
 	}
 
 	public function apply() {
-		if ( $this->context->getUser()->isRegistered() ) {
+		if ( !$this->context->getUser()->isRegistered() ) {
 			return;
 		}
 		if ( $this->relevanceValues == [] ) {
