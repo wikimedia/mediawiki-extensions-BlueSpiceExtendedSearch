@@ -38,7 +38,7 @@ class WikiPage extends Base {
 		if ( $this->sourceConfig->has( 'skip_namespaces' ) ) {
 			$aAllNamespaces = RequestContext::getMain()->getLanguage()->getNamespaceIds();
 			$aOnlyIn = array_diff( $aAllNamespaces, $this->sourceConfig->get( 'skip_namespaces' ) );
-			$aConds['page_namespace'] = $aOnlyIn;
+			$aConds['page_namespace'] = array_values( $aOnlyIn );
 		}
 		$skipContentModels = $this->sourceConfig->has( 'skip_content_models' ) ?
 			$this->sourceConfig->get( 'skip_content_models' ) : [];
