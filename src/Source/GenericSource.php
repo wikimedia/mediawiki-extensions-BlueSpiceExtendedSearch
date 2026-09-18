@@ -274,7 +274,7 @@ class GenericSource implements ISearchSource {
 	 */
 	public function getLookupModifiers( Lookup $lookup, IContextSource $context ): array {
 		$lookupModifiers = [
-			new BaseWikiIDEnforcing( $lookup, $context ),
+			new BaseWikiIDEnforcing( $lookup, $context, $this->backend->getConfig() ),
 			new BaseExtensionAggregation( $lookup, $context ),
 			new BaseDocumentTypeAggregation( $lookup, $context ),
 			new BaseTagsAggregation( $lookup, $context ),
