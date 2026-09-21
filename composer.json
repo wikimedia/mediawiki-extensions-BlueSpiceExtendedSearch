@@ -15,7 +15,7 @@
 		"opensearch-project/opensearch-php": "~2",
 		"mwstake/mediawiki-component-datastore": "~3",
 		"mwstake/mediawiki-component-generictaghandler": "^2.0.0",
-		"mwstake/mediawiki-component-wikicron": "~5",
+		"mwstake/mediawiki-component-wikicron": "~6",
 		"mwstake/mediawiki-component-utils": "~3"
 	},
 	"require-dev": {
