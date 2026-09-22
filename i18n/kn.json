@@ -29,8 +29,6 @@
 	"bs-extendedsearch-searchcenter-sort-field-namespace": "ನಾಮವರ್ಗ",
 	"bs-extendedsearch-autocomplete-create-page-link": "\"$1\" ಪುಟ ರಚಿಸಿ",
 	"bs-extendedsearch-search-center-result-typetext-label": "ನಮೂನೆ:",
-	"bs-extendedsearch-result-relevance-relevant": "ಈ ಫಲಿತಾಂಶವು ನನಗೆ ಮುಖ್ಯವಾಗಿದೆ",
-	"bs-extendedsearch-result-relevance-not-relevant": "ಈ ಫಲಿತಾಂಶವು ನನಗೆ ಮುಖ್ಯವಾಗಿಲ್ಲ",
 	"bs-extendedsearch-search-center-filter-page_language-label": "ಪುಟದ ಭಾಷೆ",
 	"bs-extendedsearch-search-center-filter-page_language-with-values-label": "ಪುಟದ ಭಾಷೆ:",
 	"bs-extendedsearch-search-center-create-page-link": "\"$1\" ಪುಟ ರಚಿಸಿ",
