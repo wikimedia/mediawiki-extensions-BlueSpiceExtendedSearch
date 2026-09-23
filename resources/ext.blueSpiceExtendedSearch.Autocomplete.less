@@ -129,7 +129,7 @@
 	}
 
 	.bs-extendedsearch-autocomplete-popup-item {
-		padding: 0 5px 0 8px;
+		padding: 5px 5px 5px 8px;
 		position: relative;
 		cursor: pointer;
 		display: flex;
@@ -226,6 +226,7 @@
 		}
 
 		&.has-items {
+			padding-bottom: 5px;
 			border-bottom: 1px solid @autocomplete-border-color;
 			margin-bottom: 5px;
 		}
@@ -233,7 +234,7 @@
 		.bs-extendedsearch-autocomplete-popup-context-option {
 			width: 100%;
 			margin: 0 !important;
-			padding: 0 10px 0 0 !important;
+			padding: 0 10px 5px 0 !important;
 			display: flex;
 			flex-wrap: wrap;
 
@@ -251,7 +252,7 @@
 
 			a.oo-ui-buttonElement-button {
 				flex-grow: 1;
-				font-size: 0.875rem;
+				font-size: 0.9375rem;
 				background-color: transparent;
 				padding-left: 2.8em;
 				white-space: break-spaces;
@@ -266,7 +267,7 @@
 				padding: 5px;
 				color: @autocomplete-results-path-color;
 				white-space: break-spaces;
-				font-size: 0.875rem;
+				font-size: 0.9375rem;
 			}
 		}
 	}
