@@ -80,13 +80,20 @@ class Base implements IPostProcessor {
 		if ( !is_float( $score ) ) {
 			return false;
 		}
-		$matchPercent = $this->getMatchPercent( $result, $lookup );
+		[ $matchPercent, $overlappingTokens ] = $this->getMatchPercent( $result, $lookup );
 		if ( (int)$matchPercent === 1 ) {
 			// 100% match, extra boost, exact match always to top
 			$factor = 10;
 		} else {
 			$boostFactor = (float)$this->postProcessorRunner->getConfig()->get( 'ESMatchPercentBoostFactor' );
 			$factor = $matchPercent * $boostFactor;
+			if ( !empty( $overlappingTokens ) ) {
+				// Boost factor by another 10% for each overlapping token
+				// This is done to boost results with WORD MATCHES more than just infix matches, i.e.
+				// searching for "foo" should boost "foobar" more than "foobarbaz" as the search term is a standalone
+				// word instead of a part of another word
+				$factor += ( count( $overlappingTokens ) - 1 ) * 0.1;
+			}
 		}
 
 		$result->setParam( '_score', $score + ( $score * $factor ) );
@@ -97,20 +104,20 @@ class Base implements IPostProcessor {
 	/**
 	 * @param SearchResult $result
 	 * @param Lookup $lookup
-	 * @return int
+	 * @return array
 	 */
-	private function getMatchPercent( $result, $lookup ) {
+	private function getMatchPercent( $result, $lookup ): array {
 		$titleTokens = $this->tokenizeString( $this->getTitleFieldValue( $result ) );
 		$searchTokens = $this->getSearchTermTokens( $lookup );
 		if ( empty( $searchTokens ) || empty( $titleTokens ) ) {
-			return 0;
+			return [ 0, [] ];
 		}
 
 		$matched = array_intersect( $titleTokens, $searchTokens );
 		$totalLen = array_sum( array_map( 'strlen', $titleTokens ) );
 		$matchLen = array_sum( array_map( 'strlen', $matched ) );
 
-		return (float)( $matchLen / $totalLen );
+		return [ (float)( $matchLen / $totalLen ), array_intersect( $titleTokens, $searchTokens ) ];
 	}
 
 	/**
@@ -146,8 +153,8 @@ class Base implements IPostProcessor {
 			return $qs;
 		}
 		if ( $this->postProcessorRunner->getType() === Backend::QUERY_TYPE_AUTOCOMPLETE ) {
-			return isset( $lookup['query']['bool']['must']['multi_match']['query'] ) ?
-				$lookup['query']['bool']['must']['multi_match']['query'] : '';
+			return isset( $lookup['query']['bool']['must'][0]['multi_match']['query'] ) ?
+				$lookup['query']['bool']['must'][0]['multi_match']['query'] : '';
 		}
 		return '';
 	}
