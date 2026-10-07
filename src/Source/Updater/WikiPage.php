@@ -4,10 +4,10 @@ namespace BS\ExtendedSearch\Source\Updater;
 
 use BS\ExtendedSearch\Source\Job\UpdateWikiPage;
 use JobQueueGroup;
-use ManualLogEntry;
 use MediaWiki\Extension\ContentStabilization\StablePoint;
 use MediaWiki\Hook\AfterImportPageHook;
 use MediaWiki\Hook\PageMoveCompletingHook;
+use MediaWiki\Logging\ManualLogEntry;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\PageDeleteCompleteHook;
 use MediaWiki\Page\Hook\PageUndeleteCompleteHook;
