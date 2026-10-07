@@ -90,7 +90,7 @@
 			this.$primaryResults.append(
 				$( '<div>' )
 					.addClass( 'bs-extendedsearch-autocomplete-popup-no-results' )
-					.html( mw.message( 'bs-extendedsearch-autocomplete-result-primary-no-results-label' ).text() )
+					.html( mw.message( 'bs-extendedsearch-autocomplete-result-primary-no-results-search-label', this.searchTerm ).text() )
 			);
 		}
 	};

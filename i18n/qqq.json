@@ -209,5 +209,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Label for Wikipage source type",
 	"bs-extendedsearch-source-type-repofile-label": "Label for Local file source type",
 	"bs-extendedsearch-source-type-specialpage-label": "Label for Special page source type",
-	"bs-extendedsearch-source-type-externalfile-label": "Label for external file source type"
+	"bs-extendedsearch-source-type-externalfile-label": "Label for external file source type",
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "Label for no search results for current search term"
 }

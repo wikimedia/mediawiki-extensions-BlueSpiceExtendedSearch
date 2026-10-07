@@ -47,7 +47,7 @@ bs.extendedSearch.mixin.ContextOptions.prototype.getContextWidget = function ( k
 	} );
 
 	const stripHTMLTags = ( str ) => str.replace( /<[^>]*>/g, '' );
-	widget.$element.attr( 'aria-label',
+	widget.$button.attr( 'aria-label',
 		mw.message( 'bs-extendedsearch-autocomplete-context-options-aria-label', this.searchTerm, stripHTMLTags( data.text ) ).text() );
 	widget.connect( this, {
 		click: function () {
@@ -55,12 +55,13 @@ bs.extendedSearch.mixin.ContextOptions.prototype.getContextWidget = function ( k
 		}
 	} );
 	this.options[ 'search-context-' + key ] = widget;
-	const contextLabel = new OO.ui.LabelWidget( {
-		label: new OO.ui.HtmlSnippet( data.text ),
-		classes: [ 'bs-extendedsearch-autocomplete-popup-context-option-label' ]
-	} );
 
-	widget.$element.append( contextLabel.$element );
+	const snippet = new OO.ui.HtmlSnippet( data.text );
+	const $contextLabel = $( '<span>' ).append( snippet.toString() );
+	$contextLabel.addClass( 'bs-extendedsearch-autocomplete-popup-context-option-label' );
+
+	// append it to button to have contextLabel also clickable
+	widget.$button.append( $contextLabel );
 	return widget;
 };
 

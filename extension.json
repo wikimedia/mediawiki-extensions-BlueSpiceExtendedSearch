@@ -403,7 +403,7 @@
 				"ext.blueSpiceExtendedSearch.Autocomplete.less"
 			],
 			"messages": [
-				"bs-extendedsearch-autocomplete-result-primary-no-results-label",
+				"bs-extendedsearch-autocomplete-result-primary-no-results-search-label",
 				"bs-extendedsearch-autocomplete-result-type",
 				"bs-extendedsearch-autocomplete-result-top-match-label",
 				"bs-extendedsearch-autocomplete-create-page-link",
