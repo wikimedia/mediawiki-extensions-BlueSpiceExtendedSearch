@@ -202,5 +202,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Wikipage",
 	"bs-extendedsearch-source-type-repofile-label": "Local file",
 	"bs-extendedsearch-source-type-specialpage-label": "Special page",
-	"bs-extendedsearch-source-type-externalfile-label": "External file"
+	"bs-extendedsearch-source-type-externalfile-label": "External file",
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "No results for \"$1\""
 }
