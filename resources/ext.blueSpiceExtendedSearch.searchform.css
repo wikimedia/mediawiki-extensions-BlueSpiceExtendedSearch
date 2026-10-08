@@ -79,10 +79,6 @@ form .bs-extendedsearch-searchbar-clear a {
 	text-decoration: none;
 }
 
-#bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup .bs-extendedsearch-autocomplete-popup-primary .bs-extendedsearch-autocomplete-popup-primary-item:hover {
-	background-color: #f1f1f4;
-}
-
 #bs-extendedsearch-box .bs-extendedsearch-autocomplete-popup .bs-extendedsearch-autocomplete-popup-special-cnt {
 	border-left: none; /* stylelint-disable-line declaration-property-value-disallowed-list */
 }
