@@ -225,5 +225,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Wiki页面",
 	"bs-extendedsearch-source-type-repofile-label": "本地文件",
 	"bs-extendedsearch-source-type-specialpage-label": "特殊页面",
-	"bs-extendedsearch-source-type-externalfile-label": "外部文件"
+	"bs-extendedsearch-source-type-externalfile-label": "外部文件",
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "未找到“$1”的相关结果"
 }
