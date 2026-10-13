@@ -198,5 +198,6 @@
 	"bs-extendedsearch-source-type-wikipage-label": "Bogga wiki-ga",
 	"bs-extendedsearch-source-type-repofile-label": "Faylka maxalliga ah",
 	"bs-extendedsearch-source-type-specialpage-label": "Bog gaar ah",
-	"bs-extendedsearch-source-type-externalfile-label": "Faylka dibadda"
+	"bs-extendedsearch-source-type-externalfile-label": "Faylka dibadda",
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "Natiijooyin looma helin \"$1\""
 }
