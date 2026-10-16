@@ -186,7 +186,7 @@
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "Redirección cara a «$1»",
 	"bs-extendedsearch-context-subpage-label": "en subpáxinas de «'''$1'''»",
 	"bs-extendedsearch-context-namespace-label": "no espazo de nomes «'''$1'''»",
-	"bs-extendedsearch-autocomplete-context-none": "en todo o wiki",
+	"bs-extendedsearch-autocomplete-context-none": "neste wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultados",
 	"bs-extendedsearch-autocomplete-context-options-label": "Procurar",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Resultados semellantes",
@@ -207,5 +207,9 @@
 	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Páxina",
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "Ficheiro",
 	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Perfil de usuario",
-	"bs-extendedsearch-save-as-collection-button-label": "Gardar como colección de páxinas"
+	"bs-extendedsearch-save-as-collection-button-label": "Gardar como colección de páxinas",
+	"bs-extendedsearch-search-center-options-page-size-label": "Número de entradas mostradas",
+	"bs-extendedsearch-search-center-options-sorting": "Ordenación",
+	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "CSS hixienizado",
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "Non hai resultados para «$1»"
 }

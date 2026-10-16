@@ -192,7 +192,7 @@
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "Verwijst door naar $1",
 	"bs-extendedsearch-context-subpage-label": "in subpagina’s van '''$1'''",
 	"bs-extendedsearch-context-namespace-label": "in de naamruimte '''$1'''",
-	"bs-extendedsearch-autocomplete-context-none": "in de hele wiki",
+	"bs-extendedsearch-autocomplete-context-none": "in deze wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Resultaten",
 	"bs-extendedsearch-autocomplete-context-options-label": "Zoeken",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Vergelijkbare resultaten",
@@ -213,5 +213,8 @@
 	"bs-extendedsearch-search-center-filter-document-type-wikitext-label": "Pagina",
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "Bestand",
 	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Gebruikersprofiel",
-	"bs-extendedsearch-save-as-collection-button-label": "Als paginaverzameling opslaan"
+	"bs-extendedsearch-save-as-collection-button-label": "Als paginaverzameling opslaan",
+	"bs-extendedsearch-search-center-options-page-size-label": "Aantal weergegeven items",
+	"bs-extendedsearch-search-center-options-sorting": "Sorteren",
+	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "Opgeschoonde CSS"
 }

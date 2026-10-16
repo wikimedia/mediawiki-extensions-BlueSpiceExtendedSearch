@@ -4,6 +4,7 @@
 			"Maoue",
 			"Ouclie",
 			"Tensama0415",
+			"YeBoy371",
 			"Ykhwong",
 			"아라"
 		]
@@ -153,7 +154,7 @@
 	"bs-extendedsearch-autocomplete-popup-quiet-subpage-clear": "전역 결과 표시",
 	"bs-extendedsearch-tagsearch-btn-aria-label": "검색 시작",
 	"bs-extendedsearch-tagsearch-input-aria-label": "검색",
-	"bs-extendedsearch-autocomplete-context-none": "전체 위키에서",
+	"bs-extendedsearch-autocomplete-context-none": "위키에서",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "비슷한 결과",
 	"prefs-search": "검색 설정",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-type-label": "결과 유형",
@@ -209,5 +210,9 @@
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "파일",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "특수 문서",
 	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "사용자 프로파일",
-	"bs-extendedsearch-save-as-collection-button-label": "문서 컬렉션으로써 저장"
+	"bs-extendedsearch-save-as-collection-button-label": "문서 컬렉션으로써 저장",
+	"bs-extendedsearch-search-center-options-page-size-label": "표시된 항목 수",
+	"bs-extendedsearch-search-center-options-sorting": "정렬",
+	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "새니타이즈드 CSS",
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "\"$1\"에 대한 검색 결과가 없습니다"
 }
