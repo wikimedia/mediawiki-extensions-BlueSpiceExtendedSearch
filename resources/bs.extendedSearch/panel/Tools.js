@@ -40,7 +40,7 @@ bs.extendedSearch.ToolsPanel.prototype.init = function () {
 	} );
 
 	const menuButton = new OO.ui.ButtonMenuSelectWidget( { // eslint-disable-line mediawiki/no-unlabeled-buttonwidget
-		icon: 'menu',
+		icon: 'ellipsis',
 		framed: false,
 		title: mw.message( 'bs-extendedsearch-options-button-label' ).text(),
 		menu: {
