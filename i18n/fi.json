@@ -6,7 +6,8 @@
 			"Nike",
 			"Pyscowicz",
 			"Silvonen",
-			"Veikk0.ma"
+			"Veikk0.ma",
+			"Wikipeedikko"
 		]
 	},
 	"bs-extendedsearch-search-button-title": "Aloita haku",
@@ -57,5 +58,6 @@
 	"bs-extendedsearch-search-center-result-file-usage-label": "Käytössä sivuilla",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-ns": "Nimiavaruudet",
 	"bs-extendedsearch-tagsearch-ve-tagsearch-tb-cat": "Luokat",
-	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Toimintosivu"
+	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Toimintosivu",
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "Ei tuloksia haulle \"$1\""
 }

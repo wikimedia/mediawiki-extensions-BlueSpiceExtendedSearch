@@ -219,5 +219,8 @@
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "Datei",
 	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Benutzerprofil",
 	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "Bereinigtes CSS",
-	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Scribunto"
+	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Scribunto",
+	"bs-extendedsearch-search-center-options-page-size-label": "Anzahl der angezeigten Einträge",
+	"bs-extendedsearch-search-center-options-sorting": "Sortierung",
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "Keine Ergebnisse für \"$1\""
 }

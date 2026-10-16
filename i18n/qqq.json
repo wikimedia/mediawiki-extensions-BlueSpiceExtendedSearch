@@ -211,5 +211,8 @@
 	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Label for the document_type option for user profile type",
 	"bs-extendedsearch-save-as-collection-button-label": "Tooltip text for a button to save search results as a page collection",
 	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "Label for the document_type option for the \"sanitized-css\" content model (Extension:TemplateStyles)",
-	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Label for the document_type option for the \"Scribunto\" content model (Extension:Scribunto)"
+	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Label for the document_type option for the \"Scribunto\" content model (Extension:Scribunto)",
+	"bs-extendedsearch-search-center-options-page-size-label": "Label for the radio button group of the page size option in search options dialog. The menu entry itself uses {{msg-mw|bs-extendedsearch-search-center-options-page-size}}.",
+	"bs-extendedsearch-search-center-options-sorting": "Label for the sorting page in the search options dialog menu. This page combines the sort by and sort order options.",
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "Label for no search results for current search term"
 }

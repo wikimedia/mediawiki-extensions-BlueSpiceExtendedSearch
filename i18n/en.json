@@ -181,7 +181,7 @@
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "Redirects to $1",
 	"bs-extendedsearch-context-subpage-label": "in subpages of '''$1'''",
 	"bs-extendedsearch-context-namespace-label": "in '''$1''' namespace",
-	"bs-extendedsearch-autocomplete-context-none": "in whole wiki",
+	"bs-extendedsearch-autocomplete-context-none": "in this wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Results",
 	"bs-extendedsearch-autocomplete-context-options-label": "Search",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Similar results",
@@ -203,5 +203,8 @@
 	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "User profile",
 	"bs-extendedsearch-save-as-collection-button-label": "Save as page collection",
 	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "Sanitized CSS",
-	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Scribunto"
+	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Scribunto",
+	"bs-extendedsearch-search-center-options-page-size-label": "Number of shown entries",
+	"bs-extendedsearch-search-center-options-sorting": "Sorting",
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "No results for \"$1\""
 }
