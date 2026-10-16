@@ -4,7 +4,7 @@ bs.extendedSearch.FilterAddWidget = function ( cfg ) {
 	cfg = cfg || {};
 	cfg.label = mw.message( 'bs-extendedsearch-filter-add-button-label' ).text();
 	cfg.invisibleLabel = true;
-	cfg.icon = 'funnel';
+	cfg.icon = 'filter';
 	cfg.framed = false;
 
 	this.availableFilters = cfg.filterData || [];
