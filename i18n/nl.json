@@ -216,5 +216,6 @@
 	"bs-extendedsearch-save-as-collection-button-label": "Als paginaverzameling opslaan",
 	"bs-extendedsearch-search-center-options-page-size-label": "Aantal weergegeven items",
 	"bs-extendedsearch-search-center-options-sorting": "Sorteren",
-	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "Opgeschoonde CSS"
+	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "Opgeschoonde CSS",
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "Geen resultaten voor \"$1\""
 }
