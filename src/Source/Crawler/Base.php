@@ -3,8 +3,8 @@
 namespace BS\ExtendedSearch\Source\Crawler;
 
 use BS\ExtendedSearch\ISearchCrawler;
-use Job;
 use MediaWiki\Config\Config;
+use MediaWiki\JobQueue\Job;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Title\Title;
 use Wikimedia\Rdbms\ILoadBalancer;
