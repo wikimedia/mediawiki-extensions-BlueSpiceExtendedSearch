@@ -3,9 +3,9 @@
 namespace BS\ExtendedSearch\Source\Crawler;
 
 use MediaWiki\Config\Config;
+use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Title\Title;
-use RepoGroup;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class RepoFile extends File {

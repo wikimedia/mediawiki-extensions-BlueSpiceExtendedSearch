@@ -2,9 +2,9 @@
 
 namespace BS\ExtendedSearch\Source\DocumentProvider;
 
+use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
-use RepoGroup;
 use SplFileInfo;
 use Wikimedia\Mime\MimeAnalyzer;
 
