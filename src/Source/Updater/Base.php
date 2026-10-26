@@ -4,6 +4,7 @@ namespace BS\ExtendedSearch\Source\Updater;
 
 use BS\ExtendedSearch\ISearchSource;
 use BS\ExtendedSearch\ISearchUpdater;
+use MediaWiki\JobQueue\Job;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 
@@ -37,7 +38,7 @@ class Base implements ISearchUpdater {
 	 */
 	public function addUpdateJob( $oTitle, $aParams = [] ) {
 		$oJob = $this->makeJob( $oTitle, $aParams );
-		if ( $oJob instanceof \Job === false ) {
+		if ( $oJob instanceof Job === false ) {
 			return;
 		}
 
