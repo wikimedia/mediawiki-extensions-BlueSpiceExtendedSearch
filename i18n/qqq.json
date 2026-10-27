@@ -214,5 +214,7 @@
 	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Label for the document_type option for the \"Scribunto\" content model (Extension:Scribunto)",
 	"bs-extendedsearch-search-center-options-page-size-label": "Label for the radio button group of the page size option in search options dialog. The menu entry itself uses {{msg-mw|bs-extendedsearch-search-center-options-page-size}}.",
 	"bs-extendedsearch-search-center-options-sorting": "Label for the sorting page in the search options dialog menu. This page combines the sort by and sort order options.",
-	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "Label for no search results for current search term"
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "Label for no search results for current search term",
+	"bs-extendedsearch-search-center-filter-document-type-neowikischema-label": "Label for the document_type option for the \"NeoWikiSchema\" content model (Extension:NeoWiki)",
+	"bs-extendedsearch-search-center-filter-document-type-smw/schema-label": "Label for the document_type option for the \"smw/schema\" content model (Extension:SemanticMediaWiki)"
 }
