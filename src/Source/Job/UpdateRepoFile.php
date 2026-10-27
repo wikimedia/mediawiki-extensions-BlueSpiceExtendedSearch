@@ -79,7 +79,7 @@ class UpdateRepoFile extends UpdateTitleBase {
 		if ( !empty( $this->fileData ) ) {
 			return;
 		}
-		if ( $this->file instanceof \File ) {
+		if ( $this->file instanceof File ) {
 			return;
 		}
 
