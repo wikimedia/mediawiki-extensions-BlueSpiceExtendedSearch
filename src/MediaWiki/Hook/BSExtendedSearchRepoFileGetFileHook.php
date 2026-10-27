@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\MediaWiki\Hook;
 
-use File;
+use MediaWiki\FileRepo\File\File;
 
 interface BSExtendedSearchRepoFileGetFileHook {
 	/**

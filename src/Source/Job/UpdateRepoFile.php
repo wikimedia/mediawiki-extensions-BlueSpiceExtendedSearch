@@ -2,7 +2,7 @@
 
 namespace BS\ExtendedSearch\Source\Job;
 
-use File;
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use RuntimeException;

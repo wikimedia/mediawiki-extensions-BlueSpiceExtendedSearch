@@ -4,7 +4,7 @@ namespace BS\ExtendedSearch\Source\Updater;
 
 use Article;
 use BS\ExtendedSearch\Source\Job\UpdateRepoFile;
-use File;
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
