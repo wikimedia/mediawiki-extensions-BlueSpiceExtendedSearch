@@ -212,5 +212,7 @@
 	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Scribunto",
 	"bs-extendedsearch-search-center-options-page-size-label": "Number of shown entries",
 	"bs-extendedsearch-search-center-options-sorting": "Sorting",
-	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "No results for \"$1\""
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "No results for \"$1\"",
+	"bs-extendedsearch-search-center-filter-document-type-neowikischema-label": "Schema",
+	"bs-extendedsearch-search-center-filter-document-type-smw/schema-label": "Schema"
 }
