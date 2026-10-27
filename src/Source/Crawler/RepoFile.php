@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch\Source\Crawler;
 
 use MediaWiki\Config\Config;
+use MediaWiki\FileRepo\File\LocalFile;
 use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Title\Title;
@@ -45,7 +46,7 @@ class RepoFile extends File {
 		foreach ( $res as $row ) {
 			$title = Title::newFromID( $row->page_id );
 			$file = $this->repoGroup->findFile( $title );
-			if ( $file instanceof \LocalFile === false ) {
+			if ( $file instanceof LocalFile === false ) {
 				continue;
 			}
 
