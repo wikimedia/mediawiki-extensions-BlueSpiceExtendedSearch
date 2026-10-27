@@ -2,11 +2,11 @@
 
 namespace BS\ExtendedSearch\Source\Updater;
 
-use Article;
 use BS\ExtendedSearch\Source\Job\UpdateRepoFile;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\Article;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
