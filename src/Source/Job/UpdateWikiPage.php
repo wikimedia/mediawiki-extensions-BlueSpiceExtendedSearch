@@ -3,8 +3,8 @@
 namespace BS\ExtendedSearch\Source\Job;
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\WikiPage;
 use MediaWiki\Title\Title;
-use WikiPage;
 
 class UpdateWikiPage extends UpdateTitleBase {
 
