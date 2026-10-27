@@ -203,5 +203,6 @@
 	"bs-extendedsearch-source-type-repofile-label": "Local file",
 	"bs-extendedsearch-source-type-specialpage-label": "Special page",
 	"bs-extendedsearch-source-type-externalfile-label": "External file",
-	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "No results for \"$1\""
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "No results for \"$1\"",
+	"bs-extendedsearch-search-center-filter-document-type-smw/schema-label": "Schema"
 }
