@@ -199,5 +199,7 @@
 	"bs-extendedsearch-source-type-repofile-label": "Faylka maxalliga ah",
 	"bs-extendedsearch-source-type-specialpage-label": "Bog gaar ah",
 	"bs-extendedsearch-source-type-externalfile-label": "Faylka dibadda",
-	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "Natiijooyin looma helin \"$1\""
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "Natiijooyin looma helin \"$1\"",
+	"bs-extendedsearch-search-center-filter-document-type-neowikischema-label": "Qaab-dhismeed",
+	"bs-extendedsearch-search-center-filter-document-type-smw/schema-label": "Qaab-dhismeed"
 }
