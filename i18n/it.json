@@ -148,5 +148,6 @@
 	"bs-extendedsearch-search-center-filter-document-type-file-label": "File",
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Pagina speciale",
 	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Profilo utente",
-	"bs-extendedsearch-search-center-options-sorting": "Ordinamento"
+	"bs-extendedsearch-search-center-options-sorting": "Ordinamento",
+	"bs-extendedsearch-search-center-filter-document-type-neowikischema-label": "Schema"
 }

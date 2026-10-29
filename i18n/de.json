@@ -198,7 +198,7 @@
 	"bs-extendedsearch-autocomplete-popup-redirect-title": "Leitet weiter nach $1",
 	"bs-extendedsearch-context-subpage-label": "in Unterseiten von '''$1'''",
 	"bs-extendedsearch-context-namespace-label": "im '''$1'''-Namensraum",
-	"bs-extendedsearch-autocomplete-context-none": "im gesamten Wiki",
+	"bs-extendedsearch-autocomplete-context-none": "in diesem Wiki",
 	"bs-extendedsearch-autocomplete-result-primary-results-label": "Ergebnisse",
 	"bs-extendedsearch-autocomplete-context-options-label": "Suche",
 	"bs-extendedsearch-autocomplete-result-secondary-results-header-label": "Ähnliche Ergebnisse",
@@ -222,5 +222,6 @@
 	"bs-extendedsearch-search-center-filter-document-type-scribunto-label": "Scribunto",
 	"bs-extendedsearch-search-center-options-page-size-label": "Anzahl der angezeigten Einträge",
 	"bs-extendedsearch-search-center-options-sorting": "Sortierung",
-	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "Keine Ergebnisse für \"$1\""
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "Keine Ergebnisse für \"$1\"",
+	"bs-extendedsearch-save-as-collection-button-label": "Als Seitensammlung speichern"
 }
