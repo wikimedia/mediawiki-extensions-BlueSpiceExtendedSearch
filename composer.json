@@ -16,7 +16,7 @@
 		"mwstake/mediawiki-component-datastore": "~4",
 		"mwstake/mediawiki-component-generictaghandler": "~3",
 		"mwstake/mediawiki-component-wikicron": "~7",
-		"mwstake/mediawiki-component-utils": "~3"
+		"mwstake/mediawiki-component-utils": "~4"
 	},
 	"require-dev": {
 		"mediawiki/mediawiki-codesniffer": "52.0.0",
