@@ -195,6 +195,8 @@
 	"bs-extendedsearch-search-center-filter-document-type-special-page-label": "Bog gaar ah",
 	"bs-extendedsearch-search-center-filter-document-type-user-profile-label": "Astaanta isticmaalaha",
 	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "CSS la nadiifiyey",
+	"bs-extendedsearch-search-center-filter-document-type-neowikischema-label": "Qaab-dhismeed",
+	"bs-extendedsearch-search-center-filter-document-type-smw/schema-label": "Qaab-dhismeed",
 	"bs-extendedsearch-source-type-wikipage-label": "Bogga wiki-ga",
 	"bs-extendedsearch-source-type-repofile-label": "Faylka maxalliga ah",
 	"bs-extendedsearch-source-type-specialpage-label": "Bog gaar ah",
