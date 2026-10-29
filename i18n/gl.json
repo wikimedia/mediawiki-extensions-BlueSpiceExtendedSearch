@@ -201,5 +201,7 @@
 	"bs-extendedsearch-source-type-repofile-label": "Ficheiro local",
 	"bs-extendedsearch-source-type-specialpage-label": "Páxina especial",
 	"bs-extendedsearch-source-type-externalfile-label": "Ficheiro externo",
-	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "Non hai resultados para «$1»"
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "Non hai resultados para «$1»",
+	"bs-extendedsearch-search-center-filter-document-type-neowikischema-label": "Esquema",
+	"bs-extendedsearch-search-center-filter-document-type-smw/schema-label": "Esquema"
 }
