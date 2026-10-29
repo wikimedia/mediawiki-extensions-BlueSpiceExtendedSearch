@@ -4,8 +4,8 @@ namespace BS\ExtendedSearch\MediaWiki\Backend;
 use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\Setup;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Search\SearchResult;
 use MediaWiki\Title\Title;
-use SearchResult;
 use SearchSuggestionSet;
 
 class BlueSpiceSearch extends \SearchEngine {
