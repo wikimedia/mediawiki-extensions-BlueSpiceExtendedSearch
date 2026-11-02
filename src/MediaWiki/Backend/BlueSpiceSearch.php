@@ -4,12 +4,13 @@ namespace BS\ExtendedSearch\MediaWiki\Backend;
 use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\Setup;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Search\SearchEngine;
 use MediaWiki\Search\SearchResult;
 use MediaWiki\Search\SearchSuggestionSet;
 use MediaWiki\Title\Title;
 
-class BlueSpiceSearch extends \SearchEngine {
-	/** @var \SearchEngine|null */
+class BlueSpiceSearch extends SearchEngine {
+	/** @var SearchEngine|null */
 	protected $fallbackSearchEngine = null;
 	/** @var \BS\ExtendedSearch\Backend */
 	protected $backend;
@@ -222,7 +223,7 @@ class BlueSpiceSearch extends \SearchEngine {
 	/**
 	 * Gets default search engine based on DB type
 	 *
-	 * @return \SearchEngine
+	 * @return SearchEngine
 	 */
 	protected function getFallbackSearchEngine() {
 		if ( $this->fallbackSearchEngine === null ) {
