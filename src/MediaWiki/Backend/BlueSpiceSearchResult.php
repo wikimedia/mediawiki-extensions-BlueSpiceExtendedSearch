@@ -2,9 +2,9 @@
 namespace BS\ExtendedSearch\MediaWiki\Backend;
 
 use ISearchResultSet;
+use MediaWiki\Search\RevisionSearchResult;
 use MediaWiki\Search\SearchResult;
 use MediaWiki\Title\Title;
-use RevisionSearchResult;
 
 class BlueSpiceSearchResult extends RevisionSearchResult {
 	/** @var string */
