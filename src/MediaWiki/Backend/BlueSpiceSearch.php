@@ -5,8 +5,8 @@ use BS\ExtendedSearch\Lookup;
 use BS\ExtendedSearch\Setup;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Search\SearchResult;
+use MediaWiki\Search\SearchSuggestionSet;
 use MediaWiki\Title\Title;
-use SearchSuggestionSet;
 
 class BlueSpiceSearch extends \SearchEngine {
 	/** @var \SearchEngine|null */
