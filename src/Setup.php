@@ -3,6 +3,7 @@
 namespace BS\ExtendedSearch;
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Search\SearchEngine;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class Setup {
@@ -23,7 +24,7 @@ class Setup {
 
 	/**
 	 * @param ILoadBalancer $lb
-	 * @return \SearchEngine
+	 * @return SearchEngine
 	 */
 	public static function getSearchEngineClass( ILoadBalancer $lb ) {
 		$seFactory = MediaWikiServices::getInstance()->getSearchEngineFactory();
