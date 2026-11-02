@@ -90,11 +90,11 @@ class BlueSpiceSearch extends \SearchEngine {
 
 	/**
 	 * @param string $search
-	 * @return \SearchSuggestionSet
+	 * @return SearchSuggestionSet
 	 */
 	protected function completionSearchBackend( $search ) {
 		$results = $this->runAutocompleteSearch( trim( $search ) );
-		return \SearchSuggestionSet::fromTitles( $results );
+		return SearchSuggestionSet::fromTitles( $results );
 	}
 
 	/**
