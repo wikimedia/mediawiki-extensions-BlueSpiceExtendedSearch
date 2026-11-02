@@ -1,7 +1,7 @@
 <?php
 namespace BS\ExtendedSearch\MediaWiki\Backend;
 
-use ISearchResultSet;
+use MediaWiki\Search\ISearchResultSet;
 use MediaWiki\Search\RevisionSearchResult;
 use MediaWiki\Search\SearchResult;
 use MediaWiki\Title\Title;
