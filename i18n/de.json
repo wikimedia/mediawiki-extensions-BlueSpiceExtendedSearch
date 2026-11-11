@@ -213,5 +213,7 @@
 	"bs-extendedsearch-source-type-repofile-label": "Lokale Datei",
 	"bs-extendedsearch-source-type-specialpage-label": "Spezialseite",
 	"bs-extendedsearch-source-type-externalfile-label": "Externe Datei",
-	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "Keine Ergebnisse für \"$1\""
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "Keine Ergebnisse für \"$1\"",
+	"bs-extendedsearch-search-center-filter-document-type-neowikischema-label": "Schema",
+	"bs-extendedsearch-search-center-filter-document-type-smw/schema-label": "Schema"
 }
