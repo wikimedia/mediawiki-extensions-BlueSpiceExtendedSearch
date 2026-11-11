@@ -225,5 +225,7 @@
 	"bs-extendedsearch-search-center-options-page-size-label": "Anzahl der angezeigten Einträge",
 	"bs-extendedsearch-search-center-options-sorting": "Sortierung",
 	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "Keine Ergebnisse für \"$1\"",
-	"bs-extendedsearch-save-as-collection-button-label": "Als Seitensammlung speichern"
+	"bs-extendedsearch-save-as-collection-button-label": "Als Seitensammlung speichern",
+	"bs-extendedsearch-search-center-filter-document-type-neowikischema-label": "Schema",
+	"bs-extendedsearch-search-center-filter-document-type-smw/schema-label": "Schema"
 }
