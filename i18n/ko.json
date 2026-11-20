@@ -214,5 +214,7 @@
 	"bs-extendedsearch-search-center-options-page-size-label": "표시된 항목 수",
 	"bs-extendedsearch-search-center-options-sorting": "정렬",
 	"bs-extendedsearch-search-center-filter-document-type-sanitized-css-label": "새니타이즈드 CSS",
-	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "\"$1\"에 대한 검색 결과가 없습니다"
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "\"$1\"에 대한 검색 결과가 없습니다",
+	"bs-extendedsearch-search-center-filter-document-type-neowikischema-label": "스키마",
+	"bs-extendedsearch-search-center-filter-document-type-smw/schema-label": "스키마"
 }
