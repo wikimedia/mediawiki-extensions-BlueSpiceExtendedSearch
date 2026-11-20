@@ -203,5 +203,7 @@
 	"bs-extendedsearch-source-type-repofile-label": "로컬 파일",
 	"bs-extendedsearch-source-type-specialpage-label": "특수 문서",
 	"bs-extendedsearch-source-type-externalfile-label": "외부 파일",
-	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "\"$1\"에 대한 검색 결과가 없습니다"
+	"bs-extendedsearch-autocomplete-result-primary-no-results-search-label": "\"$1\"에 대한 검색 결과가 없습니다",
+	"bs-extendedsearch-search-center-filter-document-type-neowikischema-label": "스키마",
+	"bs-extendedsearch-search-center-filter-document-type-smw/schema-label": "스키마"
 }
