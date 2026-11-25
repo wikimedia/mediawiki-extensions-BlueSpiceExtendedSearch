@@ -7,6 +7,15 @@ use BlueSpice\WikiFarm\CommandDescriptionBase;
 class InitBackend extends CommandDescriptionBase {
 
 	/**
+	 * @param string $instanceName
+	 * @return bool
+	 */
+	public function shouldRun( $instanceName ) {
+		// When using unified search, init-int one index will clear all data from other instances
+		return !$this->config?->get( 'useUnifiedSearch' );
+	}
+
+	/**
 	 * @return string[]
 	 */
 	public function getCommandArguments() {

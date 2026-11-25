@@ -530,13 +530,19 @@ class WikiPageFormatter extends Base {
 		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()
 			->getConnection( DB_REPLICA );
 
-		$res = $dbr->select(
-			[ 'imagelinks', 'page' ],
-			[ 'page_namespace', 'page_title', 'il_to' ],
-			[ 'il_to' => $title->getDBkey(), 'il_from = page_id' ],
-			__METHOD__,
-			[ 'LIMIT' => 5, 'ORDER BY' => 'il_from', ]
-		);
+		$res = $dbr->newSelectQueryBuilder()
+			->select( [ 'page_namespace', 'page_title' ] )
+			->from( 'imagelinks' )
+			->join( 'linktarget', null, 'il_target_id = lt_id' )
+			->join( 'page', null, 'il_from = page_id' )
+			->where( [
+				'lt_namespace' => $title->getNamespace(),
+				'lt_title' => $title->getDBkey(),
+			] )
+			->orderBy( 'il_from' )
+			->limit( 5 )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 		if ( $res->numRows() === 0 ) {
 			return '';
 		}
