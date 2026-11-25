@@ -11,6 +11,13 @@ class DeleteIndices extends CommandDescriptionBase {
 	 */
 	public function getCommandArguments() {
 		$maintenancePath = $this->buildMaintenancePath( 'BlueSpiceExtendedSearch' );
+		if ( $this->config?->get( 'useUnifiedSearch' ) ) {
+			return [
+				"$maintenancePath/purgeDocuments.php",
+				"--quick"
+			];
+		}
+
 		return [
 			"$maintenancePath/purgeIndexes.php",
 			"--quick"
